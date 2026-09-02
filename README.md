@@ -67,11 +67,10 @@ writing:
   itself — see `decisions.md`'s ADR 0004. `.github/workflows/ci.yml` is
   unchanged and still only runs on manual `workflow_dispatch` plus
   push/PR.
-- **No live deployment yet.** A Vercel deployment is decided (ADR 0004 —
-  git-integrated auto-deploy on push to `main`, never running the pipeline
-  on Vercel's own build) but not yet connected. The site currently only
-  runs locally via `npm run dev` / `npm run build`, or via CI's build+test
-  check.
+- **The site is live.** Visit https://daily-dose-hazel-delta.vercel.app —
+  git-integrated auto-deploy on push to `main` (ADR 0004), Build Command
+  confirmed as `npm run build` only, so Vercel never runs the pipeline or
+  sees the Bedrock credential.
 - **A public cost/stats page ships.** Visit `/stats` for real per-run LLM
   cost, broken down by model and by day, read directly from
   `src/data/stats.jsonl` — going one step further than the reference
