@@ -69,10 +69,10 @@ writing:
 - **No live deployment yet.** There is no Vercel (or other) deployment
   configured. The site currently only runs locally via `npm run dev` /
   `npm run build`.
-- **No public cost/stats page yet.** Real per-run LLM cost is now tracked
-  (`src/data/stats.jsonl`, see `telemetry.md`), but there's no public page
-  rendering it yet — a real, buildable fast-follow candidate now rather than
-  something blocked on having any cost data to show at all.
+- **A public cost/stats page ships.** Visit `/stats` for real per-run LLM
+  cost, broken down by model and by day, read directly from
+  `src/data/stats.jsonl` — going one step further than the reference
+  project's own `/stats` page, which never showed dollar amounts.
 
 ## License
 

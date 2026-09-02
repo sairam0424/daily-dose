@@ -65,6 +65,7 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 | arXiv ingestion (second source)                                      | 7     | **Complete — real live fetch, capped placeholder score, merged PR #1** |
 | Content-collection integration test + astro-build e2e test            | 7     | **Complete — merged PR #1, closes the codebase_map.md/TESTING.md gap** |
 | Real LLM curation via AWS Bedrock (replacing both placeholder scoring functions as the default path) | 8 | **Complete — verified with 3 real live Bedrock calls, see ADR 0003** |
+| Public `/stats` cost-transparency page                                | 8     | **Complete — real totals/by-model/by-day from `src/data/stats.jsonl`** |
 | `schedule:` cron trigger for automated daily runs                    | 8+    | Planned, not started — no longer blocked on API keys; still blocked on explicit go-ahead |
 | Real Vercel deployment                                               | 8+    | Planned, not started — blocked on explicit go-ahead |
 
@@ -109,6 +110,12 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   stale-file-accumulation bug discovered while re-running the pipeline
   same-day. Verified end-to-end with 3 real live Bedrock calls (~$0.054
   total). 9 new mocked unit tests in `tests/llmCuration.test.ts`.
+- Shipped the public `/stats` page (`src/pages/stats.astro`): totals,
+  by-model, and by-day cost breakdowns read directly from
+  `src/data/stats.jsonl` at build time. Also fixed stale copy in
+  `index.astro` left over from before real LLM curation shipped (the
+  footer still claimed "no LLM calls," the tagline still said "eventually
+  arXiv"). New e2e test `tests/stats-page.test.ts`.
 
 ## Upcoming Milestones
 
@@ -119,8 +126,9 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
    user's explicit go-ahead.
 3. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
    once arXiv has proven the multi-source pattern for a while.
-4. Consider a public `/stats` cost-transparency page now that real cost
-   data exists (`src/data/stats.jsonl`) — see `telemetry.md`.
+4. ~~Add a public `/stats` cost-transparency page.~~ Done — `src/pages/stats.astro`
+   ships real per-run cost, by-model and by-day breakdowns, from
+   `src/data/stats.jsonl`. See `telemetry.md`.
 
 ## Risks & Blockers
 

@@ -44,8 +44,11 @@ daily-dose/
 │   │           └── arxiv-<id>.json           (e.g. arxiv-2609.01597.json) — both are real
 │   │                                           content, not generated build output — committed to git
 │   └── pages/
-│       └── index.astro                 renders the latest digest (both sources, mixed) + one
-│                                          Chart.js bar-chart island of that day's interest_score values
+│       ├── index.astro                 renders the latest digest (both sources, mixed) + one
+│       │                                  Chart.js bar-chart island of that day's interest_score values
+│       └── stats.astro                  public cost/stats page — reads src/data/stats.jsonl
+│                                          directly at build time (no content collection),
+│                                          renders totals + by-model + by-day cost breakdowns
 ├── scripts/
 │   └── pipeline.ts                     fetch (live HN Algolia API + live arXiv Atom API,
 │                                          default --sources hn,arxiv) -> score (real Bedrock call
@@ -62,8 +65,10 @@ daily-dose/
     ├── content-collection.test.ts         integration test: replicates the glob loader's
     │                                       discovery+validation at the filesystem level against
     │                                       real committed digest files
-    └── build-output.test.ts                e2e: asserts real content (both sources) and the
-                                               Chart.js island are present in the built dist/index.html
+    ├── build-output.test.ts                e2e: asserts real content (both sources) and the
+    │                                          Chart.js island are present in the built dist/index.html
+    └── stats-page.test.ts                   e2e: asserts the built dist/stats/index.html reflects
+                                                the real total cost computed from stats.jsonl
 ```
 
 ## Directory-by-directory
@@ -79,7 +84,8 @@ daily-dose/
 | `src/data/digest/` | Committed, dated JSON content — one folder (`YYYY-MM-DD/`) per pipeline run, containing one JSON file per story (`hn-<hn_id>.json` or `arxiv-<id>.json`). | This is real content checked into git, not generated build output (contrast with e.g. nh-deck's gitignored `dist/`). Both `source: "hn"` and `source: "arxiv"` are populated as of the arXiv fast-follow (ADR 0002); scores are real-LLM-derived by default as of ADR 0003. |
 | `src/data/stats.jsonl` | Real per-run LLM cost log, one JSON line per pipeline run (`date`, `model`, `inputTokens`, `outputTokens`, `costUsd`, `itemCount`, `flaggedAnomalous`). | Committed, not gitignored — real historical data, appended by `src/lib/costTracking.ts`. |
 | `src/pages/index.astro` | Renders the latest digest's items (mixed HN + arXiv) and one Chart.js bar chart of that digest's `interest_score` values. | The chart is a plain `<script type="module">` island importing `chart.js/auto` — no React/Vue. |
-| `tests/` | Vitest specs, all real today: `schema.test.ts`, `pipeline.test.ts`, and `llmCuration.test.ts` (unit, network-free — the Bedrock SDK is fully mocked), `content-collection.test.ts` (replicates the glob loader's discovery+validation without needing Astro's Vitest container API) and `build-output.test.ts` (asserts real content in the built `dist/index.html`; assumes `npm run build` already ran). | Name pattern: `*.test.ts`. Mirrors `src/`/`scripts/` structure per the global coding-style convention. See `TESTING.md` for the trophy-shape ratio. |
+| `src/pages/stats.astro` | The public cost/stats page. Reads `src/data/stats.jsonl` directly via `node:fs` in its frontmatter (no content collection — this is a plain, non-schema-validated internal log this project writes, not external content), aggregates totals/by-model/by-day, renders an honest empty-state when no real LLM runs have happened yet. | See `telemetry.md`'s Public Stats Page Spec. Deliberately excludes per-story cost and raw per-call logs. |
+| `tests/` | Vitest specs, all real today: `schema.test.ts`, `pipeline.test.ts`, and `llmCuration.test.ts` (unit, network-free — the Bedrock SDK is fully mocked), `content-collection.test.ts` (replicates the glob loader's discovery+validation without needing Astro's Vitest container API), `build-output.test.ts` (asserts real content in the built `dist/index.html`), and `stats-page.test.ts` (asserts the built `dist/stats/index.html` reflects the real total cost from `stats.jsonl`; assumes `npm run build` already ran). | Name pattern: `*.test.ts`. Mirrors `src/`/`scripts/` structure per the global coding-style convention. See `TESTING.md` for the trophy-shape ratio. |
 | `package.json` | Declares dependencies (Astro, Zod, Chart.js, `tsx`, Vitest, `fast-xml-parser`, `@anthropic-ai/bedrock-sdk`, `@anthropic-ai/sdk`) and npm scripts (`dev`, `build`, `pipeline`, `test`). | Bulma/Sass are explicitly **not** listed here yet — see `tech.md`. |
 | `astro.config.mjs` | Astro config with `output: "static"`. | No server adapter — this is a fully static build. |
 | `memory.md` | Agent-writable accumulated-lessons index. | See its own convention note; near-empty until real history accrues. |
@@ -99,6 +105,7 @@ daily-dose/
 | Add GitHub sourcing (the remaining Hold entry) | `scripts/pipeline.ts` (fetch logic) + `src/lib/digestSchema.ts` already models `source: "github"` — arXiv already shipped as the model for how to add a new source; this is the next one, not yet started |
 | Change how the content collection loads/validates JSON | `src/content.config.ts` |
 | Change the rendered page or the chart | `src/pages/index.astro` |
+| Change the public cost/stats page | `src/pages/stats.astro` (reads `src/data/stats.jsonl` directly) |
 | Add a new day's real digest data | run `npm run pipeline` (writes to `src/data/digest/`, both sources by default, real LLM scoring if credentials are set) — do not hand-write digest JSON except for test fixtures |
 | Add or adjust a unit test for either scoring function | `tests/pipeline.test.ts` (placeholder functions) or `tests/llmCuration.test.ts` (real LLM path, Bedrock SDK mocked) |
 | Add or adjust a schema validation test | `tests/schema.test.ts` |
