@@ -31,8 +31,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Charting | Chart.js (`chart.js/auto`), one plain `<script type="module">` island | Renders a bar chart of the day's `interest_score`s — no React/Vue needed |
 | Styling | Minimal inline CSS | No Bulma/Sass in this walking skeleton — deferred fast-follow |
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
-| CI | GitHub Actions, `workflow_dispatch` + push/PR | Manual trigger only — `schedule:` cron explicitly not enabled this phase |
-| Deployment | *(none yet)* | No Vercel project connected — deferred pending user go-ahead |
+| CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
+| Deployment | *(decided, not yet connected)* | Vercel git-integrated auto-deploy on push to `main`, `npm run build` only — decided in ADR 0004, execution blocked on the Vercel MCP integration's reconnection |
 | LLM SDK | `@anthropic-ai/bedrock-sdk` + `@anthropic-ai/sdk` (error types) | `AnthropicBedrock` client in `src/lib/llmCuration.ts`, model fallback chain Sonnet 4.6 → Opus 4.6 → Haiku 4.5, credentials via `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars |
 | License | Apache-2.0 | Decided at the Not-Humans-Lab umbrella level, applied identically across sibling projects |
 
@@ -45,8 +45,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Chart.js | **Adopt** | One island (`chart.js/auto`, plain `<script type="module">`). No framework (React/Vue/Svelte) pulled in just to render one bar chart. |
 | TypeScript + `tsx` | **Adopt** | Runs `scripts/pipeline.ts` directly without a separate compile step. |
 | Vitest | **Adopt** | Test runner for all layers described in `TESTING.md`. |
-| GitHub Actions (`workflow_dispatch`) | **Adopt (manual trigger only)** | CI runs on `workflow_dispatch` plus push/PR. The `schedule:` cron for automated daily runs is explicitly **Hold** — see below. |
-| Vercel deployment | **Hold** | Not yet connected. Requires the user's explicit go-ahead before wiring up. |
+| GitHub Actions (`workflow_dispatch` + `schedule:`) | **Adopt** | `ci.yml` (manual + push/PR, read-only) and `daily-pipeline.yml` (real daily `schedule:` trigger, `contents: write` on itself only) — see ADR 0004. |
+| Vercel deployment | **Decided, not yet connected** | Git-integrated auto-deploy on push to `main`, Build Command pinned to `npm run build` only (never the pipeline) — decided in ADR 0004. Blocked on reconnecting the Vercel MCP integration, not an open question. |
 | `@anthropic-ai/bedrock-sdk` / `@anthropic-ai/sdk` | **Adopt** | Real Bedrock credential exists (shared with sibling Anvilry project) — see ADR 0003. `src/lib/llmCuration.ts` is the only file that constructs the client. |
 | Bulma / Sass | **Hold** | Deferred fast-follow. Styling for this walking skeleton is minimal inline CSS, matching nh-deck's precedent of deferring visual polish. |
 | arXiv sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchArxivPapers`, fetching live from `export.arxiv.org/api/query` (cs.AI/cs.LG/cs.CL, sorted by submission date). Scored by the placeholder `scoreArxivPlaceholder` in `src/lib/curation.ts` (recency-only signal, capped to a [3, 8] range — see that file's comment for the HN-vs-arXiv asymmetry rationale). |
@@ -85,11 +85,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
   manually/personally when seeding real content (see `TESTING.md`), never
   inside the automated, network-mocked test suite. Tests must stay
   deterministic.
-- **`workflow_dispatch`, not `schedule:`, for CI.** Enabling a daily cron
-  before real LLM keys exist would mean automating a run of the
-  honest-placeholder scorer on a schedule, silently normalizing a stub as if
-  it were the finished product. The manual trigger keeps every run an
-  explicit, reviewed action until the curation step is real.
+- **`daily-pipeline.yml` as a separate workflow from `ci.yml`, not a `schedule:` block added to it.** Least-privilege: only this one job requests `contents: write`; `ci.yml` and every future workflow stay on the repo's read-only default. See ADR 0004.
+- **Direct commit from the cron job, scoped to data paths only — not a daily PR.** A daily digest that still needs a human to click "merge" every day isn't actually automated. Scoped via a bot-commit action's file-pattern option to `src/data/digest/**` + `src/data/stats.jsonl` only, so it can never sweep up an in-progress code change. An explicit, documented exception to `Branches.md`'s PR-for-every-change convention — see ADR 0004.
 - **Chart.js as a plain script island, not a framework component.** One
   static bar chart of `interest_score` values does not need React/Vue's
   component model, state management, or hydration story — `<script
@@ -124,15 +121,19 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
   locally.
 - The pipeline script may only write to `src/data/digest/YYYY-MM-DD/`
   (one file per story); it does not touch any other part of `src/`.
-- The `schedule:` cron trigger and any real deployment target must not be
-  enabled without the user's explicit go-ahead — both are Hold, not merely
-  unconfigured.
+- `daily-pipeline.yml` may only ever commit `src/data/digest/**` and
+  `src/data/stats.jsonl` — never a blanket `git add -A`. Any change to its
+  file-pattern scope is itself a decision worth a `decisions.md` entry.
+- Vercel's Build Command must stay `npm run build` only — it must never be
+  changed to also run `npm run pipeline`, which would put the Bedrock
+  credential into Vercel's environment and trigger a real paid call on
+  every PR preview build. See ADR 0004's rejected "regenerate at build
+  time" alternative.
 
 ## Deprecated / Hold list
 
-- **`schedule:` cron trigger** — Hold, pending the user's explicit go-ahead
-  (no longer blocked on API keys — those now exist).
-- **Vercel deployment** — Hold, not yet connected.
+- **Vercel deployment** — decided (ADR 0004), not yet connected; blocked
+  on reconnecting the Vercel MCP integration, not an open design question.
 - **Bulma/Sass** — Hold, deferred fast-follow for visual polish.
 - **GitHub sourcing** — not deprecated, just not yet implemented. Listed
   under Adoption status as a documented fast-follow, not here, to avoid

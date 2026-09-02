@@ -200,11 +200,13 @@ Relationships:
 ```
 
 **As of 2026-09-02 (ADR 0003), Flow 1 makes a real, paid Bedrock LLM call by
-default.** No `schedule:` cron trigger is enabled (CI is `workflow_dispatch` +
-push/PR only), and no real deployment target (Vercel or otherwise) is
-connected — both remain documented, deliberate deferrals pending the user's
-explicit go-ahead, no longer additionally blocked on API keys. See
-`tech.md`'s Adoption status and Hold list.
+default.** As of 2026-09-03 (ADR 0004), Flow 1 also now runs unattended once
+a day via `.github/workflows/daily-pipeline.yml`'s real `schedule:` trigger
+(a separate workflow from `ci.yml`, requesting `contents: write` on itself
+only), committing its own output. No real deployment target is connected
+yet — Vercel is decided (git-integrated, `npm run build` only) but execution
+is blocked on reconnecting the Vercel MCP integration. See `tech.md`'s
+Adoption status and Hold list.
 
 ## Cross-references
 
@@ -214,8 +216,8 @@ explicit go-ahead, no longer additionally blocked on API keys. See
 - This repo's literal file/directory tour lives in `codebase_map.md`
   alongside this file.
 - The technology choices underlying these building blocks, and the
-  rationale for the real-LLM-as-default and no-cron/no-deploy deferrals, are
-  documented in `tech.md`.
+  rationale for the real-LLM-as-default and cron/deploy decisions, are
+  documented in `tech.md` and `decisions.md` ADR 0004.
 - Test strategy for the two runtime flows above (schema/unit-testing the
   placeholder scorer, mocked-Bedrock-call unit-testing `llmCuration.ts`,
   integration-testing the pipeline against mocked HN/arXiv responses,

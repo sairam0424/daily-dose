@@ -114,9 +114,12 @@ reporter asks to remain anonymous.
   report upstream to AWS, not here. How THIS repo constructs prompts,
   handles the response, and falls back on error (`src/lib/llmCuration.ts`)
   is in scope.
-- Any hosted/production deployment of daily-dose — none exists yet. No
-  Vercel project is connected (see `status.md`); this repo builds and
-  tests only, it does not currently serve traffic anywhere.
+- Any hosted/production deployment of daily-dose — decided (ADR 0004) but
+  not yet connected. No Vercel project exists yet (see `status.md`); this
+  repo builds and tests only, it does not currently serve traffic anywhere.
+  Once connected, Vercel's own build/deploy infrastructure is out of scope
+  (report to Vercel); this repo's own `vercel.json`/build configuration
+  stays in scope.
 - The sibling projects `nh-deck` and `nh-skills` — each is an independent
   repository with its own `SECURITY.md`.
 - `../Not-Humans-Lab/` — a separate, docs-only meta-repo; report issues
@@ -204,9 +207,18 @@ hardening ideas.
   as compromised immediately: rotate it at the source (coordinating with
   Anvilry per above), then scrub it from git history (not just delete it
   in a new commit).
-- The `schedule:` cron trigger for automated daily runs remains **not
-  enabled** in this phase — no longer because of a missing secret, but
-  because it still requires the user's explicit go-ahead. See `status.md`.
+- **The `schedule:` cron trigger is now enabled and live** (ADR 0004,
+  `.github/workflows/daily-pipeline.yml`) — it runs daily, makes a real
+  Bedrock call using the same repo secrets described above, and commits
+  its own output using a `contents: write` permission requested only on
+  that one workflow (the repo-wide Actions default stays read-only). This
+  is now a real, recurring, unattended use of these secrets — treat any
+  future change to this workflow's permissions or triggers with the same
+  scrutiny as a secrets-handling change, not a routine CI edit.
+- **Vercel's environment must never include the Bedrock secrets.** Once
+  connected, its Build Command must stay `npm run build` only — never
+  `npm run pipeline` — so the credential's exposure surface never expands
+  to include Vercel's build environment (including PR preview builds).
 
 ## Supply Chain & Dependency Policy
 

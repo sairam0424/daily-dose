@@ -102,13 +102,16 @@ files. File naming: `*.test.ts`.
 
 ## CI Scope
 
-CI runs on `workflow_dispatch` plus push/PR — every run is either manually
-triggered or tied to a code change. CI does not require the Bedrock secrets
-to build or test (they're only needed for `npm run pipeline`, and the test
-suite mocks the SDK). The `schedule:` cron for automated daily runs is
-explicitly not enabled this phase (see `tech.md`); do not add it without the
-user's explicit go-ahead — this is no longer additionally blocked on API
-keys.
+`ci.yml` runs on `workflow_dispatch` plus push/PR — every run is either
+manually triggered or tied to a code change. It does not require the
+Bedrock secrets to build or test (they're only needed for `npm run
+pipeline`, and the test suite mocks the SDK). A separate, dedicated
+workflow, `daily-pipeline.yml`, runs on a real `schedule:` trigger and
+actually invokes `npm run pipeline` with the real Bedrock secrets — see
+`decisions.md` ADR 0004. It is intentionally not part of the blocking test
+gate: it has no automated tests of its own beyond the YAML itself, and its
+one real safety check is a manual `workflow_dispatch` run, observed once,
+per ADR 0004's Confirmation section.
 
 ## Cross-references
 
@@ -117,5 +120,5 @@ keys.
   content collection, the page) is documented in `architecture.md`'s
   Building Block View and Runtime View.
 - The repo layout of `tests/` is documented in `codebase_map.md`.
-- The rationale for real-LLM-as-default and the no-cron/no-deploy
-  deferrals is documented in `tech.md`.
+- The rationale for real-LLM-as-default and the cron/deploy decisions is
+  documented in `tech.md` and `decisions.md` ADR 0004.

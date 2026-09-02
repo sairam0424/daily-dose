@@ -36,7 +36,7 @@ Requires Node.js LTS 20 or 22+ (the pipeline script runs via `tsx`, which needs 
 - **Build**: `npm run build` — runs `astro build` (static output, `output: "static"` in `astro.config.mjs`).
 - **Pipeline**: `npm run pipeline` — runs `scripts/pipeline.ts` via `tsx`. Fetches real, live Hacker News + arXiv data, scores every item via a real AWS Bedrock LLM call by default (`src/lib/llmCuration.ts`, falling back to the placeholder only without credentials or on a per-item gap), validates the result against `src/lib/digestSchema.ts`, and writes one file per item into a dated `src/data/digest/YYYY-MM-DD/` folder (Astro's `glob()` content loader requires one schema-matching object per file, not an array). This is the one command in this repo with a real recurring cost profile (a few cents/run) — see `CLAUDE.md`.
 - **Test**: `npm test` — runs the Vitest suite (the Bedrock SDK is fully mocked; no automated test makes a real network call).
-- **CI**: GitHub Actions runs build + test on `workflow_dispatch` (manual trigger) plus `push`/`pull_request`. The `schedule:` cron trigger for automated daily runs is **explicitly not enabled** in this phase — real LLM curation now exists, so this is gated solely on the user's explicit go-ahead. Real Vercel deployment is likewise not yet enabled, for the same reason. See `Context.md`'s roadmap.
+- **CI**: `ci.yml` runs build + test on `workflow_dispatch` (manual trigger) plus `push`/`pull_request`, and stays read-only. A separate, dedicated workflow, `daily-pipeline.yml`, runs the real pipeline on a real `schedule:` trigger and requests `contents: write` on itself only — see `decisions.md` ADR 0004. Real Vercel deployment is decided (git-integrated auto-deploy, `npm run build` only) but not yet connected, pending the Vercel MCP integration's reconnection. See `Context.md`'s roadmap.
 
 ## Code Style
 
@@ -92,8 +92,10 @@ daily-dose/
   tests/
     ...                                  — Vitest suite (schema validation, curation determinism)
   .github/workflows/
-    ci.yml                                 — workflow_dispatch + push/PR triggers ONLY; no
-                                             schedule: cron yet
+    ci.yml                                 — workflow_dispatch + push/PR triggers, read-only
+    daily-pipeline.yml                      — real schedule: trigger, requests contents: write
+                                              on itself only, runs npm run pipeline daily and
+                                              commits the result (see decisions.md ADR 0004)
 ```
 
 ## Commit & PR Conventions
@@ -118,5 +120,5 @@ Same template as every sibling project in this suite — see this repo's own `Br
 
 - **The placeholder curation logic is now a fallback, not the default path.** `src/lib/curation.ts` computes `interest_score` and `why_read` deterministically from `points`/`num_comments`/`title` (HN) or recency (arXiv), and is only used when Bedrock credentials aren't configured or the LLM's response omits a specific item. `src/lib/llmCuration.ts` is the real default path — see `Context.md`'s roadmap and ADR 0003.
 - **Two sources (Hacker News + arXiv) ship for real; GitHub is a documented fast-follow, not forgotten.** Do not silently add GitHub fetching as a side effect of an unrelated change; it's sequenced deliberately in `Context.md`'s roadmap.
-- **No `schedule:` cron and no live Vercel deployment in this phase.** Both require the user's explicit go-ahead — real LLM curation now exists, so the cron is no longer additionally blocked on API keys. Do not enable either without asking first.
+- **`schedule:` cron is live (ADR 0004); Vercel deployment is decided but not yet connected.** `daily-pipeline.yml` runs daily and commits real data unattended — any change to its schedule, permissions, or file-pattern scope is a real decision, treat it with the same care as ADR 0004's original design. Vercel's shape is decided too; only the MCP reconnection remains before executing it.
 - **One schema, two enforcement points is only as good as keeping them pointed at the same file.** If a future refactor moves or renames `digestSchema.ts`, update both `scripts/pipeline.ts` and `src/content.config.ts` in the same change — never let them drift.
