@@ -8,7 +8,7 @@
     "cs.LG"
   ],
   "interest_score": 8,
-  "why_read": "This paper uses mechanistic interpretability tools (causal tracing, logit-lens, attention knockout) to actually dissect how LLM judges assign scores, which is rare, rigorous work that could meaningfully inform trust in automated NLG evaluation pipelines.",
+  "why_read": "This mechanistic study of how LLM-based evaluators internally assign ratings—using causal tracing and attention-head knockout—offers rare, concrete interpretability insights directly relevant to anyone using or fine-tuning LLM judges.",
   "authors": [
     "Himil Vasava",
     "Ming Jiang"

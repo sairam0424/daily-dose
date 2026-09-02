@@ -8,7 +8,7 @@
     "cs.AI"
   ],
   "interest_score": 5,
-  "why_read": "The VRL survey offers a tidy taxonomy of how natural language is used as feedback in agent training, but it reads as a conceptual organization paper rather than introducing new techniques or empirical insights.",
+  "why_read": "The taxonomy of Verbal Reinforcement Learning is a useful conceptual organizer, but as a survey-style overview it is unlikely to deliver new technical depth beyond what practitioners already know from individual papers.",
   "authors": [
     "Kshitij Tayal",
     "Arun Sharma",

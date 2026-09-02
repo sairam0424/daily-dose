@@ -7,8 +7,8 @@
     "cs.CL",
     "cs.AI"
   ],
-  "interest_score": 6,
-  "why_read": "CordisBench targets a real and underexplored capability gap—reasoning about component lifecycle dependencies in dynamic agent runtimes—though it is a niche benchmark whose impact depends on how widely Cordis-style harnesses are actually adopted.",
+  "interest_score": 5,
+  "why_read": "CordisBench probes a real and underexplored reasoning challenge—component lifecycle and dependency propagation in dynamic agent runtimes—but the benchmark is narrowly scoped to a single custom runtime (Cordis).",
   "authors": [
     "Damien Sileo",
     "Dimitri Kachler"

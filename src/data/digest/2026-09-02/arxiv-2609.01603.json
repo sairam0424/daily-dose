@@ -9,7 +9,7 @@
     "cs.CL"
   ],
   "interest_score": 6,
-  "why_read": "Using agent execution trajectories as privileged signals in IRT-based benchmark subset selection is a clever efficiency improvement for SWE evaluation, though the gains reported are incremental rather than transformative.",
+  "why_read": "Using execution trajectories as privileged signals to reduce the cost of SWE-bench-style evaluation is a practical contribution, though its value depends heavily on how broadly trajectory data is available.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",
