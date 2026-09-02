@@ -23,8 +23,10 @@ silently no-ops (or crashes) is worse than an honestly-labeled placeholder.
 | Front-end framework | Astro (`output: "static"`) | Builds the static digest site; no SSR/server runtime |
 | Content layer | Astro Content Collections (glob loader) | Reads `src/data/digest/*.json` into typed, validated entries |
 | Schema / validation | Zod (`src/lib/digestSchema.ts`) | Single shared schema — both the content collection config and the pipeline script import the same exported schema |
-| Pipeline runtime | TypeScript, run via `tsx` | `scripts/pipeline.ts`: fetch → placeholder-score → validate → write |
-| Data source | Hacker News Algolia API (`hn.algolia.com/api/v1/search?tags=front_page`) | Free, keyless, live HTTP fetch — the only real network call in this repo |
+| Pipeline runtime | TypeScript, run via `tsx` | `scripts/pipeline.ts`: fetch (per-source) → placeholder-score → validate → write |
+| Data source | Hacker News Algolia API (`hn.algolia.com/api/v1/search?tags=front_page`) | Free, keyless, live HTTP fetch |
+| Data source | arXiv public API (`export.arxiv.org/api/query`, cs.AI/cs.LG/cs.CL) | Free, keyless, live HTTP fetch — returns Atom/XML, not JSON |
+| XML parsing | `fast-xml-parser` | Parses the arXiv Atom feed response (nested elements, namespaces, multi-`<author>` entries) — small, dependency-light, avoids hand-rolled regex XML parsing |
 | Charting | Chart.js (`chart.js/auto`), one plain `<script type="module">` island | Renders a bar chart of the day's `interest_score`s — no React/Vue needed |
 | Styling | Minimal inline CSS | No Bulma/Sass in this walking skeleton — deferred fast-follow |
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
@@ -46,7 +48,9 @@ silently no-ops (or crashes) is worse than an honestly-labeled placeholder.
 | Vercel deployment | **Hold** | Not yet connected. Requires the user's explicit go-ahead before wiring up. |
 | Anthropic / OpenAI SDKs | **Hold** | Not installed. No API keys exist in this environment — installing an SDK with nothing to authenticate it would be dead weight and an invitation to accidentally wire up a real call. |
 | Bulma / Sass | **Hold** | Deferred fast-follow. Styling for this walking skeleton is minimal inline CSS, matching nh-deck's precedent of deferring visual polish. |
-| arXiv / GitHub sourcing | **Hold (documented fast-follow)** | The shared schema already models `source: "hn" \| "arxiv" \| "github"`, but only `"hn"` is populated in this walking skeleton. Single-source is a deliberate, documented simplification, not a silent gap. |
+| arXiv sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchArxivPapers`, fetching live from `export.arxiv.org/api/query` (cs.AI/cs.LG/cs.CL, sorted by submission date). Scored by the placeholder `scoreArxivPlaceholder` in `src/lib/curation.ts` (recency-only signal, capped to a [3, 8] range — see that file's comment for the HN-vs-arXiv asymmetry rationale). |
+| `fast-xml-parser` | **Adopt** | Parses the arXiv Atom/XML feed response in `fetchArxivPapers`. Small, well-known, dependency-light — chosen specifically because hand-rolled regex-based XML parsing is fragile against real Atom XML's nested elements, namespaces, and repeated `<author>`/`<category>` elements. |
+| GitHub sourcing | **Hold (documented fast-follow)** | The shared schema already models `source: "hn" \| "arxiv" \| "github"`, but only `"hn"` and `"arxiv"` are populated so far. GitHub is a deliberate, documented simplification, not a silent gap. |
 
 ## Rationale (non-obvious choices)
 
@@ -94,7 +98,7 @@ silently no-ops (or crashes) is worse than an honestly-labeled placeholder.
 
 - **Node.js**: track current LTS. Bump the CI workflow's `node-version` and
   `tsx`/`astro` compatibility together.
-- **Astro, Zod, Chart.js, `tsx`, Vitest**: track latest stable minor/patch
+- **Astro, Zod, Chart.js, `fast-xml-parser`, `tsx`, Vitest**: track latest stable minor/patch
   via normal dependency update flow; apply standard semver caution on
   majors, especially Astro (Content Collections API has shifted across
   majors before).
@@ -127,25 +131,26 @@ silently no-ops (or crashes) is worse than an honestly-labeled placeholder.
   user go-ahead.
 - **Vercel deployment** — Hold, not yet connected.
 - **Bulma/Sass** — Hold, deferred fast-follow for visual polish.
-- **arXiv / GitHub sourcing** — not deprecated, just not yet implemented.
-  Listed under Adoption status as a documented fast-follow, not here, to
-  avoid implying rejection.
+- **GitHub sourcing** — not deprecated, just not yet implemented. Listed
+  under Adoption status as a documented fast-follow, not here, to avoid
+  implying rejection. (arXiv sourcing has moved to Adopt — see above.)
 
 ## Local dev requirements
 
 - Node.js current LTS installed.
 - `npm install` at the repo root.
 - `npm run pipeline` (wraps `tsx scripts/pipeline.ts`) — requires live
-  network access to `hn.algolia.com` to seed real content. No API keys
-  required or used.
+  network access to `hn.algolia.com` (HN) and `export.arxiv.org` (arXiv) to
+  seed real content. No API keys required or used for either. Use
+  `--sources hn` or `--sources arxiv` to run just one.
 - `npm run build` (wraps `astro build`) — reads only the already-committed
   `src/data/digest/*.json` files; no network access needed.
-- `npm test` — runs the automated suite against mocked HN responses; no
-  network access needed and none should be attempted (see `TESTING.md`'s
+- `npm test` — runs the automated suite against mocked HN/arXiv responses;
+  no network access needed and none should be attempted (see `TESTING.md`'s
   Non-Determinism Policy).
-- No database, no external service beyond the free HN Algolia endpoint, and
-  no LLM API key needed to develop or test this project at its current
-  phase.
+- No database, no external service beyond the free HN Algolia and arXiv
+  endpoints, and no LLM API key needed to develop or test this project at
+  its current phase.
 
 ## Inherited constraints (from the Not-Humans-Lab umbrella)
 

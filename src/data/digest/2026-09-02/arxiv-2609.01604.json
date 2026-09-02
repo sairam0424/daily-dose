@@ -1,0 +1,16 @@
+{
+  "title": "Beyond Scores: Understanding LLM-as-a-Judge Mechanisms in Summarization Evaluation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.01604",
+  "date": "2026-09-02",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 7.4,
+  "why_read": "Submitted to arXiv on 2026-09-01 under cs.CL, cs.LG — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "authors": [
+    "Himil Vasava",
+    "Ming Jiang"
+  ]
+}
