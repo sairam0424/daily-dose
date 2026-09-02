@@ -45,6 +45,7 @@ getting its own ADR file.
 | 0002 | [Add arXiv as a second source, with recency-only placeholder scoring](docs/adr/0002-add-arxiv-as-a-second-source-with-recency-only-scoring.md) | Accepted | 2026-09-02 | —          |
 | 0003 | [Wire real LLM curation via AWS Bedrock, replacing the placeholder as the default path](docs/adr/0003-wire-real-bedrock-curation.md) | Accepted | 2026-09-02 | —          |
 | 0004 | [Enable `schedule:` cron automation and connect real Vercel deployment](docs/adr/0004-enable-cron-automation-and-vercel-deployment.md) | Accepted | 2026-09-03 | —          |
+| 0005 | [Add Claude Sonnet 5 as the first-choice model in the curation fallback chain](docs/adr/0005-add-sonnet-5-as-first-choice-model.md) | Accepted | 2026-09-03 | —          |
 
 ## Lightweight Decisions Log
 

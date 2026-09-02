@@ -69,7 +69,7 @@ daily-dose/
       digestSchema.ts           — Zod schema; single source of truth shared by content.config.ts
                                   AND scripts/pipeline.ts
       llmCuration.ts             — REAL AWS Bedrock LLM scoring (default path as of ADR 0003):
-                                    one forced-tool-use batched call per run, Sonnet→Opus→Haiku
+                                    one forced-tool-use batched call per run, Sonnet 5→Sonnet 4.6→Opus→Haiku
                                     fallback chain, Zod-validated response.
       costTracking.ts            — real per-run cost computation + rolling-average anomaly check,
                                     appended to src/data/stats.jsonl.

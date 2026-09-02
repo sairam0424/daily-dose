@@ -133,15 +133,18 @@ describe("scoreItemsWithLLM", () => {
     });
     expect(outcome.scores.get("arxiv-2501.00001")?.interest_score).toBe(6);
     expect(mockCreate).toHaveBeenCalledTimes(1);
-    // Forced single-tool structured output, no streaming, no thinking - the
-    // exact call shape the research recommended.
+    // Forced single-tool structured output, no streaming - the exact call
+    // shape the research recommended.
     const callArgs = mockCreate.mock.calls[0]![0];
     expect(callArgs.tool_choice).toEqual({
       type: "tool",
       name: "record_scores",
     });
     expect(callArgs.stream).toBeUndefined();
-    expect(callArgs.thinking).toBeUndefined();
+    // The primary model (Sonnet 5) defaults adaptive thinking to ON per its
+    // Bedrock model card - must be explicitly disabled to stay compatible
+    // with forced tool_choice. See docs/adr/0005-add-sonnet-5-as-first-choice-model.md.
+    expect(callArgs.thinking).toEqual({ type: "disabled" });
   });
 
   it("falls back to the next model in the chain on NotFoundError from the primary model", async () => {
@@ -171,6 +174,11 @@ describe("scoreItemsWithLLM", () => {
 
     expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
     expect(mockCreate).toHaveBeenCalledTimes(2);
+    // The fallback model (Sonnet 4.6) does NOT default thinking to on, so it
+    // must NOT get the disable flag - only models explicitly known to need
+    // it should ever see a `thinking` field.
+    const secondCallArgs = mockCreate.mock.calls[1]![0];
+    expect(secondCallArgs.thinking).toBeUndefined();
   });
 
   it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError", async () => {
