@@ -34,7 +34,7 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
     <header class="masthead">
       <nav class="site-nav"><a href="/stats">Cost &amp; stats &rarr;</a></nav>
       <h1>daily-dose</h1>
-      <p class="tagline">A daily AI-curated technical digest — Hacker News and arXiv.</p>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, and GitHub.</p>
     </header>
 
     <main>
@@ -64,8 +64,8 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
         </>
       ) : (
         <p class="empty-state">
-          No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News
-          front page and generate today's digest.
+          No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
+          arXiv, and GitHub content and generate today's digest.
         </p>
       )}
     </main>
