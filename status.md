@@ -8,7 +8,7 @@
 ## Overall Status
 
 **Phase:** 8 — Real LLM curation shipped via AWS Bedrock (ADR 0003)
-**Health:** 🟢 Active — stable, real curation verified live; cron/deploy remain deliberately deferred (see below)
+**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment decided but not yet connected (see below)
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -66,8 +66,8 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 | Content-collection integration test + astro-build e2e test            | 7     | **Complete — merged PR #1, closes the codebase_map.md/TESTING.md gap** |
 | Real LLM curation via AWS Bedrock (replacing both placeholder scoring functions as the default path) | 8 | **Complete — verified with 3 real live Bedrock calls, see ADR 0003** |
 | Public `/stats` cost-transparency page                                | 8     | **Complete — real totals/by-model/by-day from `src/data/stats.jsonl`** |
-| `schedule:` cron trigger for automated daily runs                    | 8+    | Planned, not started — no longer blocked on API keys; still blocked on explicit go-ahead |
-| Real Vercel deployment                                               | 8+    | Planned, not started — blocked on explicit go-ahead |
+| `schedule:` cron trigger for automated daily runs                    | 9     | **Complete — `.github/workflows/daily-pipeline.yml`, see ADR 0004** |
+| Real Vercel deployment                                               | 9     | Decided (ADR 0004) — **not yet executed**, blocked on reconnecting the Vercel MCP integration |
 
 ## Recent Progress
 
@@ -116,30 +116,42 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   `index.astro` left over from before real LLM curation shipped (the
   footer still claimed "no LLM calls," the tagline still said "eventually
   arXiv"). New e2e test `tests/stats-page.test.ts`.
+- Shipped `schedule:` cron automation (ADR 0004): new
+  `.github/workflows/daily-pipeline.yml`, a dedicated workflow (separate
+  from `ci.yml`) that requests `contents: write` on itself only, runs
+  `npm run pipeline` daily at 21:00 UTC, and commits the result via a
+  bot identity scoped strictly to `src/data/digest/**` and
+  `src/data/stats.jsonl` — a narrow, documented exception to
+  `Branches.md`'s PR-for-every-change convention. Preceded by a
+  deep-research pass on the reference project (`the-daily-diff`), which
+  found no transferable CI/cron playbook to copy (zero GitHub Actions
+  workflows in that repo) — see the ADR for the full findings and the
+  rejected "regenerate at Vercel build time" alternative.
+- Decided (same ADR) the Vercel deployment shape — git-integrated
+  auto-deploy on push to `main`, Build Command pinned to `npm run build`
+  only so Vercel never needs the Bedrock credential — but **execution is
+  blocked**: the Vercel MCP connection's token had expired at decision
+  time.
 
 ## Upcoming Milestones
 
-1. Blocked fast-follow: enable the `schedule:` cron trigger for automated
-   daily runs — real LLM curation now exists, so this is only blocked on
-   the user's explicit go-ahead (the API-keys blocker is resolved).
-2. Blocked fast-follow: connect a real Vercel deployment — requires the
-   user's explicit go-ahead.
+1. Connect the Vercel project once the Vercel MCP integration is
+   reconnected — the decision is made (ADR 0004), only execution remains.
+2. Trigger `daily-pipeline.yml` once via `workflow_dispatch` to confirm a
+   correctly-scoped real commit before trusting the schedule unattended
+   (see ADR 0004's Confirmation section).
 3. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
    once arXiv has proven the multi-source pattern for a while.
-4. ~~Add a public `/stats` cost-transparency page.~~ Done — `src/pages/stats.astro`
-   ships real per-run cost, by-model and by-day breakdowns, from
-   `src/data/stats.jsonl`. See `telemetry.md`.
 
 ## Risks & Blockers
 
-- **Blocker: no Vercel connection exists yet.** This blocks real
-  deployment — the site currently only builds and tests in CI, it does
-  not serve traffic anywhere. Requires the user's explicit go-ahead to
-  connect a Vercel project.
-- **Blocker: the `schedule:` cron trigger is not enabled.** This blocks
-  automated daily runs — CI currently only runs on `workflow_dispatch`
-  (manual trigger) plus push/PR. Real LLM curation now exists, so this is
-  gated solely on the user's explicit go-ahead, not on API keys.
+- **Blocker: no Vercel connection exists yet.** The decision and exact
+  configuration are written down (ADR 0004); only the Vercel MCP
+  reconnection stands between "decided" and "live."
+- **Risk: the daily cron is live and will start spending real money on
+  every scheduled run, indefinitely, once merged.** This is an accepted
+  tradeoff (ADR 0004), not an oversight — disable the schedule if this
+  needs to pause.
 - **Risk:** the Bedrock credential wired in is shared with the sibling
   Anvilry project's production chatbot — rotating it is now a two-repo
   operation. See `SECURITY.md` and ADR 0003.

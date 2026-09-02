@@ -1,0 +1,61 @@
+name: Daily pipeline
+
+# Automated daily run of the real HN + arXiv fetch -> real Bedrock LLM
+# curation -> committed digest. See
+# docs/adr/0004-enable-cron-automation-and-vercel-deployment.md for why this
+# is a separate workflow (not folded into ci.yml), why it requests
+# contents: write only on itself (the repo default is read-only), and why
+# the resulting commit is a narrow, documented exception to this repo's
+# "every change goes through a PR, even solo" convention (Branches.md) - it
+# commits generated data only, never code.
+#
+# Schedule is UTC. 21:00 targets a settled Hacker News front page and lands
+# after arXiv's daily new-submission announcement window on weekdays. Tune
+# once real run timing has been observed.
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  daily-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      # Real network calls: HN Algolia API, arXiv Atom API, and (with
+      # BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY set as repo secrets)
+      # a real, paid AWS Bedrock LLM call - see src/lib/llmCuration.ts and
+      # docs/adr/0003-wire-real-bedrock-curation.md.
+      - name: Run pipeline
+        run: npm run pipeline
+        env:
+          BEDROCK_ACCESS_KEY_ID: ${{ secrets.BEDROCK_ACCESS_KEY_ID }}
+          BEDROCK_SECRET_ACCESS_KEY: ${{ secrets.BEDROCK_SECRET_ACCESS_KEY }}
+          BEDROCK_REGION: ${{ vars.BEDROCK_REGION }}
+
+      # Commits ONLY the generated data paths, never a blanket `git add -A`,
+      # so an accidental in-progress code change on this branch could never
+      # be swept into an automated commit. Bot identity (not the
+      # maintainer's own) keeps automated data commits visually distinct in
+      # git history. A no-op if the pipeline produced no changes (e.g. an
+      # identical top-N with identical scores).
+      - name: Commit generated digest data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(digest): automated daily pipeline run"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          file_pattern: "src/data/digest/** src/data/stats.jsonl"

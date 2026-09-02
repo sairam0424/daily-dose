@@ -124,9 +124,13 @@ daily-dose/
 - **Site build**: `npm run build` → `astro build` (`output: "static"`). See
   `architecture.md` Runtime View, Flow 2.
 - **Tests**: `npm test` → `vitest run` against everything under `tests/`.
-- **CI**: GitHub Actions, `workflow_dispatch` + push/PR. The `schedule:`
-  cron and any real deployment step are explicitly not enabled this phase
-  (see `tech.md`).
+- **CI**: `.github/workflows/ci.yml` (`workflow_dispatch` + push/PR, read-only).
+- **Automated daily run**: `.github/workflows/daily-pipeline.yml` (real
+  `schedule:` trigger + `workflow_dispatch`, `contents: write` on itself
+  only) — runs `npm run pipeline` and commits the result via a bot
+  identity, scoped to `src/data/digest/**` + `src/data/stats.jsonl` only.
+  See `decisions.md` ADR 0004. Real deployment (Vercel) is decided but not
+  yet connected (see `tech.md`).
 
 ## Cross-module dependency notes
 

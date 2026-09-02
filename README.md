@@ -60,15 +60,17 @@ writing:
   deferred fast-follow.** The pipeline runs both sources by default
   (`--sources hn,arxiv`) — the schema already models a third (`source:
   "github"`) but it hasn't been wired up yet.
-- **No automated daily cron yet.** The GitHub Actions workflow
-  (`.github/workflows/ci.yml`) only runs on manual `workflow_dispatch` and on
-  push/PR to `main`. There is no `schedule:` trigger — real LLM curation now
-  exists, so turning on a real daily cron is gated solely on the user's
-  explicit go-ahead. For now, fetching a fresh digest means running
-  `npm run pipeline` by hand.
-- **No live deployment yet.** There is no Vercel (or other) deployment
-  configured. The site currently only runs locally via `npm run dev` /
-  `npm run build`.
+- **The daily pipeline now runs automatically.** A dedicated workflow
+  (`.github/workflows/daily-pipeline.yml`) runs `npm run pipeline` once a
+  day (21:00 UTC) via a real `schedule:` trigger, and commits the result
+  itself — see `decisions.md`'s ADR 0004. `.github/workflows/ci.yml` is
+  unchanged and still only runs on manual `workflow_dispatch` plus
+  push/PR.
+- **No live deployment yet.** A Vercel deployment is decided (ADR 0004 —
+  git-integrated auto-deploy on push to `main`, never running the pipeline
+  on Vercel's own build) but not yet connected. The site currently only
+  runs locally via `npm run dev` / `npm run build`, or via CI's build+test
+  check.
 - **A public cost/stats page ships.** Visit `/stats` for real per-run LLM
   cost, broken down by model and by day, read directly from
   `src/data/stats.jsonl` — going one step further than the reference
