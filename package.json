@@ -1,0 +1,33 @@
+{
+  "name": "daily-dose",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "A daily AI-curated technical digest (arXiv + Hacker News) — a personal take on arpitbbhayani/the-daily-diff.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sairam0424/daily-dose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sairam0424/daily-dose/issues"
+  },
+  "homepage": "https://github.com/sairam0424/daily-dose#readme",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "pipeline": "tsx scripts/pipeline.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "astro": "^5.16.5",
+    "chart.js": "^4.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2",
+    "vitest": "^3.2.4"
+  }
+}

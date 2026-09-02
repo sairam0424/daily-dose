@@ -1,0 +1,40 @@
+name: CI
+
+# Manual trigger only, plus the usual push/PR checks. There is deliberately NO
+# `schedule:` cron trigger here yet — automated daily runs of the pipeline are
+# a fast-follow that require the user's explicit go-ahead (and real LLM API
+# keys, which do not exist in this environment yet). See README.md
+# "Current limitations".
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      # Builds the Astro static site against whatever digest JSON files are
+      # already committed under src/data/digest/. This does NOT invoke the
+      # live pipeline (scripts/pipeline.ts) — that script makes a real network
+      # call to Hacker News and is run manually to seed content, never as part
+      # of CI, to avoid unnecessary load and flaky-test risk on every run.
+      - name: Build
+        run: npm run build
+
+      # Network-free unit/schema tests only.
+      - name: Test
+        run: npx vitest run
