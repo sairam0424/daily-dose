@@ -53,9 +53,19 @@ jobs:
       # git history. A no-op if the pipeline produced no changes (e.g. an
       # identical top-N with identical scores).
       - name: Commit generated digest data
-        uses: stefanzweifel/git-auto-commit-action@v5
+        # Pinned to a full commit SHA, not the mutable v5 tag - a tag can be
+        # re-pointed to different code later; a SHA cannot. v5 currently
+        # resolves to v5.2.0 (confirmed via `gh api .../git/refs/tags/v5`).
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
         with:
           commit_message: "chore(digest): automated daily pipeline run"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          # commit_author defaults to github.actor (the triggering user, even
+          # on a manual workflow_dispatch run) - set explicitly so the AUTHOR
+          # field also always shows the bot identity, not whoever triggered
+          # the run. Confirmed as a real gap during this workflow's first
+          # verification run: the committer showed the bot but the author
+          # still showed the human who ran workflow_dispatch.
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           file_pattern: "src/data/digest/** src/data/stats.jsonl"

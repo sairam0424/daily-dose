@@ -24,6 +24,15 @@ Full entries, root causes, and the standing rules now in force for both: see `..
 - **Scope**: this-project-only for now (only daily-dose has wired in real Bedrock calls so far), but flag if nh-deck or nh-skills ever do the same - promote to system level if it recurs.
 - **Status**: active.
 
+### 2026-09-03 — `stefanzweifel/git-auto-commit-action`'s `commit_author` defaults to the triggering actor, not the configured bot identity
+
+- **Trigger**: verified `.github/workflows/daily-pipeline.yml` (ADR 0004) end-to-end via a manual `workflow_dispatch` run before trusting the `schedule:` trigger unattended.
+- **Observation**: the resulting commit's Committer showed `github-actions[bot]` (correctly set via `commit_user_name`/`commit_user_email`), but the Author still showed the human who triggered the run (`sairam0424`) — not the intended bot identity.
+- **Root cause**: `commit_user_name`/`commit_user_email` only set `git config user.name`/`user.email`, which becomes the committer. The action's separate `commit_author` input defaults to `${{ github.actor }}` and must be set explicitly to also override the author field — assumed setting the user name/email inputs alone would cover both.
+- **Correction / Rule**: when using `stefanzweifel/git-auto-commit-action` (or similar bot-commit actions with separate author/committer inputs) to enforce a bot identity distinct from any human, set the author-controlling input explicitly too — never assume the committer-identity input covers both fields.
+- **Scope**: this-project-only for now (only `daily-pipeline.yml` uses this action), but promote if any sibling project adopts the same action and hits the same gap.
+- **Status**: active — fixed in the same change, re-verified.
+
 ## Entry format
 
 - **Date**
