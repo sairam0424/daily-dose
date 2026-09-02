@@ -29,13 +29,13 @@
   passes far more items than a normal day's ~10-item run — this is the
   actual preventive safeguard; the anomaly check above can only warn
   after a call already happened.
+- **Public `/stats` page**: shipped — see "Public Stats Page Spec" below.
 - **Not yet implemented**: the structured per-call log record described in
   "What We Log" below (today's logging is a `console.log` summary line
   per run, not a structured per-call record with `pipeline_run_id`,
-  `latency_ms`, `outcome`, etc.), golden-signal tracking, the public
-  `/stats` page, dashboards, and alerting. These remain a
-  design-ahead-of-implementation spec — read on, but do not assume they
-  exist in code.
+  `latency_ms`, `outcome`, etc.), golden-signal tracking, internal
+  dashboards, and alerting. These remain a design-ahead-of-implementation
+  spec — read on, but do not assume they exist in code.
 
 ## Why Draft This Now
 
@@ -138,10 +138,11 @@ pipeline checks against before making further calls in a run:
   `outcome`-adjacent signal, or its own log line) — not a silent
   fallback a maintainer would have to notice by comparing story counts.
 
-## Public Stats Page Spec (`/stats`, future)
+## Public Stats Page Spec (`/stats`) — SHIPPED, 2026-09-02
 
-A future `/stats` page on the Astro site, once real LLM cost data exists
-to show:
+`src/pages/stats.astro` is real and live, reading `src/data/stats.jsonl`
+directly at build time (no Content Collection needed — it's a plain
+Node `fs.readFile` in the page's frontmatter). Shows:
 
 - **Totals**: cumulative calls, tokens (input + output), and stories
   curated by real LLM calls (vs. placeholder-scored, if a fallback ever
@@ -160,11 +161,16 @@ to show:
 - Explicitly **not** in scope for `/stats`: per-story cost (too granular
   to be meaningful publicly) or raw per-call logs (which may contain
   redacted-but-still-sensitive metadata per the Security note above).
-
-Real LLM calls now exist (`src/data/stats.jsonl` has genuine data as of
-ADR 0003), so this page is no longer blocked on "nothing honest to show" —
-it is a real, buildable fast-follow candidate now, just not yet built. See
-`status.md`'s Upcoming Milestones.
+  The shipped page honors both exclusions.
+- **What it can't show, by construction, not by choice**: days where the
+  placeholder fallback ran (missing credentials, or a per-item response
+  gap) produce no cost and are never written to `stats.jsonl`, so they're
+  simply absent from this page — there's no "placeholder day" row to omit,
+  because nothing is logged for those runs. The page's empty-state copy
+  says this plainly when `stats.jsonl` has zero entries.
+- Linked from `index.astro`'s masthead nav and footer; `stats.astro` links
+  back. Covered by `tests/stats-page.test.ts` (e2e: asserts the real total
+  cost computed from `stats.jsonl` appears in the built HTML).
 
 ## Dashboards
 

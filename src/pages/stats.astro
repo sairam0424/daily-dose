@@ -1,0 +1,359 @@
+---
+// Reads src/data/stats.jsonl directly (real, committed history — see
+// src/lib/costTracking.ts, which is the only writer). This file only
+// exists because real Bedrock LLM calls exist (ADR 0003) and produced
+// real cost data to report — see telemetry.md's Public Stats Page Spec.
+//
+// Deliberately NOT in scope here (per telemetry.md): per-story cost
+// (too granular to be meaningful publicly) and raw per-call logs. Also
+// note what this page can't show: days where the placeholder fallback
+// ran (missing credentials, or a per-item response gap) produce no cost
+// and are not recorded in stats.jsonl at all, so they're absent here by
+// construction, not omitted by choice.
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+
+interface StatsEntry {
+  date: string;
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+  costUsd: number;
+  itemCount: number;
+  flaggedAnomalous: boolean;
+}
+
+async function readStats(): Promise<StatsEntry[]> {
+  try {
+    const raw = await readFile(resolve(process.cwd(), 'src/data/stats.jsonl'), 'utf-8');
+    return raw
+      .split('\n')
+      .filter((line) => line.trim().length > 0)
+      .map((line) => JSON.parse(line) as StatsEntry);
+  } catch {
+    return [];
+  }
+}
+
+const entries = await readStats();
+
+const totalCostUsd = entries.reduce((sum, e) => sum + e.costUsd, 0);
+const totalInputTokens = entries.reduce((sum, e) => sum + e.inputTokens, 0);
+const totalOutputTokens = entries.reduce((sum, e) => sum + e.outputTokens, 0);
+const totalItemsScored = entries.reduce((sum, e) => sum + e.itemCount, 0);
+const totalRuns = entries.length;
+const anomalousRuns = entries.filter((e) => e.flaggedAnomalous).length;
+
+interface ModelAgg {
+  costUsd: number;
+  inputTokens: number;
+  outputTokens: number;
+  itemCount: number;
+  runs: number;
+}
+
+const byModel = new Map<string, ModelAgg>();
+for (const e of entries) {
+  const existing = byModel.get(e.model) ?? {
+    costUsd: 0,
+    inputTokens: 0,
+    outputTokens: 0,
+    itemCount: 0,
+    runs: 0,
+  };
+  byModel.set(e.model, {
+    costUsd: existing.costUsd + e.costUsd,
+    inputTokens: existing.inputTokens + e.inputTokens,
+    outputTokens: existing.outputTokens + e.outputTokens,
+    itemCount: existing.itemCount + e.itemCount,
+    runs: existing.runs + 1,
+  });
+}
+const modelRows = [...byModel.entries()].sort((a, b) => b[1].costUsd - a[1].costUsd);
+
+interface DayAgg {
+  costUsd: number;
+  itemCount: number;
+  runs: number;
+  flaggedAnomalous: boolean;
+}
+
+const byDay = new Map<string, DayAgg>();
+for (const e of entries) {
+  const existing = byDay.get(e.date) ?? {
+    costUsd: 0,
+    itemCount: 0,
+    runs: 0,
+    flaggedAnomalous: false,
+  };
+  byDay.set(e.date, {
+    costUsd: existing.costUsd + e.costUsd,
+    itemCount: existing.itemCount + e.itemCount,
+    runs: existing.runs + 1,
+    flaggedAnomalous: existing.flaggedAnomalous || e.flaggedAnomalous,
+  });
+}
+const dayRows = [...byDay.entries()].sort((a, b) => (a[0] < b[0] ? 1 : -1));
+
+function formatUsd(amount: number): string {
+  return `$${amount.toFixed(4)}`;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daily-dose — cost &amp; stats</title>
+  </head>
+  <body>
+    <header class="masthead">
+      <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+      <h1>Cost &amp; stats</h1>
+      <p class="tagline">
+        Real AWS Bedrock LLM curation cost, tracked from actual token usage — not estimated.
+      </p>
+    </header>
+
+    <main>
+      {totalRuns === 0 ? (
+        <p class="empty-state">
+          No real LLM cost data recorded yet. This page only has data once a pipeline run
+          actually makes a real Bedrock call (see <code>src/lib/llmCuration.ts</code>) — runs
+          that fall back to the placeholder heuristic produce no cost and are never logged here.
+        </p>
+      ) : (
+        <>
+          <h2 class="section-heading">Totals since tracking began</h2>
+          <ul class="totals-grid">
+            <li class="totals-card">
+              <span class="totals-value">{formatUsd(totalCostUsd)}</span>
+              <span class="totals-label">total cost</span>
+            </li>
+            <li class="totals-card">
+              <span class="totals-value">{totalRuns}</span>
+              <span class="totals-label">real LLM runs</span>
+            </li>
+            <li class="totals-card">
+              <span class="totals-value">{totalItemsScored}</span>
+              <span class="totals-label">items scored by a real model</span>
+            </li>
+            <li class="totals-card">
+              <span class="totals-value">{(totalInputTokens + totalOutputTokens).toLocaleString()}</span>
+              <span class="totals-label">total tokens ({totalInputTokens.toLocaleString()} in / {totalOutputTokens.toLocaleString()} out)</span>
+            </li>
+          </ul>
+          {anomalousRuns > 0 && (
+            <p class="anomaly-note">
+              {anomalousRuns} run{anomalousRuns === 1 ? '' : 's'} flagged as anomalous (cost more
+              than 5x the trailing 7-day average at the time) — see <code>telemetry.md</code>.
+            </p>
+          )}
+
+          <h2 class="section-heading">By model</h2>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Runs</th>
+                <th>Items scored</th>
+                <th>Input tokens</th>
+                <th>Output tokens</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {modelRows.map(([model, agg]) => (
+                <tr>
+                  <td class="model-cell">{model}</td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{agg.inputTokens.toLocaleString()}</td>
+                  <td>{agg.outputTokens.toLocaleString()}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <h2 class="section-heading">By day</h2>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Runs</th>
+                <th>Items scored</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dayRows.map(([date, agg]) => (
+                <tr>
+                  <td>
+                    {date}
+                    {agg.flaggedAnomalous && <span class="anomaly-badge" title="anomalous run">!</span>}
+                  </td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Scope: real per-run LLM cost only, from actual Bedrock response token usage. Not shown:
+        per-story cost (too granular to be meaningful publicly) or raw per-call logs. See
+        <code>telemetry.md</code> for the full design and <code>decisions.md</code>'s ADR 0003
+        for why real LLM curation exists at all.
+      </p>
+    </footer>
+
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #1a1a1a;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --accent: #4f46e5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.5;
+      }
+
+      .masthead {
+        padding: 2rem 1.5rem 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .site-nav a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .site-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .masthead h1 {
+        margin: 0.5rem 0 0;
+        font-size: 2rem;
+      }
+
+      .tagline {
+        margin: 0.25rem 0 0;
+        color: var(--muted);
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+
+      .section-heading {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .totals-grid {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+
+      .totals-card {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .totals-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .totals-label {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .anomaly-note {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #b45309;
+      }
+
+      .anomaly-badge {
+        display: inline-block;
+        margin-left: 0.4rem;
+        color: #b45309;
+        font-weight: 700;
+      }
+
+      .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .stats-table th,
+      .stats-table td {
+        text-align: left;
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stats-table th {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .model-cell {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.8rem;
+      }
+
+      .empty-state {
+        color: var(--muted);
+      }
+
+      .site-footer {
+        max-width: 800px;
+        margin: 2rem auto 0;
+        padding: 1rem 1.5rem 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </body>
+</html>

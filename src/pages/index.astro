@@ -32,8 +32,9 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
   </head>
   <body>
     <header class="masthead">
+      <nav class="site-nav"><a href="/stats">Cost &amp; stats &rarr;</a></nav>
       <h1>daily-dose</h1>
-      <p class="tagline">A daily AI-curated technical digest — Hacker News, and eventually arXiv.</p>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News and arXiv.</p>
     </header>
 
     <main>
@@ -71,8 +72,9 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
 
     <footer class="site-footer">
       <p>
-        Curation is a deterministic placeholder (no LLM calls) — see the project README for
-        details.
+        Curation is a real AWS Bedrock LLM call by default, with a deterministic placeholder
+        heuristic as an explicit fallback (missing credentials, or a per-item response gap) —
+        see the project README, or <a href="/stats">cost &amp; stats</a> for real usage data.
       </p>
     </footer>
 
@@ -138,8 +140,18 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
         border-bottom: 1px solid var(--border);
       }
 
+      .site-nav a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .site-nav a:hover {
+        text-decoration: underline;
+      }
+
       .masthead h1 {
-        margin: 0;
+        margin: 0.5rem 0 0;
         font-size: 2rem;
       }
 

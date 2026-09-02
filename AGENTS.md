@@ -82,9 +82,13 @@ daily-dose/
       index.astro                  — renders the latest committed digest + the Chart.js island
                                       inline (a <script type="module"> block, no separate
                                       component file)
-  src/data/digest/
-    YYYY-MM-DD/                       — one folder per pipeline run
-      hn-<hn_id>.json                    — one committed file per story
+      stats.astro                   — public cost/stats page; reads src/data/stats.jsonl
+                                      directly at build time, no content collection
+  src/data/
+    stats.jsonl                       — real per-run LLM cost log, one JSON line per run
+    digest/
+      YYYY-MM-DD/                       — one folder per pipeline run
+        hn-<hn_id>.json                    — one committed file per story
   tests/
     ...                                  — Vitest suite (schema validation, curation determinism)
   .github/workflows/

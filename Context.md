@@ -45,7 +45,7 @@ In order — do not build out of sequence:
 2. ~~Wire real LLM scoring once API keys are available.~~ Done — see `decisions.md`/ADR 0003. `src/lib/llmCuration.ts` scores every item via AWS Bedrock as the default path; the placeholder remains an explicit fallback.
 3. **Enable the `schedule:` cron trigger for automated daily runs.** Only with the user's explicit go-ahead — real LLM curation now exists, so an automated run would produce a genuinely meaningful digest, not just the placeholder on autopilot.
 4. **Enable real Vercel deployment.** Only with the user's explicit go-ahead — independent of step 3, but sequenced after the skeleton is otherwise solid.
-5. **Add a public `/stats` cost-transparency page.** Real LLM costs now exist to report (`src/data/stats.jsonl`, see `telemetry.md`) — this can move from "nothing honest to show" to an actual candidate fast-follow.
+5. ~~Add a public `/stats` cost-transparency page.~~ Done — `src/pages/stats.astro` ships real totals, by-model, and by-day cost breakdowns from `src/data/stats.jsonl`, see `telemetry.md`.
 6. Consider a third source (GitHub), matching the original `tech.md` Hold entry, once arXiv has proven the multi-source pattern for a while.
 
 ## Open risks
