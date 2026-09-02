@@ -4,11 +4,11 @@
   "url": "https://lwn.net/Articles/1090585/",
   "date": "2026-09-02",
   "tags": [],
-  "interest_score": 10,
-  "why_read": "Currently at 376 points and 73 comments on Hacker News — deterministic placeholder score derived from those two real, fetched values (not an LLM summary).",
+  "interest_score": 5,
+  "why_read": "LWN is a respected Linux/kernel journalism outlet, so a note from them likely signals something organizationally or editorially significant to the open-source community, but without more context the technical substance is unclear.",
   "authors": [
     "rwky"
   ],
   "hn_id": 49535752,
-  "points": 376
+  "points": 524
 }

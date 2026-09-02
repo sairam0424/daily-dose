@@ -44,34 +44,35 @@ Run `npx vitest run` to run the network-free unit/schema tests.
 
 ## Current limitations
 
-This is a walking skeleton, not a finished product. Specifically, as of this
+This is a working project, but still growing. Specifically, as of this
 writing:
 
-- **No real LLM curation yet.** The "curation" step that assigns each
-  story's `interest_score` and `why_read` text is a deterministic,
-  clearly-labeled **placeholder** for both sources — derived from real,
-  already-fetched Hacker News fields (points, comment count, title) for HN
-  items, and from recency alone for arXiv items (capped below HN's range,
-  since arXiv exposes no engagement signal) — there is no live call to
-  Anthropic, OpenAI, or any other LLM API. No API keys for those services
-  exist in this project's environment yet. This is the single biggest
-  deferred item, and it is documented in the code, not hidden.
+- **Real LLM curation is live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
+  model fallback chain: Claude Sonnet 4.6 → Opus 4.6 → Haiku 4.5). Every
+  fetched item (HN + arXiv) is scored in one batched call per pipeline run.
+  The original deterministic placeholder heuristic (derived from real,
+  already-fetched fields — points/comment count/title for HN, recency for
+  arXiv) is kept as an explicit, loudly-logged fallback for local dev
+  without credentials, or for any individual item the LLM's response
+  happens to omit — it is never silently substituted. See `decisions.md`'s
+  ADR 0003 for the full design.
 - **Two sources today (Hacker News + arXiv); GitHub is the remaining
   deferred fast-follow.** The pipeline runs both sources by default
   (`--sources hn,arxiv`) — the schema already models a third (`source:
   "github"`) but it hasn't been wired up yet.
 - **No automated daily cron yet.** The GitHub Actions workflow
   (`.github/workflows/ci.yml`) only runs on manual `workflow_dispatch` and on
-  push/PR to `main`. There is no `schedule:` trigger — turning on a real daily
-  cron requires the user's explicit go-ahead (and, once real LLM curation
-  lands, real API keys). For now, fetching a fresh digest means running
+  push/PR to `main`. There is no `schedule:` trigger — real LLM curation now
+  exists, so turning on a real daily cron is gated solely on the user's
+  explicit go-ahead. For now, fetching a fresh digest means running
   `npm run pipeline` by hand.
 - **No live deployment yet.** There is no Vercel (or other) deployment
   configured. The site currently only runs locally via `npm run dev` /
   `npm run build`.
-- **No public cost/stats page yet.** Since there is no real LLM curation step
-  making paid API calls, there is no real cost to report, so no cost/stats
-  page exists.
+- **No public cost/stats page yet.** Real per-run LLM cost is now tracked
+  (`src/data/stats.jsonl`, see `telemetry.md`), but there's no public page
+  rendering it yet — a real, buildable fast-follow candidate now rather than
+  something blocked on having any cost data to show at all.
 
 ## License
 

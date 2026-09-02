@@ -3,12 +3,18 @@
  *
  * daily-dose data pipeline: fetches today's Hacker News front page via the
  * free, keyless Algolia HN Search API AND today's newest arXiv cs.AI/cs.LG/
- * cs.CL papers via arXiv's free, keyless public Atom API, scores each item
- * with a deterministic PLACEHOLDER curation function (see
- * ../src/lib/curation.ts), validates the result against the shared
+ * cs.CL papers via arXiv's free, keyless public Atom API, scores every item
+ * in ONE real Bedrock LLM call (see ../src/lib/llmCuration.ts) when real
+ * credentials are configured, validates the result against the shared
  * DigestItemSchema, and writes one file per item to a dated folder under
  * src/data/digest/ (see the comment above main() below for why
  * one-file-per-item, not one array file per day).
+ *
+ * If BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY are not set (e.g. local
+ * dev without secrets), this falls back to the deterministic PLACEHOLDER
+ * scoring functions in ../src/lib/curation.ts, with a loud console warning -
+ * never silently. See CLAUDE.md's plan-mode gate before editing this file or
+ * llmCuration.ts.
  *
  * Both sources run by default; use --sources to run just one. GitHub
  * sourcing remains a documented, not-yet-started fast-follow — see
@@ -18,7 +24,7 @@
  *   npx tsx scripts/pipeline.ts [--output <path>] [--limit <n>] [--sources hn,arxiv]
  */
 
-import { writeFile, mkdir } from "node:fs/promises";
+import { writeFile, mkdir, readdir, unlink } from "node:fs/promises";
 import { resolve } from "node:path";
 import { XMLParser } from "fast-xml-parser";
 import { DigestItemSchema, type DigestItem } from "../src/lib/digestSchema.js";
@@ -28,6 +34,13 @@ import {
   type RawHnStory,
   type RawArxivPaper,
 } from "../src/lib/curation.js";
+import {
+  scoreItemsWithLLM,
+  isLlmConfigured,
+  type ScorableItem,
+  type ScoreResult,
+} from "../src/lib/llmCuration.js";
+import { recordAndCheckCost } from "../src/lib/costTracking.js";
 
 export type { RawHnStory, RawArxivPaper };
 
@@ -90,6 +103,7 @@ interface ArxivFeedEntry {
   id: string;
   title: string;
   published: string;
+  summary?: string;
   author?: { name?: string } | Array<{ name?: string }>;
   category?: { "@_term"?: string } | Array<{ "@_term"?: string }>;
 }
@@ -151,6 +165,10 @@ export async function fetchArxivPapers(limit = 5): Promise<RawArxivPaper[]> {
       .map((category) => category["@_term"])
       .filter((term): term is string => Boolean(term));
 
+    // Same whitespace-collapsing as title above - arXiv abstracts are
+    // indented/wrapped across many lines in the raw XML.
+    const summary = (entry.summary ?? "").replace(/\s+/g, " ").trim();
+
     return {
       title,
       url: `https://arxiv.org/abs/${arxivId}`,
@@ -158,6 +176,7 @@ export async function fetchArxivPapers(limit = 5): Promise<RawArxivPaper[]> {
       publishedDate: entry.published,
       authors,
       categories,
+      summary,
     };
   });
 }
@@ -243,66 +262,162 @@ interface WritableDigestFile {
   filename: string;
 }
 
+/**
+ * Builds the real-LLM scoring request for one item, tagging it with the
+ * exact same id used for its output filename so the returned score map can
+ * be joined back to the right item unambiguously.
+ */
+function toScorableHnItem(story: RawHnStory): ScorableItem {
+  return {
+    id: `hn-${story.hn_id}`,
+    source: "hn",
+    title: story.title,
+    points: story.points,
+    numComments: story.num_comments,
+  };
+}
+
+function toScorableArxivItem(paper: RawArxivPaper): ScorableItem {
+  return {
+    id: `arxiv-${sanitizeArxivId(paper.arxivId)}`,
+    source: "arxiv",
+    title: paper.title,
+    summary: paper.summary,
+    categories: paper.categories,
+  };
+}
+
 export async function main(): Promise<void> {
   const { output, limit, sources } = parseArgs(process.argv.slice(2));
   const today = todayIsoDate();
 
-  const files: WritableDigestFile[] = [];
+  const stories = sources.includes("hn") ? await fetchHnFrontPage(limit) : [];
+  const papers = sources.includes("arxiv") ? await fetchArxivPapers(limit) : [];
 
-  if (sources.includes("hn")) {
-    const stories = await fetchHnFrontPage(limit);
+  // Real LLM curation when configured; a deterministic, clearly-labeled
+  // placeholder otherwise - never silently, always a loud console notice
+  // either way so it is always obvious which mode produced a given digest.
+  let llmScores: Map<string, ScoreResult> | undefined;
+  if (isLlmConfigured()) {
+    const scorableItems: ScorableItem[] = [
+      ...stories.map(toScorableHnItem),
+      ...papers.map(toScorableArxivItem),
+    ];
 
-    for (const story of stories) {
-      const { interest_score, why_read } = scoreStoryPlaceholder(story);
+    if (scorableItems.length > 0) {
+      const outcome = await scoreItemsWithLLM(scorableItems);
+      llmScores = outcome.scores;
 
-      const candidate = {
-        title: story.title,
-        source: "hn" as const,
-        url: story.url,
-        date: today,
-        tags: [],
-        interest_score,
-        why_read,
-        authors: story.author ? [story.author] : [],
-        hn_id: story.hn_id,
-        points: story.points,
-      };
+      const statsEntry = await recordAndCheckCost(
+        today,
+        outcome.modelUsed,
+        outcome.inputTokens,
+        outcome.outputTokens,
+        scorableItems.length,
+      );
 
-      // Validate every item — let this throw with a clear error if a story
-      // doesn't conform to the shared schema rather than silently skipping it.
-      const item = DigestItemSchema.parse(candidate);
-      files.push({ item, filename: `hn-${item.hn_id}.json` });
+      console.log(
+        `Scored ${scorableItems.length} items via real Bedrock LLM call (${outcome.modelUsed}): ` +
+          `${outcome.inputTokens} input / ${outcome.outputTokens} output tokens, ` +
+          `$${statsEntry.costUsd.toFixed(4)}${statsEntry.flaggedAnomalous ? " [FLAGGED ANOMALOUS - see warning above]" : ""}.`,
+      );
     }
+  } else {
+    console.warn(
+      "BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY not set - using deterministic placeholder scoring, not real LLM curation. This is expected for local dev without secrets; it should never be true in CI once real credentials are configured there.",
+    );
   }
 
-  if (sources.includes("arxiv")) {
-    const papers = await fetchArxivPapers(limit);
+  const files: WritableDigestFile[] = [];
 
-    for (const paper of papers) {
-      const { interest_score, why_read } = scoreArxivPlaceholder(paper);
-
-      const candidate = {
-        title: paper.title,
-        source: "arxiv" as const,
-        url: paper.url,
-        date: today,
-        tags: paper.categories,
-        interest_score,
-        why_read,
-        authors: paper.authors,
-      };
-
-      // Same validate-before-write guarantee as the HN branch above.
-      const item = DigestItemSchema.parse(candidate);
-      files.push({
-        item,
-        filename: `arxiv-${sanitizeArxivId(paper.arxivId)}.json`,
-      });
+  for (const story of stories) {
+    const id = `hn-${story.hn_id}`;
+    const fromLlm = llmScores?.get(id);
+    if (llmScores && !fromLlm) {
+      console.warn(
+        `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
+      );
     }
+    const { interest_score, why_read } =
+      fromLlm ?? scoreStoryPlaceholder(story);
+
+    const candidate = {
+      title: story.title,
+      source: "hn" as const,
+      url: story.url,
+      date: today,
+      tags: [],
+      interest_score,
+      why_read,
+      authors: story.author ? [story.author] : [],
+      hn_id: story.hn_id,
+      points: story.points,
+    };
+
+    // Validate every item — let this throw with a clear error if a story
+    // doesn't conform to the shared schema rather than silently skipping it.
+    const item = DigestItemSchema.parse(candidate);
+    files.push({ item, filename: `hn-${item.hn_id}.json` });
+  }
+
+  for (const paper of papers) {
+    const id = `arxiv-${sanitizeArxivId(paper.arxivId)}`;
+    const fromLlm = llmScores?.get(id);
+    if (llmScores && !fromLlm) {
+      console.warn(
+        `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
+      );
+    }
+    const { interest_score, why_read } =
+      fromLlm ?? scoreArxivPlaceholder(paper);
+
+    const candidate = {
+      title: paper.title,
+      source: "arxiv" as const,
+      url: paper.url,
+      date: today,
+      tags: paper.categories,
+      interest_score,
+      why_read,
+      authors: paper.authors,
+    };
+
+    // Same validate-before-write guarantee as the HN branch above.
+    const item = DigestItemSchema.parse(candidate);
+    files.push({
+      item,
+      filename: `arxiv-${sanitizeArxivId(paper.arxivId)}.json`,
+    });
   }
 
   const outputDir = resolve(process.cwd(), output);
   await mkdir(outputDir, { recursive: true });
+
+  // Clean up stale files from an EARLIER run on the same day, scoped only to
+  // the sources actually fetched this run. Without this, running the
+  // pipeline more than once on the same day (which will happen in practice -
+  // manual re-runs, this project's own testing, a future retry after a
+  // partial failure) silently accumulates orphaned files: HN's front page
+  // composition shifts throughout the day, so a story that was in the top N
+  // an hour ago but has since fallen out never gets removed, and the day's
+  // folder grows past N items instead of staying a clean "current top N"
+  // snapshot. Deliberately scoped per source prefix so a single-source run
+  // (--sources hn) never deletes the other source's already-committed data
+  // from an earlier run that covered both.
+  const newFilenames = new Set(files.map((f) => f.filename));
+  const existingEntries = await readdir(outputDir).catch(() => [] as string[]);
+  const stalePrefixes = sources.map((source) => `${source}-`);
+  const staleFiles = existingEntries.filter(
+    (name) =>
+      stalePrefixes.some((prefix) => name.startsWith(prefix)) &&
+      !newFilenames.has(name),
+  );
+  await Promise.all(staleFiles.map((name) => unlink(resolve(outputDir, name))));
+  if (staleFiles.length > 0) {
+    console.log(
+      `Removed ${staleFiles.length} stale item(s) from an earlier run today (no longer in the current top ${limit}): ${staleFiles.join(", ")}`,
+    );
+  }
 
   await Promise.all(
     files.map(({ item, filename }) => {

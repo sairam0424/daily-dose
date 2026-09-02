@@ -8,8 +8,8 @@
     "cs.AI",
     "cs.CL"
   ],
-  "interest_score": 7.4,
-  "why_read": "Submitted to arXiv on 2026-09-01 under cs.SE, cs.AI, cs.CL — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "interest_score": 7,
+  "why_read": "ACToR's idea of triggering retrieval only at identified 'critical tokens' during autoregressive generation is a principled and practical improvement over static RAG for repo-level code generation, with solid benchmark gains to back it up.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",

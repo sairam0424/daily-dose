@@ -19,8 +19,9 @@ fetches from Hacker News' free, keyless Algolia API and writes one
 validated JSON digest file per day, and an Astro static site
 (`output: "static"`) that reads those files via Content Collections and
 renders them, plus one Chart.js island. There is no server-side runtime,
-no database, no user accounts, and — as of this writing — **no live LLM
-API call anywhere in the codebase.**
+no database, and no user accounts. **As of 2026-09-02 (ADR 0003), real LLM
+curation via AWS Bedrock is the default path** — see "Known Security
+Considerations" and "Secrets Handling" below, both updated accordingly.
 
 ## Supported Versions
 
@@ -109,10 +110,10 @@ reporter asks to remain anonymous.
   report upstream to arXiv, not here. arXiv ingestion (`fetchArxivPapers()`
   in `scripts/pipeline.ts`) is now real and in scope for how THIS repo
   consumes that API (parsing, validation, filesystem-safe ID sanitization).
-- Real LLM-based curation/scoring — **does not exist yet.** No
-  Anthropic/OpenAI API keys are present in this environment, and no code
-  path attempts a live model call. See "Known Security Considerations"
-  below for the hard requirement that applies once this is wired in.
+- AWS Bedrock's own service correctness, availability, or rate limiting —
+  report upstream to AWS, not here. How THIS repo constructs prompts,
+  handles the response, and falls back on error (`src/lib/llmCuration.ts`)
+  is in scope.
 - Any hosted/production deployment of daily-dose — none exists yet. No
   Vercel project is connected (see `status.md`); this repo builds and
   tests only, it does not currently serve traffic anywhere.
@@ -127,31 +128,24 @@ These are real, documented properties of the current design and of the
 design this project is deliberately heading toward — not hypothetical
 hardening ideas.
 
-- **Prompt injection via ingested content is a real, named risk for the
-  next phase of this project, not a nice-to-have.** Today's "curation"
-  step is a deterministic placeholder function that only computes
-  `interest_score` and `why_read` from real, already-fetched numeric HN
-  fields (`points`, `num_comments`) and the title string — it never
-  constructs a prompt and never calls a model, so there is no injection
-  surface today. **This changes the moment real LLM scoring is wired in.**
-  At that point, untrusted third-party text — HN titles, and eventually
-  HN comment bodies and arXiv abstracts — will flow into a prompt sent to
-  a model. That ingested text **must be sanitized, isolated, and treated
-  as untrusted data rather than as instructions** before it ever reaches
-  a model call (e.g., via clear data/instruction delimiters, a
-  system-prompt boundary the ingested content cannot escape, and
-  stripping or neutralizing any text that resembles an instruction
-  override, a role-switch attempt, or an embedded directive). This is a
-  **hard requirement** for whoever implements the real LLM curation step
-  — it must be designed in from the first version of that code, not
-  retrofitted after an incident. Do not ship a "curate with a real LLM"
-  change without this.
-- **No secrets exist in this codebase today.** There are no
-  Anthropic/OpenAI API keys, no other LLM provider keys, and no other
-  credentials of any kind — this walking skeleton runs entirely against
-  HN's free, keyless public API. Any code that appears to call a real
-  LLM API is either a placeholder, dead code, or a bug — it should not
-  exist; see the top of this file and `decisions.md`/ADR 0001 for why.
+- **Prompt injection via ingested content — implemented, not just
+  designed.** Real LLM scoring is now wired in (`src/lib/llmCuration.ts`,
+  ADR 0003): HN titles and arXiv abstracts flow into a prompt sent to a
+  Bedrock-hosted model. `buildPrompt()` wraps each item in explicit
+  `<item>`/`<title>`/`<abstract>` delimiters preceded by an instruction
+  telling the model this content is untrusted external data, not
+  instructions, and to score honestly without conflating engagement with
+  genuine interest. This mitigation shipped in the same change that
+  introduced the real model call, not retrofitted after. It has not been
+  adversarially red-teamed with a real injection payload — treat it as a
+  reasonable first-pass mitigation, not a proven-unbreakable one, and
+  report any bypass found via the channel above.
+- **Real secrets now exist in this codebase's environment.** An AWS
+  Bedrock credential (`BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`)
+  is configured as GitHub Encrypted Secrets on this repo, shared with the
+  sibling Anvilry project's production chatbot use of the same IAM user.
+  See "Secrets Handling" below for handling rules and the shared-credential
+  tradeoff.
 - **The HN fetch is against a free, public, keyless API by design.**
   `scripts/pipeline.ts` must not be modified to send credentials,
   authenticated requests, or any identifying header beyond a reasonable
@@ -186,45 +180,55 @@ hardening ideas.
 
 ## Secrets Handling
 
-- **daily-dose has no secrets today.** No LLM API keys (Anthropic,
-  OpenAI, or otherwise) are present in this environment or required to
-  run the pipeline script or build the site — the HN Algolia fetch is
-  free and keyless.
-- **When LLM API keys are eventually added** (to replace the placeholder
-  scoring step with a real model call), they **must** be stored as
+- **daily-dose now has real secrets**: `BEDROCK_ACCESS_KEY_ID` and
+  `BEDROCK_SECRET_ACCESS_KEY`, stored as
   [GitHub Encrypted Secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
-  (repository or environment secrets) and referenced only via CI
-  environment variables at run time — **never** committed to source, `
-  .env` files, or workflow YAML in plaintext. This applies equally to any
-  future Vercel deployment's environment variables.
+  on this repo (plus `BEDROCK_REGION`/`LLM_PROVIDER` as plain repo
+  variables), referenced only via CI environment variables at run time —
+  **never** committed to source, `.env` files, or workflow YAML in
+  plaintext. This applies equally to any future Vercel deployment's
+  environment variables.
+- **This credential is shared with the sibling Anvilry project's**
+  production chatbot use of the same IAM user (`AAVA_Bedrock_Non_Prod`).
+  Rotating it is a two-repo operation — coordinate with Anvilry's own
+  secret storage before rotating, and update both when it happens. A
+  GitHub-OIDC migration (per-repo federated credentials instead of a
+  shared long-lived key) is a documented fast-follow, not yet implemented.
+- **Bedrock credential values may be base64-encoded at rest** (matching
+  Anvilry's own storage convention) — code that consumes them must
+  base64-detect-and-decode before use; passing the raw encoded value to
+  `AnthropicBedrock`'s SigV4 signer fails authentication. See
+  `agent_learning.md`'s dated entry for the real bug this caused during
+  implementation.
 - If a secret is ever accidentally committed to this repository, treat it
-  as compromised immediately: rotate it at the source, then scrub it from
-  git history (not just delete it in a new commit).
-- CI for this repo does not require any secrets to build, test, or run
-  the pipeline today. The `schedule:` cron trigger for automated daily
-  runs is explicitly **not enabled** in this phase, in part because it
-  would eventually depend on real LLM API keys that do not exist yet —
-  see `status.md`.
+  as compromised immediately: rotate it at the source (coordinating with
+  Anvilry per above), then scrub it from git history (not just delete it
+  in a new commit).
+- The `schedule:` cron trigger for automated daily runs remains **not
+  enabled** in this phase — no longer because of a missing secret, but
+  because it still requires the user's explicit go-ahead. See `status.md`.
 
 ## Supply Chain & Dependency Policy
 
 - **Runtime dependencies are intentionally small and named up front**:
   `astro` (static site + Content Collections), `zod` (schema validation,
-  shared between the pipeline and the site), and `chart.js` (the one
-  Chart.js island). Dev-only: `tsx` (runs the pipeline script), `
-  typescript`, and `vitest` (tests). No LLM SDK (`@anthropic-ai/sdk`,
-  `openai`, or similar) is a dependency — adding one is itself a
-  significant decision that must be recorded in `decisions.md`/a new ADR,
-  not a routine dependency bump.
+  shared between the pipeline and the site), `chart.js` (the one Chart.js
+  island), and (as of ADR 0003) `@anthropic-ai/bedrock-sdk` +
+  `@anthropic-ai/sdk` (the real LLM curation client and its error types).
+  Dev-only: `tsx` (runs the pipeline script), `typescript`, and `vitest`
+  (tests, with the Bedrock SDK fully mocked — no automated test may make a
+  real network call). Any further LLM SDK or provider addition is itself
+  a significant decision that must be recorded in `decisions.md`/a new
+  ADR, not a routine dependency bump.
 - **The Zod schema (`src/lib/digestSchema.ts`) is the highest-scrutiny
   file** in this repo's dependency-adjacent surface, because it is the
   single point both the pipeline and the site trust to keep malformed
   data out. Changes to it are reviewed for what they newly allow through,
   not just what they add.
-- **arXiv ingestion and real LLM scoring are decided-but-not-yet-built.**
-  They are documented fast-follows (see `status.md`, `decisions.md`),
-  not silently skipped. Do not add an LLM SDK or an arXiv client
-  dependency ahead of that explicit decision.
+- **arXiv ingestion and real LLM scoring are both shipped** — see
+  `status.md`, `decisions.md`/ADR 0002 and ADR 0003. GitHub sourcing
+  remains a documented, not-yet-built fast-follow; do not add a GitHub
+  client dependency ahead of that explicit decision.
 - **Any future dependency addition** must be justified against
   KISS/YAGNI (per this workspace's global coding-style rules) before
   being added — "might need it later" is not sufficient justification.

@@ -7,8 +7,8 @@
 
 ## Overall Status
 
-**Phase:** 6 — Walking Skeleton complete (Phase 7 cross-project reconciliation also done)
-**Health:** 🟡 Active — stable, but genuinely blocked on real LLM keys (see below)
+**Phase:** 8 — Real LLM curation shipped via AWS Bedrock (ADR 0003)
+**Health:** 🟢 Active — stable, real curation verified live; cron/deploy remain deliberately deferred (see below)
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -36,16 +36,23 @@ minimal inline CSS (no Bulma/Sass) for this walking skeleton, matching
 chart of the day's interest scores. License: Apache-2.0, matching the
 sibling projects.
 
-**No live LLM API call exists anywhere in this codebase.** No
-Anthropic/OpenAI API keys are available in this environment. The
-"curation" step (assigning `interest_score` and writing `why_read`) is a
-deterministic, clearly-labeled placeholder function derived only from
-real, already-fetched HN fields (`points`, `num_comments`, title) — never
-fabricated or hardcoded data. This is the single biggest deferred item in
-the project, documented here and in `decisions.md`/ADR 0001, not hidden.
-arXiv ingestion now also ships for real — `fetchArxivPapers()` fetches
-live from arXiv's Atom API by default alongside HN, scored by a separate,
-weaker (recency-only) placeholder — see `decisions.md` ADR 0002.
+**Real LLM curation is now live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
+model fallback chain Sonnet 4.6 → Opus 4.6 → Haiku 4.5). `src/lib/llmCuration.ts`
+scores every fetched item (HN + arXiv) in one forced-tool-use batched call per
+pipeline run when `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY` are
+configured (they are, both locally and in this repo's GitHub Secrets). The
+deterministic placeholder functions in `src/lib/curation.ts` are kept as an
+explicit, loudly-logged fallback for local dev without credentials — never
+silently. Real per-run cost is computed and logged via `src/lib/costTracking.ts`
+against a verified Bedrock pricing table, with a rolling 7-day-average anomaly
+check (not a fixed dollar ceiling — see ADR 0003 for why). See `decisions.md`/
+ADR 0003 for full rationale, and `agent_learning.md` for two real bugs found
+and fixed while wiring this in (a base64-credential-decoding auth failure and
+a stale-digest-file accumulation bug). arXiv ingestion ships for real —
+`fetchArxivPapers()` fetches live from arXiv's Atom API by default alongside
+HN, and now also captures each paper's real abstract (`summary`) so the LLM
+has substantive content to judge, not just a title — see `decisions.md` ADR
+0002 (source) and ADR 0003 (the `summary` field addition).
 
 ## Active Specs & Plans
 
@@ -57,9 +64,9 @@ weaker (recency-only) placeholder — see `decisions.md` ADR 0002.
 | CI: `workflow_dispatch` + push/PR triggers (build + test)            | 6     | Complete, green |
 | arXiv ingestion (second source)                                      | 7     | **Complete — real live fetch, capped placeholder score, merged PR #1** |
 | Content-collection integration test + astro-build e2e test            | 7     | **Complete — merged PR #1, closes the codebase_map.md/TESTING.md gap** |
-| Real LLM curation (replacing both placeholder scoring functions)     | 7+    | Planned, not started — blocked on API keys |
-| `schedule:` cron trigger for automated daily runs                    | 7+    | Planned, not started — blocked on real LLM keys + explicit go-ahead |
-| Real Vercel deployment                                               | 7+    | Planned, not started — blocked on explicit go-ahead |
+| Real LLM curation via AWS Bedrock (replacing both placeholder scoring functions as the default path) | 8 | **Complete — verified with 3 real live Bedrock calls, see ADR 0003** |
+| `schedule:` cron trigger for automated daily runs                    | 8+    | Planned, not started — no longer blocked on API keys; still blocked on explicit go-ahead |
+| Real Vercel deployment                                               | 8+    | Planned, not started — blocked on explicit go-ahead |
 
 ## Recent Progress
 
@@ -93,45 +100,47 @@ weaker (recency-only) placeholder — see `decisions.md` ADR 0002.
   capped [3,8]), `main()` now runs both sources by default. Same PR closed
   the two documented test gaps (`content-collection.test.ts`,
   `build-output.test.ts`).
+- Shipped real LLM curation via AWS Bedrock (ADR 0003): new
+  `src/lib/llmCuration.ts` (one forced-tool-use batched call scoring every
+  fetched item, Sonnet→Opus→Haiku fallback, Zod-validated response) and
+  `src/lib/costTracking.ts` (real per-run cost + rolling-average anomaly
+  check, appended to `src/data/stats.jsonl`). Extended `fetchArxivPapers`
+  to capture each paper's real abstract. Fixed a real, separate
+  stale-file-accumulation bug discovered while re-running the pipeline
+  same-day. Verified end-to-end with 3 real live Bedrock calls (~$0.054
+  total). 9 new mocked unit tests in `tests/llmCuration.test.ts`.
 
 ## Upcoming Milestones
 
-1. Blocked fast-follow: replace both placeholder scoring functions (HN
-   and arXiv) with real LLM calls, once API keys exist — must ship with
-   the prompt-injection sanitization/isolation design from `SECURITY.md`
-   already in place, not retrofitted after.
-2. Blocked fast-follow: enable the `schedule:` cron trigger for automated
-   daily runs — requires real LLM keys (so the automated run has
-   something meaningful to curate) and the user's explicit go-ahead.
-3. Blocked fast-follow: connect a real Vercel deployment — requires the
+1. Blocked fast-follow: enable the `schedule:` cron trigger for automated
+   daily runs — real LLM curation now exists, so this is only blocked on
+   the user's explicit go-ahead (the API-keys blocker is resolved).
+2. Blocked fast-follow: connect a real Vercel deployment — requires the
    user's explicit go-ahead.
-4. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
+3. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
    once arXiv has proven the multi-source pattern for a while.
+4. Consider a public `/stats` cost-transparency page now that real cost
+   data exists (`src/data/stats.jsonl`) — see `telemetry.md`.
 
 ## Risks & Blockers
 
-- **Blocker: no LLM API keys exist in this environment.** This blocks
-  real curation — today's `interest_score`/`why_read` output is an
-  honest, deterministic placeholder, not a model output. Cannot be
-  resolved by this project alone; needs the user to provision
-  Anthropic/OpenAI credentials as GitHub Encrypted Secrets (see
-  `SECURITY.md`) before real curation can be built.
 - **Blocker: no Vercel connection exists yet.** This blocks real
   deployment — the site currently only builds and tests in CI, it does
   not serve traffic anywhere. Requires the user's explicit go-ahead to
   connect a Vercel project.
 - **Blocker: the `schedule:` cron trigger is not enabled.** This blocks
   automated daily runs — CI currently only runs on `workflow_dispatch`
-  (manual trigger) plus push/PR. Enabling the cron is gated on both real
-  LLM keys existing (so a scheduled run produces a real digest, not a
-  placeholder one on autopilot) and the user's explicit go-ahead.
-- **Risk:** because real LLM scoring doesn't exist yet, the
-  prompt-injection-sanitization requirement in `SECURITY.md` is currently
-  a documented design requirement, not implemented and verified code.
-  Watch for this being skipped or under-scoped when that fast-follow
-  actually starts.
+  (manual trigger) plus push/PR. Real LLM curation now exists, so this is
+  gated solely on the user's explicit go-ahead, not on API keys.
+- **Risk:** the Bedrock credential wired in is shared with the sibling
+  Anvilry project's production chatbot — rotating it is now a two-repo
+  operation. See `SECURITY.md` and ADR 0003.
+- **Risk:** the rolling-average cost-anomaly check (see `telemetry.md`)
+  can only warn after an anomalously expensive call already completed —
+  it is not a hard pre-call budget ceiling. Accepted for a single-batched-
+  call-per-day design; would need revisiting if the call pattern changes.
 - **Risk:** arXiv's placeholder score is weaker than HN's by design
-  (recency only, capped at [3,8] vs. HN's full 0-10 range) — arXiv items
-  will systematically rank below comparable HN items until real LLM
-  scoring replaces both. Documented in `decisions.md` ADR 0002, not a
-  hidden gap.
+  (recency only, capped at [3,8] vs. HN's full 0-10 range) — this now
+  only matters when the LLM fallback triggers (missing credentials, or a
+  per-item gap in the LLM's response), since real LLM scoring is the
+  default path. Documented in `decisions.md` ADR 0002, not a hidden gap.

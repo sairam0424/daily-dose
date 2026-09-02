@@ -8,8 +8,8 @@
     "cs.AI",
     "cs.CL"
   ],
-  "interest_score": 7.4,
-  "why_read": "Submitted to arXiv on 2026-09-01 under cs.SE, cs.AI, cs.CL — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "interest_score": 6,
+  "why_read": "Using agent execution trajectories as privileged signals in IRT-based benchmark subset selection is a clever efficiency improvement for SWE evaluation, though the gains reported are incremental rather than transformative.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",

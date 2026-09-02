@@ -15,6 +15,15 @@ Two learnings recurred here after first being observed in nh-deck:
 
 Full entries, root causes, and the standing rules now in force for both: see `../Not-Humans-Lab/agent_learning.md`.
 
+### 2026-09-02 — Bedrock credentials copied from the sibling Anvilry project may be base64-encoded; decode before use
+
+- **Trigger**: real LLM curation was wired in for the first time (ADR 0003). The exact same `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY` values that resolved to a working IAM identity via `sts.get_caller_identity` (which tolerates base64 input in some SDK paths) produced a real `PermissionDeniedError: 403 The security token included in the request is invalid` when passed as-is into `AnthropicBedrock`'s SigV4 signing.
+- **Observation**: Anvilry's own `.env.local`/`src/lib/llm.ts` documentation already stated these values may be "raw or BASE64-encoded (decoded at runtime)" via a `decodeSecret` helper - this was read during research but not actually applied when the values were first copied into this repo's GitHub secrets and into a local test run.
+- **Root cause**: assumed "the credential works" (proven via one successful boto3 call) meant "the raw stored value is safe to pass through anywhere" - it does not; some AWS client paths tolerate or auto-detect base64 input, `AnthropicBedrock`'s SigV4 signer does not.
+- **Correction / Rule**: whenever copying a credential value FROM Anvilry's `.env.local` (or any source documented as "raw or base64-encoded") to a new destination, always attempt a base64-decode first and use the decoded value if it round-trips to printable text - never assume the raw stored bytes are what a new consumer expects. This was fixed in both the GitHub repo secrets and every real local test run.
+- **Scope**: this-project-only for now (only daily-dose has wired in real Bedrock calls so far), but flag if nh-deck or nh-skills ever do the same - promote to system level if it recurs.
+- **Status**: active.
+
 ## Entry format
 
 - **Date**
