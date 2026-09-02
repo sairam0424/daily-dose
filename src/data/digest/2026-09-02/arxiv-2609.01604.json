@@ -8,7 +8,7 @@
     "cs.LG"
   ],
   "interest_score": 8,
-  "why_read": "This mechanistic study of how LLM-based evaluators internally assign ratings—using causal tracing and attention-head knockout—offers rare, concrete interpretability insights directly relevant to anyone using or fine-tuning LLM judges.",
+  "why_read": "A rigorous mechanistic dissection of how LLM-as-a-judge models internally assign scores—using causal tracing and attention-head knockout—gives rare, concrete insight into the reliability and failure modes of increasingly popular automated evaluation pipelines.",
   "authors": [
     "Himil Vasava",
     "Ming Jiang"

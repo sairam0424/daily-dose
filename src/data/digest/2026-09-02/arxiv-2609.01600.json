@@ -8,7 +8,7 @@
     "cs.AI"
   ],
   "interest_score": 5,
-  "why_read": "CordisBench probes a real and underexplored reasoning challenge—component lifecycle and dependency propagation in dynamic agent runtimes—but the benchmark is narrowly scoped to a single custom runtime (Cordis).",
+  "why_read": "CordisBench probes an underexplored reasoning capability—tracking component lifecycle dependencies in dynamic agent runtimes—but the benchmark scope is narrow and findings (models struggle as complexity grows) are unsurprising.",
   "authors": [
     "Damien Sileo",
     "Dimitri Kachler"

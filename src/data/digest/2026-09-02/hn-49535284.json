@@ -5,10 +5,10 @@
   "date": "2026-09-02",
   "tags": [],
   "interest_score": 7,
-  "why_read": "A default opt-in training policy change by a major LLM provider is a concrete, practically important privacy consideration for engineers using Mistral APIs in production.",
+  "why_read": "A default-on data training policy change at a major LLM provider is directly relevant to engineers evaluating vendor privacy posture and data governance for production applications.",
   "authors": [
     "teekert"
   ],
   "hn_id": 49535284,
-  "points": 283
+  "points": 284
 }

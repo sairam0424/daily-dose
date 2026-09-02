@@ -9,7 +9,7 @@
     "cs.CL"
   ],
   "interest_score": 7,
-  "why_read": "ACToR's idea of identifying 'critical tokens' during autoregressive generation and triggering targeted retrieval only at those points is a technically interesting refinement over static RAG for code generation.",
+  "why_read": "ACToR's idea of identifying 'critical tokens' mid-generation and triggering targeted retrieval at those decisive points is a concrete, testable improvement over static RAG for repo-level code generation with solid benchmark gains.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",
