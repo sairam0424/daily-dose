@@ -7,8 +7,8 @@
 
 ## Overall Status
 
-**Phase:** 6 — Walking Skeleton
-**Health:** 🟡 Active / Early
+**Phase:** 6 — Walking Skeleton complete (Phase 7 cross-project reconciliation also done)
+**Health:** 🟡 Active — stable, but genuinely blocked on real LLM keys (see below)
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -52,9 +52,9 @@ silently dropped.
 | Spec / Plan                                                        | Phase | Status      |
 | -------------------------------------------------------------------- | ----- | ----------- |
 | Pre-scaffold docs (`SECURITY.md`, `SUPPORT.md`, `status.md`, `decisions.md`, `telemetry.md`) | 6     | Complete    |
-| Core pipeline: fetch HN Algolia API → placeholder score → write validated digest JSON | 6     | In progress |
-| Astro static site: Content Collections + digest listing + Chart.js island | 6     | In progress |
-| CI: `workflow_dispatch` + push/PR triggers (build + test)            | 6     | In progress |
+| Core pipeline: fetch HN Algolia API → placeholder score → write validated digest JSON | 6     | **Complete — verified with a real live HN fetch, 5 real stories committed** |
+| Astro static site: Content Collections + digest listing + Chart.js island | 6     | **Complete — `astro build` confirmed rendering real content and real chart data** |
+| CI: `workflow_dispatch` + push/PR triggers (build + test)            | 6     | Complete, green |
 | arXiv ingestion (second source)                                      | 7     | Planned, not started |
 | Real LLM curation (replacing the placeholder scoring function)       | 7+    | Planned, not started — blocked on API keys |
 | `schedule:` cron trigger for automated daily runs                    | 7+    | Planned, not started — blocked on real LLM keys + explicit go-ahead |
@@ -78,25 +78,32 @@ silently dropped.
   spec for when real LLM calls eventually exist).
 - Scaffolded `package.json`, `astro.config.mjs`, and the initial
   `scripts/pipeline.ts`.
+- Fixed a real architecture bug found during the walking-skeleton build:
+  the pipeline originally wrote one array-per-day file, incompatible with
+  Astro's `glob()` loader (one schema-matching object per file). Rewrote
+  it to write one file per story into a dated folder, matching what the
+  reference project (`the-daily-diff`) actually does. Extracted the
+  placeholder scoring logic into its own `src/lib/curation.ts`.
+- Phase 7 cross-project reconciliation: added `Branches.md` (copied
+  verbatim from Not-Humans-Lab), `agent_learning.md`, and
+  `anti-patterns.md` (all three were missing from the original scaffold).
 
 ## Upcoming Milestones
 
-1. **Walking-skeleton exit criterion**: `npm run pipeline` fetches live
-   HN data, computes placeholder scores, and writes one schema-valid
-   file per story into `src/data/digest/YYYY-MM-DD/`; `npm run build` renders that digest
-   on the Astro site including the Chart.js bar chart; CI is green on
-   `workflow_dispatch` and on push/PR.
-2. Fast-follow: add arXiv as a second ingestion source, once HN-only is
-   proven — explicitly deferred, not part of this phase.
-3. Blocked fast-follow: replace the placeholder scoring function with a
+1. Fast-follow: add arXiv as a second ingestion source, now that HN-only
+   is proven end to end.
+2. Blocked fast-follow: replace the placeholder scoring function with a
    real LLM call, once API keys exist — must ship with the
    prompt-injection sanitization/isolation design from `SECURITY.md`
    already in place, not retrofitted after.
-4. Blocked fast-follow: enable the `schedule:` cron trigger for automated
+3. Blocked fast-follow: enable the `schedule:` cron trigger for automated
    daily runs — requires real LLM keys (so the automated run has
    something meaningful to curate) and the user's explicit go-ahead.
-5. Blocked fast-follow: connect a real Vercel deployment — requires the
-   user's explicit go-ahead; not part of this phase.
+4. Blocked fast-follow: connect a real Vercel deployment — requires the
+   user's explicit go-ahead.
+5. Add an automated content-collection integration test and an `astro
+   build` e2e smoke test to CI (currently `codebase_map.md` lists both as
+   planned but not yet written).
 
 ## Risks & Blockers
 
