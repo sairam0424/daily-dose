@@ -2,13 +2,15 @@
  * scripts/pipeline.ts
  *
  * daily-dose data pipeline: fetches today's Hacker News front page via the
- * free, keyless Algolia HN Search API AND today's newest arXiv cs.AI/cs.LG/
- * cs.CL papers via arXiv's free, keyless public Atom API, scores every item
- * in ONE real Bedrock LLM call (see ../src/lib/llmCuration.ts) when real
- * credentials are configured, validates the result against the shared
- * DigestItemSchema, and writes one file per item to a dated folder under
- * src/data/digest/ (see the comment above main() below for why
- * one-file-per-item, not one array file per day).
+ * free, keyless Algolia HN Search API, today's newest arXiv cs.AI/cs.LG/
+ * cs.CL papers via arXiv's free, keyless public Atom API, AND today's
+ * newest fast-rising GitHub repos via GitHub's free, keyless public Search
+ * API, scores every item in ONE real Bedrock LLM call (see
+ * ../src/lib/llmCuration.ts) when real credentials are configured,
+ * validates the result against the shared DigestItemSchema, and writes one
+ * file per item to a dated folder under src/data/digest/ (see the comment
+ * above main() below for why one-file-per-item, not one array file per
+ * day).
  *
  * If BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY are not set (e.g. local
  * dev without secrets), this falls back to the deterministic PLACEHOLDER
@@ -16,12 +18,13 @@
  * never silently. See CLAUDE.md's plan-mode gate before editing this file or
  * llmCuration.ts.
  *
- * Both sources run by default; use --sources to run just one. GitHub
- * sourcing remains a documented, not-yet-started fast-follow — see
- * README / Context.md.
+ * All three sources run by default; use --sources to run a subset. See
+ * docs/adr/0006-add-github-as-third-source.md for why GitHub surfaces
+ * "trending-style" new repos (Search API, sort=stars, created recently,
+ * fork:false) rather than a curated watchlist or scraped Trending page.
  *
  * Run directly:
- *   npx tsx scripts/pipeline.ts [--output <path>] [--limit <n>] [--sources hn,arxiv]
+ *   npx tsx scripts/pipeline.ts [--output <path>] [--limit <n>] [--sources hn,arxiv,github]
  */
 
 import { writeFile, mkdir, readdir, unlink } from "node:fs/promises";
@@ -31,8 +34,10 @@ import { DigestItemSchema, type DigestItem } from "../src/lib/digestSchema.js";
 import {
   scoreStoryPlaceholder,
   scoreArxivPlaceholder,
+  scoreGithubPlaceholder,
   type RawHnStory,
   type RawArxivPaper,
+  type RawGithubRepo,
 } from "../src/lib/curation.js";
 import {
   scoreItemsWithLLM,
@@ -42,7 +47,7 @@ import {
 } from "../src/lib/llmCuration.js";
 import { recordAndCheckCost } from "../src/lib/costTracking.js";
 
-export type { RawHnStory, RawArxivPaper };
+export type { RawHnStory, RawArxivPaper, RawGithubRepo };
 
 interface AlgoliaHnHit {
   title: string | null;
@@ -188,6 +193,81 @@ function sanitizeArxivId(arxivId: string): string {
   return arxivId.replace(/[/:]/g, "-");
 }
 
+const GITHUB_SEARCH_URL = "https://api.github.com/search/repositories";
+// How far back "recently created" reaches - see ADR 0006 for why 7 days
+// (a large-enough pool of real candidates without reaching so far back that
+// "new" stops meaning anything).
+const GITHUB_TRENDING_WINDOW_DAYS = 7;
+
+/** Shape of one item in the GitHub Search API's repository search response.
+ * Only fields we actually use downstream are kept. */
+interface GithubSearchItem {
+  full_name: string;
+  html_url: string;
+  description: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+  created_at: string;
+}
+
+interface GithubSearchResponse {
+  items: GithubSearchItem[];
+}
+
+function isoDateDaysAgo(days: number): string {
+  const date = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+  return date.toISOString().slice(0, 10);
+}
+
+/**
+ * Fetches recently-created, fast-rising GitHub repos from GitHub's free,
+ * keyless public Search API (no API key required - unauthenticated search
+ * is rate-limited to 10 requests/minute, comfortably enough for a once-daily
+ * job). `fork:false` excludes forks so a fork of an existing popular
+ * project never gets surfaced as if it were a genuinely new project -
+ * confirmed via a real live query during research that GitHub's search
+ * qualifier actually filters this, not just an unverified assumption.
+ */
+export async function fetchGithubTrendingRepos(
+  limit = 5,
+): Promise<RawGithubRepo[]> {
+  const sinceDate = isoDateDaysAgo(GITHUB_TRENDING_WINDOW_DAYS);
+  const query = `created:>${sinceDate} fork:false`;
+  const url = `${GITHUB_SEARCH_URL}?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${limit}`;
+
+  const response = await fetch(url, {
+    headers: {
+      "User-Agent": "daily-dose-pipeline",
+      Accept: "application/vnd.github+json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `GitHub Search API request failed: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  const data = (await response.json()) as GithubSearchResponse;
+
+  return data.items.map((item) => ({
+    fullName: item.full_name,
+    url: item.html_url,
+    description: item.description ?? "",
+    stars: item.stargazers_count,
+    forks: item.forks_count,
+    language: item.language,
+    createdAt: item.created_at,
+  }));
+}
+
+/** Filesystem-safe GitHub repo id: full_name is "owner/repo" - replace the
+ * slash with a hyphen so it's always safe to use as part of a filename. */
+function sanitizeGithubId(fullName: string): string {
+  return fullName.replace(/\//g, "-");
+}
+
 function todayIsoDate(): string {
   const now = new Date();
   const year = now.getFullYear();
@@ -196,7 +276,7 @@ function todayIsoDate(): string {
   return `${year}-${month}-${day}`;
 }
 
-const KNOWN_SOURCES = ["hn", "arxiv"] as const;
+const KNOWN_SOURCES = ["hn", "arxiv", "github"] as const;
 type KnownSource = (typeof KNOWN_SOURCES)[number];
 
 interface ParsedArgs {
@@ -287,12 +367,27 @@ function toScorableArxivItem(paper: RawArxivPaper): ScorableItem {
   };
 }
 
+function toScorableGithubItem(repo: RawGithubRepo): ScorableItem {
+  return {
+    id: `github-${sanitizeGithubId(repo.fullName)}`,
+    source: "github",
+    title: repo.fullName,
+    stars: repo.stars,
+    forks: repo.forks,
+    language: repo.language,
+    description: repo.description,
+  };
+}
+
 export async function main(): Promise<void> {
   const { output, limit, sources } = parseArgs(process.argv.slice(2));
   const today = todayIsoDate();
 
   const stories = sources.includes("hn") ? await fetchHnFrontPage(limit) : [];
   const papers = sources.includes("arxiv") ? await fetchArxivPapers(limit) : [];
+  const repos = sources.includes("github")
+    ? await fetchGithubTrendingRepos(limit)
+    : [];
 
   // Real LLM curation when configured; a deterministic, clearly-labeled
   // placeholder otherwise - never silently, always a loud console notice
@@ -302,6 +397,7 @@ export async function main(): Promise<void> {
     const scorableItems: ScorableItem[] = [
       ...stories.map(toScorableHnItem),
       ...papers.map(toScorableArxivItem),
+      ...repos.map(toScorableGithubItem),
     ];
 
     if (scorableItems.length > 0) {
@@ -387,6 +483,37 @@ export async function main(): Promise<void> {
     files.push({
       item,
       filename: `arxiv-${sanitizeArxivId(paper.arxivId)}.json`,
+    });
+  }
+
+  for (const repo of repos) {
+    const id = `github-${sanitizeGithubId(repo.fullName)}`;
+    const fromLlm = llmScores?.get(id);
+    if (llmScores && !fromLlm) {
+      console.warn(
+        `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
+      );
+    }
+    const { interest_score, why_read } =
+      fromLlm ?? scoreGithubPlaceholder(repo);
+
+    const candidate = {
+      title: repo.fullName,
+      source: "github" as const,
+      url: repo.url,
+      date: today,
+      tags: repo.language ? [repo.language] : [],
+      interest_score,
+      why_read,
+      authors: [],
+      stars: repo.stars,
+    };
+
+    // Same validate-before-write guarantee as the HN branch above.
+    const item = DigestItemSchema.parse(candidate);
+    files.push({
+      item,
+      filename: `${id}.json`,
     });
   }
 

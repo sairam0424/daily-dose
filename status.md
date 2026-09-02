@@ -39,7 +39,7 @@ sibling projects.
 **Real LLM curation is now live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
 model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5, Sonnet 5
 leading as of ADR 0005). `src/lib/llmCuration.ts`
-scores every fetched item (HN + arXiv) in one forced-tool-use batched call per
+scores every fetched item (HN + arXiv + GitHub) in one forced-tool-use batched call per
 pipeline run when `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY` are
 configured (they are, both locally and in this repo's GitHub Secrets). The
 deterministic placeholder functions in `src/lib/curation.ts` are kept as an
@@ -143,8 +143,8 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 2. ~~Trigger `daily-pipeline.yml` once via `workflow_dispatch`.~~ Done —
    confirmed a correctly-scoped real commit (see ADR 0004's Confirmation
    section and `agent_learning.md`'s bot-author-identity entry).
-3. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
-   once arXiv has proven the multi-source pattern for a while.
+3. ~~Consider a third source (GitHub).~~ Done — see `decisions.md` ADR 0006.
+   All three documented sources (HN, arXiv, GitHub) now ship for real.
 
 ## Risks & Blockers
 

@@ -238,10 +238,11 @@ hardening ideas.
   single point both the pipeline and the site trust to keep malformed
   data out. Changes to it are reviewed for what they newly allow through,
   not just what they add.
-- **arXiv ingestion and real LLM scoring are both shipped** — see
-  `status.md`, `decisions.md`/ADR 0002 and ADR 0003. GitHub sourcing
-  remains a documented, not-yet-built fast-follow; do not add a GitHub
-  client dependency ahead of that explicit decision.
+- **arXiv ingestion, real LLM scoring, and GitHub sourcing are all shipped**
+  — see `status.md`, `decisions.md`/ADR 0002, ADR 0003, ADR 0006. GitHub
+  sourcing calls the public Search API directly via `fetch`, no new
+  dependency — do not add a GitHub client library without a documented
+  reason.
 - **Any future dependency addition** must be justified against
   KISS/YAGNI (per this workspace's global coding-style rules) before
   being added — "might need it later" is not sufficient justification.
