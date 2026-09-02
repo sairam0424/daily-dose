@@ -29,7 +29,7 @@ The fetch step (`scripts/pipeline.ts` calling the HN Algolia API and, as of the 
 
 ### Scope discipline
 
-- HN and arXiv sourcing, real LLM curation (ADR 0003), static-site rendering, the `/stats` cost-transparency page, and `schedule:` cron automation (ADR 0004) are all real and shipped. Real Vercel deployment is decided (ADR 0004) but not yet connected — pending the Vercel MCP integration's reconnection, not an open design question. Do not scaffold a third source (GitHub) ahead of schedule — see `Context.md`'s roadmap for sequencing.
+- HN and arXiv sourcing, real LLM curation (ADR 0003), static-site rendering, the `/stats` cost-transparency page, `schedule:` cron automation, and real Vercel deployment (ADR 0004, live at https://daily-dose-hazel-delta.vercel.app) are all real and shipped. Do not scaffold a third source (GitHub) ahead of schedule — see `Context.md`'s roadmap for sequencing.
 - Do not add a CSS framework (Bulma, Sass, Tailwind, etc.) without being asked — minimal inline CSS is a deliberate, deferred-polish decision, not an oversight.
 - Do not swap the Chart.js `<script type="module">` island for a React/Vue component or add a UI framework dependency to render one chart.
 - Do not create new top-level docs (README variants, extra planning files) unless explicitly asked — this repo's doc set is `AGENTS.md`, `CLAUDE.md`, `SOUL.md`, and `Context.md`, plus whatever `../Not-Humans-Lab/` covers by reference.

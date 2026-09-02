@@ -114,12 +114,10 @@ reporter asks to remain anonymous.
   report upstream to AWS, not here. How THIS repo constructs prompts,
   handles the response, and falls back on error (`src/lib/llmCuration.ts`)
   is in scope.
-- Any hosted/production deployment of daily-dose — decided (ADR 0004) but
-  not yet connected. No Vercel project exists yet (see `status.md`); this
-  repo builds and tests only, it does not currently serve traffic anywhere.
-  Once connected, Vercel's own build/deploy infrastructure is out of scope
-  (report to Vercel); this repo's own `vercel.json`/build configuration
-  stays in scope.
+- **The site is live** at https://daily-dose-hazel-delta.vercel.app (ADR
+  0004, see `status.md`). Vercel's own build/deploy infrastructure is out
+  of scope (report to Vercel); this repo's own build configuration and
+  what data reaches the deployed site stays in scope.
 - The sibling projects `nh-deck` and `nh-skills` — each is an independent
   repository with its own `SECURITY.md`.
 - `../Not-Humans-Lab/` — a separate, docs-only meta-repo; report issues
@@ -215,10 +213,13 @@ hardening ideas.
   is now a real, recurring, unattended use of these secrets — treat any
   future change to this workflow's permissions or triggers with the same
   scrutiny as a secrets-handling change, not a routine CI edit.
-- **Vercel's environment must never include the Bedrock secrets.** Once
-  connected, its Build Command must stay `npm run build` only — never
-  `npm run pipeline` — so the credential's exposure surface never expands
-  to include Vercel's build environment (including PR preview builds).
+- **Vercel's environment does not include the Bedrock secrets, confirmed via
+  real build logs.** No `BEDROCK_*` environment variables are configured on
+  the Vercel project, and its Build Command is `npm run build` only — never
+  `npm run pipeline` — so the credential's exposure surface has not expanded
+  to include Vercel's build environment (including PR preview builds). Any
+  future change to the Build Command is a real security decision, not a
+  routine project-settings edit.
 
 ## Supply Chain & Dependency Policy
 

@@ -32,7 +32,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Styling | Minimal inline CSS | No Bulma/Sass in this walking skeleton — deferred fast-follow |
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
 | CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
-| Deployment | *(decided, not yet connected)* | Vercel git-integrated auto-deploy on push to `main`, `npm run build` only — decided in ADR 0004, execution blocked on the Vercel MCP integration's reconnection |
+| Deployment | Vercel, live | Git-integrated auto-deploy on push to `main`, `npm run build` only — https://daily-dose-hazel-delta.vercel.app, connected per ADR 0004 |
 | LLM SDK | `@anthropic-ai/bedrock-sdk` + `@anthropic-ai/sdk` (error types) | `AnthropicBedrock` client in `src/lib/llmCuration.ts`, model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5 (Sonnet 5 leads as of ADR 0005; needs `thinking: {type: "disabled"}` explicitly, unlike the rest of the chain), credentials via `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars |
 | License | Apache-2.0 | Decided at the Not-Humans-Lab umbrella level, applied identically across sibling projects |
 
@@ -46,7 +46,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | TypeScript + `tsx` | **Adopt** | Runs `scripts/pipeline.ts` directly without a separate compile step. |
 | Vitest | **Adopt** | Test runner for all layers described in `TESTING.md`. |
 | GitHub Actions (`workflow_dispatch` + `schedule:`) | **Adopt** | `ci.yml` (manual + push/PR, read-only) and `daily-pipeline.yml` (real daily `schedule:` trigger, `contents: write` on itself only) — see ADR 0004. |
-| Vercel deployment | **Decided, not yet connected** | Git-integrated auto-deploy on push to `main`, Build Command pinned to `npm run build` only (never the pipeline) — decided in ADR 0004. Blocked on reconnecting the Vercel MCP integration, not an open question. |
+| Vercel deployment | **Adopt** | Git-integrated auto-deploy on push to `main`, Build Command confirmed via real build logs as `npm run build` only (never the pipeline) — live at https://daily-dose-hazel-delta.vercel.app, per ADR 0004. |
 | `@anthropic-ai/bedrock-sdk` / `@anthropic-ai/sdk` | **Adopt** | Real Bedrock credential exists (shared with sibling Anvilry project) — see ADR 0003. `src/lib/llmCuration.ts` is the only file that constructs the client. |
 | Bulma / Sass | **Hold** | Deferred fast-follow. Styling for this walking skeleton is minimal inline CSS, matching nh-deck's precedent of deferring visual polish. |
 | arXiv sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchArxivPapers`, fetching live from `export.arxiv.org/api/query` (cs.AI/cs.LG/cs.CL, sorted by submission date). Scored by the placeholder `scoreArxivPlaceholder` in `src/lib/curation.ts` (recency-only signal, capped to a [3, 8] range — see that file's comment for the HN-vs-arXiv asymmetry rationale). |
@@ -132,8 +132,6 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 
 ## Deprecated / Hold list
 
-- **Vercel deployment** — decided (ADR 0004), not yet connected; blocked
-  on reconnecting the Vercel MCP integration, not an open design question.
 - **Bulma/Sass** — Hold, deferred fast-follow for visual polish.
 - **GitHub sourcing** — not deprecated, just not yet implemented. Listed
   under Adoption status as a documented fast-follow, not here, to avoid

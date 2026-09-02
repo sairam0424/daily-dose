@@ -204,10 +204,10 @@ Relationships:
 default.** As of 2026-09-03 (ADR 0004), Flow 1 also now runs unattended once
 a day via `.github/workflows/daily-pipeline.yml`'s real `schedule:` trigger
 (a separate workflow from `ci.yml`, requesting `contents: write` on itself
-only), committing its own output. No real deployment target is connected
-yet — Vercel is decided (git-integrated, `npm run build` only) but execution
-is blocked on reconnecting the Vercel MCP integration. See `tech.md`'s
-Adoption status and Hold list.
+only), committing its own output. **The site is deployed** at
+https://daily-dose-hazel-delta.vercel.app — Vercel git-integrated, deploying
+on push to `main`, Build Command confirmed via real build logs as
+`npm run build` only (never the pipeline). See `tech.md`'s Adoption status.
 
 ## Cross-references
 

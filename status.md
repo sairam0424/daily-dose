@@ -8,7 +8,7 @@
 ## Overall Status
 
 **Phase:** 8 — Real LLM curation shipped via AWS Bedrock (ADR 0003)
-**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment decided but not yet connected (see below)
+**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment live at https://daily-dose-hazel-delta.vercel.app
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -68,7 +68,7 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 | Real LLM curation via AWS Bedrock (replacing both placeholder scoring functions as the default path) | 8 | **Complete — verified with 3 real live Bedrock calls, see ADR 0003** |
 | Public `/stats` cost-transparency page                                | 8     | **Complete — real totals/by-model/by-day from `src/data/stats.jsonl`** |
 | `schedule:` cron trigger for automated daily runs                    | 9     | **Complete — `.github/workflows/daily-pipeline.yml`, see ADR 0004** |
-| Real Vercel deployment                                               | 9     | Decided (ADR 0004) — **not yet executed**, blocked on reconnecting the Vercel MCP integration |
+| Real Vercel deployment                                               | 9     | **Complete — live at https://daily-dose-hazel-delta.vercel.app, git-integrated, deploys on push to `main`** |
 
 ## Recent Progress
 
@@ -128,27 +128,27 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   found no transferable CI/cron playbook to copy (zero GitHub Actions
   workflows in that repo) — see the ADR for the full findings and the
   rejected "regenerate at Vercel build time" alternative.
-- Decided (same ADR) the Vercel deployment shape — git-integrated
-  auto-deploy on push to `main`, Build Command pinned to `npm run build`
-  only so Vercel never needs the Bedrock credential — but **execution is
-  blocked**: the Vercel MCP connection's token had expired at decision
-  time.
+- Connected the Vercel deployment (2026-09-03, same ADR): git-integrated,
+  production auto-deploy on push to `main`, Build Command confirmed via
+  real build logs as `npm run build` only (never the pipeline), so Vercel
+  never sees the Bedrock credential. Live at
+  https://daily-dose-hazel-delta.vercel.app — verified serving real
+  content on both `/` and `/stats`.
 
 ## Upcoming Milestones
 
-1. Connect the Vercel project once the Vercel MCP integration is
-   reconnected — the decision is made (ADR 0004), only execution remains.
-2. Trigger `daily-pipeline.yml` once via `workflow_dispatch` to confirm a
-   correctly-scoped real commit before trusting the schedule unattended
-   (see ADR 0004's Confirmation section).
+1. ~~Connect the Vercel project.~~ Done — live at
+   https://daily-dose-hazel-delta.vercel.app, git-integrated auto-deploy on
+   push to `main`.
+2. ~~Trigger `daily-pipeline.yml` once via `workflow_dispatch`.~~ Done —
+   confirmed a correctly-scoped real commit (see ADR 0004's Confirmation
+   section and `agent_learning.md`'s bot-author-identity entry).
 3. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
    once arXiv has proven the multi-source pattern for a while.
 
 ## Risks & Blockers
 
-- **Blocker: no Vercel connection exists yet.** The decision and exact
-  configuration are written down (ADR 0004); only the Vercel MCP
-  reconnection stands between "decided" and "live."
+- **Risk: the live Vercel site has no custom domain and no branch protection on `main`.** Anyone who can push to `main` (or merge a PR) triggers a real production redeploy — an accepted tradeoff for a personal project, not currently hardened further.
 - **Risk: the daily cron is live and will start spending real money on
   every scheduled run, indefinitely, once merged.** This is an accepted
   tradeoff (ADR 0004), not an oversight — disable the schedule if this

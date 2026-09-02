@@ -129,8 +129,8 @@ daily-dose/
   `schedule:` trigger + `workflow_dispatch`, `contents: write` on itself
   only) — runs `npm run pipeline` and commits the result via a bot
   identity, scoped to `src/data/digest/**` + `src/data/stats.jsonl` only.
-  See `decisions.md` ADR 0004. Real deployment (Vercel) is decided but not
-  yet connected (see `tech.md`).
+  See `decisions.md` ADR 0004. Real deployment: live at
+  https://daily-dose-hazel-delta.vercel.app (see `tech.md`).
 
 ## Cross-module dependency notes
 
