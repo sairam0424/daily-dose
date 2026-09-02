@@ -1,0 +1,13 @@
+{
+  "title": "MetaMask-AI/metamask-desktop",
+  "source": "github",
+  "url": "https://github.com/MetaMask-AI/metamask-desktop",
+  "date": "2026-09-02",
+  "tags": [
+    "CSS"
+  ],
+  "interest_score": 3,
+  "why_read": "A desktop wrapper for MetaMask with minimal apparent technical innovation beyond packaging an existing browser extension.",
+  "authors": [],
+  "stars": 1229
+}

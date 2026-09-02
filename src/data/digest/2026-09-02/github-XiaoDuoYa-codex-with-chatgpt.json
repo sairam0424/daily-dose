@@ -1,0 +1,13 @@
+{
+  "title": "XiaoDuoYa/codex-with-chatgpt",
+  "source": "github",
+  "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+  "date": "2026-09-02",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A thin wrapper combining two existing tools (ChatGPT planning + Codex execution) that's more of a convenience hack than a technical advance.",
+  "authors": [],
+  "stars": 2271
+}

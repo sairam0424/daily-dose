@@ -8,8 +8,8 @@
     "cs.AI",
     "cs.CL"
   ],
-  "interest_score": 7,
-  "why_read": "ACToR's idea of identifying 'critical tokens' mid-generation and triggering targeted retrieval at those decisive points is a concrete, testable improvement over static RAG for repo-level code generation with solid benchmark gains.",
+  "interest_score": 6,
+  "why_read": "Solid applied RAG improvement for repo-level code generation with clear ablation showing where retrieval actually helps, though incremental.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",

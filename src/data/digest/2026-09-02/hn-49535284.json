@@ -1,14 +1,14 @@
 {
-  "title": "Mistral now trains on user input by default, except on enterprise tier",
+  "title": "Can I opt out of my input or output data being used for training?",
   "source": "hn",
   "url": "https://help.mistral.ai/en/articles/455207-can-i-opt-out-of-my-input-or-output-data-being-used-for-training",
   "date": "2026-09-02",
   "tags": [],
-  "interest_score": 7,
-  "why_read": "A default-on data training policy change at a major LLM provider is directly relevant to engineers evaluating vendor privacy posture and data governance for production applications.",
+  "interest_score": 6,
+  "why_read": "Data usage opt-out policies for AI tools are a practical concern for engineers and often surface non-obvious contractual details in discussion.",
   "authors": [
     "teekert"
   ],
   "hn_id": 49535284,
-  "points": 284
+  "points": 354
 }

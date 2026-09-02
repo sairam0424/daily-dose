@@ -9,7 +9,7 @@
     "cs.CL"
   ],
   "interest_score": 6,
-  "why_read": "Extending Item Response Theory with execution trajectory signals to cheaply estimate SWE-agent benchmark performance is a practically useful methodology for teams running expensive code-agent evaluations.",
+  "why_read": "A practical efficiency method for benchmarking SWE agents using trajectory data, useful for anyone running expensive agent evaluations.",
   "authors": [
     "Kefeng Duan",
     "Dewu Zheng",
