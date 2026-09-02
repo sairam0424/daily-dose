@@ -43,9 +43,9 @@ deterministic, clearly-labeled placeholder function derived only from
 real, already-fetched HN fields (`points`, `num_comments`, title) — never
 fabricated or hardcoded data. This is the single biggest deferred item in
 the project, documented here and in `decisions.md`/ADR 0001, not hidden.
-arXiv ingestion does not exist yet either — HN is the only live source
-today; arXiv is a single-source fast-follow, noted explicitly rather than
-silently dropped.
+arXiv ingestion now also ships for real — `fetchArxivPapers()` fetches
+live from arXiv's Atom API by default alongside HN, scored by a separate,
+weaker (recency-only) placeholder — see `decisions.md` ADR 0002.
 
 ## Active Specs & Plans
 
@@ -55,8 +55,9 @@ silently dropped.
 | Core pipeline: fetch HN Algolia API → placeholder score → write validated digest JSON | 6     | **Complete — verified with a real live HN fetch, 5 real stories committed** |
 | Astro static site: Content Collections + digest listing + Chart.js island | 6     | **Complete — `astro build` confirmed rendering real content and real chart data** |
 | CI: `workflow_dispatch` + push/PR triggers (build + test)            | 6     | Complete, green |
-| arXiv ingestion (second source)                                      | 7     | Planned, not started |
-| Real LLM curation (replacing the placeholder scoring function)       | 7+    | Planned, not started — blocked on API keys |
+| arXiv ingestion (second source)                                      | 7     | **Complete — real live fetch, capped placeholder score, merged PR #1** |
+| Content-collection integration test + astro-build e2e test            | 7     | **Complete — merged PR #1, closes the codebase_map.md/TESTING.md gap** |
+| Real LLM curation (replacing both placeholder scoring functions)     | 7+    | Planned, not started — blocked on API keys |
 | `schedule:` cron trigger for automated daily runs                    | 7+    | Planned, not started — blocked on real LLM keys + explicit go-ahead |
 | Real Vercel deployment                                               | 7+    | Planned, not started — blocked on explicit go-ahead |
 
@@ -87,23 +88,25 @@ silently dropped.
 - Phase 7 cross-project reconciliation: added `Branches.md` (copied
   verbatim from Not-Humans-Lab), `agent_learning.md`, and
   `anti-patterns.md` (all three were missing from the original scaffold).
+- Shipped arXiv as a second source (PR #1): `fetchArxivPapers()` (Atom API
+  via `fast-xml-parser`) + `scoreArxivPlaceholder()` (recency-only,
+  capped [3,8]), `main()` now runs both sources by default. Same PR closed
+  the two documented test gaps (`content-collection.test.ts`,
+  `build-output.test.ts`).
 
 ## Upcoming Milestones
 
-1. Fast-follow: add arXiv as a second ingestion source, now that HN-only
-   is proven end to end.
-2. Blocked fast-follow: replace the placeholder scoring function with a
-   real LLM call, once API keys exist — must ship with the
-   prompt-injection sanitization/isolation design from `SECURITY.md`
+1. Blocked fast-follow: replace both placeholder scoring functions (HN
+   and arXiv) with real LLM calls, once API keys exist — must ship with
+   the prompt-injection sanitization/isolation design from `SECURITY.md`
    already in place, not retrofitted after.
-3. Blocked fast-follow: enable the `schedule:` cron trigger for automated
+2. Blocked fast-follow: enable the `schedule:` cron trigger for automated
    daily runs — requires real LLM keys (so the automated run has
    something meaningful to curate) and the user's explicit go-ahead.
-4. Blocked fast-follow: connect a real Vercel deployment — requires the
+3. Blocked fast-follow: connect a real Vercel deployment — requires the
    user's explicit go-ahead.
-5. Add an automated content-collection integration test and an `astro
-   build` e2e smoke test to CI (currently `codebase_map.md` lists both as
-   planned but not yet written).
+4. Consider a third source (GitHub), matching `tech.md`'s Hold entry,
+   once arXiv has proven the multi-source pattern for a while.
 
 ## Risks & Blockers
 
@@ -127,7 +130,8 @@ silently dropped.
   a documented design requirement, not implemented and verified code.
   Watch for this being skipped or under-scoped when that fast-follow
   actually starts.
-- **Risk:** HN-only ingestion means the digest's "interest" signal is
-  entirely driven by HN's own points/comment-count dynamics today — this
-  is an accepted, documented limitation of a single-source walking
-  skeleton, not a hidden gap.
+- **Risk:** arXiv's placeholder score is weaker than HN's by design
+  (recency only, capped at [3,8] vs. HN's full 0-10 range) — arXiv items
+  will systematically rank below comparable HN items until real LLM
+  scoring replaces both. Documented in `decisions.md` ADR 0002, not a
+  hidden gap.

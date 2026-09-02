@@ -23,11 +23,11 @@ There are no Anthropic/OpenAI (or any other model provider's) API keys in this e
 
 ### Never fabricate HN data
 
-The fetch step (`scripts/pipeline.ts` calling the HN Algolia API) must always be real and live. Do not add a hardcoded fallback list of "example stories" for when the fetch fails, for local development convenience, or to make the site "look populated" during a demo. A failed fetch should fail loudly, not degrade into fabricated content — see `SOUL.md`'s non-negotiables. Test fixtures for Vitest are fine and expected; they must never leak into `scripts/pipeline.ts`'s actual runtime path.
+The fetch step (`scripts/pipeline.ts` calling the HN Algolia API and, as of the arXiv fast-follow, the arXiv Atom API) must always be real and live. Do not add a hardcoded fallback list of "example stories" for when the fetch fails, for local development convenience, or to make the site "look populated" during a demo. A failed fetch should fail loudly, not degrade into fabricated content — see `SOUL.md`'s non-negotiables. Test fixtures for Vitest are fine and expected; they must never leak into `scripts/pipeline.ts`'s actual runtime path.
 
 ### Scope discipline
 
-- This is a walking skeleton (single-source HN, placeholder curation, static site, no cron, no deploy). Do not scaffold arXiv fetching, real LLM calls, a `/stats` cost-transparency page, the `schedule:` cron trigger, or real Vercel deployment ahead of schedule — see `Context.md`'s roadmap for sequencing. Building these early is scope creep against an explicitly staged plan, not helpfulness.
+- HN and arXiv sourcing are both real and shipped; placeholder curation, static-site rendering, no cron, no deploy remain the current shape. Do not scaffold real LLM calls, a `/stats` cost-transparency page, the `schedule:` cron trigger, real Vercel deployment, or a third source (GitHub) ahead of schedule — see `Context.md`'s roadmap for sequencing. Building these early is scope creep against an explicitly staged plan, not helpfulness.
 - Do not add a CSS framework (Bulma, Sass, Tailwind, etc.) without being asked — minimal inline CSS is a deliberate, deferred-polish decision, not an oversight.
 - Do not swap the Chart.js `<script type="module">` island for a React/Vue component or add a UI framework dependency to render one chart.
 - Do not create new top-level docs (README variants, extra planning files) unless explicitly asked — this repo's doc set is `AGENTS.md`, `CLAUDE.md`, `SOUL.md`, and `Context.md`, plus whatever `../Not-Humans-Lab/` covers by reference.

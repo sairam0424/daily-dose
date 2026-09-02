@@ -42,6 +42,7 @@ getting its own ADR file.
 | ID   | Title                                                                      | Status   | Date       | Supersedes |
 | ---- | ----------------------------------------------------------------------------- | -------- | ---------- | ---------- |
 | 0001 | [Adopt Astro static with placeholder-scoring pipeline](docs/adr/0001-adopt-astro-static-with-placeholder-scoring-pipeline.md) | Accepted | 2026-09-02 | —          |
+| 0002 | [Add arXiv as a second source, with recency-only placeholder scoring](docs/adr/0002-add-arxiv-as-a-second-source-with-recency-only-scoring.md) | Accepted | 2026-09-02 | —          |
 
 ## Lightweight Decisions Log
 
@@ -56,3 +57,4 @@ getting its own ADR file.
 | 2026-09-02 | The Chart.js island is a plain `<script type="module">` importing `"chart.js/auto"` — no React, no Vue, no other UI framework. | A single bar chart does not need a component framework; Astro's zero-JS-by-default model means adding React/Vue just for one chart would be unjustified weight. | @sairamugge |
 | 2026-09-02 | CI runs on `workflow_dispatch` (manual trigger) plus push/PR only; the `schedule:` cron trigger is explicitly not enabled in this phase. | Automating a daily run before real LLM curation exists would just automate publishing placeholder-scored digests unattended — cron is gated on real LLM keys existing and the user's explicit go-ahead, not a technical limitation. | @sairamugge |
 | 2026-09-02 | No real Vercel deployment is connected in this phase. | Requires the user's explicit go-ahead per this project's constraints; the walking skeleton's exit criterion is a green local/CI build, not a live URL. | @sairamugge |
+| 2026-09-02 | arXiv added as a second live source, scored by a separate recency-only placeholder capped below HN's range. | See ADR 0002 for full context — promoted to full ADR weight since it changes the ingestion source set and introduces a new dependency (`fast-xml-parser`). | @sairamugge |

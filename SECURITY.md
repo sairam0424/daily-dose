@@ -105,10 +105,10 @@ reporter asks to remain anonymous.
 - Hacker News' own Algolia API's correctness, availability, or rate
   limiting — report upstream to HN/Algolia, not here. This repo only
   tracks how it consumes that API.
-- arXiv ingestion — **does not exist yet** in this walking skeleton
-  (single-source, HN-only, is an explicit, documented fast-follow; see
-  `status.md`). There is nothing to report against a source that isn't
-  wired in.
+- arXiv's own Atom API's correctness, availability, or rate limiting —
+  report upstream to arXiv, not here. arXiv ingestion (`fetchArxivPapers()`
+  in `scripts/pipeline.ts`) is now real and in scope for how THIS repo
+  consumes that API (parsing, validation, filesystem-safe ID sanitization).
 - Real LLM-based curation/scoring — **does not exist yet.** No
   Anthropic/OpenAI API keys are present in this environment, and no code
   path attempts a live model call. See "Known Security Considerations"

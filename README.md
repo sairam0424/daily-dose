@@ -49,14 +49,17 @@ writing:
 
 - **No real LLM curation yet.** The "curation" step that assigns each
   story's `interest_score` and `why_read` text is a deterministic,
-  clearly-labeled **placeholder** function derived from real, already-fetched
-  Hacker News fields (points, comment count, title) — there is no live call
-  to Anthropic, OpenAI, or any other LLM API. No API keys for those services
+  clearly-labeled **placeholder** for both sources — derived from real,
+  already-fetched Hacker News fields (points, comment count, title) for HN
+  items, and from recency alone for arXiv items (capped below HN's range,
+  since arXiv exposes no engagement signal) — there is no live call to
+  Anthropic, OpenAI, or any other LLM API. No API keys for those services
   exist in this project's environment yet. This is the single biggest
   deferred item, and it is documented in the code, not hidden.
-- **Single-source only.** Only Hacker News is fetched today. arXiv is an
-  explicitly deferred fast-follow — the pipeline is source-agnostic enough to
-  add it, but it hasn't been wired up yet.
+- **Two sources today (Hacker News + arXiv); GitHub is the remaining
+  deferred fast-follow.** The pipeline runs both sources by default
+  (`--sources hn,arxiv`) — the schema already models a third (`source:
+  "github"`) but it hasn't been wired up yet.
 - **No automated daily cron yet.** The GitHub Actions workflow
   (`.github/workflows/ci.yml`) only runs on manual `workflow_dispatch` and on
   push/PR to `main`. There is no `schedule:` trigger — turning on a real daily

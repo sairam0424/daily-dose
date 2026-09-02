@@ -30,7 +30,7 @@ The shared schema is the load-bearing contract between the two runtimes — see 
 
 - **Astro static output, not SSR** — this is a content site with no need for a live server at this phase; static generation is simpler to reason about and to deploy later.
 - **One schema, two enforcement points (`digestSchema.ts`)** — guarantees the pipeline can never write something the site can't validate, and vice versa, without maintaining two schemas by hand.
-- **HN only, arXiv deferred** — a two-source pipeline is real, wanted scope, but shipping a working one-source skeleton first is the small-and-finishable move; see `../Not-Humans-Lab/SOUL.md`'s "small and finishable over big and impressive."
+- **HN first, arXiv as a fast-follow (now shipped)** — shipping a working one-source skeleton before adding a second, differently-shaped source (Atom/XML, no engagement signal) was the small-and-finishable move; see `../Not-Humans-Lab/SOUL.md`'s "small and finishable over big and impressive." arXiv landed via `fetchArxivPapers()` + `scoreArxivPlaceholder()`, both fetching/scoring for real — see `decisions.md`'s ADR 0002.
 - **Placeholder curation instead of a real LLM call** — no Anthropic/OpenAI keys exist in this environment; attempting a real call would either fail outright or silently no-op while looking like it worked, which is worse than an honest, clearly-labeled heuristic. See `SOUL.md`'s AI-transparency non-negotiable for why this is never dressed up as real editorial judgment.
 - **No Bulma/Sass, minimal inline CSS** — visual polish is a deliberate fast-follow, matching nh-deck's precedent of shipping the working core before styling it.
 - **CI on `workflow_dispatch` + `push`/`pull_request`, no `schedule:` cron** — automated daily runs need real LLM keys (to be worth the automation) and the user's explicit go-ahead (neither exists yet); enabling cron now would just run the placeholder on a schedule for no added reader value.
@@ -41,16 +41,17 @@ The shared schema is the load-bearing contract between the two runtimes — see 
 
 In order — do not build out of sequence:
 
-1. **Wire real LLM scoring once Anthropic/OpenAI API keys are actually available.** Replace `src/lib/curation.ts`'s placeholder with a real model call, behind `CLAUDE.md`'s plan-mode gate — this is the single biggest deferred item in the project and the reason the placeholder is documented as loudly as it is.
-2. **Add arXiv as a second source.** Single-source (HN-only) is a documented gap, not a silent one; this is the next scope expansion once the one-source pipeline is solid.
-3. **Enable the `schedule:` cron trigger for automated daily runs.** Only with the user's explicit go-ahead, and only once step 1 has shipped — running the placeholder heuristic on an automated schedule adds no real value over the current manual `workflow_dispatch` trigger.
-4. **Enable real Vercel deployment.** Only with the user's explicit go-ahead — independent of steps 1-3, but sequenced after the skeleton is otherwise solid.
-5. **Add a public `/stats` cost-transparency page.** Only once real LLM costs actually exist to report — there is nothing honest to show on this page until step 1 ships; building it earlier would just be an empty gesture.
+1. ~~Add arXiv as a second source.~~ Done — `fetchArxivPapers()` + `scoreArxivPlaceholder()` both ship and run for real by default (`--sources hn,arxiv`).
+2. **Wire real LLM scoring once Anthropic/OpenAI API keys are actually available.** Replace `src/lib/curation.ts`'s placeholders (both the HN and arXiv ones) with real model calls, behind `CLAUDE.md`'s plan-mode gate — this is now the single biggest deferred item in the project.
+3. **Enable the `schedule:` cron trigger for automated daily runs.** Only with the user's explicit go-ahead, and only once step 2 has shipped — running the placeholder heuristics on an automated schedule adds no real value over the current manual `workflow_dispatch` trigger.
+4. **Enable real Vercel deployment.** Only with the user's explicit go-ahead — independent of steps 2-3, but sequenced after the skeleton is otherwise solid.
+5. **Add a public `/stats` cost-transparency page.** Only once real LLM costs actually exist to report — there is nothing honest to show on this page until step 2 ships; building it earlier would just be an empty gesture.
+6. Consider a third source (GitHub), matching the original `tech.md` Hold entry, once arXiv has proven the multi-source pattern for a while.
 
 ## Open risks
 
 - **The placeholder curation heuristic has never been validated against real editorial judgment.** Its rankings (derived purely from `points`/`num_comments`) may not resemble what a human or a real model would actually flag as interesting — this is expected and disclosed, not a hidden defect, but it means the current digest's "interest" ordering should not be over-trusted.
-- **Single-source (HN only) means the digest currently undersells its own scope** relative to the "arXiv + Hacker News" framing in this project's own overview — this is intentional and sequenced (see Roadmap #2), not an oversight, but it is a real gap until arXiv lands.
+- **arXiv's placeholder scoring is a weaker signal than HN's** by design (recency only, capped at [3,8], never reaching HN's 9-10 range) — this is documented and intentional (see `decisions.md`'s ADR 0002), not a bug, but it means arXiv items will systematically rank below comparable HN items until real LLM scoring replaces both placeholders.
 - **No cron and no deployment means "daily" is currently aspirational, not operational.** Every digest so far is the product of a manually-triggered `workflow_dispatch` run, not an actual daily cadence.
 - **`content.config.ts` and `scripts/pipeline.ts` both depend on `digestSchema.ts` staying in sync by construction** (both import the same file), but this has not yet been exercised against a real schema-breaking change — the "zero drift" guarantee is a design intent, not yet a proven one.
 
