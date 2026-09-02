@@ -9,7 +9,7 @@ daily-dose is a daily AI-curated technical digest (arXiv + Hacker News) — the 
 daily-dose is one of three independent sibling projects (daily-dose, nh-deck, nh-skills) under the **Not-Humans-Lab** umbrella. Not-Humans-Lab (`../Not-Humans-Lab/`) is a docs-only meta-repo holding cross-cutting system-level decisions (license, branch strategy, testing skeleton). This repo is its own standalone GitHub repository — not nested inside Not-Humans-Lab — and is the source of truth for everything specific to daily-dose. Cross-cutting conventions are linked by relative path, never duplicated:
 
 - License rationale: `../Not-Humans-Lab/decisions.md`
-- Branch/commit/PR template: `../Not-Humans-Lab/Branches.md`
+- Branch/commit/PR template: `Branches.md` (copied verbatim from Not-Humans-Lab; canonical source is `../Not-Humans-Lab/Branches.md`)
 - Testing skeleton: `../Not-Humans-Lab/TESTING.md`
 - System architecture (C4 Level 1): `../Not-Humans-Lab/architecture.md`
 
@@ -88,13 +88,13 @@ daily-dose/
 
 ## Commit & PR Conventions
 
-Same template as every sibling project in this suite — see `../Not-Humans-Lab/Branches.md` for the full canonical version (Conventional Commits, trunk-based/GitHub Flow, squash-merge only, PR required even for solo work). Summary:
+Same template as every sibling project in this suite — see this repo's own `Branches.md` (Conventional Commits, trunk-based/GitHub Flow, squash-merge only, PR required even for solo work), copied verbatim from `../Not-Humans-Lab/Branches.md` since each repo is independent and cannot rely on a cross-repo relative path surviving a standalone clone. Summary:
 
 - Branch naming: `type/scope-slug` (e.g. `feat/pipeline-hn-fetch`, `fix/digest-schema-validation`).
 - Commits: [Conventional Commits](https://www.conventionalcommits.org) — required, drives changelog/versioning.
 - Every change goes through a PR, even solo. CI (`npm run build && npm test`) must pass before merge.
 - Squash-merge only; the squash commit message must itself be a valid Conventional Commit.
-- daily-dose is a deployed content site, not a published package — per `../Not-Humans-Lab/Branches.md`, a merge to `main` is expected to eventually trigger a deploy (not an `npm publish`), and version tags can be date-based rather than strict semver. No deploy is wired up yet — see Gotchas.
+- daily-dose is a deployed content site, not a published package — per this repo's own `Branches.md`, a merge to `main` is expected to eventually trigger a deploy (not an `npm publish`), and version tags can be date-based rather than strict semver. No deploy is wired up yet — see Gotchas.
 
 ## Security Notes
 
