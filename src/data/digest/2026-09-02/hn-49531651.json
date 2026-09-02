@@ -4,11 +4,11 @@
   "url": "https://arxiv.org/abs/2608.29530",
   "date": "2026-09-02",
   "tags": [],
-  "interest_score": 10,
-  "why_read": "Currently at 232 points and 80 comments on Hacker News — deterministic placeholder score derived from those two real, fetched values (not an LLM summary).",
+  "interest_score": 7,
+  "why_read": "Investigating whether neural networks develop emergent symbolic structure is a substantive open question in ML theory, and a serious treatment could genuinely inform how we understand generalization and representation in deep models.",
   "authors": [
     "schmuhblaster"
   ],
   "hn_id": 49531651,
-  "points": 232
+  "points": 248
 }

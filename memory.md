@@ -30,13 +30,7 @@ Keep this index short — it is a table of contents, not the content.
 
 ## Entries
 
-_(none yet — this project has no session history to record. The first entry
-should be added the first time a real lesson, correction, or decision worth
-persisting across sessions occurs, not invented ahead of time. The single
-most likely first entry: the point at which real Anthropic/OpenAI API keys
-become available and the placeholder curation step in `scripts/pipeline.ts`
-is replaced with a live LLM call — that transition, and everything it
-changes about `TESTING.md`'s Non-Determinism Policy, belongs here.)_
+- [Real LLM curation shipped via AWS Bedrock](real-llm-curation-shipped.md) — placeholder curation replaced with a real, default-path Bedrock call; two real bugs found and fixed along the way. (project, 2026-09-02)
 
 ## Cross-references
 

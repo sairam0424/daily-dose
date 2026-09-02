@@ -6,20 +6,22 @@ This addendum is Claude-specific behavior only, on top of the shared instruction
 
 ### Plan mode before touching the publish path
 
-**Before touching anything in the publish/pipeline-writing path — the code that actually writes a new dated digest file — enter plan mode first.** This is the one path in daily-dose with real, eventual recurring cost implications: it is where a live LLM call will eventually get wired in once API keys exist, and it is the only code in this repo that produces the artifacts (`src/data/digest/YYYY-MM-DD/*.json`, one file per story) readers actually see. Changes here deserve more deliberation than a routine edit, even though no real cost exists yet.
+**Before touching anything in the publish/pipeline-writing path — the code that actually writes a new dated digest file — enter plan mode first.** This is the one path in daily-dose with real, ongoing recurring cost implications: it makes a real, paid AWS Bedrock LLM call (see ADR 0003), and it is the only code in this repo that produces the artifacts (`src/data/digest/YYYY-MM-DD/*.json`, one file per item) readers actually see. Changes here deserve more deliberation than a routine edit.
 
 The publish path is, non-exhaustively:
 
 - `scripts/pipeline.ts` — the entry point that fetches, curates, validates, and writes.
-- `src/lib/curation.ts` — the placeholder scoring/`why_read` logic. This is the exact file that will one day contain a real LLM call, so treat every edit to it as a rehearsal for that future change, not just a tweak to a heuristic.
+- `src/lib/llmCuration.ts` — the real AWS Bedrock LLM scoring call (the default path as of ADR 0003). Any change here can change real cost, real prompt content sent to a model, or the forced-tool-use response contract — treat every edit with the weight of a real, live integration, not a heuristic tweak.
+- `src/lib/curation.ts` — the placeholder scoring/`why_read` logic, now a fallback for missing credentials or a per-item response gap. Still load-bearing (it's what local dev without secrets actually runs), so still deserves care.
+- `src/lib/costTracking.ts` — the real cost computation + anomaly-check logic. A bug here could mask a real cost problem or produce false alarms.
 - `src/lib/digestSchema.ts` — the Zod schema. Changing it changes what both the pipeline is allowed to write and what the site is allowed to read; a careless change here can silently break the "one schema, two enforcement points" guarantee `AGENTS.md` describes.
-- Any new code that calls the HN Algolia API, or that would call any external API on daily-dose's behalf.
+- Any new code that calls the HN Algolia API, the arXiv API, AWS Bedrock, or any other external API on daily-dose's behalf.
 
 Plan mode here means: before editing, write out (in plan mode) what will change, why, and how it will be verified — do not jump straight to an edit on these files the way you might for, say, a CSS tweak in `src/pages/index.astro`. This is a lighter-weight version of nh-deck's stop-and-ask gate: nh-deck stops for permission because a network dependency would violate a non-negotiable; daily-dose plans first because this path is where cost, trust, and reader-facing honesty all meet at once.
 
-### Never write a real LLM API call, even "just to test"
+### Real LLM calls are live — treat every change here as touching production spend
 
-There are no Anthropic/OpenAI (or any other model provider's) API keys in this environment. Do not write code — in `src/lib/curation.ts`, `scripts/pipeline.ts`, a test, or anywhere else — that attempts a real LLM API call. It will either fail with an auth error, or (worse) silently no-op in a way that looks like it worked, which is exactly the failure mode `AGENTS.md` calls out as the reason this is a hard constraint, not a preference. If a task seems to require wiring in real curation, stop and confirm with the user that keys now exist before writing any call — do not simulate, mock in production code, or "temporarily" hardcode a response to make a feature look done.
+As of 2026-09-02 (ADR 0003), `src/lib/llmCuration.ts` makes a real, paid AWS Bedrock call on every `npm run pipeline` invocation with credentials configured — this is no longer a hypothetical future change to guard against, it is the actual default path. Do not write a *second*, ad hoc LLM call anywhere else (a test "just to check," a debug script, a different file) — all real model calls go through `llmCuration.ts`'s existing `scoreItemsWithLLM()`, so cost tracking and the prompt-injection mitigation stay centralized. Automated tests (`tests/`) must always mock the SDK — never make a real call from a test. If a task seems to require a new kind of real LLM call (a different prompt shape, a new model, a different provider), stop and confirm with the user first, the same way the original wiring-in of real curation was confirmed via `AskUserQuestion` before any real call was made.
 
 ### Never fabricate HN data
 
@@ -27,7 +29,7 @@ The fetch step (`scripts/pipeline.ts` calling the HN Algolia API and, as of the 
 
 ### Scope discipline
 
-- HN and arXiv sourcing are both real and shipped; placeholder curation, static-site rendering, no cron, no deploy remain the current shape. Do not scaffold real LLM calls, a `/stats` cost-transparency page, the `schedule:` cron trigger, real Vercel deployment, or a third source (GitHub) ahead of schedule — see `Context.md`'s roadmap for sequencing. Building these early is scope creep against an explicitly staged plan, not helpfulness.
+- HN and arXiv sourcing, real LLM curation (ADR 0003), and static-site rendering are all real and shipped; no cron, no deploy remain the current shape. Do not scaffold a `/stats` cost-transparency page, the `schedule:` cron trigger, real Vercel deployment, or a third source (GitHub) ahead of schedule — see `Context.md`'s roadmap for sequencing. Building these early is scope creep against an explicitly staged plan, not helpfulness.
 - Do not add a CSS framework (Bulma, Sass, Tailwind, etc.) without being asked — minimal inline CSS is a deliberate, deferred-polish decision, not an oversight.
 - Do not swap the Chart.js `<script type="module">` island for a React/Vue component or add a UI framework dependency to render one chart.
 - Do not create new top-level docs (README variants, extra planning files) unless explicitly asked — this repo's doc set is `AGENTS.md`, `CLAUDE.md`, `SOUL.md`, and `Context.md`, plus whatever `../Not-Humans-Lab/` covers by reference.

@@ -7,8 +7,8 @@
     "cs.CL",
     "cs.AI"
   ],
-  "interest_score": 7.4,
-  "why_read": "Submitted to arXiv on 2026-09-01 under cs.CL, cs.AI — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "interest_score": 5,
+  "why_read": "The VRL survey offers a tidy taxonomy of how natural language is used as feedback in agent training, but it reads as a conceptual organization paper rather than introducing new techniques or empirical insights.",
   "authors": [
     "Kshitij Tayal",
     "Arun Sharma",

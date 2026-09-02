@@ -15,12 +15,12 @@ daily-dose is one of three independent sibling projects (daily-dose, nh-deck, nh
 
 nh-deck (`../nh-deck/`) and nh-skills (`../nh-skills/`) already completed their own Phase 1-4, fully working, tested, and shipped through real CI — useful as precedent for house documentation style/conventions (the `AGENTS.md`/`CLAUDE.md`/`SOUL.md`/`Context.md` pattern, linking to `../Not-Humans-Lab/` by relative path, etc.), but daily-dose's product shape — a content site backed by a data pipeline, not a CLI or a skills library — is fundamentally different. Do not copy their architecture, only their documentation conventions.
 
-## The No-Fake-Data, No-Fake-LLM Constraint (read this first)
+## The No-Fake-Data Constraint (read this first)
 
 Two rules protect this project's honesty, and both are load-bearing, not stylistic:
 
-1. **The fetch is real.** `scripts/pipeline.ts` calls Hacker News' free, keyless Algolia API (`https://hn.algolia.com/api/v1/search?tags=front_page`, or an equivalent front-page/story endpoint) live, every run. It never hardcodes or fabricates HN data as a fallback — if the fetch fails, the pipeline fails loudly, it does not quietly substitute made-up stories.
-2. **The curation is an honest placeholder, not a real LLM call.** There are no Anthropic/OpenAI API keys in this environment. Code in this repo must never attempt a real LLM API call — it would either fail outright or, worse, silently no-op while looking like it worked. The "curation" step (`src/lib/curation.ts`) computes a deterministic `interest_score` and writes a `why_read` string using only real, already-fetched HN fields (`points`, `num_comments`, `title`). This is documented everywhere it's visible as a placeholder, never presented as genuine editorial or model judgment. See `SOUL.md` for the full rationale and `CLAUDE.md` for the review gate that protects this path.
+1. **The fetch is real.** `scripts/pipeline.ts` calls Hacker News' free, keyless Algolia API (`https://hn.algolia.com/api/v1/search?tags=front_page`, or an equivalent front-page/story endpoint) and arXiv's Atom API live, every run. It never hardcodes or fabricates data as a fallback — if a fetch fails, the pipeline fails loudly, it does not quietly substitute made-up stories/papers.
+2. **The curation is a real LLM call, with an honest placeholder as an explicit fallback — never a silent fake.** As of 2026-09-02 (`decisions.md`/ADR 0003), a real AWS Bedrock credential exists in this environment, and `src/lib/llmCuration.ts` scores every fetched item in one real Bedrock call per pipeline run by default. The original deterministic placeholder (`src/lib/curation.ts`, computing `interest_score`/`why_read` from real, already-fetched fields only) still exists and is used — with a loud `console.warn`, never silently — only when Bedrock credentials aren't configured (e.g. local dev) or the LLM's response omits a specific item's score. Never present the placeholder's output as if it were genuine model judgment, and never let a real-LLM code path silently no-op and fall back without logging it. See `SOUL.md` for the full rationale, `CLAUDE.md` for the review gate that protects this path, and ADR 0003 for the full technical design.
 
 ## Setup
 
@@ -34,9 +34,9 @@ Requires Node.js LTS 20 or 22+ (the pipeline script runs via `tsx`, which needs 
 
 - **Dev server**: `npm run dev` — runs `astro dev`, serving the site locally with live reload.
 - **Build**: `npm run build` — runs `astro build` (static output, `output: "static"` in `astro.config.mjs`).
-- **Pipeline**: `npm run pipeline` — runs `scripts/pipeline.ts` via `tsx`. Fetches real, live Hacker News front-page data from the Algolia API, runs the placeholder curation step, validates the result against `src/lib/digestSchema.ts`, and writes one file per story into a dated `src/data/digest/YYYY-MM-DD/` folder (Astro's `glob()` content loader requires one schema-matching object per file, not an array). This is the one command in this repo with a real, eventual recurring cost profile once LLM calls are wired in — see `CLAUDE.md`.
-- **Test**: `npm test` — runs the Vitest suite.
-- **CI**: GitHub Actions runs build + test on `workflow_dispatch` (manual trigger) plus `push`/`pull_request`. The `schedule:` cron trigger for automated daily runs is **explicitly not enabled** in this phase — it requires real LLM API keys (which don't exist yet) and the user's explicit go-ahead. Real Vercel deployment is likewise not yet enabled, for the same reason (explicit go-ahead required). See `Context.md`'s roadmap.
+- **Pipeline**: `npm run pipeline` — runs `scripts/pipeline.ts` via `tsx`. Fetches real, live Hacker News + arXiv data, scores every item via a real AWS Bedrock LLM call by default (`src/lib/llmCuration.ts`, falling back to the placeholder only without credentials or on a per-item gap), validates the result against `src/lib/digestSchema.ts`, and writes one file per item into a dated `src/data/digest/YYYY-MM-DD/` folder (Astro's `glob()` content loader requires one schema-matching object per file, not an array). This is the one command in this repo with a real recurring cost profile (a few cents/run) — see `CLAUDE.md`.
+- **Test**: `npm test` — runs the Vitest suite (the Bedrock SDK is fully mocked; no automated test makes a real network call).
+- **CI**: GitHub Actions runs build + test on `workflow_dispatch` (manual trigger) plus `push`/`pull_request`. The `schedule:` cron trigger for automated daily runs is **explicitly not enabled** in this phase — real LLM curation now exists, so this is gated solely on the user's explicit go-ahead. Real Vercel deployment is likewise not yet enabled, for the same reason. See `Context.md`'s roadmap.
 
 ## Code Style
 
@@ -68,10 +68,16 @@ daily-dose/
     lib/
       digestSchema.ts           — Zod schema; single source of truth shared by content.config.ts
                                   AND scripts/pipeline.ts
-      curation.ts                — PLACEHOLDER interest_score + why_read logic (defines
+      llmCuration.ts             — REAL AWS Bedrock LLM scoring (default path as of ADR 0003):
+                                    one forced-tool-use batched call per run, Sonnet→Opus→Haiku
+                                    fallback chain, Zod-validated response.
+      costTracking.ts            — real per-run cost computation + rolling-average anomaly check,
+                                    appended to src/data/stats.jsonl.
+      curation.ts                — FALLBACK-ONLY interest_score + why_read logic (defines
                                     scoreStoryPlaceholder, imported by scripts/pipeline.ts),
                                     derived only from real fetched fields (points, num_comments,
-                                    title) — not a real LLM call. See Known Gotchas.
+                                    title) — used only without Bedrock credentials or on a
+                                    per-item LLM response gap. See Known Gotchas.
     pages/
       index.astro                  — renders the latest committed digest + the Chart.js island
                                       inline (a <script type="module"> block, no separate
@@ -99,14 +105,14 @@ Same template as every sibling project in this suite — see this repo's own `Br
 ## Security Notes
 
 - License: Apache-2.0 (decided once at the Not-Humans-Lab system level, applied identically across daily-dose/nh-deck/nh-skills — see `../Not-Humans-Lab/decisions.md`).
-- **No Anthropic/OpenAI (or any other LLM) API keys exist in this environment.** Never write code that attempts a real LLM API call — it would fail, or silently do nothing while looking like it works. When real keys are eventually added, they must come from environment variables (never hardcoded), verified at startup with a clear error message, per this workspace's global security rules.
-- The HN Algolia endpoint the pipeline calls is free and keyless — no secret to manage there. Never add a secret, key, or credential requirement to the pipeline's HN fetch step without a documented reason.
-- Never fabricate or hardcode fake HN data, in the pipeline or in tests-as-fixtures-that-leak-into-production-code. Tests may use fixture data; the pipeline itself must always hit the real API.
+- **A real AWS Bedrock credential exists in this environment** (`BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars, stored as GitHub Encrypted Secrets, shared with the sibling Anvilry project's production chatbot — see `SECURITY.md` and ADR 0003). Never hardcode these values. Any code that constructs an LLM client belongs only in `src/lib/llmCuration.ts` — do not scatter client construction across other files. Values may be base64-encoded at rest — decode before use (see `agent_learning.md`).
+- The HN Algolia and arXiv endpoints the pipeline calls are free and keyless — no secret to manage there. Never add a secret, key, or credential requirement to either fetch step without a documented reason.
+- Never fabricate or hardcode fake HN/arXiv data, in the pipeline or in tests-as-fixtures-that-leak-into-production-code. Tests may use fixture data; the pipeline itself must always hit the real API. Automated tests must mock the Bedrock SDK entirely — never make a real network call in `tests/`.
 - Validate all pipeline output against `digestSchema.ts` before writing — this is the boundary between "external data" and "trusted digest content" the site renders.
 
 ## Known Gotchas
 
-- **The curation step is a deliberate, clearly-commented placeholder — not a real editorial or LLM judgment.** `src/lib/curation.ts` computes `interest_score` and `why_read` deterministically from `points`/`num_comments`/`title`. This is the single biggest deferred item in this project, not a hidden shortcut. Do not present its output as if a model reviewed the story. When real LLM keys become available, this is exactly the file that changes — see `Context.md`'s roadmap and `CLAUDE.md`'s review gate.
-- **Single-source (Hacker News only) for now — arXiv is a documented fast-follow, not forgotten.** Do not silently add arXiv fetching as a side effect of an unrelated change; it's sequenced deliberately in `Context.md`'s roadmap.
-- **No `schedule:` cron and no live Vercel deployment in this phase.** Both require the user's explicit go-ahead, and the cron additionally requires real LLM keys to be worth anything (running the placeholder daily produces no new value). Do not enable either without asking first.
+- **The placeholder curation logic is now a fallback, not the default path.** `src/lib/curation.ts` computes `interest_score` and `why_read` deterministically from `points`/`num_comments`/`title` (HN) or recency (arXiv), and is only used when Bedrock credentials aren't configured or the LLM's response omits a specific item. `src/lib/llmCuration.ts` is the real default path — see `Context.md`'s roadmap and ADR 0003.
+- **Two sources (Hacker News + arXiv) ship for real; GitHub is a documented fast-follow, not forgotten.** Do not silently add GitHub fetching as a side effect of an unrelated change; it's sequenced deliberately in `Context.md`'s roadmap.
+- **No `schedule:` cron and no live Vercel deployment in this phase.** Both require the user's explicit go-ahead — real LLM curation now exists, so the cron is no longer additionally blocked on API keys. Do not enable either without asking first.
 - **One schema, two enforcement points is only as good as keeping them pointed at the same file.** If a future refactor moves or renames `digestSchema.ts`, update both `scripts/pipeline.ts` and `src/content.config.ts` in the same change — never let them drift.

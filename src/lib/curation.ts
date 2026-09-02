@@ -70,6 +70,12 @@ export interface RawArxivPaper {
   authors: string[];
   /** Category tags such as "cs.AI" or "cs.LG" */
   categories: string[];
+  /** The paper's actual abstract text, from the Atom feed's <summary> element.
+   * Real content, not fabricated — required for any genuine LLM judgment
+   * about whether a paper is worth reading (title + categories alone is too
+   * thin, which is exactly why the placeholder below can only ever use
+   * recency, not real judgment). */
+  summary: string;
 }
 
 /**

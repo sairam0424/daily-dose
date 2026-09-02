@@ -7,8 +7,8 @@
     "cs.CL",
     "cs.LG"
   ],
-  "interest_score": 7.4,
-  "why_read": "Submitted to arXiv on 2026-09-01 under cs.CL, cs.LG — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "interest_score": 8,
+  "why_read": "This paper uses mechanistic interpretability tools (causal tracing, logit-lens, attention knockout) to actually dissect how LLM judges assign scores, which is rare, rigorous work that could meaningfully inform trust in automated NLG evaluation pipelines.",
   "authors": [
     "Himil Vasava",
     "Ming Jiang"

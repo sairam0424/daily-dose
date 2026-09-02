@@ -38,12 +38,13 @@ convention precedent, never copied structurally.
    │  shipped)      │      │   shipped)            │      │  digest pipeline     │
    └───────────────┘      └─────────────────────┘      │  + static site       │
                                                         └──────────┬───────────┘
-                                                                   │ live HTTP GET
-                                                        ┌──────────▼───────────┐
-                                                        │  HN Algolia API        │
-                                                        │  (hn.algolia.com,      │
-                                                        │   free, keyless)       │
-                                                        └────────────────────────┘
+                                                    live HTTP GET  │  real Bedrock call
+                                          ┌─────────────────────┐ │ ┌──────────────────────┐
+                                          │ HN Algolia / arXiv    │◀┘▶│  AWS Bedrock           │
+                                          │ APIs (free, keyless)  │   │  (Sonnet→Opus→Haiku,   │
+                                          └───────────────────────┘   │   shared cred w/       │
+                                                                       │   Anvilry — ADR 0003)  │
+                                                                       └────────────────────────┘
 ```
 
 - **Not-Humans-Lab** (external actor): docs-only meta-repo holding
@@ -54,51 +55,65 @@ convention precedent, never copied structurally.
   `AGENTS.md`/`CLAUDE.md`/`SOUL.md`/`Context.md` pattern, linking to
   `../Not-Humans-Lab/` by relative path). Neither is a runtime dependency of
   daily-dose, and neither's architecture is copied here.
-- **Hacker News Algolia API** (external actor, and the *only* live network
-  dependency this system has): a free, keyless public API
-  (`hn.algolia.com/api/v1/search?tags=front_page`). daily-dose's pipeline
-  makes a real, live HTTP GET against it — this is the one genuinely real
-  integration in the whole system.
-- **Anthropic/OpenAI APIs** (explicitly **not** an actor in this phase): no
-  LLM API is called anywhere in this system yet. No keys exist in this
-  environment. Any future integration is a documented fast-follow, not part
-  of this architecture until it actually lands.
-- **In scope for daily-dose itself**: fetching live HN front-page data;
-  computing a deterministic, clearly-labeled placeholder
-  `interest_score`/`why_read` per item from real HN fields; validating each
-  item against a shared schema; writing one dated JSON file per pipeline
-  run; rendering that data as a static site with one chart.
-- **Out of scope for daily-dose itself**: any live LLM call, arXiv/GitHub
-  sourcing (schema-modeled, not yet implemented), scheduled/automated runs,
-  any real deployment target, and anything belonging to nh-deck, nh-skills,
-  or Not-Humans-Lab.
+- **Hacker News Algolia API + arXiv Atom API** (external actors): free,
+  keyless public APIs (`hn.algolia.com/api/v1/search?tags=front_page`,
+  `export.arxiv.org/api/query`). daily-dose's pipeline makes real, live HTTP
+  GETs against both.
+- **AWS Bedrock** (external actor, as of ADR 0003 — 2026-09-02): a real,
+  paid LLM API. `src/lib/llmCuration.ts` makes one forced-tool-use batched
+  call per pipeline run, using a credential shared with the sibling Anvilry
+  project's production chatbot. Model fallback chain: Claude Sonnet 4.6 →
+  Opus 4.6 → Haiku 4.5.
+- **In scope for daily-dose itself**: fetching live HN + arXiv data;
+  scoring each item via a real Bedrock LLM call, with a deterministic
+  placeholder `interest_score`/`why_read` fallback for missing credentials
+  or a per-item response gap; validating each item against a shared schema;
+  writing one dated JSON file per pipeline run; rendering that data as a
+  static site with one chart; tracking real per-run LLM cost.
+- **Out of scope for daily-dose itself**: GitHub sourcing (schema-modeled,
+  not yet implemented), scheduled/automated runs, any real deployment
+  target, and anything belonging to nh-deck, nh-skills, or Not-Humans-Lab.
 
 ## Building Block View
 
-Four real building blocks make up the walking skeleton:
+Six real building blocks make up the system:
 
 ```
 daily-dose/
 ├── src/lib/digestSchema.ts     Building block 1: the shared Zod schema
 │                                    — DigestItemSchema, exported once and
 │                                      imported by both building blocks 2
-│                                      and 3 below. The single source of
+│                                      and 4 below. The single source of
 │                                      truth for what a digest item is.
 │
-├── scripts/pipeline.ts          Building block 2: the pipeline script
-│                                    — fetch (live HN Algolia API) ->
-│                                      placeholder-score (deterministic,
-│                                      derived from points/num_comments/
-│                                      title) -> validate (DigestItemSchema)
-│                                      -> write one dated JSON file.
+├── src/lib/llmCuration.ts       Building block 2: real AWS Bedrock LLM
+│                                    scoring — one forced-tool-use batched
+│                                      call per run, Sonnet→Opus→Haiku
+│                                      fallback, Zod-validated response.
+│                                      The default scoring path (ADR 0003).
 │
-├── src/content.config.ts         Building block 3: the Astro Content
+├── src/lib/curation.ts           Building block 3: the deterministic
+│                                    placeholder scorer — now an explicit
+│                                      fallback used only without Bedrock
+│                                      credentials or on a per-item gap in
+│                                      building block 2's response.
+│
+├── scripts/pipeline.ts            Building block 4: the pipeline script
+│                                    — fetch (live HN Algolia + arXiv Atom
+│                                      APIs) -> score (building block 2,
+│                                      falling back to building block 3) ->
+│                                      validate (DigestItemSchema) -> write
+│                                      one dated JSON file per item, plus
+│                                      real per-run cost via
+│                                      src/lib/costTracking.ts.
+│
+├── src/content.config.ts           Building block 5: the Astro Content
 │                                    Collection config — glob loader reads
 │                                      src/data/digest/*.json, validates
 │                                      every entry against the SAME
 │                                      DigestItemSchema import.
 │
-└── src/pages/index.astro          Building block 4: the page — renders the
+└── src/pages/index.astro            Building block 6: the page — renders the
                                        latest digest's items plus one
                                        Chart.js bar-chart island of the
                                        day's interest_score values.
@@ -106,18 +121,27 @@ daily-dose/
 
 Relationships:
 
-- Building block 1 (the schema) has no dependency on the other three — it
+- Building block 1 (the schema) has no dependency on the other blocks — it
   is a pure Zod object, independently unit-testable and imported by, but
-  never importing from, building blocks 2 and 3.
-- Building block 2 (the pipeline) depends on building block 1 for
-  validation and on the live HN Algolia API for its input data. It is the
-  only building block that performs a real network call.
-- Building block 3 (the content collection config) depends on building
-  block 1 for validation and on building block 2's output on disk
+  never importing from, building blocks 4 and 5.
+- Building block 2 (real LLM scoring) depends on AWS Bedrock (external,
+  real network+auth) and is imported by building block 4. It never
+  imports building block 3, and building block 3 never imports it — the
+  pipeline script (building block 4) is the only place that chooses
+  between them.
+- Building block 3 (the placeholder fallback) has no network dependency —
+  pure, deterministic functions over already-fetched fields.
+- Building block 4 (the pipeline) depends on building block 1 for
+  validation, on building blocks 2 and 3 for scoring, and on the live HN
+  Algolia + arXiv APIs for its input data. It is the only building block
+  that performs real network calls (HN, arXiv, and — via building block 2 —
+  Bedrock).
+- Building block 5 (the content collection config) depends on building
+  block 1 for validation and on building block 4's output on disk
   (`src/data/digest/*.json`) — but has no direct code dependency on
-  building block 2 itself; it only reads what building block 2 already
+  building block 4 itself; it only reads what building block 4 already
   wrote and committed.
-- Building block 4 (the page) depends on building block 3's typed,
+- Building block 6 (the page) depends on building block 5's typed,
   validated collection entries — it never reads `src/data/digest/*.json`
   directly, and never calls the schema or the pipeline itself.
 
@@ -134,10 +158,14 @@ Relationships:
     free HTTP GET — the only network call in this flow)
               │
               ▼
- 3. For each returned story, compute a deterministic placeholder
-    interest_score and why_read string from real fields only
-    (points, num_comments, title) — clearly commented as a
-    stand-in for a future real LLM call, never a live model call
+ 3. If Bedrock credentials are configured (the default): score every
+    fetched item (HN + arXiv) in ONE real, forced-tool-use Bedrock
+    call (src/lib/llmCuration.ts) — Sonnet→Opus→Haiku fallback,
+    Zod-validated response, real per-run cost recorded via
+    src/lib/costTracking.ts. Otherwise (e.g. local dev without
+    credentials), or for any item the LLM's response omits: fall
+    back to the deterministic placeholder heuristic
+    (src/lib/curation.ts), always with a loud console warning
               │
               ▼
  4. Validate each resulting item against DigestItemSchema
@@ -171,11 +199,12 @@ Relationships:
  5. Astro emits a fully static site — no server runtime, no SSR
 ```
 
-**Explicitly, as of this phase: no live LLM call exists anywhere in either
-flow, no `schedule:` cron trigger is enabled (CI is `workflow_dispatch` +
+**As of 2026-09-02 (ADR 0003), Flow 1 makes a real, paid Bedrock LLM call by
+default.** No `schedule:` cron trigger is enabled (CI is `workflow_dispatch` +
 push/PR only), and no real deployment target (Vercel or otherwise) is
-connected.** All three are documented, deliberate deferrals — see `tech.md`'s
-Adoption status and Hold list.
+connected — both remain documented, deliberate deferrals pending the user's
+explicit go-ahead, no longer additionally blocked on API keys. See
+`tech.md`'s Adoption status and Hold list.
 
 ## Cross-references
 
@@ -185,8 +214,9 @@ Adoption status and Hold list.
 - This repo's literal file/directory tour lives in `codebase_map.md`
   alongside this file.
 - The technology choices underlying these building blocks, and the
-  rationale for the placeholder-scoring and no-cron/no-deploy deferrals, are
+  rationale for the real-LLM-as-default and no-cron/no-deploy deferrals, are
   documented in `tech.md`.
 - Test strategy for the two runtime flows above (schema/unit-testing the
-  placeholder scorer, integration-testing the pipeline against a mocked HN
-  response, e2e-testing `astro build`) is documented in `TESTING.md`.
+  placeholder scorer, mocked-Bedrock-call unit-testing `llmCuration.ts`,
+  integration-testing the pipeline against mocked HN/arXiv responses,
+  e2e-testing `astro build`) is documented in `TESTING.md`.

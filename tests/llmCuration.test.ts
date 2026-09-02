@@ -1,0 +1,217 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { NotFoundError } from "@anthropic-ai/sdk";
+
+// Mock @anthropic-ai/bedrock-sdk entirely - the automated suite must never
+// make a real network/LLM call. Only the manual `npm run pipeline` command
+// (or eventually a real cron) makes the real call, matching this project's
+// established non-determinism policy (see TESTING.md).
+const mockCreate = vi.fn();
+vi.mock("@anthropic-ai/bedrock-sdk", () => {
+  return {
+    AnthropicBedrock: vi.fn().mockImplementation(() => ({
+      messages: { create: mockCreate },
+    })),
+  };
+});
+
+// Imported AFTER the mock is registered, per Vitest's hoisting behavior for
+// vi.mock - dynamic import inside each test would also work, but a static
+// import here is fine since vi.mock calls are hoisted above imports.
+const {
+  scoreItemsWithLLM,
+  isLlmConfigured,
+  MODEL_CHAIN,
+  MAX_REASONABLE_ITEMS,
+} = await import("../src/lib/llmCuration.js");
+
+const ORIGINAL_ENV = { ...process.env };
+
+function toolUseResponse(
+  scores: Array<{ id: string; interest_score: number; why_read: string }>,
+) {
+  return {
+    content: [
+      {
+        type: "tool_use",
+        id: "toolu_123",
+        name: "record_scores",
+        input: { scores },
+      },
+    ],
+    stop_reason: "tool_use",
+    usage: { input_tokens: 120, output_tokens: 45 },
+  };
+}
+
+describe("isLlmConfigured", () => {
+  afterEach(() => {
+    process.env = { ...ORIGINAL_ENV };
+  });
+
+  it("is false when Bedrock credentials are not set", () => {
+    delete process.env.BEDROCK_ACCESS_KEY_ID;
+    delete process.env.BEDROCK_SECRET_ACCESS_KEY;
+    expect(isLlmConfigured()).toBe(false);
+  });
+
+  it("is true when both Bedrock credentials are set", () => {
+    process.env.BEDROCK_ACCESS_KEY_ID = "fake-key-id-for-test";
+    process.env.BEDROCK_SECRET_ACCESS_KEY = "fake-secret-for-test";
+    expect(isLlmConfigured()).toBe(true);
+  });
+});
+
+describe("scoreItemsWithLLM", () => {
+  beforeEach(() => {
+    process.env.BEDROCK_ACCESS_KEY_ID = "fake-key-id-for-test";
+    process.env.BEDROCK_SECRET_ACCESS_KEY = "fake-secret-for-test";
+    mockCreate.mockReset();
+  });
+
+  afterEach(() => {
+    process.env = { ...ORIGINAL_ENV };
+  });
+
+  it("returns an empty result immediately for zero items, without calling the client", async () => {
+    const outcome = await scoreItemsWithLLM([]);
+    expect(outcome.scores.size).toBe(0);
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
+
+  it("refuses to call the LLM at all when item count exceeds the sanity ceiling", async () => {
+    const tooMany = Array.from(
+      { length: MAX_REASONABLE_ITEMS + 1 },
+      (_, i) => ({
+        id: `hn-${i}`,
+        source: "hn" as const,
+        title: `Item ${i}`,
+      }),
+    );
+
+    await expect(scoreItemsWithLLM(tooMany)).rejects.toThrow(/sanity ceiling/i);
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
+
+  it("scores items via the primary model on a successful tool_use response", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 8,
+          why_read: "Genuinely substantive discussion.",
+        },
+        {
+          id: "arxiv-2501.00001",
+          interest_score: 6,
+          why_read: "Solid but incremental result.",
+        },
+      ]),
+    );
+
+    const outcome = await scoreItemsWithLLM([
+      {
+        id: "hn-1",
+        source: "hn",
+        title: "A real story",
+        points: 100,
+        numComments: 20,
+      },
+      {
+        id: "arxiv-2501.00001",
+        source: "arxiv",
+        title: "A real paper",
+        summary: "An abstract.",
+      },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[0]);
+    expect(outcome.inputTokens).toBe(120);
+    expect(outcome.outputTokens).toBe(45);
+    expect(outcome.scores.get("hn-1")).toEqual({
+      interest_score: 8,
+      why_read: "Genuinely substantive discussion.",
+    });
+    expect(outcome.scores.get("arxiv-2501.00001")?.interest_score).toBe(6);
+    expect(mockCreate).toHaveBeenCalledTimes(1);
+    // Forced single-tool structured output, no streaming, no thinking - the
+    // exact call shape the research recommended.
+    const callArgs = mockCreate.mock.calls[0]![0];
+    expect(callArgs.tool_choice).toEqual({
+      type: "tool",
+      name: "record_scores",
+    });
+    expect(callArgs.stream).toBeUndefined();
+    expect(callArgs.thinking).toBeUndefined();
+  });
+
+  it("falls back to the next model in the chain on NotFoundError from the primary model", async () => {
+    mockCreate
+      .mockRejectedValueOnce(
+        new NotFoundError(
+          404,
+          {},
+          "model not found",
+          new Headers(),
+          "not_found_error",
+        ),
+      )
+      .mockResolvedValueOnce(
+        toolUseResponse([{ id: "hn-1", interest_score: 5, why_read: "Fine." }]),
+      );
+
+    const outcome = await scoreItemsWithLLM([
+      {
+        id: "hn-1",
+        source: "hn",
+        title: "A real story",
+        points: 10,
+        numComments: 2,
+      },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError", async () => {
+    mockCreate.mockRejectedValueOnce(
+      new Error("some unexpected network failure"),
+    );
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow(/unexpected network failure/);
+    expect(mockCreate).toHaveBeenCalledTimes(1); // did not try further models for a non-fallback-eligible error
+  });
+
+  it("throws a clear error if the response has no tool_use block", async () => {
+    mockCreate.mockResolvedValue({
+      content: [{ type: "text", text: "I refuse to use the tool." }],
+      stop_reason: "end_turn",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow(/Expected a tool_use block/);
+  });
+
+  it("throws if the tool_use input fails Zod validation (the real safety net, not just the input_schema hint)", async () => {
+    mockCreate.mockResolvedValue({
+      content: [
+        {
+          type: "tool_use",
+          id: "toolu_bad",
+          name: "record_scores",
+          input: { scores: [{ id: "hn-1", interest_score: 55, why_read: "" }] }, // out of [0,10], empty why_read
+        },
+      ],
+      stop_reason: "tool_use",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow();
+  });
+});

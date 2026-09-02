@@ -1,0 +1,14 @@
+{
+  "title": "Mistral now trains on user input by default, except on enterprise tier",
+  "source": "hn",
+  "url": "https://help.mistral.ai/en/articles/455207-can-i-opt-out-of-my-input-or-output-data-being-used-for-training",
+  "date": "2026-09-02",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A default change to training on user data is directly relevant to any engineer choosing or deploying Mistral for sensitive workloads, making this a practical privacy/policy concern worth knowing about.",
+  "authors": [
+    "teekert"
+  ],
+  "hn_id": 49535284,
+  "points": 231
+}

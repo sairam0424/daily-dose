@@ -1,15 +1,41 @@
 # Telemetry & Cost Accounting Design
 
-> **This entire document is a design-ahead-of-implementation spec.**
-> **None of what follows is wired up today.** There is no real LLM API
-> call anywhere in this codebase — no Anthropic/OpenAI keys exist in this
-> environment (see `SECURITY.md`, `status.md`, `decisions.md`/ADR 0001).
-> Today's "curation" step is a deterministic placeholder function over
-> real HN fields (`points`, `num_comments`, title); it has no tokens, no
-> provider, and no cost to log. This document exists so that when real
-> LLM curation is eventually wired in, the logging/cost/dashboard/alerting
-> shape is already decided — not invented under deadline pressure at
-> integration time. Every section below describes a **future** system.
+> **Update (2026-09-02, ADR 0003): real LLM curation now exists**, and a
+> subset of what follows is genuinely wired up — see "What's actually
+> implemented today" immediately below. The rest of this document
+> (per-call structured logging, golden signals, dashboards, alerting, the
+> public `/stats` page) is **still a design-ahead-of-implementation spec**,
+> not yet built. Sections below are marked `[IMPLEMENTED]` or
+> `[NOT YET IMPLEMENTED]` inline so this file stays accurate rather than
+> reverting to "none of this exists" now that some of it does.
+
+## What's actually implemented today
+
+- **Per-run cost accounting**, in `src/lib/costTracking.ts`: real
+  `input_tokens`/`output_tokens` from the Bedrock response's own usage
+  metadata (never estimated), converted to `cost_usd` via a verified
+  per-model pricing table, appended as one JSON line per pipeline run to
+  `src/data/stats.jsonl` (`{date, model, inputTokens, outputTokens,
+  costUsd, itemCount, flaggedAnomalous}`).
+- **Anomaly detection, not a budget ceiling.** ADR 0003 deliberately chose
+  a rolling 7-day-average anomaly check over the fixed-dollar-ceiling
+  concept originally sketched below: a run is flagged (logged as a
+  `console.warn`, not blocked — the call has already completed by the
+  time cost is known) only if its cost exceeds 5x the trailing 7-day
+  average, once at least 3 days of history exist. See "Budget ceiling
+  concept" below for how this differs from the original design.
+- **A real pre-flight sanity ceiling** (`MAX_REASONABLE_ITEMS = 50` in
+  `src/lib/llmCuration.ts`) refuses to call the LLM at all if a bug ever
+  passes far more items than a normal day's ~10-item run — this is the
+  actual preventive safeguard; the anomaly check above can only warn
+  after a call already happened.
+- **Not yet implemented**: the structured per-call log record described in
+  "What We Log" below (today's logging is a `console.log` summary line
+  per run, not a structured per-call record with `pipeline_run_id`,
+  `latency_ms`, `outcome`, etc.), golden-signal tracking, the public
+  `/stats` page, dashboards, and alerting. These remain a
+  design-ahead-of-implementation spec — read on, but do not assume they
+  exist in code.
 
 ## Why Draft This Now
 
@@ -86,7 +112,16 @@ cron is enabled):
 - Count of non-`success` outcomes, for quick day-over-day error-rate
   comparison without recomputing from raw call logs.
 
-### Budget ceiling concept
+### Budget ceiling concept — superseded by the rolling-average anomaly check
+
+**This section describes the original design; ADR 0003 chose a different
+approach for the actual implementation** (a rolling 7-day-average anomaly
+check with no fixed dollar number — see "What's actually implemented
+today" above) because at this project's real volume (~10 items/day, one
+batched call/day) a fixed number is either too loose to mean anything or
+too tight to survive normal variance, and a single-call-per-day design has
+no multi-call runaway-loop risk for a hard ceiling to actually prevent.
+Kept below for historical context, not as the current design.
 
 A configurable **daily budget ceiling** (a `cost_usd` threshold) that the
 pipeline checks against before making further calls in a run:
@@ -126,10 +161,10 @@ to show:
   to be meaningful publicly) or raw per-call logs (which may contain
   redacted-but-still-sensitive metadata per the Security note above).
 
-This page cannot be built before real LLM calls exist — it would either
-be empty or, worse, tempt showing placeholder/fake numbers, which would
-violate the same no-fabricated-data principle that governs the scoring
-function itself (see `decisions.md`/ADR 0001).
+Real LLM calls now exist (`src/data/stats.jsonl` has genuine data as of
+ADR 0003), so this page is no longer blocked on "nothing honest to show" —
+it is a real, buildable fast-follow candidate now, just not yet built. See
+`status.md`'s Upcoming Milestones.
 
 ## Dashboards
 
