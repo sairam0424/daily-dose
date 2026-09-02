@@ -33,6 +33,24 @@ Full entries, root causes, and the standing rules now in force for both: see `..
 - **Scope**: this-project-only for now (only `daily-pipeline.yml` uses this action), but promote if any sibling project adopts the same action and hits the same gap.
 - **Status**: active — fixed in the same change, re-verified.
 
+### 2026-09-03 — `@astrojs/rss`'s `rss()` already entity-escapes the whole `content` string once; pre-escaping field values double-escapes them
+
+- **Trigger**: reviewing a dynamic-workflow-built RSS feed feature before shipping it (never trust agent self-report — verify the actual output).
+- **Observation**: `rss.xml.ts` built each item's `<content:encoded>` HTML by hand-escaping `title`/`source`/`why_read` with a local `escapeHtml()` (turning `&`/`<`/`>` into entities) before handing the composed string to `rss()`. The real output showed apostrophes rendered as `&apos;` even though `escapeHtml()` never touches apostrophes — a tell that `rss()` itself fully entity-escapes the entire `content` string during XML serialization. Confirmed directly by calling `rss()` with a raw, unescaped `&`/`<...>` string: it came back correctly single-escaped.
+- **Root cause**: assumed a "build raw HTML, hand it to the library" pattern meant the library would either trust it verbatim (CDATA) or need help escaping it — didn't verify which, and didn't test the actual installed version's behavior before writing the escaping code.
+- **Correction / Rule**: never pre-escape a value that will be embedded in a string subsequently escaped again by a downstream serializer — verify (with a real, minimal call) whether the library CDATA-wraps or entity-escapes `content`/`content:encoded` before writing any escaping code at all. This project's fix: moved the rendering into `src/lib/rssContent.ts`, which interpolates field values completely raw, trusting `rss()`'s own single-pass escaping.
+- **Scope**: this-project-only for now (only daily-dose has an RSS feature), but promote if any sibling project adds one and hits the same gap.
+- **Status**: active — fixed, with a regression test (`tests/rss-feed.test.ts`) that exercises the real `rss()` call against a synthetic title containing a literal `&` and asserts the output is never double-escaped.
+
+### 2026-09-03 — a module that imports `astro:content` can never be unit-tested directly from plain Vitest
+
+- **Trigger**: same RSS feature review — adding a regression test that imported `src/pages/rss.xml.ts` directly failed with `Cannot find package 'astro:content'`.
+- **Observation**: `astro:content` is a virtual module Astro's own dev/build pipeline resolves; plain Vitest (not run through Astro's Vitest container) cannot resolve it at all, so importing ANYTHING from a file with `import ... from "astro:content"` at module scope — even just to reach an unrelated exported function in that same file — fails immediately.
+- **Root cause**: exported the rendering function directly from `rss.xml.ts` instead of noticing this repo's own existing pattern: `tests/content-collection.test.ts`'s own precondition comment already documents replicating the glob loader's behavior at the filesystem level specifically to avoid this exact problem — the pattern existed, it just wasn't checked before writing new code that violated it.
+- **Correction / Rule**: any pure logic that a page/endpoint needs, if it's going to be unit-tested directly, must live in a module that never imports `astro:content` (or any other Astro virtual module) — pass in plain data (e.g. `DigestItem[]`, not `CollectionEntry<"digest">[]`) and let the `astro:content`-importing page/endpoint be the only place that bridges the two.
+- **Scope**: this-project-only, but the underlying rule ("virtual-module imports poison the whole file for plain-Vitest unit testing") is a real Astro-wide pattern worth remembering for `nh-deck`/`nh-skills` if either ever adopts Astro content collections.
+- **Status**: active — fixed via `src/lib/rssContent.ts`.
+
 ## Entry format
 
 - **Date**

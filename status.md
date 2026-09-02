@@ -3,12 +3,12 @@
 > Living snapshot. Update this file whenever phase, health, or active work
 > changes — do not let it go stale across a phase boundary.
 
-**Last updated:** 2026-09-02
+**Last updated:** 2026-09-03
 
 ## Overall Status
 
-**Phase:** 8 — Real LLM curation shipped via AWS Bedrock (ADR 0003)
-**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment live at https://daily-dose-hazel-delta.vercel.app
+**Phase:** 9 — Digest archive + RSS feed shipped; every original roadmap item is done
+**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment live at https://daily-dose-hazel-delta.vercel.app, readers can now browse history (`/archive/`) and subscribe (`/rss.xml`)
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -134,17 +134,27 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   never sees the Bedrock credential. Live at
   https://daily-dose-hazel-delta.vercel.app — verified serving real
   content on both `/` and `/stats`.
+- Shipped a digest archive/history feature and a real RSS feed
+  (2026-09-03, via a two-stage dynamic workflow — no new ADR, read-only
+  against already-committed content): `src/pages/archive/index.astro`
+  lists every distinct date; `src/pages/archive/[date].astro` renders one
+  static page per date with older/newer navigation; `src/pages/rss.xml.ts`
+  (`@astrojs/rss`) emits one real `<item>` per day, linking to the matching
+  archive page. Extracted `DigestList.astro`/`DigestChart.astro` shared
+  components and a `groupEntriesByDate()` helper so `index.astro`'s
+  behavior stayed identical while the archive reused the same rendering.
+  Found and fixed a real double-escaping bug during review before
+  shipping — `@astrojs/rss` already entity-escapes the whole feed content
+  once, so a local pre-escape step would have double-escaped any title
+  containing `&`/`<`/`>` — fixed with a dedicated regression test. See
+  `agent_learning.md` for the full root-cause writeup.
 
 ## Upcoming Milestones
 
-1. ~~Connect the Vercel project.~~ Done — live at
-   https://daily-dose-hazel-delta.vercel.app, git-integrated auto-deploy on
-   push to `main`.
-2. ~~Trigger `daily-pipeline.yml` once via `workflow_dispatch`.~~ Done —
-   confirmed a correctly-scoped real commit (see ADR 0004's Confirmation
-   section and `agent_learning.md`'s bot-author-identity entry).
-3. ~~Consider a third source (GitHub).~~ Done — see `decisions.md` ADR 0006.
-   All three documented sources (HN, arXiv, GitHub) now ship for real.
+Every item on the original roadmap (real LLM curation, cron, Vercel,
+`/stats`, a third source) and both real candidates raised afterward
+(digest archive, RSS feed) are now shipped. No open milestones are
+currently tracked — the next one is whatever gets decided next.
 
 ## Risks & Blockers
 

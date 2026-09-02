@@ -1,26 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import DigestChart from '../components/DigestChart.astro';
+import DigestList from '../components/DigestList.astro';
+import { groupEntriesByDate } from '../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
+const dateGroups = groupEntriesByDate(allEntries);
 
-// Sort by date descending, then by interest_score descending within the same date.
-const sorted = [...allEntries].sort((a, b) => {
-  if (a.data.date !== b.data.date) {
-    return a.data.date < b.data.date ? 1 : -1;
-  }
-  return b.data.interest_score - a.data.interest_score;
-});
-
-const latestDate = sorted.length > 0 ? sorted[0].data.date : null;
-
-const latestEntries: CollectionEntry<'digest'>[] = latestDate
-  ? sorted.filter((entry) => entry.data.date === latestDate)
-  : [];
+const latestGroup = dateGroups.length > 0 ? dateGroups[0] : null;
+const latestDate = latestGroup?.date ?? null;
+const latestEntries = latestGroup?.entries ?? [];
 
 const chartLabels = latestEntries.map((entry) => entry.data.title);
 const chartScores = latestEntries.map((entry) => entry.data.interest_score);
-const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores });
 ---
 
 <!doctype html>
@@ -29,10 +21,14 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>daily-dose</title>
+    <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
   </head>
   <body>
     <header class="masthead">
-      <nav class="site-nav"><a href="/stats">Cost &amp; stats &rarr;</a></nav>
+      <nav class="site-nav">
+        <a href="/stats">Cost &amp; stats &rarr;</a>
+        <a href="/archive/">All digests &rarr;</a>
+      </nav>
       <h1>daily-dose</h1>
       <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, and GitHub.</p>
     </header>
@@ -41,26 +37,10 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
       {latestDate ? (
         <>
           <h2 class="section-heading">Latest digest — {latestDate}</h2>
-          <ul class="story-list">
-            {latestEntries.map((entry) => (
-              <li class="story-card">
-                <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
-                  {entry.data.title}
-                </a>
-                <div class="story-meta">
-                  <span class={`badge badge-${entry.data.source}`}>{entry.data.source}</span>
-                  <span class="score">score: {entry.data.interest_score.toFixed(1)}</span>
-                  {typeof entry.data.points === 'number' && (
-                    <span class="points">{entry.data.points} points</span>
-                  )}
-                </div>
-                <p class="why-read">{entry.data.why_read}</p>
-              </li>
-            ))}
-          </ul>
+          <DigestList entries={latestEntries} />
 
           <h2 class="section-heading">Interest scores</h2>
-          <canvas id="score-chart" data-chart={chartDataJson} width="600" height="320"></canvas>
+          <DigestChart labels={chartLabels} scores={chartScores} />
         </>
       ) : (
         <p class="empty-state">
@@ -77,40 +57,6 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
         see the project README, or <a href="/stats">cost &amp; stats</a> for real usage data.
       </p>
     </footer>
-
-    <script type="module">
-      import Chart from 'chart.js/auto';
-
-      const canvas = document.getElementById('score-chart');
-      if (canvas instanceof HTMLCanvasElement) {
-        const raw = canvas.dataset.chart;
-        const { labels, scores } = raw ? JSON.parse(raw) : { labels: [], scores: [] };
-
-        new Chart(canvas, {
-          type: 'bar',
-          data: {
-            labels,
-            datasets: [
-              {
-                label: 'Interest score',
-                data: scores,
-                backgroundColor: 'rgba(79, 70, 229, 0.6)',
-                borderColor: 'rgba(79, 70, 229, 1)',
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-                max: 10,
-              },
-            },
-          },
-        });
-      }
-    </script>
 
     <style>
       :root {
@@ -138,6 +84,11 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
       .masthead {
         padding: 2rem 1.5rem 1rem;
         border-bottom: 1px solid var(--border);
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 1rem;
       }
 
       .site-nav a {
@@ -169,55 +120,6 @@ const chartDataJson = JSON.stringify({ labels: chartLabels, scores: chartScores 
       .section-heading {
         font-size: 1.25rem;
         margin-top: 2rem;
-      }
-
-      .story-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .story-card {
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1rem;
-      }
-
-      .story-title {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .story-title:hover {
-        text-decoration: underline;
-      }
-
-      .story-meta {
-        margin-top: 0.4rem;
-        display: flex;
-        gap: 0.75rem;
-        align-items: center;
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-
-      .badge {
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        padding: 0.15rem 0.5rem;
-        border-radius: 4px;
-        background: #eef2ff;
-        color: var(--accent);
-      }
-
-      .why-read {
-        margin: 0.6rem 0 0;
       }
 
       .empty-state {
