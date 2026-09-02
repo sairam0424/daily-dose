@@ -1,0 +1,25 @@
+{
+  "title": "Efficient SWE Agent Benchmarking via Trajectory-Aware Evaluation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.01603",
+  "date": "2026-09-02",
+  "tags": [
+    "cs.SE",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 7.4,
+  "why_read": "Submitted to arXiv on 2026-09-01 under cs.SE, cs.AI, cs.CL — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).",
+  "authors": [
+    "Kefeng Duan",
+    "Dewu Zheng",
+    "Yanlin Wang",
+    "Xiwen Wang",
+    "Ensheng Shi",
+    "Xilin Liu",
+    "Yuchi Ma",
+    "Jiachi Chen",
+    "Mingwei Liu",
+    "Zibin Zheng"
+  ]
+}
