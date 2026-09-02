@@ -6,7 +6,7 @@ does not restate or duplicate the umbrella-level tech.md at
 `../Not-Humans-Lab/tech.md` — see "Inherited constraints" below for the one
 item that flows down from there.
 
-daily-dose is a daily AI-curated technical digest (arXiv + Hacker News) — the
+daily-dose is a daily AI-curated technical digest (Hacker News + arXiv + GitHub) — the
 author's own version of
 [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff).
 It is the third of three independent sibling projects under the
@@ -29,6 +29,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Data source | arXiv public API (`export.arxiv.org/api/query`, cs.AI/cs.LG/cs.CL) | Free, keyless, live HTTP fetch — returns Atom/XML, not JSON |
 | XML parsing | `fast-xml-parser` | Parses the arXiv Atom feed response (nested elements, namespaces, multi-`<author>` entries) — small, dependency-light, avoids hand-rolled regex XML parsing |
 | Charting | Chart.js (`chart.js/auto`), one plain `<script type="module">` island | Renders a bar chart of the day's `interest_score`s — no React/Vue needed |
+| Data source | GitHub Search API (`api.github.com/search/repositories`, `created:>N days fork:false`) | Free, keyless, rate-limited to 10 req/min unauthenticated — fine for a once-daily job, see ADR 0006 |
+| Syndication | `@astrojs/rss`, `src/pages/rss.xml.ts` | One real `<item>` per day, linking to that day's `/archive/{date}/` page — requires `site` in `astro.config.mjs` for absolute URLs |
 | Styling | Minimal inline CSS | No Bulma/Sass in this walking skeleton — deferred fast-follow |
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
 | CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
@@ -52,6 +54,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | arXiv sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchArxivPapers`, fetching live from `export.arxiv.org/api/query` (cs.AI/cs.LG/cs.CL, sorted by submission date). Scored by the placeholder `scoreArxivPlaceholder` in `src/lib/curation.ts` (recency-only signal, capped to a [3, 8] range — see that file's comment for the HN-vs-arXiv asymmetry rationale). |
 | `fast-xml-parser` | **Adopt** | Parses the arXiv Atom/XML feed response in `fetchArxivPapers`. Small, well-known, dependency-light — chosen specifically because hand-rolled regex-based XML parsing is fragile against real Atom XML's nested elements, namespaces, and repeated `<author>`/`<category>` elements. |
 | GitHub sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchGithubTrendingRepos`, fetching live from GitHub's free, keyless Search API (`created:>N days fork:false`, sorted by stars). Scored by the placeholder `scoreGithubPlaceholder` in `src/lib/curation.ts` (stars+forks weighted like HN's points+comments — see ADR 0006 for why GitHub is a strong-signal source, not a weak one like arXiv). |
+| `@astrojs/rss` | **Adopt** | `src/pages/rss.xml.ts` — one `<item>` per day via `groupEntriesByDate()` (`src/lib/digestGrouping.ts`), content built in the framework-agnostic `src/lib/rssContent.ts` specifically so it stays unit-testable outside Astro's `astro:content` virtual module (see `agent_learning.md`). Field values are interpolated raw, not pre-escaped — `rss()` already entity-escapes the whole content string once; pre-escaping would double-escape a real `&`/`<`/`>` (a real bug found and fixed during review, with a regression test). |
 
 ## Rationale (non-obvious choices)
 

@@ -1,0 +1,45 @@
+---
+interface Props {
+  labels: string[];
+  scores: number[];
+}
+
+const { labels, scores } = Astro.props;
+const chartDataJson = JSON.stringify({ labels, scores });
+---
+
+<canvas id="score-chart" data-chart={chartDataJson} width="600" height="320"></canvas>
+
+<script type="module">
+  import Chart from 'chart.js/auto';
+
+  const canvas = document.getElementById('score-chart');
+  if (canvas instanceof HTMLCanvasElement) {
+    const raw = canvas.dataset.chart;
+    const { labels, scores } = raw ? JSON.parse(raw) : { labels: [], scores: [] };
+
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Interest score',
+            data: scores,
+            backgroundColor: 'rgba(79, 70, 229, 0.6)',
+            borderColor: 'rgba(79, 70, 229, 1)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+          },
+        },
+      },
+    });
+  }
+</script>

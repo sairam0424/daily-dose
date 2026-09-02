@@ -4,7 +4,7 @@ This file follows the vendor-neutral [AGENTS.md](https://agents.md) open specifi
 
 ## Overview
 
-daily-dose is a daily AI-curated technical digest (arXiv + Hacker News) — the author's own version of [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff). A pipeline script fetches stories from a live source, a curation step scores and annotates them, and a static site renders the result as a dated digest.
+daily-dose is a daily AI-curated technical digest (Hacker News + arXiv + GitHub) — the author's own version of [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff). A pipeline script fetches stories from live sources, a curation step scores and annotates them, and a static site renders the result as a dated digest, browsable by date and available as an RSS feed.
 
 daily-dose is one of three independent sibling projects (daily-dose, nh-deck, nh-skills) under the **Not-Humans-Lab** umbrella. Not-Humans-Lab (`../Not-Humans-Lab/`) is a docs-only meta-repo holding cross-cutting system-level decisions (license, branch strategy, testing skeleton). This repo is its own standalone GitHub repository — not nested inside Not-Humans-Lab — and is the source of truth for everything specific to daily-dose. Cross-cutting conventions are linked by relative path, never duplicated:
 
@@ -58,39 +58,57 @@ daily-dose/
   package.json               — build/test/pipeline scripts + dependencies
   tsconfig.json
   scripts/
-    pipeline.ts               — THE PUBLISH PATH. Fetches live HN Algolia data, calls the
-                                 placeholder curation step (src/lib/curation.ts), validates
-                                 against digestSchema, writes one file per story into
-                                 src/data/digest/YYYY-MM-DD/. See CLAUDE.md before editing.
+    pipeline.ts               — THE PUBLISH PATH. Fetches live HN Algolia + arXiv Atom +
+                                 GitHub Search data, scores via a real Bedrock call
+                                 (src/lib/llmCuration.ts) when configured, falling back to
+                                 src/lib/curation.ts, validates against digestSchema, writes
+                                 one file per item into src/data/digest/YYYY-MM-DD/. See
+                                 CLAUDE.md before editing.
   src/
     content.config.ts          — Astro Content Collections config: glob loader over
                                   src/data/digest/*.json, validated against digestSchema.ts
+    components/
+      DigestList.astro           — shared story-card list, used by index.astro and
+                                    archive/[date].astro
+      DigestChart.astro          — shared Chart.js bar-chart island, same two consumers
     lib/
       digestSchema.ts           — Zod schema; single source of truth shared by content.config.ts
                                   AND scripts/pipeline.ts
+      digestGrouping.ts          — groupEntriesByDate(): the one place "group by date, sort
+                                    descending, sort each day's items by score" lives —
+                                    reused by index.astro, archive/, and rss.xml.ts
+      rssContent.ts               — pure RSS <content:encoded> rendering, deliberately NOT
+                                    importing astro:content so it stays plain-Vitest-testable
+                                    (see agent_learning.md)
       llmCuration.ts             — REAL AWS Bedrock LLM scoring (default path as of ADR 0003):
                                     one forced-tool-use batched call per run, Sonnet 5→Sonnet 4.6→Opus→Haiku
                                     fallback chain, Zod-validated response.
       costTracking.ts            — real per-run cost computation + rolling-average anomaly check,
                                     appended to src/data/stats.jsonl.
       curation.ts                — FALLBACK-ONLY interest_score + why_read logic (defines
-                                    scoreStoryPlaceholder, imported by scripts/pipeline.ts),
-                                    derived only from real fetched fields (points, num_comments,
-                                    title) — used only without Bedrock credentials or on a
-                                    per-item LLM response gap. See Known Gotchas.
+                                    scoreStoryPlaceholder/scoreArxivPlaceholder/scoreGithubPlaceholder,
+                                    imported by scripts/pipeline.ts), derived only from real
+                                    fetched fields per source — used only without Bedrock
+                                    credentials or on a per-item LLM response gap. See Known Gotchas.
     pages/
-      index.astro                  — renders the latest committed digest + the Chart.js island
-                                      inline (a <script type="module"> block, no separate
-                                      component file)
+      index.astro                  — renders the latest digest via DigestList/DigestChart
+      archive/
+        index.astro                  — lists every distinct digest date
+        [date].astro                  — one static page per date (getStaticPaths), with
+                                        older/newer navigation
+      rss.xml.ts                    — @astrojs/rss endpoint, one <item> per day
       stats.astro                   — public cost/stats page; reads src/data/stats.jsonl
                                       directly at build time, no content collection
   src/data/
     stats.jsonl                       — real per-run LLM cost log, one JSON line per run
     digest/
       YYYY-MM-DD/                       — one folder per pipeline run
-        hn-<hn_id>.json                    — one committed file per story
+        hn-<hn_id>.json                    — one committed file per item
+        arxiv-<id>.json
+        github-<owner>-<repo>.json
   tests/
-    ...                                  — Vitest suite (schema validation, curation determinism)
+    ...                                  — Vitest suite (schema, scoring, real LLM path mocked,
+                                            content-collection, build-output, archive, RSS)
   .github/workflows/
     ci.yml                                 — workflow_dispatch + push/PR triggers, read-only
     daily-pipeline.yml                      — real schedule: trigger, requests contents: write
@@ -106,7 +124,7 @@ Same template as every sibling project in this suite — see this repo's own `Br
 - Commits: [Conventional Commits](https://www.conventionalcommits.org) — required, drives changelog/versioning.
 - Every change goes through a PR, even solo. CI (`npm run build && npm test`) must pass before merge.
 - Squash-merge only; the squash commit message must itself be a valid Conventional Commit.
-- daily-dose is a deployed content site, not a published package — per this repo's own `Branches.md`, a merge to `main` is expected to eventually trigger a deploy (not an `npm publish`), and version tags can be date-based rather than strict semver. No deploy is wired up yet — see Gotchas.
+- daily-dose is a deployed content site, not a published package — per this repo's own `Branches.md`, a merge to `main` triggers a real deploy (not an `npm publish`), and version tags can be date-based rather than strict semver. Live at https://daily-dose-hazel-delta.vercel.app, git-integrated auto-deploy on push to `main` — see ADR 0004.
 
 ## Security Notes
 

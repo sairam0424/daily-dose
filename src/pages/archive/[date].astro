@@ -1,0 +1,157 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import DigestChart from '../../components/DigestChart.astro';
+import DigestList from '../../components/DigestList.astro';
+import { groupEntriesByDate } from '../../lib/digestGrouping.js';
+
+interface DateParams {
+  date: string;
+}
+
+interface DateProps {
+  entries: CollectionEntry<'digest'>[];
+  olderDate: string | null;
+  newerDate: string | null;
+}
+
+export async function getStaticPaths() {
+  const allEntries = await getCollection('digest');
+  const dateGroups = groupEntriesByDate(allEntries);
+
+  return dateGroups.map((group, index) => ({
+    params: { date: group.date },
+    props: {
+      entries: group.entries,
+      // dateGroups is sorted most-recent-first, so the next index is the
+      // chronologically older date and the previous index is newer.
+      olderDate: dateGroups[index + 1]?.date ?? null,
+      newerDate: index > 0 ? dateGroups[index - 1].date : null,
+    },
+  }));
+}
+
+const { date } = Astro.params as unknown as DateParams;
+const { entries, olderDate, newerDate } = Astro.props as DateProps;
+
+const chartLabels = entries.map((entry) => entry.data.title);
+const chartScores = entries.map((entry) => entry.data.interest_score);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daily-dose — {date}</title>
+    <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
+  </head>
+  <body>
+    <header class="masthead">
+      <nav class="site-nav">
+        <a href="/">&larr; Latest digest</a>
+        <a href="/archive/">All digests</a>
+      </nav>
+      <h1>Digest — {date}</h1>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, and GitHub.</p>
+    </header>
+
+    <main>
+      <DigestList entries={entries} />
+
+      <h2 class="section-heading">Interest scores</h2>
+      <DigestChart labels={chartLabels} scores={chartScores} />
+
+      <nav class="date-nav">
+        <span>
+          {olderDate ? <a href={`/archive/${olderDate}/`}>&larr; Older ({olderDate})</a> : null}
+        </span>
+        <span>
+          {newerDate ? <a href={`/archive/${newerDate}/`}>Newer ({newerDate}) &rarr;</a> : null}
+        </span>
+      </nav>
+    </main>
+
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #1a1a1a;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --accent: #4f46e5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.5;
+      }
+
+      .masthead {
+        padding: 2rem 1.5rem 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .site-nav a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .site-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .masthead h1 {
+        margin: 0.5rem 0 0;
+        font-size: 2rem;
+      }
+
+      .tagline {
+        margin: 0.25rem 0 0;
+        color: var(--muted);
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+
+      .section-heading {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .date-nav {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .date-nav a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .date-nav a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </body>
+</html>

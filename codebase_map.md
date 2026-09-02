@@ -4,8 +4,10 @@ A literal, navigable tour of this repo only. This does not cover nh-deck,
 nh-skills, or Not-Humans-Lab — each is its own repo/doc set. Reflects the
 shipped layout: arXiv (ADR 0002) and GitHub (ADR 0006) as the second/third
 sources, real LLM curation via AWS Bedrock (ADR 0003, Sonnet 5 leading as
-of ADR 0005), cron automation and Vercel deployment (ADR 0004) — all real
-and verified today. Entries marked "(planned)" genuinely don't exist yet.
+of ADR 0005), cron automation and Vercel deployment (ADR 0004), and a
+digest archive + RSS feed (2026-09-03, see `decisions.md`'s log entry) —
+all real and verified today. Entries marked "(planned)" genuinely don't
+exist yet.
 
 ## Bird's-eye view
 
@@ -35,10 +37,18 @@ daily-dose/
 │   │   │                               fallback chain, Zod-validated response
 │   │   ├── costTracking.ts            real per-run cost + rolling-average anomaly check,
 │   │   │                               appended to src/data/stats.jsonl
-│   │   └── curation.ts               scoreStoryPlaceholder (HN) + scoreArxivPlaceholder (arXiv) +
-│   │                                    scoreGithubPlaceholder (GitHub), all deterministic,
-│   │                                    clearly-commented — now an explicit fallback for missing
-│   │                                    credentials / per-item response gaps
+│   │   ├── curation.ts               scoreStoryPlaceholder (HN) + scoreArxivPlaceholder (arXiv) +
+│   │   │                                scoreGithubPlaceholder (GitHub), all deterministic,
+│   │   │                                clearly-commented — now an explicit fallback for missing
+│   │   │                                credentials / per-item response gaps
+│   │   ├── digestGrouping.ts          groupEntriesByDate() — group-by-date + per-day sort,
+│   │   │                                reused by index.astro, archive/, and rss.xml.ts
+│   │   └── rssContent.ts               pure RSS <content:encoded> rendering — deliberately
+│   │                                     does not import astro:content, so it stays
+│   │                                     plain-Vitest-testable (see agent_learning.md)
+│   ├── components/
+│   │   ├── DigestList.astro           shared story-card list (index.astro + archive/[date].astro)
+│   │   └── DigestChart.astro          shared Chart.js bar-chart island, same two consumers
 │   ├── content.config.ts             Astro Content Collection: glob loader over
 │   │                                  src/data/digest/**/*.json, validated against digestSchema
 │   ├── data/
@@ -50,8 +60,13 @@ daily-dose/
 │   │           └── github-<owner>-<repo>.json (e.g. github-crmne-fastpotify.json) — all real
 │   │                                           content, not generated build output — committed to git
 │   └── pages/
-│       ├── index.astro                 renders the latest digest (all sources, mixed) + one
-│       │                                  Chart.js bar-chart island of that day's interest_score values
+│       ├── index.astro                 renders the latest digest via DigestList/DigestChart
+│       ├── archive/
+│       │   ├── index.astro                lists every distinct digest date, most recent first
+│       │   └── [date].astro                one static page per date (getStaticPaths), with
+│       │                                    older/newer navigation
+│       ├── rss.xml.ts                    @astrojs/rss endpoint — one <item> per day, linking
+│       │                                   to /archive/{date}/, real content from committed data
 │       └── stats.astro                  public cost/stats page — reads src/data/stats.jsonl
 │                                          directly at build time (no content collection),
 │                                          renders totals + by-model + by-day cost breakdowns
@@ -74,8 +89,14 @@ daily-dose/
     │                                       real committed digest files
     ├── build-output.test.ts                e2e: asserts real content (all sources) and the
     │                                          Chart.js island are present in the built dist/index.html
-    └── stats-page.test.ts                   e2e: asserts the built dist/stats/index.html reflects
-                                                the real total cost computed from stats.jsonl
+    ├── stats-page.test.ts                   e2e: asserts the built dist/stats/index.html reflects
+    │                                          the real total cost computed from stats.jsonl
+    ├── archive-pages.test.ts                 e2e: asserts dist/archive/index.html and at least
+    │                                           one dist/archive/<date>/index.html contain real
+    │                                           committed content
+    └── rss-feed.test.ts                      e2e: asserts dist/rss.xml parses as XML and
+                                                 contains a real <item>; unit regression test
+                                                 proving renderDayContent never double-escapes
 ```
 
 ## Directory-by-directory
@@ -90,9 +111,13 @@ daily-dose/
 | `src/content.config.ts` | Astro Content Collection config. Uses the glob loader to read `src/data/digest/**/*.json` and validates every entry against the same `DigestItemSchema` import. | This is the second of the two enforcement points for the shared schema — see `tech.md` Rationale for why there are exactly two, not one. |
 | `src/data/digest/` | Committed, dated JSON content — one folder (`YYYY-MM-DD/`) per pipeline run, containing one JSON file per item (`hn-<hn_id>.json`, `arxiv-<id>.json`, or `github-<owner>-<repo>.json`). | This is real content checked into git, not generated build output (contrast with e.g. nh-deck's gitignored `dist/`). All three `source` values are populated as of ADR 0002 (arXiv) and ADR 0006 (GitHub); scores are real-LLM-derived by default as of ADR 0003. |
 | `src/data/stats.jsonl` | Real per-run LLM cost log, one JSON line per pipeline run (`date`, `model`, `inputTokens`, `outputTokens`, `costUsd`, `itemCount`, `flaggedAnomalous`). | Committed, not gitignored — real historical data, appended by `src/lib/costTracking.ts`. |
-| `src/pages/index.astro` | Renders the latest digest's items (mixed HN + arXiv + GitHub) and one Chart.js bar chart of that digest's `interest_score` values. | The chart is a plain `<script type="module">` island importing `chart.js/auto` — no React/Vue. |
+| `src/pages/index.astro` | Renders the latest digest's items (mixed HN + arXiv + GitHub) via the shared `DigestList`/`DigestChart` components. | Behavior (latest-date-only) is unchanged from before the archive feature — only the markup moved into shared components. |
+| `src/components/DigestList.astro` / `DigestChart.astro` | The story-card list and the Chart.js bar-chart island, extracted so `index.astro` and `archive/[date].astro` render identically without duplicating markup. | Each has its own scoped `<style>` block, matching this repo's per-page (not shared-stylesheet) CSS convention. |
+| `src/lib/digestGrouping.ts` | `groupEntriesByDate()` — the one place "group by date, sort descending, sort each day's items by score" lives. | Reused by `index.astro`, both archive pages, and `rss.xml.ts`. Keep its exported shape stable — multiple consumers depend on it. |
+| `src/pages/archive/index.astro` / `[date].astro` | The digest archive — a full list of dates, and one static page per date with older/newer navigation. | `[date].astro` uses `getStaticPaths()`; every route is pre-rendered at build time, nothing dynamic at request time (`output: "static"`). |
+| `src/pages/rss.xml.ts` + `src/lib/rssContent.ts` | The RSS feed. `rss.xml.ts` is the Astro endpoint (imports `astro:content`); `rssContent.ts` is the pure, framework-agnostic HTML renderer it delegates to. | Split specifically so the rendering logic stays unit-testable — a file importing `astro:content` can never be imported directly from plain Vitest (see `agent_learning.md`). Field values are interpolated raw; `rss()` already entity-escapes the whole content string once. |
 | `src/pages/stats.astro` | The public cost/stats page. Reads `src/data/stats.jsonl` directly via `node:fs` in its frontmatter (no content collection — this is a plain, non-schema-validated internal log this project writes, not external content), aggregates totals/by-model/by-day, renders an honest empty-state when no real LLM runs have happened yet. | See `telemetry.md`'s Public Stats Page Spec. Deliberately excludes per-story cost and raw per-call logs. |
-| `tests/` | Vitest specs, all real today: `schema.test.ts`, `pipeline.test.ts`, and `llmCuration.test.ts` (unit, network-free — the Bedrock SDK is fully mocked), `content-collection.test.ts` (replicates the glob loader's discovery+validation without needing Astro's Vitest container API), `build-output.test.ts` (asserts real content in the built `dist/index.html`), and `stats-page.test.ts` (asserts the built `dist/stats/index.html` reflects the real total cost from `stats.jsonl`; assumes `npm run build` already ran). | Name pattern: `*.test.ts`. Mirrors `src/`/`scripts/` structure per the global coding-style convention. See `TESTING.md` for the trophy-shape ratio. |
+| `tests/` | Vitest specs, all real today: `schema.test.ts`, `pipeline.test.ts`, and `llmCuration.test.ts` (unit, network-free — the Bedrock SDK is fully mocked), `content-collection.test.ts` (replicates the glob loader's discovery+validation without needing Astro's Vitest container API), `build-output.test.ts`/`stats-page.test.ts`/`archive-pages.test.ts` (assert real content in the built `dist/`), and `rss-feed.test.ts` (asserts `dist/rss.xml` parses and contains real content, plus a unit regression test against the real `rss()` call proving no double-escaping). All assume `npm run build` already ran where noted. | Name pattern: `*.test.ts`. Mirrors `src/`/`scripts/` structure per the global coding-style convention. See `TESTING.md` for the trophy-shape ratio. |
 | `package.json` | Declares dependencies (Astro, Zod, Chart.js, `tsx`, Vitest, `fast-xml-parser`, `@anthropic-ai/bedrock-sdk`, `@anthropic-ai/sdk`) and npm scripts (`dev`, `build`, `pipeline`, `test`). | Bulma/Sass are explicitly **not** listed here yet — see `tech.md`. |
 | `astro.config.mjs` | Astro config with `output: "static"`. | No server adapter — this is a fully static build. |
 | `memory.md` | Agent-writable accumulated-lessons index. | See its own convention note; near-empty until real history accrues. |
@@ -111,13 +136,15 @@ daily-dose/
 | Change cost tracking or the anomaly-check threshold | `src/lib/costTracking.ts` — see `telemetry.md` |
 | Change GitHub sourcing (query window, sort, filters) | `scripts/pipeline.ts` (`fetchGithubTrendingRepos`) — see ADR 0006 for why `created:>N days fork:false&sort=stars` |
 | Change how the content collection loads/validates JSON | `src/content.config.ts` |
-| Change the rendered page or the chart | `src/pages/index.astro` |
+| Change the rendered page or the chart | `src/pages/index.astro`, or the shared `src/components/DigestList.astro`/`DigestChart.astro` if the change should also apply to archive pages |
 | Change the public cost/stats page | `src/pages/stats.astro` (reads `src/data/stats.jsonl` directly) |
+| Change the digest archive (date list, per-date page, prev/next nav) | `src/pages/archive/index.astro` / `[date].astro`, or `src/lib/digestGrouping.ts` if it's a change to date grouping/sorting itself |
+| Change the RSS feed (item shape, description content) | `src/lib/rssContent.ts` (pure rendering) — `src/pages/rss.xml.ts` only wires it to `astro:content` and `@astrojs/rss`, keep new logic in the former |
 | Add a new day's real digest data | run `npm run pipeline` (writes to `src/data/digest/`, all three sources by default, real LLM scoring if credentials are set) — do not hand-write digest JSON except for test fixtures |
 | Add or adjust a unit test for either scoring function | `tests/pipeline.test.ts` (placeholder functions) or `tests/llmCuration.test.ts` (real LLM path, Bedrock SDK mocked) |
 | Add or adjust a schema validation test | `tests/schema.test.ts` |
 | Add or adjust an integration test for the content collection | `tests/content-collection.test.ts` |
-| Add or adjust the `astro build` e2e smoke test | `tests/build-output.test.ts` |
+| Add or adjust the `astro build` e2e smoke test | `tests/build-output.test.ts` (home page), `tests/archive-pages.test.ts` (archive), `tests/rss-feed.test.ts` (RSS) |
 | Add or bump a dependency | `package.json` (see `tech.md` for what's Adopt vs. Hold before adding anything) |
 | Record a lesson learned or decision | `memory.md` (add one index line + a new topic file) |
 | Update the stack rationale or adoption status | `tech.md` |
@@ -157,9 +184,15 @@ daily-dose/
 - `src/content.config.ts` depends on `src/lib/digestSchema.ts` for
   validation and reads whatever `scripts/pipeline.ts` has already written to
   `src/data/digest/` — but has no code-level import of `pipeline.ts` itself.
-- `src/pages/index.astro` depends only on the typed collection entries
-  `src/content.config.ts` exposes — never reads `src/data/digest/*.json`
-  directly and never imports the schema or the pipeline.
+- `src/pages/index.astro` and `src/pages/archive/index.astro`/`[date].astro`
+  depend only on the typed collection entries `src/content.config.ts`
+  exposes, plus `src/lib/digestGrouping.ts` for grouping/sorting, plus the
+  shared `DigestList`/`DigestChart` components — none of them read
+  `src/data/digest/*.json` directly or import the schema or the pipeline.
+- `src/pages/rss.xml.ts` depends on `astro:content` (via `getCollection`),
+  `src/lib/digestGrouping.ts`, and `src/lib/rssContent.ts` (which itself
+  has no Astro dependency at all — plain `DigestItem[]` in, an HTML string
+  out — deliberately, so it stays unit-testable from plain Vitest).
 - Nothing in this repo depends on nh-deck, nh-skills, or Not-Humans-Lab —
   those relationships are documentation-convention precedent only,
   described in `architecture.md`'s Context & Scope, not wired as code or

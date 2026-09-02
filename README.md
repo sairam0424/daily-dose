@@ -22,6 +22,10 @@ project — no shared build, no shared dependencies.
   enforcement points, zero drift.
 - **Chart**: a single Chart.js island renders a bar chart of the day's
   interest scores.
+- **Archive**: `/archive/` lists every past day; `/archive/{date}/` renders
+  one static page per date with older/newer navigation.
+- **RSS**: `/rss.xml` (`@astrojs/rss`) emits one real `<item>` per day,
+  linking to that day's archive page — subscribe instead of checking daily.
 
 ## Running it locally
 
@@ -42,10 +46,10 @@ npm run build
 
 Run `npx vitest run` to run the network-free unit/schema tests.
 
-## Current limitations
+## Current status
 
-This is a working project, but still growing. Specifically, as of this
-writing:
+This is a working project. As of this writing, every item on the original
+build-out roadmap has shipped:
 
 - **Real LLM curation is live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
   model fallback chain: Claude Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5,
@@ -76,6 +80,9 @@ writing:
   cost, broken down by model and by day, read directly from
   `src/data/stats.jsonl` — going one step further than the reference
   project's own `/stats` page, which never showed dollar amounts.
+- **A digest archive and RSS feed ship.** Visit `/archive/` to browse every
+  past day, or subscribe at `/rss.xml` instead of checking the site daily —
+  see `decisions.md`'s 2026-09-03 log entry.
 
 ## License
 
