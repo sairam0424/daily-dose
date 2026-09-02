@@ -51,7 +51,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Bulma / Sass | **Hold** | Deferred fast-follow. Styling for this walking skeleton is minimal inline CSS, matching nh-deck's precedent of deferring visual polish. |
 | arXiv sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchArxivPapers`, fetching live from `export.arxiv.org/api/query` (cs.AI/cs.LG/cs.CL, sorted by submission date). Scored by the placeholder `scoreArxivPlaceholder` in `src/lib/curation.ts` (recency-only signal, capped to a [3, 8] range — see that file's comment for the HN-vs-arXiv asymmetry rationale). |
 | `fast-xml-parser` | **Adopt** | Parses the arXiv Atom/XML feed response in `fetchArxivPapers`. Small, well-known, dependency-light — chosen specifically because hand-rolled regex-based XML parsing is fragile against real Atom XML's nested elements, namespaces, and repeated `<author>`/`<category>` elements. |
-| GitHub sourcing | **Hold (documented fast-follow)** | The shared schema already models `source: "hn" \| "arxiv" \| "github"`, but only `"hn"` and `"arxiv"` are populated so far. GitHub is a deliberate, documented simplification, not a silent gap. |
+| GitHub sourcing | **Adopt** | `scripts/pipeline.ts` exports `fetchGithubTrendingRepos`, fetching live from GitHub's free, keyless Search API (`created:>N days fork:false`, sorted by stars). Scored by the placeholder `scoreGithubPlaceholder` in `src/lib/curation.ts` (stars+forks weighted like HN's points+comments — see ADR 0006 for why GitHub is a strong-signal source, not a weak one like arXiv). |
 
 ## Rationale (non-obvious choices)
 
@@ -75,7 +75,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
   configured or the LLM's response omits a specific item — see ADR 0003.
   `src/lib/llmCuration.ts` is the real default path now.
 - **One forced-tool-use batched call per pipeline run, not per-item calls.**
-  `llmCuration.ts` scores every fetched item (HN + arXiv) in a single
+  `llmCuration.ts` scores every fetched item (HN + arXiv + GitHub) in a single
   `messages.create()` call with `tool_choice` forced onto one tool whose
   input covers the whole batch, validated with Zod as the real safety net
   (the tool's own `input_schema` only biases generation). See ADR 0003 for
@@ -133,9 +133,6 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 ## Deprecated / Hold list
 
 - **Bulma/Sass** — Hold, deferred fast-follow for visual polish.
-- **GitHub sourcing** — not deprecated, just not yet implemented. Listed
-  under Adoption status as a documented fast-follow, not here, to avoid
-  implying rejection. (arXiv sourcing has moved to Adopt — see above.)
 
 ## Local dev requirements
 

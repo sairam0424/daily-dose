@@ -11,6 +11,7 @@ export const DigestItemSchema = z.object({
   authors: z.array(z.string()).default([]),
   hn_id: z.number().optional(),
   points: z.number().optional(),
+  stars: z.number().optional(),
 });
 
 export type DigestItem = z.infer<typeof DigestItemSchema>;

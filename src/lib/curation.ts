@@ -2,21 +2,20 @@
  * src/lib/curation.ts
  *
  * ============================================================================
- * PLACEHOLDER CURATION STEP — THIS IS NOT A REAL LLM CALL.
+ * PLACEHOLDER CURATION — FALLBACK ONLY, NOT THE DEFAULT PATH.
  * ============================================================================
- * No Anthropic/OpenAI API keys are available in this environment. A real
- * "curation" step would send each story to an LLM to judge genuine technical
- * interest and write a human-quality summary of why it's worth reading. That
- * does not happen here.
+ * Real LLM curation via AWS Bedrock (src/lib/llmCuration.ts) is the default
+ * scoring path as of ADR 0003. The functions in this file are used only
+ * when Bedrock credentials aren't configured (e.g. local dev) or the LLM's
+ * response omits a specific item's score — always with a loud console
+ * warning, never silently, per scripts/pipeline.ts's main().
  *
- * Instead, this function deterministically derives an interest_score (0-10)
- * and a why_read string PURELY from real, already-fetched HN fields (points,
- * num_comments). It never fabricates content, opinions, or summaries that
- * aren't directly computable from those two numbers. This is documented as
- * the single biggest deferred item in this walking skeleton — swapping this
- * function for a real LLM call (once API keys exist) is the fast-follow, and
- * this file is exactly where that change will land — see CLAUDE.md's
- * plan-mode gate before editing this file.
+ * Each function deterministically derives an interest_score (0-10) and a
+ * why_read string PURELY from real, already-fetched fields for that source
+ * (points/num_comments for HN, stars/forks for GitHub, recency for arXiv).
+ * They never fabricate content, opinions, or summaries that aren't directly
+ * computable from those real values. See CLAUDE.md's plan-mode gate before
+ * editing this file.
  * ============================================================================
  */
 
@@ -133,6 +132,55 @@ export function scoreArxivPlaceholder(paper: RawArxivPaper): {
       : "no listed categories";
   const publishedDateOnly = paper.publishedDate.slice(0, 10);
   const why_read = `Submitted to arXiv on ${publishedDateOnly} under ${categoryList} — recency-based placeholder score (arXiv exposes no engagement signal like HN's points/comments, so this is deliberately capped below the must-read range; not an LLM summary of the paper's content).`;
+
+  return { interest_score, why_read };
+}
+
+/**
+ * Raw shape mapped from a single GitHub Search API "repository" result (see
+ * scripts/pipeline.ts's fetchGithubTrendingRepos). Only fields we actually
+ * use downstream are kept.
+ */
+export interface RawGithubRepo {
+  /** "owner/repo" — GitHub's own full_name field. */
+  fullName: string;
+  /** Repository page URL, e.g. https://github.com/owner/repo */
+  url: string;
+  /** Real, already-fetched description text — may be an empty string if the
+   * repo has none. Never fabricated. */
+  description: string;
+  stars: number;
+  forks: number;
+  language: string | null;
+  createdAt: string;
+}
+
+/**
+ * ============================================================================
+ * PLACEHOLDER GITHUB SCORING — THIS IS NOT A REAL LLM CALL EITHER.
+ * ============================================================================
+ * Unlike arXiv (which has no engagement signal at all), GitHub's search
+ * results carry two real, comparable signals — stargazers_count and
+ * forks_count — the same shape as HN's points/num_comments pair. So this
+ * placeholder reuses scoreStoryPlaceholder's exact weighting (stars weighted
+ * like points, forks weighted like comments) rather than arXiv's weaker
+ * recency-only formula: GitHub is a strong-signal source, not a weak one.
+ * ============================================================================
+ */
+export function scoreGithubPlaceholder(repo: RawGithubRepo): {
+  interest_score: number;
+  why_read: string;
+} {
+  const starsComponent = Math.log10(repo.stars + 1) * 3.2;
+  const forksComponent = Math.log10(repo.forks + 1) * 2.4;
+  const rawScore = starsComponent + forksComponent;
+
+  const interest_score = Math.min(
+    10,
+    Math.max(0, Math.round(rawScore * 10) / 10),
+  );
+
+  const why_read = `New repository with ${repo.stars} star${repo.stars === 1 ? "" : "s"} and ${repo.forks} fork${repo.forks === 1 ? "" : "s"} on GitHub — deterministic placeholder score derived from those two real, fetched values (not an LLM summary).`;
 
   return { interest_score, why_read };
 }
