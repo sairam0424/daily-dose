@@ -37,7 +37,8 @@ chart of the day's interest scores. License: Apache-2.0, matching the
 sibling projects.
 
 **Real LLM curation is now live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
-model fallback chain Sonnet 4.6 → Opus 4.6 → Haiku 4.5). `src/lib/llmCuration.ts`
+model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5, Sonnet 5
+leading as of ADR 0005). `src/lib/llmCuration.ts`
 scores every fetched item (HN + arXiv) in one forced-tool-use batched call per
 pipeline run when `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY` are
 configured (they are, both locally and in this repo's GitHub Secrets). The
@@ -103,7 +104,7 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   `build-output.test.ts`).
 - Shipped real LLM curation via AWS Bedrock (ADR 0003): new
   `src/lib/llmCuration.ts` (one forced-tool-use batched call scoring every
-  fetched item, Sonnet→Opus→Haiku fallback, Zod-validated response) and
+  fetched item, Sonnet 5→Sonnet 4.6→Opus→Haiku fallback, Zod-validated response) and
   `src/lib/costTracking.ts` (real per-run cost + rolling-average anomaly
   check, appended to `src/data/stats.jsonl`). Extended `fetchArxivPapers`
   to capture each paper's real abstract. Fixed a real, separate

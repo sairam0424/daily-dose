@@ -9,17 +9,25 @@
  * against the @anthropic-ai/bedrock-sdk source (not guessed from general
  * Anthropic API knowledge - Bedrock has real, confirmed differences, e.g.
  * it rejects some fields the direct API accepts). Credential path
- * (BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY/BEDROCK_REGION) and the
- * Sonnet -> Opus -> Haiku model fallback chain both reuse exactly what the
- * sibling Anvilry portfolio's production chatbot already proves works with
- * this same credential.
+ * (BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY/BEDROCK_REGION) reuses
+ * exactly what the sibling Anvilry portfolio's production chatbot already
+ * proves works with this same credential. Model fallback chain: see
+ * docs/adr/0005-add-sonnet-5-as-first-choice-model.md for why Sonnet 5 leads
+ * (verified real, ACTIVE, and authorized for this account/region via a
+ * direct Bedrock API check, not assumed) and for the thinking-disable
+ * caveat below.
  *
  * Design decisions (all made explicitly, not defaults):
  * - ONE batched call scores every item in the run at once, not one call per
  *   item - cheaper, faster, matches the deep-research recommendation.
  * - No extended thinking - it is a hard API incompatibility with forced
  *   tool_choice (not just unnecessary), confirmed against Anthropic's own
- *   thinking documentation.
+ *   thinking documentation. Claude Sonnet 5 specifically defaults adaptive
+ *   thinking to ON (confirmed via its Bedrock model card) - MODELS_NEEDING_THINKING_DISABLED
+ *   below explicitly disables it for that one model so the forced-tool_choice
+ *   contract stays intact; other models in the chain are left untouched
+ *   since Bedrock has a track record of rejecting fields a given model
+ *   doesn't expect, and they were already verified working without it.
  * - Forced single-tool tool_choice for structured output, not the newer
  *   JSON-schema structured-outputs beta - that beta is direct-API-first and
  *   Bedrock has a track record of rejecting newly-added top-level fields.
@@ -61,14 +69,29 @@ export interface LlmScoringOutcome {
   outputTokens: number;
 }
 
-/** Sonnet primary, Opus secondary, Haiku tertiary - identical to the sibling
- * Anvilry chatbot's chain, reusing the exact inference-profile IDs already
- * confirmed AUTHORIZED for this account. */
+/** Sonnet 5 first (per the user's explicit request, once it was verified
+ * ACTIVE and authorized for this account via a real ListInferenceProfiles
+ * check - see the ADR), falling back through Sonnet 4.6, Opus 4.6, Haiku
+ * 4.5 - all inference-profile IDs already confirmed AUTHORIZED for this
+ * account (the last three originally reused from the sibling Anvilry
+ * chatbot's chain). */
 export const MODEL_CHAIN = [
+  "us.anthropic.claude-sonnet-5",
   "us.anthropic.claude-sonnet-4-6",
   "us.anthropic.claude-opus-4-6-v1",
   "us.anthropic.claude-haiku-4-5-20251001-v1:0",
 ] as const;
+
+/** Models whose Bedrock model card documents adaptive thinking as ON BY
+ * DEFAULT (including when a request omits `thinking` entirely) - these
+ * MUST get an explicit `thinking: {type: "disabled"}` on every request,
+ * or the model may attempt extended thinking, which is a hard
+ * incompatibility with this file's forced tool_choice. Only Claude Sonnet 5
+ * is known to behave this way today; every other model in MODEL_CHAIN
+ * defaults thinking to off and is left untouched. */
+const MODELS_NEEDING_THINKING_DISABLED = new Set<string>([
+  "us.anthropic.claude-sonnet-5",
+]);
 
 /** Real pre-flight safeguard, not a post-hoc log: if a bug ever causes far
  * more items than a normal day's run to reach this function (e.g.
@@ -222,6 +245,9 @@ export async function scoreItemsWithLLM(
         messages: [{ role: "user", content: prompt }],
         tools: [scoreTool],
         tool_choice: { type: "tool", name: "record_scores" },
+        ...(MODELS_NEEDING_THINKING_DISABLED.has(model)
+          ? { thinking: { type: "disabled" as const } }
+          : {}),
       });
 
       // Plain lookup, then a separate narrowing check below - a custom type

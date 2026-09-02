@@ -19,12 +19,25 @@ import { resolve } from "node:path";
 
 /** us-east-1, on-demand, Standard tier, per-million-token USD. Haiku's
  * figure is Anthropic's long-standing published Haiku-tier price point;
- * Sonnet and Opus were confirmed directly from AWS's own blog posts during
- * research - see the ADR for the exact citations. */
+ * Sonnet 4.6 and Opus were confirmed directly from AWS's own blog posts
+ * during research - see docs/adr/0003-wire-real-bedrock-curation.md for
+ * the exact citations.
+ *
+ * Claude Sonnet 5's figure is NOT independently confirmed the same way -
+ * AWS's Bedrock pricing page renders its current-model table via
+ * client-side JS that a doc fetch cannot capture, and the Bedrock
+ * credential used here lacks pricing:GetProducts (AWS's Price List API)
+ * to query it directly. Set to the same $3/$15 as Sonnet 4.6, matching
+ * AWS's own "top-tier intelligence at Sonnet pricing" framing for the
+ * model's launch (see docs/adr/0005-add-sonnet-5-as-first-choice-model.md) -
+ * but this is an inference, not a confirmed number. Verify against the
+ * first real Sonnet-5-scored run's actual AWS invoice/Cost Explorer line
+ * item and correct this entry if it differs. */
 const PRICING_PER_MILLION_TOKENS: Record<
   string,
   { input: number; output: number }
 > = {
+  "us.anthropic.claude-sonnet-5": { input: 3.0, output: 15.0 }, // UNCONFIRMED - see comment above
   "us.anthropic.claude-sonnet-4-6": { input: 3.0, output: 15.0 },
   "us.anthropic.claude-opus-4-6-v1": { input: 5.0, output: 25.0 },
   "us.anthropic.claude-haiku-4-5-20251001-v1:0": { input: 1.0, output: 5.0 },

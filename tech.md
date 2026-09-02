@@ -33,7 +33,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
 | CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
 | Deployment | *(decided, not yet connected)* | Vercel git-integrated auto-deploy on push to `main`, `npm run build` only — decided in ADR 0004, execution blocked on the Vercel MCP integration's reconnection |
-| LLM SDK | `@anthropic-ai/bedrock-sdk` + `@anthropic-ai/sdk` (error types) | `AnthropicBedrock` client in `src/lib/llmCuration.ts`, model fallback chain Sonnet 4.6 → Opus 4.6 → Haiku 4.5, credentials via `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars |
+| LLM SDK | `@anthropic-ai/bedrock-sdk` + `@anthropic-ai/sdk` (error types) | `AnthropicBedrock` client in `src/lib/llmCuration.ts`, model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5 (Sonnet 5 leads as of ADR 0005; needs `thinking: {type: "disabled"}` explicitly, unlike the rest of the chain), credentials via `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars |
 | License | Apache-2.0 | Decided at the Not-Humans-Lab umbrella level, applied identically across sibling projects |
 
 ## Adoption status

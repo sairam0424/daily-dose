@@ -48,7 +48,8 @@ This is a working project, but still growing. Specifically, as of this
 writing:
 
 - **Real LLM curation is live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
-  model fallback chain: Claude Sonnet 4.6 → Opus 4.6 → Haiku 4.5). Every
+  model fallback chain: Claude Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5,
+  Sonnet 5 leading as of ADR 0005). Every
   fetched item (HN + arXiv) is scored in one batched call per pipeline run.
   The original deterministic placeholder heuristic (derived from real,
   already-fetched fields — points/comment count/title for HN, recency for

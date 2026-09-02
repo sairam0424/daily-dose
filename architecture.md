@@ -41,7 +41,7 @@ convention precedent, never copied structurally.
                                                     live HTTP GET  │  real Bedrock call
                                           ┌─────────────────────┐ │ ┌──────────────────────┐
                                           │ HN Algolia / arXiv    │◀┘▶│  AWS Bedrock           │
-                                          │ APIs (free, keyless)  │   │  (Sonnet→Opus→Haiku,   │
+                                          │ APIs (free, keyless)  │   │  (Sonnet 5→Sonnet 4.6→Opus→Haiku,   │
                                           └───────────────────────┘   │   shared cred w/       │
                                                                        │   Anvilry — ADR 0003)  │
                                                                        └────────────────────────┘
@@ -62,7 +62,8 @@ convention precedent, never copied structurally.
 - **AWS Bedrock** (external actor, as of ADR 0003 — 2026-09-02): a real,
   paid LLM API. `src/lib/llmCuration.ts` makes one forced-tool-use batched
   call per pipeline run, using a credential shared with the sibling Anvilry
-  project's production chatbot. Model fallback chain: Claude Sonnet 4.6 →
+  project's production chatbot (as of ADR 0005, Sonnet 5 leads). Model
+  fallback chain: Claude Sonnet 5 → Sonnet 4.6 →
   Opus 4.6 → Haiku 4.5.
 - **In scope for daily-dose itself**: fetching live HN + arXiv data;
   scoring each item via a real Bedrock LLM call, with a deterministic
@@ -88,7 +89,7 @@ daily-dose/
 │
 ├── src/lib/llmCuration.ts       Building block 2: real AWS Bedrock LLM
 │                                    scoring — one forced-tool-use batched
-│                                      call per run, Sonnet→Opus→Haiku
+│                                      call per run, Sonnet 5→Sonnet 4.6→Opus→Haiku
 │                                      fallback, Zod-validated response.
 │                                      The default scoring path (ADR 0003).
 │
@@ -160,7 +161,7 @@ Relationships:
               ▼
  3. If Bedrock credentials are configured (the default): score every
     fetched item (HN + arXiv) in ONE real, forced-tool-use Bedrock
-    call (src/lib/llmCuration.ts) — Sonnet→Opus→Haiku fallback,
+    call (src/lib/llmCuration.ts) — Sonnet 5→Sonnet 4.6→Opus→Haiku fallback,
     Zod-validated response, real per-run cost recorded via
     src/lib/costTracking.ts. Otherwise (e.g. local dev without
     credentials), or for any item the LLM's response omits: fall
