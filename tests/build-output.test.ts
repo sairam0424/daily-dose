@@ -127,4 +127,20 @@ describe("dist/index.html build output", () => {
         html.includes("va.vercel-scripts.com"),
     ).toBe(true);
   });
+
+  it("renders filter controls with a real All option for source and signal tier", () => {
+    expect(html.includes('data-filter-group="source"')).toBe(true);
+    expect(html.includes('data-filter-group="tier"')).toBe(true);
+    expect(html.includes('data-filter-value="all"')).toBe(true);
+  });
+
+  it("tags every story card with its source and interest tier", () => {
+    expect(html.includes("data-source=")).toBe(true);
+    expect(html.includes("data-interest-tier=")).toBe(true);
+  });
+
+  it("includes the static empty-state markup for when filters match no stories", () => {
+    expect(html.includes('id="filter-empty-state"')).toBe(true);
+    expect(html.includes("No stories match the selected filters.")).toBe(true);
+  });
 });

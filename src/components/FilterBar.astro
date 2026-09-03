@@ -1,0 +1,95 @@
+---
+const SOURCES = ["hn", "arxiv", "github", "devto"] as const;
+const TIERS = [
+  { value: "notable", label: "Notable" },
+  { value: "recommended", label: "Recommended" },
+  { value: "must-read", label: "Must-Read" },
+] as const;
+---
+
+<div class="filter-bar" id="filter-bar">
+  <div class="filter-group" data-filter-group="source">
+    <button type="button" class="filter-btn active" data-filter-value="all">All</button>
+    {SOURCES.map((source) => (
+      <button type="button" class="filter-btn" data-filter-value={source}>{source}</button>
+    ))}
+  </div>
+  <div class="filter-group" data-filter-group="tier">
+    <button type="button" class="filter-btn active" data-filter-value="all">All</button>
+    {TIERS.map((tier) => (
+      <button type="button" class="filter-btn" data-filter-value={tier.value}>{tier.label}</button>
+    ))}
+  </div>
+</div>
+<p class="empty-state" id="filter-empty-state" hidden>No stories match the selected filters.</p>
+
+<style>
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--fg);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const filterBar = document.getElementById('filter-bar');
+  const emptyState = document.getElementById('filter-empty-state');
+
+  let activeSource = 'all';
+  let activeTier = 'all';
+
+  function applyFilters() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.story-card'));
+    let visibleCount = 0;
+    for (const card of cards) {
+      const matchesSource = activeSource === 'all' || card.dataset.source === activeSource;
+      const matchesTier = activeTier === 'all' || card.dataset.interestTier === activeTier;
+      const visible = matchesSource && matchesTier;
+      card.hidden = !visible;
+      if (visible) visibleCount += 1;
+    }
+    if (emptyState) emptyState.hidden = visibleCount !== 0;
+  }
+
+  filterBar?.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const button = target.closest<HTMLElement>('.filter-btn');
+    if (!button) return;
+    const group = button.closest<HTMLElement>('[data-filter-group]');
+    const groupName = group?.dataset.filterGroup;
+    const value = button.dataset.filterValue;
+    if (!groupName || !value) return;
+
+    if (groupName === 'source') activeSource = value;
+    if (groupName === 'tier') activeTier = value;
+
+    const buttons = group?.querySelectorAll<HTMLElement>('.filter-btn') ?? [];
+    for (const btn of buttons) {
+      btn.classList.toggle('active', btn === button);
+    }
+    applyFilters();
+  });
+</script>

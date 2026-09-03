@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import DigestChart from '../../components/DigestChart.astro';
 import DigestList from '../../components/DigestList.astro';
+import FilterBar from '../../components/FilterBar.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
@@ -54,6 +55,7 @@ const chartScores = entries.map((entry) => entry.data.interest_score);
   </header>
 
   <main>
+    <FilterBar />
     <DigestList entries={entries} />
 
     <h2 class="section-heading">Interest scores</h2>
