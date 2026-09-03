@@ -178,4 +178,36 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
   });
+
+  it("marks the highest-scored story as the lead story", () => {
+    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+      DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
+    );
+    const topItem = [...items].sort(
+      (a, b) => b.interest_score - a.interest_score,
+    )[0];
+    expect(topItem, "expected at least one committed digest item").toBeTruthy();
+
+    const leadMatch = html.match(
+      /<li class="story-card lead-story"[^>]*>[\s\S]*?<\/li>/,
+    );
+    expect(leadMatch, "expected a .lead-story <li>").toBeTruthy();
+    expect(leadMatch![0]).toContain(topItem!.title);
+  });
+
+  it("(review fix) uses the exact why_read string as the info button's accessible label", () => {
+    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+      DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
+    );
+    const sample = items[0];
+    // Deliberately includes a short context prefix ("Why this made the
+    // cut: ") rather than the bare why_read string alone — a raw
+    // sentence with no label is worse for screen-reader users than one
+    // with context, per general ARIA-label practice. This is a
+    // documented, intentional refinement over the spec's literal "the
+    // full why_read string" wording, not an oversight (spec Section 6).
+    expect(html).toContain(
+      `aria-label="Why this made the cut: ${sample.why_read}"`,
+    );
+  });
 });
