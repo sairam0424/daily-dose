@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   scoreStoryPlaceholder,
   scoreGithubPlaceholder,
+  scoreDevtoPlaceholder,
   type RawHnStory,
   type RawGithubRepo,
+  type RawDevtoArticle,
 } from "../src/lib/curation.js";
 
 // Fixed, hand-constructed RawHnStory fixtures (the shape fetchHnFrontPage
@@ -92,6 +94,56 @@ describe("scoreGithubPlaceholder", () => {
   it("scores a repo with dramatically higher stars/forks higher-or-equal to a lower one", () => {
     const low = scoreGithubPlaceholder(lowEngagementRepo);
     const high = scoreGithubPlaceholder(highEngagementRepo);
+
+    expect(high.interest_score).toBeGreaterThanOrEqual(low.interest_score);
+    expect(high.interest_score).toBeGreaterThanOrEqual(0);
+    expect(high.interest_score).toBeLessThanOrEqual(10);
+    expect(low.interest_score).toBeGreaterThanOrEqual(0);
+    expect(low.interest_score).toBeLessThanOrEqual(10);
+  });
+});
+
+const lowEngagementArticle: RawDevtoArticle = {
+  id: 2000001,
+  title: "Setting up a personal blog with a static site generator",
+  url: "https://dev.to/someuser/setting-up-a-personal-blog-1a2b",
+  bodyText: "A short walkthrough of a basic static blog setup.",
+  reactions: 4,
+  comments: 1,
+  tags: ["beginners", "webdev"],
+  publishedAt: "2026-09-01T12:00:00Z",
+};
+
+const highEngagementArticle: RawDevtoArticle = {
+  id: 2000002,
+  title: "How we cut our API's p99 latency by 80%",
+  url: "https://dev.to/anotheruser/how-we-cut-our-apis-p99-latency-3c4d",
+  bodyText:
+    "A detailed retrospective on a real production latency investigation, including profiling data and the specific fixes that worked.",
+  reactions: 650,
+  comments: 210,
+  tags: ["performance", "backend"],
+  publishedAt: "2026-09-01T12:00:00Z",
+};
+
+describe("scoreDevtoPlaceholder", () => {
+  it("returns an interest_score within [0, 10]", () => {
+    const { interest_score } = scoreDevtoPlaceholder(lowEngagementArticle);
+    expect(interest_score).toBeGreaterThanOrEqual(0);
+    expect(interest_score).toBeLessThanOrEqual(10);
+  });
+
+  it("returns a non-empty why_read string derived from real input fields", () => {
+    const { why_read } = scoreDevtoPlaceholder(highEngagementArticle);
+    expect(why_read.length).toBeGreaterThan(0);
+    // Proves the string is derived from the actual input rather than hardcoded:
+    // it must reference the real reaction count somewhere in the text.
+    expect(why_read).toContain(String(highEngagementArticle.reactions));
+  });
+
+  it("scores an article with dramatically higher reactions/comments higher-or-equal to a lower one", () => {
+    const low = scoreDevtoPlaceholder(lowEngagementArticle);
+    const high = scoreDevtoPlaceholder(highEngagementArticle);
 
     expect(high.interest_score).toBeGreaterThanOrEqual(low.interest_score);
     expect(high.interest_score).toBeGreaterThanOrEqual(0);

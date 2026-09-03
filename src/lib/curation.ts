@@ -184,3 +184,56 @@ export function scoreGithubPlaceholder(repo: RawGithubRepo): {
 
   return { interest_score, why_read };
 }
+
+/**
+ * Raw shape mapped from a single Dev.to Articles API list item (see
+ * scripts/pipeline.ts's fetchDevtoArticles), augmented with a real,
+ * already-fetched excerpt of the article's own body text (from a follow-up
+ * call to the detail endpoint — the list endpoint's `description` field is
+ * only ~85-100 chars, too thin for genuine judgment). Only fields we
+ * actually use downstream are kept.
+ */
+export interface RawDevtoArticle {
+  id: number;
+  title: string;
+  url: string;
+  /** Real, already-fetched excerpt of the article's body_markdown, already
+   * truncated to a bounded length by fetchDevtoArticles before it ever
+   * reaches here — never fabricated, never the full uncapped body. */
+  bodyText: string;
+  reactions: number;
+  comments: number;
+  tags: string[];
+  publishedAt: string;
+}
+
+/**
+ * ============================================================================
+ * PLACEHOLDER DEV.TO SCORING — THIS IS NOT A REAL LLM CALL EITHER.
+ * ============================================================================
+ * Like GitHub (and unlike arXiv), Dev.to's Articles API carries two real,
+ * comparable engagement signals — public_reactions_count and
+ * comments_count — the same shape as HN's points/num_comments pair. So this
+ * placeholder reuses scoreStoryPlaceholder's exact weighting (reactions
+ * weighted like points, comments weighted like comments) rather than
+ * arXiv's weaker recency-only formula: Dev.to is a strong-signal source,
+ * not a weak one. See docs/adr/0007-add-devto-as-fourth-source.md.
+ * ============================================================================
+ */
+export function scoreDevtoPlaceholder(article: RawDevtoArticle): {
+  interest_score: number;
+  why_read: string;
+} {
+  const reactionsComponent = Math.log10(article.reactions + 1) * 3.2;
+  const commentsComponent = Math.log10(article.comments + 1) * 2.4;
+  const rawScore = reactionsComponent + commentsComponent;
+
+  const interest_score = Math.min(
+    10,
+    Math.max(0, Math.round(rawScore * 10) / 10),
+  );
+
+  const why_read = `New Dev.to article with ${article.reactions} reaction${article.reactions === 1 ? "" : "s"} and ${article.comments} comment${article.comments === 1 ? "" : "s"} — deterministic placeholder score derived from those two real, fetched values (not an LLM summary).`;
+
+  return { interest_score, why_read };
+}

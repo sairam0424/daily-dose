@@ -4,7 +4,7 @@ This file follows the vendor-neutral [AGENTS.md](https://agents.md) open specifi
 
 ## Overview
 
-daily-dose is a daily AI-curated technical digest (Hacker News + arXiv + GitHub) — the author's own version of [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff). A pipeline script fetches stories from live sources, a curation step scores and annotates them, and a static site renders the result as a dated digest, browsable by date and available as an RSS feed.
+daily-dose is a daily AI-curated technical digest (Hacker News + arXiv + GitHub + Dev.to) — the author's own version of [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff). A pipeline script fetches stories from live sources, a curation step scores and annotates them, and a static site renders the result as a dated digest, browsable by date and available as an RSS feed.
 
 daily-dose is one of three independent sibling projects (daily-dose, nh-deck, nh-skills) under the **Not-Humans-Lab** umbrella. Not-Humans-Lab (`../Not-Humans-Lab/`) is a docs-only meta-repo holding cross-cutting system-level decisions (license, branch strategy, testing skeleton). This repo is its own standalone GitHub repository — not nested inside Not-Humans-Lab — and is the source of truth for everything specific to daily-dose. Cross-cutting conventions are linked by relative path, never duplicated:
 
@@ -59,11 +59,11 @@ daily-dose/
   tsconfig.json
   scripts/
     pipeline.ts               — THE PUBLISH PATH. Fetches live HN Algolia + arXiv Atom +
-                                 GitHub Search data, scores via a real Bedrock call
-                                 (src/lib/llmCuration.ts) when configured, falling back to
-                                 src/lib/curation.ts, validates against digestSchema, writes
-                                 one file per item into src/data/digest/YYYY-MM-DD/. See
-                                 CLAUDE.md before editing.
+                                 GitHub Search + Dev.to Articles data, scores via a real
+                                 Bedrock call (src/lib/llmCuration.ts) when configured,
+                                 falling back to src/lib/curation.ts, validates against
+                                 digestSchema, writes one file per item into
+                                 src/data/digest/YYYY-MM-DD/. See CLAUDE.md before editing.
   src/
     content.config.ts          — Astro Content Collections config: glob loader over
                                   src/data/digest/*.json, validated against digestSchema.ts
@@ -86,10 +86,10 @@ daily-dose/
       costTracking.ts            — real per-run cost computation + rolling-average anomaly check,
                                     appended to src/data/stats.jsonl.
       curation.ts                — FALLBACK-ONLY interest_score + why_read logic (defines
-                                    scoreStoryPlaceholder/scoreArxivPlaceholder/scoreGithubPlaceholder,
-                                    imported by scripts/pipeline.ts), derived only from real
-                                    fetched fields per source — used only without Bedrock
-                                    credentials or on a per-item LLM response gap. See Known Gotchas.
+                                    scoreStoryPlaceholder/scoreArxivPlaceholder/scoreGithubPlaceholder/
+                                    scoreDevtoPlaceholder, imported by scripts/pipeline.ts), derived
+                                    only from real fetched fields per source — used only without
+                                    Bedrock credentials or on a per-item LLM response gap. See Known Gotchas.
     pages/
       index.astro                  — renders the latest digest via DigestList/DigestChart
       archive/
@@ -106,6 +106,7 @@ daily-dose/
         hn-<hn_id>.json                    — one committed file per item
         arxiv-<id>.json
         github-<owner>-<repo>.json
+        devto-<id>.json
   tests/
     ...                                  — Vitest suite (schema, scoring, real LLM path mocked,
                                             content-collection, build-output, archive, RSS)
@@ -137,6 +138,6 @@ Same template as every sibling project in this suite — see this repo's own `Br
 ## Known Gotchas
 
 - **The placeholder curation logic is now a fallback, not the default path.** `src/lib/curation.ts` computes `interest_score` and `why_read` deterministically from `points`/`num_comments`/`title` (HN) or recency (arXiv), and is only used when Bedrock credentials aren't configured or the LLM's response omits a specific item. `src/lib/llmCuration.ts` is the real default path — see `Context.md`'s roadmap and ADR 0003.
-- **All three sources (Hacker News, arXiv, GitHub) ship for real.** A fourth source is a new, undecided question, not a deferred one — do not add one as a side effect of an unrelated change.
+- **All four sources (Hacker News, arXiv, GitHub, Dev.to) ship for real, as of ADR 0007.** A fifth source is a new, undecided question, not a deferred one — do not add one as a side effect of an unrelated change.
 - **`schedule:` cron and Vercel deployment are both live (ADR 0004).** `daily-pipeline.yml` runs daily and commits real data unattended, and every push to `main` triggers a real production redeploy at https://daily-dose-hazel-delta.vercel.app — any change to the cron's schedule/permissions/file-pattern scope, or to Vercel's Build Command, is a real decision; treat it with the same care as ADR 0004's original design, not a routine edit.
 - **One schema, two enforcement points is only as good as keeping them pointed at the same file.** If a future refactor moves or renames `digestSchema.ts`, update both `scripts/pipeline.ts` and `src/content.config.ts` in the same change — never let them drift.

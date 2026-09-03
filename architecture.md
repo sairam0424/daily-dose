@@ -10,7 +10,7 @@ is about to exist) at this phase, not speculative future features.
 ## Context & Scope
 
 daily-dose is a standalone, independent GitHub repository — a daily
-AI-curated technical digest (Hacker News + arXiv + GitHub), matching this workspace's
+AI-curated technical digest (Hacker News + arXiv + GitHub + Dev.to), matching this workspace's
 polyrepo convention (it is not nested inside Not-Humans-Lab). It is the
 author's own version of
 [arpitbbhayani/the-daily-diff](https://github.com/arpitbbhayani/the-daily-diff),
@@ -41,10 +41,10 @@ convention precedent, never copied structurally.
                                                     live HTTP GET  │  real Bedrock call
                                           ┌─────────────────────┐ │ ┌──────────────────────┐
                                           │ HN Algolia / arXiv /  │◀┘▶│  AWS Bedrock           │
-                                          │ GitHub Search APIs    │   │  (Sonnet 5→Sonnet 4.6→Opus→Haiku,   │
-                                          │ (free, keyless)       │   │   shared cred w/       │
-                                          └───────────────────────┘   │   Anvilry — ADR 0003)  │
-                                                                       └────────────────────────┘
+                                          │ GitHub Search / Dev.to│   │  (Sonnet 5→Sonnet 4.6→Opus→Haiku,   │
+                                          │ Articles APIs         │   │   shared cred w/       │
+                                          │ (free, keyless)       │   │   Anvilry — ADR 0003)  │
+                                          └───────────────────────┘   └────────────────────────┘
 ```
 
 - **Not-Humans-Lab** (external actor): docs-only meta-repo holding
@@ -55,28 +55,30 @@ convention precedent, never copied structurally.
   `AGENTS.md`/`CLAUDE.md`/`SOUL.md`/`Context.md` pattern, linking to
   `../Not-Humans-Lab/` by relative path). Neither is a runtime dependency of
   daily-dose, and neither's architecture is copied here.
-- **Hacker News Algolia API + arXiv Atom API + GitHub Search API** (external
-  actors): free, keyless public APIs (`hn.algolia.com/api/v1/search?tags=front_page`,
+- **Hacker News Algolia API + arXiv Atom API + GitHub Search API + Dev.to
+  Articles API** (external actors): free, keyless public APIs
+  (`hn.algolia.com/api/v1/search?tags=front_page`,
   `export.arxiv.org/api/query`, `api.github.com/search/repositories` — the
-  last rate-limited to 10 requests/minute unauthenticated, confirmed via a
-  real call, see ADR 0006). daily-dose's pipeline makes real, live HTTP
-  GETs against all three.
+  latter rate-limited to 10 requests/minute unauthenticated, confirmed via a
+  real call, see ADR 0006 — and `dev.to/api/articles`, fully keyless with no
+  rate-limit headers observed across 10 rapid sequential requests, see ADR
+  0007). daily-dose's pipeline makes real, live HTTP GETs against all four.
 - **AWS Bedrock** (external actor, as of ADR 0003 — 2026-09-02): a real,
   paid LLM API. `src/lib/llmCuration.ts` makes one forced-tool-use batched
   call per pipeline run, using a credential shared with the sibling Anvilry
   project's production chatbot (as of ADR 0005, Sonnet 5 leads). Model
   fallback chain: Claude Sonnet 5 → Sonnet 4.6 →
   Opus 4.6 → Haiku 4.5.
-- **In scope for daily-dose itself**: fetching live HN + arXiv + GitHub data;
-  scoring each item via a real Bedrock LLM call, with a deterministic
-  placeholder `interest_score`/`why_read` fallback for missing credentials
-  or a per-item response gap; validating each item against a shared schema;
-  writing one dated JSON file per pipeline run; rendering that data as a
-  static site with one chart; tracking real per-run LLM cost.
+- **In scope for daily-dose itself**: fetching live HN + arXiv + GitHub +
+  Dev.to data; scoring each item via a real Bedrock LLM call, with a
+  deterministic placeholder `interest_score`/`why_read` fallback for missing
+  credentials or a per-item response gap; validating each item against a
+  shared schema; writing one dated JSON file per pipeline run; rendering
+  that data as a static site with one chart; tracking real per-run LLM cost.
 - **Out of scope for daily-dose itself**: anything belonging to nh-deck,
-  nh-skills, or Not-Humans-Lab. (HN, arXiv, and GitHub sourcing, scheduled
-  runs, and real deployment are all in scope and shipped — see ADR 0004
-  and ADR 0006.)
+  nh-skills, or Not-Humans-Lab. (HN, arXiv, GitHub, and Dev.to sourcing,
+  scheduled runs, and real deployment are all in scope and shipped — see
+  ADR 0004, ADR 0006, and ADR 0007.)
 
 ## Building Block View
 
@@ -104,7 +106,8 @@ daily-dose/
 │
 ├── scripts/pipeline.ts            Building block 4: the pipeline script
 │                                    — fetch (live HN Algolia + arXiv Atom +
-│                                      GitHub Search APIs) -> score (building
+│                                      GitHub Search + Dev.to Articles APIs)
+│                                      -> score (building
 │                                      block 2, falling back to building
 │                                      block 3) -> validate (DigestItemSchema)
 │                                      -> write one dated JSON file per item,
@@ -137,9 +140,9 @@ Relationships:
   pure, deterministic functions over already-fetched fields.
 - Building block 4 (the pipeline) depends on building block 1 for
   validation, on building blocks 2 and 3 for scoring, and on the live HN
-  Algolia, arXiv, and GitHub Search APIs for its input data. It is the only
-  building block that performs real network calls (HN, arXiv, GitHub, and —
-  via building block 2 — Bedrock).
+  Algolia, arXiv, GitHub Search, and Dev.to Articles APIs for its input
+  data. It is the only building block that performs real network calls (HN,
+  arXiv, GitHub, Dev.to, and — via building block 2 — Bedrock).
 - Building block 5 (the content collection config) depends on building
   block 1 for validation and on building block 4's output on disk
   (`src/data/digest/*.json`) — but has no direct code dependency on
@@ -158,16 +161,18 @@ Relationships:
               │
               ▼
  2. scripts/pipeline.ts fetches the live HN front page
-    (hn.algolia.com), newest arXiv papers (export.arxiv.org), and
+    (hn.algolia.com), newest arXiv papers (export.arxiv.org),
     recently-created GitHub repos sorted by stars
-    (api.github.com/search/repositories) — three real, keyless, free
-    HTTP GETs, one per source enabled via --sources
+    (api.github.com/search/repositories), and today's "hot right now"
+    Dev.to articles plus each one's real body text (dev.to/api/articles) —
+    four real, keyless, free HTTP GETs (Dev.to is actually list + one
+    detail call per article), one source group per --sources entry
               │
               ▼
  3. If Bedrock credentials are configured (the default): score every
-    fetched item (HN + arXiv + GitHub) in ONE real, forced-tool-use Bedrock
-    call (src/lib/llmCuration.ts) — Sonnet 5→Sonnet 4.6→Opus→Haiku fallback,
-    Zod-validated response, real per-run cost recorded via
+    fetched item (HN + arXiv + GitHub + Dev.to) in ONE real, forced-tool-use
+    Bedrock call (src/lib/llmCuration.ts) — Sonnet 5→Sonnet 4.6→Opus→Haiku
+    fallback, Zod-validated response, real per-run cost recorded via
     src/lib/costTracking.ts. Otherwise (e.g. local dev without
     credentials), or for any item the LLM's response omits: fall
     back to the deterministic placeholder heuristic
