@@ -1,7 +1,7 @@
 ---
 // Reads src/data/stats.jsonl directly (real, committed history — see
 // src/lib/costTracking.ts, which is the only writer). This file only
-// exists because real Bedrock LLM calls exist (ADR 0003) and produced
+// exists because real LLM calls exist (ADR 0003) and produced
 // real cost data to report — see telemetry.md's Public Stats Page Spec.
 //
 // Deliberately NOT in scope here (per telemetry.md): per-story cost
@@ -103,7 +103,7 @@ function formatUsd(amount: number): string {
 
 <Layout
   title="daily-dose — cost & stats"
-  description="Real AWS Bedrock LLM curation cost for daily-dose, tracked from actual token usage — not estimated."
+  description="Real AI/LLM curation cost for daily-dose, tracked from actual token usage — not estimated."
   path="/stats"
   includeRssLink={false}
 >
@@ -114,7 +114,7 @@ function formatUsd(amount: number): string {
     </nav>
     <h1>Cost &amp; stats</h1>
     <p class="tagline">
-      Real AWS Bedrock LLM curation cost, tracked from actual token usage — not estimated.
+      Real AI/LLM curation cost, tracked from actual token usage — not estimated.
     </p>
   </header>
 
@@ -122,7 +122,7 @@ function formatUsd(amount: number): string {
     {totalRuns === 0 ? (
       <p class="empty-state">
         No real LLM cost data recorded yet. This page only has data once a pipeline run
-        actually makes a real Bedrock call (see <code>src/lib/llmCuration.ts</code>) — runs
+        actually makes a real AI/LLM call (see <code>src/lib/llmCuration.ts</code>) — runs
         that fall back to the placeholder heuristic produce no cost and are never logged here.
       </p>
     ) : (
@@ -216,7 +216,7 @@ function formatUsd(amount: number): string {
 
   <footer class="site-footer">
     <p>
-      Scope: real per-run LLM cost only, from actual Bedrock response token usage. Not shown:
+      Scope: real per-run LLM cost only, from actual AI model response token usage. Not shown:
       per-story cost (too granular to be meaningful publicly) or raw per-call logs. See
       <code>telemetry.md</code> for the full design and <code>decisions.md</code>'s ADR 0003
       for why real LLM curation exists at all.

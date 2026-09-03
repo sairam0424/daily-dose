@@ -29,7 +29,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
   <main>
     <h2 class="section-heading">How items are scored</h2>
     <p>
-      Every fetched item is scored in one batched call to a real AWS Bedrock LLM
+      Every fetched item is scored in one batched call to a real AI model
       (Claude, via a model fallback chain) that reads each item's real title, real
       engagement numbers, and — where available — its real abstract or article
       excerpt. The model is asked for a genuine 0-10 interest score and one honest
