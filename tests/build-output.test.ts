@@ -8,13 +8,46 @@ import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
 
-const DIST_INDEX = join(import.meta.dirname, "..", "dist", "index.html");
+const DIST_DIR = join(import.meta.dirname, "..", "dist");
+const DIST_INDEX = join(DIST_DIR, "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
 function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })
     .filter((entry) => typeof entry === "string" && entry.endsWith(".json"))
     .map((entry) => join(base, entry as string));
+}
+
+// Astro's default `build.inlineStylesheets: 'auto'` only inlines a page's
+// CSS as a <style> tag while it stays under Vite's ~4096-byte threshold;
+// past that it writes the same CSS to an external /_astro/*.css file and
+// links it instead. Which bucket a given rule lands in is a build-tool
+// implementation detail, not something a CSS-only task should have to
+// control — so this helper concatenates inline <style> content with the
+// content of any local stylesheet <link> targets, giving one haystack of
+// "all CSS that actually ships with this page" to assert against
+// regardless of where the bundler decided to put it.
+function readAllPageCss(pageHtml: string): string {
+  const inlineStyles = [
+    ...pageHtml.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g),
+  ]
+    .map((match) => match[1])
+    .join("\n");
+
+  const externalCss = [
+    ...pageHtml.matchAll(/<link\s+[^>]*rel="stylesheet"[^>]*>/gi),
+  ]
+    .map((linkTag) => linkTag[0].match(/href="([^"]+)"/i)?.[1])
+    .filter(
+      (href): href is string =>
+        typeof href === "string" && href.startsWith("/"),
+    )
+    .map((href) => join(DIST_DIR, href))
+    .filter((cssPath) => existsSync(cssPath))
+    .map((cssPath) => readFileSync(cssPath, "utf-8"))
+    .join("\n");
+
+  return `${inlineStyles}\n${externalCss}`;
 }
 
 function readCommittedTitles(): string[] {
@@ -177,5 +210,94 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="skin-toggle-dev"[^>]*aria-pressed="true"/);
     expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
+  });
+
+  it("marks the highest-scored story as the lead story", () => {
+    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+      DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
+    );
+    const topItem = [...items].sort(
+      (a, b) => b.interest_score - a.interest_score,
+    )[0];
+    expect(topItem, "expected at least one committed digest item").toBeTruthy();
+
+    const leadMatch = html.match(
+      /<li class="story-card lead-story"[^>]*>[\s\S]*?<\/li>/,
+    );
+    expect(leadMatch, "expected a .lead-story <li>").toBeTruthy();
+    expect(leadMatch![0]).toContain(topItem!.title);
+  });
+
+  it("(review fix) uses the exact why_read string as the info button's accessible label", () => {
+    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+      DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
+    );
+    const sample = items[0];
+    // Deliberately includes a short context prefix ("Why this made the
+    // cut: ") rather than the bare why_read string alone — a raw
+    // sentence with no label is worse for screen-reader users than one
+    // with context, per general ARIA-label practice. This is a
+    // documented, intentional refinement over the spec's literal "the
+    // full why_read string" wording, not an oversight (spec Section 6).
+    expect(html).toContain(
+      `aria-label="Why this made the cut: ${sample.why_read}"`,
+    );
+  });
+
+  it("applies a multi-column layout to the story list only under the Newspaper skin, with display reset from the shared flex base", () => {
+    // Reads inline <style> tags AND any linked /_astro/*.css files: Astro's
+    // build.inlineStylesheets:"auto" default only inlines a page's CSS
+    // below a ~4096-byte threshold, so this component's rules may land in
+    // either place depending on total bundled chunk size at build time —
+    // that's a build-chunking detail, not something this test should be
+    // sensitive to.
+    const style = readAllPageCss(html);
+    expect(style, "expected a .story-list rule in the page's CSS").toContain(
+      "story-list",
+    );
+    // CSS minification strips quotes from attribute-selector values (e.g.
+    // [data-skin='newspaper'] -> [data-skin=newspaper]), so match either
+    // quoting style rather than assuming the unminified form survives.
+    const newspaperSkinSelector = /\[data-skin=['"]?newspaper['"]?\]/;
+    expect(style).toMatch(newspaperSkinSelector);
+    expect(style).toContain("column-count");
+    // (review fix, critical) .story-list's base rule sets display:flex;
+    // without an explicit reset here, column-count has zero effect —
+    // verified empirically in a real browser during plan review.
+    // Astro's scoped-style hashing appends a `[data-astro-cid-*]` attribute
+    // selector directly after the class (e.g. `.story-list[data-astro-cid-xyz]`),
+    // so the pattern allows an optional attribute selector between the
+    // class name and the opening brace.
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-list(\[[^\]]*\])?\s*\{[^}]*display:\s*block/,
+    );
+  });
+
+  it("(review fix, critical) neutralizes the 'Top Pick' eyebrow content under Newspaper skin so the drop-cap binds to the real headline, not the ::before text", () => {
+    // Regression test for a real bug: the base (Dev-skin) rule
+    // `.lead-story .story-title::before { content: 'Top Pick'; }` generates
+    // non-empty content, and per the CSS spec ::first-letter binds to the
+    // first letter of the element's "first formatted line" - which includes
+    // a non-empty ::before's generated content when present. Without this
+    // override, the Newspaper drop-cap floats the "T" of "Top Pick" instead
+    // of the real headline's first letter - verified live in a browser
+    // during review. If this override rule is ever removed or reordered
+    // relative to the base rule such that it no longer wins the cascade,
+    // this test must fail.
+    const style = readAllPageCss(html);
+    const newspaperSkinSelector = /\[data-skin=['"]?newspaper['"]?\]/;
+    expect(style).toMatch(newspaperSkinSelector);
+
+    // Astro auto-scopes `.lead-story` and `.story-title` (written outside
+    // `:global()`) with a `[data-astro-cid-*]` attribute selector each, and
+    // CSS minification collapses `::before` to `:before` and may strip
+    // quotes from the attribute value - tolerate all of that, the same way
+    // the multi-column test above does.
+    const dropCapOverrideRule =
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.lead-story(\[[^\]]*\])?\s+\.story-title(\[[^\]]*\])?:{1,2}before\s*\{[^}]*content:\s*none/;
+    expect(
+      style,
+      "expected a Newspaper-scoped .lead-story .story-title::before rule setting content: none",
+    ).toMatch(dropCapOverrideRule);
   });
 });
