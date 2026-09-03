@@ -43,4 +43,33 @@ describe("DigestItemSchema", () => {
     const badUrl = { ...validItem, url: "not-a-valid-url" };
     expect(() => DigestItemSchema.parse(badUrl)).toThrow();
   });
+
+  it("accepts a valid item with reading_minutes set", () => {
+    const result = DigestItemSchema.safeParse({
+      title: "A paper",
+      source: "arxiv",
+      url: "https://arxiv.org/abs/1234.5678",
+      date: "2026-09-03",
+      tags: [],
+      interest_score: 7,
+      why_read: "Solid incremental result.",
+      authors: [],
+      reading_minutes: 3,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a valid item WITHOUT reading_minutes (HN/GitHub items never have it)", () => {
+    const result = DigestItemSchema.safeParse({
+      title: "A story",
+      source: "hn",
+      url: "https://example.com",
+      date: "2026-09-03",
+      tags: [],
+      interest_score: 7,
+      why_read: "Interesting.",
+      authors: [],
+    });
+    expect(result.success).toBe(true);
+  });
 });

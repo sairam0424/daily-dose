@@ -7,6 +7,7 @@ import {
   type RawGithubRepo,
   type RawDevtoArticle,
 } from "../src/lib/curation.js";
+import { computeReadingMinutes } from "../scripts/pipeline.js";
 
 // Fixed, hand-constructed RawHnStory fixtures (the shape fetchHnFrontPage
 // produces). No network calls — scoreStoryPlaceholder must be a pure,
@@ -100,6 +101,24 @@ describe("scoreGithubPlaceholder", () => {
     expect(high.interest_score).toBeLessThanOrEqual(10);
     expect(low.interest_score).toBeGreaterThanOrEqual(0);
     expect(low.interest_score).toBeLessThanOrEqual(10);
+  });
+});
+
+describe("computeReadingMinutes", () => {
+  it("computes ~200 words per minute, rounded, minimum 1", () => {
+    const twoHundredWords = Array.from({ length: 200 }, () => "word").join(" ");
+    expect(computeReadingMinutes(twoHundredWords)).toBe(1);
+
+    const sixHundredWords = Array.from({ length: 600 }, () => "word").join(" ");
+    expect(computeReadingMinutes(sixHundredWords)).toBe(3);
+  });
+
+  it("never returns less than 1, even for very short text", () => {
+    expect(computeReadingMinutes("one two three")).toBe(1);
+  });
+
+  it("returns 1 for empty text (defensive floor, not expected in real data)", () => {
+    expect(computeReadingMinutes("")).toBe(1);
   });
 });
 
