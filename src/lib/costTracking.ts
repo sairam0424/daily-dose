@@ -36,7 +36,7 @@ import { resolve } from "node:path";
  * (a US-region-prefixed cross-region profile, not "global.anthropic.claude-
  * sonnet-5", which bills at the cheaper $2.00/$10.00 Global cross-Region
  * tier instead). */
-const PRICING_PER_MILLION_TOKENS: Record<
+export const PRICING_PER_MILLION_TOKENS: Record<
   string,
   { input: number; output: number }
 > = {
@@ -98,19 +98,19 @@ async function readHistoricalCosts(excludeDate: string): Promise<number[]> {
  * flagged. Chosen to catch a genuine bug (e.g. 5x more items than normal,
  * or a runaway max_tokens) while tolerating ordinary day-to-day variance in
  * abstract/title length. */
-const ANOMALY_MULTIPLIER = 5;
+export const ANOMALY_MULTIPLIER = 5;
 
 /** Used only when there is no history yet (first few real runs) - a rough
  * seed so the very first run cannot itself be flagged as "anomalous"
  * against an empty baseline. Deliberately generous (well above the actual
  * expected mid-case of a few cents) since under-flagging on day one is far
  * less costly than a false-positive alarm with zero history to judge it against. */
-const SEED_BASELINE_USD = 0.05;
+export const SEED_BASELINE_USD = 0.05;
 
 /** Minimum history length before the anomaly check activates at all - below
  * this, "average" is too noisy to be meaningful and the check is skipped
  * entirely (real cost is still recorded either way). */
-const MIN_HISTORY_FOR_ANOMALY_CHECK = 3;
+export const MIN_HISTORY_FOR_ANOMALY_CHECK = 3;
 
 /**
  * Records today's real LLM cost to src/data/stats.jsonl (committed, not
