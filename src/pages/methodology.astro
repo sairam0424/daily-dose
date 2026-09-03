@@ -107,6 +107,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
 <style>
   ul {
     line-height: 1.7;
+    font-family: var(--font-body);
   }
 
   .pricing-table {
@@ -114,17 +115,19 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
     border-collapse: collapse;
     margin-top: 0.75rem;
     font-size: 0.9rem;
+    background: var(--bg-surface);
+    font-family: var(--font-body);
   }
 
   .pricing-table th,
   .pricing-table td {
     text-align: left;
     padding: 0.5rem 0.6rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--rule);
   }
 
   .pricing-table th {
-    color: var(--muted);
+    color: var(--ink-soft);
     font-weight: 600;
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -132,7 +135,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
   }
 
   .model-cell {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
   }
 </style>

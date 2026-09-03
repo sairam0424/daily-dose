@@ -235,12 +235,14 @@ function formatUsd(amount: number): string {
   }
 
   .totals-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--rule);
     border-radius: 8px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    background: var(--bg-surface);
+    font-family: var(--font-body);
   }
 
   .totals-value {
@@ -251,9 +253,11 @@ function formatUsd(amount: number): string {
 
   .totals-label {
     font-size: 0.8rem;
-    color: var(--muted);
+    color: var(--ink-soft);
   }
 
+  /* Unchanged — a semantic warning color, not part of the skin token
+     system. Left hardcoded deliberately, not a missed rename. */
   .anomaly-note {
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -272,17 +276,19 @@ function formatUsd(amount: number): string {
     border-collapse: collapse;
     margin-top: 0.75rem;
     font-size: 0.9rem;
+    background: var(--bg-surface);
+    font-family: var(--font-body);
   }
 
   .stats-table th,
   .stats-table td {
     text-align: left;
     padding: 0.5rem 0.6rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--rule);
   }
 
   .stats-table th {
-    color: var(--muted);
+    color: var(--ink-soft);
     font-weight: 600;
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -290,7 +296,7 @@ function formatUsd(amount: number): string {
   }
 
   .model-cell {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
   }
 </style>
