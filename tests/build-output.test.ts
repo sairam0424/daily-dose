@@ -138,4 +138,9 @@ describe("dist/index.html build output", () => {
     expect(html.includes("data-source=")).toBe(true);
     expect(html.includes("data-interest-tier=")).toBe(true);
   });
+
+  it("includes the static empty-state markup for when filters match no stories", () => {
+    expect(html.includes('id="filter-empty-state"')).toBe(true);
+    expect(html.includes("No stories match the selected filters.")).toBe(true);
+  });
 });
