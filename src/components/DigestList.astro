@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { interestTier } from '../lib/interestTier.js';
 
 interface Props {
   entries: CollectionEntry<'digest'>[];
@@ -10,7 +11,11 @@ const { entries } = Astro.props;
 
 <ul class="story-list">
   {entries.map((entry) => (
-    <li class="story-card">
+    <li
+      class="story-card"
+      data-source={entry.data.source}
+      data-interest-tier={interestTier(entry.data.interest_score)}
+    >
       <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
         {entry.data.title}
       </a>
