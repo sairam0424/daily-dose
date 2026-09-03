@@ -143,4 +143,8 @@ describe("dist/index.html build output", () => {
     expect(html.includes('id="filter-empty-state"')).toBe(true);
     expect(html.includes("No stories match the selected filters.")).toBe(true);
   });
+
+  it("has a Methodology nav link", () => {
+    expect(html).toContain('href="/methodology"');
+  });
 });
