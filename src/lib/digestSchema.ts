@@ -13,6 +13,7 @@ export const DigestItemSchema = z.object({
   points: z.number().optional(),
   stars: z.number().optional(),
   reactions: z.number().optional(),
+  reading_minutes: z.number().optional(),
 });
 
 export type DigestItem = z.infer<typeof DigestItemSchema>;

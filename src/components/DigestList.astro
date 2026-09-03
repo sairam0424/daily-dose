@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { interestTier } from '../lib/interestTier.js';
+import { formatReadingBadge } from '../lib/readingTime.js';
 
 interface Props {
   entries: CollectionEntry<'digest'>[];
@@ -22,6 +23,7 @@ const { entries } = Astro.props;
       <div class="story-meta">
         <span class={`badge badge-${entry.data.source}`}>{entry.data.source}</span>
         <span class="score">score: {entry.data.interest_score.toFixed(1)}</span>
+        <span class="reading-badge">{formatReadingBadge(entry.data)}</span>
         {typeof entry.data.points === 'number' && (
           <span class="points">{entry.data.points} points</span>
         )}
@@ -85,6 +87,10 @@ const { entries } = Astro.props;
     border-radius: 4px;
     background: #eef2ff;
     color: var(--accent);
+  }
+
+  .reading-badge {
+    font-style: italic;
   }
 
   .why-read {

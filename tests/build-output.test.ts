@@ -147,4 +147,14 @@ describe("dist/index.html build output", () => {
   it("has a Methodology nav link", () => {
     expect(html).toContain('href="/methodology"');
   });
+
+  it("renders a real Discussion/Repo/Paper reading-time badge per source (no fabricated arXiv time on today's pre-existing committed data)", () => {
+    // Today's real committed arXiv items predate this feature and have no
+    // reading_minutes set yet - they must show the honest "Paper" fallback,
+    // not a fabricated "~X min read". This is deliberately testing the
+    // CURRENT real state, not a hypothetical future state.
+    expect(html).toContain(">Discussion<");
+    expect(html).toContain(">Repo<");
+    expect(html).toContain(">Paper<");
+  });
 });

@@ -274,6 +274,17 @@ function sanitizeGithubId(fullName: string): string {
   return fullName.replace(/\//g, "-");
 }
 
+/** Standard 200 words-per-minute reading speed, rounded, floored at 1 minute
+ * so a very short abstract/excerpt never reports "0 min". Used only for
+ * arXiv abstracts and Dev.to excerpts - HN and GitHub items never get a
+ * reading_minutes value since no body text is ever fetched for either. */
+const WORDS_PER_MINUTE = 200;
+
+export function computeReadingMinutes(text: string): number {
+  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
+}
+
 const DEVTO_ARTICLES_URL = "https://dev.to/api/articles";
 
 // Real, live-verified research (see docs/adr/0007-add-devto-as-fourth-source.md):
@@ -594,6 +605,7 @@ export async function main(): Promise<void> {
       interest_score,
       why_read,
       authors: paper.authors,
+      reading_minutes: computeReadingMinutes(paper.summary),
     };
 
     // Same validate-before-write guarantee as the HN branch above.
@@ -656,6 +668,7 @@ export async function main(): Promise<void> {
       why_read,
       authors: [],
       reactions: article.reactions,
+      reading_minutes: computeReadingMinutes(article.bodyText),
     };
 
     // Same validate-before-write guarantee as the HN branch above.
