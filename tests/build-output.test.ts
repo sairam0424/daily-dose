@@ -3,10 +3,11 @@
 // (i.e. `astro build`) has already run before this suite executes, matching
 // this project's real CI step order: install, then build, then test. If you
 // are running this locally, run `npm run build` first.
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
+import { formatReadingBadge } from "../src/lib/readingTime.js";
 
 const DIST_DIR = join(import.meta.dirname, "..", "dist");
 const DIST_INDEX = join(DIST_DIR, "index.html");
@@ -16,6 +17,25 @@ function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })
     .filter((entry) => typeof entry === "string" && entry.endsWith(".json"))
     .map((entry) => join(base, entry as string));
+}
+
+// The site only ever renders the LATEST date's items on the homepage
+// (see groupEntriesByDate() + index.astro) - once more than one date is
+// committed, any test that needs to match what's actually on the page
+// must scope to that same date, not scan the whole multi-date archive.
+// Real digest dates commit automatically via the daily-pipeline.yml
+// cron, so a second (or third) date folder appearing mid-session is
+// expected, real behavior, not a fixture to special-case around.
+function findLatestDateJsonFiles(base: string): string[] {
+  const latestDate = readdirSync(base)
+    .filter((entry) => statSync(join(base, entry)).isDirectory())
+    .sort()
+    .at(-1);
+  expect(
+    latestDate,
+    "expected at least one committed digest date",
+  ).toBeTruthy();
+  return findJsonFiles(join(base, latestDate as string));
 }
 
 // Astro's default `build.inlineStylesheets: 'auto'` only inlines a page's
@@ -161,7 +181,11 @@ describe("dist/index.html build output", () => {
   });
 
   it("renders a real HN discussion link for HN-sourced stories", () => {
-    const hnFile = findJsonFiles(DIGEST_BASE).find((filePath) =>
+    // Scoped to the latest date only - the homepage never renders older
+    // dates, so a hn-*.json file from an earlier archived date would
+    // never appear in dist/index.html even though it's a real committed
+    // file.
+    const hnFile = findLatestDateJsonFiles(DIGEST_BASE).find((filePath) =>
       filePath.includes("hn-"),
     );
     expect(
@@ -216,14 +240,26 @@ describe("dist/index.html build output", () => {
     expect(html).toContain('href="/methodology"');
   });
 
-  it("renders a real Discussion/Repo/Paper reading-time badge per source (no fabricated arXiv time on today's pre-existing committed data)", () => {
-    // Today's real committed arXiv items predate this feature and have no
-    // reading_minutes set yet - they must show the honest "Paper" fallback,
-    // not a fabricated "~X min read". This is deliberately testing the
-    // CURRENT real state, not a hypothetical future state.
-    expect(html).toContain(">Discussion<");
-    expect(html).toContain(">Repo<");
-    expect(html).toContain(">Paper<");
+  it("renders the correct reading-time badge for every latest-date item, matching formatReadingBadge()'s real output for the real committed data", () => {
+    // Deriving the expected badge from the real formatReadingBadge()
+    // function against whatever is actually committed today - rather
+    // than hardcoding an assumption about which fallback state exists -
+    // keeps this robust as the daily-pipeline.yml cron adds real new
+    // data (which may or may not include items missing reading_minutes)
+    // without needing a rewrite every time that mix changes.
+    const items = findLatestDateJsonFiles(DIGEST_BASE).map((filePath) =>
+      DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
+    );
+    expect(items.length).toBeGreaterThan(0);
+
+    const expectedBadges = new Set(
+      items.map((item) => formatReadingBadge(item)),
+    );
+    for (const badge of expectedBadges) {
+      expect(html, `expected a reading badge showing "${badge}"`).toContain(
+        `>${badge}<`,
+      );
+    }
   });
 
   it("bootstraps skin and theme from localStorage before paint via an inline head script", () => {
@@ -253,7 +289,11 @@ describe("dist/index.html build output", () => {
   });
 
   it("marks the highest-scored story as the lead story", () => {
-    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+    // Scoped to the latest date only, matching what groupEntriesByDate()
+    // + index.astro actually render - the globally-highest-scored item
+    // across ALL committed dates is not necessarily on the homepage once
+    // more than one date exists.
+    const items = findLatestDateJsonFiles(DIGEST_BASE).map((filePath) =>
       DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
     );
     const topItem = [...items].sort(
@@ -269,7 +309,9 @@ describe("dist/index.html build output", () => {
   });
 
   it("(review fix) uses the exact why_read string as the info button's accessible label", () => {
-    const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
+    // Scoped to the latest date only - a sample item from an older,
+    // no-longer-rendered date would never appear in dist/index.html.
+    const items = findLatestDateJsonFiles(DIGEST_BASE).map((filePath) =>
       DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
     );
     const sample = items[0];
