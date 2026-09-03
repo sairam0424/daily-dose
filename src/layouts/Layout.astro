@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import SiteMeta from '../components/SiteMeta.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 
@@ -24,6 +25,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
     )}
   </head>
   <body>
+    <Analytics />
     <ThemeToggle />
     <slot />
     <style is:global>
