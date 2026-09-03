@@ -157,4 +157,25 @@ describe("dist/index.html build output", () => {
     expect(html).toContain(">Repo<");
     expect(html).toContain(">Paper<");
   });
+
+  it("bootstraps skin and theme from localStorage before paint via an inline head script", () => {
+    const headMatch = html.match(/<head[^>]*>[\s\S]*?<\/head>/i);
+    expect(headMatch, "expected a <head> section").toBeTruthy();
+    const head = headMatch![0];
+    expect(head).toContain("documentElement.dataset.skin");
+    expect(head).toContain('localStorage.getItem("skin")');
+  });
+
+  it("loads all four redesign Google Fonts", () => {
+    expect(html).toContain("Space+Grotesk");
+    expect(html).toContain("JetBrains+Mono");
+    expect(html).toContain("Fraunces");
+    expect(html).toContain("Newsreader");
+  });
+
+  it("renders the skin segmented control defaulting to Dev-editorial with the theme toggle disabled", () => {
+    expect(html).toMatch(/id="skin-toggle-dev"[^>]*aria-pressed="true"/);
+    expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
+    expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
+  });
 });

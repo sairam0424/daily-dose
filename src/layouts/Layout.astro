@@ -1,7 +1,7 @@
 ---
 import Analytics from '@vercel/analytics/astro';
 import SiteMeta from '../components/SiteMeta.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
 
 interface Props {
   title: string;
@@ -23,27 +23,83 @@ const { title, description, path, includeRssLink = true } = Astro.props;
     {includeRssLink && (
       <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
     )}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500&family=Fraunces:opsz,wght@9..144,400..700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    />
+    <script is:inline>
+      (function () {
+        var skin = localStorage.getItem("skin") || "dev";
+        document.documentElement.dataset.skin = skin;
+        if (skin === "dev") {
+          document.documentElement.dataset.theme = "dark";
+        } else if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
   </head>
   <body>
     <Analytics />
-    <ThemeToggle />
+    <PreferenceControls />
     <slot />
     <style is:global>
-      :root {
+      :root,
+      [data-skin='newspaper'] {
         color-scheme: light dark;
-        --bg: #ffffff;
-        --fg: #1a1a1a;
-        --muted: #6b7280;
-        --border: #e5e7eb;
-        --accent: #4f46e5;
+        --bg-page: #ece6d6;
+        --bg-surface: #f8f4e8;
+        --ink: #1f1d18;
+        --ink-soft: #4a4536;
+        --ink-faint: #857d68;
+        --accent: #7a2618;
+        --accent-ink: #f8f4e8;
+        --rule: rgba(31, 29, 24, 0.15);
+        --rule-soft: rgba(31, 29, 24, 0.08);
+        --font-display: 'Fraunces', Georgia, serif;
+        --font-body: 'Newsreader', Georgia, serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
       }
 
-      [data-theme='dark'] {
-        --bg: #0f1115;
-        --fg: #e5e7eb;
-        --muted: #9ca3af;
-        --border: #27272a;
-        --accent: #818cf8;
+      [data-skin='newspaper'][data-theme='dark'] {
+        --bg-page: #16140f;
+        --bg-surface: #201d16;
+        --ink: #ddd3ba;
+        --ink-soft: #a89b7c;
+        --ink-faint: #6f6551;
+        --accent: #c99356;
+        --accent-ink: #16140f;
+        --rule: rgba(221, 211, 186, 0.14);
+        --rule-soft: rgba(221, 211, 186, 0.07);
+      }
+
+      /* Must stay AFTER the block above — see Global Constraints. */
+      [data-skin='dev'] {
+        --bg-page: #0a0a0c;
+        --bg-surface: #14141a;
+        --ink: #e8e6f0;
+        --ink-soft: #a3a0b8;
+        --ink-faint: #6b6880;
+        --accent: #f5a623;
+        --accent-ink: #1a1206;
+        --rule: rgba(232, 230, 240, 0.12);
+        --rule-soft: rgba(232, 230, 240, 0.06);
+        --font-display: 'Space Grotesk', ui-sans-serif, sans-serif;
+        --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+      }
+
+      /* Legacy aliases for components not yet migrated to the new token
+         names — removed in Phase 4 Task 8 once nothing references them.
+         (This staged rollout is a plan-level choice; the spec itself asks
+         for a direct one-shot rename — see File Structure table.) */
+      :root {
+        --bg: var(--bg-page);
+        --fg: var(--ink);
+        --muted: var(--ink-soft);
+        --border: var(--rule);
       }
 
       * {
@@ -52,16 +108,15 @@ const { title, description, path, includeRssLink = true } = Astro.props;
 
       body {
         margin: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
+        font-family: var(--font-body);
+        background: var(--bg-page);
+        color: var(--ink);
         line-height: 1.5;
       }
 
       .masthead {
         padding: 2rem 1.5rem 1rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--rule);
       }
 
       .site-nav {
@@ -73,6 +128,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         color: var(--accent);
         text-decoration: none;
         font-size: 0.9rem;
+        font-family: var(--font-body);
       }
 
       .site-nav a:hover {
@@ -81,12 +137,24 @@ const { title, description, path, includeRssLink = true } = Astro.props;
 
       .masthead h1 {
         margin: 0.5rem 0 0;
-        font-size: 2rem;
+        font-family: var(--font-display);
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+      }
+
+      /* (review fix) Newspaper's masthead is deliberately larger, per
+         spec Section 4's typography table — font-optical-sizing:auto
+         above already makes Fraunces' opsz axis track this larger size
+         automatically; only the size itself needs a skin override. */
+      :global([data-skin='newspaper']) .masthead h1 {
+        font-size: clamp(2rem, 5vw, 2.75rem);
       }
 
       .tagline {
         margin: 0.25rem 0 0;
-        color: var(--muted);
+        color: var(--ink-soft);
+        font-family: var(--font-body);
       }
 
       main {
@@ -96,21 +164,43 @@ const { title, description, path, includeRssLink = true } = Astro.props;
       }
 
       .section-heading {
-        font-size: 1.25rem;
+        font-family: var(--font-display);
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
         margin-top: 2rem;
       }
 
+      /* (review fix) Newspaper section headings read fine lower-case-
+         adjacent in a serif — spec Section 4 drops the uppercase
+         treatment and uses a slightly larger size/looser tracking. */
+      :global([data-skin='newspaper']) .section-heading {
+        font-size: 1.2rem;
+        text-transform: none;
+        letter-spacing: 0.01em;
+      }
+
       .empty-state {
-        color: var(--muted);
+        color: var(--ink-soft);
       }
 
       .site-footer {
         max-width: 800px;
         margin: 2rem auto 0;
-        padding: 1rem 1.5rem 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--muted);
-        font-size: 0.85rem;
+        padding: 1.25rem 1.5rem 2rem;
+        border-top: 3px double var(--rule);
+        color: var(--ink-soft);
+        font-size: 0.8rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-family: var(--font-body);
+      }
+
+      .site-footer a {
+        color: var(--accent);
       }
     </style>
   </body>
