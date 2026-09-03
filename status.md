@@ -161,10 +161,21 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 
 ## Upcoming Milestones
 
-Every item on the original roadmap (real LLM curation, cron, Vercel,
-`/stats`, a third source) and both real candidates raised afterward
-(digest archive, RSS feed) are now shipped. No open milestones are
-currently tracked — the next one is whatever gets decided next.
+Every item on the original roadmap, plus every real candidate raised
+afterward (digest archive, RSS feed, cron failure alerting), is shipped.
+Current open backlog (2026-09-03), in priority order — see `Context.md`'s
+Roadmap for the full rationale on each:
+
+1. **Favicon + social preview (OG) image** — fully actionable now, no
+   blocked input, small. Highest priority for exactly that reason.
+2. **A fourth source, research/framing phase only** — needs 2-3 concrete
+   "what should this surface" proposals (same shape as ADR 0006's GitHub
+   framing) before any implementation decision.
+3. **Custom domain** — blocked entirely on the user choosing a name; next
+   action is asking, not building.
+4. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up) —
+   lowest priority, no new lever to pull until more usage accrues or the
+   user checks AWS billing directly.
 
 ## Risks & Blockers
 
