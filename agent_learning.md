@@ -51,6 +51,15 @@ Full entries, root causes, and the standing rules now in force for both: see `..
 - **Scope**: this-project-only, but the underlying rule ("virtual-module imports poison the whole file for plain-Vitest unit testing") is a real Astro-wide pattern worth remembering for `nh-deck`/`nh-skills` if either ever adopts Astro content collections.
 - **Status**: active — fixed via `src/lib/rssContent.ts`.
 
+### 2026-09-03 — a manual pipeline test run using a dev-sandbox clock ahead of GitHub Actions' real clock created a stale "future" digest folder that shadowed the real cron's output
+
+- **Trigger**: the user reported the homepage showing only GitHub items for "today," while yesterday's archive page correctly showed all three sources.
+- **Observation**: earlier the same session, a manual `npx tsx scripts/pipeline.ts --sources github --limit 5` verification run (for ADR 0006) used the dev sandbox's system clock, which read one calendar day ahead of GitHub Actions' real runner clock at the time. That run wrote `src/data/digest/2026-09-03/` containing only 5 GitHub items. Hours later, the real `daily-pipeline.yml` cron fired for real on GitHub's infrastructure, whose clock still said "today" was `2026-09-02` — it correctly fetched and committed a fresh, complete 15-item (5 HN + 5 arXiv + 5 GitHub) set to `src/data/digest/2026-09-02/`. `index.astro`/`digestGrouping.ts` picks the lexicographically latest date string as "latest digest" — `"2026-09-03" > "2026-09-02"` — so the stale, incomplete manual-test folder outranked the genuinely fresh, complete cron output and was the only thing visitors saw.
+- **Root cause**: not a bug in the pipeline or the date-sorting logic (both worked exactly as designed within their own scope) — a dev sandbox's clock and CI's real clock silently disagreeing, and a manual verification run's output being left in the tree as if it were real published content instead of being treated as a disposable test artifact.
+- **Correction / Rule**: manual `npx tsx scripts/pipeline.ts` runs used purely to verify a change (not to seed real content) should have their output folder removed once verified, especially when today's date is close to a boundary — never leave a manual test run's dated output sitting in the tree past the verification step it was for. If a dated folder needs to stay (e.g. to seed real content ahead of the first cron run), sanity-check its date against the real world (`date -u`), not just the sandbox's own clock.
+- **Scope**: this-project-only for now, but the underlying rule (dev sandbox clock ≠ CI clock; never trust a sandbox's `Date.now()`/`todayIsoDate()` output as ground truth against production) is a real pattern worth remembering for any sibling project that seeds dated content via a similar pipeline.
+- **Status**: active — fixed by removing the stale `2026-09-03/` folder; verified the homepage/tests correctly show the real `2026-09-02` data as latest afterward.
+
 ## Entry format
 
 - **Date**
