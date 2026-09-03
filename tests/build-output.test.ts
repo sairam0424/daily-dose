@@ -212,6 +212,11 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
   });
 
+  it("keeps the score chart canvas present after the redesign (regression check)", () => {
+    expect(html).toContain('id="score-chart"');
+    expect(html).not.toContain("rgba(79, 70, 229"); // old hardcoded indigo
+  });
+
   it("marks the highest-scored story as the lead story", () => {
     const items = findJsonFiles(DIGEST_BASE).map((filePath) =>
       DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
