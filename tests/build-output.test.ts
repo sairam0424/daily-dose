@@ -272,4 +272,32 @@ describe("dist/index.html build output", () => {
       /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-list(\[[^\]]*\])?\s*\{[^}]*display:\s*block/,
     );
   });
+
+  it("(review fix, critical) neutralizes the 'Top Pick' eyebrow content under Newspaper skin so the drop-cap binds to the real headline, not the ::before text", () => {
+    // Regression test for a real bug: the base (Dev-skin) rule
+    // `.lead-story .story-title::before { content: 'Top Pick'; }` generates
+    // non-empty content, and per the CSS spec ::first-letter binds to the
+    // first letter of the element's "first formatted line" - which includes
+    // a non-empty ::before's generated content when present. Without this
+    // override, the Newspaper drop-cap floats the "T" of "Top Pick" instead
+    // of the real headline's first letter - verified live in a browser
+    // during review. If this override rule is ever removed or reordered
+    // relative to the base rule such that it no longer wins the cascade,
+    // this test must fail.
+    const style = readAllPageCss(html);
+    const newspaperSkinSelector = /\[data-skin=['"]?newspaper['"]?\]/;
+    expect(style).toMatch(newspaperSkinSelector);
+
+    // Astro auto-scopes `.lead-story` and `.story-title` (written outside
+    // `:global()`) with a `[data-astro-cid-*]` attribute selector each, and
+    // CSS minification collapses `::before` to `:before` and may strip
+    // quotes from the attribute value - tolerate all of that, the same way
+    // the multi-column test above does.
+    const dropCapOverrideRule =
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.lead-story(\[[^\]]*\])?\s+\.story-title(\[[^\]]*\])?:{1,2}before\s*\{[^}]*content:\s*none/;
+    expect(
+      style,
+      "expected a Newspaper-scoped .lead-story .story-title::before rule setting content: none",
+    ).toMatch(dropCapOverrideRule);
+  });
 });
