@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "license": "Apache-2.0",
-  "description": "A daily AI-curated technical digest (arXiv + Hacker News) — a personal take on arpitbbhayani/the-daily-diff.",
+  "description": "A daily AI-curated technical digest aggregating Hacker News, arXiv, GitHub, and Dev.to.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sairam0424/daily-dose.git"
