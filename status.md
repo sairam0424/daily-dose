@@ -181,22 +181,40 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   engagement numbers and real body-text excerpts. 3 new placeholder tests
   in `tests/pipeline.test.ts`. The real, paid Bedrock verification against
   this new source is deferred to a human with real credentials.
+- Researched and decided the custom-domain question (2026-09-03): staying
+  on the free `daily-dose-hazel-delta.vercel.app` URL. Compared real,
+  live pricing across Vercel, Cloudflare Registrar, Porkbun, and
+  Namecheap, and separately verified whether a genuinely free option
+  exists — `daily-dose.is-a.dev` was found real and active but passed
+  over (its review requires the site be "software development related,"
+  a real toss-up for a curated digest, and its maintainers explicitly ask
+  contributors not to have AI draft the registration request).
+- Corrected Sonnet 5's Bedrock pricing (2026-09-03, ADR 0005's Update
+  section): a dynamic research workflow found two independent real
+  sources — Anthropic's own pricing page and AWS's public Price List Bulk
+  API — confirming the rate for this project's exact model ID
+  (`us.anthropic.claude-sonnet-5`, the In-Region/Geo tier) is $2.20/$11.00
+  per million input/output tokens, not the $3/$15 placeholder ADR 0005
+  had flagged as unconfirmed. `costTracking.ts` updated; the 3 historical
+  `stats.jsonl` entries recorded under the old assumption are left as-is,
+  per this project's append-only-ledger convention.
 
 ## Upcoming Milestones
 
 Every item on the original roadmap, plus every real candidate raised
 afterward (digest archive, RSS feed, cron failure alerting, favicon/OG
-image, Dev.to as a fourth source, custom domain), is shipped or decided.
-Current open backlog (2026-09-03) — see `Context.md`'s Roadmap for the
-full rationale:
+image, Dev.to as a fourth source, custom domain, Sonnet 5 pricing
+confirmation), is shipped or decided. **No open backlog item remains as
+of 2026-09-03.** Notable recent closures — see `Context.md`'s Roadmap for
+full rationale on each:
 
-1. **Custom domain — decided, staying on the free Vercel URL.** Fully
-   researched (paid-registrar comparison, then a genuinely-free-option
-   pass including `daily-dose.is-a.dev`, passed over on real grounds — see
-   `Context.md`'s Roadmap item 12). No further action unless revisited.
-2. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up) —
-   lowest priority, no new lever to pull until more usage accrues or the
-   user checks AWS billing directly.
+- **Custom domain — decided, staying on the free Vercel URL.** Fully
+  researched (paid-registrar comparison, then a genuinely-free-option
+  pass including `daily-dose.is-a.dev`, passed over on real grounds — see
+  `Context.md`'s Roadmap item 12).
+- **Sonnet 5 per-token price confirmation — done.** See ADR 0005's Update
+  section: confirmed at $2.20/$11.00 per million input/output tokens
+  (was an unconfirmed $3/$15 placeholder), corrected in `costTracking.ts`.
 
 ## Risks & Blockers
 

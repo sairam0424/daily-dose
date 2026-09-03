@@ -23,21 +23,24 @@ import { resolve } from "node:path";
  * during research - see docs/adr/0003-wire-real-bedrock-curation.md for
  * the exact citations.
  *
- * Claude Sonnet 5's figure is NOT independently confirmed the same way -
- * AWS's Bedrock pricing page renders its current-model table via
- * client-side JS that a doc fetch cannot capture, and the Bedrock
- * credential used here lacks pricing:GetProducts (AWS's Price List API)
- * to query it directly. Set to the same $3/$15 as Sonnet 4.6, matching
- * AWS's own "top-tier intelligence at Sonnet pricing" framing for the
- * model's launch (see docs/adr/0005-add-sonnet-5-as-first-choice-model.md) -
- * but this is an inference, not a confirmed number. Verify against the
- * first real Sonnet-5-scored run's actual AWS invoice/Cost Explorer line
- * item and correct this entry if it differs. */
+ * Claude Sonnet 5's figure is confirmed as of 2026-09-03 - see
+ * docs/adr/0005-add-sonnet-5-as-first-choice-model.md's Update section for
+ * the full research. Two independent real sources: Anthropic's own pricing
+ * page (platform.claude.com/docs/en/about-claude/pricing) states the
+ * standard direct-API rate is $2/$10 per million input/output tokens; AWS's
+ * own public Price List Bulk API (pricing.us-east-1.amazonaws.com/offers/
+ * v1.0/aws/AmazonBedrockFoundationModels/.../us-east-1/index.json, no auth
+ * required) lists "Claude Sonnet 5 (Amazon Bedrock Edition)" at $2.20/$11.00
+ * per million tokens for the In-Region/Geo (Standard) tier - the tier that
+ * applies to this project's exact model ID, "us.anthropic.claude-sonnet-5"
+ * (a US-region-prefixed cross-region profile, not "global.anthropic.claude-
+ * sonnet-5", which bills at the cheaper $2.00/$10.00 Global cross-Region
+ * tier instead). */
 const PRICING_PER_MILLION_TOKENS: Record<
   string,
   { input: number; output: number }
 > = {
-  "us.anthropic.claude-sonnet-5": { input: 3.0, output: 15.0 }, // UNCONFIRMED - see comment above
+  "us.anthropic.claude-sonnet-5": { input: 2.2, output: 11.0 },
   "us.anthropic.claude-sonnet-4-6": { input: 3.0, output: 15.0 },
   "us.anthropic.claude-opus-4-6-v1": { input: 5.0, output: 25.0 },
   "us.anthropic.claude-haiku-4-5-20251001-v1:0": { input: 1.0, output: 5.0 },
