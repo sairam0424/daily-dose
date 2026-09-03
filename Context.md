@@ -60,27 +60,24 @@ In order — do not build out of sequence:
     `fetchDevtoArticles()` surfaces today's "hot right now" Dev.to articles
     via Dev.to's free, keyless Articles API, with a per-article call for the
     real, bounded-length body text.
+12. ~~Custom domain.~~ Decided (2026-09-03): staying on the free
+    `daily-dose-hazel-delta.vercel.app` URL, no purchase. Researched twice:
+    first the paid-registrar comparison (`dailydose` is taken everywhere;
+    `daily-dose` is open on `.dev`/`.xyz`/`.io`/`.news`/`.day`; cheapest real
+    total cost is `daily-dose.dev` via Cloudflare Registrar at ~$10-12/yr
+    flat), then a genuinely-free-option pass. The one real free candidate,
+    `daily-dose.is-a.dev` (a free, Cloudflare-DNS-sponsored community
+    subdomain service, real and currently active), was explicitly passed
+    over: its PR review rejects sites that aren't "software development
+    related" (a curated AI-news digest is a genuine 50/50 there), and its
+    maintainers explicitly ask contributors not to have AI draft the
+    registration request. If revisited later, the exact JSON schema, CNAME
+    target, and full registrar price comparison are preserved in this
+    file's git history — don't re-research from scratch.
 
-Every item above is shipped. The two items below are the current open
-backlog (2026-09-03), in priority order — none blocking, none started:
+Every item above is shipped or decided. The item below is the current
+open backlog (2026-09-03):
 
-12. **Custom domain.** Researched live (2026-09-03, via a dynamic
-    workflow) and explicitly deferred by the user — not started, not
-    blocking. Findings, so this doesn't need re-researching: `dailydose`
-    (no hyphen) is taken on every TLD checked; `daily-dose` is open on
-    `.dev`/`.xyz`/`.io`/`.news`/`.day`. No genuinely free option exists for
-    a non-student (Freenom is dead-as-free and its TLDs carry lasting
-    spam/phishing stigma; GitHub Student Developer Pack is real but
-    student-gated; `is-a.dev`-style free subdomains aren't a real owned
-    domain). Cheapest real total-cost-of-ownership: `daily-dose.dev` via
-    Cloudflare Registrar, ~$10-12/yr flat with no renewal markup (Cloudflare
-    sells at wholesale cost). Cheapest sticker price: `daily-dose.xyz` for
-    $1.99 first year via Vercel's own domain marketplace, but likely jumps
-    to ~$14-21/yr on renewal elsewhere. If revisited, ask the user to pick
-    one of: Cloudflare `.dev` (best value), Vercel `.xyz` (cheapest
-    upfront), Vercel `.dev` (simplest, zero DNS config), or continue
-    deferring. See `tech.md`/`SECURITY.md` for the `astro.config.mjs`
-    `site` field and RSS absolute-URL implications once one is chosen.
 13. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up).
     Lowest priority — the dollar amounts involved are trivial either way,
     and there is no new lever to pull right now: it needs either more real
