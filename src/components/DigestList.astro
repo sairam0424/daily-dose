@@ -20,6 +20,16 @@ const { entries } = Astro.props;
         {typeof entry.data.points === 'number' && (
           <span class="points">{entry.data.points} points</span>
         )}
+        {typeof entry.data.hn_id === 'number' && (
+          <a
+            class="discuss-link"
+            href={`https://news.ycombinator.com/item?id=${entry.data.hn_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Discuss &rarr;
+          </a>
+        )}
       </div>
       <p class="why-read">{entry.data.why_read}</p>
     </li>
@@ -74,5 +84,15 @@ const { entries } = Astro.props;
 
   .why-read {
     margin: 0.6rem 0 0;
+  }
+
+  .discuss-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .discuss-link:hover {
+    text-decoration: underline;
   }
 </style>

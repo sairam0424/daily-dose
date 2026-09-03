@@ -91,4 +91,28 @@ describe("dist/index.html build output", () => {
       `expected og:image URL ${ogImageUrl} to resolve to a real file at ${distImagePath}`,
     ).toBe(true);
   });
+
+  it("renders a real HN discussion link for HN-sourced stories", () => {
+    const hnFile = findJsonFiles(DIGEST_BASE).find((filePath) =>
+      filePath.includes("hn-"),
+    );
+    expect(
+      hnFile,
+      "expected at least one committed hn-*.json digest file",
+    ).toBeTruthy();
+
+    const item = DigestItemSchema.parse(
+      JSON.parse(readFileSync(hnFile as string, "utf-8")),
+    );
+    expect(
+      item.hn_id,
+      "expected the committed HN story to have a real hn_id",
+    ).toBeTypeOf("number");
+
+    const expectedHref = `https://news.ycombinator.com/item?id=${item.hn_id}`;
+    expect(
+      html.includes(expectedHref),
+      `expected dist/index.html to contain a Discuss link to ${expectedHref}`,
+    ).toBe(true);
+  });
 });
