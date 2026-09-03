@@ -3,9 +3,10 @@
  *
  * daily-dose data pipeline: fetches today's Hacker News front page via the
  * free, keyless Algolia HN Search API, today's newest arXiv cs.AI/cs.LG/
- * cs.CL papers via arXiv's free, keyless public Atom API, AND today's
- * newest fast-rising GitHub repos via GitHub's free, keyless public Search
- * API, scores every item in ONE real Bedrock LLM call (see
+ * cs.CL papers via arXiv's free, keyless public Atom API, today's newest
+ * fast-rising GitHub repos via GitHub's free, keyless public Search API,
+ * AND today's "hot right now" Dev.to articles via Dev.to's free, keyless
+ * public Articles API, scores every item in ONE real Bedrock LLM call (see
  * ../src/lib/llmCuration.ts) when real credentials are configured,
  * validates the result against the shared DigestItemSchema, and writes one
  * file per item to a dated folder under src/data/digest/ (see the comment
@@ -18,13 +19,16 @@
  * never silently. See CLAUDE.md's plan-mode gate before editing this file or
  * llmCuration.ts.
  *
- * All three sources run by default; use --sources to run a subset. See
+ * All four sources run by default; use --sources to run a subset. See
  * docs/adr/0006-add-github-as-third-source.md for why GitHub surfaces
  * "trending-style" new repos (Search API, sort=stars, created recently,
- * fork:false) rather than a curated watchlist or scraped Trending page.
+ * fork:false) rather than a curated watchlist or scraped Trending page, and
+ * docs/adr/0007-add-devto-as-fourth-source.md for why Dev.to surfaces
+ * "hot right now" articles (top=1) with a real body-text excerpt rather than
+ * Reddit, Lobste.rs, or Product Hunt.
  *
  * Run directly:
- *   npx tsx scripts/pipeline.ts [--output <path>] [--limit <n>] [--sources hn,arxiv,github]
+ *   npx tsx scripts/pipeline.ts [--output <path>] [--limit <n>] [--sources hn,arxiv,github,devto]
  */
 
 import { writeFile, mkdir, readdir, unlink } from "node:fs/promises";
@@ -35,9 +39,11 @@ import {
   scoreStoryPlaceholder,
   scoreArxivPlaceholder,
   scoreGithubPlaceholder,
+  scoreDevtoPlaceholder,
   type RawHnStory,
   type RawArxivPaper,
   type RawGithubRepo,
+  type RawDevtoArticle,
 } from "../src/lib/curation.js";
 import {
   scoreItemsWithLLM,
@@ -47,7 +53,7 @@ import {
 } from "../src/lib/llmCuration.js";
 import { recordAndCheckCost } from "../src/lib/costTracking.js";
 
-export type { RawHnStory, RawArxivPaper, RawGithubRepo };
+export type { RawHnStory, RawArxivPaper, RawGithubRepo, RawDevtoArticle };
 
 interface AlgoliaHnHit {
   title: string | null;
@@ -268,6 +274,103 @@ function sanitizeGithubId(fullName: string): string {
   return fullName.replace(/\//g, "-");
 }
 
+const DEVTO_ARTICLES_URL = "https://dev.to/api/articles";
+
+// Real, live-verified research (see docs/adr/0007-add-devto-as-fourth-source.md):
+// Dev.to's API self-identifies via a response "warning" header as "V0
+// (beta)" and recommends this Accept header to use V1 - sent proactively on
+// every request even though V0's response shape is confirmed still working
+// today. This project should not assume V0 stays supported forever.
+const DEVTO_HEADERS = {
+  "User-Agent": "daily-dose-pipeline",
+  Accept: "application/vnd.forem.api-v1+json",
+};
+
+// Bounds how much of an article's real body_markdown ever reaches a prompt
+// or gets stored. An uncapped article body can run 7000+ characters - in a
+// SINGLE batched LLM prompt scoring many items at once (see llmCuration.ts),
+// one uncapped item would dominate the whole call's token cost. Title plus
+// a bounded excerpt is enough for genuine judgment - the same reason arXiv
+// abstracts (naturally short) and GitHub descriptions (naturally short)
+// never needed a cap, but a full long-form article body does.
+const DEVTO_BODY_EXCERPT_LENGTH = 1500;
+
+/** Shape of one item in Dev.to's Articles list response (`?top=1`). Only
+ * fields we actually use downstream are kept - the list endpoint's own
+ * `description` is real but too thin (~85-100 chars) for genuine judgment,
+ * which is why fetchDevtoArticles below makes a further per-article call. */
+interface DevtoListItem {
+  id: number;
+  title: string;
+  url: string;
+  comments_count: number;
+  public_reactions_count: number;
+  tag_list: string[];
+  published_timestamp: string;
+}
+
+/** Shape of the Dev.to Articles detail response (`/articles/{id}`) - only
+ * the one field this pipeline actually needs beyond the list response. */
+interface DevtoDetailItem {
+  body_markdown: string | null;
+}
+
+/**
+ * Fetches today's "hot right now" Dev.to articles from Dev.to's free,
+ * keyless public Articles API (`?top=1` - ranked server-side by Forem over
+ * the last 1 day, not something this pipeline computes itself), then makes
+ * ONE FURTHER call per article to the detail endpoint to fetch its real
+ * `body_markdown` - the list endpoint's own `description` field is only
+ * ~85-100 chars, too thin for genuine LLM judgment, the same reason
+ * fetchArxivPapers always captures the real abstract rather than relying on
+ * a title alone. The body text is truncated to DEVTO_BODY_EXCERPT_LENGTH
+ * before it is ever returned - see that constant's comment for why. See
+ * docs/adr/0007-add-devto-as-fourth-source.md for the full source research.
+ */
+export async function fetchDevtoArticles(
+  limit = 5,
+): Promise<RawDevtoArticle[]> {
+  const url = `${DEVTO_ARTICLES_URL}?top=1&per_page=${limit}`;
+  const response = await fetch(url, { headers: DEVTO_HEADERS });
+
+  if (!response.ok) {
+    throw new Error(
+      `Dev.to API request failed: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  const items = (await response.json()) as DevtoListItem[];
+
+  return Promise.all(
+    items.map(async (item) => {
+      const detailUrl = `${DEVTO_ARTICLES_URL}/${item.id}`;
+      const detailResponse = await fetch(detailUrl, {
+        headers: DEVTO_HEADERS,
+      });
+
+      if (!detailResponse.ok) {
+        throw new Error(
+          `Dev.to article detail request failed for id ${item.id}: ${detailResponse.status} ${detailResponse.statusText}`,
+        );
+      }
+
+      const detail = (await detailResponse.json()) as DevtoDetailItem;
+      const fullBodyText = (detail.body_markdown ?? "").trim();
+
+      return {
+        id: item.id,
+        title: item.title,
+        url: item.url,
+        bodyText: fullBodyText.slice(0, DEVTO_BODY_EXCERPT_LENGTH),
+        reactions: item.public_reactions_count,
+        comments: item.comments_count,
+        tags: item.tag_list,
+        publishedAt: item.published_timestamp,
+      };
+    }),
+  );
+}
+
 function todayIsoDate(): string {
   const now = new Date();
   const year = now.getFullYear();
@@ -276,7 +379,7 @@ function todayIsoDate(): string {
   return `${year}-${month}-${day}`;
 }
 
-const KNOWN_SOURCES = ["hn", "arxiv", "github"] as const;
+const KNOWN_SOURCES = ["hn", "arxiv", "github", "devto"] as const;
 type KnownSource = (typeof KNOWN_SOURCES)[number];
 
 interface ParsedArgs {
@@ -379,6 +482,17 @@ function toScorableGithubItem(repo: RawGithubRepo): ScorableItem {
   };
 }
 
+function toScorableDevtoItem(article: RawDevtoArticle): ScorableItem {
+  return {
+    id: `devto-${article.id}`,
+    source: "devto",
+    title: article.title,
+    reactions: article.reactions,
+    comments: article.comments,
+    bodyText: article.bodyText,
+  };
+}
+
 export async function main(): Promise<void> {
   const { output, limit, sources } = parseArgs(process.argv.slice(2));
   const today = todayIsoDate();
@@ -387,6 +501,9 @@ export async function main(): Promise<void> {
   const papers = sources.includes("arxiv") ? await fetchArxivPapers(limit) : [];
   const repos = sources.includes("github")
     ? await fetchGithubTrendingRepos(limit)
+    : [];
+  const articles = sources.includes("devto")
+    ? await fetchDevtoArticles(limit)
     : [];
 
   // Real LLM curation when configured; a deterministic, clearly-labeled
@@ -398,6 +515,7 @@ export async function main(): Promise<void> {
       ...stories.map(toScorableHnItem),
       ...papers.map(toScorableArxivItem),
       ...repos.map(toScorableGithubItem),
+      ...articles.map(toScorableDevtoItem),
     ];
 
     if (scorableItems.length > 0) {
@@ -515,6 +633,34 @@ export async function main(): Promise<void> {
       item,
       filename: `${id}.json`,
     });
+  }
+
+  for (const article of articles) {
+    const id = `devto-${article.id}`;
+    const fromLlm = llmScores?.get(id);
+    if (llmScores && !fromLlm) {
+      console.warn(
+        `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
+      );
+    }
+    const { interest_score, why_read } =
+      fromLlm ?? scoreDevtoPlaceholder(article);
+
+    const candidate = {
+      title: article.title,
+      source: "devto" as const,
+      url: article.url,
+      date: today,
+      tags: article.tags,
+      interest_score,
+      why_read,
+      authors: [],
+      reactions: article.reactions,
+    };
+
+    // Same validate-before-write guarantee as the HN branch above.
+    const item = DigestItemSchema.parse(candidate);
+    files.push({ item, filename: `${id}.json` });
   }
 
   const outputDir = resolve(process.cwd(), output);

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const DigestItemSchema = z.object({
   title: z.string().min(1),
-  source: z.enum(["hn", "arxiv", "github"]),
+  source: z.enum(["hn", "arxiv", "github", "devto"]),
   url: z.string().url(),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   tags: z.array(z.string()).default([]),
@@ -12,6 +12,7 @@ export const DigestItemSchema = z.object({
   hn_id: z.number().optional(),
   points: z.number().optional(),
   stars: z.number().optional(),
+  reactions: z.number().optional(),
 });
 
 export type DigestItem = z.infer<typeof DigestItemSchema>;

@@ -39,7 +39,7 @@ sibling projects.
 **Real LLM curation is now live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
 model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5, Sonnet 5
 leading as of ADR 0005). `src/lib/llmCuration.ts`
-scores every fetched item (HN + arXiv + GitHub) in one forced-tool-use batched call per
+scores every fetched item (HN + arXiv + GitHub + Dev.to) in one forced-tool-use batched call per
 pipeline run when `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY` are
 configured (they are, both locally and in this repo's GitHub Secrets). The
 deterministic placeholder functions in `src/lib/curation.ts` are kept as an
@@ -169,20 +169,30 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   description, Open Graph, and Twitter Card tags on every page with a
   real, page-specific title/description; verified real dimensions and
   `dist/` passthrough after a real `npm run build`.
+- Added Dev.to as a fourth source (ADR 0007): new `fetchDevtoArticles()`
+  (Dev.to's free, keyless Articles API, `top=1` "hot right now", plus a
+  per-article detail call for the real `body_markdown`, truncated to 1500
+  characters before it reaches a prompt or gets stored) +
+  `scoreDevtoPlaceholder()` (reactions/comments-weighted, same shape as HN's
+  and GitHub's placeholders). `ScorableItem` extended with
+  `reactions`/`comments`/`bodyText`; `DigestItemSchema` gained one new
+  optional field, `reactions`. Verified live: a real, unauthenticated
+  `fetchDevtoArticles()` call returned real, current articles with real
+  engagement numbers and real body-text excerpts. 3 new placeholder tests
+  in `tests/pipeline.test.ts`. The real, paid Bedrock verification against
+  this new source is deferred to a human with real credentials.
 
 ## Upcoming Milestones
 
 Every item on the original roadmap, plus every real candidate raised
 afterward (digest archive, RSS feed, cron failure alerting, favicon/OG
-image), is shipped. Current open backlog (2026-09-03), in priority order
-— see `Context.md`'s Roadmap for the full rationale on each:
+image, Dev.to as a fourth source), is shipped. Current open backlog
+(2026-09-03), in priority order — see `Context.md`'s Roadmap for the full
+rationale on each:
 
-1. **A fourth source, research/framing phase only** — needs 2-3 concrete
-   "what should this surface" proposals (same shape as ADR 0006's GitHub
-   framing) before any implementation decision.
-2. **Custom domain** — blocked entirely on the user choosing a name; next
+1. **Custom domain** — blocked entirely on the user choosing a name; next
    action is asking, not building.
-3. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up) —
+2. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up) —
    lowest priority, no new lever to pull until more usage accrues or the
    user checks AWS billing directly.
 

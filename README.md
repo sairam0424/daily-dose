@@ -34,7 +34,7 @@ git clone <this-repo-url> daily-dose
 cd daily-dose
 npm install
 
-# Fetch a fresh, real digest from Hacker News, arXiv, and GitHub
+# Fetch a fresh, real digest from Hacker News, arXiv, GitHub, and Dev.to
 npm run pipeline
 
 # View it locally
@@ -54,18 +54,21 @@ build-out roadmap has shipped:
 - **Real LLM curation is live**, via AWS Bedrock (`@anthropic-ai/bedrock-sdk`,
   model fallback chain: Claude Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5,
   Sonnet 5 leading as of ADR 0005). Every
-  fetched item (HN + arXiv + GitHub) is scored in one batched call per pipeline run.
+  fetched item (HN + arXiv + GitHub + Dev.to) is scored in one batched call per pipeline run.
   The original deterministic placeholder heuristic (derived from real,
   already-fetched fields — points/comment count/title for HN, recency for
-  arXiv) is kept as an explicit, loudly-logged fallback for local dev
+  arXiv, stars/forks for GitHub, reactions/comments for Dev.to) is kept as an
+  explicit, loudly-logged fallback for local dev
   without credentials, or for any individual item the LLM's response
   happens to omit — it is never silently substituted. See `decisions.md`'s
   ADR 0003 for the full design.
-- **Three sources ship for real: Hacker News, arXiv, and GitHub.** The
-  pipeline runs all three by default (`--sources hn,arxiv,github`) — see
+- **Four sources ship for real: Hacker News, arXiv, GitHub, and Dev.to.** The
+  pipeline runs all four by default (`--sources hn,arxiv,github,devto`) — see
   `decisions.md`'s ADR 0006 for why GitHub surfaces recently-created,
   fast-rising repos rather than a curated watchlist or a scrape of
-  github.com/trending.
+  github.com/trending, and ADR 0007 for why Dev.to surfaces today's "hot
+  right now" articles (with a real, bounded body-text excerpt) rather than
+  Reddit, Lobste.rs, or Product Hunt.
 - **The daily pipeline now runs automatically.** A dedicated workflow
   (`.github/workflows/daily-pipeline.yml`) runs `npm run pipeline` once a
   day (21:00 UTC) via a real `schedule:` trigger, and commits the result

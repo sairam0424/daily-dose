@@ -110,6 +110,11 @@ reporter asks to remain anonymous.
   report upstream to arXiv, not here. arXiv ingestion (`fetchArxivPapers()`
   in `scripts/pipeline.ts`) is now real and in scope for how THIS repo
   consumes that API (parsing, validation, filesystem-safe ID sanitization).
+- Dev.to's own Articles API's correctness, availability, or rate limiting —
+  report upstream to Dev.to/Forem, not here. Dev.to ingestion
+  (`fetchDevtoArticles()` in `scripts/pipeline.ts`) is now real and in scope
+  for how THIS repo consumes that API (the list+detail call pattern, the
+  body-text excerpt truncation, and validation).
 - AWS Bedrock's own service correctness, availability, or rate limiting —
   report upstream to AWS, not here. How THIS repo constructs prompts,
   handles the response, and falls back on error (`src/lib/llmCuration.ts`)
@@ -131,13 +136,16 @@ hardening ideas.
 
 - **Prompt injection via ingested content — implemented, not just
   designed.** Real LLM scoring is now wired in (`src/lib/llmCuration.ts`,
-  ADR 0003): HN titles and arXiv abstracts flow into a prompt sent to a
+  ADR 0003): HN titles, arXiv abstracts, GitHub descriptions, and (as of
+  ADR 0007) Dev.to article body excerpts all flow into a prompt sent to a
   Bedrock-hosted model. `buildPrompt()` wraps each item in explicit
-  `<item>`/`<title>`/`<abstract>` delimiters preceded by an instruction
-  telling the model this content is untrusted external data, not
-  instructions, and to score honestly without conflating engagement with
-  genuine interest. This mitigation shipped in the same change that
-  introduced the real model call, not retrofitted after. It has not been
+  `<item>`/`<title>`/`<abstract>`/`<description>`/`<article_excerpt>`
+  delimiters preceded by an instruction telling the model this content is
+  untrusted external data, not instructions, and to score honestly without
+  conflating engagement with genuine interest. This mitigation shipped in
+  the same change that introduced the real model call, not retrofitted
+  after, and the instruction text was updated again when GitHub and Dev.to
+  were each added as new untrusted-content sources. It has not been
   adversarially red-teamed with a real injection payload — treat it as a
   reasonable first-pass mitigation, not a proven-unbreakable one, and
   report any bypass found via the channel above.
@@ -238,11 +246,12 @@ hardening ideas.
   single point both the pipeline and the site trust to keep malformed
   data out. Changes to it are reviewed for what they newly allow through,
   not just what they add.
-- **arXiv ingestion, real LLM scoring, and GitHub sourcing are all shipped**
-  — see `status.md`, `decisions.md`/ADR 0002, ADR 0003, ADR 0006. GitHub
-  sourcing calls the public Search API directly via `fetch`, no new
-  dependency — do not add a GitHub client library without a documented
-  reason.
+- **arXiv ingestion, real LLM scoring, GitHub sourcing, and Dev.to sourcing
+  are all shipped** — see `status.md`, `decisions.md`/ADR 0002, ADR 0003,
+  ADR 0006, ADR 0007. GitHub sourcing calls the public Search API directly
+  via `fetch`, no new dependency; Dev.to sourcing calls the public Articles
+  API directly via `fetch` as well — do not add a GitHub or Dev.to client
+  library without a documented reason.
 - **Any future dependency addition** must be justified against
   KISS/YAGNI (per this workspace's global coding-style rules) before
   being added — "might need it later" is not sufficient justification.
