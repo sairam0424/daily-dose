@@ -190,8 +190,14 @@ image, Dev.to as a fourth source), is shipped. Current open backlog
 (2026-09-03), in priority order — see `Context.md`'s Roadmap for the full
 rationale on each:
 
-1. **Custom domain** — blocked entirely on the user choosing a name; next
-   action is asking, not building.
+1. **Custom domain** — researched live (2026-09-03) and explicitly
+   deferred by the user (not started, not blocking). No genuinely free
+   option exists for a non-student; cheapest real total cost is
+   `daily-dose.dev` via Cloudflare Registrar (~$10-12/yr flat, no renewal
+   markup); cheapest sticker price is `daily-dose.xyz` for $1.99 first
+   year via Vercel's own marketplace, but it likely renews much higher
+   elsewhere. See `Context.md`'s Roadmap item 12 for the full comparison
+   if revisited.
 2. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up) —
    lowest priority, no new lever to pull until more usage accrues or the
    user checks AWS billing directly.
