@@ -50,14 +50,15 @@ In order — do not build out of sequence:
 8. ~~Add an RSS feed.~~ Done — `/rss.xml` via `@astrojs/rss`, one `<item>` per day.
 9. ~~Add richer failure alerting for the scheduled cron (ADR 0004's deferred non-goal).~~ Done — `daily-pipeline.yml`'s new `if: failure()` step (`actions/github-script@v7`) auto-files a labeled GitHub Issue with the failed run's URL and timestamp, or comments on the existing open one on repeat failures. No new secret. See ADR 0004's Update section and `decisions.md`'s 2026-09-03 log entry.
 
-Every item above is shipped. The four items below are the current open
-backlog (2026-09-03), in priority order — none blocking, none started:
+Every item above (including 10) is shipped. The three items below are the
+current open backlog (2026-09-03), in priority order — none blocking, none started:
 
-10. **Favicon + social preview (OG) image.** No open decision needed — fully
-    actionable now. The one concrete visual gap: a shared daily-dose link
-    currently renders no custom preview card anywhere (Slack, Twitter,
-    etc.). Ranked first because it needs no input from the user and is
-    small.
+10. ~~Favicon + social preview (OG) image.~~ Done — `public/favicon.svg` and
+    `public/og-image.png` (1200×630), both static files generated once via
+    a headless browser and committed, not regenerated at build time (no
+    new npm dependency). Wired into every page's `<head>` via a new shared
+    `src/components/SiteMeta.astro`. See `decisions.md`'s 2026-09-03 log
+    entry.
 11. **A fourth source — research/framing phase only.** Unlike GitHub (which
     had an obvious "trending repos" framing), no source has been identified
     with a strong "what should this actually surface" answer yet (Reddit

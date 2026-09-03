@@ -60,4 +60,35 @@ describe("dist/index.html build output", () => {
     expect(hasChartCanvas).toBe(true);
     expect(hasChartJsReference).toBe(true);
   });
+
+  it("has a real favicon <link> tag", () => {
+    const iconLinkMatch = html.match(/<link\s+[^>]*rel="icon"[^>]*>/i);
+    expect(
+      iconLinkMatch,
+      'expected dist/index.html to contain a <link rel="icon"> tag',
+    ).toBeTruthy();
+    expect(iconLinkMatch?.[0]).toContain("/favicon.svg");
+  });
+
+  it("has an og:image meta tag with an absolute URL that resolves to a real committed file", () => {
+    const ogImageMatch = html.match(
+      /<meta\s+[^>]*property="og:image"[^>]*content="([^"]+)"[^>]*>/i,
+    );
+    expect(
+      ogImageMatch,
+      'expected dist/index.html to contain a <meta property="og:image"> tag',
+    ).toBeTruthy();
+
+    const ogImageUrl = ogImageMatch?.[1] ?? "";
+    // Must be absolute (og:image is read by remote crawlers with no page
+    // context to resolve a relative URL against).
+    expect(() => new URL(ogImageUrl)).not.toThrow();
+
+    const imagePath = new URL(ogImageUrl).pathname;
+    const distImagePath = join(import.meta.dirname, "..", "dist", imagePath);
+    expect(
+      existsSync(distImagePath),
+      `expected og:image URL ${ogImageUrl} to resolve to a real file at ${distImagePath}`,
+    ).toBe(true);
+  });
 });

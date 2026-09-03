@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import SiteMeta from '../../components/SiteMeta.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
@@ -12,6 +13,11 @@ const dateGroups = groupEntriesByDate(allEntries);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>daily-dose — all digests</title>
+    <SiteMeta
+      title="daily-dose — all digests"
+      description="Every past daily-dose digest, browsable by date — AI-curated Hacker News, arXiv, and GitHub picks, one day at a time."
+      path="/archive/"
+    />
     <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
   </head>
   <body>
