@@ -1,0 +1,16 @@
+{
+  "title": "Towards Trustworthy Autonomous Robots: An Explainable AI-Based Decision Framework",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.02861",
+  "date": "2026-09-03",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 4,
+  "why_read": "Explainability framework for robots with impressive-sounding self-reported metrics but limited detail on real-world generalization beyond simulation.",
+  "authors": [
+    "Cagri Temel"
+  ],
+  "reading_minutes": 1
+}

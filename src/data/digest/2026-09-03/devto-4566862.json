@@ -1,0 +1,17 @@
+{
+  "title": "I Built My First AWS Agent Workflow, and the Hardest Part Was Getting It to Stop Assuming Things",
+  "source": "devto",
+  "url": "https://dev.to/hemapriya_kanagala/i-built-my-first-aws-agent-workflow-and-the-hardest-part-was-getting-it-to-stop-assuming-things-8fg",
+  "date": "2026-09-03",
+  "tags": [
+    "discuss",
+    "aws",
+    "beginners",
+    "agents"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical account of pitfalls in building an AWS Bedrock agent workflow, with a real lesson about action-safety versus intent understanding.",
+  "authors": [],
+  "reactions": 40,
+  "reading_minutes": 1
+}

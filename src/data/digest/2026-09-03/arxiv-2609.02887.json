@@ -1,0 +1,18 @@
+{
+  "title": "A Common Measure of Communication for Speech Brain-Computer Interfaces",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.02887",
+  "date": "2026-09-03",
+  "tags": [
+    "cs.LG",
+    "q-bio.NC"
+  ],
+  "interest_score": 7,
+  "why_read": "Proposes a principled information-theoretic metric to make speech BCI system comparisons meaningful, addressing a real measurement gap in the field.",
+  "authors": [
+    "Dulhan Jayalath",
+    "Benjamin Ballyk",
+    "Oiwi Parker Jones"
+  ],
+  "reading_minutes": 1
+}

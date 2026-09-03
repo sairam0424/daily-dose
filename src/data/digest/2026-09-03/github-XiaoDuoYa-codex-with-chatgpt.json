@@ -1,0 +1,13 @@
+{
+  "title": "XiaoDuoYa/codex-with-chatgpt",
+  "source": "github",
+  "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+  "date": "2026-09-03",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A workflow glue project combining ChatGPT planning with Codex execution, useful but fairly niche/incremental tooling.",
+  "authors": [],
+  "stars": 2388
+}

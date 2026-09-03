@@ -1,0 +1,15 @@
+{
+  "title": "Graph Machine: Towards Better Pretraining via Edges",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.02881",
+  "date": "2026-09-03",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "Novel sparse pointer-chasing architecture replacing most transformer layers while retaining performance is an interesting efficiency research direction.",
+  "authors": [
+    "Lintai Hou"
+  ],
+  "reading_minutes": 1
+}
