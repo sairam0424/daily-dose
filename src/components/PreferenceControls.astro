@@ -1,0 +1,180 @@
+---
+---
+
+<div class="preference-controls">
+  <button
+    id="theme-toggle"
+    type="button"
+    class="theme-toggle"
+    aria-label="Toggle dark mode"
+    disabled
+    aria-disabled="true"
+    title="Theme is fixed in Dev-editorial mode"
+  >
+    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+  <div class="skin-toggle" role="group" aria-label="Visual style">
+    <button id="skin-toggle-dev" type="button" class="skin-btn" data-skin-value="dev" aria-pressed="true">Dev</button>
+    <button id="skin-toggle-newspaper" type="button" class="skin-btn" data-skin-value="newspaper" aria-pressed="false">Newspaper</button>
+  </div>
+</div>
+
+<style>
+  .preference-controls {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: var(--bg-surface);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Uses --ink-faint deliberately: this is a disabled decorative icon,
+     not reading text, so the 3:1-tier token is the correct choice here. */
+  .theme-toggle:disabled {
+    color: var(--ink-faint);
+    cursor: not-allowed;
+  }
+
+  .icon-moon {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .icon-sun {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .icon-moon {
+    display: block;
+  }
+
+  .skin-toggle {
+    display: flex;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  /* Uses --rule-soft: a softer internal divider between the two segmented
+     buttons than the outer --rule border. */
+  .skin-btn:first-child {
+    border-right: 1px solid var(--rule-soft);
+  }
+
+  .skin-btn {
+    border: none;
+    background: var(--bg-surface);
+    color: var(--ink-soft);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .skin-btn[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+
+  .skin-btn:focus-visible,
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .theme-toggle,
+    .skin-btn {
+      transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+    }
+  }
+</style>
+
+<script>
+  const THEME_KEY = 'theme';
+  const SKIN_KEY = 'skin';
+
+  const themeButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+  const devButton = document.getElementById('skin-toggle-dev') as HTMLButtonElement | null;
+  const newspaperButton = document.getElementById('skin-toggle-newspaper') as HTMLButtonElement | null;
+
+  function currentSkin(): string {
+    return document.documentElement.dataset.skin ?? 'dev';
+  }
+
+  function syncControls() {
+    const isDev = currentSkin() === 'dev';
+    if (themeButton) {
+      themeButton.disabled = isDev;
+      themeButton.toggleAttribute('aria-disabled', isDev);
+      themeButton.title = isDev
+        ? 'Theme is fixed in Dev-editorial mode'
+        : 'Toggle dark mode';
+    }
+    devButton?.setAttribute('aria-pressed', String(isDev));
+    newspaperButton?.setAttribute('aria-pressed', String(!isDev));
+  }
+
+  function setSkin(skin: 'dev' | 'newspaper') {
+    document.documentElement.dataset.skin = skin;
+    localStorage.setItem(SKIN_KEY, skin);
+    if (skin === 'dev') {
+      document.documentElement.dataset.theme = 'dark';
+    } else if (localStorage.getItem(THEME_KEY) === 'dark') {
+      document.documentElement.dataset.theme = 'dark';
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
+    syncControls();
+  }
+
+  devButton?.addEventListener('click', () => setSkin('dev'));
+  newspaperButton?.addEventListener('click', () => setSkin('newspaper'));
+
+  themeButton?.addEventListener('click', () => {
+    if (currentSkin() === 'dev') return;
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    if (isDark) {
+      delete document.documentElement.dataset.theme;
+      localStorage.setItem(THEME_KEY, 'light');
+    } else {
+      document.documentElement.dataset.theme = 'dark';
+      localStorage.setItem(THEME_KEY, 'dark');
+    }
+  });
+
+  // Reconcile with the head bootstrap script's applied state (handles
+  // returning visitors whose stored skin/theme differ from this
+  // component's default-rendered markup).
+  syncControls();
+</script>
