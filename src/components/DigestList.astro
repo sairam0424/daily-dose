@@ -220,4 +220,86 @@ const { entries } = Astro.props;
   .discuss-link:hover {
     text-decoration: underline;
   }
+
+  /* (review fix, critical) .story-list's base rule (Task 2) sets
+     display:flex — column-count is silently ignored on flex containers
+     per the CSS Multi-column spec. This reset is required, not optional;
+     confirmed empirically (Playwright) during plan review: omitting it
+     renders every card full-width and stacked, with zero columnization. */
+  :global([data-skin='newspaper']) .story-list {
+    display: block;
+    column-count: 3;
+    column-gap: 2rem;
+    column-rule: 1px solid var(--rule);
+  }
+
+  :global([data-skin='newspaper']) .story-card {
+    break-inside: avoid;
+  }
+
+  @media (max-width: 1000px) {
+    :global([data-skin='newspaper']) .story-list {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :global([data-skin='newspaper']) .story-list {
+      column-count: 1;
+    }
+  }
+
+  /* column-span:all pulls the lead story out of the column flow to span
+     full width above the columns — confirmed empirically (Playwright):
+     once display:block above is in effect, the lead story renders at
+     full list width and the remaining visible cards distribute evenly
+     into 3 (or 2/1, responsively) columns. break-inside:auto overrides
+     the general .story-card break-inside:avoid rule for this element
+     specifically, since a full-width spanning element has no column to
+     avoid breaking inside of. */
+  :global([data-skin='newspaper']) .lead-story {
+    column-span: all;
+    break-inside: auto;
+    margin-bottom: 1rem;
+  }
+
+  :global([data-skin='newspaper']) .story-title {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  :global([data-skin='newspaper']) .lead-story .story-title {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+  }
+
+  /* (review fix, documented deviation) Spec Section 6 describes the
+     drop-cap as living on the "byline/excerpt area." This component's
+     byline (.story-meta) is a flex row of badge <span> elements, not
+     flowing prose text — ::first-letter requires real text content at
+     the start of the element's own text, and does not reliably target
+     text nested inside a first inline child across browsers. The
+     headline is the only element in this component with real flowing
+     text, so the drop-cap is applied there instead — a deliberate,
+     technically-motivated substitution, not an oversight. */
+  :global([data-skin='newspaper']) .lead-story .story-title::first-letter {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.6em;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.08em;
+  }
+
+  :global([data-skin='newspaper']) .story-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  :global([data-skin='newspaper']) .why-tooltip {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
 </style>

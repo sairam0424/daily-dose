@@ -8,13 +8,46 @@ import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
 
-const DIST_INDEX = join(import.meta.dirname, "..", "dist", "index.html");
+const DIST_DIR = join(import.meta.dirname, "..", "dist");
+const DIST_INDEX = join(DIST_DIR, "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
 function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })
     .filter((entry) => typeof entry === "string" && entry.endsWith(".json"))
     .map((entry) => join(base, entry as string));
+}
+
+// Astro's default `build.inlineStylesheets: 'auto'` only inlines a page's
+// CSS as a <style> tag while it stays under Vite's ~4096-byte threshold;
+// past that it writes the same CSS to an external /_astro/*.css file and
+// links it instead. Which bucket a given rule lands in is a build-tool
+// implementation detail, not something a CSS-only task should have to
+// control — so this helper concatenates inline <style> content with the
+// content of any local stylesheet <link> targets, giving one haystack of
+// "all CSS that actually ships with this page" to assert against
+// regardless of where the bundler decided to put it.
+function readAllPageCss(pageHtml: string): string {
+  const inlineStyles = [
+    ...pageHtml.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g),
+  ]
+    .map((match) => match[1])
+    .join("\n");
+
+  const externalCss = [
+    ...pageHtml.matchAll(/<link\s+[^>]*rel="stylesheet"[^>]*>/gi),
+  ]
+    .map((linkTag) => linkTag[0].match(/href="([^"]+)"/i)?.[1])
+    .filter(
+      (href): href is string =>
+        typeof href === "string" && href.startsWith("/"),
+    )
+    .map((href) => join(DIST_DIR, href))
+    .filter((cssPath) => existsSync(cssPath))
+    .map((cssPath) => readFileSync(cssPath, "utf-8"))
+    .join("\n");
+
+  return `${inlineStyles}\n${externalCss}`;
 }
 
 function readCommittedTitles(): string[] {
@@ -208,6 +241,35 @@ describe("dist/index.html build output", () => {
     // full why_read string" wording, not an oversight (spec Section 6).
     expect(html).toContain(
       `aria-label="Why this made the cut: ${sample.why_read}"`,
+    );
+  });
+
+  it("applies a multi-column layout to the story list only under the Newspaper skin, with display reset from the shared flex base", () => {
+    // Reads inline <style> tags AND any linked /_astro/*.css files: Astro's
+    // build.inlineStylesheets:"auto" default only inlines a page's CSS
+    // below a ~4096-byte threshold, so this component's rules may land in
+    // either place depending on total bundled chunk size at build time —
+    // that's a build-chunking detail, not something this test should be
+    // sensitive to.
+    const style = readAllPageCss(html);
+    expect(style, "expected a .story-list rule in the page's CSS").toContain(
+      "story-list",
+    );
+    // CSS minification strips quotes from attribute-selector values (e.g.
+    // [data-skin='newspaper'] -> [data-skin=newspaper]), so match either
+    // quoting style rather than assuming the unminified form survives.
+    const newspaperSkinSelector = /\[data-skin=['"]?newspaper['"]?\]/;
+    expect(style).toMatch(newspaperSkinSelector);
+    expect(style).toContain("column-count");
+    // (review fix, critical) .story-list's base rule sets display:flex;
+    // without an explicit reset here, column-count has zero effect —
+    // verified empirically in a real browser during plan review.
+    // Astro's scoped-style hashing appends a `[data-astro-cid-*]` attribute
+    // selector directly after the class (e.g. `.story-list[data-astro-cid-xyz]`),
+    // so the pattern allows an optional attribute selector between the
+    // class name and the opening brace.
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-list(\[[^\]]*\])?\s*\{[^}]*display:\s*block/,
     );
   });
 });
