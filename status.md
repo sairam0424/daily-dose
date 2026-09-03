@@ -148,6 +148,16 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   once, so a local pre-escape step would have double-escaped any title
   containing `&`/`<`/`>` — fixed with a dedicated regression test. See
   `agent_learning.md` for the full root-cause writeup.
+- Added scheduled-run failure notification to `daily-pipeline.yml`
+  (2026-09-03): a new final step, gated `if: failure()`, using the official
+  `actions/github-script@v7` action (pinned by major version tag, not
+  SHA-pinned — matches this repo's convention for official `actions/*`
+  actions) files a GitHub Issue labeled `automated-failure` with the failed
+  run's URL and a timestamp, or comments on the existing open one instead of
+  filing a duplicate on repeat failures. Needs no new secret — only
+  `issues: write` was added to this workflow's own `permissions:` block.
+  Closes ADR 0004's deferred "richer alerting is a non-goal" line; see that
+  ADR's Update section and `decisions.md`'s matching log entry.
 
 ## Upcoming Milestones
 

@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   daily-pipeline:
@@ -69,3 +70,53 @@ jobs:
           # still showed the human who ran workflow_dispatch.
           commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           file_pattern: "src/data/digest/** src/data/stats.jsonl"
+
+      # Failure visibility follow-up (see docs/adr/0004's Update section and
+      # decisions.md's matching log entry): ADR 0004 shipped this workflow
+      # with GitHub's default email-to-repo-owner as the only V1 failure
+      # signal, naming richer alerting an explicit non-goal, revisitable
+      # later. This is that revisit. No Slack webhook, no new secret - an
+      # official, GitHub-maintained action (pinned by major version tag,
+      # matching actions/checkout@v4 / actions/setup-node@v4 above, not
+      # SHA-pinned like the third-party git-auto-commit-action step above)
+      # files or updates a labeled Issue instead. `if: failure()` means this
+      # step only runs when a prior step in this job failed.
+      - name: File or update failure issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const label = "automated-failure";
+            const { owner, repo } = context.repo;
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const timestamp = new Date().toISOString();
+
+            // Dedup: comment on the existing open failure issue instead of
+            // filing a new one, so repeated scheduled failures don't spam
+            // the issue tracker with duplicates.
+            const existing = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "open",
+              labels: label,
+            });
+
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: issue.number,
+                body: `Another scheduled run of \`daily-pipeline.yml\` failed.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
+              });
+            } else {
+              // issues.create auto-creates the `label` if it doesn't exist
+              // yet in this repo - no separate label-creation step needed.
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title: "daily-pipeline.yml scheduled run failed",
+                body: `The scheduled \`daily-pipeline.yml\` run failed.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
+                labels: [label],
+              });
+            }

@@ -33,7 +33,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Syndication | `@astrojs/rss`, `src/pages/rss.xml.ts` | One real `<item>` per day, linking to that day's `/archive/{date}/` page — requires `site` in `astro.config.mjs` for absolute URLs |
 | Styling | Minimal inline CSS | No Bulma/Sass in this walking skeleton — deferred fast-follow |
 | Test runner | Vitest | Unit + integration + e2e layers (see `TESTING.md`) |
-| CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
+| CI | GitHub Actions, `ci.yml` (`workflow_dispatch` + push/PR, read-only) and `daily-pipeline.yml` (`schedule:` + `workflow_dispatch`, `contents: write` + `issues: write`) | Two dedicated workflows, least-privilege — see ADR 0004 |
+| Failure notification | `actions/github-script@v7` step in `daily-pipeline.yml`, gated `if: failure()` | Auto-files (or comments on the existing open one, deduped by label) a GitHub Issue labeled `automated-failure` on a scheduled-run failure — no Slack webhook, no new secret; see ADR 0004's Update section |
 | Deployment | Vercel, live | Git-integrated auto-deploy on push to `main`, `npm run build` only — https://daily-dose-hazel-delta.vercel.app, connected per ADR 0004 |
 | LLM SDK | `@anthropic-ai/bedrock-sdk` + `@anthropic-ai/sdk` (error types) | `AnthropicBedrock` client in `src/lib/llmCuration.ts`, model fallback chain Sonnet 5 → Sonnet 4.6 → Opus 4.6 → Haiku 4.5 (Sonnet 5 leads as of ADR 0005; needs `thinking: {type: "disabled"}` explicitly, unlike the rest of the chain), credentials via `BEDROCK_ACCESS_KEY_ID`/`BEDROCK_SECRET_ACCESS_KEY`/`BEDROCK_REGION` env vars |
 | License | Apache-2.0 | Decided at the Not-Humans-Lab umbrella level, applied identically across sibling projects |
@@ -47,7 +48,8 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
 | Chart.js | **Adopt** | One island (`chart.js/auto`, plain `<script type="module">`). No framework (React/Vue/Svelte) pulled in just to render one bar chart. |
 | TypeScript + `tsx` | **Adopt** | Runs `scripts/pipeline.ts` directly without a separate compile step. |
 | Vitest | **Adopt** | Test runner for all layers described in `TESTING.md`. |
-| GitHub Actions (`workflow_dispatch` + `schedule:`) | **Adopt** | `ci.yml` (manual + push/PR, read-only) and `daily-pipeline.yml` (real daily `schedule:` trigger, `contents: write` on itself only) — see ADR 0004. |
+| GitHub Actions (`workflow_dispatch` + `schedule:`) | **Adopt** | `ci.yml` (manual + push/PR, read-only) and `daily-pipeline.yml` (real daily `schedule:` trigger, `contents: write` + `issues: write` on itself only) — see ADR 0004. |
+| `actions/github-script` | **Adopt** | One step in `daily-pipeline.yml`, pinned by major version tag (`@v7`) like the other official `actions/*` steps, not SHA-pinned. `if: failure()`-gated; files/updates a labeled GitHub Issue instead of relying solely on GitHub's default failure email — see ADR 0004's Update section. |
 | Vercel deployment | **Adopt** | Git-integrated auto-deploy on push to `main`, Build Command confirmed via real build logs as `npm run build` only (never the pipeline) — live at https://daily-dose-hazel-delta.vercel.app, per ADR 0004. |
 | `@anthropic-ai/bedrock-sdk` / `@anthropic-ai/sdk` | **Adopt** | Real Bedrock credential exists (shared with sibling Anvilry project) — see ADR 0003. `src/lib/llmCuration.ts` is the only file that constructs the client. |
 | Bulma / Sass | **Hold** | Deferred fast-follow. Styling for this walking skeleton is minimal inline CSS, matching nh-deck's precedent of deferring visual polish. |
@@ -90,6 +92,7 @@ as an explicit, loudly-logged fallback for when credentials aren't configured
   deterministic.
 - **`daily-pipeline.yml` as a separate workflow from `ci.yml`, not a `schedule:` block added to it.** Least-privilege: only this one job requests `contents: write`; `ci.yml` and every future workflow stay on the repo's read-only default. See ADR 0004.
 - **Direct commit from the cron job, scoped to data paths only — not a daily PR.** A daily digest that still needs a human to click "merge" every day isn't actually automated. Scoped via a bot-commit action's file-pattern option to `src/data/digest/**` + `src/data/stats.jsonl` only, so it can never sweep up an in-progress code change. An explicit, documented exception to `Branches.md`'s PR-for-every-change convention — see ADR 0004.
+- **Scheduled-run failure notification via `actions/github-script@v7`, not a Slack webhook.** ADR 0004 originally deferred richer alerting past GitHub's default failure email. Revisited: an auto-filed/updated GitHub Issue needs no new secret (the workflow already has a `GITHUB_TOKEN`; only `issues: write` was added to this workflow's own `permissions:` block), unlike a Slack webhook, which would. Dedup is by label (`automated-failure`) plus an open-issue check, not by any run-ID matching, so it stays simple. See ADR 0004's Update section.
 - **Chart.js as a plain script island, not a framework component.** One
   static bar chart of `interest_score` values does not need React/Vue's
   component model, state management, or hydration story — `<script
