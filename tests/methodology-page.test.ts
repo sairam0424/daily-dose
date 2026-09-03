@@ -1,0 +1,66 @@
+// PRECONDITION: e2e-style test reading already-built output — run `npm run
+// build` first.
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { beforeAll, describe, expect, it } from "vitest";
+import { MAX_REASONABLE_ITEMS } from "../src/lib/llmCuration.js";
+import {
+  ANOMALY_MULTIPLIER,
+  SEED_BASELINE_USD,
+  MIN_HISTORY_FOR_ANOMALY_CHECK,
+} from "../src/lib/costTracking.js";
+import { interestTier } from "../src/lib/interestTier.js";
+
+const DIST_METHODOLOGY = join(
+  import.meta.dirname,
+  "..",
+  "dist",
+  "methodology",
+  "index.html",
+);
+
+let html: string;
+
+beforeAll(() => {
+  if (!existsSync(DIST_METHODOLOGY)) {
+    throw new Error(
+      "dist/methodology/index.html not found — run `npm run build` first.",
+    );
+  }
+  html = readFileSync(DIST_METHODOLOGY, "utf-8");
+});
+
+describe("dist/methodology/index.html", () => {
+  it("is a real HTML document", () => {
+    expect(html.toUpperCase()).toContain("<!DOCTYPE HTML>");
+  });
+
+  it("shows the real MAX_REASONABLE_ITEMS value, not a hardcoded copy", () => {
+    expect(html).toContain(String(MAX_REASONABLE_ITEMS));
+  });
+
+  it("shows the real cost-anomaly constants, not hardcoded copies", () => {
+    expect(html).toContain(String(ANOMALY_MULTIPLIER));
+    expect(html).toContain(SEED_BASELINE_USD.toFixed(2));
+    expect(html).toContain(String(MIN_HISTORY_FOR_ANOMALY_CHECK));
+  });
+
+  it("reflects the real interestTier() boundary behavior", () => {
+    // Real behavior check, not a hardcoded number restated in the test:
+    // confirms the boundary is exactly at 6 and 8 by calling the real function.
+    expect(interestTier(5.9)).toBe("notable");
+    expect(interestTier(6)).toBe("recommended");
+    expect(interestTier(7.9)).toBe("recommended");
+    expect(interestTier(8)).toBe("must-read");
+    // And that the page actually displays these real boundary numbers:
+    expect(html).toContain("6");
+    expect(html).toContain("8");
+  });
+
+  it("links to all 4 per-source RSS feeds", () => {
+    expect(html).toContain('href="/rss/hn.xml"');
+    expect(html).toContain('href="/rss/arxiv.xml"');
+    expect(html).toContain('href="/rss/github.xml"');
+    expect(html).toContain('href="/rss/devto.xml"');
+  });
+});

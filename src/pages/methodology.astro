@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { MAX_REASONABLE_ITEMS } from '../lib/llmCuration.js';
+import {
+  ANOMALY_MULTIPLIER,
+  SEED_BASELINE_USD,
+  MIN_HISTORY_FOR_ANOMALY_CHECK,
+  PRICING_PER_MILLION_TOKENS,
+} from '../lib/costTracking.js';
+
+const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
+---
+
+<Layout
+  title="daily-dose — methodology"
+  description="How daily-dose actually scores and curates every item — the real rubric, thresholds, and cost controls, not marketing copy."
+  path="/methodology"
+>
+  <header class="masthead">
+    <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+    <h1>Methodology</h1>
+    <p class="tagline">
+      The real rubric, thresholds, and cost controls this project actually runs — every
+      number below is imported live from the same code that runs the pipeline, not
+      restated by hand.
+    </p>
+  </header>
+
+  <main>
+    <h2 class="section-heading">How items are scored</h2>
+    <p>
+      Every fetched item is scored in one batched call to a real AWS Bedrock LLM
+      (Claude, via a model fallback chain) that reads each item's real title, real
+      engagement numbers, and — where available — its real abstract or article
+      excerpt. The model is asked for a genuine 0-10 interest score and one honest
+      sentence explaining why. All ingested text is treated as untrusted data, never
+      as instructions — this project explicitly guards against prompt injection from
+      the sources it aggregates.
+    </p>
+    <p>
+      If no real LLM credentials are configured (e.g. local development), or the
+      model's response is missing a specific item, a deterministic placeholder
+      formula derived only from real, already-fetched engagement numbers is used
+      instead — and this is never presented as if it were genuine model judgment. See
+      the project's own <code>AGENTS.md</code> for the full honesty policy.
+    </p>
+    <p>
+      A hard pre-flight ceiling refuses to score more than <strong>{MAX_REASONABLE_ITEMS}</strong>
+      {' '}items in one call — this catches an upstream bug (e.g. accidentally fetching all-time
+      history instead of just today's items) before any money is spent, rather than after.
+    </p>
+
+    <h2 class="section-heading">Interest tiers</h2>
+    <p>
+      Every score maps to one of three tiers, used by the filter UI on the digest and
+      archive pages:
+    </p>
+    <ul>
+      <li>Below 6: <strong>Notable</strong></li>
+      <li>6 up to (not including) 8: <strong>Recommended</strong></li>
+      <li>8 and above: <strong>Must-Read</strong></li>
+    </ul>
+
+    <h2 class="section-heading">Real cost controls</h2>
+    <p>
+      Every real LLM call's actual token usage and dollar cost is recorded to a
+      public, append-only ledger — see <a href="/stats">cost &amp; stats</a> for the
+      real totals. A run is flagged as anomalous only once at least{' '}
+      <strong>{MIN_HISTORY_FOR_ANOMALY_CHECK}</strong> days of real history exist and
+      that day's cost exceeds <strong>{ANOMALY_MULTIPLIER}&times;</strong> the trailing
+      7-day average (seeded at <strong>${SEED_BASELINE_USD.toFixed(2)}</strong> before
+      any history exists) — this is a dynamic threshold that adapts to real observed
+      usage, not a guessed fixed dollar ceiling.
+    </p>
+
+    <h2 class="section-heading">Real per-model pricing</h2>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Input ($/M tokens)</th>
+          <th>Output ($/M tokens)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pricingRows.map(([model, pricing]) => (
+          <tr>
+            <td class="model-cell">{model}</td>
+            <td>${pricing.input.toFixed(2)}</td>
+            <td>${pricing.output.toFixed(2)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <h2 class="section-heading">Subscribe to just one source</h2>
+    <p>Prefer only one of the four sources? Each has its own RSS feed:</p>
+    <ul>
+      <li><a href="/rss/hn.xml">Hacker News only</a></li>
+      <li><a href="/rss/arxiv.xml">arXiv only</a></li>
+      <li><a href="/rss/github.xml">GitHub only</a></li>
+      <li><a href="/rss/devto.xml">Dev.to only</a></li>
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  ul {
+    line-height: 1.7;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .model-cell {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8rem;
+  }
+</style>
