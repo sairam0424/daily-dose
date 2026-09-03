@@ -12,6 +12,7 @@
 // construction, not omitted by choice.
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import SiteMeta from '../components/SiteMeta.astro';
 
 interface StatsEntry {
   date: string;
@@ -106,6 +107,11 @@ function formatUsd(amount: number): string {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>daily-dose — cost &amp; stats</title>
+    <SiteMeta
+      title="daily-dose — cost & stats"
+      description="Real AWS Bedrock LLM curation cost for daily-dose, tracked from actual token usage — not estimated."
+      path="/stats"
+    />
   </head>
   <body>
     <header class="masthead">

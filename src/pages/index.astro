@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import DigestChart from '../components/DigestChart.astro';
 import DigestList from '../components/DigestList.astro';
+import SiteMeta from '../components/SiteMeta.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
@@ -21,6 +22,11 @@ const chartScores = latestEntries.map((entry) => entry.data.interest_score);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>daily-dose</title>
+    <SiteMeta
+      title="daily-dose"
+      description="A daily AI-curated technical digest — Hacker News, arXiv, and GitHub."
+      path="/"
+    />
     <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
   </head>
   <body>
