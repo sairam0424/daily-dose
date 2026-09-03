@@ -37,9 +37,10 @@ const TIERS = [
   }
 
   .filter-btn {
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--fg);
+    border: 1px solid var(--rule);
+    background: var(--bg-surface);
+    color: var(--ink);
+    font-family: var(--font-body);
     border-radius: 999px;
     padding: 0.3rem 0.75rem;
     font-size: 0.8rem;
@@ -50,6 +51,11 @@ const TIERS = [
     border-color: var(--accent);
     color: var(--accent);
     font-weight: 600;
+  }
+
+  .filter-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 </style>
 
