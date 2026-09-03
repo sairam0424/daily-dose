@@ -87,11 +87,46 @@ describe("dist/index.html build output", () => {
   });
 
   it("shows evidence the Chart.js island is present in the output", () => {
-    const hasChartCanvas = html.includes('id="score-chart"');
-    const hasChartJsReference =
-      html.includes("chart.js") || html.includes("new Chart(");
-    expect(hasChartCanvas).toBe(true);
-    expect(hasChartJsReference).toBe(true);
+    expect(html.includes('id="score-chart"')).toBe(true);
+
+    // A correctly bundled DigestChart <script> is minified and compiled
+    // into an external, hashed /_astro/*.js chunk alongside chart.js - the
+    // literal source text "chart.js" and "new Chart(" do NOT survive that
+    // process (minification renames the "Chart" identifier), so asserting
+    // on those substrings against index.html is not meaningful evidence
+    // either way. Instead, resolve the actual chunk Astro linked and
+    // confirm it both exists on disk and contains our component's real
+    // canvas target - proof the chart-mounting code was bundled in, not
+    // just referenced by a tag pointing at nothing.
+    const scriptSrcMatch = html.match(
+      /<script[^>]*type="module"[^>]*src="([^"]*DigestChart[^"]*)"/,
+    );
+    expect(
+      scriptSrcMatch,
+      'expected a bundled <script type="module" src="...DigestChart..."> tag',
+    ).toBeTruthy();
+
+    const chunkPath = join(DIST_DIR, scriptSrcMatch![1]);
+    expect(
+      existsSync(chunkPath),
+      `expected the linked chunk to exist at ${chunkPath}`,
+    ).toBe(true);
+    expect(readFileSync(chunkPath, "utf-8")).toContain("score-chart");
+  });
+
+  it("(regression) bundles DigestChart's script instead of shipping the raw unresolved import", () => {
+    // The checks above are too weak to catch this: the substrings
+    // "chart.js" and "new Chart(" are both still present in the RAW,
+    // UNBUNDLED source text of `import Chart from 'chart.js/auto';` and
+    // `const chart = new Chart(canvas, {...})`, so they pass even when
+    // Astro fails to bundle the component's <script> and ships the bare
+    // module specifier verbatim - which no browser can resolve ("Failed to
+    // resolve module specifier \"chart.js/auto\""), leaving the chart
+    // canvas completely blank. A properly bundled build never contains this
+    // literal import statement in the HTML at all - Vite either inlines the
+    // resolved code or emits a hashed external <script src="/_astro/...">.
+    expect(html).not.toContain("import Chart from 'chart.js/auto'");
+    expect(html).not.toContain("chart.js/auto");
   });
 
   it("has a real favicon <link> tag", () => {
@@ -210,6 +245,11 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="skin-toggle-dev"[^>]*aria-pressed="true"/);
     expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
+  });
+
+  it("keeps the score chart canvas present after the redesign (regression check)", () => {
+    expect(html).toContain('id="score-chart"');
+    expect(html).not.toContain("rgba(79, 70, 229"); // old hardcoded indigo
   });
 
   it("marks the highest-scored story as the lead story", () => {

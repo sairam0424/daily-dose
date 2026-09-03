@@ -10,7 +10,7 @@ const chartDataJson = JSON.stringify({ labels, scores });
 
 <canvas id="score-chart" data-chart={chartDataJson} width="600" height="320"></canvas>
 
-<script type="module">
+<script>
   import Chart from 'chart.js/auto';
 
   const canvas = document.getElementById('score-chart');
@@ -18,7 +18,20 @@ const chartDataJson = JSON.stringify({ labels, scores });
     const raw = canvas.dataset.chart;
     const { labels, scores } = raw ? JSON.parse(raw) : { labels: [], scores: [] };
 
-    new Chart(canvas, {
+    function readToken(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function buildChartColors() {
+      const accent = readToken('--accent') || '#4f46e5';
+      const inkSoft = readToken('--ink-soft') || '#6b7280';
+      const rule = readToken('--rule') || 'rgba(107, 114, 128, 0.2)';
+      return { accent, inkSoft, rule };
+    }
+
+    let colors = buildChartColors();
+
+    const chart = new Chart(canvas, {
       type: 'bar',
       data: {
         labels,
@@ -26,8 +39,8 @@ const chartDataJson = JSON.stringify({ labels, scores });
           {
             label: 'Interest score',
             data: scores,
-            backgroundColor: 'rgba(79, 70, 229, 0.6)',
-            borderColor: 'rgba(79, 70, 229, 1)',
+            backgroundColor: colors.accent,
+            borderColor: colors.accent,
             borderWidth: 1,
           },
         ],
@@ -37,9 +50,33 @@ const chartDataJson = JSON.stringify({ labels, scores });
           y: {
             beginAtZero: true,
             max: 10,
+            ticks: { color: colors.inkSoft },
+            grid: { color: colors.rule },
           },
+          x: {
+            ticks: { color: colors.inkSoft },
+            grid: { color: colors.rule },
+          },
+        },
+        plugins: {
+          legend: { labels: { color: colors.inkSoft } },
         },
       },
     });
+
+    const observer = new MutationObserver(() => {
+      colors = buildChartColors();
+      chart.data.datasets[0].backgroundColor = colors.accent;
+      chart.data.datasets[0].borderColor = colors.accent;
+      chart.options.scales.y.ticks.color = colors.inkSoft;
+      chart.options.scales.y.grid.color = colors.rule;
+      chart.options.scales.x.ticks.color = colors.inkSoft;
+      chart.options.scales.x.grid.color = colors.rule;
+      if (chart.options.plugins?.legend?.labels) {
+        chart.options.plugins.legend.labels.color = colors.inkSoft;
+      }
+      chart.update();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-skin', 'data-theme'] });
   }
 </script>
