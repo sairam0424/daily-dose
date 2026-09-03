@@ -43,6 +43,17 @@ ADR 0003 established the model fallback chain (Sonnet 4.6 → Opus 4.6 → Haiku
 
 **Open follow-up, not yet done**: confirm Sonnet 5's real per-token cost against the first genuine invoice or AWS Cost Explorer line item once `daily-pipeline.yml`'s schedule actually uses it, and correct `PRICING_PER_MILLION_TOKENS` if it differs from the $3/$15 assumed here.
 
+## Update (2026-09-03) — pricing confirmed, corrected
+
+The open follow-up above is resolved. A dynamic research workflow found two independent real sources, neither requiring the `pricing:GetProducts` permission this project's credential lacks:
+
+- **Anthropic's own official pricing page** (`platform.claude.com/docs/en/about-claude/pricing`, corroborated by `platform.claude.com/docs/en/models/sonnet-5/overview`): the standard, non-promotional direct-API rate is **$2/MTok input, $10/MTok output**. The page explicitly states the previously-scheduled increase to $3/$15 "will not occur."
+- **AWS's own public Price List Bulk API** (`pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/.../us-east-1/index.json` — a static, unauthenticated JSON feed, no SigV4 needed, distinct from the Price List *query* API this project's credential lacks access to): product `"Claude Sonnet 5 (Amazon Bedrock Edition)"`, us-east-1, effective 2026-08-01, publication timestamp 2026-09-01, lists two tiers — **In-Region/Geo (Standard): $2.20/MTok input, $11.00/MTok output**, and Global cross-Region (Standard): $2.00/$10.00.
+
+This project's `MODEL_CHAIN` calls `us.anthropic.claude-sonnet-5` — a US-region-prefixed profile, not `global.anthropic.claude-sonnet-5` — so the In-Region/Geo tier is the one that actually applies: **$2.20 input / $11.00 output per million tokens**, corrected in `src/lib/costTracking.ts`. This is *lower* than the $3/$15 placeholder, not higher. Five independent third-party trackers corroborate one of these two real numbers; the one outlier still showing $3/$15 is a stale snapshot from before Anthropic's pricing decision took effect.
+
+The three `stats.jsonl` entries recorded before this fix (2026-09-02, and two on 2026-09-03) used the old $3/$15 assumption and are consequently ~27-36% overstated relative to the corrected rate — about $0.017 total across all three. They are **not** retroactively edited; `stats.jsonl` is an honest, append-only record of what was computed at the time, not a number to rewrite after the fact.
+
 ## More Information
 
 Builds on ADR 0003 (the fallback chain and forced-tool_choice/thinking incompatibility this decision had to check against) and ADR 0004 (the `daily-pipeline.yml` schedule that will actually exercise this chain in production going forward).

@@ -74,15 +74,15 @@ In order — do not build out of sequence:
     registration request. If revisited later, the exact JSON schema, CNAME
     target, and full registrar price comparison are preserved in this
     file's git history — don't re-research from scratch.
+13. ~~Sonnet 5 per-token price confirmation.~~ Done (2026-09-03) — see
+    ADR 0005's Update section. Confirmed via Anthropic's own pricing page
+    plus AWS's public Price List Bulk API: the real rate for this
+    project's exact model ID is $2.20/$11.00 per million input/output
+    tokens, corrected in `costTracking.ts` (was $3/$15, an unconfirmed
+    placeholder).
 
-Every item above is shipped or decided. The item below is the current
-open backlog (2026-09-03):
-
-13. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up).
-    Lowest priority — the dollar amounts involved are trivial either way,
-    and there is no new lever to pull right now: it needs either more real
-    usage to accrue or the user checking AWS Cost Explorer/billing
-    directly and reporting the real rate back.
+Every item above is shipped or decided. There is no open backlog item
+remaining as of 2026-09-03.
 
 ## Open risks
 
