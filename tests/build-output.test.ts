@@ -115,4 +115,9 @@ describe("dist/index.html build output", () => {
       `expected dist/index.html to contain a Discuss link to ${expectedHref}`,
     ).toBe(true);
   });
+
+  it("has a real theme toggle button with a persistence script", () => {
+    expect(html.includes('id="theme-toggle"')).toBe(true);
+    expect(html.includes("localStorage")).toBe(true);
+  });
 });
