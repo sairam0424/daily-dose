@@ -293,6 +293,20 @@ const { entries } = Astro.props;
     padding-right: 0.08em;
   }
 
+  /* (review fix) Task 2's base .lead-story .story-title::before rule
+     generates non-empty content ('Top Pick'), which per the CSS spec
+     becomes part of the element's "first formatted line" — so
+     ::first-letter above was binding to the "T" of "Top Pick" instead
+     of the real headline. Neutralize the eyebrow label under Newspaper
+     skin so the drop-cap lands on the actual headline text. Selector
+     matches the base rule's Astro-scoping shape exactly (.lead-story
+     and .story-title left outside :global(), only the skin attribute
+     inside it) so this compiles to the same specificity class as the
+     rule it must override, not a lower one. */
+  :global([data-skin='newspaper']) .lead-story .story-title::before {
+    content: none;
+  }
+
   :global([data-skin='newspaper']) .story-meta {
     font-size: 0.72rem;
     letter-spacing: 0.04em;
