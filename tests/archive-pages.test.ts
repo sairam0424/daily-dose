@@ -72,6 +72,13 @@ describe("dist/archive/index.html build output", () => {
       `expected dist/archive/index.html to contain at least one of: ${JSON.stringify(committedDates)}`,
     ).toBeTruthy();
   });
+
+  it("links to all 4 per-source RSS feeds", () => {
+    expect(archiveIndexHtml).toContain('href="/rss/hn.xml"');
+    expect(archiveIndexHtml).toContain('href="/rss/arxiv.xml"');
+    expect(archiveIndexHtml).toContain('href="/rss/github.xml"');
+    expect(archiveIndexHtml).toContain('href="/rss/devto.xml"');
+  });
 });
 
 describe("dist/archive/<date>/index.html build output", () => {
