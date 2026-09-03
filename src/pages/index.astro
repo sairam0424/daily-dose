@@ -24,7 +24,7 @@ const chartScores = latestEntries.map((entry) => entry.data.interest_score);
     <title>daily-dose</title>
     <SiteMeta
       title="daily-dose"
-      description="A daily AI-curated technical digest — Hacker News, arXiv, and GitHub."
+      description="A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to."
       path="/"
     />
     <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
@@ -36,7 +36,7 @@ const chartScores = latestEntries.map((entry) => entry.data.interest_score);
         <a href="/archive/">All digests &rarr;</a>
       </nav>
       <h1>daily-dose</h1>
-      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, and GitHub.</p>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
     </header>
 
     <main>
@@ -51,7 +51,7 @@ const chartScores = latestEntries.map((entry) => entry.data.interest_score);
       ) : (
         <p class="empty-state">
           No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
-          arXiv, and GitHub content and generate today's digest.
+          arXiv, GitHub, and Dev.to content and generate today's digest.
         </p>
       )}
     </main>

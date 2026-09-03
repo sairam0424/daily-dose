@@ -19,7 +19,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: "daily-dose",
     description:
-      "A daily AI-curated technical digest — Hacker News, arXiv, and GitHub.",
+      "A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.",
     site: context.site,
     items: dateGroups.map((group) => ({
       title: `daily-dose — ${group.date}`,
