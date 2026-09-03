@@ -50,7 +50,32 @@ In order — do not build out of sequence:
 8. ~~Add an RSS feed.~~ Done — `/rss.xml` via `@astrojs/rss`, one `<item>` per day.
 9. ~~Add richer failure alerting for the scheduled cron (ADR 0004's deferred non-goal).~~ Done — `daily-pipeline.yml`'s new `if: failure()` step (`actions/github-script@v7`) auto-files a labeled GitHub Issue with the failed run's URL and timestamp, or comments on the existing open one on repeat failures. No new secret. See ADR 0004's Update section and `decisions.md`'s 2026-09-03 log entry.
 
-Every item above is now shipped — this roadmap is complete. The next entry, whatever it is, is a new decision, not a resumption of a deferred one.
+Every item above is shipped. The four items below are the current open
+backlog (2026-09-03), in priority order — none blocking, none started:
+
+10. **Favicon + social preview (OG) image.** No open decision needed — fully
+    actionable now. The one concrete visual gap: a shared daily-dose link
+    currently renders no custom preview card anywhere (Slack, Twitter,
+    etc.). Ranked first because it needs no input from the user and is
+    small.
+11. **A fourth source — research/framing phase only.** Unlike GitHub (which
+    had an obvious "trending repos" framing), no source has been identified
+    with a strong "what should this actually surface" answer yet (Reddit
+    r/programming and Lobste.rs were floated, neither compelling). Next
+    action is a short research pass proposing 2-3 concrete framings with
+    tradeoffs — the same shape as the GitHub-sourcing decision in ADR 0006
+    — not implementation, until one is chosen.
+12. **Custom domain.** Fully blocked on a real decision only the user can
+    make (the domain name itself) — currently serving from
+    `daily-dose-hazel-delta.vercel.app`. Next action is asking the user for
+    a name, not building anything. See `tech.md`/`SECURITY.md` for the
+    `astro.config.mjs` `site` field and RSS absolute-URL implications once
+    one is chosen.
+13. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up).
+    Lowest priority — the dollar amounts involved are trivial either way,
+    and there is no new lever to pull right now: it needs either more real
+    usage to accrue or the user checking AWS Cost Explorer/billing
+    directly and reporting the real rate back.
 
 ## Open risks
 
