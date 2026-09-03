@@ -120,4 +120,11 @@ describe("dist/index.html build output", () => {
     expect(html.includes('id="theme-toggle"')).toBe(true);
     expect(html.includes("localStorage")).toBe(true);
   });
+
+  it("includes the Vercel Web Analytics script", () => {
+    expect(
+      html.includes("/_vercel/insights/script.js") ||
+        html.includes("va.vercel-scripts.com"),
+    ).toBe(true);
+  });
 });
