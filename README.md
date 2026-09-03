@@ -1,5 +1,9 @@
 # daily-dose
 
+[![CI](https://github.com/sairam0424/daily-dose/actions/workflows/ci.yml/badge.svg)](https://github.com/sairam0424/daily-dose/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Live Site](https://img.shields.io/badge/live-daily--dose-brightgreen)](https://daily-dose-hazel-delta.vercel.app)
+
 `daily-dose` is a daily AI-curated technical digest that pulls from Hacker
 News, arXiv, GitHub, and Dev.to. Each day it fetches a fresh batch of
 stories, scores them for genuine technical interest, and renders them as a
