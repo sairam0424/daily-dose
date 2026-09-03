@@ -64,12 +64,23 @@ In order — do not build out of sequence:
 Every item above is shipped. The two items below are the current open
 backlog (2026-09-03), in priority order — none blocking, none started:
 
-12. **Custom domain.** Fully blocked on a real decision only the user can
-    make (the domain name itself) — currently serving from
-    `daily-dose-hazel-delta.vercel.app`. Next action is asking the user for
-    a name, not building anything. See `tech.md`/`SECURITY.md` for the
-    `astro.config.mjs` `site` field and RSS absolute-URL implications once
-    one is chosen.
+12. **Custom domain.** Researched live (2026-09-03, via a dynamic
+    workflow) and explicitly deferred by the user — not started, not
+    blocking. Findings, so this doesn't need re-researching: `dailydose`
+    (no hyphen) is taken on every TLD checked; `daily-dose` is open on
+    `.dev`/`.xyz`/`.io`/`.news`/`.day`. No genuinely free option exists for
+    a non-student (Freenom is dead-as-free and its TLDs carry lasting
+    spam/phishing stigma; GitHub Student Developer Pack is real but
+    student-gated; `is-a.dev`-style free subdomains aren't a real owned
+    domain). Cheapest real total-cost-of-ownership: `daily-dose.dev` via
+    Cloudflare Registrar, ~$10-12/yr flat with no renewal markup (Cloudflare
+    sells at wholesale cost). Cheapest sticker price: `daily-dose.xyz` for
+    $1.99 first year via Vercel's own domain marketplace, but likely jumps
+    to ~$14-21/yr on renewal elsewhere. If revisited, ask the user to pick
+    one of: Cloudflare `.dev` (best value), Vercel `.xyz` (cheapest
+    upfront), Vercel `.dev` (simplest, zero DNS config), or continue
+    deferring. See `tech.md`/`SECURITY.md` for the `astro.config.mjs`
+    `site` field and RSS absolute-URL implications once one is chosen.
 13. **Sonnet 5 per-token price confirmation** (ADR 0005's open follow-up).
     Lowest priority — the dollar amounts involved are trivial either way,
     and there is no new lever to pull right now: it needs either more real
