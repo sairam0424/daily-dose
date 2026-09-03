@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import DigestChart from '../components/DigestChart.astro';
 import DigestList from '../components/DigestList.astro';
-import SiteMeta from '../components/SiteMeta.astro';
+import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
@@ -16,130 +16,42 @@ const chartLabels = latestEntries.map((entry) => entry.data.title);
 const chartScores = latestEntries.map((entry) => entry.data.interest_score);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>daily-dose</title>
-    <SiteMeta
-      title="daily-dose"
-      description="A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to."
-      path="/"
-    />
-    <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
-  </head>
-  <body>
-    <header class="masthead">
-      <nav class="site-nav">
-        <a href="/stats">Cost &amp; stats &rarr;</a>
-        <a href="/archive/">All digests &rarr;</a>
-      </nav>
-      <h1>daily-dose</h1>
-      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
-    </header>
+<Layout
+  title="daily-dose"
+  description="A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to."
+  path="/"
+>
+  <header class="masthead">
+    <nav class="site-nav">
+      <a href="/stats">Cost &amp; stats &rarr;</a>
+      <a href="/archive/">All digests &rarr;</a>
+    </nav>
+    <h1>daily-dose</h1>
+    <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
+  </header>
 
-    <main>
-      {latestDate ? (
-        <>
-          <h2 class="section-heading">Latest digest — {latestDate}</h2>
-          <DigestList entries={latestEntries} />
+  <main>
+    {latestDate ? (
+      <>
+        <h2 class="section-heading">Latest digest — {latestDate}</h2>
+        <DigestList entries={latestEntries} />
 
-          <h2 class="section-heading">Interest scores</h2>
-          <DigestChart labels={chartLabels} scores={chartScores} />
-        </>
-      ) : (
-        <p class="empty-state">
-          No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
-          arXiv, GitHub, and Dev.to content and generate today's digest.
-        </p>
-      )}
-    </main>
-
-    <footer class="site-footer">
-      <p>
-        Curation is a real AWS Bedrock LLM call by default, with a deterministic placeholder
-        heuristic as an explicit fallback (missing credentials, or a per-item response gap) —
-        see the project README, or <a href="/stats">cost &amp; stats</a> for real usage data.
+        <h2 class="section-heading">Interest scores</h2>
+        <DigestChart labels={chartLabels} scores={chartScores} />
+      </>
+    ) : (
+      <p class="empty-state">
+        No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
+        arXiv, GitHub, and Dev.to content and generate today's digest.
       </p>
-    </footer>
+    )}
+  </main>
 
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #ffffff;
-        --fg: #1a1a1a;
-        --muted: #6b7280;
-        --border: #e5e7eb;
-        --accent: #4f46e5;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.5;
-      }
-
-      .masthead {
-        padding: 2rem 1.5rem 1rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .site-nav {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .site-nav a {
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-
-      .site-nav a:hover {
-        text-decoration: underline;
-      }
-
-      .masthead h1 {
-        margin: 0.5rem 0 0;
-        font-size: 2rem;
-      }
-
-      .tagline {
-        margin: 0.25rem 0 0;
-        color: var(--muted);
-      }
-
-      main {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1.5rem;
-      }
-
-      .section-heading {
-        font-size: 1.25rem;
-        margin-top: 2rem;
-      }
-
-      .empty-state {
-        color: var(--muted);
-      }
-
-      .site-footer {
-        max-width: 800px;
-        margin: 2rem auto 0;
-        padding: 1rem 1.5rem 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--muted);
-        font-size: 0.85rem;
-      }
-    </style>
-  </body>
-</html>
+  <footer class="site-footer">
+    <p>
+      Curation is a real AWS Bedrock LLM call by default, with a deterministic placeholder
+      heuristic as an explicit fallback (missing credentials, or a per-item response gap) —
+      see the project README, or <a href="/stats">cost &amp; stats</a> for real usage data.
+    </p>
+  </footer>
+</Layout>

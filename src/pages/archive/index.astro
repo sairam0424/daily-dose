@@ -1,143 +1,76 @@
 ---
 import { getCollection } from 'astro:content';
-import SiteMeta from '../../components/SiteMeta.astro';
+import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>daily-dose — all digests</title>
-    <SiteMeta
-      title="daily-dose — all digests"
-      description="Every past daily-dose digest, browsable by date — AI-curated Hacker News, arXiv, GitHub, and Dev.to picks, one day at a time."
-      path="/archive/"
-    />
-    <link rel="alternate" type="application/rss+xml" title="daily-dose" href="/rss.xml" />
-  </head>
-  <body>
-    <header class="masthead">
-      <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
-      <h1>All digests</h1>
-      <p class="tagline">Every past day's digest, most recent first.</p>
-    </header>
+<Layout
+  title="daily-dose — all digests"
+  description="Every past daily-dose digest, browsable by date — AI-curated Hacker News, arXiv, GitHub, and Dev.to picks, one day at a time."
+  path="/archive/"
+>
+  <header class="masthead">
+    <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+    <h1>All digests</h1>
+    <p class="tagline">Every past day's digest, most recent first.</p>
+  </header>
 
-    <main>
-      {dateGroups.length > 0 ? (
-        <ul class="date-list">
-          {dateGroups.map((group) => (
-            <li class="date-card">
-              <a class="date-link" href={`/archive/${group.date}/`}>{group.date}</a>
-              <span class="date-count">
-                {group.entries.length} item{group.entries.length === 1 ? '' : 's'}
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="empty-state">
-          No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
-          arXiv, and GitHub content and generate the first digest.
-        </p>
-      )}
-    </main>
+  <main>
+    {dateGroups.length > 0 ? (
+      <ul class="date-list">
+        {dateGroups.map((group) => (
+          <li class="date-card">
+            <a class="date-link" href={`/archive/${group.date}/`}>{group.date}</a>
+            <span class="date-count">
+              {group.entries.length} item{group.entries.length === 1 ? '' : 's'}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="empty-state">
+        No digest data yet. Run <code>npm run pipeline</code> to fetch the latest Hacker News,
+        arXiv, and GitHub content and generate the first digest.
+      </p>
+    )}
+  </main>
+</Layout>
 
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #ffffff;
-        --fg: #1a1a1a;
-        --muted: #6b7280;
-        --border: #e5e7eb;
-        --accent: #4f46e5;
-      }
+<style>
+  .date-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-      * {
-        box-sizing: border-box;
-      }
+  .date-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-      body {
-        margin: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.5;
-      }
+  .date-link {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
 
-      .masthead {
-        padding: 2rem 1.5rem 1rem;
-        border-bottom: 1px solid var(--border);
-      }
+  .date-link:hover {
+    text-decoration: underline;
+  }
 
-      .site-nav a {
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-
-      .site-nav a:hover {
-        text-decoration: underline;
-      }
-
-      .masthead h1 {
-        margin: 0.5rem 0 0;
-        font-size: 2rem;
-      }
-
-      .tagline {
-        margin: 0.25rem 0 0;
-        color: var(--muted);
-      }
-
-      main {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1.5rem;
-      }
-
-      .date-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .date-card {
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .date-link {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .date-link:hover {
-        text-decoration: underline;
-      }
-
-      .date-count {
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-
-      .empty-state {
-        color: var(--muted);
-      }
-    </style>
-  </body>
-</html>
+  .date-count {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>
