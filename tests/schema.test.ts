@@ -95,4 +95,12 @@ describe("DigestItemSchema", () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it("rejects a javascript: scheme image_url", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      image_url: "javascript:alert(1)",
+    });
+    expect(result.success).toBe(false);
+  });
 });
