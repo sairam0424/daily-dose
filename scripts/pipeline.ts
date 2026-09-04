@@ -523,6 +523,31 @@ function toScorableDevtoItem(article: RawDevtoArticle): ScorableItem {
  * both in one fetch) - fine, since favicon_url is fully optional everywhere
  * it's rendered.
  */
+/** Runs `items` through `fn` with at most `limit` in flight at once.
+ * Order of the returned array matches `items`' order regardless of
+ * completion order. No new dependency - a ~10-line helper was chosen
+ * over a package for this. */
+export async function mapWithConcurrency<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < items.length) {
+      const i = nextIndex++;
+      results[i] = await fn(items[i]);
+    }
+  }
+
+  await Promise.all(
+    Array.from({ length: Math.min(limit, items.length) }, worker),
+  );
+  return results;
+}
+
 export function buildImageableItems(
   stories: RawHnStory[],
   papers: RawArxivPaper[],
@@ -596,14 +621,16 @@ export async function main(): Promise<void> {
 
   // Generic OG-image/favicon enrichment - decorative, never blocks or fails
   // the pipeline (see imageResolution.ts's documented exception to the
-  // fail-loud rule). Bounded to a 5s worst-case wall time by
-  // resolveItemImage's own internal timeout, regardless of item count.
+  // fail-loud rule). Bounded to a 5s worst-case wall time per batch by
+  // resolveItemImage's own internal timeout; capped at 6 concurrent
+  // fetches so a normal day's item count doesn't open a burst of
+  // simultaneous connections to as many distinct external hosts.
   const imageableItems = buildImageableItems(stories, papers, repos, articles);
   const resolvedImages = new Map<string, ResolvedImage>(
-    await Promise.all(
-      imageableItems.map(
-        async ({ id, url }) => [id, await resolveItemImage(url)] as const,
-      ),
+    await mapWithConcurrency(
+      imageableItems,
+      6,
+      async ({ id, url }) => [id, await resolveItemImage(url)] as const,
     ),
   );
 
