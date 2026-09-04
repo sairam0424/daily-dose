@@ -8,8 +8,9 @@ daily-dose is a daily AI-curated technical digest (arXiv + Hacker News) — the 
 
 nh-skills (`../nh-skills/`) and nh-deck (`../nh-deck/`) are siblings that already completed their own Phase 1-4, fully working, tested, and shipped through real CI — useful precedent for house documentation style/conventions, but their product shapes (a curated skills collection; a local-first presentation CLI) are unrelated to daily-dose's (a content site backed by a data pipeline), so their content is referenced for convention, never copied as architecture.
 
-## Current state (as of 2026-09-03)
+## Current state (as of 2026-09-04)
 
+- **Phase 10: full UI/UX redesign (dual-skin design system), reader-facing transparency features, and a backlog-hardening pass — all shipped.** A dual-skin system (`data-skin="dev"|"newspaper"` + `data-theme="dark"|"light"` on `<html>`, a 12-token CSS custom-property contract in `src/layouts/Layout.astro`) ships two genuinely distinct visual identities via a new `PreferenceControls.astro`: a dark-only "dev-editorial" skin (Space Grotesk display / JetBrains Mono / system-ui body) and a light+dark "newspaper" skin (Fraunces display / Newsreader body / JetBrains Mono, a multi-column story list with a drop-cap lead story). A `/methodology` page surfaces the real LLM scoring rubric, `interestTier()` bucket boundaries, and the real cost/anomaly-detection thresholds by importing the actual constants, never restating them. Per-story reading-time/format badges (`reading_minutes` added to the schema, computed from real word counts where body text exists — arXiv abstract, Dev.to's capped excerpt — falling back to a format label like "Discussion"/"Repo" where it doesn't) and 4 new per-source RSS feeds (`/rss/{hn,arxiv,github,devto}.xml`, reusing the existing combined-feed machinery filtered by source) round out the reader-facing surface. Story cards separately gained tiered borders/hairlines, a container-query bento hero cell, a click-toggle why-read popover, real per-item OG-image/favicon enrichment (`src/lib/imageResolution.ts`), and optional `prefers-reduced-motion`-respecting hover-lift motion. Two real bugs were found and fixed post-ship: the why-read popover overflowing the viewport at narrow widths, and (once fixed) a Newspaper-skin CSS multicolumn-fragmentation bug affecting the same popover — root-caused to a genuine browser rendering quirk (an absolutely-positioned descendant fragmenting across a column break inside a `column-count` ancestor, confirmed via `getClientRects()`), fixed by switching the popover to `position: fixed`. A final 5-item backlog-hardening pass then closed out every remaining Minor review finding from the whole arc: a CSS hover-state fragility, a test type-safety gap, a redundant double-parse in `httpUrlSchema`, an unbounded-concurrency image-fetch burst (now capped via a small `mapWithConcurrency` helper), and a missing `fetch()`-call-shape test.
 - **Phase 9: every original roadmap item shipped, plus a digest archive, an RSS feed, and a fourth ingestion source (Dev.to).** Real, live fetch from Hacker News' free Algolia API, arXiv's Atom API, GitHub's free Search API (ADR 0006), and Dev.to's free Articles API (ADR 0007); real LLM scoring via AWS Bedrock (`src/lib/llmCuration.ts`, Sonnet 5→Sonnet 4.6→Opus→Haiku fallback chain, Sonnet 5 leading as of ADR 0005) as the default path, with the original deterministic placeholder retained as an explicit no-credentials fallback — see `decisions.md` ADR 0003; an Astro static site rendering committed digests via Content Collections; one Chart.js bar-chart island; a public `/stats` cost page. `.github/workflows/daily-pipeline.yml` runs the pipeline daily via a real `schedule:` trigger and commits the result itself — see ADR 0004. The site is live at https://daily-dose-hazel-delta.vercel.app, git-integrated auto-deploy on push to `main`, Build Command confirmed as `npm run build` only. Readers can now browse every past day (`/archive/`, `/archive/{date}/`) and subscribe via RSS (`/rss.xml`) — see `decisions.md`'s 2026-09-03 log entry.
 - **Tech stack: decided.** Astro (`output: "static"`, with `site` now configured for `@astrojs/rss`) for the front-end, with Content Collections reading `src/data/digest/*.json` via the glob loader, validated against the same Zod schema (`src/lib/digestSchema.ts`) the pipeline script writes against — one schema, two enforcement points, zero drift. A separate TypeScript/Node pipeline script (`scripts/pipeline.ts`, run via `tsx`) fetches from HN's Algolia API, arXiv's Atom API, GitHub's Search API, and Dev.to's Articles API, and writes one validated file per item into a dated `src/data/digest/YYYY-MM-DD/` folder (Astro's `glob()` content loader requires one schema-matching object per file, not an array). Styling is minimal inline CSS (no Bulma/Sass) for this phase. `DigestList.astro`/`DigestChart.astro` are shared components reused across `index.astro` and the archive pages. One Chart.js island (`chart.js/auto` via a plain `<script type="module">`, no React/Vue) renders a bar chart of interest scores.
 - **Curation is now a real LLM call via AWS Bedrock, with the honest placeholder kept as an explicit fallback.** `src/lib/llmCuration.ts` scores every fetched item (HN + arXiv + GitHub + Dev.to) in one forced-tool-use batched call per pipeline run, using a credential shared with the sibling Anvilry project. `src/lib/curation.ts`'s deterministic placeholders (computed from real, already-fetched fields — `points`/`num_comments` for HN, `stars`/`forks` for GitHub, `reactions`/`comments` for Dev.to, recency for arXiv) still exist and are used, with a loud console warning, whenever credentials aren't configured (e.g. local dev) or the LLM's response omits a specific item. See `decisions.md`/ADR 0003/ADR 0006/ADR 0007 for full rationale and `SOUL.md`'s non-negotiables for why the fallback is never dressed up as real judgment.
@@ -80,18 +81,52 @@ In order — do not build out of sequence:
     project's exact model ID is $2.20/$11.00 per million input/output
     tokens, corrected in `costTracking.ts` (was $3/$15, an unconfirmed
     placeholder).
+14. ~~Add a `/methodology` page.~~ Done — `src/pages/methodology.astro`
+    imports real constants directly from `llmCuration.ts`/`interestTier.ts`/
+    `costTracking.ts` (never restates them), with a masthead nav link added
+    to every page.
+15. ~~Add reading-time/format badges.~~ Done — `reading_minutes` added to
+    `digestSchema.ts`, computed by the pipeline from real word counts
+    (arXiv's abstract, Dev.to's capped excerpt) where body text exists; a
+    format label ("Discussion"/"Repo") is shown instead where it doesn't.
+    New `src/lib/readingTime.ts`.
+16. ~~Add per-source RSS feeds.~~ Done — `/rss/hn.xml`, `/rss/arxiv.xml`,
+    `/rss/github.xml`, `/rss/devto.xml`, each filtering to one source before
+    reusing the existing `renderDayContent()`/`rss()` machinery unmodified,
+    alongside the existing combined `/rss.xml`.
+17. ~~Full UI/UX redesign — dual-skin design system.~~ Done — a
+    dev-editorial skin and a newspaper skin, switchable via a new
+    `PreferenceControls.astro`, sharing a 12-token CSS custom-property
+    contract (`Layout.astro`); Newspaper renders the story list as a
+    multi-column layout with a drop-cap lead story.
+18. ~~UI/UX polish pass (borders, bento hero, real images, hover motion).~~
+    Done — tiered card borders/hairlines, a container-query bento hero
+    cell, a click-toggle why-read popover, real OG-image/favicon
+    enrichment (`src/lib/imageResolution.ts`), and optional hover-lift
+    motion that respects `prefers-reduced-motion`.
+19. ~~Fix why-read popover viewport overflow + Newspaper multicolumn
+    fragmentation.~~ Done — the popover now uses `position: fixed` with
+    JS-computed, viewport-clamped `top`/`left` (`positionPanel()` in
+    `StoryCard.astro`), which also escapes the CSS multicolumn-fragmentation
+    bug the first fix's own follow-up review caught.
+20. ~~Backlog-hardening pass.~~ Done (2026-09-04) — closed 5 remaining
+    Minor review findings accumulated across items 14-19: an explicit
+    `border-color` reset on Newspaper's card-hover state, type-safe Zod
+    result narrowing in a test, a single-parse `httpUrlSchema`, a
+    `mapWithConcurrency`-capped image-resolution fetch step, and a new test
+    asserting `resolveItemImage`'s real `fetch()` call shape.
 
 Every item above is shipped or decided. There is no open backlog item
-remaining as of 2026-09-03.
+remaining as of 2026-09-04.
 
 ## Open risks
 
 - **The placeholder curation heuristic (now only a fallback) has never been validated against real editorial judgment.** Its rankings (derived purely from `points`/`num_comments`) may not resemble what a human or a real model would actually flag as interesting — this only matters now when credentials are missing (local dev) or the LLM omits a specific item's score, since real LLM scoring is the default path.
 - **arXiv's placeholder scoring is a weaker signal than HN's** by design (recency only, capped at [3,8], never reaching HN's 9-10 range) — this is documented and intentional (see `decisions.md`'s ADR 0002), not a bug, but it now only affects the fallback path.
 - **The Bedrock credential is shared with the sibling Anvilry project's production chatbot** — rotating it is a two-repo operation, and Anvilry's own usage patterns could theoretically affect this project's rate limits. See `SECURITY.md` and ADR 0003.
-- **The daily schedule hasn't run unattended yet.** Every digest so far is still the product of a manually-triggered `workflow_dispatch` run — `daily-pipeline.yml`'s real `schedule:` trigger exists but its first genuinely automated run hasn't happened/been observed yet. Confirm a correctly-scoped commit from the first real scheduled run before fully trusting it (see ADR 0004's Confirmation section).
+- ~~The daily schedule hasn't run unattended yet.~~ **Resolved (2026-09-04):** confirmed via real `schedule`-triggered (not `workflow_dispatch`) completions on 2026-09-02 and 2026-09-03, each producing a correctly-scoped commit. Real Bedrock scoring of the newest source (Dev.to) is also confirmed live — `src/data/digest/2026-09-03/devto-4534883.json`'s `why_read` reads as genuine model judgment, not the deterministic placeholder pattern.
 - **Cron is now a real, recurring, unattended AWS spend.** Small (~$0.02–0.05/run) but indefinite until the schedule is disabled — an accepted tradeoff (ADR 0004), not an oversight.
 - **`content.config.ts` and `scripts/pipeline.ts` both depend on `digestSchema.ts` staying in sync by construction** (both import the same file), but this has not yet been exercised against a real schema-breaking change — the "zero drift" guarantee is a design intent, not yet a proven one.
 
 ---
-*Last updated: 2026-09-03. Agents: keep this current as work progresses — do not let it go stale while `AGENTS.md`/`SOUL.md`/`CLAUDE.md` stay static.*
+*Last updated: 2026-09-04. Agents: keep this current as work progresses — do not let it go stale while `AGENTS.md`/`SOUL.md`/`CLAUDE.md` stay static.*
