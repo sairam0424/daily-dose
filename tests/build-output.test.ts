@@ -483,4 +483,20 @@ describe("dist/index.html build output", () => {
       /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?\s*\{[^}]*border:\s*none/,
     );
   });
+
+  it("(Phase 2) replaces the hover-only 'why read' reveal with a click-toggle, aria-expanded-driven one", () => {
+    const style = readAllPageCss(html);
+    expect(style).not.toMatch(/\.why-wrap:hover\s+\.why-tooltip/);
+    expect(style).toMatch(
+      /\.why-icon(\[[^\]]*\])?\[aria-expanded=['"]?true['"]?\]\s*\+\s*\.why-tooltip/,
+    );
+    expect(html).toContain('aria-expanded="false"');
+    const controlsIds = [...html.matchAll(/aria-controls="([^"]+)"/g)].map(
+      (m) => m[1],
+    );
+    expect(controlsIds.length).toBeGreaterThan(0);
+    for (const id of controlsIds) {
+      expect(html).toContain(`id="${id}"`);
+    }
+  });
 });

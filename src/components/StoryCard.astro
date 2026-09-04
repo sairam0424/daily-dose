@@ -30,10 +30,16 @@ const tier = interestTier(entry.data.interest_score);
       <span class="points">{entry.data.points} points</span>
     )}
     <span class="why-wrap">
-      <button type="button" class="why-icon" aria-label={`Why this made the cut: ${entry.data.why_read}`}>
+      <button
+        type="button"
+        class="why-icon"
+        aria-expanded="false"
+        aria-controls={`why-popover-${entry.id}`}
+        aria-label={`Why this made the cut: ${entry.data.why_read}`}
+      >
         &#9432;
       </button>
-      <span class="why-tooltip" role="tooltip">{entry.data.why_read}</span>
+      <span class="why-tooltip" id={`why-popover-${entry.id}`}>{entry.data.why_read}</span>
     </span>
     {typeof entry.data.hn_id === 'number' && (
       <a
@@ -227,10 +233,10 @@ const tier = interestTier(entry.data.interest_score);
     z-index: 5;
   }
 
-  .why-wrap:hover .why-tooltip,
-  .why-wrap:focus-within .why-tooltip {
+  .why-icon[aria-expanded='true'] + .why-tooltip {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -364,3 +370,35 @@ const tier = interestTier(entry.data.interest_score);
     line-height: 1.65;
   }
 </style>
+
+<script>
+  const wraps = document.querySelectorAll<HTMLElement>('.why-wrap');
+
+  function closeWrap(wrap: HTMLElement) {
+    wrap.querySelector('.why-icon')?.setAttribute('aria-expanded', 'false');
+  }
+
+  wraps.forEach((wrap) => {
+    const button = wrap.querySelector<HTMLButtonElement>('.why-icon');
+    button?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      wraps.forEach((otherWrap) => {
+        if (otherWrap !== wrap) closeWrap(otherWrap);
+      });
+      button.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    wraps.forEach((wrap) => {
+      if (!wrap.contains(event.target as Node)) closeWrap(wrap);
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      wraps.forEach((wrap) => closeWrap(wrap));
+    }
+  });
+</script>
