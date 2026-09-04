@@ -561,4 +561,15 @@ describe("dist/index.html build output", () => {
       /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover\s*\{[^}]*border-color:\s*transparent/,
     );
   });
+
+  it("(backlog) footer is a minimal colophon, not the AI-disclosure banner", () => {
+    expect(html).not.toContain("Curation is AI-scored by default");
+    expect(html).not.toMatch(
+      /<footer[^>]*>[\s\S]*?href="\/stats"[\s\S]*?<\/footer>/,
+    );
+    const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
+    expect(footerMatch, "expected a <footer> on the homepage").toBeTruthy();
+    expect(footerMatch![1]).toContain('href="/rss.xml"');
+    expect(footerMatch![1]).toMatch(/©\s*\d{4}/);
+  });
 });
