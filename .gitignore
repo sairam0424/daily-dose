@@ -21,3 +21,7 @@ lerna-debug.log*
 .DS_Store
 .vscode/
 .idea/
+.gstack/
+
+# agent scratch space (session logs, throwaway verification screenshots)
+scratch-pad/

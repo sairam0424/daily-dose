@@ -3,12 +3,12 @@
 > Living snapshot. Update this file whenever phase, health, or active work
 > changes — do not let it go stale across a phase boundary.
 
-**Last updated:** 2026-09-03
+**Last updated:** 2026-09-04
 
 ## Overall Status
 
-**Phase:** 9 — Digest archive + RSS feed shipped; every original roadmap item is done
-**Health:** 🟢 Active — stable, real curation verified live; cron automation shipped (ADR 0004), Vercel deployment live at https://daily-dose-hazel-delta.vercel.app, readers can now browse history (`/archive/`) and subscribe (`/rss.xml`)
+**Phase:** 10 — Full UI/UX redesign (dual-skin design system), reader-facing transparency features (`/methodology`, reading-time badges, per-source RSS), and a backlog-hardening pass all shipped; every scoped item is done
+**Health:** 🟢 Active — stable, real curation verified live (including the newest source, Dev.to); cron automation confirmed running unattended on its real `schedule:` trigger (not just manual dispatch); Vercel deployment live at https://daily-dose-hazel-delta.vercel.app, readers can browse history (`/archive/`), read the scoring methodology (`/methodology`), and subscribe to the combined or per-source RSS feeds
 
 daily-dose is an independent, standalone GitHub repository — a daily
 AI-curated technical digest (arXiv + Hacker News), in the spirit of
@@ -67,8 +67,15 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
 | Content-collection integration test + astro-build e2e test            | 7     | **Complete — merged PR #1, closes the codebase_map.md/TESTING.md gap** |
 | Real LLM curation via AWS Bedrock (replacing both placeholder scoring functions as the default path) | 8 | **Complete — verified with 3 real live Bedrock calls, see ADR 0003** |
 | Public `/stats` cost-transparency page                                | 8     | **Complete — real totals/by-model/by-day from `src/data/stats.jsonl`** |
-| `schedule:` cron trigger for automated daily runs                    | 9     | **Complete — `.github/workflows/daily-pipeline.yml`, see ADR 0004** |
+| `schedule:` cron trigger for automated daily runs                    | 9     | **Complete — `.github/workflows/daily-pipeline.yml`, see ADR 0004; confirmed running unattended on real `schedule` events** |
 | Real Vercel deployment                                               | 9     | **Complete — live at https://daily-dose-hazel-delta.vercel.app, git-integrated, deploys on push to `main`** |
+| `/methodology` page (real scoring rubric, tier boundaries, cost/anomaly thresholds) | 10 | **Complete — imports real constants, never restates them** |
+| Reading-time/format badges (`reading_minutes` schema field)          | 10    | **Complete — real word-count-derived where body text exists, format label otherwise** |
+| Per-source RSS feeds (`/rss/{hn,arxiv,github,devto}.xml`)             | 10    | **Complete — filters the existing combined-feed machinery by source** |
+| Dual-skin UI/UX redesign (dev-editorial + newspaper skins)            | 10    | **Complete — `PreferenceControls.astro`, 12-token CSS contract, Newspaper multi-column layout** |
+| Story-card polish (tiered borders, bento hero, real images/favicons, hover motion) | 10 | **Complete — `src/lib/imageResolution.ts`, `prefers-reduced-motion`-respecting hover-lift** |
+| Why-read popover bug fixes (viewport overflow, Newspaper multicol fragmentation) | 10 | **Complete — `position: fixed` + JS-computed, viewport-clamped position** |
+| Backlog-hardening pass (5 remaining Minor findings)                   | 10    | **Complete — see `Context.md`'s Roadmap item 20** |
 
 ## Recent Progress
 
@@ -180,7 +187,10 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   `fetchDevtoArticles()` call returned real, current articles with real
   engagement numbers and real body-text excerpts. 3 new placeholder tests
   in `tests/pipeline.test.ts`. The real, paid Bedrock verification against
-  this new source is deferred to a human with real credentials.
+  this new source was originally deferred to a human with real credentials
+  — since confirmed (2026-09-04): `src/data/digest/2026-09-03/devto-4534883.json`
+  was produced by a real scheduled run and its `why_read` reads as genuine
+  model judgment, not the deterministic placeholder pattern.
 - Researched and decided the custom-domain question (2026-09-03): staying
   on the free `daily-dose-hazel-delta.vercel.app` URL. Compared real,
   live pricing across Vercel, Cloudflare Registrar, Porkbun, and
@@ -198,15 +208,66 @@ has substantive content to judge, not just a title — see `decisions.md` ADR
   had flagged as unconfirmed. `costTracking.ts` updated; the 3 historical
   `stats.jsonl` entries recorded under the old assumption are left as-is,
   per this project's append-only-ledger convention.
+- Shipped a `/methodology` page, reading-time/format badges, and 4
+  per-source RSS feeds (2026-09-03 to 2026-09-04, brainstormed/planned/
+  executed as one arc): `src/pages/methodology.astro` imports real
+  constants directly from
+  `llmCuration.ts`/`interestTier.ts`/`costTracking.ts`; `reading_minutes`
+  was added to `digestSchema.ts` and computed by the pipeline from real
+  word counts (arXiv abstract, Dev.to's capped excerpt) where body text
+  exists, with a format label ("Discussion"/"Repo") shown instead where it
+  doesn't (new `src/lib/readingTime.ts`); `/rss/{hn,arxiv,github,devto}.xml`
+  each filter the existing `renderDayContent()`/`rss()` machinery to one
+  source. Followed by a docs cleanup removing daily-diff/AWS Bedrock
+  branding from public-facing copy and adding CI/license/live-site badges
+  to `README.md`.
+- Shipped a full UI/UX redesign — a dual-skin design system (2026-09-04,
+  design spec + implementation plan committed first): `data-skin`/
+  `data-theme` attributes on `<html>`, a 12-token CSS custom-property
+  contract in `src/layouts/Layout.astro`, and a new
+  `src/components/PreferenceControls.astro` switcher. Two genuinely
+  distinct visual identities ship: a dark-only "dev-editorial" skin
+  (Space Grotesk/JetBrains Mono/system-ui) and a light+dark "newspaper"
+  skin (Fraunces/Newsreader/JetBrains Mono) with a multi-column story
+  list and a drop-cap lead story. A final-review pass fixed 6 of 9
+  remaining audit findings (themed focus rings, in-content link colors,
+  RSS title hyperlinks, font-weight consistency, drop-cap sizing, a real
+  regression test for `/stats`'s page-views section) and documented the
+  other 3 as genuine browser/environment behavior, not code defects.
+- Shipped a follow-on UI/UX polish pass on top of the dual-skin system
+  (2026-09-04): tiered card borders/low-opacity hairlines and
+  container-query columns; a bento hero cell plus a click-toggle why-read
+  popover; real per-item OG-image/favicon enrichment
+  (`src/lib/imageResolution.ts`, a 5s-timeout, never-throws fetch); and
+  optional `prefers-reduced-motion`-respecting hover-lift motion.
+- Fixed two real bugs found while manually testing the polish pass
+  (2026-09-04): the why-read popover overflowing the viewport at narrow
+  widths (fixed by computing its position in JS and clamping to the
+  viewport), then a Newspaper-skin CSS multicolumn-fragmentation bug
+  affecting the same popover — root-caused via `getClientRects()` to a
+  genuine browser rendering quirk (an absolutely-positioned descendant
+  fragmenting across a column break inside a `column-count` ancestor,
+  which neither `break-inside: avoid` nor `contain: layout` fixed) and
+  resolved by switching the popover to `position: fixed`.
+- Closed out a 5-item backlog-hardening pass (2026-09-04), the last
+  Minor findings accumulated across the whole redesign arc: an explicit
+  `border-color` reset on Newspaper's card-hover state (previously inert
+  only via source-order), type-safe Zod result narrowing in a schema
+  test (removed an `as any` cast), a single-parse `httpUrlSchema`
+  (removed a redundant double-parse), a `mapWithConcurrency`-capped
+  image-resolution fetch step (was unbounded `Promise.all`), and a new
+  test asserting `resolveItemImage`'s real `fetch()` call shape.
 
 ## Upcoming Milestones
 
 Every item on the original roadmap, plus every real candidate raised
 afterward (digest archive, RSS feed, cron failure alerting, favicon/OG
 image, Dev.to as a fourth source, custom domain, Sonnet 5 pricing
-confirmation), is shipped or decided. **No open backlog item remains as
-of 2026-09-03.** Notable recent closures — see `Context.md`'s Roadmap for
-full rationale on each:
+confirmation, the `/methodology` page, reading-time/format badges,
+per-source RSS, the dual-skin UI/UX redesign, its follow-on polish pass,
+two popover bug fixes, and a 5-item backlog-hardening pass), is shipped
+or decided. **No open backlog item remains as of 2026-09-04.** Notable
+recent closures — see `Context.md`'s Roadmap for full rationale on each:
 
 - **Custom domain — decided, staying on the free Vercel URL.** Fully
   researched (paid-registrar comparison, then a genuinely-free-option
