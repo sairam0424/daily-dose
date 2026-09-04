@@ -331,6 +331,13 @@ const tier = interestTier(entry.data.interest_score);
     padding-left: 0.75rem;
   }
 
+  /* (Phase 4 fix) Base hover rule adds transform + border-color. Newspaper
+     should NOT move on hover — explicitly reset transform while border-color
+     is already inert due to border: none above. */
+  :global([data-skin='newspaper']) .story-card:hover {
+    transform: none;
+  }
+
   /* column-span:all pulls the lead story out of the column flow to span
      full width above the columns — confirmed empirically (Playwright):
      once display:block above is in effect, the lead story renders at

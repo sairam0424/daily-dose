@@ -543,4 +543,14 @@ describe("dist/index.html build output", () => {
       /@media\s*\(prefers-reduced-motion:\s*no-preference\)[\s\S]*?\.story-card(\[[^\]]*\])?:hover/,
     );
   });
+
+  it("(Phase 4, fix) excludes hover transform from newspaper skin by explicitly resetting it", () => {
+    const style = readAllPageCss(html);
+    if (!style.includes("translateY(-1px)")) return; // Phase 4 was skipped - fine.
+    // Verify that newspaper skin's .story-card:hover includes transform: none
+    // to prevent the base hover rule's translateY from leaking through.
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover[\s\S]*?transform:\s*none/,
+    );
+  });
 });
