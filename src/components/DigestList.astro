@@ -194,6 +194,9 @@ const { entries } = Astro.props;
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--ink);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -297,17 +300,31 @@ const { entries } = Astro.props;
      generates non-empty content ('Top Pick'), which per the CSS spec
      becomes part of the element's "first formatted line" — so
      ::first-letter above was binding to the "T" of "Top Pick" instead
-     of the real headline. Neutralize the eyebrow label under Newspaper
-     skin so the drop-cap lands on the actual headline text. Selector
-     matches the base rule's Astro-scoping shape exactly (.lead-story
-     and .story-title left outside :global(), only the skin attribute
-     inside it), which adds the [data-skin] attribute on top of the
-     base rule's scoped classes — giving this override strictly HIGHER
-     specificity (0,5,1) than the base rule (0,4,1), so it wins the
-     cascade unconditionally, not merely because it appears later in
-     source order. */
+     of the real headline. The design intent is for BOTH the drop-cap
+     AND the "Top Pick" label to show under Newspaper skin, so instead
+     of removing the label (content: none), it is taken out of normal
+     flow with position: absolute. Absolutely-positioned generated
+     content is removed from the in-flow "first formatted line" that
+     ::first-letter considers, so the drop-cap correctly binds to the
+     real headline's first letter while the repositioned label still
+     renders above it. */
+  :global([data-skin='newspaper']) .lead-story .story-title {
+    position: relative;
+    padding-top: 1.6em;
+  }
+
   :global([data-skin='newspaper']) .lead-story .story-title::before {
-    content: none;
+    content: 'Top Pick';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
   }
 
   :global([data-skin='newspaper']) .story-meta {

@@ -91,17 +91,6 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
       }
 
-      /* Legacy aliases for components not yet migrated to the new token
-         names — removed in Phase 4 Task 8 once nothing references them.
-         (This staged rollout is a plan-level choice; the spec itself asks
-         for a direct one-shot rename — see File Structure table.) */
-      :root {
-        --bg: var(--bg-page);
-        --fg: var(--ink);
-        --muted: var(--ink-soft);
-        --border: var(--rule);
-      }
-
       * {
         box-sizing: border-box;
       }
@@ -147,7 +136,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
          spec Section 4's typography table — font-optical-sizing:auto
          above already makes Fraunces' opsz axis track this larger size
          automatically; only the size itself needs a skin override. */
-      :global([data-skin='newspaper']) .masthead h1 {
+      [data-skin='newspaper'] .masthead h1 {
         font-size: clamp(2rem, 5vw, 2.75rem);
       }
 
@@ -176,7 +165,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
       /* (review fix) Newspaper section headings read fine lower-case-
          adjacent in a serif — spec Section 4 drops the uppercase
          treatment and uses a slightly larger size/looser tracking. */
-      :global([data-skin='newspaper']) .section-heading {
+      [data-skin='newspaper'] .section-heading {
         font-size: 1.2rem;
         text-transform: none;
         letter-spacing: 0.01em;

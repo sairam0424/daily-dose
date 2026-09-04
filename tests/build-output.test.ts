@@ -355,17 +355,24 @@ describe("dist/index.html build output", () => {
     );
   });
 
-  it("(review fix, critical) neutralizes the 'Top Pick' eyebrow content under Newspaper skin so the drop-cap binds to the real headline, not the ::before text", () => {
+  it("(review fix, critical) repositions the 'Top Pick' eyebrow under Newspaper skin so the drop-cap binds to the real headline while the label still renders", () => {
     // Regression test for a real bug: the base (Dev-skin) rule
     // `.lead-story .story-title::before { content: 'Top Pick'; }` generates
     // non-empty content, and per the CSS spec ::first-letter binds to the
     // first letter of the element's "first formatted line" - which includes
-    // a non-empty ::before's generated content when present. Without this
+    // a non-empty ::before's generated content when present. Without an
     // override, the Newspaper drop-cap floats the "T" of "Top Pick" instead
     // of the real headline's first letter - verified live in a browser
-    // during review. If this override rule is ever removed or reordered
-    // relative to the base rule such that it no longer wins the cascade,
-    // this test must fail.
+    // during review.
+    //
+    // The fix takes the eyebrow out of normal flow (position: absolute on
+    // the ::before, position: relative + padding-top on the parent) rather
+    // than removing it (content: none), since absolutely-positioned
+    // generated content is excluded from the in-flow "first formatted
+    // line" that ::first-letter considers - so the drop-cap still binds
+    // correctly AND the "Top Pick" label still renders. If either rule
+    // is ever removed or reordered relative to the base rule such that it
+    // no longer wins the cascade, this test must fail.
     const style = readAllPageCss(html);
     const newspaperSkinSelector = /\[data-skin=['"]?newspaper['"]?\]/;
     expect(style).toMatch(newspaperSkinSelector);
@@ -375,11 +382,18 @@ describe("dist/index.html build output", () => {
     // CSS minification collapses `::before` to `:before` and may strip
     // quotes from the attribute value - tolerate all of that, the same way
     // the multi-column test above does.
-    const dropCapOverrideRule =
-      /\[data-skin=['"]?newspaper['"]?\][^{]*\.lead-story(\[[^\]]*\])?\s+\.story-title(\[[^\]]*\])?:{1,2}before\s*\{[^}]*content:\s*none/;
+    const titlePositionRule =
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.lead-story(\[[^\]]*\])?\s+\.story-title(\[[^\]]*\])?\s*\{[^}]*position:\s*relative/;
     expect(
       style,
-      "expected a Newspaper-scoped .lead-story .story-title::before rule setting content: none",
+      "expected a Newspaper-scoped .lead-story .story-title rule setting position: relative",
+    ).toMatch(titlePositionRule);
+
+    const dropCapOverrideRule =
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.lead-story(\[[^\]]*\])?\s+\.story-title(\[[^\]]*\])?:{1,2}before\s*\{[^}]*content:\s*['"]?Top Pick['"]?[^}]*position:\s*absolute/;
+    expect(
+      style,
+      "expected a Newspaper-scoped .lead-story .story-title::before rule keeping content: 'Top Pick' but with position: absolute",
     ).toMatch(dropCapOverrideRule);
   });
 });
