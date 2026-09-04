@@ -205,6 +205,9 @@ export interface RawDevtoArticle {
   comments: number;
   tags: string[];
   publishedAt: string;
+  /** Dev.to's own native cover image, straight from the list response - a
+   * zero-extra-cost real image for this source only. */
+  coverImage?: string;
 }
 
 /**

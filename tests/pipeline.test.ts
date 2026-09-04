@@ -7,7 +7,10 @@ import {
   type RawGithubRepo,
   type RawDevtoArticle,
 } from "../src/lib/curation.js";
-import { computeReadingMinutes } from "../scripts/pipeline.js";
+import {
+  computeReadingMinutes,
+  buildImageableItems,
+} from "../scripts/pipeline.js";
 
 // Fixed, hand-constructed RawHnStory fixtures (the shape fetchHnFrontPage
 // produces). No network calls — scoreStoryPlaceholder must be a pure,
@@ -169,5 +172,29 @@ describe("scoreDevtoPlaceholder", () => {
     expect(high.interest_score).toBeLessThanOrEqual(10);
     expect(low.interest_score).toBeGreaterThanOrEqual(0);
     expect(low.interest_score).toBeLessThanOrEqual(10);
+  });
+});
+
+describe("buildImageableItems", () => {
+  it("excludes devto articles that already have a native coverImage", () => {
+    const withCover: RawDevtoArticle = {
+      ...lowEngagementArticle,
+      id: 3000001,
+      coverImage: "https://dev.to/cover.png",
+    };
+    const withoutCover: RawDevtoArticle = {
+      ...lowEngagementArticle,
+      id: 3000002,
+    };
+
+    const items = buildImageableItems([], [], [], [withCover, withoutCover]);
+    expect(items).toEqual([{ id: "devto-3000002", url: withoutCover.url }]);
+  });
+
+  it("includes every hn/arxiv/github item unconditionally (they have no native image field)", () => {
+    const items = buildImageableItems([lowEngagementStory], [], [], []);
+    expect(items).toEqual([
+      { id: `hn-${lowEngagementStory.hn_id}`, url: lowEngagementStory.url },
+    ]);
   });
 });
