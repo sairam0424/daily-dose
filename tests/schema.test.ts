@@ -85,7 +85,9 @@ describe("DigestItemSchema", () => {
   it("accepts a valid item WITHOUT image_url/favicon_url (most items won't have one)", () => {
     const result = DigestItemSchema.safeParse(validItem);
     expect(result.success).toBe(true);
-    expect((result as any).data.image_url).toBeUndefined();
+    if (result.success) {
+      expect(result.data.image_url).toBeUndefined();
+    }
   });
 
   it("rejects a non-URL image_url", () => {
