@@ -12,6 +12,7 @@
 // construction, not omitted by choice.
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
 
 interface StatsEntry {
@@ -112,7 +113,7 @@ function formatUsd(amount: number): string {
       <a href="/">&larr; Back to digest</a>
       <a href="/methodology">Methodology &rarr;</a>
     </nav>
-    <h1>Cost &amp; stats</h1>
+    <h1><Logo /> Cost &amp; stats</h1>
     <p class="tagline">
       Real AI/LLM curation cost, tracked from actual token usage — not estimated.
     </p>

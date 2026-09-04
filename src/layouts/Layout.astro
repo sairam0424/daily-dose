@@ -170,6 +170,18 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         font-optical-sizing: auto;
         font-weight: 700;
         font-size: clamp(1.75rem, 4vw, 2.25rem);
+        /* Logo.astro's shown-state selectors set the SVG mark's own
+           display to `block` (its all-render-then-CSS-toggle pattern
+           needs a real display swap, not just visibility) - an SVG's
+           own default outer display is inline, so without this the mark
+           would force a line break before the wordmark text instead of
+           sitting beside it. Flex neutralizes a flex item's own display
+           value for layout purposes, so the mark and the text run stay
+           on one centered line regardless. */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
       }
 
       /* (review fix) Newspaper's masthead is deliberately larger, per

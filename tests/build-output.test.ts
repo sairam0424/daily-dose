@@ -573,4 +573,31 @@ describe("dist/index.html build output", () => {
       "expected the @media(max-width:480px) .site-nav rule to revert justify-content to flex-start",
     ).toMatch(mobileOverride);
   });
+
+  it("(backlog) renders the Logo mark in the masthead, with a skin-appropriate variant for each of the 3 palette states", () => {
+    expect(html).toContain('class="logo-mark logo-mark-dev"');
+    expect(html).toContain('class="logo-mark logo-mark-newspaper-light"');
+    expect(html).toContain('class="logo-mark logo-mark-newspaper-dark"');
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.logo-mark-newspaper-light\s*\{[^}]*display:\s*block/,
+    );
+    expect(style).toMatch(
+      /\.logo-mark-newspaper-dark\s*\{[^}]*display:\s*none/,
+    );
+    expect(style).toMatch(
+      /\[data-skin=['"]?dev['"]?\][^{]*\.logo-mark-dev\s*\{[^}]*display:\s*block/,
+    );
+  });
+});
+
+describe("dist/favicon.svg", () => {
+  it("(backlog) is the new sunrise-glyph mark, not the old 'dd' monogram", () => {
+    const svgPath = join(DIST_DIR, "favicon.svg");
+    expect(existsSync(svgPath), `expected ${svgPath} to exist`).toBe(true);
+    const svg = readFileSync(svgPath, "utf-8");
+    expect(svg).not.toContain(">dd<");
+    expect(svg).toContain('r="7"');
+    expect(svg).toMatch(/prefers-color-scheme:\s*dark/);
+  });
 });
