@@ -10,6 +10,7 @@ import {
 import {
   computeReadingMinutes,
   buildImageableItems,
+  mapWithConcurrency,
 } from "../scripts/pipeline.js";
 
 // Fixed, hand-constructed RawHnStory fixtures (the shape fetchHnFrontPage
@@ -196,5 +197,34 @@ describe("buildImageableItems", () => {
     expect(items).toEqual([
       { id: `hn-${lowEngagementStory.hn_id}`, url: lowEngagementStory.url },
     ]);
+  });
+});
+
+describe("mapWithConcurrency", () => {
+  it("preserves input order regardless of completion order", async () => {
+    const delays = [30, 10, 20];
+    const result = await mapWithConcurrency(delays, 2, async (ms) => {
+      await new Promise((resolve) => setTimeout(resolve, ms));
+      return ms;
+    });
+    expect(result).toEqual([30, 10, 20]);
+  });
+
+  it("never runs more than `limit` items concurrently", async () => {
+    let active = 0;
+    let maxActive = 0;
+    await mapWithConcurrency([1, 2, 3, 4, 5], 2, async (n) => {
+      active++;
+      maxActive = Math.max(maxActive, active);
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      active--;
+      return n;
+    });
+    expect(maxActive).toBeLessThanOrEqual(2);
+  });
+
+  it("processes every item exactly once", async () => {
+    const result = await mapWithConcurrency([1, 2, 3], 10, async (n) => n * 2);
+    expect(result).toEqual([2, 4, 6]);
   });
 });

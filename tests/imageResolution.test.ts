@@ -149,4 +149,21 @@ describe("resolveItemImage", () => {
       resolveItemImage("https://example.com/unreachable"),
     ).resolves.toEqual({});
   });
+
+  it("calls fetch with an abort signal and the expected User-Agent header", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      text: async () => "<html></html>",
+    });
+
+    await resolveItemImage("https://example.com/article");
+
+    expect(fetch).toHaveBeenCalledWith(
+      "https://example.com/article",
+      expect.objectContaining({
+        signal: expect.any(AbortSignal),
+        headers: { "User-Agent": "daily-dose-pipeline" },
+      }),
+    );
+  });
 });

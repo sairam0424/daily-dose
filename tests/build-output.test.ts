@@ -553,4 +553,12 @@ describe("dist/index.html build output", () => {
       /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover[\s\S]*?transform:\s*none/,
     );
   });
+
+  it("(backlog) explicitly resets border-color on Newspaper's card-hover state, not just via source-order", () => {
+    const style = readAllPageCss(html);
+    if (!style.includes("translateY(-1px)")) return; // Phase 4 was skipped - fine.
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover\s*\{[^}]*border-color:\s*transparent/,
+    );
+  });
 });
