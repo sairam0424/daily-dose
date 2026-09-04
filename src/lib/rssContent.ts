@@ -22,10 +22,10 @@ import type { DigestItem } from "./digestSchema.js";
 // why_read text pulled from the committed digest data — never a fabricated
 // summary, matching SOUL.md's honesty rules for anything a reader sees.
 function renderStoryListItem(item: DigestItem): string {
-  const { title, interest_score, source, why_read } = item;
+  const { title, url, interest_score, source, why_read } = item;
   return (
     `<li>` +
-    `<strong>${title}</strong> ` +
+    `<strong><a href="${url}">${title}</a></strong> ` +
     `(score: ${interest_score.toFixed(1)}, source: ${source})` +
     `<p>${why_read}</p>` +
     `</li>`

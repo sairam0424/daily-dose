@@ -8,8 +8,8 @@ import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
 import { formatReadingBadge } from "../src/lib/readingTime.js";
+import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
-const DIST_DIR = join(import.meta.dirname, "..", "dist");
 const DIST_INDEX = join(DIST_DIR, "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
@@ -36,38 +36,6 @@ function findLatestDateJsonFiles(base: string): string[] {
     "expected at least one committed digest date",
   ).toBeTruthy();
   return findJsonFiles(join(base, latestDate as string));
-}
-
-// Astro's default `build.inlineStylesheets: 'auto'` only inlines a page's
-// CSS as a <style> tag while it stays under Vite's ~4096-byte threshold;
-// past that it writes the same CSS to an external /_astro/*.css file and
-// links it instead. Which bucket a given rule lands in is a build-tool
-// implementation detail, not something a CSS-only task should have to
-// control — so this helper concatenates inline <style> content with the
-// content of any local stylesheet <link> targets, giving one haystack of
-// "all CSS that actually ships with this page" to assert against
-// regardless of where the bundler decided to put it.
-function readAllPageCss(pageHtml: string): string {
-  const inlineStyles = [
-    ...pageHtml.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g),
-  ]
-    .map((match) => match[1])
-    .join("\n");
-
-  const externalCss = [
-    ...pageHtml.matchAll(/<link\s+[^>]*rel="stylesheet"[^>]*>/gi),
-  ]
-    .map((linkTag) => linkTag[0].match(/href="([^"]+)"/i)?.[1])
-    .filter(
-      (href): href is string =>
-        typeof href === "string" && href.startsWith("/"),
-    )
-    .map((href) => join(DIST_DIR, href))
-    .filter((cssPath) => existsSync(cssPath))
-    .map((cssPath) => readFileSync(cssPath, "utf-8"))
-    .join("\n");
-
-  return `${inlineStyles}\n${externalCss}`;
 }
 
 function readCommittedTitles(): string[] {
@@ -442,5 +410,19 @@ describe("dist/index.html build output", () => {
       style,
       "expected a Newspaper-scoped .lead-story .story-title::before rule keeping content: 'Top Pick' but with position: absolute",
     ).toMatch(dropCapOverrideRule);
+  });
+
+  it("(backlog fix) gives nav links, story headlines, and Discuss links a themed :focus-visible ring", () => {
+    // A post-redesign audit found these three link types had no custom
+    // :focus-visible rule at all, falling back to the browser's fixed
+    // default outline color instead of the theme-matched --accent ring
+    // every other interactive element in this UI already gets.
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.site-nav a:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
+    );
+    expect(style).toMatch(
+      /\.story-title(\[[^\]]*\])?:focus-visible[^{]*\.discuss-link(\[[^\]]*\])?:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
+    );
   });
 });

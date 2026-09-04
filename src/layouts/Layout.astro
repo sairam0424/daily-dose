@@ -140,6 +140,15 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         text-decoration: underline;
       }
 
+      /* (backlog fix) Nav links had no custom :focus-visible rule, so
+         keyboard focus fell back to Chromium's fixed default blue ring —
+         theme-inconsistent, and only clears the WCAG 3:1 UI-indicator
+         minimum by a thin margin in the two dark skin/theme combos. */
+      .site-nav a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
       .masthead h1 {
         margin: 0.5rem 0 0;
         font-family: var(--font-display);
