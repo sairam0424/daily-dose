@@ -72,4 +72,27 @@ describe("DigestItemSchema", () => {
     });
     expect(result.success).toBe(true);
   });
+
+  it("accepts a valid item with image_url and favicon_url set", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      image_url: "https://example.com/cover.png",
+      favicon_url: "https://example.com/favicon.ico",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a valid item WITHOUT image_url/favicon_url (most items won't have one)", () => {
+    const result = DigestItemSchema.safeParse(validItem);
+    expect(result.success).toBe(true);
+    expect((result as any).data.image_url).toBeUndefined();
+  });
+
+  it("rejects a non-URL image_url", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      image_url: "not-a-url",
+    });
+    expect(result.success).toBe(false);
+  });
 });

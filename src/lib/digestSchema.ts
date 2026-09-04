@@ -14,6 +14,8 @@ export const DigestItemSchema = z.object({
   stars: z.number().optional(),
   reactions: z.number().optional(),
   reading_minutes: z.number().optional(),
+  image_url: z.string().url().optional(),
+  favicon_url: z.string().url().optional(),
 });
 
 export type DigestItem = z.infer<typeof DigestItemSchema>;
