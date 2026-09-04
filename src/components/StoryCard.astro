@@ -342,10 +342,12 @@ const tier = interestTier(entry.data.interest_score);
   }
 
   /* (Phase 4 fix) Base hover rule adds transform + border-color. Newspaper
-     should NOT move on hover — explicitly reset transform while border-color
-     is already inert due to border: none above. */
+     should NOT move on hover — explicitly reset both, rather than relying
+     on border-color being merely inert-by-coincidence via the unconditional
+     border:none rule's source-order win (fragile to a future reorder). */
   :global([data-skin='newspaper']) .story-card:hover {
     transform: none;
+    border-color: transparent;
   }
 
   /* column-span:all pulls the lead story out of the column flow to span
