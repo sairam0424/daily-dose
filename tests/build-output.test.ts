@@ -288,6 +288,25 @@ describe("dist/index.html build output", () => {
     expect(html).not.toContain("rgba(79, 70, 229"); // old hardcoded indigo
   });
 
+  it("(audit fix) wraps the header nav on narrow viewports so it never renders under the fixed preference-controls", () => {
+    // Regression test for a real bug found during a post-redesign E2E
+    // audit: the mobile-nav-vs-preference-controls fix shipped earlier
+    // was only verified against 2-link navs (archive pages); the
+    // homepage's 3-link nav fit within its container without needing to
+    // wrap, so flex-wrap alone never triggered - it just rendered
+    // underneath the fixed-position controls layered on top at 375px,
+    // confirmed via live getBoundingClientRect overlap. The fix reserves
+    // horizontal space via padding-right so a 3rd link is forced onto a
+    // new row instead of sitting under the fixed overlay.
+    const style = readAllPageCss(html);
+    const mobileNavRule =
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.site-nav\s*\{[^}]*flex-wrap:\s*wrap[^}]*padding-right:[^}]*\}/;
+    expect(
+      style,
+      "expected a @media(max-width:480px) .site-nav rule with flex-wrap:wrap and a padding-right reservation",
+    ).toMatch(mobileNavRule);
+  });
+
   it("marks the highest-scored story as the lead story", () => {
     // Scoped to the latest date only, matching what groupEntriesByDate()
     // + index.astro actually render - the globally-highest-scored item
