@@ -110,5 +110,17 @@ describe("dist/archive/<date>/index.html build output", () => {
         `expected ${datePagePath} to contain at least one of: ${JSON.stringify(committedTitles)}`,
       ).toBeTruthy();
     });
+
+    it("(backlog) does not render the interest-score chart on an archive date page", () => {
+      const dates = readCommittedDates();
+      const datePagePath = join(
+        DIST_ARCHIVE_BASE,
+        dates[dates.length - 1],
+        "index.html",
+      );
+      const dateHtml = readFileSync(datePagePath, "utf-8");
+      expect(dateHtml).not.toContain('id="score-chart"');
+      expect(dateHtml).not.toContain("Interest scores");
+    });
   }
 });

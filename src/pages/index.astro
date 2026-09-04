@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import DigestChart from '../components/DigestChart.astro';
 import DigestList from '../components/DigestList.astro';
 import FilterBar from '../components/FilterBar.astro';
 import Layout from '../layouts/Layout.astro';
@@ -12,9 +11,6 @@ const dateGroups = groupEntriesByDate(allEntries);
 const latestGroup = dateGroups.length > 0 ? dateGroups[0] : null;
 const latestDate = latestGroup?.date ?? null;
 const latestEntries = latestGroup?.entries ?? [];
-
-const chartLabels = latestEntries.map((entry) => entry.data.title);
-const chartScores = latestEntries.map((entry) => entry.data.interest_score);
 ---
 
 <Layout
@@ -38,9 +34,6 @@ const chartScores = latestEntries.map((entry) => entry.data.interest_score);
         <h2 class="section-heading">Latest digest — {latestDate}</h2>
         <FilterBar />
         <DigestList entries={latestEntries} />
-
-        <h2 class="section-heading">Interest scores</h2>
-        <DigestChart labels={chartLabels} scores={chartScores} />
       </>
     ) : (
       <p class="empty-state">

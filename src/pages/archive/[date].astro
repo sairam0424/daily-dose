@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import DigestChart from '../../components/DigestChart.astro';
 import DigestList from '../../components/DigestList.astro';
 import FilterBar from '../../components/FilterBar.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -35,9 +34,6 @@ export async function getStaticPaths() {
 
 const { date } = Astro.params as unknown as DateParams;
 const { entries, olderDate, newerDate } = Astro.props as DateProps;
-
-const chartLabels = entries.map((entry) => entry.data.title);
-const chartScores = entries.map((entry) => entry.data.interest_score);
 ---
 
 <Layout
@@ -58,9 +54,6 @@ const chartScores = entries.map((entry) => entry.data.interest_score);
   <main>
     <FilterBar />
     <DigestList entries={entries} />
-
-    <h2 class="section-heading">Interest scores</h2>
-    <DigestChart labels={chartLabels} scores={chartScores} />
 
     <nav class="date-nav">
       <span>
