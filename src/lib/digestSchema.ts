@@ -1,19 +1,16 @@
 import { z } from "zod";
 
-const httpUrlSchema = z
-  .string()
-  .url()
-  .refine(
-    (value) => {
-      try {
-        const protocol = new URL(value).protocol;
-        return protocol === "http:" || protocol === "https:";
-      } catch {
-        return false;
-      }
-    },
-    { message: "must be an http(s) URL" },
-  );
+const httpUrlSchema = z.string().refine(
+  (value) => {
+    try {
+      const protocol = new URL(value).protocol;
+      return protocol === "http:" || protocol === "https:";
+    } catch {
+      return false;
+    }
+  },
+  { message: "must be an http(s) URL" },
+);
 
 export const DigestItemSchema = z.object({
   title: z.string().min(1),
