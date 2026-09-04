@@ -136,7 +136,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
          spec Section 4's typography table — font-optical-sizing:auto
          above already makes Fraunces' opsz axis track this larger size
          automatically; only the size itself needs a skin override. */
-      :global([data-skin='newspaper']) .masthead h1 {
+      [data-skin='newspaper'] .masthead h1 {
         font-size: clamp(2rem, 5vw, 2.75rem);
       }
 
@@ -165,7 +165,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
       /* (review fix) Newspaper section headings read fine lower-case-
          adjacent in a serif — spec Section 4 drops the uppercase
          treatment and uses a slightly larger size/looser tracking. */
-      :global([data-skin='newspaper']) .section-heading {
+      [data-skin='newspaper'] .section-heading {
         font-size: 1.2rem;
         text-transform: none;
         letter-spacing: 0.01em;
