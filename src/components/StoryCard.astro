@@ -35,9 +35,6 @@ const tier = interestTier(entry.data.interest_score);
       <img class="favicon-icon" src={entry.data.favicon_url} alt="" width="16" height="16" loading="lazy" />
     )}
     <span class={`source-badge source-badge-${entry.data.source}`}>{entry.data.source}</span>
-    <span class={`score-badge score-badge-${tier}`}>
-      {entry.data.interest_score.toFixed(1)}
-    </span>
     <span class="reading-badge">{formatReadingBadge(entry.data)}</span>
     {typeof entry.data.points === 'number' && (
       <span class="points">{entry.data.points} points</span>
@@ -188,33 +185,6 @@ const tier = interestTier(entry.data.interest_score);
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
     border: 1px solid var(--rule);
-    color: var(--ink-soft);
-  }
-
-  /* Score/model-ID mono accent: 0.8rem for BOTH skins per spec Section 4
-     (identical row) — a flat, unscoped value is correct here, not a gap. */
-  .score-badge {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 0.8rem;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-  }
-
-  .score-badge-must-read {
-    background: var(--accent);
-    color: var(--accent-ink);
-  }
-
-  .score-badge-recommended {
-    border: 1px solid var(--accent);
-    color: var(--accent);
-  }
-
-  /* Uses --rule-soft (softer than the source-badge's --rule border) since
-     "notable" is deliberately the least visually emphasized tier. */
-  .score-badge-notable {
-    border: 1px solid var(--rule-soft);
     color: var(--ink-soft);
   }
 

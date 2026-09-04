@@ -572,4 +572,20 @@ describe("dist/index.html build output", () => {
     expect(footerMatch![1]).toContain('href="/rss.xml"');
     expect(footerMatch![1]).toMatch(/©\s*\d{4}/);
   });
+
+  it("(backlog) does not render a numeric interest-score badge publicly", () => {
+    expect(html).not.toContain('class="score-badge');
+    const style = readAllPageCss(html);
+    expect(style).not.toMatch(/\.score-badge\s*\{/);
+  });
+
+  it("(backlog) still renders [data-interest-tier] with its border-weight CSS (tier hierarchy survives)", () => {
+    expect(html).toMatch(
+      /data-interest-tier="(must-read|recommended|notable)"/,
+    );
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\[data-interest-tier=['"]?must-read['"]?\]\s*\{[^}]*border/,
+    );
+  });
 });
