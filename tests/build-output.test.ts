@@ -550,4 +550,27 @@ describe("dist/index.html build output", () => {
     expect(html).not.toContain('id="score-chart"');
     expect(html).not.toContain("Interest scores");
   });
+
+  it("(backlog) centers the masthead and nav row (legacy-newspaper identity)", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(/\.masthead\s*\{[^}]*text-align:\s*center/);
+    expect(style).toMatch(/\.site-nav\s*\{[^}]*justify-content:\s*center/);
+  });
+
+  it("(backlog fix) reverts nav centering to flex-start inside the mobile breakpoint, preserving the padding-right overlap fix", () => {
+    // justify-content: center defeats the mobile padding-right
+    // reservation's own assumption (a left-packed row never drifts
+    // toward the reserved zone) - confirmed empirically via Playwright
+    // at 375px to reintroduce real overlap with the fixed
+    // preference-controls. This asserts the mobile override survives
+    // regardless of how the base .site-nav rule's declarations get
+    // reordered later.
+    const style = readAllPageCss(html);
+    const mobileOverride =
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.site-nav\s*\{[^}]*justify-content:\s*flex-start[^}]*\}/;
+    expect(
+      style,
+      "expected the @media(max-width:480px) .site-nav rule to revert justify-content to flex-start",
+    ).toMatch(mobileOverride);
+  });
 });

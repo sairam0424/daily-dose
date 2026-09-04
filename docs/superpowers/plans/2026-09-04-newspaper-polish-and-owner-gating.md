@@ -355,8 +355,22 @@ thicker/colored border than `notable`-tier ones.
 
 ### Task 4: Center the masthead title, tagline, and nav row
 
+> **Ruling recorded during implementation:** the implementer correctly
+> caught that plain `justify-content: center` on `.site-nav` reintroduces
+> the exact mobile overlap PR #45 fixed — the `padding-right` reservation
+> hack only guarantees safety for a left-packed row (a centered row's
+> content sits at its own midpoint regardless of how close that midpoint
+> falls to the reserved zone), confirmed empirically at a real 375px
+> viewport via Playwright (~30-55px of overlap, even on rows that never
+> needed to wrap). Fix: add `justify-content: flex-start` to the existing
+> `@media (max-width: 480px) { .site-nav { ... } }` override, so centering
+> applies above that breakpoint only. The steps below are updated in
+> place to include this.
+
 **Files:**
-- Modify: `src/layouts/Layout.astro:106-114`
+- Modify: `src/layouts/Layout.astro:106-132` (now includes the mobile
+  `@media` block, not just lines 106-114 as originally scoped — see
+  ruling above)
 - Test: `tests/build-output.test.ts`
 
 **Interfaces:**

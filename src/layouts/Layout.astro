@@ -106,10 +106,12 @@ const { title, description, path, includeRssLink = true } = Astro.props;
       .masthead {
         padding: 2rem 1.5rem 1rem;
         border-bottom: 1px solid var(--rule);
+        text-align: center;
       }
 
       .site-nav {
         display: flex;
+        justify-content: center;
         gap: 1rem;
       }
 
@@ -120,9 +122,22 @@ const { title, description, path, includeRssLink = true } = Astro.props;
          to wrap (it fit the container) even though it visually collided
          with the fixed-position controls layered on top. Reserving space
          and allowing wrap forces the row to break before reaching that
-         zone instead of rendering underneath it. */
+         zone instead of rendering underneath it.
+
+         (backlog fix) justify-content: center (added for the desktop
+         masthead-centering pass) breaks this fix's own assumption: the
+         padding-right reservation only guarantees safety for a
+         LEFT-PACKED row, since centering places a wrapped row's content
+         at its own midpoint regardless of how close that midpoint sits
+         to the reserved zone — confirmed empirically (Playwright,
+         375px) to reintroduce ~30-55px of real overlap even on rows
+         that never needed to wrap in the first place. Reverting to
+         flex-start for this one breakpoint keeps the centered look at
+         normal widths while preserving the exact layout the reservation
+         hack was built for. */
       @media (max-width: 480px) {
         .site-nav {
+          justify-content: flex-start;
           flex-wrap: wrap;
           padding-right: 60px;
           row-gap: 0.35rem;
