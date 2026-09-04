@@ -289,6 +289,17 @@ const tier = interestTier(entry.data.interest_score);
     text-decoration: underline;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .story-card {
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--rule);
+    }
+  }
+
   /* Phase 2's bento grid is dev-skin-only. Newspaper keeps its own
      flowing-column look (plain bottom hairline, no card border/radius) -
      restored explicitly here because the base .story-card rule above now

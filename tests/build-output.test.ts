@@ -535,4 +535,12 @@ describe("dist/index.html build output", () => {
       expect(html).toContain(item.image_url);
     }
   });
+
+  it("(Phase 4, optional) guards any new hover motion behind prefers-reduced-motion, matching existing convention", () => {
+    const style = readAllPageCss(html);
+    if (!style.includes("translateY(-1px)")) return; // Phase 4 was skipped - fine.
+    expect(style).toMatch(
+      /@media\s*\(prefers-reduced-motion:\s*no-preference\)[\s\S]*?\.story-card(\[[^\]]*\])?:hover/,
+    );
+  });
 });
