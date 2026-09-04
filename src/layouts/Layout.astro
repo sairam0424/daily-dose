@@ -91,17 +91,6 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
       }
 
-      /* Legacy aliases for components not yet migrated to the new token
-         names — removed in Phase 4 Task 8 once nothing references them.
-         (This staged rollout is a plan-level choice; the spec itself asks
-         for a direct one-shot rename — see File Structure table.) */
-      :root {
-        --bg: var(--bg-page);
-        --fg: var(--ink);
-        --muted: var(--ink-soft);
-        --border: var(--rule);
-      }
-
       * {
         box-sizing: border-box;
       }
