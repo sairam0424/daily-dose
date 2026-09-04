@@ -13,14 +13,27 @@ const tier = interestTier(entry.data.interest_score);
 ---
 
 <li
-  class={`story-card${index === 0 ? ' lead-story' : ''}`}
+  class={`story-card${index === 0 ? ' lead-story' : ''}${entry.data.image_url ? ' has-image' : ''}`}
   data-source={entry.data.source}
   data-interest-tier={tier}
 >
+  {entry.data.image_url && (
+    <img
+      class="story-image"
+      src={entry.data.image_url}
+      alt=""
+      loading="lazy"
+      width="560"
+      height="315"
+    />
+  )}
   <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
     {entry.data.title}
   </a>
   <div class="story-meta">
+    {entry.data.favicon_url && (
+      <img class="favicon-icon" src={entry.data.favicon_url} alt="" width="16" height="16" loading="lazy" />
+    )}
     <span class={`source-badge source-badge-${entry.data.source}`}>{entry.data.source}</span>
     <span class={`score-badge score-badge-${tier}`}>
       {entry.data.interest_score.toFixed(1)}
@@ -83,10 +96,27 @@ const tier = interestTier(entry.data.interest_score);
       grid-column: span 2;
     }
 
+    .story-card.has-image:not(.lead-story) {
+      grid-column: span 3;
+    }
+
     .lead-story {
       grid-column: span 4;
       grid-row: span 2;
     }
+  }
+
+  .story-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+  }
+
+  .lead-story .story-image {
+    aspect-ratio: 16 / 8;
   }
 
   /* Dev-editorial headline (default/unscoped values). */
@@ -144,6 +174,11 @@ const tier = interestTier(entry.data.interest_score);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--ink-soft);
+  }
+
+  .favicon-icon {
+    border-radius: 2px;
+    vertical-align: middle;
   }
 
   .source-badge {
