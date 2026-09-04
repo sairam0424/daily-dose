@@ -312,19 +312,47 @@ describe("dist/index.html build output", () => {
     // + index.astro actually render - the globally-highest-scored item
     // across ALL committed dates is not necessarily on the homepage once
     // more than one date exists.
+    //
+    // (audit fix) Real committed data can have a genuine tie at the top
+    // score (confirmed: a live 4-way 7.0 tie on 2026-09-03). Array.sort
+    // is stable, so a tie's winner depends on each side's PRE-sort
+    // ordering - this test's own readdirSync-based file order and
+    // Astro's content-collection glob-loader order are not guaranteed to
+    // agree, so asserting a specific tied title is not a real
+    // requirement and breaks whenever the tied set or its order shifts.
+    // The actual invariant index.astro promises is "the lead story has
+    // no lower a score than any other visible item" - assert that
+    // instead of a specific winner.
     const items = findLatestDateJsonFiles(DIGEST_BASE).map((filePath) =>
       DigestItemSchema.parse(JSON.parse(readFileSync(filePath, "utf-8"))),
     );
-    const topItem = [...items].sort(
-      (a, b) => b.interest_score - a.interest_score,
-    )[0];
-    expect(topItem, "expected at least one committed digest item").toBeTruthy();
+    const maxScore = Math.max(...items.map((item) => item.interest_score));
+    const topTitles = new Set(
+      items
+        .filter((item) => item.interest_score === maxScore)
+        .map((item) => item.title),
+    );
+    expect(
+      topTitles.size,
+      "expected at least one committed digest item",
+    ).toBeGreaterThan(0);
 
     const leadMatch = html.match(
       /<li class="story-card lead-story"[^>]*>[\s\S]*?<\/li>/,
     );
     expect(leadMatch, "expected a .lead-story <li>").toBeTruthy();
-    expect(leadMatch![0]).toContain(topItem!.title);
+    const leadTitleMatch = leadMatch![0].match(
+      /<a class="story-title"[^>]*>\s*([\s\S]*?)\s*<\/a>/,
+    );
+    expect(
+      leadTitleMatch,
+      "expected a .story-title link inside the lead story",
+    ).toBeTruthy();
+    const leadTitle = leadTitleMatch![1].trim();
+    expect(
+      topTitles.has(leadTitle),
+      `expected the lead story ("${leadTitle}") to be one of the max-score (${maxScore}) items: ${JSON.stringify([...topTitles])}`,
+    ).toBe(true);
   });
 
   it("(review fix) uses the exact why_read string as the info button's accessible label", () => {
