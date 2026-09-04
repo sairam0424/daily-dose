@@ -289,6 +289,17 @@ const tier = interestTier(entry.data.interest_score);
     text-decoration: underline;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .story-card {
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--rule);
+    }
+  }
+
   /* Phase 2's bento grid is dev-skin-only. Newspaper keeps its own
      flowing-column look (plain bottom hairline, no card border/radius) -
      restored explicitly here because the base .story-card rule above now
@@ -318,6 +329,13 @@ const tier = interestTier(entry.data.interest_score);
   :global([data-skin='newspaper']) .story-card[data-interest-tier='notable'] {
     border-left: 2px solid transparent;
     padding-left: 0.75rem;
+  }
+
+  /* (Phase 4 fix) Base hover rule adds transform + border-color. Newspaper
+     should NOT move on hover — explicitly reset transform while border-color
+     is already inert due to border: none above. */
+  :global([data-skin='newspaper']) .story-card:hover {
+    transform: none;
   }
 
   /* column-span:all pulls the lead story out of the column flow to span
