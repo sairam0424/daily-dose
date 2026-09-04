@@ -113,6 +113,22 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         gap: 1rem;
       }
 
+      /* (audit fix) The mobile-nav-vs-preference-controls fix in
+         PreferenceControls.astro was only verified against 2-link navs
+         (archive pages) — the homepage's 3-link nav still overlapped the
+         fixed theme-toggle at 375px, since the row never actually needed
+         to wrap (it fit the container) even though it visually collided
+         with the fixed-position controls layered on top. Reserving space
+         and allowing wrap forces the row to break before reaching that
+         zone instead of rendering underneath it. */
+      @media (max-width: 480px) {
+        .site-nav {
+          flex-wrap: wrap;
+          padding-right: 60px;
+          row-gap: 0.35rem;
+        }
+      }
+
       .site-nav a {
         color: var(--accent);
         text-decoration: none;
