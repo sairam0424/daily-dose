@@ -74,48 +74,10 @@ describe("dist/index.html build output", () => {
     ).toBeTruthy();
   });
 
-  it("shows evidence the Chart.js island is present in the output", () => {
-    expect(html.includes('id="score-chart"')).toBe(true);
-
-    // A correctly bundled DigestChart <script> is minified and compiled
-    // into an external, hashed /_astro/*.js chunk alongside chart.js - the
-    // literal source text "chart.js" and "new Chart(" do NOT survive that
-    // process (minification renames the "Chart" identifier), so asserting
-    // on those substrings against index.html is not meaningful evidence
-    // either way. Instead, resolve the actual chunk Astro linked and
-    // confirm it both exists on disk and contains our component's real
-    // canvas target - proof the chart-mounting code was bundled in, not
-    // just referenced by a tag pointing at nothing.
-    const scriptSrcMatch = html.match(
-      /<script[^>]*type="module"[^>]*src="([^"]*DigestChart[^"]*)"/,
-    );
-    expect(
-      scriptSrcMatch,
-      'expected a bundled <script type="module" src="...DigestChart..."> tag',
-    ).toBeTruthy();
-
-    const chunkPath = join(DIST_DIR, scriptSrcMatch![1]);
-    expect(
-      existsSync(chunkPath),
-      `expected the linked chunk to exist at ${chunkPath}`,
-    ).toBe(true);
-    expect(readFileSync(chunkPath, "utf-8")).toContain("score-chart");
-  });
-
-  it("(regression) bundles DigestChart's script instead of shipping the raw unresolved import", () => {
-    // The checks above are too weak to catch this: the substrings
-    // "chart.js" and "new Chart(" are both still present in the RAW,
-    // UNBUNDLED source text of `import Chart from 'chart.js/auto';` and
-    // `const chart = new Chart(canvas, {...})`, so they pass even when
-    // Astro fails to bundle the component's <script> and ships the bare
-    // module specifier verbatim - which no browser can resolve ("Failed to
-    // resolve module specifier \"chart.js/auto\""), leaving the chart
-    // canvas completely blank. A properly bundled build never contains this
-    // literal import statement in the HTML at all - Vite either inlines the
-    // resolved code or emits a hashed external <script src="/_astro/...">.
-    expect(html).not.toContain("import Chart from 'chart.js/auto'");
-    expect(html).not.toContain("chart.js/auto");
-  });
+  // (moved) These two tests asserted the Chart.js island bundled correctly
+  // on the homepage. The chart moved to the owner-only /stats page in
+  // Phase 5 (see docs/superpowers/plans/2026-09-04-newspaper-polish-and-owner-gating.md)
+  // - equivalent coverage is added there against dist/stats/index.html.
 
   it("has a real favicon <link> tag", () => {
     const iconLinkMatch = html.match(/<link\s+[^>]*rel="icon"[^>]*>/i);
@@ -249,11 +211,6 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="skin-toggle-dev"[^>]*aria-pressed="true"/);
     expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
-  });
-
-  it("keeps the score chart canvas present after the redesign (regression check)", () => {
-    expect(html).toContain('id="score-chart"');
-    expect(html).not.toContain("rgba(79, 70, 229"); // old hardcoded indigo
   });
 
   it("(audit fix) wraps the header nav on narrow viewports so it never renders under the fixed preference-controls", () => {
@@ -587,5 +544,10 @@ describe("dist/index.html build output", () => {
     expect(style).toMatch(
       /\[data-interest-tier=['"]?must-read['"]?\]\s*\{[^}]*border/,
     );
+  });
+
+  it("(backlog) does not render the interest-score chart on the homepage", () => {
+    expect(html).not.toContain('id="score-chart"');
+    expect(html).not.toContain("Interest scores");
   });
 });
