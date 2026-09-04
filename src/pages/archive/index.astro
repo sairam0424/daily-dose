@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Logo from '../../components/Logo.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
@@ -17,7 +18,7 @@ const dateGroups = groupEntriesByDate(allEntries);
       <a href="/">&larr; Back to digest</a>
       <a href="/methodology">Methodology &rarr;</a>
     </nav>
-    <h1>All digests</h1>
+    <h1><Logo /> All digests</h1>
     <p class="tagline">Every past day's digest, most recent first.</p>
   </header>
 

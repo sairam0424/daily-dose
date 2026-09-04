@@ -573,6 +573,22 @@ describe("dist/index.html build output", () => {
       "expected the @media(max-width:480px) .site-nav rule to revert justify-content to flex-start",
     ).toMatch(mobileOverride);
   });
+
+  it("(backlog) renders the Logo mark in the masthead, with a skin-appropriate variant for each of the 3 palette states", () => {
+    expect(html).toContain('class="logo-mark logo-mark-dev"');
+    expect(html).toContain('class="logo-mark logo-mark-newspaper-light"');
+    expect(html).toContain('class="logo-mark logo-mark-newspaper-dark"');
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.logo-mark-newspaper-light\s*\{[^}]*display:\s*block/,
+    );
+    expect(style).toMatch(
+      /\.logo-mark-newspaper-dark\s*\{[^}]*display:\s*none/,
+    );
+    expect(style).toMatch(
+      /\[data-skin=['"]?dev['"]?\][^{]*\.logo-mark-dev\s*\{[^}]*display:\s*block/,
+    );
+  });
 });
 
 describe("dist/favicon.svg", () => {

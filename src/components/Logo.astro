@@ -1,0 +1,63 @@
+---
+---
+
+<svg class="logo-mark logo-mark-dev" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+  <circle cx="16" cy="20" r="7" fill="#f5a623" />
+  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" stroke="#f5a623" stroke-width="1.6" stroke-linecap="round" fill="none" />
+</svg>
+<svg class="logo-mark logo-mark-newspaper-light" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+  <circle cx="16" cy="20" r="7" fill="#7a2618" />
+  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" stroke="#7a2618" stroke-width="1.6" stroke-linecap="round" fill="none" />
+</svg>
+<svg class="logo-mark logo-mark-newspaper-dark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+  <circle cx="16" cy="20" r="7" fill="#c99356" />
+  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" stroke="#c99356" stroke-width="1.6" stroke-linecap="round" fill="none" />
+</svg>
+
+<style>
+  /* Every selector here is wrapped in :global() rather than relying on
+     Astro's default per-component scoping: this component's whole
+     purpose is to be toggled by [data-skin]/[data-theme] attributes set
+     on <html> by Layout.astro's bootstrap script and PreferenceControls'
+     toggle (a different element entirely), so the class names must match
+     unscoped — the same reason PreferenceControls.astro's own
+     [data-theme='dark'] .icon-sun/.icon-moon rules key off an ancestor
+     attribute rather than a component-local scope. */
+  :global(.logo-mark) {
+    display: none;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+
+  /* Hidden by default alongside .logo-mark-dev above (order matters here
+     purely to keep this rule's declaration block from being byte-
+     identical to its neighbor and getting merged into a selector list by
+     the build's CSS minifier - the resulting cascade is unaffected
+     either way). */
+  :global(.logo-mark-newspaper-dark) {
+    display: none;
+  }
+
+  /* Default (no [data-skin] override matched yet) = newspaper-light,
+     mirroring Layout.astro's own `:root, [data-skin='newspaper']`
+     default-light token block. */
+  :global(.logo-mark-newspaper-light) {
+    display: block;
+  }
+
+  :global([data-skin='dev'] .logo-mark-newspaper-light) {
+    display: none;
+  }
+
+  :global([data-skin='dev'] .logo-mark-dev) {
+    display: block;
+  }
+
+  :global([data-skin='newspaper'][data-theme='dark'] .logo-mark-newspaper-light) {
+    display: none;
+  }
+
+  :global([data-skin='newspaper'][data-theme='dark'] .logo-mark-newspaper-dark) {
+    display: block;
+  }
+</style>
