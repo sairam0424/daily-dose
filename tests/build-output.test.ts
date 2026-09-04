@@ -425,4 +425,33 @@ describe("dist/index.html build output", () => {
       /\.story-title(\[[^\]]*\])?:focus-visible[^{]*\.discuss-link(\[[^\]]*\])?:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
     );
   });
+
+  it("(Phase 1) uses @container instead of @media for newspaper column-count breakpoints", () => {
+    const style = readAllPageCss(html);
+    expect(style).not.toMatch(/@media\s*\(max-width:\s*1000px\)/);
+    expect(style).not.toMatch(/@media\s*\(max-width:\s*640px\)/);
+    expect(style).toMatch(/@container\s+story-list\s*\(min-width:\s*480px\)/);
+    expect(style).toMatch(/@container\s+story-list\s*\(min-width:\s*700px\)/);
+  });
+
+  it("(Phase 1) establishes a container-query context around .story-list", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.story-list-container(\[[^\]]*\])?\s*\{[^}]*container-type:\s*inline-size/,
+    );
+  });
+
+  it("(Phase 1) gives the hairline divider a low-opacity token, not the stronger --rule token", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.story-card(\[[^\]]*\])?\s*\{[^}]*border-bottom:\s*1px solid var\(--rule-soft\)/,
+    );
+  });
+
+  it("(Phase 1) applies tiered left-border weight via the existing data-interest-tier attribute", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.story-card(\[[^\]]*\])?\[data-interest-tier=['"]?must-read['"]?\][^{]*\{[^}]*border-left:\s*3px solid var\(--accent\)/,
+    );
+  });
 });

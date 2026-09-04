@@ -10,13 +10,14 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<ul class="story-list">
-  {entries.map((entry, index) => (
-    <li
-      class={`story-card${index === 0 ? ' lead-story' : ''}`}
-      data-source={entry.data.source}
-      data-interest-tier={interestTier(entry.data.interest_score)}
-    >
+<div class="story-list-container">
+  <ul class="story-list">
+    {entries.map((entry, index) => (
+      <li
+        class={`story-card${index === 0 ? ' lead-story' : ''}`}
+        data-source={entry.data.source}
+        data-interest-tier={interestTier(entry.data.interest_score)}
+      >
       <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
         {entry.data.title}
       </a>
@@ -46,11 +47,17 @@ const { entries } = Astro.props;
           </a>
         )}
       </div>
-    </li>
-  ))}
-</ul>
+      </li>
+    ))}
+  </ul>
+</div>
 
 <style>
+  .story-list-container {
+    container-type: inline-size;
+    container-name: story-list;
+  }
+
   .story-list {
     list-style: none;
     margin: 0;
@@ -62,7 +69,22 @@ const { entries } = Astro.props;
 
   .story-card {
     padding: 0.85rem 0;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .story-card[data-interest-tier='must-read'] {
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+  }
+
+  .story-card[data-interest-tier='recommended'] {
+    border-left: 2px solid var(--rule);
+    padding-left: 0.75rem;
+  }
+
+  .story-card[data-interest-tier='notable'] {
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
   }
 
   .story-card:first-child {
@@ -241,7 +263,7 @@ const { entries } = Astro.props;
      renders every card full-width and stacked, with zero columnization. */
   :global([data-skin='newspaper']) .story-list {
     display: block;
-    column-count: 3;
+    column-count: 1;
     column-gap: 2rem;
     column-rule: 1px solid var(--rule);
   }
@@ -250,15 +272,25 @@ const { entries } = Astro.props;
     break-inside: avoid;
   }
 
-  @media (max-width: 1000px) {
+  /* Thresholds are calibrated against THIS component's own rendered width,
+     not the viewport. 700px sits just under main's ~752px ceiling (3
+     columns activate once the container is genuinely wide — viewport
+     ≳748px instead of the old ≳1001px, a disclosed improvement: today's
+     code renders the identical 752px box at viewport=900 and viewport=1200
+     yet shows 2 vs 3 columns purely from an arbitrary viewport cutoff).
+     480px approximates the old 640px-viewport threshold's resulting
+     container width (640-48=592px), rounded down for breathing room. Do
+     not change these numbers without re-deriving from main's
+     max-width/padding. */
+  @container story-list (min-width: 480px) {
     :global([data-skin='newspaper']) .story-list {
       column-count: 2;
     }
   }
 
-  @media (max-width: 640px) {
+  @container story-list (min-width: 700px) {
     :global([data-skin='newspaper']) .story-list {
-      column-count: 1;
+      column-count: 3;
     }
   }
 
