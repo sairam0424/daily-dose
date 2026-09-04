@@ -119,4 +119,29 @@ describe("renderDayContent escaping (regression)", () => {
     expect(xml).toContain("React &amp; Redux");
     expect(xml).not.toContain("&amp;amp;");
   });
+
+  // (backlog fix) A real gap found during a post-redesign audit: every
+  // <item>'s own <link>/<guid> only ever pointed at the daily archive
+  // page, and content:encoded never linked out to the item's real
+  // source (the HN thread, the arXiv paper, the GitHub repo, the Dev.to
+  // post) even though DigestItem always carries a real, validated url.
+  // RSS readers had no way to deep-link from the feed itself.
+  it("links each story's title to its real source url, not just the archive page", () => {
+    const fakeItem: DigestItem = {
+      title: "A real story title",
+      source: "github",
+      url: "https://github.com/example/real-repo",
+      date: "2026-09-04",
+      tags: [],
+      interest_score: 5,
+      why_read: "A real reason.",
+      authors: [],
+    };
+
+    const content = renderDayContent([fakeItem]);
+
+    expect(content).toContain(
+      '<a href="https://github.com/example/real-repo">A real story title</a>',
+    );
+  });
 });

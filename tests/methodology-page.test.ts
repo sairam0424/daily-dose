@@ -10,6 +10,7 @@ import {
   MIN_HISTORY_FOR_ANOMALY_CHECK,
 } from "../src/lib/costTracking.js";
 import { interestTier } from "../src/lib/interestTier.js";
+import { readAllPageCss } from "./testUtils.js";
 
 const DIST_METHODOLOGY = join(
   import.meta.dirname,
@@ -62,5 +63,24 @@ describe("dist/methodology/index.html", () => {
     expect(html).toContain('href="/rss/arxiv.xml"');
     expect(html).toContain('href="/rss/github.xml"');
     expect(html).toContain('href="/rss/devto.xml"');
+  });
+
+  it("(backlog fix) colors in-content links with the theme accent instead of the browser default", () => {
+    // A post-redesign audit found the "cost & stats" cross-link and the
+    // 4 RSS subscribe links fell through to the browser's default link
+    // blue in every skin/theme, since only .site-nav a and .site-footer
+    // a were ever given the accent color — nothing scoped main's own
+    // prose/list links.
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /main(\[[^\]]*\])?\s+a(\[[^\]]*\])?\s*\{[^}]*color:\s*var\(--accent\)/,
+    );
+  });
+
+  it("(backlog fix) gives the model-ID cells the spec's medium font weight", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.model-cell(\[[^\]]*\])?\s*\{[^}]*font-weight:\s*500/,
+    );
   });
 });
