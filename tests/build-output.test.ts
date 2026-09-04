@@ -574,3 +574,14 @@ describe("dist/index.html build output", () => {
     ).toMatch(mobileOverride);
   });
 });
+
+describe("dist/favicon.svg", () => {
+  it("(backlog) is the new sunrise-glyph mark, not the old 'dd' monogram", () => {
+    const svgPath = join(DIST_DIR, "favicon.svg");
+    expect(existsSync(svgPath), `expected ${svgPath} to exist`).toBe(true);
+    const svg = readFileSync(svgPath, "utf-8");
+    expect(svg).not.toContain(">dd<");
+    expect(svg).toContain('r="7"');
+    expect(svg).toMatch(/prefers-color-scheme:\s*dark/);
+  });
+});
