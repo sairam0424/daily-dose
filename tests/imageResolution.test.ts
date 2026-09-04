@@ -56,6 +56,22 @@ describe("extractOgImage", () => {
       extractOgImage("<html></html>", "https://example.com"),
     ).toBeUndefined();
   });
+
+  it("rejects javascript: scheme URLs", () => {
+    const html = `<meta property="og:image" content="javascript:alert('xss')">`;
+    expect(extractOgImage(html, "https://example.com/article")).toBeUndefined();
+  });
+
+  it("rejects data: scheme URLs", () => {
+    const html = `<meta property="og:image" content="data:image/png;base64,iVBORw0KGgo=">`;
+    expect(extractOgImage(html, "https://example.com/article")).toBeUndefined();
+  });
+
+  it("returns undefined when baseUrl is malformed and URL constructor throws", () => {
+    // Pass a truly malformed baseUrl that will cause URL constructor to throw
+    const html = `<meta property="og:image" content="https://image.example.com/cover.png">`;
+    expect(extractOgImage(html, "not a valid url at all")).toBeUndefined();
+  });
 });
 
 describe("extractFavicon", () => {
@@ -75,6 +91,25 @@ describe("extractFavicon", () => {
 
   it("falls back to Google's public favicon service when no <link> icon tag is present", () => {
     expect(extractFavicon("<html></html>", "https://example.com/page")).toBe(
+      "https://www.google.com/s2/favicons?domain=example.com&sz=32",
+    );
+  });
+
+  it("falls back to Google favicon when link href resolves to non-http(s) scheme", () => {
+    const html = `<link rel="icon" href="file:///etc/passwd">`;
+    expect(extractFavicon(html, "https://example.com/page")).toBe(
+      "https://www.google.com/s2/favicons?domain=example.com&sz=32",
+    );
+  });
+
+  it("returns undefined when pageUrl is malformed and cannot be parsed", () => {
+    const html = `<html></html>`;
+    expect(extractFavicon(html, "ht!tp://in valid")).toBeUndefined();
+  });
+
+  it("rejects javascript: scheme in favicon link href and falls back to Google", () => {
+    const html = `<link rel="icon" href="javascript:alert('xss')">`;
+    expect(extractFavicon(html, "https://example.com/page")).toBe(
       "https://www.google.com/s2/favicons?domain=example.com&sz=32",
     );
   });

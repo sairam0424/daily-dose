@@ -17,7 +17,11 @@ function resolveUrl(
   baseUrl: string,
 ): string | undefined {
   try {
-    return new URL(maybeRelative, baseUrl).toString();
+    const url = new URL(maybeRelative, baseUrl);
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return undefined;
+    }
+    return url.toString();
   } catch {
     return undefined;
   }
