@@ -245,10 +245,20 @@ const tier = interestTier(entry.data.interest_score);
 
   /* Tooltip body text — Dev-editorial values (Task 3 overrides for Newspaper). */
   .why-tooltip {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    margin-bottom: 0.4rem;
+    /* position: fixed (not absolute) is load-bearing, not a style choice:
+       Newspaper's .story-list uses column-count, and this panel's box
+       could render as two visually separate painted fragments split
+       across a column break despite being out-of-flow - confirmed via
+       getClientRects() returning 2 rects for one element, and confirmed
+       that neither break-inside: avoid nor contain: layout stopped it
+       (both tried and measured, no effect). A fixed-position box's
+       containing block is the viewport itself, fully outside any
+       ancestor's multicol formatting context, which is what actually
+       fixes it. top/left are computed in JS (positionPanel, below) from
+       the trigger button's real on-screen position, since a fixed box
+       can no longer anchor itself via a relative-positioned ancestor's
+       offset the way position: absolute could. */
+    position: fixed;
     width: max-content;
     max-width: 260px;
     background: var(--bg-surface);
@@ -428,29 +438,32 @@ const tier = interestTier(entry.data.interest_score);
   const wraps = document.querySelectorAll<HTMLElement>('.why-wrap');
 
   function closeWrap(wrap: HTMLElement) {
-    // Deliberately does not reset the panel's inline `left` (set by
-    // positionPanel below) - clearing it would revert to the CSS
-    // default of left:0, reintroducing the same viewport overflow this
-    // fix closes, the moment any previously-opened panel is closed.
+    // Deliberately does not reset the panel's inline top/left (set by
+    // positionPanel below) - there's no CSS fallback position to revert
+    // to, and leaving the last-computed position in place is harmless
+    // since the panel is visibility:hidden while closed.
     wrap.querySelector('.why-icon')?.setAttribute('aria-expanded', 'false');
   }
 
-  // .why-tooltip's CSS default (left: 0, relative to its wrapper) is
-  // correct for most cards, but a card whose icon sits close to the
-  // right edge of the viewport can have its panel overflow past the
-  // edge, causing page-wide horizontal scroll. getBoundingClientRect()
-  // works even while the panel is visibility:hidden (hidden elements
-  // are still laid out), so the real overflow amount - which depends on
-  // this specific card's column/icon position, not a fixed guess - can
-  // be measured and corrected before the panel ever becomes visible.
+  // .why-tooltip is position: fixed (see its CSS rule for why), so it no
+  // longer has a CSS-only anchor to its trigger button - top/left must be
+  // computed here from the button's real on-screen position, then
+  // clamped so the panel never extends past the viewport edge (which
+  // otherwise happens for any card whose icon sits close to that edge).
+  // getBoundingClientRect() on the panel works even while
+  // visibility:hidden (hidden elements are still laid out), and its
+  // width/height are intrinsic (max-content/auto) so they can be read
+  // before the panel has a real position yet.
   function positionPanel(wrap: HTMLElement) {
+    const button = wrap.querySelector<HTMLElement>('.why-icon');
     const panel = wrap.querySelector<HTMLElement>('.why-tooltip');
-    if (!panel) return;
-    panel.style.left = '0';
-    const overflow = panel.getBoundingClientRect().right - (window.innerWidth - 8);
-    if (overflow > 0) {
-      panel.style.left = `${-overflow}px`;
-    }
+    if (!button || !panel) return;
+    const buttonRect = button.getBoundingClientRect();
+    const panelRect = panel.getBoundingClientRect();
+    const left = Math.max(8, Math.min(buttonRect.left, window.innerWidth - panelRect.width - 8));
+    const top = Math.max(8, buttonRect.top - panelRect.height - 8);
+    panel.style.left = `${left}px`;
+    panel.style.top = `${top}px`;
   }
 
   // A .why-tooltip still occupies its default (potentially overflowing)
