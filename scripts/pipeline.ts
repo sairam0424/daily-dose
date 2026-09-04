@@ -52,6 +52,10 @@ import {
   type ScoreResult,
 } from "../src/lib/llmCuration.js";
 import { recordAndCheckCost } from "../src/lib/costTracking.js";
+import {
+  resolveItemImage,
+  type ResolvedImage,
+} from "../src/lib/imageResolution.js";
 
 export type { RawHnStory, RawArxivPaper, RawGithubRepo, RawDevtoArticle };
 
@@ -318,6 +322,7 @@ interface DevtoListItem {
   public_reactions_count: number;
   tag_list: string[];
   published_timestamp: string;
+  cover_image: string | null;
 }
 
 /** Shape of the Dev.to Articles detail response (`/articles/{id}`) - only
@@ -377,6 +382,7 @@ export async function fetchDevtoArticles(
         comments: item.comments_count,
         tags: item.tag_list,
         publishedAt: item.published_timestamp,
+        coverImage: item.cover_image ?? undefined,
       };
     }),
   );
@@ -504,6 +510,41 @@ function toScorableDevtoItem(article: RawDevtoArticle): ScorableItem {
   };
 }
 
+/**
+ * Determines which items need the generic OG-image/favicon fetch, tagging
+ * each with the exact same id used for its output filename so the returned
+ * resolution map can be joined back to the right item unambiguously (same
+ * pattern as toScorableHnItem etc. above for the LLM scoring map).
+ *
+ * Dev.to items that already carry a native cover_image skip the generic
+ * OG-image fetch entirely - no reason to pay for a second HTTP round-trip
+ * for a source that already gives a real image for free. Accepted
+ * trade-off: such an item also gets no favicon_url (resolveItemImage does
+ * both in one fetch) - fine, since favicon_url is fully optional everywhere
+ * it's rendered.
+ */
+export function buildImageableItems(
+  stories: RawHnStory[],
+  papers: RawArxivPaper[],
+  repos: RawGithubRepo[],
+  articles: RawDevtoArticle[],
+): Array<{ id: string; url: string }> {
+  return [
+    ...stories.map((story) => ({ id: `hn-${story.hn_id}`, url: story.url })),
+    ...papers.map((paper) => ({
+      id: `arxiv-${sanitizeArxivId(paper.arxivId)}`,
+      url: paper.url,
+    })),
+    ...repos.map((repo) => ({
+      id: `github-${sanitizeGithubId(repo.fullName)}`,
+      url: repo.url,
+    })),
+    ...articles
+      .filter((article) => !article.coverImage)
+      .map((article) => ({ id: `devto-${article.id}`, url: article.url })),
+  ];
+}
+
 export async function main(): Promise<void> {
   const { output, limit, sources } = parseArgs(process.argv.slice(2));
   const today = todayIsoDate();
@@ -553,6 +594,19 @@ export async function main(): Promise<void> {
     );
   }
 
+  // Generic OG-image/favicon enrichment - decorative, never blocks or fails
+  // the pipeline (see imageResolution.ts's documented exception to the
+  // fail-loud rule). Bounded to a 5s worst-case wall time by
+  // resolveItemImage's own internal timeout, regardless of item count.
+  const imageableItems = buildImageableItems(stories, papers, repos, articles);
+  const resolvedImages = new Map<string, ResolvedImage>(
+    await Promise.all(
+      imageableItems.map(
+        async ({ id, url }) => [id, await resolveItemImage(url)] as const,
+      ),
+    ),
+  );
+
   const files: WritableDigestFile[] = [];
 
   for (const story of stories) {
@@ -565,6 +619,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreStoryPlaceholder(story);
+    const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
       title: story.title,
@@ -577,6 +632,8 @@ export async function main(): Promise<void> {
       authors: story.author ? [story.author] : [],
       hn_id: story.hn_id,
       points: story.points,
+      image_url: resolvedImage.image_url,
+      favicon_url: resolvedImage.favicon_url,
     };
 
     // Validate every item — let this throw with a clear error if a story
@@ -595,6 +652,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreArxivPlaceholder(paper);
+    const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
       title: paper.title,
@@ -606,6 +664,8 @@ export async function main(): Promise<void> {
       why_read,
       authors: paper.authors,
       reading_minutes: computeReadingMinutes(paper.summary),
+      image_url: resolvedImage.image_url,
+      favicon_url: resolvedImage.favicon_url,
     };
 
     // Same validate-before-write guarantee as the HN branch above.
@@ -626,6 +686,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreGithubPlaceholder(repo);
+    const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
       title: repo.fullName,
@@ -637,6 +698,8 @@ export async function main(): Promise<void> {
       why_read,
       authors: [],
       stars: repo.stars,
+      image_url: resolvedImage.image_url,
+      favicon_url: resolvedImage.favicon_url,
     };
 
     // Same validate-before-write guarantee as the HN branch above.
@@ -657,6 +720,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreDevtoPlaceholder(article);
+    const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
       title: article.title,
@@ -669,6 +733,8 @@ export async function main(): Promise<void> {
       authors: [],
       reactions: article.reactions,
       reading_minutes: computeReadingMinutes(article.bodyText),
+      image_url: article.coverImage ?? resolvedImage.image_url,
+      favicon_url: resolvedImage.favicon_url,
     };
 
     // Same validate-before-write guarantee as the HN branch above.

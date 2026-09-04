@@ -499,4 +499,40 @@ describe("dist/index.html build output", () => {
       expect(html).toContain(`id="${id}"`);
     }
   });
+
+  it("(Phase 3) defines a hero/feature image slot and a feature-tile grid span for imaged items", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.story-image(\[[^\]]*\])?\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/,
+    );
+    // Astro's scoped-style hashing inserts [data-astro-cid-*] right after the
+    // FIRST simple selector in a compound chain, not after every class - the
+    // real build output is `.story-card[data-astro-cid-x].has-image:not(...)`,
+    // matching every other compound-selector pattern in this file (e.g. the
+    // [data-interest-tier=...] checks above), not `.story-card.has-image[data-astro-cid-x]`.
+    expect(style).toMatch(
+      /\.story-card(\[[^\]]*\])?\.has-image:not\(\.lead-story\)\s*\{[^}]*grid-column:\s*span 3/,
+    );
+  });
+
+  it("(Phase 3) renders a real <img> for any committed item that already has an image_url", () => {
+    const itemsWithImages = findLatestDateJsonFiles(DIGEST_BASE)
+      .map((p) => DigestItemSchema.parse(JSON.parse(readFileSync(p, "utf-8"))))
+      .filter(
+        (item): item is typeof item & { image_url: string } =>
+          typeof item.image_url === "string",
+      );
+
+    if (itemsWithImages.length === 0) {
+      // Expected immediately after this feature ships, before the next
+      // pipeline cron run has produced any item with a real image_url yet.
+      // Deliberate early return, not a weak test - once real data exists
+      // the loop below exercises the real assertion.
+      return;
+    }
+
+    for (const item of itemsWithImages) {
+      expect(html).toContain(item.image_url);
+    }
+  });
 });

@@ -1,5 +1,20 @@
 import { z } from "zod";
 
+const httpUrlSchema = z
+  .string()
+  .url()
+  .refine(
+    (value) => {
+      try {
+        const protocol = new URL(value).protocol;
+        return protocol === "http:" || protocol === "https:";
+      } catch {
+        return false;
+      }
+    },
+    { message: "must be an http(s) URL" },
+  );
+
 export const DigestItemSchema = z.object({
   title: z.string().min(1),
   source: z.enum(["hn", "arxiv", "github", "devto"]),
@@ -14,6 +29,8 @@ export const DigestItemSchema = z.object({
   stars: z.number().optional(),
   reactions: z.number().optional(),
   reading_minutes: z.number().optional(),
+  image_url: httpUrlSchema.optional(),
+  favicon_url: httpUrlSchema.optional(),
 });
 
 export type DigestItem = z.infer<typeof DigestItemSchema>;
