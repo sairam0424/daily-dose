@@ -454,4 +454,33 @@ describe("dist/index.html build output", () => {
       /\.story-card(\[[^\]]*\])?\[data-interest-tier=['"]?must-read['"]?\][^{]*\{[^}]*border-left:\s*3px solid var\(--accent\)/,
     );
   });
+
+  it("(Phase 2) lays the story list out as a bento grid with a 4x2 hero cell, dev skin", () => {
+    // (deviation from plan text, documented) The plan's original regex for
+    // the second half of this assertion used `[^}]*` between the
+    // @container prelude and `.lead-story`, which requires zero `}`
+    // characters in between. But `.story-card` must be declared BEFORE
+    // `.lead-story` inside this same @container block (verified against
+    // the real, minified build output) - the lead <li> carries both
+    // classes, so with equal-specificity single-class selectors, source
+    // order decides the cascade winner. Putting `.lead-story` first would
+    // let `.story-card`'s `grid-column: span 2` win instead of `span 4`,
+    // silently breaking the actual hero-cell layout just to satisfy a
+    // stricter regex. This version uses a non-greedy `[\s\S]*?` so it can
+    // cross the intervening `.story-card { ... }` block's closing brace
+    // while still finding the real `.lead-story` rule inside the same
+    // @container block, preserving the assertion's original intent.
+    const style = readAllPageCss(html);
+    expect(style).toMatch(/\.story-list(\[[^\]]*\])?\s*\{[^}]*display:\s*grid/);
+    expect(style).toMatch(
+      /@container\s+story-list\s*\(min-width:\s*640px\)\s*\{[\s\S]*?\.lead-story(\[[^\]]*\])?\s*\{[^}]*grid-column:\s*span 4[^}]*grid-row:\s*span 2/,
+    );
+  });
+
+  it("(Phase 2) preserves Newspaper's flowing-column card look (no grid border on newspaper cards)", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?\s*\{[^}]*border:\s*none/,
+    );
+  });
 });

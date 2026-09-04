@@ -27,13 +27,19 @@ const { entries } = Astro.props;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  /* (review fix, critical) .story-list's base rule (Task 2) sets
-     display:flex — column-count is silently ignored on flex containers
+  @container story-list (min-width: 640px) {
+    .story-list {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  /* (review fix, critical) .story-list's base rule sets display:grid
+     (Task 2.2) — column-count is silently ignored on flex/grid containers
      per the CSS Multi-column spec. This reset is required, not optional;
      confirmed empirically (Playwright) during plan review: omitting it
      renders every card full-width and stacked, with zero columnization. */

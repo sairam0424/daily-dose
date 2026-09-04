@@ -50,27 +50,37 @@ const tier = interestTier(entry.data.interest_score);
 
 <style>
   .story-card {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--rule-soft);
+    grid-column: span 1;
+    padding: 1rem;
+    border: 1px solid var(--rule-soft);
+    border-radius: 8px;
+  }
+
+  .lead-story {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 
   .story-card[data-interest-tier='must-read'] {
-    border-left: 3px solid var(--accent);
-    padding-left: 0.75rem;
+    border-color: var(--accent);
+    border-width: 2px;
   }
 
   .story-card[data-interest-tier='recommended'] {
-    border-left: 2px solid var(--rule);
-    padding-left: 0.75rem;
+    border-color: var(--rule);
   }
+  /* 'notable' needs no override - the base border (--rule-soft) is already
+     its correct, least-emphasized treatment. */
 
-  .story-card[data-interest-tier='notable'] {
-    border-left: 2px solid transparent;
-    padding-left: 0.75rem;
-  }
+  @container story-list (min-width: 640px) {
+    .story-card {
+      grid-column: span 2;
+    }
 
-  .story-card:first-child {
-    padding-top: 0;
+    .lead-story {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
   }
 
   /* Dev-editorial headline (default/unscoped values). */
@@ -238,8 +248,35 @@ const tier = interestTier(entry.data.interest_score);
     text-decoration: underline;
   }
 
+  /* Phase 2's bento grid is dev-skin-only. Newspaper keeps its own
+     flowing-column look (plain bottom hairline, no card border/radius) -
+     restored explicitly here because the base .story-card rule above now
+     defines a bordered grid cell instead. */
   :global([data-skin='newspaper']) .story-card {
+    border: none;
+    border-radius: 0;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule-soft);
     break-inside: avoid;
+  }
+
+  :global([data-skin='newspaper']) .story-card:first-child {
+    padding-top: 0;
+  }
+
+  :global([data-skin='newspaper']) .story-card[data-interest-tier='must-read'] {
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+  }
+
+  :global([data-skin='newspaper']) .story-card[data-interest-tier='recommended'] {
+    border-left: 2px solid var(--rule);
+    padding-left: 0.75rem;
+  }
+
+  :global([data-skin='newspaper']) .story-card[data-interest-tier='notable'] {
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
   }
 
   /* column-span:all pulls the lead story out of the column flow to span
