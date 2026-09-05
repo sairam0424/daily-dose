@@ -48,13 +48,17 @@ const { entries, olderDate, newerDate, allDates } = Astro.props as DateProps;
   path={`/archive/${date}/`}
 >
   <header class="masthead">
-    <nav class="site-nav">
-      <a href="/">&larr; Latest digest</a>
-      <a href="/archive/">All digests</a>
-    </nav>
-    <DateJump dates={allDates} />
-    <h1><Logo /> Digest — {date}</h1>
-    <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
+    <div class="masthead-utility">
+      <nav class="site-nav">
+        <a href="/">&larr; Latest digest</a>
+        <a href="/archive/">All digests</a>
+      </nav>
+      <DateJump dates={allDates} />
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> Digest — {date}</h1>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
+    </hgroup>
   </header>
 
   <main>
