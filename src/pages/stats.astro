@@ -19,24 +19,18 @@ import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
-
-interface StatsEntry {
-  date: string;
-  model: string;
-  inputTokens: number;
-  outputTokens: number;
-  costUsd: number;
-  itemCount: number;
-  flaggedAnomalous: boolean;
-}
+import {
+  aggregateByDay,
+  aggregateByModel,
+  formatUsd,
+  parseStatsJsonl,
+  type StatsEntry,
+} from '../lib/statsAggregation.js';
 
 async function readStats(): Promise<StatsEntry[]> {
   try {
     const raw = await readFile(resolve(process.cwd(), 'src/data/stats.jsonl'), 'utf-8');
-    return raw
-      .split('\n')
-      .filter((line) => line.trim().length > 0)
-      .map((line) => JSON.parse(line) as StatsEntry);
+    return parseStatsJsonl(raw);
   } catch {
     return [];
   }
@@ -57,60 +51,8 @@ const totalItemsScored = entries.reduce((sum, e) => sum + e.itemCount, 0);
 const totalRuns = entries.length;
 const anomalousRuns = entries.filter((e) => e.flaggedAnomalous).length;
 
-interface ModelAgg {
-  costUsd: number;
-  inputTokens: number;
-  outputTokens: number;
-  itemCount: number;
-  runs: number;
-}
-
-const byModel = new Map<string, ModelAgg>();
-for (const e of entries) {
-  const existing = byModel.get(e.model) ?? {
-    costUsd: 0,
-    inputTokens: 0,
-    outputTokens: 0,
-    itemCount: 0,
-    runs: 0,
-  };
-  byModel.set(e.model, {
-    costUsd: existing.costUsd + e.costUsd,
-    inputTokens: existing.inputTokens + e.inputTokens,
-    outputTokens: existing.outputTokens + e.outputTokens,
-    itemCount: existing.itemCount + e.itemCount,
-    runs: existing.runs + 1,
-  });
-}
-const modelRows = [...byModel.entries()].sort((a, b) => b[1].costUsd - a[1].costUsd);
-
-interface DayAgg {
-  costUsd: number;
-  itemCount: number;
-  runs: number;
-  flaggedAnomalous: boolean;
-}
-
-const byDay = new Map<string, DayAgg>();
-for (const e of entries) {
-  const existing = byDay.get(e.date) ?? {
-    costUsd: 0,
-    itemCount: 0,
-    runs: 0,
-    flaggedAnomalous: false,
-  };
-  byDay.set(e.date, {
-    costUsd: existing.costUsd + e.costUsd,
-    itemCount: existing.itemCount + e.itemCount,
-    runs: existing.runs + 1,
-    flaggedAnomalous: existing.flaggedAnomalous || e.flaggedAnomalous,
-  });
-}
-const dayRows = [...byDay.entries()].sort((a, b) => (a[0] < b[0] ? 1 : -1));
-
-function formatUsd(amount: number): string {
-  return `$${amount.toFixed(4)}`;
-}
+const modelRows = aggregateByModel(entries);
+const dayRows = aggregateByDay(entries);
 ---
 
 <Layout
