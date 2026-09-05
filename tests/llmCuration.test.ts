@@ -246,6 +246,61 @@ describe("scoreItemsWithLLM", () => {
     ).rejects.toThrow();
   });
 
+  it("(regression) tolerates a real, observed Bedrock quirk where the tool_use input's scores array is returned as a JSON-encoded string instead of a real array", async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [
+        {
+          type: "tool_use",
+          id: "toolu_stringified",
+          name: "record_scores",
+          input: {
+            scores: JSON.stringify([
+              {
+                id: "hn-1",
+                interest_score: 8,
+                why_read: "Genuinely substantive discussion.",
+                analysis: "A real, multi-sentence analysis.",
+                exclude: false,
+              },
+            ]),
+          },
+        },
+      ],
+      stop_reason: "tool_use",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    const outcome = await scoreItemsWithLLM([
+      { id: "hn-1", source: "hn", title: "x" },
+    ]);
+
+    expect(outcome.scores.get("hn-1")).toEqual({
+      interest_score: 8,
+      why_read: "Genuinely substantive discussion.",
+      analysis: "A real, multi-sentence analysis.",
+      exclude: false,
+    });
+  });
+
+  it("still throws a clear error if scores is a string but not valid JSON (a genuinely malformed response, not just a differently-encoded valid one)", async () => {
+    mockCreate.mockResolvedValue({
+      content: [
+        {
+          type: "tool_use",
+          id: "toolu_bad_json",
+          name: "record_scores",
+          input: { scores: "not valid json at all {{{" },
+        },
+      ],
+      stop_reason: "tool_use",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow();
+  });
+
   it("throws if the tool_use input is missing analysis (the new required field)", async () => {
     mockCreate.mockResolvedValue({
       content: [
