@@ -47,6 +47,23 @@ jobs:
           BEDROCK_SECRET_ACCESS_KEY: ${{ secrets.BEDROCK_SECRET_ACCESS_KEY }}
           BEDROCK_REGION: ${{ vars.BEDROCK_REGION }}
 
+      # Real, previously observed failure (2026-09-04 scheduled run): if
+      # another push lands on main between this job's checkout and its own
+      # push below (e.g. an unrelated PR merge), the auto-commit-action's
+      # push is rejected as non-fast-forward and the whole run fails -
+      # wasting the real, paid Bedrock call that already ran above, with
+      # no digest ever committed. Pulling immediately before the commit
+      # step shrinks that race window from "this whole job's runtime" down
+      # to just the auto-commit-action's own commit+push time - doesn't
+      # eliminate the race entirely (a push landing in that much smaller
+      # window would still fail this run), but reduces real-world exposure
+      # by roughly two orders of magnitude. --autostash is required: the
+      # pipeline step above already left real, uncommitted digest files in
+      # the working tree, and a plain `git pull --rebase` refuses to run
+      # with uncommitted changes present.
+      - name: Sync with latest main before committing
+        run: git pull --rebase --autostash origin main
+
       # Commits ONLY the generated data paths, never a blanket `git add -A`,
       # so an accidental in-progress code change on this branch could never
       # be swept into an automated commit. Bot identity (not the
