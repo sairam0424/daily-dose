@@ -553,12 +553,13 @@ export function buildImageableItems(
   papers: RawArxivPaper[],
   repos: RawGithubRepo[],
   articles: RawDevtoArticle[],
-): Array<{ id: string; url: string }> {
+): Array<{ id: string; url: string; arxivId?: string }> {
   return [
     ...stories.map((story) => ({ id: `hn-${story.hn_id}`, url: story.url })),
     ...papers.map((paper) => ({
       id: `arxiv-${sanitizeArxivId(paper.arxivId)}`,
       url: paper.url,
+      arxivId: paper.arxivId,
     })),
     ...repos.map((repo) => ({
       id: `github-${sanitizeGithubId(repo.fullName)}`,
@@ -630,7 +631,8 @@ export async function main(): Promise<void> {
     await mapWithConcurrency(
       imageableItems,
       6,
-      async ({ id, url }) => [id, await resolveItemImage(url)] as const,
+      async ({ id, url, arxivId }) =>
+        [id, await resolveItemImage(url, arxivId)] as const,
     ),
   );
 
