@@ -74,6 +74,20 @@ describe("dist/archive/index.html build output", () => {
     expect(archiveIndexHtml).toContain('href="/rss/github.xml"');
     expect(archiveIndexHtml).toContain('href="/rss/devto.xml"');
   });
+
+  it("(backlog) keeps Methodology out of the top nav, reachable via the footer instead", () => {
+    const navMatch = archiveIndexHtml.match(
+      /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
+    );
+    expect(navMatch, "expected a .site-nav").toBeTruthy();
+    expect(navMatch![1]).not.toContain('href="/methodology"');
+
+    const footerMatch = archiveIndexHtml.match(
+      /<footer[^>]*>([\s\S]*?)<\/footer>/,
+    );
+    expect(footerMatch, "expected a <footer>").toBeTruthy();
+    expect(footerMatch![1]).toContain('href="/methodology"');
+  });
 });
 
 describe("dist/archive/<date>/index.html build output", () => {
@@ -116,6 +130,25 @@ describe("dist/archive/<date>/index.html build output", () => {
       const dateHtml = readFileSync(datePagePath, "utf-8");
       expect(dateHtml).not.toContain('id="score-chart"');
       expect(dateHtml).not.toContain("Interest scores");
+    });
+
+    it("(backlog) keeps Methodology out of the top nav on a date page, reachable via the footer instead", () => {
+      const dates = readCommittedDates();
+      const datePagePath = join(
+        DIST_ARCHIVE_BASE,
+        dates[dates.length - 1],
+        "index.html",
+      );
+      const dateHtml = readFileSync(datePagePath, "utf-8");
+      const navMatch = dateHtml.match(
+        /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
+      );
+      expect(navMatch, "expected a .site-nav").toBeTruthy();
+      expect(navMatch![1]).not.toContain('href="/methodology"');
+
+      const footerMatch = dateHtml.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
+      expect(footerMatch, "expected a <footer>").toBeTruthy();
+      expect(footerMatch![1]).toContain('href="/methodology"');
     });
   }
 });

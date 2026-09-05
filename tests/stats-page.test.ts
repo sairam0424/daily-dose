@@ -209,4 +209,13 @@ describe("stats.astro source structure", () => {
       "expected the Interest scores heading to render before the Page views heading",
     ).toBeLessThan(pageViewsHeading);
   });
+
+  it("(backlog) keeps Methodology out of the top nav, reachable via the shared footer instead", () => {
+    const navMatch = source.match(
+      /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
+    );
+    expect(navMatch, "expected a .site-nav").toBeTruthy();
+    expect(navMatch![1]).not.toContain('href="/methodology"');
+    expect(source).toContain("<SiteFooter");
+  });
 });

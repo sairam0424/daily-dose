@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import DateJump from '../components/DateJump.astro';
 import Logo from '../components/Logo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
 import { MAX_REASONABLE_ITEMS } from '../lib/llmCuration.js';
@@ -110,6 +111,8 @@ const allDigestDates = groupEntriesByDate(allDigestEntries).map((group) => group
       <li><a href="/rss/devto.xml">Dev.to only</a></li>
     </ul>
   </main>
+
+  <SiteFooter />
 </Layout>
 
 <style>

@@ -4,6 +4,7 @@ import DateJump from '../components/DateJump.astro';
 import DigestList from '../components/DigestList.astro';
 import FilterBar from '../components/FilterBar.astro';
 import Logo from '../components/Logo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
 
@@ -24,7 +25,6 @@ const allDigestDates = dateGroups.map((group) => group.date);
   <header class="masthead">
     <nav class="site-nav">
       <a href="/archive/">All digests &rarr;</a>
-      <a href="/methodology">Methodology &rarr;</a>
     </nav>
     <DateJump dates={allDigestDates} />
     <h1><Logo /> daily-dose</h1>
@@ -46,9 +46,5 @@ const allDigestDates = dateGroups.map((group) => group.date);
     )}
   </main>
 
-  <footer class="site-footer">
-    <p>
-      <a href="/rss.xml">RSS</a> · © {new Date().getFullYear()}
-    </p>
-  </footer>
+  <SiteFooter />
 </Layout>
