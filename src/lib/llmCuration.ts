@@ -74,6 +74,7 @@ export interface ScorableItem {
 export interface ScoreResult {
   interest_score: number;
   why_read: string;
+  analysis: string;
 }
 
 export interface LlmScoringOutcome {
@@ -120,6 +121,7 @@ const ScoreEntrySchema = z.object({
   id: z.string(),
   interest_score: z.number().min(0).max(10),
   why_read: z.string().min(1),
+  analysis: z.string().min(1),
 });
 const ScoresResponseSchema = z.object({ scores: z.array(ScoreEntrySchema) });
 
@@ -197,6 +199,12 @@ function buildPrompt(items: ScorableItem[]): string {
     "",
     "Score honestly. A high-engagement story is not automatically high-interest - judge substance, not popularity. Do not inflate scores and do not write clickbait-style reasons.",
     "",
+    "Also write a short analysis (3-4 sentences) for each item, explaining what it actually is and why it matters technically - this is separate from the one-sentence reason above and can go into more real detail.",
+    "",
+    "For items that include an <abstract> or <article_excerpt> tag: you have real source text available. Decide, per item, whether adapting that real text into your 3-4 sentence analysis or writing your own original analysis would be more useful for a reader deciding whether to read the full item - then output only your chosen version. Do not default to always picking one or the other; judge each item on its own.",
+    "",
+    "For items with no <abstract> or <article_excerpt> tag, write your own original 3-4 sentence analysis directly - there is no real source text to compare against for these.",
+    "",
     "Score every item listed below, using its exact id.",
     "",
     itemBlocks,
@@ -206,7 +214,7 @@ function buildPrompt(items: ScorableItem[]): string {
 const scoreTool = {
   name: "record_scores",
   description:
-    "Record an interest score (0-10) and one-sentence reason for each item.",
+    "Record an interest score (0-10), one-sentence reason, and a short analysis for each item.",
   input_schema: {
     type: "object" as const,
     properties: {
@@ -222,8 +230,9 @@ const scoreTool = {
               maximum: 10,
             },
             why_read: { type: "string" as const },
+            analysis: { type: "string" as const },
           },
-          required: ["id", "interest_score", "why_read"],
+          required: ["id", "interest_score", "why_read", "analysis"],
         },
       },
     },
@@ -271,7 +280,7 @@ export async function scoreItemsWithLLM(
     try {
       const message = await client.messages.create({
         model,
-        max_tokens: 4096,
+        max_tokens: 8192,
         messages: [{ role: "user", content: prompt }],
         tools: [scoreTool],
         tool_choice: { type: "tool", name: "record_scores" },
@@ -301,6 +310,7 @@ export async function scoreItemsWithLLM(
         scores.set(entry.id, {
           interest_score: entry.interest_score,
           why_read: entry.why_read,
+          analysis: entry.analysis,
         });
       }
 

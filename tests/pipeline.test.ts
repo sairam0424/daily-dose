@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import {
   scoreStoryPlaceholder,
   scoreGithubPlaceholder,
@@ -226,5 +227,23 @@ describe("mapWithConcurrency", () => {
   it("processes every item exactly once", async () => {
     const result = await mapWithConcurrency([1, 2, 3], 10, async (n) => n * 2);
     expect(result).toEqual([2, 4, 6]);
+  });
+});
+
+describe("pipeline.ts analysis wiring (source-text check - main()'s per-source loops make real network calls and are not otherwise unit-tested, per this file's existing convention; see AGENTS.md)", () => {
+  const pipelineSource = readFileSync(
+    new URL("../scripts/pipeline.ts", import.meta.url),
+    "utf-8",
+  );
+
+  it("reads fromLlm?.analysis once per source loop (hn, arxiv, github, devto)", () => {
+    const matches =
+      pipelineSource.match(/const analysis = fromLlm\?\.analysis;/g) ?? [];
+    expect(matches.length).toBe(4);
+  });
+
+  it("includes analysis in the candidate object right after why_read, once per source loop", () => {
+    const matches = pipelineSource.match(/why_read,\n\s+analysis,/g) ?? [];
+    expect(matches.length).toBe(4);
   });
 });

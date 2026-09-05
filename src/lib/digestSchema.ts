@@ -20,6 +20,7 @@ export const DigestItemSchema = z.object({
   tags: z.array(z.string()).default([]),
   interest_score: z.number().min(0).max(10),
   why_read: z.string().min(1),
+  analysis: z.string().min(1).optional(),
   authors: z.array(z.string()).default([]),
   hn_id: z.number().optional(),
   points: z.number().optional(),

@@ -30,6 +30,7 @@ const tier = interestTier(entry.data.interest_score);
   <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
     {entry.data.title}
   </a>
+  {entry.data.analysis && <p class="story-analysis">{entry.data.analysis}</p>}
   <div class="story-meta">
     {entry.data.favicon_url && (
       <img class="favicon-icon" src={entry.data.favicon_url} alt="" width="16" height="16" loading="lazy" />
@@ -156,6 +157,18 @@ const tier = interestTier(entry.data.interest_score);
     letter-spacing: 0.05em;
     color: var(--accent);
     margin-bottom: 0.3rem;
+  }
+
+  .story-analysis {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .lead-story .story-analysis {
+    font-size: 0.95rem;
   }
 
   /* Byline row — Dev-editorial values (Task 3 overrides for Newspaper). */
