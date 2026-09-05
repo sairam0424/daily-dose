@@ -489,6 +489,12 @@ describe("dist/index.html build output", () => {
     expect(style).toMatch(
       /\.story-image(\[[^\]]*\])?\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/,
     );
+    expect(style).toMatch(
+      /\.story-image(\[[^\]]*\])?\s*\{[^}]*object-fit:\s*contain/,
+    );
+    expect(style).toMatch(
+      /\.story-image(\[[^\]]*\])?\s*\{[^}]*background:\s*var\(--bg-surface\)/,
+    );
     // Astro's scoped-style hashing inserts [data-astro-cid-*] right after the
     // FIRST simple selector in a compound chain, not after every class - the
     // real build output is `.story-card[data-astro-cid-x].has-image:not(...)`,
