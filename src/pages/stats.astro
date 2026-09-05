@@ -65,14 +65,18 @@ const dayRows = aggregateByDay(entries);
   includeRssLink={false}
 >
   <header class="masthead">
-    <nav class="site-nav">
-      <a href="/">&larr; Back to digest</a>
-    </nav>
-    <DateJump dates={allDigestDates} />
-    <h1><Logo /> Cost &amp; stats</h1>
-    <p class="tagline">
-      Real AI/LLM curation cost, tracked from actual token usage — not estimated.
-    </p>
+    <div class="masthead-utility">
+      <nav class="site-nav">
+        <a href="/">&larr; Back to digest</a>
+      </nav>
+      <DateJump dates={allDigestDates} />
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> Cost &amp; stats</h1>
+      <p class="tagline">
+        Real AI/LLM curation cost, tracked from actual token usage — not estimated.
+      </p>
+    </hgroup>
   </header>
 
   <main>

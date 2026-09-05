@@ -23,12 +23,16 @@ const allDigestDates = dateGroups.map((group) => group.date);
   path="/"
 >
   <header class="masthead">
-    <nav class="site-nav">
-      <a href="/archive/">All digests &rarr;</a>
-    </nav>
-    <DateJump dates={allDigestDates} />
-    <h1><Logo /> daily-dose</h1>
-    <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
+    <div class="masthead-utility">
+      <nav class="site-nav">
+        <a href="/archive/">All digests &rarr;</a>
+      </nav>
+      <DateJump dates={allDigestDates} />
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> daily-dose</h1>
+      <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
+    </hgroup>
   </header>
 
   <main>

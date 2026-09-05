@@ -103,15 +103,41 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         line-height: 1.5;
       }
 
+      /* Composition model (see the 2026-09-05 masthead deep-research):
+         a small, quiet "utility bar" (.masthead-utility — nav + date-jump,
+         one row, eyebrow-style typography) sits ABOVE a large "brand
+         block" (.masthead-brand — an <hgroup> of the H1 + tagline,
+         tightly coupled). The gap BETWEEN those two distinct groups
+         (masthead-utility's margin-bottom) is deliberately larger than
+         the gap WITHIN the brand block (h1-to-tagline) — "internal ≤
+         external" spacing, the inverse of what this masthead had before
+         (0px between nav/date-jump, 8px before the brand block, then
+         only 4px between h1/tagline — backwards, and indistinguishable
+         from unrelated rows just stacked in source order). No rule/
+         border is needed at the utility-to-brand boundary — typographic
+         contrast alone (tiny uppercase vs. large display serif/sans)
+         does that separating work, matching tdd.cat's own masthead. */
       .masthead {
-        padding: 2rem 1.5rem 1rem;
-        border-bottom: 1px solid var(--rule);
+        padding: 1.75rem 1.5rem 1.5rem;
+        border-bottom: 3px double var(--rule);
         text-align: center;
+      }
+
+      .masthead-utility {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+        margin-bottom: 1.75rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-faint);
       }
 
       .site-nav {
         display: flex;
-        justify-content: center;
         gap: 1rem;
       }
 
@@ -124,30 +150,38 @@ const { title, description, path, includeRssLink = true } = Astro.props;
          and allowing wrap forces the row to break before reaching that
          zone instead of rendering underneath it.
 
-         (backlog fix) justify-content: center (added for the desktop
-         masthead-centering pass) breaks this fix's own assumption: the
-         padding-right reservation only guarantees safety for a
+         (backlog fix) centering the row breaks this fix's own assumption:
+         the padding-right reservation only guarantees safety for a
          LEFT-PACKED row, since centering places a wrapped row's content
          at its own midpoint regardless of how close that midpoint sits
          to the reserved zone — confirmed empirically (Playwright,
-         375px) to reintroduce ~30-55px of real overlap even on rows
-         that never needed to wrap in the first place. Reverting to
-         flex-start for this one breakpoint keeps the centered look at
-         normal widths while preserving the exact layout the reservation
-         hack was built for. */
+         375px) to reintroduce real overlap even on rows that never
+         needed to wrap in the first place. flex-start for this one
+         breakpoint keeps the centered look at normal widths while
+         preserving the exact layout the reservation hack was built for.
+         Moved from .site-nav to .masthead-utility since the date-jump
+         input now shares this same row and needs the identical
+         mobile-safe treatment - and the old 60px reservation, sized for
+         a bare theme-toggle circle, was never actually wide enough for
+         PreferenceControls' full skin-toggle pill ("DEV"+"NEWSPAPER"
+         text, ~144px real measured width at 400px viewport). Adding the
+         date-jump input to this row was what finally pushed content
+         past the old, already-undersized 60px and into real ~16px
+         overlap - confirmed via Playwright getBoundingClientRect. 180px
+         clears the real ~160px needed (144px control + 16px right
+         margin) with a small buffer. */
       @media (max-width: 480px) {
-        .site-nav {
+        .masthead-utility {
           justify-content: flex-start;
           flex-wrap: wrap;
-          padding-right: 60px;
-          row-gap: 0.35rem;
+          padding-right: 180px;
+          row-gap: 0.5rem;
         }
       }
 
       .site-nav a {
         color: var(--accent);
         text-decoration: none;
-        font-size: 0.9rem;
         font-family: var(--font-body);
       }
 
@@ -164,8 +198,12 @@ const { title, description, path, includeRssLink = true } = Astro.props;
         outline-offset: 2px;
       }
 
-      .masthead h1 {
-        margin: 0.5rem 0 0;
+      .masthead-brand {
+        margin: 0;
+      }
+
+      .masthead-brand h1 {
+        margin: 0;
         font-family: var(--font-display);
         font-optical-sizing: auto;
         font-weight: 700;
@@ -188,12 +226,16 @@ const { title, description, path, includeRssLink = true } = Astro.props;
          spec Section 4's typography table — font-optical-sizing:auto
          above already makes Fraunces' opsz axis track this larger size
          automatically; only the size itself needs a skin override. */
-      [data-skin='newspaper'] .masthead h1 {
+      [data-skin='newspaper'] .masthead-brand h1 {
         font-size: clamp(2rem, 5vw, 2.75rem);
       }
 
       .tagline {
-        margin: 0.25rem 0 0;
+        /* Tightly coupled to the h1 immediately above it inside the same
+           .masthead-brand hgroup — deliberately smaller than
+           .masthead-utility's 1.75rem margin-bottom above, per the
+           internal-gap-≤-external-gap rule this masthead now follows. */
+        margin: 0.35rem 0 0;
         color: var(--ink-soft);
         font-family: var(--font-body);
       }

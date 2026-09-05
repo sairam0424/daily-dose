@@ -213,7 +213,7 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
   });
 
-  it("(audit fix) wraps the header nav on narrow viewports so it never renders under the fixed preference-controls", () => {
+  it("(audit fix) wraps the header utility row on narrow viewports so it never renders under the fixed preference-controls", () => {
     // Regression test for a real bug found during a post-redesign E2E
     // audit: the mobile-nav-vs-preference-controls fix shipped earlier
     // was only verified against 2-link navs (archive pages); the
@@ -222,13 +222,16 @@ describe("dist/index.html build output", () => {
     // underneath the fixed-position controls layered on top at 375px,
     // confirmed via live getBoundingClientRect overlap. The fix reserves
     // horizontal space via padding-right so a 3rd link is forced onto a
-    // new row instead of sitting under the fixed overlay.
+    // new row instead of sitting under the fixed overlay. Moved from
+    // .site-nav to .masthead-utility once the date-jump control joined
+    // nav in one shared utility row (2026-09-05 masthead-composition
+    // pass) - both children need the same mobile-safe treatment now.
     const style = readAllPageCss(html);
     const mobileNavRule =
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.site-nav\s*\{[^}]*flex-wrap:\s*wrap[^}]*padding-right:[^}]*\}/;
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*flex-wrap:\s*wrap[^}]*padding-right:[^}]*\}/;
     expect(
       style,
-      "expected a @media(max-width:480px) .site-nav rule with flex-wrap:wrap and a padding-right reservation",
+      "expected a @media(max-width:480px) .masthead-utility rule with flex-wrap:wrap and a padding-right reservation",
     ).toMatch(mobileNavRule);
   });
 
@@ -566,27 +569,103 @@ describe("dist/index.html build output", () => {
     expect(html).not.toContain("Interest scores");
   });
 
-  it("(backlog) centers the masthead and nav row (legacy-newspaper identity)", () => {
+  it("(backlog) centers the masthead and the utility row (legacy-newspaper identity)", () => {
+    // justify-content:center moved from .site-nav to .masthead-utility
+    // once the date-jump control joined nav in one shared utility row
+    // (the 2026-09-05 masthead-composition pass) - .site-nav itself no
+    // longer needs its own justify-content, it's centered as a member
+    // of its parent's centered flex row.
     const style = readAllPageCss(html);
     expect(style).toMatch(/\.masthead\s*\{[^}]*text-align:\s*center/);
-    expect(style).toMatch(/\.site-nav\s*\{[^}]*justify-content:\s*center/);
+    expect(style).toMatch(
+      /\.masthead-utility\s*\{[^}]*justify-content:\s*center/,
+    );
   });
 
-  it("(backlog fix) reverts nav centering to flex-start inside the mobile breakpoint, preserving the padding-right overlap fix", () => {
+  it("(backlog fix) reverts the utility row to flex-start inside the mobile breakpoint, preserving the padding-right overlap fix", () => {
     // justify-content: center defeats the mobile padding-right
     // reservation's own assumption (a left-packed row never drifts
     // toward the reserved zone) - confirmed empirically via Playwright
     // at 375px to reintroduce real overlap with the fixed
     // preference-controls. This asserts the mobile override survives
-    // regardless of how the base .site-nav rule's declarations get
-    // reordered later.
+    // regardless of how the base .masthead-utility rule's declarations
+    // get reordered later.
     const style = readAllPageCss(html);
     const mobileOverride =
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.site-nav\s*\{[^}]*justify-content:\s*flex-start[^}]*\}/;
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*justify-content:\s*flex-start[^}]*\}/;
     expect(
       style,
-      "expected the @media(max-width:480px) .site-nav rule to revert justify-content to flex-start",
+      "expected the @media(max-width:480px) .masthead-utility rule to revert justify-content to flex-start",
     ).toMatch(mobileOverride);
+  });
+
+  it("(backlog) reserves enough mobile space for PreferenceControls' real width, not just a bare toggle circle", () => {
+    // The original 60px reservation (Phase 3) was sized for a plain
+    // theme-toggle circle and was already borderline - adding the
+    // date-jump input to this same row (masthead-composition pass)
+    // finally pushed real content past it, confirmed via Playwright
+    // getBoundingClientRect showing ~16px of real overlap at a 400px
+    // effective viewport. PreferenceControls' skin-toggle pill ("DEV" +
+    // "NEWSPAPER" text) measured ~144px wide + 16px right margin = an
+    // effective ~160px needed; 180px is that measurement plus a buffer.
+    // Assert the reservation is comfortably above the measured minimum
+    // rather than pinning the exact value, so a future intentional
+    // adjustment doesn't have to touch this test unless it regresses
+    // below the real minimum.
+    const style = readAllPageCss(html);
+    const match = style.match(
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*padding-right:\s*(\d+)px/,
+    );
+    expect(match, "expected a padding-right:<N>px reservation").toBeTruthy();
+    expect(Number(match![1])).toBeGreaterThanOrEqual(160);
+  });
+
+  it("(backlog) groups the utility row and brand block with an internal-≤-external spacing hierarchy", () => {
+    // The masthead used to just stack 4 independently-centered rows
+    // with whatever margin each element's own rule happened to set
+    // (0px between nav and the date input, 8px before the brand block,
+    // then only 4px between the h1 and tagline - smaller than the gap
+    // above it, backwards from any real grouping). Assert the fixed
+    // hierarchy directly: the gap between the two distinct groups
+    // (.masthead-utility's margin-bottom) must be strictly larger than
+    // the gap within the brand block (.tagline's margin-top).
+    const style = readAllPageCss(html);
+    const utilityMarginMatch = style.match(
+      /\.masthead-utility\s*\{[^}]*margin-bottom:\s*([\d.]+)rem/,
+    );
+    const taglineMarginMatch = style.match(
+      /\.tagline\s*\{[^}]*margin:\s*([\d.]+)rem/,
+    );
+    expect(
+      utilityMarginMatch,
+      "expected .masthead-utility margin-bottom",
+    ).toBeTruthy();
+    expect(
+      taglineMarginMatch,
+      "expected .tagline's margin-top (first value in its margin shorthand)",
+    ).toBeTruthy();
+    expect(Number(utilityMarginMatch![1])).toBeGreaterThan(
+      Number(taglineMarginMatch![1]),
+    );
+  });
+
+  it("(backlog) groups nav and the date-jump control into one shared utility row, not two independently-centered rows", () => {
+    const utilityMatch = html.match(
+      /<div[^>]*class="masthead-utility"[^>]*>([\s\S]*?)<\/div>/,
+    );
+    expect(utilityMatch, "expected a .masthead-utility wrapper").toBeTruthy();
+    expect(utilityMatch![1]).toContain('class="site-nav"');
+    expect(utilityMatch![1]).toContain('id="date-jump"');
+
+    const brandMatch = html.match(
+      /<hgroup[^>]*class="masthead-brand"[^>]*>([\s\S]*?)<\/hgroup>/,
+    );
+    expect(
+      brandMatch,
+      'expected an <hgroup class="masthead-brand"> wrapping the H1 and tagline',
+    ).toBeTruthy();
+    expect(brandMatch![1]).toContain("<h1");
+    expect(brandMatch![1]).toContain('class="tagline"');
   });
 
   it("(backlog) renders the Logo mark in the masthead, with a skin-appropriate variant for each of the 3 palette states", () => {

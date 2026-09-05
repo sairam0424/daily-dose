@@ -25,14 +25,18 @@ const allDigestDates = groupEntriesByDate(allDigestEntries).map((group) => group
   path="/methodology"
 >
   <header class="masthead">
-    <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
-    <DateJump dates={allDigestDates} />
-    <h1><Logo /> Methodology</h1>
-    <p class="tagline">
-      The real rubric, thresholds, and cost controls this project actually runs — every
-      number below is imported live from the same code that runs the pipeline, not
-      restated by hand.
-    </p>
+    <div class="masthead-utility">
+      <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+      <DateJump dates={allDigestDates} />
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> Methodology</h1>
+      <p class="tagline">
+        The real rubric, thresholds, and cost controls this project actually runs — every
+        number below is imported live from the same code that runs the pipeline, not
+        restated by hand.
+      </p>
+    </hgroup>
   </header>
 
   <main>

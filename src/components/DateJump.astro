@@ -23,6 +23,12 @@ const max = sorted[sorted.length - 1];
   .date-jump {
     font-family: var(--font-body);
     font-size: 0.85rem;
+    /* Sits inside .masthead-utility's small-uppercase "eyebrow" row -
+       reset both explicitly rather than relying on native <input>
+       chrome to not inherit them (it usually doesn't, but this makes
+       the override intentional rather than incidental). */
+    text-transform: none;
+    letter-spacing: normal;
     color: var(--ink);
     background: var(--bg-surface);
     border: 1px solid var(--rule);
