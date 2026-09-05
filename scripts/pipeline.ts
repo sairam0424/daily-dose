@@ -641,6 +641,12 @@ export async function main(): Promise<void> {
   for (const story of stories) {
     const id = `hn-${story.hn_id}`;
     const fromLlm = llmScores?.get(id);
+    if (fromLlm?.exclude) {
+      console.warn(
+        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
+      );
+      continue;
+    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -676,6 +682,12 @@ export async function main(): Promise<void> {
   for (const paper of papers) {
     const id = `arxiv-${sanitizeArxivId(paper.arxivId)}`;
     const fromLlm = llmScores?.get(id);
+    if (fromLlm?.exclude) {
+      console.warn(
+        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
+      );
+      continue;
+    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -712,6 +724,12 @@ export async function main(): Promise<void> {
   for (const repo of repos) {
     const id = `github-${sanitizeGithubId(repo.fullName)}`;
     const fromLlm = llmScores?.get(id);
+    if (fromLlm?.exclude) {
+      console.warn(
+        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
+      );
+      continue;
+    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -748,6 +766,12 @@ export async function main(): Promise<void> {
   for (const article of articles) {
     const id = `devto-${article.id}`;
     const fromLlm = llmScores?.get(id);
+    if (fromLlm?.exclude) {
+      console.warn(
+        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
+      );
+      continue;
+    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
