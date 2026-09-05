@@ -595,6 +595,20 @@ describe("dist/index.html build output", () => {
       /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?href="\/stats"/,
     );
   });
+
+  it("(backlog) renders a date-jump control in the masthead, bounded to real digest dates", () => {
+    expect(html).toMatch(/<input[^>]*type="date"[^>]*id="date-jump"/);
+    const minMatch = html.match(/id="date-jump"[^>]*min="(\d{4}-\d{2}-\d{2})"/);
+    const maxMatch = html.match(/id="date-jump"[^>]*max="(\d{4}-\d{2}-\d{2})"/);
+    expect(
+      minMatch,
+      "expected a min= bound to the earliest real digest date",
+    ).toBeTruthy();
+    expect(
+      maxMatch,
+      "expected a max= bound to the latest real digest date",
+    ).toBeTruthy();
+  });
 });
 
 describe("dist/favicon.svg", () => {

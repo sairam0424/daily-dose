@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import DateJump from '../../components/DateJump.astro';
 import DigestPreviewCard from '../../components/DigestPreviewCard.astro';
 import Logo from '../../components/Logo.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -7,6 +8,7 @@ import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
+const allDigestDates = dateGroups.map((group) => group.date);
 ---
 
 <Layout
@@ -19,6 +21,7 @@ const dateGroups = groupEntriesByDate(allEntries);
       <a href="/">&larr; Back to digest</a>
       <a href="/methodology">Methodology &rarr;</a>
     </nav>
+    <DateJump dates={allDigestDates} />
     <h1><Logo /> All digests</h1>
     <p class="tagline">Every past day's digest, most recent first.</p>
   </header>
