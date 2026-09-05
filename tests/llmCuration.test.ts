@@ -27,7 +27,12 @@ const {
 const ORIGINAL_ENV = { ...process.env };
 
 function toolUseResponse(
-  scores: Array<{ id: string; interest_score: number; why_read: string }>,
+  scores: Array<{
+    id: string;
+    interest_score: number;
+    why_read: string;
+    analysis?: string;
+  }>,
 ) {
   return {
     content: [
@@ -99,11 +104,15 @@ describe("scoreItemsWithLLM", () => {
           id: "hn-1",
           interest_score: 8,
           why_read: "Genuinely substantive discussion.",
+          analysis:
+            "A real, multi-sentence analysis of why this HN story is worth reading.",
         },
         {
           id: "arxiv-2501.00001",
           interest_score: 6,
           why_read: "Solid but incremental result.",
+          analysis:
+            "A real, multi-sentence analysis judged against the paper's own abstract.",
         },
       ]),
     );
@@ -130,6 +139,8 @@ describe("scoreItemsWithLLM", () => {
     expect(outcome.scores.get("hn-1")).toEqual({
       interest_score: 8,
       why_read: "Genuinely substantive discussion.",
+      analysis:
+        "A real, multi-sentence analysis of why this HN story is worth reading.",
     });
     expect(outcome.scores.get("arxiv-2501.00001")?.interest_score).toBe(6);
     expect(mockCreate).toHaveBeenCalledTimes(1);
@@ -159,7 +170,14 @@ describe("scoreItemsWithLLM", () => {
         ),
       )
       .mockResolvedValueOnce(
-        toolUseResponse([{ id: "hn-1", interest_score: 5, why_read: "Fine." }]),
+        toolUseResponse([
+          {
+            id: "hn-1",
+            interest_score: 5,
+            why_read: "Fine.",
+            analysis: "A real, multi-sentence fallback-model analysis.",
+          },
+        ]),
       );
 
     const outcome = await scoreItemsWithLLM([
@@ -221,5 +239,93 @@ describe("scoreItemsWithLLM", () => {
     await expect(
       scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
     ).rejects.toThrow();
+  });
+
+  it("throws if the tool_use input is missing analysis (the new required field)", async () => {
+    mockCreate.mockResolvedValue({
+      content: [
+        {
+          type: "tool_use",
+          id: "toolu_no_analysis",
+          name: "record_scores",
+          input: {
+            scores: [{ id: "hn-1", interest_score: 7, why_read: "Fine." }],
+          },
+        },
+      ],
+      stop_reason: "tool_use",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow();
+  });
+
+  it("returns analysis in the ScoreResult on a well-formed response", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 8,
+          why_read: "Genuinely substantive discussion.",
+          analysis: "A real, multi-sentence analysis of why this matters.",
+        },
+      ]),
+    );
+
+    const outcome = await scoreItemsWithLLM([
+      {
+        id: "hn-1",
+        source: "hn",
+        title: "A real story",
+        points: 100,
+        numComments: 20,
+      },
+    ]);
+
+    expect(outcome.scores.get("hn-1")).toEqual({
+      interest_score: 8,
+      why_read: "Genuinely substantive discussion.",
+      analysis: "A real, multi-sentence analysis of why this matters.",
+    });
+  });
+
+  it("sends max_tokens: 8192 (raised from 4096 to fit the added analysis field)", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 5,
+          why_read: "Fine.",
+          analysis: "Fine analysis.",
+        },
+      ]),
+    );
+
+    await scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]);
+
+    const callArgs = mockCreate.mock.calls[0]![0];
+    expect(callArgs.max_tokens).toBe(8192);
+  });
+
+  it("requires analysis in the scoring tool's input_schema for each item", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 5,
+          why_read: "Fine.",
+          analysis: "Fine analysis.",
+        },
+      ]),
+    );
+
+    await scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]);
+
+    const callArgs = mockCreate.mock.calls[0]![0];
+    const itemSchema = callArgs.tools[0].input_schema.properties.scores.items;
+    expect(itemSchema.required).toContain("analysis");
+    expect(itemSchema.properties.analysis).toBeDefined();
   });
 });
