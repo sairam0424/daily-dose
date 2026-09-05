@@ -40,23 +40,50 @@ function extractMetaContent(
     const tag = tagMatch[0];
     if (!nameRe.test(tag)) continue;
     const contentMatch = tag.match(/content\s*=\s*["']([^"']*)["']/i);
-    if (contentMatch?.[1]) return contentMatch[1];
+    if (contentMatch?.[1]) {
+      const trimmed = contentMatch[1].trim();
+      if (trimmed) return trimmed;
+    }
   }
   return undefined;
 }
 
+/** Cheap, verified-real-world heuristic (not perceptual hashing) for
+ * rejecting a scraped image that is near-certainly a site-wide generic
+ * asset rather than a genuinely per-item image: arXiv's shared logo,
+ * favicons, sprites, tracking pixels, etc. Deliberate tradeoff, not an
+ * oversight: this also rejects a legitimate single-use "company's own
+ * press logo as their OG image" case - accepted because the far more
+ * common and damaging failure mode is a generic image being IDENTICALLY
+ * repeated across many different items (arXiv's case), which this same
+ * keyword set reliably catches. */
+export const GENERIC_IMAGE_URL_PATTERN =
+  /\b(logo|favicon|sprite|wordmark|placeholder|badge|avatar|icon)\b/i;
+
+export function isGenericImageUrl(url: string): boolean {
+  return GENERIC_IMAGE_URL_PATTERN.test(url);
+}
+
 /** Priority-ordered OG-image extraction (verified recipe): og:image, then
- * twitter:image, then twitter:image:src - first match wins. Relative URLs
- * are resolved against the source page's own URL. */
+ * twitter:image, then twitter:image:src - tries each candidate in order,
+ * skipping any that's missing, unresolvable, or a generic/site-wide image
+ * (see isGenericImageUrl). Relative URLs are resolved against the source
+ * page's own URL. */
 export function extractOgImage(
   html: string,
   pageUrl: string,
 ): string | undefined {
-  const raw =
-    extractMetaContent(html, "property", "og:image") ??
-    extractMetaContent(html, "name", "twitter:image") ??
-    extractMetaContent(html, "name", "twitter:image:src");
-  return raw ? resolveUrl(raw, pageUrl) : undefined;
+  const candidates = [
+    extractMetaContent(html, "property", "og:image"),
+    extractMetaContent(html, "name", "twitter:image"),
+    extractMetaContent(html, "name", "twitter:image:src"),
+  ];
+  for (const raw of candidates) {
+    if (!raw) continue;
+    const resolved = resolveUrl(raw, pageUrl);
+    if (resolved && !isGenericImageUrl(resolved)) return resolved;
+  }
+  return undefined;
 }
 
 function extractFaviconLinkHref(html: string): string | undefined {

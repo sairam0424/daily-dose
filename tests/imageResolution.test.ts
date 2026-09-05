@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   extractOgImage,
   extractFavicon,
+  isGenericImageUrl,
   resolveItemImage,
 } from "../src/lib/imageResolution.js";
 
@@ -71,6 +72,66 @@ describe("extractOgImage", () => {
     // Pass a truly malformed baseUrl that will cause URL constructor to throw
     const html = `<meta property="og:image" content="https://image.example.com/cover.png">`;
     expect(extractOgImage(html, "not a valid url at all")).toBeUndefined();
+  });
+
+  it("(regression) trims a leading-whitespace relative content value before resolving (reproduces the real Statichost.eu 404 bug: a leading space survived into the URL as a literal %20)", () => {
+    const html = `<meta property="og:image" content=" /preview.png">`;
+    expect(extractOgImage(html, "https://www.statichost.eu/")).toBe(
+      "https://www.statichost.eu/preview.png",
+    );
+  });
+
+  it("rejects a generic/blocklisted image (arXiv's real, confirmed repeated site logo) and returns undefined", () => {
+    const html = `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`;
+    expect(
+      extractOgImage(html, "https://arxiv.org/abs/2609.04190"),
+    ).toBeUndefined();
+  });
+
+  it("falls through to twitter:image when og:image is present but rejected as generic", () => {
+    const html = `
+      <meta property="og:image" content="https://example.com/site-logo.png">
+      <meta name="twitter:image" content="https://example.com/real-cover.png">
+    `;
+    expect(extractOgImage(html, "https://example.com/article")).toBe(
+      "https://example.com/real-cover.png",
+    );
+  });
+});
+
+describe("isGenericImageUrl", () => {
+  it("rejects arXiv's known generic site-wide logo URL", () => {
+    expect(
+      isGenericImageUrl(
+        "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      ),
+    ).toBe(true);
+  });
+
+  it("rejects URLs containing favicon/sprite/placeholder/badge/wordmark/avatar/icon", () => {
+    expect(isGenericImageUrl("https://example.com/favicon.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/sprite-sheet.png")).toBe(
+      true,
+    );
+    expect(isGenericImageUrl("https://example.com/placeholder.jpg")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/badge.svg")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/wordmark.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/avatar.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/icon-192.png")).toBe(true);
+  });
+
+  it("accepts a genuinely per-item GitHub opengraph card URL", () => {
+    expect(
+      isGenericImageUrl("https://opengraph.githubassets.com/abc123/owner/repo"),
+    ).toBe(false);
+  });
+
+  it("accepts a genuinely per-item Dev.to cover-image proxy URL", () => {
+    expect(
+      isGenericImageUrl(
+        "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fabc.jpg",
+      ),
+    ).toBe(false);
   });
 });
 
