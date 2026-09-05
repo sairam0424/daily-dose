@@ -589,6 +589,12 @@ describe("dist/index.html build output", () => {
       /\[data-skin=['"]?dev['"]?\][^{]*\.logo-mark-dev\s*\{[^}]*display:\s*block/,
     );
   });
+
+  it("(backlog) the homepage nav no longer links to the now-gated /stats page", () => {
+    expect(html).not.toMatch(
+      /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?href="\/stats"/,
+    );
+  });
 });
 
 describe("dist/favicon.svg", () => {

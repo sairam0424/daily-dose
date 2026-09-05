@@ -91,4 +91,9 @@ describe("dist/stats/index.html build output", () => {
       "expected the Page views heading to appear after the totalRuns===0 ternary closes, not inside either of its branches",
     ).toBeGreaterThan(ternaryCloseEnd);
   });
+
+  it("(backlog) renders the interest-score chart on the owner-only stats page", () => {
+    expect(html).toContain('id="score-chart"');
+    expect(html).toContain("Interest scores");
+  });
 });

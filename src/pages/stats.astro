@@ -14,8 +14,11 @@ export const prerender = false;
 
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { getCollection } from 'astro:content';
+import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
+import { groupEntriesByDate } from '../lib/digestGrouping.js';
 
 interface StatsEntry {
   date: string;
@@ -40,6 +43,12 @@ async function readStats(): Promise<StatsEntry[]> {
 }
 
 const entries = await readStats();
+
+const allDigestEntries = await getCollection('digest');
+const digestDateGroups = groupEntriesByDate(allDigestEntries);
+const latestDigestGroup = digestDateGroups.length > 0 ? digestDateGroups[0] : null;
+const chartLabels = latestDigestGroup?.entries.map((entry) => entry.data.title) ?? [];
+const chartScores = latestDigestGroup?.entries.map((entry) => entry.data.interest_score) ?? [];
 
 const totalCostUsd = entries.reduce((sum, e) => sum + e.costUsd, 0);
 const totalInputTokens = entries.reduce((sum, e) => sum + e.inputTokens, 0);
@@ -206,6 +215,13 @@ function formatUsd(amount: number): string {
             ))}
           </tbody>
         </table>
+      </>
+    )}
+
+    {chartLabels.length > 0 && (
+      <>
+        <h2 class="section-heading">Interest scores</h2>
+        <DigestChart labels={chartLabels} scores={chartScores} />
       </>
     )}
 
