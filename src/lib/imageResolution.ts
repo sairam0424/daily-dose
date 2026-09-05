@@ -176,6 +176,41 @@ export async function resolveArxivFigureImage(
   }
 }
 
+/** Verifies a resolved candidate image URL actually serves something
+ * before it's accepted - catches the real, confirmed case where a
+ * scraped og:image resolves to a syntactically valid URL that 404s (the
+ * statichost.eu bug: their own HTML has content="/%20preview.png", a
+ * literal %20 baked into the source, not a whitespace character this
+ * file's trimming can fix) as well as any other broken/expired/
+ * hotlink-blocked image, generally. A HEAD request, not GET - no need to
+ * download the image body just to check it exists. Never throws; a
+ * network error during the check is treated the same as "not
+ * reachable," matching this file's established fail-safe convention. */
+async function isImageUrlReachable(url: string): Promise<boolean> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url, {
+      method: "HEAD",
+      signal: controller.signal,
+      headers: IMAGE_FETCH_HEADERS,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function verifyImageReachable(
+  candidate: string | undefined,
+): Promise<string | undefined> {
+  if (!candidate) return undefined;
+  return (await isImageUrlReachable(candidate)) ? candidate : undefined;
+}
+
 export interface ResolvedImage {
   image_url?: string;
   favicon_url?: string;
@@ -205,21 +240,26 @@ export async function resolveItemImage(
       console.warn(
         `[imageResolution] Non-OK response (${response.status}) fetching ${pageUrl} for image enrichment - skipping image/favicon for this item only.`,
       );
-      return arxivId
-        ? { image_url: await resolveArxivFigureImage(arxivId) }
-        : {};
+      const fallback = arxivId
+        ? await resolveArxivFigureImage(arxivId)
+        : undefined;
+      return { image_url: await verifyImageReachable(fallback) };
     }
 
     const html = await response.text();
     const ogImage = extractOgImage(html, pageUrl);
-    const image_url =
+    const candidate =
       ogImage ?? (arxivId ? await resolveArxivFigureImage(arxivId) : undefined);
+    const image_url = await verifyImageReachable(candidate);
     return { image_url, favicon_url: extractFavicon(html, pageUrl) };
   } catch (error) {
     console.warn(
       `[imageResolution] Failed to fetch/parse ${pageUrl} for image enrichment (${(error as Error).message}) - skipping image/favicon for this item only.`,
     );
-    return arxivId ? { image_url: await resolveArxivFigureImage(arxivId) } : {};
+    const fallback = arxivId
+      ? await resolveArxivFigureImage(arxivId)
+      : undefined;
+    return { image_url: await verifyImageReachable(fallback) };
   } finally {
     clearTimeout(timeout);
   }

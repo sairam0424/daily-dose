@@ -188,11 +188,13 @@ describe("resolveItemImage", () => {
   });
 
   it("resolves image_url and favicon_url from a successful fetch", async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: true,
-      text: async () =>
-        `<meta property="og:image" content="https://example.com/cover.png"><link rel="icon" href="/f.ico">`,
-    });
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/cover.png"><link rel="icon" href="/f.ico">`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
 
     const result = await resolveItemImage("https://example.com/article");
     expect(result.image_url).toBe("https://example.com/cover.png");
@@ -338,7 +340,8 @@ describe("resolveItemImage with arxivId fallback", () => {
         ok: true,
         text: async () =>
           `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
-      });
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",
@@ -369,6 +372,83 @@ describe("resolveItemImage with arxivId fallback", () => {
           `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
       })
       .mockResolvedValueOnce({ ok: true, text: async () => "<html></html>" });
+
+    const result = await resolveItemImage(
+      "https://arxiv.org/abs/2609.04190",
+      "2609.04190",
+    );
+    expect(result.image_url).toBeUndefined();
+  });
+});
+
+describe("resolveItemImage rejects an unreachable resolved image", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('(regression) drops a resolved og:image that 404s when actually requested (reproduces the real statichost.eu bug: content="/%20preview.png" resolves to a syntactically valid but dead URL)', async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://www.statichost.eu/%20preview.png">`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the resolved image URL
+
+    const result = await resolveItemImage("https://www.statichost.eu/");
+    expect(result.image_url).toBeUndefined();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenNthCalledWith(
+      2,
+      "https://www.statichost.eu/%20preview.png",
+      expect.objectContaining({ method: "HEAD" }),
+    );
+  });
+
+  it("keeps a resolved og:image that passes the reachability check", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/real-cover.png">`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+
+    const result = await resolveItemImage("https://example.com/article");
+    expect(result.image_url).toBe("https://example.com/real-cover.png");
+  });
+
+  it("treats a reachability-check network error the same as unreachable (drops the image, does not throw)", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/flaky.png">`,
+      })
+      .mockRejectedValueOnce(new Error("network down during HEAD check"));
+
+    await expect(
+      resolveItemImage("https://example.com/article"),
+    ).resolves.toEqual(expect.objectContaining({ image_url: undefined }));
+  });
+
+  it("also verifies the arXiv ar5iv fallback figure's reachability before accepting it", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the ar5iv figure
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",
