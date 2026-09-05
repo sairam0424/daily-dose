@@ -15,6 +15,22 @@ import { DIST_DIR } from "./testUtils.js";
 const DIST_RSS = join(DIST_DIR, "rss.xml");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
+// fast-xml-parser's default maxEntityCount (1000) is a DTD entity-expansion
+// (billion-laughs) safety ceiling - it also counts every predefined entity
+// reference (&amp;, &lt;, etc.) toward that same total, not just malicious
+// DTD-declared entities. rss.xml has no windowing (every committed digest
+// date is included forever, see src/pages/rss.xml.ts), so this count only
+// grows as real data accumulates - confirmed: the 2026-09-05 real Bedrock
+// pipeline run alone pushed the live feed's count to 1016, past the
+// default. This is a parser safety default that needs to scale with real
+// content growth, not an actual XML validity bug in the feed itself (it is
+// never given untrusted external XML - only this project's own build
+// output). Revisit if growth ever approaches this ceiling again.
+const RSS_PARSER_OPTIONS = {
+  ignoreAttributes: false,
+  processEntities: { maxTotalExpansions: 100_000 },
+};
+
 function readCommittedDates(): string[] {
   return readdirSync(DIGEST_BASE, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -35,8 +51,24 @@ beforeAll(() => {
 });
 
 describe("dist/rss.xml build output", () => {
+  it("(regression) parser tolerates a realistically large entity count without hitting fast-xml-parser's default DoS ceiling", () => {
+    // Synthetic, deterministic fixture - independent of how many real
+    // entities today's committed data happens to contain, so this stays a
+    // real regression guard regardless of tomorrow's real corpus size.
+    // &lt;/&gt; (not &amp;) is the real trigger: content:encoded's escaped
+    // HTML markup (every <p>, <a href>, etc. from real item titles/why_read
+    // rendered as HTML) is what actually accumulates past the ceiling -
+    // confirmed against the real 2026-09-05 pipeline run's dist/rss.xml,
+    // which had 1017 total &lt;/&gt; references and only 1 literal &amp;.
+    const manyEscapedTags = "&lt;p&gt;text&lt;/p&gt;".repeat(300); // 1200 entity references, > fast-xml-parser's default 1000 ceiling
+    const syntheticXml = `<rss><channel><item><content:encoded>${manyEscapedTags}</content:encoded></item></channel></rss>`;
+
+    const parser = new XMLParser(RSS_PARSER_OPTIONS);
+    expect(() => parser.parse(syntheticXml)).not.toThrow();
+  });
+
   it("is well-formed enough to parse as XML", () => {
-    const parser = new XMLParser({ ignoreAttributes: false });
+    const parser = new XMLParser(RSS_PARSER_OPTIONS);
     expect(() => parser.parse(rssXml)).not.toThrow();
 
     const parsed = parser.parse(rssXml);
@@ -48,7 +80,7 @@ describe("dist/rss.xml build output", () => {
     const committedDates = readCommittedDates();
     expect(committedDates.length).toBeGreaterThan(0);
 
-    const parser = new XMLParser({ ignoreAttributes: false });
+    const parser = new XMLParser(RSS_PARSER_OPTIONS);
     const parsed = parser.parse(rssXml);
     const items = Array.isArray(parsed.rss.channel.item)
       ? parsed.rss.channel.item
