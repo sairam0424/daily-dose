@@ -3,13 +3,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
+import { DIST_DIR } from "./testUtils.js";
 
-const DIST_SITEMAP_INDEX = join(
-  import.meta.dirname,
-  "..",
-  "dist",
-  "sitemap-index.xml",
-);
+const DIST_SITEMAP_INDEX = join(DIST_DIR, "sitemap-index.xml");
 
 let xml: string;
 

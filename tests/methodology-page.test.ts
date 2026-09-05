@@ -10,15 +10,9 @@ import {
   MIN_HISTORY_FOR_ANOMALY_CHECK,
 } from "../src/lib/costTracking.js";
 import { interestTier } from "../src/lib/interestTier.js";
-import { readAllPageCss } from "./testUtils.js";
+import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
-const DIST_METHODOLOGY = join(
-  import.meta.dirname,
-  "..",
-  "dist",
-  "methodology",
-  "index.html",
-);
+const DIST_METHODOLOGY = join(DIST_DIR, "methodology", "index.html");
 
 let html: string;
 

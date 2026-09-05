@@ -6,15 +6,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
-import { readAllPageCss } from "./testUtils.js";
+import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
-const DIST_STATS = join(
-  import.meta.dirname,
-  "..",
-  "dist",
-  "stats",
-  "index.html",
-);
+const DIST_STATS = join(DIST_DIR, "stats", "index.html");
 const STATS_JSONL = join(
   import.meta.dirname,
   "..",
