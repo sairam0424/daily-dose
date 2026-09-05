@@ -105,4 +105,34 @@ describe("DigestItemSchema", () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it("accepts a valid item WITHOUT analysis (most historical items won't have one)", () => {
+    const result = DigestItemSchema.safeParse(validItem);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.analysis).toBeUndefined();
+    }
+  });
+
+  it("accepts a valid item WITH analysis set, and parses it through unchanged", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      analysis:
+        "This is a real, multi-sentence analysis of why the item matters technically.",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.analysis).toBe(
+        "This is a real, multi-sentence analysis of why the item matters technically.",
+      );
+    }
+  });
+
+  it("rejects an empty-string analysis", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      analysis: "",
+    });
+    expect(result.success).toBe(false);
+  });
 });
