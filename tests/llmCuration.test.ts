@@ -32,6 +32,7 @@ function toolUseResponse(
     interest_score: number;
     why_read: string;
     analysis?: string;
+    exclude?: boolean;
   }>,
 ) {
   return {
@@ -106,6 +107,7 @@ describe("scoreItemsWithLLM", () => {
           why_read: "Genuinely substantive discussion.",
           analysis:
             "A real, multi-sentence analysis of why this HN story is worth reading.",
+          exclude: false,
         },
         {
           id: "arxiv-2501.00001",
@@ -113,6 +115,7 @@ describe("scoreItemsWithLLM", () => {
           why_read: "Solid but incremental result.",
           analysis:
             "A real, multi-sentence analysis judged against the paper's own abstract.",
+          exclude: false,
         },
       ]),
     );
@@ -141,6 +144,7 @@ describe("scoreItemsWithLLM", () => {
       why_read: "Genuinely substantive discussion.",
       analysis:
         "A real, multi-sentence analysis of why this HN story is worth reading.",
+      exclude: false,
     });
     expect(outcome.scores.get("arxiv-2501.00001")?.interest_score).toBe(6);
     expect(mockCreate).toHaveBeenCalledTimes(1);
@@ -176,6 +180,7 @@ describe("scoreItemsWithLLM", () => {
             interest_score: 5,
             why_read: "Fine.",
             analysis: "A real, multi-sentence fallback-model analysis.",
+            exclude: false,
           },
         ]),
       );
@@ -270,6 +275,7 @@ describe("scoreItemsWithLLM", () => {
           interest_score: 8,
           why_read: "Genuinely substantive discussion.",
           analysis: "A real, multi-sentence analysis of why this matters.",
+          exclude: false,
         },
       ]),
     );
@@ -288,6 +294,7 @@ describe("scoreItemsWithLLM", () => {
       interest_score: 8,
       why_read: "Genuinely substantive discussion.",
       analysis: "A real, multi-sentence analysis of why this matters.",
+      exclude: false,
     });
   });
 
@@ -299,6 +306,7 @@ describe("scoreItemsWithLLM", () => {
           interest_score: 5,
           why_read: "Fine.",
           analysis: "Fine analysis.",
+          exclude: false,
         },
       ]),
     );
@@ -317,6 +325,7 @@ describe("scoreItemsWithLLM", () => {
           interest_score: 5,
           why_read: "Fine.",
           analysis: "Fine analysis.",
+          exclude: false,
         },
       ]),
     );
@@ -327,5 +336,81 @@ describe("scoreItemsWithLLM", () => {
     const itemSchema = callArgs.tools[0].input_schema.properties.scores.items;
     expect(itemSchema.required).toContain("analysis");
     expect(itemSchema.properties.analysis).toBeDefined();
+  });
+
+  it("throws if the tool_use input is missing exclude (the new required field)", async () => {
+    mockCreate.mockResolvedValue({
+      content: [
+        {
+          type: "tool_use",
+          id: "toolu_no_exclude",
+          name: "record_scores",
+          input: {
+            scores: [
+              {
+                id: "hn-1",
+                interest_score: 7,
+                why_read: "Fine.",
+                analysis: "Fine analysis.",
+              },
+            ],
+          },
+        },
+      ],
+      stop_reason: "tool_use",
+      usage: { input_tokens: 50, output_tokens: 10 },
+    });
+
+    await expect(
+      scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
+    ).rejects.toThrow();
+  });
+
+  it("returns exclude: true in the ScoreResult when the real LLM flags an item as harmful/inappropriate", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "github-harmful-repo",
+          interest_score: 0,
+          why_read:
+            "Actively harmful content with no legitimate technical merit.",
+          analysis:
+            "This repository's real purpose is generating non-consensual intimate imagery and has no place in a technical digest regardless of star count.",
+          exclude: true,
+        },
+      ]),
+    );
+
+    const outcome = await scoreItemsWithLLM([
+      {
+        id: "github-harmful-repo",
+        source: "github",
+        title: "some/harmful-repo",
+        stars: 1000,
+      },
+    ]);
+
+    expect(outcome.scores.get("github-harmful-repo")?.exclude).toBe(true);
+  });
+
+  it("requires exclude in the scoring tool's input_schema for each item", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 5,
+          why_read: "Fine.",
+          analysis: "Fine analysis.",
+          exclude: false,
+        },
+      ]),
+    );
+
+    await scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]);
+
+    const callArgs = mockCreate.mock.calls[0]![0];
+    const itemSchema = callArgs.tools[0].input_schema.properties.scores.items;
+    expect(itemSchema.required).toContain("exclude");
+    expect(itemSchema.properties.exclude).toBeDefined();
   });
 });

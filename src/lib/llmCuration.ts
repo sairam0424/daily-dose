@@ -75,6 +75,7 @@ export interface ScoreResult {
   interest_score: number;
   why_read: string;
   analysis: string;
+  exclude: boolean;
 }
 
 export interface LlmScoringOutcome {
@@ -122,6 +123,7 @@ const ScoreEntrySchema = z.object({
   interest_score: z.number().min(0).max(10),
   why_read: z.string().min(1),
   analysis: z.string().min(1),
+  exclude: z.boolean(),
 });
 const ScoresResponseSchema = z.object({ scores: z.array(ScoreEntrySchema) });
 
@@ -199,6 +201,8 @@ function buildPrompt(items: ScorableItem[]): string {
     "",
     "Score honestly. A high-engagement story is not automatically high-interest - judge substance, not popularity. Do not inflate scores and do not write clickbait-style reasons.",
     "",
+    "Also decide whether each item should be excluded entirely from a professional technical digest for being actively harmful, illegal, or inappropriate - for example, a tool whose real purpose is generating non-consensual intimate imagery, malware, or harassment tooling. Set exclude: true ONLY for genuinely harmful or inappropriate content, never merely because an item is low-quality, boring, or off-topic - those cases get a low interest_score instead and must still be included, not excluded.",
+    "",
     "Also write a short analysis (3-4 sentences) for each item, explaining what it actually is and why it matters technically - this is separate from the one-sentence reason above and can go into more real detail.",
     "",
     "For items that include an <abstract> or <article_excerpt> tag: you have real source text available. Decide, per item, whether adapting that real text into your 3-4 sentence analysis or writing your own original analysis would be more useful for a reader deciding whether to read the full item - then output only your chosen version. Do not default to always picking one or the other; judge each item on its own.",
@@ -214,7 +218,7 @@ function buildPrompt(items: ScorableItem[]): string {
 const scoreTool = {
   name: "record_scores",
   description:
-    "Record an interest score (0-10), one-sentence reason, and a short analysis for each item.",
+    "Record an interest score (0-10), one-sentence reason, a short analysis, and an exclusion flag for each item.",
   input_schema: {
     type: "object" as const,
     properties: {
@@ -231,8 +235,9 @@ const scoreTool = {
             },
             why_read: { type: "string" as const },
             analysis: { type: "string" as const },
+            exclude: { type: "boolean" as const },
           },
-          required: ["id", "interest_score", "why_read", "analysis"],
+          required: ["id", "interest_score", "why_read", "analysis", "exclude"],
         },
       },
     },
@@ -311,6 +316,7 @@ export async function scoreItemsWithLLM(
           interest_score: entry.interest_score,
           why_read: entry.why_read,
           analysis: entry.analysis,
+          exclude: entry.exclude,
         });
       }
 
