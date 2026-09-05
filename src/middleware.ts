@@ -33,8 +33,19 @@ export function isValidBasicAuth(
   }
 }
 
+// Astro's default trailingSlash mode ("ignore") routes "/stats/" to the
+// exact same page as "/stats" - a strict-equality check against only
+// "/stats" would let "/stats/" through this middleware entirely
+// (isValidBasicAuth never even runs), serving the real gated page with
+// no credentials required. Normalize away a single trailing slash before
+// comparing so both forms are gated identically.
+export function isStatsPath(pathname: string): boolean {
+  const normalized = pathname.replace(/\/$/, "") || "/";
+  return normalized === "/stats";
+}
+
 export const onRequest = defineMiddleware((context, next) => {
-  if (context.url.pathname !== "/stats") {
+  if (!isStatsPath(context.url.pathname)) {
     return next();
   }
 
