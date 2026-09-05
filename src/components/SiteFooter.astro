@@ -1,11 +1,25 @@
 ---
-// Styled entirely by the global .site-footer/.site-footer a rules already
+// Styled entirely by the global .site-footer/.site-footer-* rules already
 // defined in Layout.astro - no scoped <style> here to avoid duplicating
 // (and risking drifting from) those shared rules.
+//
+// No Methodology link here (or in any top nav) - a third-party reader has
+// no use for the scoring rubric, and it invites second-guessing the
+// curation rather than just reading the digest. The page itself still
+// exists and works if linked directly; it's just never advertised.
 ---
 
 <footer class="site-footer">
-  <p>
-    <a href="/rss.xml">RSS</a> · <a href="/methodology">Methodology</a> · © {new Date().getFullYear()}
+  <p class="site-footer-tagline">
+    daily-dose — a daily AI-curated technical digest.
   </p>
+  <nav class="site-footer-links" aria-label="Subscribe and browse">
+    <a href="/rss.xml">All sources (RSS)</a>
+    <a href="/rss/hn.xml">Hacker News only</a>
+    <a href="/rss/arxiv.xml">arXiv only</a>
+    <a href="/rss/github.xml">GitHub only</a>
+    <a href="/rss/devto.xml">Dev.to only</a>
+    <a href="/archive/">Archive</a>
+  </nav>
+  <p class="site-footer-copyright">© {new Date().getFullYear()} daily-dose</p>
 </footer>
