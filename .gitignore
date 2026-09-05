@@ -29,3 +29,5 @@ scratch-pad/
 
 # superpowers brainstorming visual-companion mockups
 .superpowers/
+.vercel
+.env*
