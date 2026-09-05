@@ -1,5 +1,6 @@
 ---
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import SiteMeta from '../components/SiteMeta.astro';
 import PreferenceControls from '../components/PreferenceControls.astro';
 
@@ -43,6 +44,7 @@ const { title, description, path, includeRssLink = true } = Astro.props;
   </head>
   <body>
     <Analytics />
+    <SpeedInsights />
     <PreferenceControls />
     <slot />
     <style is:global>
