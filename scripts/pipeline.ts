@@ -646,6 +646,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreStoryPlaceholder(story);
+    const analysis = fromLlm?.analysis;
     const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
@@ -656,6 +657,7 @@ export async function main(): Promise<void> {
       tags: [],
       interest_score,
       why_read,
+      analysis,
       authors: story.author ? [story.author] : [],
       hn_id: story.hn_id,
       points: story.points,
@@ -679,6 +681,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreArxivPlaceholder(paper);
+    const analysis = fromLlm?.analysis;
     const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
@@ -689,6 +692,7 @@ export async function main(): Promise<void> {
       tags: paper.categories,
       interest_score,
       why_read,
+      analysis,
       authors: paper.authors,
       reading_minutes: computeReadingMinutes(paper.summary),
       image_url: resolvedImage.image_url,
@@ -713,6 +717,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreGithubPlaceholder(repo);
+    const analysis = fromLlm?.analysis;
     const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
@@ -723,6 +728,7 @@ export async function main(): Promise<void> {
       tags: repo.language ? [repo.language] : [],
       interest_score,
       why_read,
+      analysis,
       authors: [],
       stars: repo.stars,
       image_url: resolvedImage.image_url,
@@ -747,6 +753,7 @@ export async function main(): Promise<void> {
     }
     const { interest_score, why_read } =
       fromLlm ?? scoreDevtoPlaceholder(article);
+    const analysis = fromLlm?.analysis;
     const resolvedImage = resolvedImages.get(id) ?? {};
 
     const candidate = {
@@ -757,6 +764,7 @@ export async function main(): Promise<void> {
       tags: article.tags,
       interest_score,
       why_read,
+      analysis,
       authors: [],
       reactions: article.reactions,
       reading_minutes: computeReadingMinutes(article.bodyText),
