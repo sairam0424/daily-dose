@@ -2,6 +2,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   extractOgImage,
   extractFavicon,
+  extractFirstFigureImage,
+  isGenericImageUrl,
+  resolveArxivFigureImage,
   resolveItemImage,
 } from "../src/lib/imageResolution.js";
 
@@ -72,6 +75,66 @@ describe("extractOgImage", () => {
     const html = `<meta property="og:image" content="https://image.example.com/cover.png">`;
     expect(extractOgImage(html, "not a valid url at all")).toBeUndefined();
   });
+
+  it("(regression) trims a leading-whitespace relative content value before resolving (reproduces the real Statichost.eu 404 bug: a leading space survived into the URL as a literal %20)", () => {
+    const html = `<meta property="og:image" content=" /preview.png">`;
+    expect(extractOgImage(html, "https://www.statichost.eu/")).toBe(
+      "https://www.statichost.eu/preview.png",
+    );
+  });
+
+  it("rejects a generic/blocklisted image (arXiv's real, confirmed repeated site logo) and returns undefined", () => {
+    const html = `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`;
+    expect(
+      extractOgImage(html, "https://arxiv.org/abs/2609.04190"),
+    ).toBeUndefined();
+  });
+
+  it("falls through to twitter:image when og:image is present but rejected as generic", () => {
+    const html = `
+      <meta property="og:image" content="https://example.com/site-logo.png">
+      <meta name="twitter:image" content="https://example.com/real-cover.png">
+    `;
+    expect(extractOgImage(html, "https://example.com/article")).toBe(
+      "https://example.com/real-cover.png",
+    );
+  });
+});
+
+describe("isGenericImageUrl", () => {
+  it("rejects arXiv's known generic site-wide logo URL", () => {
+    expect(
+      isGenericImageUrl(
+        "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      ),
+    ).toBe(true);
+  });
+
+  it("rejects URLs containing favicon/sprite/placeholder/badge/wordmark/avatar/icon", () => {
+    expect(isGenericImageUrl("https://example.com/favicon.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/sprite-sheet.png")).toBe(
+      true,
+    );
+    expect(isGenericImageUrl("https://example.com/placeholder.jpg")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/badge.svg")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/wordmark.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/avatar.png")).toBe(true);
+    expect(isGenericImageUrl("https://example.com/icon-192.png")).toBe(true);
+  });
+
+  it("accepts a genuinely per-item GitHub opengraph card URL", () => {
+    expect(
+      isGenericImageUrl("https://opengraph.githubassets.com/abc123/owner/repo"),
+    ).toBe(false);
+  });
+
+  it("accepts a genuinely per-item Dev.to cover-image proxy URL", () => {
+    expect(
+      isGenericImageUrl(
+        "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fabc.jpg",
+      ),
+    ).toBe(false);
+  });
 });
 
 describe("extractFavicon", () => {
@@ -125,11 +188,13 @@ describe("resolveItemImage", () => {
   });
 
   it("resolves image_url and favicon_url from a successful fetch", async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: true,
-      text: async () =>
-        `<meta property="og:image" content="https://example.com/cover.png"><link rel="icon" href="/f.ico">`,
-    });
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/cover.png"><link rel="icon" href="/f.ico">`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
 
     const result = await resolveItemImage("https://example.com/article");
     expect(result.image_url).toBe("https://example.com/cover.png");
@@ -165,5 +230,230 @@ describe("resolveItemImage", () => {
         headers: { "User-Agent": "daily-dose-pipeline" },
       }),
     );
+  });
+});
+
+describe("extractFirstFigureImage", () => {
+  it("extracts the first <figure><img src> from HTML", () => {
+    const html = `<article><figure><img src="/html/2609.04190/figure1.png" alt="fig1"></figure></article>`;
+    expect(
+      extractFirstFigureImage(
+        html,
+        "https://ar5iv.labs.arxiv.org/html/2609.04190",
+      ),
+    ).toBe("https://ar5iv.labs.arxiv.org/html/2609.04190/figure1.png");
+  });
+
+  it("returns undefined when no <figure><img> exists", () => {
+    expect(
+      extractFirstFigureImage(
+        "<html><body>No figures here.</body></html>",
+        "https://ar5iv.labs.arxiv.org/html/2609.04190",
+      ),
+    ).toBeUndefined();
+  });
+
+  it("resolves a relative figure image URL against the ar5iv page URL", () => {
+    const html = `<figure><img src="figure2.png"></figure>`;
+    expect(
+      extractFirstFigureImage(
+        html,
+        "https://ar5iv.labs.arxiv.org/html/2609.04190",
+      ),
+    ).toBe("https://ar5iv.labs.arxiv.org/html/2609.04190/figure2.png");
+  });
+});
+
+describe("resolveArxivFigureImage", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("fetches the ar5iv rendering and extracts the first figure image", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      text: async () =>
+        `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
+    });
+
+    const result = await resolveArxivFigureImage("2609.04190");
+    expect(result).toBe(
+      "https://ar5iv.labs.arxiv.org/html/2609.04190/fig1.png",
+    );
+    expect(fetch).toHaveBeenCalledWith(
+      "https://ar5iv.labs.arxiv.org/html/2609.04190",
+      expect.objectContaining({
+        signal: expect.any(AbortSignal),
+        headers: { "User-Agent": "daily-dose-pipeline" },
+      }),
+    );
+  });
+
+  it("returns undefined and does not throw on a non-OK response", async () => {
+    (fetch as any).mockResolvedValueOnce({ ok: false, status: 404 });
+    await expect(
+      resolveArxivFigureImage("2609.04190"),
+    ).resolves.toBeUndefined();
+  });
+
+  it("returns undefined and does not throw when fetch rejects", async () => {
+    (fetch as any).mockRejectedValueOnce(new Error("network down"));
+    await expect(
+      resolveArxivFigureImage("2609.04190"),
+    ).resolves.toBeUndefined();
+  });
+
+  it("handles old-style arXiv IDs with a slash correctly in the URL", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      text: async () => "<html></html>",
+    });
+    await resolveArxivFigureImage("cs.AI/0601001");
+    expect(fetch).toHaveBeenCalledWith(
+      "https://ar5iv.labs.arxiv.org/html/cs.AI/0601001",
+      expect.anything(),
+    );
+  });
+});
+
+describe("resolveItemImage with arxivId fallback", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("falls back to the arXiv figure when the primary og:image is rejected as generic", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+
+    const result = await resolveItemImage(
+      "https://arxiv.org/abs/2609.04190",
+      "2609.04190",
+    );
+    expect(result.image_url).toBe(
+      "https://ar5iv.labs.arxiv.org/html/2609.04190/fig1.png",
+    );
+  });
+
+  it("does not attempt the arXiv fallback when no arxivId is given", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      text: async () =>
+        `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+    });
+
+    const result = await resolveItemImage("https://arxiv.org/abs/2609.04190");
+    expect(result.image_url).toBeUndefined();
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("still returns undefined image_url when the arXiv fallback also finds nothing", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({ ok: true, text: async () => "<html></html>" });
+
+    const result = await resolveItemImage(
+      "https://arxiv.org/abs/2609.04190",
+      "2609.04190",
+    );
+    expect(result.image_url).toBeUndefined();
+  });
+});
+
+describe("resolveItemImage rejects an unreachable resolved image", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('(regression) drops a resolved og:image that 404s when actually requested (reproduces the real statichost.eu bug: content="/%20preview.png" resolves to a syntactically valid but dead URL)', async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://www.statichost.eu/%20preview.png">`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the resolved image URL
+
+    const result = await resolveItemImage("https://www.statichost.eu/");
+    expect(result.image_url).toBeUndefined();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenNthCalledWith(
+      2,
+      "https://www.statichost.eu/%20preview.png",
+      expect.objectContaining({ method: "HEAD" }),
+    );
+  });
+
+  it("keeps a resolved og:image that passes the reachability check", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/real-cover.png">`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+
+    const result = await resolveItemImage("https://example.com/article");
+    expect(result.image_url).toBe("https://example.com/real-cover.png");
+  });
+
+  it("treats a reachability-check network error the same as unreachable (drops the image, does not throw)", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/flaky.png">`,
+      })
+      .mockRejectedValueOnce(new Error("network down during HEAD check"));
+
+    await expect(
+      resolveItemImage("https://example.com/article"),
+    ).resolves.toEqual(expect.objectContaining({ image_url: undefined }));
+  });
+
+  it("also verifies the arXiv ar5iv fallback figure's reachability before accepting it", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the ar5iv figure
+
+    const result = await resolveItemImage(
+      "https://arxiv.org/abs/2609.04190",
+      "2609.04190",
+    );
+    expect(result.image_url).toBeUndefined();
   });
 });

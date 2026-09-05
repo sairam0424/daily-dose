@@ -8,6 +8,7 @@ import {
   type RawGithubRepo,
   type RawDevtoArticle,
 } from "../src/lib/curation.js";
+import type { RawArxivPaper } from "../scripts/pipeline.js";
 import {
   computeReadingMinutes,
   buildImageableItems,
@@ -198,6 +199,43 @@ describe("buildImageableItems", () => {
     expect(items).toEqual([
       { id: `hn-${lowEngagementStory.hn_id}`, url: lowEngagementStory.url },
     ]);
+  });
+
+  it("includes arxivId only for arxiv entries, using the real (unsanitized) arXiv id", () => {
+    const paper: RawArxivPaper = {
+      title: "A real paper",
+      url: "https://arxiv.org/abs/2609.04190",
+      arxivId: "2609.04190",
+      publishedDate: "2026-09-01T00:00:00Z",
+      authors: ["Someone"],
+      categories: ["cs.AI"],
+      summary: "An abstract.",
+    };
+
+    const items = buildImageableItems([lowEngagementStory], [paper], [], []);
+    const arxivItem = items.find((item) => item.id.startsWith("arxiv-"));
+    const hnItem = items.find((item) => item.id.startsWith("hn-"));
+
+    expect(arxivItem?.arxivId).toBe("2609.04190");
+    expect(hnItem?.arxivId).toBeUndefined();
+  });
+
+  it("keeps arxivId as the real id even when it needs sanitizing for the item's own id/filename (old-style id with a slash)", () => {
+    const oldStylePaper: RawArxivPaper = {
+      title: "An old-style-id paper",
+      url: "https://arxiv.org/abs/cs.AI/0601001",
+      arxivId: "cs.AI/0601001",
+      publishedDate: "2006-01-01T00:00:00Z",
+      authors: ["Someone"],
+      categories: ["cs.AI"],
+      summary: "An abstract.",
+    };
+
+    const items = buildImageableItems([], [oldStylePaper], [], []);
+    const arxivItem = items.find((item) => item.id.startsWith("arxiv-"));
+
+    expect(arxivItem?.id).toBe("arxiv-cs.AI-0601001");
+    expect(arxivItem?.arxivId).toBe("cs.AI/0601001");
   });
 });
 

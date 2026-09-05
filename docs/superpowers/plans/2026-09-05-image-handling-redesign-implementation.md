@@ -10,6 +10,8 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-05-image-handling-redesign-design.md` (merged to `main` at commit `46a34cd`, PR #72) — this plan argues from that spec; read both. One deliberate refinement of the spec's illustrative code: the spec's `extractOgImage` sketch only checked the FIRST candidate (`og:image` ?? `twitter:image` ?? `twitter:image:src`) for genericness, which would give up entirely if `og:image` exists but is generic even when `twitter:image` might be a real, good image. Task 1 below instead tries each candidate in priority order, skipping any that's missing, unresolvable, or generic, until one succeeds — same intent (reject generic images), corrected fallback behavior.
 
+**Mid-execution amendment (recorded ruling, added after Task 1 landed):** Task 1's implementer and the controller both independently confirmed, against the real live `statichost.eu` page, that the spec's motivating Statichost bug was misdiagnosed — the real `content` attribute is `"/%20preview.png"`, a literal `%20` already baked into the source site's own HTML, not a whitespace character our scraper mishandles. `.trim()` (Task 1) is still real, valid, independently-justified defensive code (matches documented best practice for a real bug *class*), but does not close this specific site's own bug — none of the originally-planned 4 tasks did. Confirmed with the user via `AskUserQuestion`: add a new Task 3 (below) that verifies a resolved candidate image URL is actually reachable (HTTP 200) before accepting it, closing this gap generally rather than special-casing one site. Tasks 3-5 below were Tasks 3-4 before this amendment; renumbered.
+
 ## Global Constraints
 
 - Never make a real network call from any test — `fetch` stays fully mocked in `tests/imageResolution.test.ts`, exactly as today.
@@ -18,6 +20,7 @@
 - The "no image" case renders nothing (no placeholder, no icon) — this already works via `StoryCard.astro`'s existing `{entry.data.image_url && (...)}` conditional; no task here changes that conditional.
 - No AI-generated per-item images, no perceptual/fuzzy image hashing, no templated/screenshot-generated placeholder cards — all explicitly out of scope per the spec.
 - Ship as **one branch, one PR**, atomic commits per task in the order below (this is one cohesive fix, not independently-shippable phases).
+- (Added by the mid-execution amendment) Every accepted `image_url` — from the OG scrape or the arXiv `ar5iv` fallback — must pass a real HTTP HEAD reachability check before being returned; a candidate that 404s, errors, or times out is treated exactly like "no image found," never returned as `image_url`. This adds one more real HTTP request per item that has ANY resolved candidate (not just arXiv items) — still decorative/non-blocking, still bounded by the same `FETCH_TIMEOUT_MS`, still inside the same `mapWithConcurrency` cap of 6.
 
 ---
 
@@ -38,7 +41,7 @@ git checkout -b fix/image-handling-redesign
 - Test: `tests/imageResolution.test.ts`
 
 **Interfaces:**
-- Produces: `isGenericImageUrl(url: string): boolean` (new export). `extractOgImage`'s existing signature is unchanged, but its behavior now trims scraped content and skips generic matches, trying each candidate in order. Task 2 and Task 3 both rely on `isGenericImageUrl` staying exported with this exact name.
+- Produces: `isGenericImageUrl(url: string): boolean` (new export). `extractOgImage`'s existing signature is unchanged, but its behavior now trims scraped content and skips generic matches, trying each candidate in order.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -212,7 +215,7 @@ git commit -m "fix(images): sanitize scraped URLs and reject generic images"
 
 **Interfaces:**
 - Consumes: `isGenericImageUrl`, `resolveUrl` (Task 1, both already in this file).
-- Produces: `extractFirstFigureImage(html, baseUrl): string | undefined` (exported, pure). `resolveArxivFigureImage(arxivId): Promise<string | undefined>` (exported, async, network). `resolveItemImage(pageUrl, arxivId?)` gains an optional second parameter — Task 3 relies on this exact signature.
+- Produces: `extractFirstFigureImage(html, baseUrl): string | undefined` (exported, pure). `resolveArxivFigureImage(arxivId): Promise<string | undefined>` (exported, async, network). `resolveItemImage(pageUrl, arxivId?)` gains an optional second parameter — Task 3 (below) wraps this same function's final output; Task 4 relies on this exact signature.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -496,7 +499,207 @@ git commit -m "feat(images): add arXiv ar5iv figure fallback for the shared-logo
 
 ---
 
-### Task 3: Wire `arxivId` through `scripts/pipeline.ts`
+### Task 3: Verify a resolved image URL is reachable before accepting it
+
+**Files:**
+- Modify: `src/lib/imageResolution.ts`
+- Test: `tests/imageResolution.test.ts`
+
+**Interfaces:**
+- Consumes: nothing new — wraps `resolveItemImage`'s existing internal candidate (from `extractOgImage` or `resolveArxivFigureImage`, Tasks 1-2) right before it's returned.
+- Produces: no new exported names required by later tasks; `resolveItemImage`'s public signature (`pageUrl`, optional `arxivId`) is unchanged — only its internal behavior changes (a candidate URL that 404s/errors on a HEAD check is now treated the same as no image found at all).
+
+This task closes the real gap found while executing Task 1: the spec's motivating Statichost.eu bug (a candidate URL that resolves successfully as a string but 404s when actually requested) is not caught by trimming or the generic-image keyword blocklist — those operate on the URL string, not on whether the URL actually serves anything. This task adds a general reachability check that catches this case and any other broken/expired/hotlink-blocked image, not just this one site.
+
+- [ ] **Step 1: Write the failing tests**
+
+Add to `tests/imageResolution.test.ts`, as a new top-level `describe` block (anywhere after the `resolveItemImage` block):
+
+```ts
+describe("resolveItemImage rejects an unreachable resolved image", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("(regression) drops a resolved og:image that 404s when actually requested (reproduces the real statichost.eu bug: content=\"/%20preview.png\" resolves to a syntactically valid but dead URL)", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://www.statichost.eu/%20preview.png">`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the resolved image URL
+
+    const result = await resolveItemImage("https://www.statichost.eu/");
+    expect(result.image_url).toBeUndefined();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenNthCalledWith(
+      2,
+      "https://www.statichost.eu/%20preview.png",
+      expect.objectContaining({ method: "HEAD" }),
+    );
+  });
+
+  it("keeps a resolved og:image that passes the reachability check", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/real-cover.png">`,
+      })
+      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+
+    const result = await resolveItemImage("https://example.com/article");
+    expect(result.image_url).toBe("https://example.com/real-cover.png");
+  });
+
+  it("treats a reachability-check network error the same as unreachable (drops the image, does not throw)", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://example.com/flaky.png">`,
+      })
+      .mockRejectedValueOnce(new Error("network down during HEAD check"));
+
+    await expect(
+      resolveItemImage("https://example.com/article"),
+    ).resolves.toEqual(
+      expect.objectContaining({ image_url: undefined }),
+    );
+  });
+
+  it("also verifies the arXiv ar5iv fallback figure's reachability before accepting it", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () => `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the ar5iv figure
+
+    const result = await resolveItemImage(
+      "https://arxiv.org/abs/2609.04190",
+      "2609.04190",
+    );
+    expect(result.image_url).toBeUndefined();
+  });
+});
+```
+
+- [ ] **Step 2: Run tests to verify they fail**
+
+Run: `npm test -- tests/imageResolution.test.ts`
+
+Expected: all four new tests fail — today, `resolveItemImage` returns whatever `extractOgImage`/`resolveArxivFigureImage` resolved without any further check, so `fetch` is only called once (or twice for the arXiv case) instead of the expected extra HEAD-check call, and the dead/flaky URLs are returned as real `image_url` values instead of being dropped.
+
+- [ ] **Step 3: Implement the fix**
+
+In `src/lib/imageResolution.ts`, add a reachability-check helper (place after `resolveArxivFigureImage`, before `ResolvedImage`):
+
+```ts
+/** Verifies a resolved candidate image URL actually serves something
+ * before it's accepted - catches the real, confirmed case where a
+ * scraped og:image resolves to a syntactically valid URL that 404s (the
+ * statichost.eu bug: their own HTML has content="/%20preview.png", a
+ * literal %20 baked into the source, not a whitespace character this
+ * file's trimming can fix) as well as any other broken/expired/
+ * hotlink-blocked image, generally. A HEAD request, not GET - no need to
+ * download the image body just to check it exists. Never throws; a
+ * network error during the check is treated the same as "not
+ * reachable," matching this file's established fail-safe convention. */
+async function isImageUrlReachable(url: string): Promise<boolean> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url, {
+      method: "HEAD",
+      signal: controller.signal,
+      headers: IMAGE_FETCH_HEADERS,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function verifyImageReachable(
+  candidate: string | undefined,
+): Promise<string | undefined> {
+  if (!candidate) return undefined;
+  return (await isImageUrlReachable(candidate)) ? candidate : undefined;
+}
+```
+
+Replace `resolveItemImage` to route every candidate through `verifyImageReachable` before returning:
+
+```ts
+export async function resolveItemImage(
+  pageUrl: string,
+  arxivId?: string,
+): Promise<ResolvedImage> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(pageUrl, {
+      signal: controller.signal,
+      headers: IMAGE_FETCH_HEADERS,
+    });
+
+    if (!response.ok) {
+      console.warn(
+        `[imageResolution] Non-OK response (${response.status}) fetching ${pageUrl} for image enrichment - skipping image/favicon for this item only.`,
+      );
+      const fallback = arxivId ? await resolveArxivFigureImage(arxivId) : undefined;
+      return { image_url: await verifyImageReachable(fallback) };
+    }
+
+    const html = await response.text();
+    const ogImage = extractOgImage(html, pageUrl);
+    const candidate =
+      ogImage ?? (arxivId ? await resolveArxivFigureImage(arxivId) : undefined);
+    const image_url = await verifyImageReachable(candidate);
+    return { image_url, favicon_url: extractFavicon(html, pageUrl) };
+  } catch (error) {
+    console.warn(
+      `[imageResolution] Failed to fetch/parse ${pageUrl} for image enrichment (${(error as Error).message}) - skipping image/favicon for this item only.`,
+    );
+    const fallback = arxivId ? await resolveArxivFigureImage(arxivId) : undefined;
+    return { image_url: await verifyImageReachable(fallback) };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+```
+
+- [ ] **Step 4: Run tests to verify they pass**
+
+Run: `npm test -- tests/imageResolution.test.ts`
+
+Expected: all tests in this file pass, including every pre-existing test — a pre-existing test like `"resolves image_url and favicon_url from a successful fetch"` only ever mocks ONE `fetch` call today; since `mockResolvedValueOnce` is only set up once, the SECOND call (the new HEAD check) falls through to the mock's default (`undefined`) return, which `await fetch(...)` would then try to call `.ok` on `undefined` and throw — check each pre-existing test in this file that calls `resolveItemImage` and add a second `.mockResolvedValueOnce({ ok: true })` (for the HEAD check) wherever the test expects a real `image_url` to survive; tests that already expect `image_url` to be absent (e.g. non-OK primary response, network error, no og:image tag at all) need no change, since `verifyImageReachable` short-circuits on `undefined` without calling `fetch` again.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add src/lib/imageResolution.ts tests/imageResolution.test.ts
+git commit -m "fix(images): verify a resolved image URL is reachable before accepting it"
+```
+
+---
+
+### Task 4: Wire `arxivId` through `scripts/pipeline.ts`
 
 **Files:**
 - Modify: `scripts/pipeline.ts`
@@ -635,7 +838,7 @@ git commit -m "feat(pipeline): pass arxivId through to resolveItemImage"
 
 ---
 
-### Task 4: CSS fix — letterbox instead of crop
+### Task 5: CSS fix — letterbox instead of crop
 
 **Files:**
 - Modify: `src/components/StoryCard.astro`
@@ -695,7 +898,7 @@ git commit -m "fix(story-card): letterbox story images instead of cropping them"
 
 ---
 
-### Task 5: Whole-feature verification
+### Task 6: Whole-feature verification
 
 **Files:** none (verification only)
 
@@ -735,5 +938,5 @@ gh pr create --title "fix: redesign image handling (arXiv logo, URL sanitization
 ## Self-Review Notes (for whoever executes this plan)
 
 - **Spec coverage:** all four parts of the spec (sanitize, reject-generic, arXiv `ar5iv` fallback, CSS letterbox) map to Tasks 1-4. The "no image → show nothing" requirement needs no task since it's already correct in `StoryCard.astro`'s existing conditional — confirmed explicitly in the spec's own text, not silently skipped.
-- **Type consistency:** `buildImageableItems`'s new `arxivId?: string` field (Task 3) matches `resolveItemImage`'s new `arxivId?: string` second parameter (Task 2) and `resolveArxivFigureImage`'s `arxivId: string` parameter (Task 2) — verified consistent across all three.
+- **Type consistency:** `buildImageableItems`'s new `arxivId?: string` field (Task 4) matches `resolveItemImage`'s new `arxivId?: string` second parameter (Task 2) and `resolveArxivFigureImage`'s `arxivId: string` parameter (Task 2) — verified consistent across all three.
 - **Deviation from the spec's illustrative code, recorded here rather than silently:** Task 1's `extractOgImage` tries every candidate in priority order (see the plan header's note) rather than the spec's simpler single-candidate sketch — a strict improvement toward the spec's own stated intent (prefer a real image over showing nothing, when one exists among the OG/Twitter candidates).
