@@ -7,16 +7,11 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
+import { DIST_DIR } from "./testUtils.js";
 
-const DIST_ARCHIVE_INDEX = join(
-  import.meta.dirname,
-  "..",
-  "dist",
-  "archive",
-  "index.html",
-);
+const DIST_ARCHIVE_INDEX = join(DIST_DIR, "archive", "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
-const DIST_ARCHIVE_BASE = join(import.meta.dirname, "..", "dist", "archive");
+const DIST_ARCHIVE_BASE = join(DIST_DIR, "archive");
 
 function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })

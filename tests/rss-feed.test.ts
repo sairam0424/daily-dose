@@ -10,8 +10,9 @@ import rssBuilder from "@astrojs/rss";
 import { beforeAll, describe, expect, it } from "vitest";
 import { renderDayContent } from "../src/lib/rssContent.js";
 import type { DigestItem } from "../src/lib/digestSchema.js";
+import { DIST_DIR } from "./testUtils.js";
 
-const DIST_RSS = join(import.meta.dirname, "..", "dist", "rss.xml");
+const DIST_RSS = join(DIST_DIR, "rss.xml");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
 function readCommittedDates(): string[] {

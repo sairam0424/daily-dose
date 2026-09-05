@@ -4,6 +4,7 @@ node_modules/
 # build output
 dist/
 .astro/
+.vercel/
 
 # logs
 npm-debug.log*
@@ -28,3 +29,5 @@ scratch-pad/
 
 # superpowers brainstorming visual-companion mockups
 .superpowers/
+.vercel
+.env*

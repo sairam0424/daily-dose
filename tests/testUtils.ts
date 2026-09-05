@@ -1,7 +1,12 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const DIST_DIR = join(import.meta.dirname, "..", "dist");
+// The @astrojs/vercel adapter (Phase 5, feat(stats): switch /stats to
+// on-demand rendering) splits `astro build`'s output into `dist/client/`
+// (static assets) and `dist/server/` (the on-demand render function) —
+// every e2e test that reads pre-built static HTML/XML/JSON must read from
+// `dist/client/`, not the old flat `dist/` root.
+export const DIST_DIR = join(import.meta.dirname, "..", "dist", "client");
 
 // Astro's default `build.inlineStylesheets: 'auto'` only inlines a page's
 // CSS as a <style> tag while it stays under Vite's ~4096-byte threshold;

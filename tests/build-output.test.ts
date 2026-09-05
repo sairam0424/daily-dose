@@ -103,7 +103,7 @@ describe("dist/index.html build output", () => {
     expect(() => new URL(ogImageUrl)).not.toThrow();
 
     const imagePath = new URL(ogImageUrl).pathname;
-    const distImagePath = join(import.meta.dirname, "..", "dist", imagePath);
+    const distImagePath = join(DIST_DIR, imagePath);
     expect(
       existsSync(distImagePath),
       `expected og:image URL ${ogImageUrl} to resolve to a real file at ${distImagePath}`,
@@ -587,6 +587,12 @@ describe("dist/index.html build output", () => {
     );
     expect(style).toMatch(
       /\[data-skin=['"]?dev['"]?\][^{]*\.logo-mark-dev\s*\{[^}]*display:\s*block/,
+    );
+  });
+
+  it("(backlog) the homepage nav no longer links to the now-gated /stats page", () => {
+    expect(html).not.toMatch(
+      /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?href="\/stats"/,
     );
   });
 });

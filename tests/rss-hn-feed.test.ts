@@ -4,8 +4,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { XMLParser } from "fast-xml-parser";
 import { beforeAll, describe, expect, it } from "vitest";
+import { DIST_DIR } from "./testUtils.js";
 
-const DIST_FEED = join(import.meta.dirname, "..", "dist", "rss", "hn.xml");
+const DIST_FEED = join(DIST_DIR, "rss", "hn.xml");
 
 let feedXml: string;
 

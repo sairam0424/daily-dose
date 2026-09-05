@@ -4,8 +4,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
+import { DIST_DIR } from "./testUtils.js";
 
-const DIST_LATEST_JSON = join(import.meta.dirname, "..", "dist", "latest.json");
+const DIST_LATEST_JSON = join(DIST_DIR, "latest.json");
 
 let raw: string;
 
