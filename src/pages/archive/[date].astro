@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import DateJump from '../../components/DateJump.astro';
 import DigestList from '../../components/DigestList.astro';
 import FilterBar from '../../components/FilterBar.astro';
 import Logo from '../../components/Logo.astro';
@@ -15,11 +16,13 @@ interface DateProps {
   entries: CollectionEntry<'digest'>[];
   olderDate: string | null;
   newerDate: string | null;
+  allDates: string[];
 }
 
 export async function getStaticPaths() {
   const allEntries = await getCollection('digest');
   const dateGroups = groupEntriesByDate(allEntries);
+  const allDates = dateGroups.map((group) => group.date);
 
   return dateGroups.map((group, index) => ({
     params: { date: group.date },
@@ -29,12 +32,13 @@ export async function getStaticPaths() {
       // chronologically older date and the previous index is newer.
       olderDate: dateGroups[index + 1]?.date ?? null,
       newerDate: index > 0 ? dateGroups[index - 1].date : null,
+      allDates,
     },
   }));
 }
 
 const { date } = Astro.params as unknown as DateParams;
-const { entries, olderDate, newerDate } = Astro.props as DateProps;
+const { entries, olderDate, newerDate, allDates } = Astro.props as DateProps;
 ---
 
 <Layout
@@ -48,6 +52,7 @@ const { entries, olderDate, newerDate } = Astro.props as DateProps;
       <a href="/archive/">All digests</a>
       <a href="/methodology">Methodology &rarr;</a>
     </nav>
+    <DateJump dates={allDates} />
     <h1><Logo /> Digest — {date}</h1>
     <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
   </header>

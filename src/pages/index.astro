@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import DateJump from '../components/DateJump.astro';
 import DigestList from '../components/DigestList.astro';
 import FilterBar from '../components/FilterBar.astro';
 import Logo from '../components/Logo.astro';
@@ -12,6 +13,7 @@ const dateGroups = groupEntriesByDate(allEntries);
 const latestGroup = dateGroups.length > 0 ? dateGroups[0] : null;
 const latestDate = latestGroup?.date ?? null;
 const latestEntries = latestGroup?.entries ?? [];
+const allDigestDates = dateGroups.map((group) => group.date);
 ---
 
 <Layout
@@ -24,6 +26,7 @@ const latestEntries = latestGroup?.entries ?? [];
       <a href="/archive/">All digests &rarr;</a>
       <a href="/methodology">Methodology &rarr;</a>
     </nav>
+    <DateJump dates={allDigestDates} />
     <h1><Logo /> daily-dose</h1>
     <p class="tagline">A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.</p>
   </header>

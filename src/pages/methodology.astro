@@ -1,6 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
+import DateJump from '../components/DateJump.astro';
 import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
+import { groupEntriesByDate } from '../lib/digestGrouping.js';
 import { MAX_REASONABLE_ITEMS } from '../lib/llmCuration.js';
 import {
   ANOMALY_MULTIPLIER,
@@ -10,6 +13,9 @@ import {
 } from '../lib/costTracking.js';
 
 const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
+
+const allDigestEntries = await getCollection('digest');
+const allDigestDates = groupEntriesByDate(allDigestEntries).map((group) => group.date);
 ---
 
 <Layout
@@ -19,6 +25,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
 >
   <header class="masthead">
     <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+    <DateJump dates={allDigestDates} />
     <h1><Logo /> Methodology</h1>
     <p class="tagline">
       The real rubric, thresholds, and cost controls this project actually runs — every
