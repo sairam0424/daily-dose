@@ -5,6 +5,7 @@ import DateJump from '../../components/DateJump.astro';
 import DigestList from '../../components/DigestList.astro';
 import FilterBar from '../../components/FilterBar.astro';
 import Logo from '../../components/Logo.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
@@ -50,7 +51,6 @@ const { entries, olderDate, newerDate, allDates } = Astro.props as DateProps;
     <nav class="site-nav">
       <a href="/">&larr; Latest digest</a>
       <a href="/archive/">All digests</a>
-      <a href="/methodology">Methodology &rarr;</a>
     </nav>
     <DateJump dates={allDates} />
     <h1><Logo /> Digest — {date}</h1>
@@ -70,6 +70,8 @@ const { entries, olderDate, newerDate, allDates } = Astro.props as DateProps;
       </span>
     </nav>
   </main>
+
+  <SiteFooter />
 </Layout>
 
 <style>

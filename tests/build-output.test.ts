@@ -530,6 +530,21 @@ describe("dist/index.html build output", () => {
     expect(footerMatch![1]).toMatch(/©\s*\d{4}/);
   });
 
+  it("(backlog) declutters the top nav for casual readers - Methodology moved to the footer", () => {
+    // A third-person/casual reader doesn't need a link to the scoring
+    // rubric in primary navigation - it's still reachable "without
+    // digging" (SOUL.md's AI-transparency bar) via the footer on every
+    // page, just not competing with reader-facing nav items.
+    const navMatch = html.match(
+      /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
+    );
+    expect(navMatch, "expected a .site-nav").toBeTruthy();
+    expect(navMatch![1]).not.toContain('href="/methodology"');
+
+    const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
+    expect(footerMatch![1]).toContain('href="/methodology"');
+  });
+
   it("(backlog) does not render a numeric interest-score badge publicly", () => {
     expect(html).not.toContain('class="score-badge');
     const style = readAllPageCss(html);

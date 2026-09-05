@@ -18,6 +18,7 @@ import { getCollection } from 'astro:content';
 import DateJump from '../components/DateJump.astro';
 import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
 import {
@@ -66,7 +67,6 @@ const dayRows = aggregateByDay(entries);
   <header class="masthead">
     <nav class="site-nav">
       <a href="/">&larr; Back to digest</a>
-      <a href="/methodology">Methodology &rarr;</a>
     </nav>
     <DateJump dates={allDigestDates} />
     <h1><Logo /> Cost &amp; stats</h1>
@@ -186,6 +186,7 @@ const dayRows = aggregateByDay(entries);
       for why real LLM curation exists at all.
     </p>
   </footer>
+  <SiteFooter />
 </Layout>
 
 <style>
