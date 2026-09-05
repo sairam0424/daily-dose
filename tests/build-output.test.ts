@@ -173,8 +173,11 @@ describe("dist/index.html build output", () => {
     expect(html.includes("No stories match the selected filters.")).toBe(true);
   });
 
-  it("has a Methodology nav link", () => {
-    expect(html).toContain('href="/methodology"');
+  it("does not link to Methodology anywhere on the homepage", () => {
+    // Methodology is deliberately never advertised to readers (nav or
+    // footer) - a third-person reader has no use for the scoring rubric.
+    // The page itself still exists and works if linked directly.
+    expect(html).not.toContain('href="/methodology"');
   });
 
   it("renders the correct reading-time badge for every latest-date item, matching formatReadingBadge()'s real output for the real committed data", () => {
@@ -214,10 +217,17 @@ describe("dist/index.html build output", () => {
     expect(html).toContain("Newsreader");
   });
 
-  it("renders the skin segmented control defaulting to Dev-editorial with the theme toggle disabled", () => {
-    expect(html).toMatch(/id="skin-toggle-dev"[^>]*aria-pressed="true"/);
-    expect(html).toMatch(/id="skin-toggle-newspaper"[^>]*aria-pressed="false"/);
-    expect(html).toMatch(/id="theme-toggle"[^>]*disabled/);
+  it("(feature flag) never renders the Dev/Newspaper skin toggle by default - Newspaper is the only skin, and the theme toggle is enabled", () => {
+    // Dev-editorial mode is a build-time feature flag (ENABLE_DEV_MODE),
+    // off by default - see Layout.astro/PreferenceControls.astro. A
+    // default `npm run build` (no env var set, matching real CI and
+    // production) must never expose the skin-toggle UI at all, and the
+    // light/dark theme toggle (Newspaper's own, unrelated feature) must
+    // be enabled by default now that Newspaper is always the active skin.
+    expect(html).not.toContain('id="skin-toggle-dev"');
+    expect(html).not.toContain('id="skin-toggle-newspaper"');
+    expect(html).toMatch(/id="theme-toggle"[^>]*>/);
+    expect(html).not.toMatch(/id="theme-toggle"[^>]*disabled/);
   });
 
   it("(audit fix) wraps the header utility row on narrow viewports so it never renders under the fixed preference-controls", () => {
@@ -563,11 +573,11 @@ describe("dist/index.html build output", () => {
     expect(footerMatch![1]).toMatch(/©\s*\d{4}/);
   });
 
-  it("(backlog) declutters the top nav for casual readers - Methodology moved to the footer", () => {
-    // A third-person/casual reader doesn't need a link to the scoring
-    // rubric in primary navigation - it's still reachable "without
-    // digging" (SOUL.md's AI-transparency bar) via the footer on every
-    // page, just not competing with reader-facing nav items.
+  it("(backlog) declutters the top nav for casual readers - Methodology no longer advertised anywhere", () => {
+    // A third-person/casual reader has no use for a link to the scoring
+    // rubric - not in primary navigation, and (per a later revisit) not
+    // in the footer either. The page itself is unaffected and still
+    // directly reachable by URL; it's just never surfaced in the UI.
     const navMatch = html.match(
       /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
     );
@@ -575,7 +585,7 @@ describe("dist/index.html build output", () => {
     expect(navMatch![1]).not.toContain('href="/methodology"');
 
     const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
-    expect(footerMatch![1]).toContain('href="/methodology"');
+    expect(footerMatch![1]).not.toContain('href="/methodology"');
   });
 
   it("(backlog) does not render a numeric interest-score badge publicly", () => {

@@ -1,4 +1,15 @@
 ---
+// devModeEnabled is a build-time feature flag (see Layout.astro) - off by
+// default. Off means the skin-toggle pill below never renders at all, not
+// just that it defaults to Newspaper - there is no way to reach Dev-
+// editorial mode from the UI while this is false, matching AGENTS.md's
+// scope discipline (Dev-editorial is a real, still-shipped skin, just not
+// one this deployment currently advertises to readers).
+interface Props {
+  devModeEnabled?: boolean;
+}
+
+const { devModeEnabled = false } = Astro.props;
 ---
 
 <div class="preference-controls">
@@ -7,9 +18,6 @@
     type="button"
     class="theme-toggle"
     aria-label="Toggle dark mode"
-    disabled
-    aria-disabled="true"
-    title="Theme is fixed in Dev-editorial mode"
   >
     <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"></circle>
@@ -26,10 +34,12 @@
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
     </svg>
   </button>
-  <div class="skin-toggle" role="group" aria-label="Visual style">
-    <button id="skin-toggle-dev" type="button" class="skin-btn" data-skin-value="dev" aria-pressed="true">Dev</button>
-    <button id="skin-toggle-newspaper" type="button" class="skin-btn" data-skin-value="newspaper" aria-pressed="false">Newspaper</button>
-  </div>
+  {devModeEnabled && (
+    <div class="skin-toggle" role="group" aria-label="Visual style">
+      <button id="skin-toggle-dev" type="button" class="skin-btn" data-skin-value="dev" aria-pressed="false">Dev</button>
+      <button id="skin-toggle-newspaper" type="button" class="skin-btn" data-skin-value="newspaper" aria-pressed="true">Newspaper</button>
+    </div>
+  )}
 </div>
 
 <style>

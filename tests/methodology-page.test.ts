@@ -78,10 +78,10 @@ describe("dist/methodology/index.html", () => {
     );
   });
 
-  it("(backlog) has the shared footer with RSS and Methodology links", () => {
+  it("(backlog) has the shared footer with RSS links, and no longer links to Methodology anywhere", () => {
     const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
     expect(footerMatch, "expected a <footer>").toBeTruthy();
     expect(footerMatch![1]).toContain('href="/rss.xml"');
-    expect(footerMatch![1]).toContain('href="/methodology"');
+    expect(footerMatch![1]).not.toContain('href="/methodology"');
   });
 });

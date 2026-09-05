@@ -75,7 +75,7 @@ describe("dist/archive/index.html build output", () => {
     expect(archiveIndexHtml).toContain('href="/rss/devto.xml"');
   });
 
-  it("(backlog) keeps Methodology out of the top nav, reachable via the footer instead", () => {
+  it("(backlog) keeps Methodology out of both the top nav and the footer", () => {
     const navMatch = archiveIndexHtml.match(
       /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
     );
@@ -86,7 +86,7 @@ describe("dist/archive/index.html build output", () => {
       /<footer[^>]*>([\s\S]*?)<\/footer>/,
     );
     expect(footerMatch, "expected a <footer>").toBeTruthy();
-    expect(footerMatch![1]).toContain('href="/methodology"');
+    expect(footerMatch![1]).not.toContain('href="/methodology"');
   });
 });
 
@@ -132,7 +132,7 @@ describe("dist/archive/<date>/index.html build output", () => {
       expect(dateHtml).not.toContain("Interest scores");
     });
 
-    it("(backlog) keeps Methodology out of the top nav on a date page, reachable via the footer instead", () => {
+    it("(backlog) keeps Methodology out of both the top nav and the footer on a date page", () => {
       const dates = readCommittedDates();
       const datePagePath = join(
         DIST_ARCHIVE_BASE,
@@ -148,7 +148,7 @@ describe("dist/archive/<date>/index.html build output", () => {
 
       const footerMatch = dateHtml.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
       expect(footerMatch, "expected a <footer>").toBeTruthy();
-      expect(footerMatch![1]).toContain('href="/methodology"');
+      expect(footerMatch![1]).not.toContain('href="/methodology"');
     });
   }
 });
