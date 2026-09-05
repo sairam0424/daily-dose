@@ -306,9 +306,28 @@ export async function scoreItemsWithLLM(
         );
       }
 
+      // Real, observed Bedrock quirk: the tool_use input's `scores` array
+      // occasionally comes back as a JSON-encoded STRING rather than a
+      // real array, even though input_schema declares it as an array and
+      // every other run returns a real array - confirmed directly against
+      // a real Bedrock call, not a hypothetical. Normalize before
+      // validating so this doesn't crash the whole run; a string that
+      // ISN'T valid JSON still fails loudly via JSON.parse's own throw,
+      // which the outer catch below reports normally - this only
+      // tolerates a differently-ENCODED valid response, never a
+      // genuinely malformed one.
+      const rawInput = block.input as { scores?: unknown };
+      const normalizedInput = {
+        ...rawInput,
+        scores:
+          typeof rawInput.scores === "string"
+            ? JSON.parse(rawInput.scores)
+            : rawInput.scores,
+      };
+
       // The real safety net - input_schema only biases generation, it does
       // not guarantee server-side compliance, especially without `strict`.
-      const parsed = ScoresResponseSchema.parse(block.input);
+      const parsed = ScoresResponseSchema.parse(normalizedInput);
 
       const scores = new Map<string, ScoreResult>();
       for (const entry of parsed.scores) {
