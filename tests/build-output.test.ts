@@ -13,6 +13,13 @@ import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 const DIST_INDEX = join(DIST_DIR, "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
+// [^"]* after "lead-story" (not an immediate closing quote) tolerates any
+// additional classes StoryCard.astro appends, e.g. "story-card lead-story
+// has-image" - see the "(regression)" test below for why this matters
+// with real data.
+const LEAD_STORY_LI_REGEX =
+  /<li class="story-card lead-story[^"]*"[^>]*>[\s\S]*?<\/li>/;
+
 function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })
     .filter((entry) => typeof entry === "string" && entry.endsWith(".json"))
@@ -235,6 +242,25 @@ describe("dist/index.html build output", () => {
     ).toMatch(mobileNavRule);
   });
 
+  it("(regression) lead-story <li> regex tolerates additional classes like has-image", () => {
+    // Real committed data can have the max-score lead story also be an
+    // item with a real image_url (confirmed: 2026-09-05's real Bedrock run
+    // produced exactly this - 3 of 4 tied top-score items had image_url
+    // set). StoryCard.astro's class list is `story-card lead-story
+    // has-image` in that case, not just `story-card lead-story` - a regex
+    // requiring the class attribute to close immediately after
+    // "lead-story" never matches that real, live combination. This test
+    // pins the fix with a synthetic fixture, independent of whatever
+    // today's real committed data happens to contain.
+    const syntheticHtml =
+      '<li class="story-card lead-story has-image" data-source="hn" data-interest-tier="must-read"><a class="story-title" href="#">Test Title</a></li>';
+    const leadMatch = syntheticHtml.match(LEAD_STORY_LI_REGEX);
+    expect(
+      leadMatch,
+      "expected the lead-story <li> regex to match even when has-image is also present",
+    ).toBeTruthy();
+  });
+
   it("marks the highest-scored story as the lead story", () => {
     // Scoped to the latest date only, matching what groupEntriesByDate()
     // + index.astro actually render - the globally-highest-scored item
@@ -265,9 +291,7 @@ describe("dist/index.html build output", () => {
       "expected at least one committed digest item",
     ).toBeGreaterThan(0);
 
-    const leadMatch = html.match(
-      /<li class="story-card lead-story"[^>]*>[\s\S]*?<\/li>/,
-    );
+    const leadMatch = html.match(LEAD_STORY_LI_REGEX);
     expect(leadMatch, "expected a .lead-story <li>").toBeTruthy();
     const leadTitleMatch = leadMatch![0].match(
       /<a class="story-title"[^>]*>\s*([\s\S]*?)\s*<\/a>/,
