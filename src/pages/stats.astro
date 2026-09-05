@@ -10,6 +10,8 @@
 // ran (missing credentials, or a per-item response gap) produce no cost
 // and are not recorded in stats.jsonl at all, so they're absent here by
 // construction, not omitted by choice.
+export const prerender = false;
+
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import Logo from '../components/Logo.astro';
