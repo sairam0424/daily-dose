@@ -193,18 +193,21 @@ describe("dist/index.html build output", () => {
     );
   });
 
-  it("(regression) shows the story-count zone unconditionally, now that the theme toggle is in-flow and no longer a fixed-position collision risk", () => {
-    // Previously gated behind a 1300px floor specifically to stay clear
-    // of the theme toggle's old viewport-fixed position (real, measured
-    // overlap at 1107px). Now that the toggle renders as a normal
-    // in-flow child of this same row, that collision risk no longer
-    // exists, so this shows at every width.
-    const style = readAllPageCss(html);
-    expect(style).not.toMatch(
-      /\.story-count(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
+  it("(regression) keeps the utility row to exactly three zones - nav / older-day-link / theme toggle - no story-count 4th zone", () => {
+    // The "N stories" zone was tried and removed - the reader already
+    // sees the exact same count on the section heading + filter status
+    // line directly below, so repeating it in the masthead was pure
+    // duplication. Left/middle/right spread via the shared
+    // .masthead-utility justify-content:space-between.
+    expect(html).not.toContain('class="story-count"');
+    expect(html).not.toMatch(/\d+\s+stor(y|ies)</);
+    const utilityMatch = html.match(
+      /<div[^>]*class="masthead-utility"[^>]*>([\s\S]*?)<\/div>\s*<hgroup/,
     );
-    expect(style).not.toMatch(/@media\s*\(min-width:\s*1300px\)/);
-    expect(html).toContain('class="story-count"');
+    expect(utilityMatch, "expected a .masthead-utility wrapper").toBeTruthy();
+    expect(utilityMatch![1]).toContain('class="site-nav"');
+    expect(utilityMatch![1]).toContain('class="date-nav"');
+    expect(utilityMatch![1]).toContain('id="theme-toggle"');
   });
 
   it("tags every story card with its source and interest tier", () => {
