@@ -41,11 +41,6 @@ const olderDate = dateGroups[1]?.date ?? null;
           <span class="date-nav-disabled" aria-disabled="true">&larr; Older</span>
         )}
       </span>
-      {latestEntries.length > 0 && (
-        <span class="story-count">
-          {latestEntries.length} {latestEntries.length === 1 ? 'story' : 'stories'}
-        </span>
-      )}
       <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
@@ -73,23 +68,14 @@ const olderDate = dateGroups[1]?.date ?? null;
 </Layout>
 
 <style>
-  /* Four real zones (nav link / date-nav / story count / theme toggle)
-     instead of one centered cluster - confirmed directly against
-     tdd.cat's real eyebrow bar (Playwright-measured: archive+site-name
-     left, date navigation center, story count + toggle right), which
-     reads as a considered "masthead strip" rather than sparse, centered
-     leftovers on a wide screen. Scoped to this page only (not
-     Layout.astro's shared .masthead-utility) since archive/methodology/
-     stats have no meaningful story count to show as their own zone.
-
-     Previously gated behind a 1300px floor to stay clear of the theme
-     toggle's old viewport-fixed position - now that the toggle renders
-     as a normal in-flow child of this same row (moved out of a fixed
-     overlay per deep research), that collision risk no longer exists,
-     so the story count shows unconditionally at every width. */
-  .story-count {
-    font-family: var(--font-body);
-  }
+  /* Three real zones (nav link / date-nav / theme toggle) instead of one
+     centered cluster - left/middle/right, spread via Layout.astro's
+     shared .masthead-utility justify-content:space-between. A 4th
+     "N stories" zone was tried here and removed - the reader already
+     sees the exact same count on the section heading + filter status
+     line directly below ("Latest digest — <date>" / "Showing X of Y
+     stories"), so repeating it in the masthead was pure duplication,
+     not real information. */
 
   /* Replaces the native input[type=date] calendar picker entirely -
      confirmed via deep research that every real comparable editorial/
