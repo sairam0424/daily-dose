@@ -28,6 +28,11 @@ const allDigestDates = dateGroups.map((group) => group.date);
         <a href="/archive/">All digests &rarr;</a>
       </nav>
       <DateJump dates={allDigestDates} />
+      {latestEntries.length > 0 && (
+        <span class="story-count">
+          {latestEntries.length} {latestEntries.length === 1 ? 'story' : 'stories'}
+        </span>
+      )}
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> daily-dose</h1>
@@ -52,3 +57,41 @@ const allDigestDates = dateGroups.map((group) => group.date);
 
   <SiteFooter />
 </Layout>
+
+<style>
+  /* Three real zones (nav link / date-jump / story count) instead of one
+     centered cluster - confirmed directly against tdd.cat's real eyebrow
+     bar (Playwright-measured: archive+site-name left, date navigation
+     center, story count + toggle right), which reads as a considered
+     "masthead strip" rather than sparse, centered leftovers on a wide
+     screen. Scoped to this page only (not Layout.astro's shared
+     .masthead-utility) since archive/methodology/stats have no
+     meaningful story count to show as a third zone.
+
+     Gated behind a 1300px floor, not the usual 480px mobile breakpoint -
+     .masthead-utility's own max-width (1100px) only kicks in and creates
+     real separation from the viewport's right edge once the viewport is
+     wider than roughly 1150px; below that, the utility bar's right edge
+     tracks the viewport's right edge almost 1:1 (masthead's 1.5rem
+     padding is the only gap), landing this 3rd zone directly under the
+     always-fixed theme-toggle (position:fixed; right:1rem in
+     PreferenceControls.astro). Confirmed empirically via Playwright:
+     real, measured overlap at a 1107px viewport, clear by 1200px - 1300px
+     is a deliberately wide margin past that measured crossover, not the
+     bare minimum. Below 1300px this feature simply doesn't render,
+     rather than trying to re-derive a 3-child mobile reservation width. */
+  .story-count {
+    display: none;
+    font-family: var(--font-body);
+  }
+
+  @media (min-width: 1300px) {
+    .masthead-utility {
+      justify-content: space-between;
+    }
+
+    .story-count {
+      display: inline;
+    }
+  }
+</style>
