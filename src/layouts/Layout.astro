@@ -59,7 +59,9 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
     <SpeedInsights />
     <PreferenceControls devModeEnabled={devModeEnabled} />
     <ScrollToTop />
-    <slot />
+    <div class="page-sheet">
+      <slot />
+    </div>
     <style is:global>
       :root,
       [data-skin='newspaper'] {
@@ -116,6 +118,29 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         background: var(--bg-page);
         color: var(--ink);
         line-height: 1.5;
+      }
+
+      /* Newspaper-only "paper sheet" - confirmed directly against
+         tdd.cat's real masthead-through-footer wrapper (Playwright-
+         measured: a lighter --bg-surface-toned <article class=
+         "newspaper-sheet"> with a real box-shadow, spanning the whole
+         page from top to bottom, sitting on a visibly darker --bg-page
+         background outside it). Today's page had --bg-page and
+         --bg-surface tokens defined but never applied as this kind of
+         page-wide surface - every card/heading/rule sat directly on
+         --bg-page, so there was no visible "board" to differentiate
+         content from background at all, just one flat color. Padding
+         absorbs the width difference so main/.masthead/.site-footer's
+         own existing max-width:1100px still centers correctly inside -
+         nothing about their own CSS needs to change. */
+      [data-skin='newspaper'] .page-sheet {
+        max-width: 1148px;
+        margin: 0 auto;
+        padding: 0 24px;
+        background: var(--bg-surface);
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.06),
+          0 18px 40px -20px rgba(0, 0, 0, 0.35);
       }
 
       /* Composition model (see the 2026-09-05 masthead deep-research):

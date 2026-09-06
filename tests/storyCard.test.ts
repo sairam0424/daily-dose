@@ -30,4 +30,29 @@ describe("StoryCard.astro source structure", () => {
   it("defines a larger .story-analysis size override for the lead story", () => {
     expect(source).toMatch(/\.lead-story \.story-analysis\s*\{[^}]*font-size:/);
   });
+
+  it("(regression) removes the favicon icon on load failure instead of showing a broken-image icon", () => {
+    // Real, observed failure: a real item's favicon_url (a third-party
+    // site's own favicon path) started returning HTTP 403 sometime after
+    // the pipeline's own reachability check passed - an inherent risk of
+    // any resolved third-party URL, not something a pipeline-side fix
+    // can guarantee against. Client-side onerror is the robust fallback.
+    expect(source).toMatch(
+      /<img[^>]*class="favicon-icon"[^>]*onerror="this\.remove\(\)"/s,
+    );
+  });
+
+  it("(regression) lets a newspaper story card flow across a column break instead of forcing a whole-card jump", () => {
+    // Confirmed via Playwright getBoundingClientRect on a real archive
+    // page: break-inside:avoid forces a card that doesn't fit the
+    // remaining space in a column to jump to the next column instead of
+    // splitting, which compounds into badly unbalanced columns with real
+    // content of uneven card heights (one column measured ~460px shorter
+    // than the tallest, with a dead gap below it). break-inside:auto
+    // balanced the same real content to within ~275px with no card
+    // actually rendering split.
+    expect(source).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\]\)\s*\.story-card\s*\{[^}]*break-inside:\s*auto/s,
+    );
+  });
 });

@@ -788,6 +788,24 @@ describe("dist/index.html build output", () => {
     );
   });
 
+  it("(regression) wraps the whole page in a newspaper-only 'paper sheet' surface, distinct from the page background", () => {
+    // Confirmed directly against tdd.cat's real masthead-through-footer
+    // wrapper (Playwright-measured: a lighter --bg-surface-toned surface
+    // with a real box-shadow, spanning the whole page, sitting on a
+    // visibly darker --bg-page background outside it). Before this,
+    // --bg-page and --bg-surface were defined but never applied as a
+    // page-wide surface - every card/heading/rule sat directly on
+    // --bg-page, with no differentiated "board" at all.
+    expect(html).toContain('<div class="page-sheet">');
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\]\s*\.page-sheet\s*\{[^}]*background:\s*var\(--bg-surface\)/,
+    );
+    expect(style).toMatch(
+      /\[data-skin=['"]?newspaper['"]?\]\s*\.page-sheet\s*\{[^}]*box-shadow:/,
+    );
+  });
+
   it("(backlog) the homepage nav no longer links to the now-gated /stats page", () => {
     expect(html).not.toMatch(
       /<nav[^>]*class="site-nav"[^>]*>[\s\S]*?href="\/stats"/,

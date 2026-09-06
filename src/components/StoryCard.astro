@@ -33,7 +33,15 @@ const tier = interestTier(entry.data.interest_score);
   {entry.data.analysis && <p class="story-analysis">{entry.data.analysis}</p>}
   <div class="story-meta">
     {entry.data.favicon_url && (
-      <img class="favicon-icon" src={entry.data.favicon_url} alt="" width="16" height="16" loading="lazy" />
+      <img
+        class="favicon-icon"
+        src={entry.data.favicon_url}
+        alt=""
+        width="16"
+        height="16"
+        loading="lazy"
+        onerror="this.remove()"
+      />
     )}
     <span class={`source-badge source-badge-${entry.data.source}`}>{entry.data.source}</span>
     <span class="reading-badge">{formatReadingBadge(entry.data)}</span>
@@ -303,7 +311,19 @@ const tier = interestTier(entry.data.interest_score);
     border-radius: 0;
     padding: 0.85rem 0;
     border-bottom: 1px solid var(--rule-soft);
-    break-inside: avoid;
+    /* (regression fix) break-inside:avoid forces a whole card that
+       doesn't fit the remaining space in a column to jump to the next
+       column instead of splitting - with real content of very uneven
+       card heights (plain-text cards vs. image cards), this compounds
+       into badly unbalanced columns: confirmed via Playwright
+       getBoundingClientRect on a real archive page, one column ending
+       ~460px shorter than the tallest with a big dead gap below it.
+       break-inside:auto lets a card flow across a column break like a
+       real newspaper article does, and empirically balances the same
+       real content to within ~275px across all 3 columns with no card
+       actually rendering split in this content - a genuinely more
+       authentic newspaper behavior, not just a workaround. */
+    break-inside: auto;
   }
 
   :global([data-skin='newspaper']) .story-card:first-child {
@@ -338,10 +358,10 @@ const tier = interestTier(entry.data.interest_score);
      full width above the columns — confirmed empirically (Playwright):
      once display:block above is in effect, the lead story renders at
      full list width and the remaining visible cards distribute evenly
-     into 3 (or 2/1, responsively) columns. break-inside:auto overrides
-     the general .story-card break-inside:avoid rule for this element
-     specifically, since a full-width spanning element has no column to
-     avoid breaking inside of. */
+     into 3 (or 2/1, responsively) columns. break-inside:auto here is now
+     redundant with the general .story-card rule above (both auto), kept
+     explicit so this rule still reads correctly on its own regardless
+     of the base rule. */
   :global([data-skin='newspaper']) .lead-story {
     column-span: all;
     break-inside: auto;
