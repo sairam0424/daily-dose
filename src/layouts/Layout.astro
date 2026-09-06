@@ -130,7 +130,21 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
          border is needed at the utility-to-brand boundary — typographic
          contrast alone (tiny uppercase vs. large display serif/sans)
          does that separating work, matching tdd.cat's own masthead. */
+      /* max-width/margin/padding deliberately match `main` exactly (same
+         1100px, same 1.5rem horizontal padding, same border-box sizing) -
+         confirmed directly against tdd.cat's real layout: its own
+         masthead-to-body separator <hr> is sized to its content column's
+         exact width (measured: both 1036px, identical left/right edges),
+         never full-bleed. Without this, the border-bottom below rendered
+         edge-to-edge across the whole viewport while every heading/filter/
+         card beneath it sat in a much narrower centered column - the
+         strongest line on the page gave no visual cue where that column
+         actually was, so the body read as "randomly not centered" on wide
+         screens even though it WAS centered (just narrower than the rule
+         suggested). */
       .masthead {
+        max-width: 1100px;
+        margin: 0 auto;
         padding: 1.75rem 1.5rem 1.5rem;
         border-bottom: 3px double var(--rule);
         text-align: center;

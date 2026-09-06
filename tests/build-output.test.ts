@@ -640,6 +640,21 @@ describe("dist/index.html build output", () => {
     );
   });
 
+  it("(regression) constrains .masthead's own box to main's exact width, so its border-bottom rule doesn't render full-bleed while the body renders in a narrower centered column", () => {
+    // Confirmed directly against tdd.cat's real layout (Playwright,
+    // getBoundingClientRect): its masthead-to-body separator is sized to
+    // its content column's exact width, never full-bleed. Without this,
+    // .masthead had no max-width of its own (only its CHILDREN did), so
+    // its border-bottom rendered edge-to-edge across the whole viewport on
+    // wide screens while every heading/filter/card beneath it sat in a
+    // much narrower centered column.
+    const style = readAllPageCss(html);
+    const mastheadBlock = style.match(/\.masthead\s*\{([^}]*)\}/);
+    expect(mastheadBlock, "expected a .masthead rule").toBeTruthy();
+    expect(mastheadBlock![1]).toMatch(/max-width:\s*1100px/);
+    expect(mastheadBlock![1]).toMatch(/margin:\s*0\s+auto/);
+  });
+
   it("(backlog fix) reverts the utility row to flex-start inside the mobile breakpoint, preserving the padding-right overlap fix", () => {
     // justify-content: center defeats the mobile padding-right
     // reservation's own assumption (a left-packed row never drifts
