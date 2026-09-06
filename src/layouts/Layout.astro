@@ -2,7 +2,6 @@
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import SiteMeta from '../components/SiteMeta.astro';
-import PreferenceControls from '../components/PreferenceControls.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import { isFlagEnabled } from '../lib/featureFlags.js';
 
@@ -57,7 +56,6 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
   <body>
     <Analytics />
     <SpeedInsights />
-    <PreferenceControls devModeEnabled={devModeEnabled} />
     <ScrollToTop />
     <div class="page-sheet">
       <slot />
@@ -177,9 +175,21 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         text-align: center;
       }
 
+      /* justify-content:space-between (not center) - now that
+         PreferenceControls renders as a normal in-flow child of this row
+         on every page (moved out of Layout.astro's fixed-position
+         overlay per deep research: an editorial theme toggle belongs
+         inline in the header, not floating in a viewport corner), every
+         page's utility row has ≥2 children (its own nav/date content,
+         plus the toggle) and reads better spread to the row's edges than
+         clustered in the center. This also obsoletes the old mobile
+         padding-right reservation that used to protect against the
+         toggle's PREVIOUS fixed-position overlay - normal flex-wrap
+         alone now handles narrow viewports correctly, since the toggle
+         is a real flex child like any other. */
       .masthead-utility {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 1.1rem;
@@ -195,44 +205,6 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
       .site-nav {
         display: flex;
         gap: 1rem;
-      }
-
-      /* (audit fix) The mobile-nav-vs-preference-controls fix in
-         PreferenceControls.astro was only verified against 2-link navs
-         (archive pages) — the homepage's 3-link nav still overlapped the
-         fixed theme-toggle at 375px, since the row never actually needed
-         to wrap (it fit the container) even though it visually collided
-         with the fixed-position controls layered on top. Reserving space
-         and allowing wrap forces the row to break before reaching that
-         zone instead of rendering underneath it.
-
-         (backlog fix) centering the row breaks this fix's own assumption:
-         the padding-right reservation only guarantees safety for a
-         LEFT-PACKED row, since centering places a wrapped row's content
-         at its own midpoint regardless of how close that midpoint sits
-         to the reserved zone — confirmed empirically (Playwright,
-         375px) to reintroduce real overlap even on rows that never
-         needed to wrap in the first place. flex-start for this one
-         breakpoint keeps the centered look at normal widths while
-         preserving the exact layout the reservation hack was built for.
-         Moved from .site-nav to .masthead-utility since the date-jump
-         input now shares this same row and needs the identical
-         mobile-safe treatment - and the old 60px reservation, sized for
-         a bare theme-toggle circle, was never actually wide enough for
-         PreferenceControls' full skin-toggle pill ("DEV"+"NEWSPAPER"
-         text, ~144px real measured width at 400px viewport). Adding the
-         date-jump input to this row was what finally pushed content
-         past the old, already-undersized 60px and into real ~16px
-         overlap - confirmed via Playwright getBoundingClientRect. 180px
-         clears the real ~160px needed (144px control + 16px right
-         margin) with a small buffer. */
-      @media (max-width: 480px) {
-        .masthead-utility {
-          justify-content: flex-start;
-          flex-wrap: wrap;
-          padding-right: 180px;
-          row-gap: 0.5rem;
-        }
       }
 
       .site-nav a {

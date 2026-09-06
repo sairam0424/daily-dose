@@ -17,9 +17,11 @@ import { resolve } from 'node:path';
 import { getCollection } from 'astro:content';
 import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
+import { isFlagEnabled } from '../lib/featureFlags.js';
 import {
   aggregateByDay,
   aggregateByModel,
@@ -27,6 +29,8 @@ import {
   parseStatsJsonl,
   type StatsEntry,
 } from '../lib/statsAggregation.js';
+
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 
 async function readStats(): Promise<StatsEntry[]> {
   try {
@@ -67,6 +71,7 @@ const dayRows = aggregateByDay(entries);
       <nav class="site-nav">
         <a href="/">&larr; Back to digest</a>
       </nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Cost &amp; stats</h1>

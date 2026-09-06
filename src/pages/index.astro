@@ -3,10 +3,13 @@ import { getCollection } from 'astro:content';
 import DigestList from '../components/DigestList.astro';
 import FilterBar from '../components/FilterBar.astro';
 import Logo from '../components/Logo.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
 import { groupEntriesByDate } from '../lib/digestGrouping.js';
+import { isFlagEnabled } from '../lib/featureFlags.js';
 
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
 
@@ -43,6 +46,7 @@ const olderDate = dateGroups[1]?.date ?? null;
           {latestEntries.length} {latestEntries.length === 1 ? 'story' : 'stories'}
         </span>
       )}
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> The Daily Dose</h1>
@@ -69,29 +73,21 @@ const olderDate = dateGroups[1]?.date ?? null;
 </Layout>
 
 <style>
-  /* Three real zones (nav link / date-jump / story count) instead of one
-     centered cluster - confirmed directly against tdd.cat's real eyebrow
-     bar (Playwright-measured: archive+site-name left, date navigation
-     center, story count + toggle right), which reads as a considered
-     "masthead strip" rather than sparse, centered leftovers on a wide
-     screen. Scoped to this page only (not Layout.astro's shared
-     .masthead-utility) since archive/methodology/stats have no
-     meaningful story count to show as a third zone.
+  /* Four real zones (nav link / date-nav / story count / theme toggle)
+     instead of one centered cluster - confirmed directly against
+     tdd.cat's real eyebrow bar (Playwright-measured: archive+site-name
+     left, date navigation center, story count + toggle right), which
+     reads as a considered "masthead strip" rather than sparse, centered
+     leftovers on a wide screen. Scoped to this page only (not
+     Layout.astro's shared .masthead-utility) since archive/methodology/
+     stats have no meaningful story count to show as their own zone.
 
-     Gated behind a 1300px floor, not the usual 480px mobile breakpoint -
-     .masthead-utility's own max-width (1100px) only kicks in and creates
-     real separation from the viewport's right edge once the viewport is
-     wider than roughly 1150px; below that, the utility bar's right edge
-     tracks the viewport's right edge almost 1:1 (masthead's 1.5rem
-     padding is the only gap), landing this 3rd zone directly under the
-     always-fixed theme-toggle (position:fixed; right:1rem in
-     PreferenceControls.astro). Confirmed empirically via Playwright:
-     real, measured overlap at a 1107px viewport, clear by 1200px - 1300px
-     is a deliberately wide margin past that measured crossover, not the
-     bare minimum. Below 1300px this feature simply doesn't render,
-     rather than trying to re-derive a 3-child mobile reservation width. */
+     Previously gated behind a 1300px floor to stay clear of the theme
+     toggle's old viewport-fixed position - now that the toggle renders
+     as a normal in-flow child of this same row (moved out of a fixed
+     overlay per deep research), that collision risk no longer exists,
+     so the story count shows unconditionally at every width. */
   .story-count {
-    display: none;
     font-family: var(--font-body);
   }
 
@@ -123,15 +119,5 @@ const olderDate = dateGroups[1]?.date ?? null;
   .date-nav-disabled {
     color: var(--ink-faint);
     font-family: var(--font-body);
-  }
-
-  @media (min-width: 1300px) {
-    .masthead-utility {
-      justify-content: space-between;
-    }
-
-    .story-count {
-      display: inline;
-    }
   }
 </style>

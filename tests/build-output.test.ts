@@ -193,22 +193,17 @@ describe("dist/index.html build output", () => {
     );
   });
 
-  it("(regression) only enriches the utility bar with a story-count 3rd zone above a wide-enough viewport to clear the fixed theme-toggle", () => {
-    // Confirmed via Playwright getBoundingClientRect: adding a 3rd,
-    // right-anchored zone to .masthead-utility overlaps the always-fixed
-    // theme-toggle (PreferenceControls.astro, position:fixed; right:1rem)
-    // at any viewport narrower than roughly 1150px, since
-    // .masthead-utility's own max-width (1100px) only creates real
-    // separation from the viewport's right edge above that. Real,
-    // measured overlap at 1107px; clear by 1200px. 1300px below is a
-    // deliberate margin past that measured crossover.
+  it("(regression) shows the story-count zone unconditionally, now that the theme toggle is in-flow and no longer a fixed-position collision risk", () => {
+    // Previously gated behind a 1300px floor specifically to stay clear
+    // of the theme toggle's old viewport-fixed position (real, measured
+    // overlap at 1107px). Now that the toggle renders as a normal
+    // in-flow child of this same row, that collision risk no longer
+    // exists, so this shows at every width.
     const style = readAllPageCss(html);
-    expect(style).toMatch(
+    expect(style).not.toMatch(
       /\.story-count(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
     );
-    expect(style).toMatch(
-      /@media\s*\(min-width:\s*1300px\)\s*\{[^]*?\.story-count(\[[^\]]*\])?\s*\{[^}]*display:\s*inline/,
-    );
+    expect(style).not.toMatch(/@media\s*\(min-width:\s*1300px\)/);
     expect(html).toContain('class="story-count"');
   });
 
@@ -309,26 +304,25 @@ describe("dist/index.html build output", () => {
     expect(html).not.toMatch(/id="theme-toggle"[^>]*disabled/);
   });
 
-  it("(audit fix) wraps the header utility row on narrow viewports so it never renders under the fixed preference-controls", () => {
-    // Regression test for a real bug found during a post-redesign E2E
-    // audit: the mobile-nav-vs-preference-controls fix shipped earlier
-    // was only verified against 2-link navs (archive pages); the
-    // homepage's 3-link nav fit within its container without needing to
-    // wrap, so flex-wrap alone never triggered - it just rendered
-    // underneath the fixed-position controls layered on top at 375px,
-    // confirmed via live getBoundingClientRect overlap. The fix reserves
-    // horizontal space via padding-right so a 3rd link is forced onto a
-    // new row instead of sitting under the fixed overlay. Moved from
-    // .site-nav to .masthead-utility once the date-jump control joined
-    // nav in one shared utility row (2026-09-05 masthead-composition
-    // pass) - both children need the same mobile-safe treatment now.
+  it("(regression) renders the theme toggle as a normal in-flow child of the utility row, not a viewport-fixed overlay", () => {
+    // Confirmed via deep research: an editorial theme toggle belongs
+    // inline in the header (real precedent: tdd.cat, clagnut.com), not
+    // floating in a viewport corner - the SaaS-dashboard convention.
+    // Moving it out of Layout.astro's fixed-position overlay and into
+    // this row also obsoletes the old mobile padding-right reservation
+    // that used to protect against exactly this element overlapping
+    // content when it WAS fixed - normal flex-wrap now handles narrow
+    // viewports correctly since the toggle is a real flex child.
     const style = readAllPageCss(html);
-    const mobileNavRule =
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*flex-wrap:\s*wrap[^}]*padding-right:[^}]*\}/;
-    expect(
-      style,
-      "expected a @media(max-width:480px) .masthead-utility rule with flex-wrap:wrap and a padding-right reservation",
-    ).toMatch(mobileNavRule);
+    const utilityMatch = html.match(
+      /<div[^>]*class="masthead-utility"[^>]*>([\s\S]*?)<\/div>/,
+    );
+    expect(utilityMatch, "expected a .masthead-utility wrapper").toBeTruthy();
+    expect(utilityMatch![1]).toContain('id="theme-toggle"');
+    expect(style).not.toMatch(
+      /\.preference-controls\s*\{[^}]*position:\s*fixed/,
+    );
+    expect(style).toMatch(/\.masthead-utility\s*\{[^}]*flex-wrap:\s*wrap/);
   });
 
   it("(regression) lead-story <li> regex tolerates additional classes like has-image", () => {
@@ -688,16 +682,18 @@ describe("dist/index.html build output", () => {
     expect(html).not.toContain("Interest scores");
   });
 
-  it("(backlog) centers the masthead and the utility row (legacy-newspaper identity)", () => {
-    // justify-content:center moved from .site-nav to .masthead-utility
-    // once the date-jump control joined nav in one shared utility row
-    // (the 2026-09-05 masthead-composition pass) - .site-nav itself no
-    // longer needs its own justify-content, it's centered as a member
-    // of its parent's centered flex row.
+  it("(backlog) centers the masthead brand block; spreads the utility row's children to its edges", () => {
+    // The masthead brand (h1/tagline) stays centered (legacy-newspaper
+    // identity). The utility row itself switched from centered to
+    // space-between once the theme toggle became a real in-flow child
+    // of this row (moved out of a viewport-fixed overlay) - every
+    // page's row now has ≥2 children (its own nav/date content, plus
+    // the toggle) and reads better spread to the row's edges than
+    // clustered in the middle.
     const style = readAllPageCss(html);
     expect(style).toMatch(/\.masthead\s*\{[^}]*text-align:\s*center/);
     expect(style).toMatch(
-      /\.masthead-utility\s*\{[^}]*justify-content:\s*center/,
+      /\.masthead-utility\s*\{[^}]*justify-content:\s*space-between/,
     );
   });
 
@@ -714,44 +710,6 @@ describe("dist/index.html build output", () => {
     expect(mastheadBlock, "expected a .masthead rule").toBeTruthy();
     expect(mastheadBlock![1]).toMatch(/max-width:\s*1100px/);
     expect(mastheadBlock![1]).toMatch(/margin:\s*0\s+auto/);
-  });
-
-  it("(backlog fix) reverts the utility row to flex-start inside the mobile breakpoint, preserving the padding-right overlap fix", () => {
-    // justify-content: center defeats the mobile padding-right
-    // reservation's own assumption (a left-packed row never drifts
-    // toward the reserved zone) - confirmed empirically via Playwright
-    // at 375px to reintroduce real overlap with the fixed
-    // preference-controls. This asserts the mobile override survives
-    // regardless of how the base .masthead-utility rule's declarations
-    // get reordered later.
-    const style = readAllPageCss(html);
-    const mobileOverride =
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*justify-content:\s*flex-start[^}]*\}/;
-    expect(
-      style,
-      "expected the @media(max-width:480px) .masthead-utility rule to revert justify-content to flex-start",
-    ).toMatch(mobileOverride);
-  });
-
-  it("(backlog) reserves enough mobile space for PreferenceControls' real width, not just a bare toggle circle", () => {
-    // The original 60px reservation (Phase 3) was sized for a plain
-    // theme-toggle circle and was already borderline - adding the
-    // date-jump input to this same row (masthead-composition pass)
-    // finally pushed real content past it, confirmed via Playwright
-    // getBoundingClientRect showing ~16px of real overlap at a 400px
-    // effective viewport. PreferenceControls' skin-toggle pill ("DEV" +
-    // "NEWSPAPER" text) measured ~144px wide + 16px right margin = an
-    // effective ~160px needed; 180px is that measurement plus a buffer.
-    // Assert the reservation is comfortably above the measured minimum
-    // rather than pinning the exact value, so a future intentional
-    // adjustment doesn't have to touch this test unless it regresses
-    // below the real minimum.
-    const style = readAllPageCss(html);
-    const match = style.match(
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility\s*\{[^}]*padding-right:\s*(\d+)px/,
-    );
-    expect(match, "expected a padding-right:<N>px reservation").toBeTruthy();
-    expect(Number(match![1])).toBeGreaterThanOrEqual(160);
   });
 
   it("(backlog) groups the utility row and brand block with an internal-≤-external spacing hierarchy", () => {
@@ -871,6 +829,21 @@ describe("dist/index.html build output", () => {
     // script, not an arbitrary fixed-scroll-distance sentinel.
     expect(html).toMatch(/scrollHeight\s*>\s*window\.innerHeight\s*\*\s*4/);
     expect(html).toMatch(/querySelector\(["']\.site-footer["']\)/);
+  });
+
+  it("(regression) tracks the scroll-to-top button's right offset to .page-sheet's real edge, not the viewport's edge", () => {
+    // Confirmed via deep research: a real, well-established (Baseline
+    // since July 2020) technique - real precedent EdCoyle.dev,
+    // ag-portfolio. 574px = half of .page-sheet's 1148px max-width; only
+    // holds because .page-sheet is centered via margin:0 auto.
+    // Self-collapses to the original flat 1rem at/below ~1148px+2rem, so
+    // no separate mobile override is needed (unlike the theme toggle,
+    // which moved fully in-flow instead, since it doesn't need
+    // scroll-reachability the way this button does).
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.scroll-to-top(\[[^\]]*\])?\s*\{[^}]*right:\s*max\(1rem,\s*calc\(50vw\s*-\s*574px\s*\+\s*1rem\)\)/,
+    );
   });
 
   it("(regression) ships j/k next/previous-story keyboard navigation and a t jump-to-top key, scoped to real visible story links only", () => {

@@ -1,7 +1,9 @@
 ---
 import Logo from '../components/Logo.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
+import { isFlagEnabled } from '../lib/featureFlags.js';
 import { MAX_REASONABLE_ITEMS } from '../lib/llmCuration.js';
 import {
   ANOMALY_MULTIPLIER,
@@ -10,6 +12,7 @@ import {
   PRICING_PER_MILLION_TOKENS,
 } from '../lib/costTracking.js';
 
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
 ---
 
@@ -21,6 +24,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
   <header class="masthead">
     <div class="masthead-utility">
       <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Methodology</h1>

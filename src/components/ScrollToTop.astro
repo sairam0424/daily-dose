@@ -12,10 +12,22 @@
 </button>
 
 <style>
+  /* right tracks .page-sheet's own real right edge (max-width: 1148px,
+     centered) instead of the viewport's right edge - confirmed via deep
+     research as a well-established, Baseline-since-2020 technique (real
+     precedent: EdCoyle.dev, ag-portfolio). 574px = half of .page-sheet's
+     1148px max-width; this only holds because .page-sheet is centered
+     via margin:0 auto - re-derive this number if that centering method
+     ever changes. Self-collapses to the original flat 1rem for any
+     viewport at/below ~1148px+2rem, so no separate mobile override is
+     needed - unlike the theme toggle (a one-time-per-session action
+     that moved fully in-flow), this button genuinely needs
+     position:fixed for scroll-reachability, so only its `right` value
+     changes here. */
   .scroll-to-top {
     position: fixed;
     bottom: 1.5rem;
-    right: 1rem;
+    right: max(1rem, calc(50vw - 574px + 1rem));
     z-index: 10;
     width: 2.5rem;
     height: 2.5rem;
