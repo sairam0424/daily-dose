@@ -59,6 +59,20 @@ describe("dist/methodology/index.html", () => {
     expect(html).toContain('href="/rss/devto.xml"');
   });
 
+  it("(regression) no longer duplicates an in-content 'subscribe to one source' block now that the shared footer already links every feed", () => {
+    // Same fix already applied to the archive page (PR #81) - the footer
+    // (added in PR #79) already carries all 4 per-source RSS links plus
+    // an "all sources" link, so an in-content restatement of the same 4
+    // links is pure duplication, not a distinct affordance.
+    expect(html).not.toContain("Subscribe to just one source");
+    for (const feed of ["hn", "arxiv", "github", "devto"]) {
+      const occurrences = html.split(`href="/rss/${feed}.xml"`).length - 1;
+      expect(occurrences, `expected exactly one link to /rss/${feed}.xml`).toBe(
+        1,
+      );
+    }
+  });
+
   it("(backlog fix) colors in-content links with the theme accent instead of the browser default", () => {
     // A post-redesign audit found the "cost & stats" cross-link and the
     // 4 RSS subscribe links fell through to the browser's default link
