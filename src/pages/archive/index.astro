@@ -43,14 +43,6 @@ const allDigestDates = dateGroups.map((group) => group.date);
         arXiv, and GitHub content and generate the first digest.
       </p>
     )}
-
-    <h2 class="section-heading">Subscribe to just one source</h2>
-    <ul class="feed-list">
-      <li><a href="/rss/hn.xml">Hacker News only</a></li>
-      <li><a href="/rss/arxiv.xml">arXiv only</a></li>
-      <li><a href="/rss/github.xml">GitHub only</a></li>
-      <li><a href="/rss/devto.xml">Dev.to only</a></li>
-    </ul>
   </main>
 
   <SiteFooter />
@@ -64,10 +56,5 @@ const allDigestDates = dateGroups.map((group) => group.date);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-  }
-
-  .feed-list {
-    font-family: var(--font-body);
-    line-height: 1.7;
   }
 </style>

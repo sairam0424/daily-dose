@@ -163,6 +163,24 @@ describe("dist/index.html build output", () => {
     expect(html.includes('data-filter-value="all"')).toBe(true);
   });
 
+  it("(backlog) exposes filter-button state via aria-pressed, not color alone", () => {
+    expect(html).toContain('aria-pressed="true"');
+    expect(html).toContain('aria-pressed="false"');
+  });
+
+  it("(backlog) labels the source and tier filter rows and includes a live status line", () => {
+    expect(html).toContain('id="filter-status"');
+    expect(html).toContain('aria-live="polite"');
+    // Static markup ships empty text - the client script fills it in on
+    // load, so this only asserts the labeled rows exist, not the text.
+    const filterBarMatch = html.match(
+      /<div class="filter-bar"[^>]*>([\s\S]*?)<\/div>\s*<p class="empty-state"/,
+    );
+    expect(filterBarMatch, "expected the filter-bar markup").toBeTruthy();
+    expect(filterBarMatch![1]).toContain("Source");
+    expect(filterBarMatch![1]).toContain("Tier");
+  });
+
   it("tags every story card with its source and interest tier", () => {
     expect(html.includes("data-source=")).toBe(true);
     expect(html.includes("data-interest-tier=")).toBe(true);

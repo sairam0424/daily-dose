@@ -1,5 +1,10 @@
 ---
-const SOURCES = ["hn", "arxiv", "github", "devto"] as const;
+const SOURCES = [
+  { value: "hn", label: "HN" },
+  { value: "arxiv", label: "arXiv" },
+  { value: "github", label: "GitHub" },
+  { value: "devto", label: "Dev.to" },
+] as const;
 const TIERS = [
   { value: "notable", label: "Notable" },
   { value: "recommended", label: "Recommended" },
@@ -8,48 +13,83 @@ const TIERS = [
 ---
 
 <div class="filter-bar" id="filter-bar">
-  <div class="filter-group" data-filter-group="source">
-    <button type="button" class="filter-btn active" data-filter-value="all">All</button>
-    {SOURCES.map((source) => (
-      <button type="button" class="filter-btn" data-filter-value={source}>{source}</button>
-    ))}
+  <p class="filter-status" id="filter-status" aria-live="polite"></p>
+  <div class="filter-row">
+    <span class="filter-label">Source</span>
+    <div class="filter-group" data-filter-group="source" role="group" aria-label="Filter by source">
+      <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
+      {SOURCES.map((source) => (
+        <button type="button" class="filter-btn" data-filter-value={source.value} aria-pressed="false">{source.label}</button>
+      ))}
+    </div>
   </div>
-  <div class="filter-group" data-filter-group="tier">
-    <button type="button" class="filter-btn active" data-filter-value="all">All</button>
-    {TIERS.map((tier) => (
-      <button type="button" class="filter-btn" data-filter-value={tier.value}>{tier.label}</button>
-    ))}
+  <div class="filter-row">
+    <span class="filter-label">Tier</span>
+    <div class="filter-group" data-filter-group="tier" role="group" aria-label="Filter by interest tier">
+      <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
+      {TIERS.map((tier) => (
+        <button type="button" class="filter-btn" data-filter-value={tier.value} aria-pressed="false">{tier.label}</button>
+      ))}
+    </div>
   </div>
 </div>
 <p class="empty-state" id="filter-empty-state" hidden>No stories match the selected filters.</p>
 
 <style>
   .filter-bar {
+    margin-bottom: 1.25rem;
+  }
+
+  .filter-status {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .filter-row {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .filter-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .filter-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+    min-width: 3.2rem;
   }
 
   .filter-group {
     display: flex;
-    gap: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.35rem;
   }
 
   .filter-btn {
-    border: 1px solid var(--rule);
-    background: var(--bg-surface);
-    color: var(--ink);
+    border: 1px solid var(--rule-soft);
+    background: transparent;
+    color: var(--ink-soft);
     font-family: var(--font-body);
     border-radius: 999px;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.8rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
     cursor: pointer;
   }
 
-  .filter-btn.active {
+  .filter-btn[aria-pressed='true'] {
+    background: var(--accent);
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 600;
   }
 
@@ -62,9 +102,17 @@ const TIERS = [
 <script>
   const filterBar = document.getElementById('filter-bar');
   const emptyState = document.getElementById('filter-empty-state');
+  const statusLine = document.getElementById('filter-status');
 
   let activeSource = 'all';
   let activeTier = 'all';
+
+  function activeLabel(groupName: string): string | null {
+    const group = filterBar?.querySelector<HTMLElement>(`[data-filter-group="${groupName}"]`);
+    const pressed = group?.querySelector<HTMLElement>('.filter-btn[aria-pressed="true"]');
+    if (!pressed || pressed.dataset.filterValue === 'all') return null;
+    return pressed.textContent?.trim() ?? null;
+  }
 
   function applyFilters() {
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.story-card'));
@@ -77,6 +125,14 @@ const TIERS = [
       if (visible) visibleCount += 1;
     }
     if (emptyState) emptyState.hidden = visibleCount !== 0;
+
+    if (statusLine) {
+      const activeLabels = [activeLabel('source'), activeLabel('tier')].filter(
+        (label): label is string => label !== null,
+      );
+      const scope = activeLabels.length > 0 ? ` — ${activeLabels.join(', ')}` : '';
+      statusLine.textContent = `Showing ${visibleCount} of ${cards.length} stories${scope}`;
+    }
   }
 
   filterBar?.addEventListener('click', (event) => {
@@ -94,8 +150,10 @@ const TIERS = [
 
     const buttons = group?.querySelectorAll<HTMLElement>('.filter-btn') ?? [];
     for (const btn of buttons) {
-      btn.classList.toggle('active', btn === button);
+      btn.setAttribute('aria-pressed', String(btn === button));
     }
     applyFilters();
   });
+
+  applyFilters();
 </script>

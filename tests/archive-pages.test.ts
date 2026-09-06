@@ -75,6 +75,19 @@ describe("dist/archive/index.html build output", () => {
     expect(archiveIndexHtml).toContain('href="/rss/devto.xml"');
   });
 
+  it("(backlog) no longer duplicates an in-content 'subscribe to one source' block now that the shared footer already links every feed", () => {
+    expect(archiveIndexHtml).not.toContain("Subscribe to just one source");
+    // Each per-source feed link should appear exactly once (in the footer),
+    // not twice (once in-content, once in the footer).
+    for (const feed of ["hn", "arxiv", "github", "devto"]) {
+      const occurrences =
+        archiveIndexHtml.split(`href="/rss/${feed}.xml"`).length - 1;
+      expect(occurrences, `expected exactly one link to /rss/${feed}.xml`).toBe(
+        1,
+      );
+    }
+  });
+
   it("(backlog) keeps Methodology out of both the top nav and the footer", () => {
     const navMatch = archiveIndexHtml.match(
       /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
