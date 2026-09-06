@@ -8,8 +8,8 @@
     "cs.LG"
   ],
   "interest_score": 8,
-  "why_read": "A rigorous, preregistered empirical study showing that LLM-as-judge evaluations on shared API endpoints are far less reliable than commonly assumed, which has serious implications for anyone using LLM judges to gate training or benchmarks.",
-  "analysis": "This paper audits the core assumption behind LLM-judge-based evaluation pipelines—that repeated identical queries to a 'the same' model produce stable, reproducible rankings—and finds it badly violated even in short time windows and across providers. The methodology (preregistered thresholds, tens of thousands of audited requests, testing across multiple providers and self-hosted batch-invariant kernels) is unusually careful for ML systems research, and the finding that byte-identical inputs yield different rankings has real practical consequences for leaderboards, RLHF pipelines, and research reproducibility. This is a substantive, well-executed critique that many ML practitioners relying on LLM judges should read.",
+  "why_read": "A rigorous, preregistered empirical study showing that LLM-as-judge evaluation pipelines are far less reliable and reproducible than commonly assumed, with real implications for anyone gating decisions on LLM judges.",
+  "analysis": "The authors ran large-scale preregistered audits (nearly 53,000 requests) testing whether repeated or byte-identical queries to the same hosted LLM endpoint yield consistent judge rankings, finding dramatic instability (Spearman ~0.4-0.78 versus required ~0.9-0.99) even accounting for provider switching or self-hosting. This is a substantive methodological critique with concrete numbers and actionable design rules, directly relevant to teams using LLM judges for evals, leaderboards, or RLHF-style gating. It's a rare piece of rigorous measurement science applied to a widely-assumed-stable AI infrastructure component.",
   "authors": [
     "Haoyaun Zhu",
     "Jie Zhang"

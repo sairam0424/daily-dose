@@ -1,0 +1,20 @@
+{
+  "title": "Multiple Browser Agents Need More Than Separate Profiles",
+  "source": "devto",
+  "url": "https://dev.to/volker_schukai/multiple-browser-agents-need-more-than-separate-profiles-565j",
+  "date": "2026-09-06",
+  "tags": [
+    "ai",
+    "automation",
+    "architecture",
+    "webdev"
+  ],
+  "interest_score": 5,
+  "why_read": "An early-stage project report on coordinating multiple browser automation agents with proper locking/ownership semantics, relevant to those building multi-agent browser automation systems.",
+  "analysis": "SessionDock addresses a real and underappreciated problem in agentic browser automation: separate profiles don't establish ownership, locking, or handover semantics needed when multiple agents (or humans and agents) share browser workspaces. The post is candid about being unfinished, focusing on scheduler and state-management design rather than a polished product, which limits its immediate usefulness. Still, the architectural framing (leases, exclusive control, delayed action handling) is a genuinely relevant concern for teams building multi-agent automation infrastructure.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvpj3udnuft5vfiz6qm3y.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

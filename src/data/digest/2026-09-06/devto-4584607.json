@@ -10,10 +10,10 @@
     "python"
   ],
   "interest_score": 4,
-  "why_read": "A small but concrete networking diagnostic tool and dataset showing a real, measurable performance improvement from a single default Android tethering setting.",
-  "analysis": "This post describes 'tether-report', a tool that diagnoses USB/phone tethering speed issues without consuming cellular data, backed by 40 measurements across 14 phones, finding that changing one default setting improved throughput from 15 to 106 Mbps in the worst case. Unlike the other 'Generosity Challenge' submissions in this batch, this one has an actual empirical measurement methodology and a concrete, verifiable technical finding relevant to Linux/networking practitioners. It's a niche topic but grounded in real data rather than pure narrative.",
+  "why_read": "A practical, data-driven investigation into USB tethering speed issues with a concrete diagnostic tool and real measurements across many phones.",
+  "analysis": "The author built tether-report, a Linux tool that diagnoses why USB tethering runs slower than the phone's radio without consuming cellular data, based on 40 measurements across 14 phones, and found a default setting change that improved throughput from 15 to 106 Mbps. This is a legitimately useful, measurement-backed networking troubleshooting piece with a concrete artifact (open-source tool) behind it, wrapped in unnecessary charity-framing narrative. Worth reading for anyone doing mobile tethering or Linux networking diagnostics work.",
   "authors": [],
-  "reactions": 0,
+  "reactions": 1,
   "reading_minutes": 1,
   "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Ftether%2Fmain%2Farticles%2Ftether-report%2Fdevto-cover.07de6d03.jpg"
 }

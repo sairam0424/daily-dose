@@ -1,0 +1,17 @@
+{
+  "title": "Music Theory for Programmers",
+  "source": "hn",
+  "url": "https://runjs.app/blog/music-theory-for-programmers",
+  "date": "2026-09-06",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A cross-disciplinary explainer connecting music theory concepts to programming concepts, useful for a broad technical audience.",
+  "analysis": "This is likely an educational article mapping musical structures (scales, harmony, rhythm) onto programming/CS concepts to make music theory more approachable for engineers. Such analogies can be genuinely illuminating for engineers who want to understand music from a systems perspective, though the depth depends heavily on execution. It's a popular explainer style piece rather than groundbreaking research.",
+  "authors": [
+    "birdculture"
+  ],
+  "hn_id": 49541888,
+  "points": 350,
+  "image_url": "https://runjs.app/static/blog/og/music-theory-for-programmers.png",
+  "favicon_url": "https://runjs.app/static/favicon.png"
+}

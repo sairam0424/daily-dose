@@ -7,9 +7,9 @@
     "cs.CL",
     "cs.LG"
   ],
-  "interest_score": 7,
-  "why_read": "A careful empirical study questioning whether chain-of-thought text actually reflects which reasoning steps matter, with direct implications for interpretability and process-reward-model research.",
-  "analysis": "The authors operationalize 'importance' of a CoT step via Monte Carlo rollout advantage estimates and test whether LLM judges can identify truly important steps from the text alone, finding judges beat a baseline but fall well short of ceiling, especially for correct responses. This is a meaningful contribution to the ongoing debate about CoT faithfulness and legibility versus genuine interpretability, cautioning against over-trusting reasoning traces for supervision or auditing. It's methodologically solid and relevant to anyone building process reward models or relying on CoT for safety/interpretability claims.",
+  "interest_score": 8,
+  "why_read": "A careful empirical study challenging the assumption that chain-of-thought text explanations reflect what actually drives a model's answer, with direct implications for interpretability and process-reward-model research.",
+  "analysis": "The paper operationalizes 'importance' of a reasoning step via Monte Carlo rollout-estimated advantage and tests whether LLM judges (and fine-tuned critics) can correctly identify which steps mattered, finding that judged importance only partially tracks actual causal importance especially for correct answers. This is a meaningful contribution to the ongoing debate about CoT faithfulness and legibility versus true interpretability, cautioning against naive use of LLM judges for step-level supervision. Directly useful for researchers building process reward models or interpretability tooling on top of reasoning traces.",
   "authors": [
     "Kevin Du",
     "Alexander Hoyle",

@@ -7,10 +7,10 @@
     "TypeScript"
   ],
   "interest_score": 6,
-  "why_read": "A drop-in, significantly faster replacement for the widely-used tailwind-merge/clsx combo that many frontend projects depend on for class-name handling.",
-  "analysis": "This is a new Tailwind CSS class-merging engine claiming full API parity with tailwind-merge and clsx but 30x faster performance, which matters because these utilities run on every render in many React/Tailwind codebases and are called extremely frequently. Given shadcn/ui's broad adoption in the React ecosystem, a faster drop-in replacement could have real-world performance impact on many production frontends. It's a narrow but concrete and immediately actionable optimization for frontend engineers using Tailwind.",
+  "why_read": "A practical, widely-usable performance-focused replacement for tailwind-merge/clsx from a well-known UI library author, directly relevant to frontend engineers.",
+  "analysis": "cn is a drop-in replacement for the popular tailwind-merge and clsx utilities used for resolving Tailwind CSS class conflicts, claiming full API parity with a 30x speed improvement. Coming from the shadcn/ui ecosystem, it likely has meaningful adoption and real-world impact on frontend build/runtime performance in Tailwind-heavy codebases. It's a narrow but concrete engineering optimization that many frontend developers will directly benefit from.",
   "authors": [],
-  "stars": 1189,
+  "stars": 1212,
   "image_url": "https://repository-images.githubusercontent.com/1352104394/0226056c-6cde-4b76-b8e5-5f1796c7ad6b",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

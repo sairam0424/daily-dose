@@ -8,9 +8,9 @@
     "cs.AI",
     "cs.LG"
   ],
-  "interest_score": 6,
-  "why_read": "Introduces a concrete technique for distilling LLM-defined text functions into small, locally-runnable neural adapters, which is practically useful for reducing inference cost and dependency on remote APIs.",
-  "analysis": "The paper proposes 'compile by training': using teacher LLMs to generate synthetic training data for a natural-language spec, then training a small local adapter that replicates the desired function without needing the large teacher model at inference time. It reports 83.6% semantic accuracy on a hard benchmark subset where a faster compiler produced no exact matches, trading off longer compile time for higher accuracy. This is a genuinely interesting direction for reducing LLM API dependency in production systems, akin to model distillation applied to task-specific 'compiled' functions, though the demo applications (avatar control, translator) feel somewhat gimmicky.",
+  "interest_score": 7,
+  "why_read": "An interesting approach to distilling LLM-based natural language specs into small, fast, deployable neural functions instead of calling a remote model each time.",
+  "analysis": "This paper proposes 'compile by training': using a large teacher model to generate synthetic training data that trains a small adapter/interpreter to replicate a natural-language-specified function locally, avoiding per-call latency and cost of a hosted LLM. It reports 83.6% semantic accuracy on a hard benchmark subset with compile times around a minute, and demonstrates real deployed use-cases like a translator and 3D avatar controller. This is technically interesting for engineers thinking about cost/latency tradeoffs in LLM-powered features and distillation-as-compilation as a paradigm.",
   "authors": [
     "Yuntian Deng",
     "Pengyu Nie",

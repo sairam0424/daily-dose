@@ -1,0 +1,19 @@
+{
+  "title": "You write one kind sentence. I donate a dime. A blockchain makes sure I do.",
+  "source": "devto",
+  "url": "https://dev.to/nazar-boyko/you-write-one-kind-sentence-i-donate-a-dime-a-blockchain-makes-sure-i-do-f5o",
+  "date": "2026-09-06",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "solana",
+    "go"
+  ],
+  "interest_score": 3,
+  "why_read": "A small blockchain memo-chain novelty project for tracking kindness pledges, technically simple and more of a charity gimmick than a substantial engineering piece.",
+  "analysis": "Kindness Chain uses Solana devnet SPL Memo transactions to create a chained, publicly verifiable feed of 'kind sentences,' with a charitable donation tied to each entry. Technically it's a thin wrapper around existing blockchain memo functionality with no real novel engineering, more notable as a feel-good weekend hackathon project than a piece with lasting technical value. Readers interested in blockchain use-cases beyond finance might find it a mildly interesting toy example.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fnazboyko%2Fkindness-chain%2Fv0.1.0-challenge%2Fdocs%2Fcover.png"
+}

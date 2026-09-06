@@ -8,8 +8,8 @@
     "cs.AI"
   ],
   "interest_score": 6,
-  "why_read": "A solid incremental improvement to automated prompt optimization that addresses the practical 'prompt bloat' problem in evolutionary prompt search methods like GEPA.",
-  "analysis": "ESPO restructures prompt optimization into diagnose/propose/select phases to combat prompt bloat seen in evolutionary optimizers, showing meaningful accuracy gains and much shorter prompts across seven benchmarks and multiple student models. The reported results (matching or beating GEPA everywhere with 47% shorter prompts) are a concrete, reproducible engineering contribution for anyone doing prompt engineering at scale. It's a fairly narrow, applied contribution rather than a fundamental advance, but useful for practitioners building automated prompt-optimization pipelines.",
+  "why_read": "A solid incremental improvement to automatic prompt optimization methods (building on GEPA) with clear benchmarks and shorter, faster prompts.",
+  "analysis": "ESPO addresses the known 'prompt bloat' problem in evolutionary prompt optimizers by decomposing the process into diagnosis, diverse proposal generation, and stability-based selection, yielding measurable accuracy gains and shorter prompts across seven benchmarks and multiple models. The reported numbers (74.67% vs 70.91%, 47% shorter prompts) suggest genuine, reproducible improvement rather than marginal tuning. Relevant to practitioners building prompt-optimization pipelines, though it's an incremental advance within a fast-moving subfield.",
   "authors": [
     "Lihao Liu",
     "Peng Tang",

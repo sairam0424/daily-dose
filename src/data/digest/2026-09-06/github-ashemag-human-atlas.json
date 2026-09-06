@@ -1,0 +1,16 @@
+{
+  "title": "ashemag/human-atlas",
+  "source": "github",
+  "url": "https://github.com/ashemag/human-atlas",
+  "date": "2026-09-06",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A well-executed open-source interactive 3D anatomy explorer built on a large public mesh dataset, interesting for both educational and web-graphics engineering reasons.",
+  "analysis": "This project renders 2,234 selectable BodyParts3D anatomical meshes in-browser with layered views, search, and exploded-view interactions, likely using WebGL/Three.js given the TypeScript stack. Beyond the medical education angle, it's a good showcase of performant 3D web rendering, mesh management, and UI/UX design for complex spatial data. Engineers interested in WebGL, data visualization, or open medical/educational tooling would find this a solid reference implementation.",
+  "authors": [],
+  "stars": 1303,
+  "image_url": "https://opengraph.githubassets.com/26d3b97c7bf328e3ec5725991ce29898aa6cad069bc1e2b7e7957457d5f6e8a6/ashemag/human-atlas",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

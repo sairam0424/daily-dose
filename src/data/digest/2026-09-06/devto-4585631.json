@@ -1,0 +1,19 @@
+{
+  "title": "Markov Chain Monte Carlo: the 1953 algorithm hiding under modern AI",
+  "source": "devto",
+  "url": "https://dev.to/lovestaco/markov-chain-monte-carlo-the-1953-algorithm-hiding-under-modern-ai-5cb4",
+  "date": "2026-09-06",
+  "tags": [
+    "machinelearning",
+    "python",
+    "datascience",
+    "computerscience"
+  ],
+  "interest_score": 5,
+  "why_read": "An accessible intro to MCMC written 'forwards' from intuition rather than formal definitions, decent for readers wanting a friendlier on-ramp to a foundational algorithm.",
+  "analysis": "This is an explainer article aiming to demystify Markov Chain Monte Carlo by building intuition from simple ideas (Monte Carlo sampling, then Markov chains) before invoking formal concepts like detailed balance and ergodicity. It's pedagogically reasonable but not novel content—MCMC explainers are common, and the article's promotional framing around the author's own product is a minor distraction. Useful for engineers who've used Bayesian libraries but never understood the underlying mechanism.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpmp1v4km7fu23b7ljmoy.png"
+}

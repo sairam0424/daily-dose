@@ -1,0 +1,17 @@
+{
+  "title": "Nitter and XCancel resume service after legal advice",
+  "source": "hn",
+  "url": "https://github.com/zedeus/nitter/commit/1428b4c2b4246f92a7e5b2673438e5fb39fcc4a3",
+  "date": "2026-09-06",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Relevant update for developers relying on these Twitter/X front-end proxies, touching on legal and technical aspects of scraping and mirroring social media.",
+  "analysis": "Nitter and XCancel are open-source alternative front-ends for Twitter/X that strip tracking and ads; their on-and-off legal status is a recurring story tied to platform API restrictions and takedown requests. This news is relevant to engineers who self-host or depend on these tools, and touches on broader issues of API gatekeeping and scraping legality. Not deeply technical itself, but of practical interest to a niche audience.",
+  "authors": [
+    "zImPatrick"
+  ],
+  "hn_id": 49588988,
+  "points": 356,
+  "image_url": "https://opengraph.githubassets.com/92962a83efd8bc2e3e8432afc9522dcfe42750f8345dee563ecb199ee76f3aed/zedeus/nitter/commit/1428b4c2b4246f92a7e5b2673438e5fb39fcc4a3",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
