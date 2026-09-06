@@ -3,6 +3,7 @@ import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import SiteMeta from '../components/SiteMeta.astro';
 import PreferenceControls from '../components/PreferenceControls.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 import { isFlagEnabled } from '../lib/featureFlags.js';
 
 interface Props {
@@ -37,7 +38,7 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500&family=Fraunces:opsz,wght@9..144,400..700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500&family=Fraunces:opsz,wght@9..144,400..900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
     />
     <script is:inline define:vars={{ devModeEnabled }}>
       (function () {
@@ -57,6 +58,7 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
     <Analytics />
     <SpeedInsights />
     <PreferenceControls devModeEnabled={devModeEnabled} />
+    <ScrollToTop />
     <slot />
     <style is:global>
       :root,
@@ -252,12 +254,19 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         gap: 0.4rem;
       }
 
-      /* (review fix) Newspaper's masthead is deliberately larger, per
-         spec Section 4's typography table — font-optical-sizing:auto
-         above already makes Fraunces' opsz axis track this larger size
-         automatically; only the size itself needs a skin override. */
+      /* Newspaper's masthead title is deliberately large and heavy -
+         confirmed directly against tdd.cat's real, measured masthead
+         (Playwright getComputedStyle at a 1920px viewport): its own h1
+         renders at 61.6px, font-weight 900. font-optical-sizing:auto
+         already makes Fraunces' opsz axis track the larger rendered size
+         automatically (it's a genuine letterform-proportion axis, not
+         just a scale multiplier - see the Google Fonts wght range below,
+         widened to include 900 for this). Ceiling raised from 2.75rem
+         (44px) to 4rem (64px) - just past tdd.cat's real measured size,
+         not an arbitrary guess. */
       [data-skin='newspaper'] .masthead-brand h1 {
-        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
       }
 
       .tagline {

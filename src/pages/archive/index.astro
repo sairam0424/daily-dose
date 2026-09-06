@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import DateJump from '../../components/DateJump.astro';
 import DigestPreviewCard from '../../components/DigestPreviewCard.astro';
 import Logo from '../../components/Logo.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
@@ -9,7 +8,6 @@ import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
-const allDigestDates = dateGroups.map((group) => group.date);
 ---
 
 <Layout
@@ -22,7 +20,6 @@ const allDigestDates = dateGroups.map((group) => group.date);
       <nav class="site-nav">
         <a href="/">&larr; Back to digest</a>
       </nav>
-      <DateJump dates={allDigestDates} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> All digests</h1>

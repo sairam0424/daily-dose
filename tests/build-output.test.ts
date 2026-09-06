@@ -753,13 +753,13 @@ describe("dist/index.html build output", () => {
     );
   });
 
-  it("(backlog) groups nav and the date-jump control into one shared utility row, not two independently-centered rows", () => {
+  it("(backlog) groups nav and the date-nav control into one shared utility row, not two independently-centered rows", () => {
     const utilityMatch = html.match(
       /<div[^>]*class="masthead-utility"[^>]*>([\s\S]*?)<\/div>/,
     );
     expect(utilityMatch, "expected a .masthead-utility wrapper").toBeTruthy();
     expect(utilityMatch![1]).toContain('class="site-nav"');
-    expect(utilityMatch![1]).toContain('id="date-jump"');
+    expect(utilityMatch![1]).toContain('class="date-nav"');
 
     const brandMatch = html.match(
       /<hgroup[^>]*class="masthead-brand"[^>]*>([\s\S]*?)<\/hgroup>/,

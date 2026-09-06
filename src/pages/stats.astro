@@ -15,7 +15,6 @@ export const prerender = false;
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { getCollection } from 'astro:content';
-import DateJump from '../components/DateJump.astro';
 import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -45,7 +44,6 @@ const digestDateGroups = groupEntriesByDate(allDigestEntries);
 const latestDigestGroup = digestDateGroups.length > 0 ? digestDateGroups[0] : null;
 const chartLabels = latestDigestGroup?.entries.map((entry) => entry.data.title) ?? [];
 const chartScores = latestDigestGroup?.entries.map((entry) => entry.data.interest_score) ?? [];
-const allDigestDates = digestDateGroups.map((group) => group.date);
 
 const totalCostUsd = entries.reduce((sum, e) => sum + e.costUsd, 0);
 const totalInputTokens = entries.reduce((sum, e) => sum + e.inputTokens, 0);
@@ -69,7 +67,6 @@ const dayRows = aggregateByDay(entries);
       <nav class="site-nav">
         <a href="/">&larr; Back to digest</a>
       </nav>
-      <DateJump dates={allDigestDates} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Cost &amp; stats</h1>
