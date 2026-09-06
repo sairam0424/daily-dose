@@ -4,9 +4,11 @@ import type { CollectionEntry } from 'astro:content';
 import DigestList from '../../components/DigestList.astro';
 import FilterBar from '../../components/FilterBar.astro';
 import Logo from '../../components/Logo.astro';
+import PreferenceControls from '../../components/PreferenceControls.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
+import { isFlagEnabled } from '../../lib/featureFlags.js';
 
 interface DateParams {
   date: string;
@@ -36,6 +38,7 @@ export async function getStaticPaths() {
 
 const { date } = Astro.params as unknown as DateParams;
 const { entries, olderDate, newerDate } = Astro.props as DateProps;
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 ---
 
 <Layout
@@ -49,6 +52,7 @@ const { entries, olderDate, newerDate } = Astro.props as DateProps;
         <a href="/">&larr; Latest digest</a>
         <a href="/archive/">All digests</a>
       </nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Digest — {date}</h1>

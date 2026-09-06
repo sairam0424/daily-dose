@@ -1,7 +1,11 @@
 ---
 import Logo from '../components/Logo.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
+import { isFlagEnabled } from '../lib/featureFlags.js';
+
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 ---
 
 <Layout
@@ -14,6 +18,7 @@ import Layout from '../layouts/Layout.astro';
       <nav class="site-nav">
         <a href="/">&larr; Today's digest</a>
       </nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Page not found</h1>

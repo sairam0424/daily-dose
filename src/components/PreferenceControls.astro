@@ -43,22 +43,22 @@ const { devModeEnabled = false } = Astro.props;
 </div>
 
 <style>
+  /* In-flow, not position:fixed - confirmed via deep research: a
+     viewport-fixed floating corner control is the SaaS-dashboard
+     convention, not the editorial one (real precedent: tdd.cat's own
+     theme toggle, clagnut.com's header-inline toggle). A theme
+     preference is a one-time-per-session action, not something that
+     needs scroll-reachability the way scroll-to-top does, so there's no
+     tradeoff being given up by moving it into normal document flow -
+     it now renders as the trailing child of whichever masthead-utility
+     row includes it, inheriting that row's own responsive behavior
+     automatically instead of needing separate fixed-position mobile
+     rules. */
   .preference-controls {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    z-index: 10;
-  }
-
-  @media (max-width: 480px) {
-    .preference-controls {
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.35rem;
-    }
+    flex-shrink: 0;
   }
 
   .theme-toggle {

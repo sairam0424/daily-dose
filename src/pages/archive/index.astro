@@ -2,10 +2,13 @@
 import { getCollection } from 'astro:content';
 import DigestPreviewCard from '../../components/DigestPreviewCard.astro';
 import Logo from '../../components/Logo.astro';
+import PreferenceControls from '../../components/PreferenceControls.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
+import { isFlagEnabled } from '../../lib/featureFlags.js';
 
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
 ---
@@ -20,6 +23,7 @@ const dateGroups = groupEntriesByDate(allEntries);
       <nav class="site-nav">
         <a href="/">&larr; Back to digest</a>
       </nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> All digests</h1>
