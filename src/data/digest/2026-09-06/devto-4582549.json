@@ -1,0 +1,19 @@
+{
+  "title": "I built PadForward because sometimes you just need a pad",
+  "source": "devto",
+  "url": "https://dev.to/ujja/i-built-padforward-because-sometimes-you-just-need-a-pad-1ljl",
+  "date": "2026-09-06",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "gemini",
+    "solana"
+  ],
+  "interest_score": 1,
+  "why_read": "A hackathon submission describing a period-product-locator app's motivation story, with no technical architecture or implementation detail in the excerpt.",
+  "analysis": "PadForward appears to be a well-intentioned app to help people find menstrual products nearby, submitted for a Dev.to weekend charity challenge, but the excerpt is entirely narrative/motivational with no discussion of the tech stack, data sourcing, or system design. Without technical substance, it offers little learning value to a software engineering audience despite being a nice product idea. The social good angle is commendable but doesn't translate into digest-worthy technical content based on what's shown.",
+  "authors": [],
+  "reactions": 10,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fanjlto1wyt6ye9ta9qng.png"
+}

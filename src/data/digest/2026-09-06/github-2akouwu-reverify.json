@@ -1,0 +1,16 @@
+{
+  "title": "2akouwu/reverify",
+  "source": "github",
+  "url": "https://github.com/2akouwu/reverify",
+  "date": "2026-09-06",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting practical tool for fact-grounding LLM outputs during reverse engineering tasks using deterministic verification via an MCP server.",
+  "analysis": "Reverify positions itself as a grounding layer that forces LLM-proposed claims to be checked against deterministic tools/ground truth, specifically targeting reverse-engineering workflows, and persists verified facts across context resets via an MCP server and CLI. This tackles the real and common problem of LLM hallucination in technical domains where correctness is checkable, which is a sensible and practical use of tool-augmented verification rather than pure prompting. The reverse-engineering framing is a bit narrow, but the general pattern (propose-then-verify with deterministic tools) is broadly relevant to reliable LLM tooling.",
+  "authors": [],
+  "stars": 928,
+  "image_url": "https://opengraph.githubassets.com/325c7335bfc06818d6d9ef71d78876e4233ceedefdfc5db46fc4c9f55041f174/2akouwu/reverify",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

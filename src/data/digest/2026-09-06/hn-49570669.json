@@ -1,0 +1,16 @@
+{
+  "title": "Actively exploited sandbox RCE in all Chromium versions",
+  "source": "hn",
+  "url": "https://nvd.nist.gov/vuln/detail/cve-2026-85046",
+  "date": "2026-09-06",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A actively-exploited zero-day sandbox escape affecting all Chromium versions is a serious, actionable security story for engineers.",
+  "analysis": "This concerns a real, actively exploited remote code execution vulnerability that breaks out of Chromium's sandbox, affecting essentially all browsers built on Chromium (Chrome, Edge, Brave, etc.). Sandbox escapes are rare and technically significant because they defeat one of the browser's core defense-in-depth layers. Security engineers and anyone maintaining Chromium-based products need to patch and understand root cause here, making this high-value and actionable.",
+  "authors": [
+    "negura"
+  ],
+  "hn_id": 49570669,
+  "points": 774,
+  "favicon_url": "https://nvd.nist.gov/vuln/detail/favicon.ico"
+}

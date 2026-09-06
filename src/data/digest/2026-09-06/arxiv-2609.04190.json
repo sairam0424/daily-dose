@@ -1,0 +1,26 @@
+{
+  "title": "One Editor, Many Edits: A Unified Training-Free Framework for Diverse Video Editing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.04190",
+  "date": "2026-09-06",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A new training-free video editing framework with reported strong benchmark gains, of interest mainly to generative video researchers rather than general engineers.",
+  "analysis": "EditVid combines several existing ideas (causal memory, attention-based token injection, latent blending) into one training-free pipeline supporting multiple video editing paradigms (style transfer, object insertion, subject replacement) and reports large gains over baselines on the FiVE benchmark. The contribution is largely an engineering combination of known techniques rather than a fundamentally new method, and its practical relevance is mostly to specialists in generative video editing. The reported user-study preference numbers are a nice touch but benchmark-only claims in this space often don't generalize well.",
+  "authors": [
+    "Adheesh Sunil Juvekar",
+    "Onkar Kishor Susladkar",
+    "Kiet A. Nguyen",
+    "Muntasir Wahed",
+    "Nabeel Bashir",
+    "Xiaona Zhou",
+    "Tianjiao Yu",
+    "Vedant Shah",
+    "Ismini Lourentzou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

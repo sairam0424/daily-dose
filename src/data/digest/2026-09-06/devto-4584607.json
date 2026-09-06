@@ -1,0 +1,19 @@
+{
+  "title": "Generosity Is a Default Setting",
+  "source": "devto",
+  "url": "https://dev.to/xbill/generosity-is-a-default-setting-2ig7",
+  "date": "2026-09-06",
+  "tags": [
+    "weekendchallenge",
+    "linux",
+    "networking",
+    "python"
+  ],
+  "interest_score": 4,
+  "why_read": "A small but concrete networking diagnostic tool and dataset showing a real, measurable performance improvement from a single default Android tethering setting.",
+  "analysis": "This post describes 'tether-report', a tool that diagnoses USB/phone tethering speed issues without consuming cellular data, backed by 40 measurements across 14 phones, finding that changing one default setting improved throughput from 15 to 106 Mbps in the worst case. Unlike the other 'Generosity Challenge' submissions in this batch, this one has an actual empirical measurement methodology and a concrete, verifiable technical finding relevant to Linux/networking practitioners. It's a niche topic but grounded in real data rather than pure narrative.",
+  "authors": [],
+  "reactions": 0,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Ftether%2Fmain%2Farticles%2Ftether-report%2Fdevto-cover.07de6d03.jpg"
+}

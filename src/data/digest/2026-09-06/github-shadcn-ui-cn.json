@@ -1,0 +1,16 @@
+{
+  "title": "shadcn-ui/cn",
+  "source": "github",
+  "url": "https://github.com/shadcn-ui/cn",
+  "date": "2026-09-06",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A drop-in, significantly faster replacement for the widely-used tailwind-merge/clsx combo that many frontend projects depend on for class-name handling.",
+  "analysis": "This is a new Tailwind CSS class-merging engine claiming full API parity with tailwind-merge and clsx but 30x faster performance, which matters because these utilities run on every render in many React/Tailwind codebases and are called extremely frequently. Given shadcn/ui's broad adoption in the React ecosystem, a faster drop-in replacement could have real-world performance impact on many production frontends. It's a narrow but concrete and immediately actionable optimization for frontend engineers using Tailwind.",
+  "authors": [],
+  "stars": 1189,
+  "image_url": "https://repository-images.githubusercontent.com/1352104394/0226056c-6cde-4b76-b8e5-5f1796c7ad6b",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

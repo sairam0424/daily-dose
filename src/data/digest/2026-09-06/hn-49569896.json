@@ -1,0 +1,16 @@
+{
+  "title": "Statichost.eu – European static site hosting",
+  "source": "hn",
+  "url": "https://www.statichost.eu/",
+  "date": "2026-09-06",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A niche EU-based static hosting service launch, useful mainly for those specifically seeking GDPR-compliant infrastructure alternatives.",
+  "analysis": "This is a Show-HN style launch of a European static site hosting provider, likely positioned around GDPR compliance and data sovereignty rather than novel technology. Static hosting is a well-solved problem with many competitors (Netlify, Vercel, Cloudflare Pages, GitHub Pages), so the differentiation here is jurisdictional rather than technical. Still, some engineers building for EU markets may find it a useful option to know about.",
+  "authors": [
+    "p4bl0"
+  ],
+  "hn_id": 49569896,
+  "points": 478,
+  "favicon_url": "https://www.statichost.eu/favicon.ico"
+}

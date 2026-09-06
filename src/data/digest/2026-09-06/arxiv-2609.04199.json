@@ -1,0 +1,21 @@
+{
+  "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.04199",
+  "date": "2026-09-06",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "Introduces a concrete technique for distilling LLM-defined text functions into small, locally-runnable neural adapters, which is practically useful for reducing inference cost and dependency on remote APIs.",
+  "analysis": "The paper proposes 'compile by training': using teacher LLMs to generate synthetic training data for a natural-language spec, then training a small local adapter that replicates the desired function without needing the large teacher model at inference time. It reports 83.6% semantic accuracy on a hard benchmark subset where a faster compiler produced no exact matches, trading off longer compile time for higher accuracy. This is a genuinely interesting direction for reducing LLM API dependency in production systems, akin to model distillation applied to task-specific 'compiled' functions, though the demo applications (avatar control, translator) feel somewhat gimmicky.",
+  "authors": [
+    "Yuntian Deng",
+    "Pengyu Nie",
+    "Stuart Shieber"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

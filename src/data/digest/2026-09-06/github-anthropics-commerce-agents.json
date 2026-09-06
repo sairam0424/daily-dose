@@ -1,0 +1,16 @@
+{
+  "title": "anthropics/commerce-agents",
+  "source": "github",
+  "url": "https://github.com/anthropics/commerce-agents",
+  "date": "2026-09-06",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "An official reference architecture from Anthropic for building commerce-oriented Claude agents, useful for engineers building production agentic shopping/merchant systems.",
+  "analysis": "This is a reference blueprint repo from Anthropic demonstrating patterns for building shopping and merchant AI agents using Claude, spanning retail, commerce, telecom, and entertainment verticals. Reference implementations from model vendors carry extra weight because they typically encode best practices and API usage patterns the vendor wants developers to adopt, making this useful for engineers building similar agentic commerce systems. It's more of a practical engineering resource than a research contribution, but valuable for anyone integrating LLM agents into transactional workflows.",
+  "authors": [],
+  "stars": 2128,
+  "image_url": "https://opengraph.githubassets.com/8ed2597fa810a2964522c2fa3730c3130d8d6c7a06db1ea8ab6c432ef68314d5/anthropics/commerce-agents",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

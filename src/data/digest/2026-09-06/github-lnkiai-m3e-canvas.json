@@ -1,0 +1,16 @@
+{
+  "title": "lnkiai/m3e-canvas",
+  "source": "github",
+  "url": "https://github.com/lnkiai/m3e-canvas",
+  "date": "2026-09-06",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche design-to-prompt tool for Material 3 UI sketching, interesting mainly to designers/frontend devs exploring AI-assisted UI prototyping workflows.",
+  "analysis": "This tool lets users sketch Material 3 Expressive UI screens in the browser and converts them into prompts for AI code generation ('vibe-coding'), positioning itself within the growing space of design-to-code AI tooling. It's a reasonably novel niche application combining a visual sketch canvas with prompt generation, though the technical depth is likely more about UX tooling than any deep algorithmic advance. Relevant mainly to frontend engineers and designers experimenting with AI-assisted prototyping rather than a broad technical audience.",
+  "authors": [],
+  "stars": 4023,
+  "image_url": "https://opengraph.githubassets.com/0ec6d3f2ed137466121877c4dfe1788019342ce1b6ff2005d28dae86c379b196/lnkiai/m3e-canvas",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

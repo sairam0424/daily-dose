@@ -1,0 +1,21 @@
+{
+  "title": "ESPO: Error-Structured Prompt Optimization via Diagnose, Diversify, and Stabilize",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.04197",
+  "date": "2026-09-06",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid incremental improvement to automated prompt optimization that addresses the practical 'prompt bloat' problem in evolutionary prompt search methods like GEPA.",
+  "analysis": "ESPO restructures prompt optimization into diagnose/propose/select phases to combat prompt bloat seen in evolutionary optimizers, showing meaningful accuracy gains and much shorter prompts across seven benchmarks and multiple student models. The reported results (matching or beating GEPA everywhere with 47% shorter prompts) are a concrete, reproducible engineering contribution for anyone doing prompt engineering at scale. It's a fairly narrow, applied contribution rather than a fundamental advance, but useful for practitioners building automated prompt-optimization pipelines.",
+  "authors": [
+    "Lihao Liu",
+    "Peng Tang",
+    "Kunwar Yashraj Singh",
+    "Shabnam Ghadar"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

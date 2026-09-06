@@ -1,0 +1,21 @@
+{
+  "title": "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.04194",
+  "date": "2026-09-06",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful empirical study questioning whether chain-of-thought text actually reflects which reasoning steps matter, with direct implications for interpretability and process-reward-model research.",
+  "analysis": "The authors operationalize 'importance' of a CoT step via Monte Carlo rollout advantage estimates and test whether LLM judges can identify truly important steps from the text alone, finding judges beat a baseline but fall well short of ceiling, especially for correct responses. This is a meaningful contribution to the ongoing debate about CoT faithfulness and legibility versus genuine interpretability, cautioning against over-trusting reasoning traces for supervision or auditing. It's methodologically solid and relevant to anyone building process reward models or relying on CoT for safety/interpretability claims.",
+  "authors": [
+    "Kevin Du",
+    "Alexander Hoyle",
+    "Laura Ruis",
+    "Acyr Locatelli"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

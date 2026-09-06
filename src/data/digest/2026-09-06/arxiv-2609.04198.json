@@ -1,0 +1,19 @@
+{
+  "title": "Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.04198",
+  "date": "2026-09-06",
+  "tags": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "A rigorous, preregistered empirical study showing that LLM-as-judge evaluations on shared API endpoints are far less reliable than commonly assumed, which has serious implications for anyone using LLM judges to gate training or benchmarks.",
+  "analysis": "This paper audits the core assumption behind LLM-judge-based evaluation pipelines—that repeated identical queries to a 'the same' model produce stable, reproducible rankings—and finds it badly violated even in short time windows and across providers. The methodology (preregistered thresholds, tens of thousands of audited requests, testing across multiple providers and self-hosted batch-invariant kernels) is unusually careful for ML systems research, and the finding that byte-identical inputs yield different rankings has real practical consequences for leaderboards, RLHF pipelines, and research reproducibility. This is a substantive, well-executed critique that many ML practitioners relying on LLM judges should read.",
+  "authors": [
+    "Haoyaun Zhu",
+    "Jie Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
