@@ -1,0 +1,60 @@
+---
+import Logo from '../components/Logo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="daily-dose — page not found"
+  description="This page doesn't exist."
+  path="/404"
+>
+  <header class="masthead">
+    <div class="masthead-utility">
+      <nav class="site-nav">
+        <a href="/">&larr; Today's digest</a>
+      </nav>
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> Page not found</h1>
+      <p class="tagline">Whatever was here didn't make the cut - or was never scored to begin with.</p>
+    </hgroup>
+  </header>
+
+  <main>
+    <ul class="not-found-links">
+      <li><a href="/">Today's digest</a></li>
+      <li><a href="/archive/">All digests</a></li>
+      <li><a href="/rss.xml">Subscribe (RSS)</a></li>
+    </ul>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .not-found-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+  }
+
+  .not-found-links a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .not-found-links a:hover {
+    text-decoration: underline;
+  }
+
+  .not-found-links a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

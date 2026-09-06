@@ -794,18 +794,35 @@ describe("dist/index.html build output", () => {
     );
   });
 
-  it("(backlog) renders a date-jump control in the masthead, bounded to real digest dates", () => {
-    expect(html).toMatch(/<input[^>]*type="date"[^>]*id="date-jump"/);
-    const minMatch = html.match(/id="date-jump"[^>]*min="(\d{4}-\d{2}-\d{2})"/);
-    const maxMatch = html.match(/id="date-jump"[^>]*max="(\d{4}-\d{2}-\d{2})"/);
+  it("(regression) replaces the native date-picker input with a real prev-day link, bounded to real digest dates - never a calendar widget", () => {
+    // Confirmed via deep research: every real comparable editorial site
+    // examined (tdd.cat, Daring Fireball, Stratechery, Friday Front-End)
+    // uses a plain prev/next-day link or a flat chronological list for
+    // date navigation, never a calendar/date-input widget - one confirmed
+    // finding explicitly advises against custom calendar UI for "known
+    // historical dates" and "very distant date ranges", exactly this
+    // site's archive. Arbitrary jumps are handled by the existing
+    // /archive/ list page (linked via "All digests"), not duplicated here.
+    expect(html).not.toMatch(/<input[^>]*type="date"/);
+    expect(html).not.toContain('id="date-jump"');
+    const olderLinkMatch = html.match(
+      /<a href="\/archive\/(\d{4}-\d{2}-\d{2})\/"[^>]*>&larr; Older \(\1\)<\/a>/,
+    );
     expect(
-      minMatch,
-      "expected a min= bound to the earliest real digest date",
+      olderLinkMatch,
+      "expected an Older(<date>) link to the next real older digest date",
     ).toBeTruthy();
-    expect(
-      maxMatch,
-      "expected a max= bound to the latest real digest date",
-    ).toBeTruthy();
+  });
+
+  it("(regression) renders a scroll-to-top button, hidden by default, gated on real page length before it ever observes the real footer", () => {
+    expect(html).toContain('id="scroll-to-top"');
+    expect(html).toMatch(/<button[^>]*id="scroll-to-top"[^>]*hidden/);
+    // The gate is a runtime scrollHeight check, not something a static
+    // HTML/CSS snapshot can exercise - assert the actual gate logic and
+    // the real-footer observer target are both present in the shipped
+    // script, not an arbitrary fixed-scroll-distance sentinel.
+    expect(html).toMatch(/scrollHeight\s*>\s*window\.innerHeight\s*\*\s*4/);
+    expect(html).toMatch(/querySelector\(["']\.site-footer["']\)/);
   });
 });
 
