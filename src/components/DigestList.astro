@@ -72,3 +72,77 @@ const { entries } = Astro.props;
     }
   }
 </style>
+
+<script>
+  // j/k next/previous-item keyboard navigation, plus "t" to jump to top -
+  // a mature, well-established convention in reading-list apps (Gmail,
+  // Google Reader, Reeder, Feedly, Hacker News power-user extensions).
+  // Moves REAL focus to each story's link rather than tracking a separate
+  // "selected" index - Enter/Space then open it via the browser's own
+  // native link-activation, and .story-title:focus-visible (already
+  // defined in StoryCard.astro) supplies the visible highlight for free.
+  function getVisibleStoryLinks(): HTMLAnchorElement[] {
+    return Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(
+        '.story-list .story-card:not([hidden]) .story-title',
+      ),
+    );
+  }
+
+  function focusRelativeStory(direction: 1 | -1) {
+    const links = getVisibleStoryLinks();
+    if (links.length === 0) return;
+
+    const currentIndex = links.indexOf(
+      document.activeElement as HTMLAnchorElement,
+    );
+    const nextIndex =
+      currentIndex === -1
+        ? direction === 1
+          ? 0
+          : links.length - 1
+        : Math.max(0, Math.min(links.length - 1, currentIndex + direction));
+
+    const target = links[nextIndex];
+    target.focus();
+    target.scrollIntoView({
+      block: 'center',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth',
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    // Never hijack real typing - a focused text field/textarea/select or
+    // any contenteditable region, or a browser-level modifier chord
+    // (Cmd/Ctrl/Alt+key), always wins.
+    const active = document.activeElement;
+    const isEditable =
+      active instanceof HTMLElement &&
+      (active.tagName === 'INPUT' ||
+        active.tagName === 'TEXTAREA' ||
+        active.tagName === 'SELECT' ||
+        active.isContentEditable);
+    if (isEditable || event.metaKey || event.ctrlKey || event.altKey) return;
+
+    if (event.key === 'j') {
+      event.preventDefault();
+      focusRelativeStory(1);
+    } else if (event.key === 'k') {
+      event.preventDefault();
+      focusRelativeStory(-1);
+    } else if (event.key === 't') {
+      event.preventDefault();
+      if (active instanceof HTMLElement) active.blur();
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)')
+          .matches
+          ? 'auto'
+          : 'smooth',
+      });
+    }
+  });
+</script>
+

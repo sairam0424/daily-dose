@@ -824,6 +824,26 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(/scrollHeight\s*>\s*window\.innerHeight\s*\*\s*4/);
     expect(html).toMatch(/querySelector\(["']\.site-footer["']\)/);
   });
+
+  it("(regression) ships j/k next/previous-story keyboard navigation and a t jump-to-top key, scoped to real visible story links only", () => {
+    // Mature, well-established reading-list convention (Gmail, Google
+    // Reader, Reeder, Feedly, HN power-user extensions). This project's
+    // Vitest suite is entirely node-environment (no jsdom/happy-dom
+    // dependency exists, matching the "no new dependency for small
+    // conveniences" pattern already established here) so a real
+    // simulated-keydown test isn't feasible without adding one - this
+    // asserts the shipped script contains the real logic instead,
+    // matching this file's existing pattern for other client-only
+    // behavior (e.g. the scroll-to-top gate above).
+    expect(html).toMatch(
+      /querySelectorAll[^;]*\.story-list \.story-card:not\(\[hidden\]\) \.story-title/,
+    );
+    expect(html).toMatch(/key\s*===\s*["']j["']/);
+    expect(html).toMatch(/key\s*===\s*["']k["']/);
+    expect(html).toMatch(/key\s*===\s*["']t["']/);
+    // Must never hijack real typing in an editable field.
+    expect(html).toMatch(/isContentEditable/);
+  });
 });
 
 describe("dist/favicon.svg", () => {
