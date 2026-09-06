@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import DateJump from '../components/DateJump.astro';
 import DigestList from '../components/DigestList.astro';
 import FilterBar from '../components/FilterBar.astro';
 import Logo from '../components/Logo.astro';
@@ -14,7 +13,12 @@ const dateGroups = groupEntriesByDate(allEntries);
 const latestGroup = dateGroups.length > 0 ? dateGroups[0] : null;
 const latestDate = latestGroup?.date ?? null;
 const latestEntries = latestGroup?.entries ?? [];
-const allDigestDates = dateGroups.map((group) => group.date);
+// dateGroups is sorted most-recent-first (see digestGrouping.js), so index
+// 1 is the next OLDER real digest date - the homepage is always the
+// newest edition, so there is never a "newer" direction to offer here
+// (matching tdd.cat's own masthead: its "Next edition" button is
+// disabled while viewing the latest edition).
+const olderDate = dateGroups[1]?.date ?? null;
 ---
 
 <Layout
@@ -27,7 +31,13 @@ const allDigestDates = dateGroups.map((group) => group.date);
       <nav class="site-nav">
         <a href="/archive/">All digests &rarr;</a>
       </nav>
-      <DateJump dates={allDigestDates} />
+      <span class="date-nav">
+        {olderDate ? (
+          <a href={`/archive/${olderDate}/`}>&larr; Older ({olderDate})</a>
+        ) : (
+          <span class="date-nav-disabled" aria-disabled="true">&larr; Older</span>
+        )}
+      </span>
       {latestEntries.length > 0 && (
         <span class="story-count">
           {latestEntries.length} {latestEntries.length === 1 ? 'story' : 'stories'}
@@ -35,7 +45,7 @@ const allDigestDates = dateGroups.map((group) => group.date);
       )}
     </div>
     <hgroup class="masthead-brand">
-      <h1><Logo /> daily-dose</h1>
+      <h1><Logo /> The Daily Dose</h1>
       <p class="tagline">The technical news worth your next fifteen minutes.</p>
     </hgroup>
   </header>
@@ -82,6 +92,36 @@ const allDigestDates = dateGroups.map((group) => group.date);
      rather than trying to re-derive a 3-child mobile reservation width. */
   .story-count {
     display: none;
+    font-family: var(--font-body);
+  }
+
+  /* Replaces the native input[type=date] calendar picker entirely -
+     confirmed via deep research that every real comparable editorial/
+     newsletter site examined (tdd.cat, Daring Fireball, Stratechery,
+     Friday Front-End) uses a plain prev/next-day link or a flat
+     chronological list for date navigation, never a calendar widget;
+     one confirmed source explicitly advises against custom calendar UI
+     for "known historical dates" and "very distant date ranges", which
+     is exactly this site's archive. Jumping to an arbitrary distant date
+     is handled entirely by the existing /archive/ list page (linked via
+     "All digests" above), not duplicated here. */
+  .date-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-body);
+  }
+
+  .date-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .date-nav a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .date-nav-disabled {
+    color: var(--ink-faint);
     font-family: var(--font-body);
   }
 

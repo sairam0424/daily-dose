@@ -1,0 +1,76 @@
+---
+---
+
+<button
+  type="button"
+  id="scroll-to-top"
+  class="scroll-to-top"
+  aria-label="Scroll to top"
+  hidden
+>
+  &uarr;
+</button>
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1rem;
+    z-index: 10;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: var(--bg-surface);
+    color: var(--ink);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .scroll-to-top:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .scroll-to-top:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .scroll-to-top {
+      bottom: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const button = document.getElementById('scroll-to-top');
+  const footer = document.querySelector('.site-footer');
+
+  // Gate on real page length first, not just proximity to the footer - a
+  // short page's real footer (404, methodology) can already be visible
+  // without any scrolling at all, and there's no point offering
+  // scroll-to-top there. Only pages genuinely taller than ~4 viewport
+  // heights ever attach the observer at all; this is checked once on
+  // load, matching this repo's "low-effort, well-established" bar for
+  // this kind of affordance rather than re-deriving it on every resize.
+  const isLongPage = document.documentElement.scrollHeight > window.innerHeight * 4;
+
+  if (isLongPage && footer && button instanceof HTMLButtonElement) {
+    // Real footer, not an artificial sentinel - the button appears once
+    // the reader is nearing the end of a genuinely long page's real
+    // content, which scales naturally with each page's own length
+    // instead of a fixed scroll-distance guess.
+    const observer = new IntersectionObserver(([entry]) => {
+      button.hidden = !entry.isIntersecting;
+    });
+    observer.observe(footer);
+
+    button.addEventListener('click', () => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+  }
+</script>
