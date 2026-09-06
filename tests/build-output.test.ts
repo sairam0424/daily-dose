@@ -222,6 +222,36 @@ describe("dist/index.html build output", () => {
     expect(html.includes("No stories match the selected filters.")).toBe(true);
   });
 
+  it("(regression) announces the filter empty state to screen readers - it's dynamically toggled via `hidden` but wasn't wired to any live region", () => {
+    // Confirmed via deep research: role="status" (which implies
+    // aria-live="polite") plus an explicit redundant aria-live="polite"
+    // is the correct, unanimous ARIA fix so the zero-results moment is
+    // announced non-disruptively (no focus theft) - previously this
+    // paragraph had neither, a confirmed WCAG 4.1.3 violation.
+    expect(html).toMatch(
+      /<p[^>]*id="filter-empty-state"[^>]*role="status"[^>]*aria-live="polite"/,
+    );
+  });
+
+  it("(regression) gives the empty-state message real typographic prominence instead of small, muted text that's easy to miss", () => {
+    // Confirmed via deep research (NN/g eyetracking): a small, low-
+    // contrast no-results message was never even fixated on by real
+    // users in that study. Uses the site's own existing display-font/
+    // hairline-rule vocabulary (already used for section boundaries
+    // elsewhere) rather than a new icon/illustration dependency, per
+    // SOUL.md's no-clickbait mandate and real editorial "nothing here"
+    // precedent (ESPN's bare-text scoreboard empty state) that favors
+    // plain typography over decoration.
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.empty-state\s*\{[^}]*font-family:\s*var\(--font-display\)/,
+    );
+    expect(style).toMatch(/\.empty-state\s*\{[^}]*border-top:/);
+    expect(style).not.toMatch(
+      /\.empty-state\s*\{[^}]*color:\s*var\(--ink-soft\)/,
+    );
+  });
+
   it("does not link to Methodology anywhere on the homepage", () => {
     // Methodology is deliberately never advertised to readers (nav or
     // footer) - a third-person reader has no use for the scoring rubric.

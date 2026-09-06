@@ -329,8 +329,28 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         letter-spacing: 0.01em;
       }
 
+      /* Deliberately typographic, not illustrated - confirmed via deep
+         research: real editorial "nothing here" precedent (ESPN's live
+         scoreboard on an off day) uses bare, plain text with zero
+         illustration/promotional filler, and NN/g explicitly warns
+         against humor in empty/error messaging since it goes stale on
+         repeat exposure - both reinforce SOUL.md's no-clickbait,
+         no-gimmick mandate over a cute SaaS-style treatment. The one
+         concrete, load-bearing finding this DOES act on: NN/g's
+         eyetracking research found a small, low-contrast no-results
+         message was never even fixated on by real users - so this uses
+         the site's own existing display-font/hairline-rule vocabulary
+         (already used for section headings and every other content
+         boundary on the page) to give the message real presence,
+         without a new icon/illustration dependency. */
       .empty-state {
-        color: var(--ink-soft);
+        margin: 1.5rem 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        color: var(--ink);
+        text-align: center;
       }
 
       .site-footer {
