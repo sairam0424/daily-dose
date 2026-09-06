@@ -181,6 +181,37 @@ describe("dist/index.html build output", () => {
     expect(filterBarMatch![1]).toContain("Tier");
   });
 
+  it("(regression) lays out Source and Tier as one row split across the full width, not two stacked left-packed rows", () => {
+    // Confirmed directly against tdd.cat's real Source/Signal filter row
+    // (Playwright-measured): filling the content column's full width via
+    // space-between, not clustering both groups on one side.
+    const style = readAllPageCss(html);
+    // Astro's scoped-style hashing appends a `[data-astro-cid-*]` attribute
+    // selector directly after the class name - tolerate it here too.
+    expect(style).toMatch(
+      /\.filter-row-main(\[[^\]]*\])?\s*\{[^}]*justify-content:\s*space-between/,
+    );
+  });
+
+  it("(regression) only enriches the utility bar with a story-count 3rd zone above a wide-enough viewport to clear the fixed theme-toggle", () => {
+    // Confirmed via Playwright getBoundingClientRect: adding a 3rd,
+    // right-anchored zone to .masthead-utility overlaps the always-fixed
+    // theme-toggle (PreferenceControls.astro, position:fixed; right:1rem)
+    // at any viewport narrower than roughly 1150px, since
+    // .masthead-utility's own max-width (1100px) only creates real
+    // separation from the viewport's right edge above that. Real,
+    // measured overlap at 1107px; clear by 1200px. 1300px below is a
+    // deliberate margin past that measured crossover.
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.story-count(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
+    );
+    expect(style).toMatch(
+      /@media\s*\(min-width:\s*1300px\)\s*\{[^]*?\.story-count(\[[^\]]*\])?\s*\{[^}]*display:\s*inline/,
+    );
+    expect(html).toContain('class="story-count"');
+  });
+
   it("tags every story card with its source and interest tier", () => {
     expect(html.includes("data-source=")).toBe(true);
     expect(html.includes("data-interest-tier=")).toBe(true);

@@ -14,22 +14,24 @@ const TIERS = [
 
 <div class="filter-bar" id="filter-bar">
   <p class="filter-status" id="filter-status" aria-live="polite"></p>
-  <div class="filter-row">
-    <span class="filter-label">Source</span>
-    <div class="filter-group" data-filter-group="source" role="group" aria-label="Filter by source">
-      <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
-      {SOURCES.map((source) => (
-        <button type="button" class="filter-btn" data-filter-value={source.value} aria-pressed="false">{source.label}</button>
-      ))}
+  <div class="filter-row-main">
+    <div class="filter-row" data-filter-row="source">
+      <span class="filter-label">Source:</span>
+      <div class="filter-group" data-filter-group="source" role="group" aria-label="Filter by source">
+        <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
+        {SOURCES.map((source) => (
+          <button type="button" class="filter-btn" data-filter-value={source.value} aria-pressed="false">{source.label}</button>
+        ))}
+      </div>
     </div>
-  </div>
-  <div class="filter-row">
-    <span class="filter-label">Tier</span>
-    <div class="filter-group" data-filter-group="tier" role="group" aria-label="Filter by interest tier">
-      <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
-      {TIERS.map((tier) => (
-        <button type="button" class="filter-btn" data-filter-value={tier.value} aria-pressed="false">{tier.label}</button>
-      ))}
+    <div class="filter-row" data-filter-row="tier">
+      <span class="filter-label">Tier:</span>
+      <div class="filter-group" data-filter-group="tier" role="group" aria-label="Filter by interest tier">
+        <button type="button" class="filter-btn" data-filter-value="all" aria-pressed="true">All</button>
+        {TIERS.map((tier) => (
+          <button type="button" class="filter-btn" data-filter-value={tier.value} aria-pressed="false">{tier.label}</button>
+        ))}
+      </div>
     </div>
   </div>
 </div>
@@ -37,51 +39,64 @@ const TIERS = [
 
 <style>
   .filter-bar {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .filter-status {
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.75rem;
     font-family: var(--font-body);
     font-size: 0.85rem;
     color: var(--ink-soft);
+  }
+
+  /* One row spanning the full content width, Source pinned left / Tier
+     pinned right - confirmed directly against tdd.cat's real Source/
+     Signal filter row (Playwright-measured), which fills its content
+     column's full width the same way rather than clustering every
+     control on one side. Wraps to stacked rows only once genuinely too
+     narrow to fit both groups side by side. */
+  .filter-row-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--rule);
   }
 
   .filter-row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .filter-row:last-child {
-    margin-bottom: 0;
+    gap: 0.5rem;
   }
 
   .filter-label {
     font-family: var(--font-body);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--ink-faint);
-    min-width: 3.2rem;
   }
 
   .filter-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem;
+    gap: 0.4rem;
   }
 
   .filter-btn {
-    border: 1px solid var(--rule-soft);
-    background: transparent;
+    border: 1px solid var(--rule);
+    background: var(--bg-surface);
     color: var(--ink-soft);
     font-family: var(--font-body);
-    border-radius: 999px;
-    padding: 0.25rem 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 3px;
+    padding: 0.35rem 0.75rem;
     font-size: 0.75rem;
     cursor: pointer;
   }
@@ -90,7 +105,6 @@ const TIERS = [
     background: var(--accent);
     border-color: var(--accent);
     color: var(--accent-ink);
-    font-weight: 600;
   }
 
   .filter-btn:focus-visible {
