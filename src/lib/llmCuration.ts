@@ -248,8 +248,10 @@ const scoreTool = {
 /**
  * Scores every item in ONE batched Bedrock call, trying each model in
  * MODEL_CHAIN in order on NotFoundError/BadRequestError (deprecated model
- * ID, rejected inference-profile ID, etc.) - those are not retried by the
- * SDK itself since retrying an identical bad request cannot succeed.
+ * ID, rejected inference-profile ID, etc.) or SyntaxError (a malformed/
+ * truncated scores string from that model) - those are not retried by the
+ * SDK itself since retrying an identical bad request cannot succeed, and a
+ * different model is genuinely likely to generate cleaner output.
  * RateLimitError/InternalServerError ARE already retried by the SDK's own
  * maxRetries before ever reaching this function's catch block.
  */
@@ -285,7 +287,7 @@ export async function scoreItemsWithLLM(
     try {
       const message = await client.messages.create({
         model,
-        max_tokens: 8192,
+        max_tokens: 16000,
         messages: [{ role: "user", content: prompt }],
         tools: [scoreTool],
         tool_choice: { type: "tool", name: "record_scores" },
@@ -311,11 +313,12 @@ export async function scoreItemsWithLLM(
       // real array, even though input_schema declares it as an array and
       // every other run returns a real array - confirmed directly against
       // a real Bedrock call, not a hypothetical. Normalize before
-      // validating so this doesn't crash the whole run; a string that
-      // ISN'T valid JSON still fails loudly via JSON.parse's own throw,
-      // which the outer catch below reports normally - this only
-      // tolerates a differently-ENCODED valid response, never a
-      // genuinely malformed one.
+      // validating so this doesn't crash the whole run. A string that
+      // ISN'T valid JSON - e.g. truncated mid-string, a real failure mode
+      // once this got combined with the analysis field's longer per-item
+      // output - throws a SyntaxError, which the catch below now treats
+      // as a reason to retry the next model in the chain rather than
+      // fail the whole run outright.
       const rawInput = block.input as { scores?: unknown };
       const normalizedInput = {
         ...rawInput,
@@ -347,8 +350,14 @@ export async function scoreItemsWithLLM(
       };
     } catch (err) {
       lastErr = err;
-      if (err instanceof NotFoundError || err instanceof BadRequestError) {
-        continue; // this model unavailable or rejected the request - try the next one
+      if (
+        err instanceof NotFoundError ||
+        err instanceof BadRequestError ||
+        err instanceof SyntaxError
+      ) {
+        // Model unavailable, rejected the request, or returned malformed
+        // JSON (e.g. a truncated scores string) - try the next one.
+        continue;
       }
       throw err; // anything else should fail loudly, not be silently swallowed
     }

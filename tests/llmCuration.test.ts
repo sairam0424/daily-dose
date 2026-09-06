@@ -204,7 +204,7 @@ describe("scoreItemsWithLLM", () => {
     expect(secondCallArgs.thinking).toBeUndefined();
   });
 
-  it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError", async () => {
+  it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError/SyntaxError", async () => {
     mockCreate.mockRejectedValueOnce(
       new Error("some unexpected network failure"),
     );
@@ -282,7 +282,7 @@ describe("scoreItemsWithLLM", () => {
     });
   });
 
-  it("still throws a clear error if scores is a string but not valid JSON (a genuinely malformed response, not just a differently-encoded valid one)", async () => {
+  it("still throws a clear error if every model in the chain returns a scores string that isn't valid JSON (a genuinely malformed response, not just a differently-encoded valid one)", async () => {
     mockCreate.mockResolvedValue({
       content: [
         {
@@ -299,6 +299,49 @@ describe("scoreItemsWithLLM", () => {
     await expect(
       scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]),
     ).rejects.toThrow();
+    // Every model in the chain got a chance, not just the first.
+    expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
+  });
+
+  it("(regression) falls back to the next model when the primary returns a truncated/malformed scores string, instead of failing the whole run", async () => {
+    mockCreate
+      .mockResolvedValueOnce({
+        content: [
+          {
+            type: "tool_use",
+            id: "toolu_truncated",
+            name: "record_scores",
+            input: {
+              // Truncated mid-string, exactly like the real 2026-09-05
+              // production failure: valid JSON up to a point, then cut off.
+              scores: '[{"id":"hn-1","interest_score":8,"why_read":"Fine.',
+            },
+          },
+        ],
+        stop_reason: "max_tokens",
+        usage: { input_tokens: 50, output_tokens: 16000 },
+      })
+      .mockResolvedValueOnce(
+        toolUseResponse([
+          {
+            id: "hn-1",
+            interest_score: 8,
+            why_read: "Genuinely substantive discussion.",
+            analysis: "A real, multi-sentence fallback-model analysis.",
+            exclude: false,
+          },
+        ]),
+      );
+
+    const outcome = await scoreItemsWithLLM([
+      { id: "hn-1", source: "hn", title: "x" },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+    expect(outcome.scores.get("hn-1")?.why_read).toBe(
+      "Genuinely substantive discussion.",
+    );
   });
 
   it("throws if the tool_use input is missing analysis (the new required field)", async () => {
@@ -353,7 +396,7 @@ describe("scoreItemsWithLLM", () => {
     });
   });
 
-  it("sends max_tokens: 8192 (raised from 4096 to fit the added analysis field)", async () => {
+  it("sends max_tokens: 16000 (raised from 8192 - a real run truncated mid-scores-string at the lower ceiling)", async () => {
     mockCreate.mockResolvedValueOnce(
       toolUseResponse([
         {
@@ -369,7 +412,7 @@ describe("scoreItemsWithLLM", () => {
     await scoreItemsWithLLM([{ id: "hn-1", source: "hn", title: "x" }]);
 
     const callArgs = mockCreate.mock.calls[0]![0];
-    expect(callArgs.max_tokens).toBe(8192);
+    expect(callArgs.max_tokens).toBe(16000);
   });
 
   it("requires analysis in the scoring tool's input_schema for each item", async () => {
