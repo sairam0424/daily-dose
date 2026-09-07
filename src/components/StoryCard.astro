@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { interestTier } from '../lib/interestTier.js';
 import { formatReadingBadge } from '../lib/readingTime.js';
+import SourceIcon from './SourceIcon.astro';
 
 interface Props {
   entry: CollectionEntry<'digest'>;
@@ -43,7 +44,7 @@ const tier = interestTier(entry.data.interest_score);
         onerror="this.remove()"
       />
     )}
-    <span class={`source-badge source-badge-${entry.data.source}`}>{entry.data.source}</span>
+    <span class={`source-badge source-badge-${entry.data.source}`}><SourceIcon source={entry.data.source} />{entry.data.source}</span>
     <span class="reading-badge">{formatReadingBadge(entry.data)}</span>
     {typeof entry.data.points === 'number' && (
       <span class="points">{entry.data.points} points</span>
