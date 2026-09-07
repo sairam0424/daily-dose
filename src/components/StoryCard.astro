@@ -45,6 +45,7 @@ const tier = interestTier(entry.data.interest_score);
         onerror="this.remove()"
       />
     )}
+    <span class={`tier-badge tier-badge-${tier}`}>{tier.replace('-', ' ')}</span>
     <span class={`source-badge source-badge-${entry.data.source}`}><SourceIcon source={entry.data.source} />{entry.data.source}</span>
     <span class="reading-badge">{formatReadingBadge(entry.data)}</span>
     {typeof entry.data.points === 'number' && (
@@ -200,6 +201,31 @@ const tier = interestTier(entry.data.interest_score);
   .favicon-icon {
     border-radius: 2px;
     vertical-align: middle;
+  }
+
+  /* Reuses the exact same tokens the [data-interest-tier] border-color
+     rules above already use, so the tier has one source of truth, not
+     two independently-maintained color choices. 'notable' stays the
+     quietest treatment (--ink-faint text, no border) matching that same
+     rule's own comment that it needs the least visual emphasis. */
+  .tier-badge {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--rule-soft);
+    color: var(--ink-faint);
+  }
+
+  .tier-badge-must-read {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .tier-badge-recommended {
+    border-color: var(--rule);
+    color: var(--ink-soft);
   }
 
   .source-badge {
