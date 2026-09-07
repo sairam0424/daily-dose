@@ -205,6 +205,15 @@ describe("dist/index.html build output", () => {
     );
   });
 
+  it("(regression) gives the filter empty-state a reset button, not just a dead-end message", () => {
+    const emptyStateMatch = html.match(
+      /<p class="empty-state" id="filter-empty-state"[^>]*>([\s\S]*?)<\/p>/,
+    );
+    expect(emptyStateMatch, "expected the filter empty-state <p>").toBeTruthy();
+    expect(emptyStateMatch![1]).toContain('id="filter-reset"');
+    expect(emptyStateMatch![1]).toContain("Reset filters");
+  });
+
   it("(regression) lays out Source and Tier as one row split across the full width, not two stacked left-packed rows", () => {
     // Confirmed directly against tdd.cat's real Source/Signal filter row
     // (Playwright-measured): filling the content column's full width via
