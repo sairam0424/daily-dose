@@ -496,6 +496,15 @@ describe("dist/index.html build output", () => {
     );
   });
 
+  describe("global :focus-visible fallback (audit fix)", () => {
+    it("Layout.astro defines a global :focus-visible fallback ahead of per-component overrides", () => {
+      const style = readAllPageCss(html);
+      expect(style).toMatch(
+        /(?<![\w\]]):focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
+      );
+    });
+  });
+
   it("(Phase 1) uses @container instead of @media for newspaper column-count breakpoints", () => {
     const style = readAllPageCss(html);
     expect(style).not.toMatch(/@media\s*\(max-width:\s*1000px\)/);
