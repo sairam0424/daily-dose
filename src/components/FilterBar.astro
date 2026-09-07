@@ -108,7 +108,10 @@ const TIERS = [
     text-transform: uppercase;
     letter-spacing: 0.03em;
     border-radius: 3px;
-    padding: 0.35rem 0.75rem;
+    /* Vertical padding nudged up from 0.35rem - grows the ~25px hit
+       area toward the 44px platform guideline without visually bloating
+       these into chunky buttons; real WCAG AA (24px) was already met. */
+    padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     cursor: pointer;
   }
