@@ -1,13 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <style>
-    .tile { fill: #f8f4e8; }
-    .mark { fill: #7a2618; stroke: #7a2618; }
-    @media (prefers-color-scheme: dark) {
-      .tile { fill: #201d16; }
-      .mark { fill: #c99356; stroke: #c99356; }
-    }
-  </style>
-  <rect width="32" height="32" rx="7" class="tile" />
-  <circle cx="16" cy="20" r="7" class="mark" stroke="none" />
-  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" class="mark" fill="none" stroke-width="1.6" stroke-linecap="round" />
+  <!-- Static inline fills only, deliberately no embedded stylesheet or CSS
+       media-query rule - Chromium's favicon-specific SVG rasterizer (a
+       separate, more restrictive parser than the one used for a regular
+       image/page render) does not reliably support either. The prior
+       dark/light-adaptive version rendered fine as a plain image element
+       but silently failed favicon rasterization, so Chrome fell back to
+       an auto-generated "dd" monogram tile in the browser tab. One
+       static, high-contrast color pair (the site's light/newspaper brand
+       colors) is used instead - the tab icon is theme-bar-agnostic by
+       design now, not tied to the page's own light/dark toggle. -->
+  <rect width="32" height="32" rx="7" fill="#f8f4e8" />
+  <circle cx="16" cy="20" r="7" fill="#7a2618" />
+  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" fill="none" stroke="#7a2618" stroke-width="1.6" stroke-linecap="round" />
 </svg>
