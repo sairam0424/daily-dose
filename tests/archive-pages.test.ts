@@ -7,7 +7,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
-import { DIST_DIR } from "./testUtils.js";
+import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
 const DIST_ARCHIVE_INDEX = join(DIST_DIR, "archive", "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
@@ -133,16 +133,13 @@ describe("dist/archive/<date>/index.html build output", () => {
       ).toBeTruthy();
     });
 
-    it("(backlog) does not render the interest-score chart on an archive date page", () => {
-      const dates = readCommittedDates();
-      const datePagePath = join(
-        DIST_ARCHIVE_BASE,
-        dates[dates.length - 1],
-        "index.html",
+    it("(audit fix) .date-nav a has a :focus-visible rule matching the site's accent pattern", () => {
+      const datePagePath = join(DIST_ARCHIVE_BASE, firstDate, "index.html");
+      const html = readFileSync(datePagePath, "utf-8");
+      const style = readAllPageCss(html);
+      expect(style).toMatch(
+        /\.date-nav(?:\[[^\]]*\])?\s+a(?:\[[^\]]*\])?:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
       );
-      const dateHtml = readFileSync(datePagePath, "utf-8");
-      expect(dateHtml).not.toContain('id="score-chart"');
-      expect(dateHtml).not.toContain("Interest scores");
     });
 
     it("(backlog) keeps Methodology out of both the top nav and the footer on a date page", () => {

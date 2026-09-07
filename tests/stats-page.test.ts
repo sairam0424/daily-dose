@@ -182,34 +182,6 @@ describe("stats.astro source structure", () => {
     ).toBeGreaterThan(ternaryCloseEnd);
   });
 
-  it("(backlog) renders the interest-score chart outside the cost-data ternary, not nested inside it", () => {
-    // Phase 5's own explicit correction: the chart shows digest/score
-    // data, a different dataset than the totalRuns===0 ternary gates
-    // (real LLM cost data) - it must sit at the same unconditional
-    // nesting level as "Page views", not inside the ternary's <>...</>
-    // fragment. Same technique as the Page-views guard above.
-    const ternaryClose = source.indexOf("totalRuns === 0");
-    const ternaryCloseEnd = source.indexOf(")}\n", ternaryClose);
-    const chartGate = source.indexOf("chartLabels.length > 0");
-    const chartHeading = source.indexOf("Interest scores");
-    const pageViewsHeading = source.indexOf("Page views");
-
-    expect(chartGate, "expected a chartLabels.length > 0 gate").toBeGreaterThan(
-      -1,
-    );
-    expect(chartHeading, "expected an Interest scores heading").toBeGreaterThan(
-      -1,
-    );
-    expect(
-      chartGate,
-      "expected the chart's own gate to start after the cost-data ternary closes",
-    ).toBeGreaterThan(ternaryCloseEnd);
-    expect(
-      chartHeading,
-      "expected the Interest scores heading to render before the Page views heading",
-    ).toBeLessThan(pageViewsHeading);
-  });
-
   it("(backlog) keeps Methodology out of the top nav, reachable via the shared footer instead", () => {
     const navMatch = source.match(
       /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
@@ -217,5 +189,22 @@ describe("stats.astro source structure", () => {
     expect(navMatch, "expected a .site-nav").toBeTruthy();
     expect(navMatch![1]).not.toContain('href="/methodology"');
     expect(source).toContain("<SiteFooter");
+  });
+
+  it("(audit fix) wraps both stats tables in a scrollable, keyboard-accessible region", () => {
+    expect(source).toMatch(
+      /<div class="table-scroll" tabindex="0" role="region" aria-label="Model cost breakdown, scrollable">\s*<table class="stats-table">/,
+    );
+    expect(source).toMatch(
+      /<div class="table-scroll" tabindex="0" role="region" aria-label="Daily cost breakdown, scrollable">\s*<table class="stats-table">/,
+    );
+    expect(source).toMatch(/\.table-scroll\s*\{[^}]*overflow-x:\s*auto/);
+    expect(source).toMatch(/\.stats-table\s*\{[^}]*min-width:\s*32rem/);
+  });
+
+  it('(audit fix) gives every stats-table <th> an explicit scope="col"', () => {
+    const thMatches = source.match(/<th(?:\s[^>]*)?>(?:[^<]*)<\/th>/g) ?? [];
+    expect(thMatches).toHaveLength(10);
+    expect(thMatches.every((th) => th.includes('scope="col"'))).toBe(true);
   });
 });

@@ -14,13 +14,10 @@ export const prerender = false;
 
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { getCollection } from 'astro:content';
-import DigestChart from '../components/DigestChart.astro';
 import Logo from '../components/Logo.astro';
 import PreferenceControls from '../components/PreferenceControls.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Layout from '../layouts/Layout.astro';
-import { groupEntriesByDate } from '../lib/digestGrouping.js';
 import { isFlagEnabled } from '../lib/featureFlags.js';
 import {
   aggregateByDay,
@@ -42,12 +39,6 @@ async function readStats(): Promise<StatsEntry[]> {
 }
 
 const entries = await readStats();
-
-const allDigestEntries = await getCollection('digest');
-const digestDateGroups = groupEntriesByDate(allDigestEntries);
-const latestDigestGroup = digestDateGroups.length > 0 ? digestDateGroups[0] : null;
-const chartLabels = latestDigestGroup?.entries.map((entry) => entry.data.title) ?? [];
-const chartScores = latestDigestGroup?.entries.map((entry) => entry.data.interest_score) ?? [];
 
 const totalCostUsd = entries.reduce((sum, e) => sum + e.costUsd, 0);
 const totalInputTokens = entries.reduce((sum, e) => sum + e.inputTokens, 0);
@@ -117,62 +108,59 @@ const dayRows = aggregateByDay(entries);
         )}
 
         <h2 class="section-heading">By model</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Runs</th>
-              <th>Items scored</th>
-              <th>Input tokens</th>
-              <th>Output tokens</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {modelRows.map(([model, agg]) => (
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Model cost breakdown, scrollable">
+          <table class="stats-table">
+            <thead>
               <tr>
-                <td class="model-cell">{model}</td>
-                <td>{agg.runs}</td>
-                <td>{agg.itemCount}</td>
-                <td>{agg.inputTokens.toLocaleString()}</td>
-                <td>{agg.outputTokens.toLocaleString()}</td>
-                <td>{formatUsd(agg.costUsd)}</td>
+                <th scope="col">Model</th>
+                <th scope="col">Runs</th>
+                <th scope="col">Items scored</th>
+                <th scope="col">Input tokens</th>
+                <th scope="col">Output tokens</th>
+                <th scope="col">Cost</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {modelRows.map(([model, agg]) => (
+                <tr>
+                  <td class="model-cell">{model}</td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{agg.inputTokens.toLocaleString()}</td>
+                  <td>{agg.outputTokens.toLocaleString()}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <h2 class="section-heading">By day</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Runs</th>
-              <th>Items scored</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dayRows.map(([date, agg]) => (
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Daily cost breakdown, scrollable">
+          <table class="stats-table">
+            <thead>
               <tr>
-                <td>
-                  {date}
-                  {agg.flaggedAnomalous && <span class="anomaly-badge" title="anomalous run">!</span>}
-                </td>
-                <td>{agg.runs}</td>
-                <td>{agg.itemCount}</td>
-                <td>{formatUsd(agg.costUsd)}</td>
+                <th scope="col">Date</th>
+                <th scope="col">Runs</th>
+                <th scope="col">Items scored</th>
+                <th scope="col">Cost</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
-    )}
-
-    {chartLabels.length > 0 && (
-      <>
-        <h2 class="section-heading">Interest scores</h2>
-        <DigestChart labels={chartLabels} scores={chartScores} />
+            </thead>
+            <tbody>
+              {dayRows.map(([date, agg]) => (
+                <tr>
+                  <td>
+                    {date}
+                    {agg.flaggedAnomalous && <span class="anomaly-badge" title="anomalous run">!</span>}
+                  </td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </>
     )}
 
@@ -242,8 +230,13 @@ const dayRows = aggregateByDay(entries);
     font-weight: 700;
   }
 
+  .table-scroll {
+    overflow-x: auto;
+  }
+
   .stats-table {
     width: 100%;
+    min-width: 32rem;
     border-collapse: collapse;
     margin-top: 0.75rem;
     font-size: 0.9rem;

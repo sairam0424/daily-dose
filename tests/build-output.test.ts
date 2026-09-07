@@ -81,11 +81,6 @@ describe("dist/index.html build output", () => {
     ).toBeTruthy();
   });
 
-  // (moved) These two tests asserted the Chart.js island bundled correctly
-  // on the homepage. The chart moved to the owner-only /stats page in
-  // Phase 5 (see docs/superpowers/plans/2026-09-04-newspaper-polish-and-owner-gating.md)
-  // - equivalent coverage is added there against dist/stats/index.html.
-
   it("has a real favicon <link> tag", () => {
     const iconLinkMatch = html.match(/<link\s+[^>]*rel="icon"[^>]*>/i);
     expect(
@@ -496,6 +491,15 @@ describe("dist/index.html build output", () => {
     );
   });
 
+  describe("global :focus-visible fallback (audit fix)", () => {
+    it("Layout.astro defines a global :focus-visible fallback ahead of per-component overrides", () => {
+      const style = readAllPageCss(html);
+      expect(style).toMatch(
+        /(?<![\w\]]):focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
+      );
+    });
+  });
+
   it("(Phase 1) uses @container instead of @media for newspaper column-count breakpoints", () => {
     const style = readAllPageCss(html);
     expect(style).not.toMatch(/@media\s*\(max-width:\s*1000px\)/);
@@ -678,11 +682,6 @@ describe("dist/index.html build output", () => {
     expect(style).toMatch(
       /\[data-interest-tier=['"]?must-read['"]?\]\s*\{[^}]*border/,
     );
-  });
-
-  it("(backlog) does not render the interest-score chart on the homepage", () => {
-    expect(html).not.toContain('id="score-chart"');
-    expect(html).not.toContain("Interest scores");
   });
 
   it("(backlog) centers the masthead brand block; spreads the utility row's children to its edges", () => {
