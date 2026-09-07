@@ -194,7 +194,8 @@ describe("resolveItemImage", () => {
         text: async () =>
           `<meta property="og:image" content="https://example.com/cover.png"><link rel="icon" href="/f.ico">`,
       })
-      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }) // the image HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon HEAD check
 
     const result = await resolveItemImage("https://example.com/article");
     expect(result.image_url).toBe("https://example.com/cover.png");
@@ -216,10 +217,12 @@ describe("resolveItemImage", () => {
   });
 
   it("calls fetch with an abort signal and the expected User-Agent header", async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: true,
-      text: async () => "<html></html>",
-    });
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () => "<html></html>",
+      })
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     await resolveItemImage("https://example.com/article");
 
@@ -230,6 +233,36 @@ describe("resolveItemImage", () => {
         headers: { "User-Agent": "daily-dose-pipeline" },
       }),
     );
+  });
+
+  it("(audit fix) rejects a reachable favicon URL that carries a same-origin CORP header", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () => `<link rel="icon" href="/f.ico">`,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        headers: {
+          get: (name: string) =>
+            name === "cross-origin-resource-policy" ? "same-origin" : null,
+        },
+      }); // the favicon HEAD check, blocked by CORP
+
+    const result = await resolveItemImage("https://example.com/article");
+    expect(result.favicon_url).toBeUndefined();
+  });
+
+  it("(audit fix) rejects a favicon URL that fails its own reachability check, same as image_url", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () => `<link rel="icon" href="/f.ico">`,
+      })
+      .mockResolvedValueOnce({ ok: false, status: 404 }); // the favicon HEAD check
+
+    const result = await resolveItemImage("https://example.com/article");
+    expect(result.favicon_url).toBeUndefined();
   });
 });
 
@@ -341,7 +374,8 @@ describe("resolveItemImage with arxivId fallback", () => {
         text: async () =>
           `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
       })
-      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }) // the ar5iv figure's HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",
@@ -353,15 +387,17 @@ describe("resolveItemImage with arxivId fallback", () => {
   });
 
   it("does not attempt the arXiv fallback when no arxivId is given", async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: true,
-      text: async () =>
-        `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
-    });
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
+      })
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage("https://arxiv.org/abs/2609.04190");
     expect(result.image_url).toBeUndefined();
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(fetch).toHaveBeenCalledTimes(2);
   });
 
   it("still returns undefined image_url when the arXiv fallback also finds nothing", async () => {
@@ -371,7 +407,8 @@ describe("resolveItemImage with arxivId fallback", () => {
         text: async () =>
           `<meta property="og:image" content="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png">`,
       })
-      .mockResolvedValueOnce({ ok: true, text: async () => "<html></html>" });
+      .mockResolvedValueOnce({ ok: true, text: async () => "<html></html>" })
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",
@@ -397,11 +434,12 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
         text: async () =>
           `<meta property="og:image" content="https://www.statichost.eu/%20preview.png">`,
       })
-      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the resolved image URL
+      .mockResolvedValueOnce({ ok: false, status: 404 }) // the HEAD check on the resolved image URL
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage("https://www.statichost.eu/");
     expect(result.image_url).toBeUndefined();
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenCalledTimes(3);
     expect(fetch).toHaveBeenNthCalledWith(
       2,
       "https://www.statichost.eu/%20preview.png",
@@ -416,7 +454,8 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
         text: async () =>
           `<meta property="og:image" content="https://example.com/real-cover.png">`,
       })
-      .mockResolvedValueOnce({ ok: true }); // the HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }) // the image HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage("https://example.com/article");
     expect(result.image_url).toBe("https://example.com/real-cover.png");
@@ -429,7 +468,8 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
         text: async () =>
           `<meta property="og:image" content="https://example.com/flaky.png">`,
       })
-      .mockRejectedValueOnce(new Error("network down during HEAD check"));
+      .mockRejectedValueOnce(new Error("network down during HEAD check"))
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     await expect(
       resolveItemImage("https://example.com/article"),
@@ -448,7 +488,8 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
         text: async () =>
           `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
       })
-      .mockResolvedValueOnce({ ok: false, status: 404 }); // the HEAD check on the ar5iv figure
+      .mockResolvedValueOnce({ ok: false, status: 404 }) // the HEAD check on the ar5iv figure
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",

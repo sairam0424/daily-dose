@@ -196,7 +196,9 @@ async function isImageUrlReachable(url: string): Promise<boolean> {
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
     });
-    return response.ok;
+    if (!response.ok) return false;
+    const corp = response.headers.get("cross-origin-resource-policy");
+    return corp !== "same-origin" && corp !== "same-site";
   } catch {
     return false;
   } finally {
@@ -251,7 +253,10 @@ export async function resolveItemImage(
     const candidate =
       ogImage ?? (arxivId ? await resolveArxivFigureImage(arxivId) : undefined);
     const image_url = await verifyImageReachable(candidate);
-    return { image_url, favicon_url: extractFavicon(html, pageUrl) };
+    const favicon_url = await verifyImageReachable(
+      extractFavicon(html, pageUrl),
+    );
+    return { image_url, favicon_url };
   } catch (error) {
     console.warn(
       `[imageResolution] Failed to fetch/parse ${pageUrl} for image enrichment (${(error as Error).message}) - skipping image/favicon for this item only.`,
