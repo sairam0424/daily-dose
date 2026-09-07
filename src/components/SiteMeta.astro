@@ -12,9 +12,21 @@ const { title, description, path } = Astro.props;
 
 const imageUrl = new URL('/og-image.png', Astro.site);
 const pageUrl = new URL(path, Astro.site);
+
+// Cache-busting query param on the favicon URL - real, observed problem:
+// fixing a broken favicon.svg on the server does NOT make browsers that
+// already visited this origin pick up the new file. Chrome (and most
+// browsers) cache favicons in their own internal favicon database,
+// separate from normal HTTP/page caching - it doesn't re-fetch just
+// because the server-side file changed, so a reader who saw the old
+// broken favicon (or its auto-generated "dd" fallback) keeps seeing it
+// indefinitely with no cache-busting signal telling the browser this is
+// a genuinely different resource now. Bump this integer any time
+// favicon.svg's actual visual content changes.
+const FAVICON_VERSION = 2;
 ---
 
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={`/favicon.svg?v=${FAVICON_VERSION}`} />
 <meta name="description" content={description} />
 
 <meta property="og:type" content="website" />
