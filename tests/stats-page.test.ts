@@ -218,4 +218,15 @@ describe("stats.astro source structure", () => {
     expect(navMatch![1]).not.toContain('href="/methodology"');
     expect(source).toContain("<SiteFooter");
   });
+
+  it("(audit fix) wraps both stats tables in a scrollable, keyboard-accessible region", () => {
+    expect(source).toMatch(
+      /<div class="table-scroll" tabindex="0" role="region" aria-label="Model cost breakdown, scrollable">\s*<table class="stats-table">/,
+    );
+    expect(source).toMatch(
+      /<div class="table-scroll" tabindex="0" role="region" aria-label="Daily cost breakdown, scrollable">\s*<table class="stats-table">/,
+    );
+    expect(source).toMatch(/\.table-scroll\s*\{[^}]*overflow-x:\s*auto/);
+    expect(source).toMatch(/\.stats-table\s*\{[^}]*min-width:\s*32rem/);
+  });
 });

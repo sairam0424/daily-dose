@@ -117,55 +117,59 @@ const dayRows = aggregateByDay(entries);
         )}
 
         <h2 class="section-heading">By model</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Runs</th>
-              <th>Items scored</th>
-              <th>Input tokens</th>
-              <th>Output tokens</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {modelRows.map(([model, agg]) => (
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Model cost breakdown, scrollable">
+          <table class="stats-table">
+            <thead>
               <tr>
-                <td class="model-cell">{model}</td>
-                <td>{agg.runs}</td>
-                <td>{agg.itemCount}</td>
-                <td>{agg.inputTokens.toLocaleString()}</td>
-                <td>{agg.outputTokens.toLocaleString()}</td>
-                <td>{formatUsd(agg.costUsd)}</td>
+                <th>Model</th>
+                <th>Runs</th>
+                <th>Items scored</th>
+                <th>Input tokens</th>
+                <th>Output tokens</th>
+                <th>Cost</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {modelRows.map(([model, agg]) => (
+                <tr>
+                  <td class="model-cell">{model}</td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{agg.inputTokens.toLocaleString()}</td>
+                  <td>{agg.outputTokens.toLocaleString()}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <h2 class="section-heading">By day</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Runs</th>
-              <th>Items scored</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dayRows.map(([date, agg]) => (
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Daily cost breakdown, scrollable">
+          <table class="stats-table">
+            <thead>
               <tr>
-                <td>
-                  {date}
-                  {agg.flaggedAnomalous && <span class="anomaly-badge" title="anomalous run">!</span>}
-                </td>
-                <td>{agg.runs}</td>
-                <td>{agg.itemCount}</td>
-                <td>{formatUsd(agg.costUsd)}</td>
+                <th>Date</th>
+                <th>Runs</th>
+                <th>Items scored</th>
+                <th>Cost</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {dayRows.map(([date, agg]) => (
+                <tr>
+                  <td>
+                    {date}
+                    {agg.flaggedAnomalous && <span class="anomaly-badge" title="anomalous run">!</span>}
+                  </td>
+                  <td>{agg.runs}</td>
+                  <td>{agg.itemCount}</td>
+                  <td>{formatUsd(agg.costUsd)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </>
     )}
 
@@ -242,8 +246,13 @@ const dayRows = aggregateByDay(entries);
     font-weight: 700;
   }
 
+  .table-scroll {
+    overflow-x: auto;
+  }
+
   .stats-table {
     width: 100%;
+    min-width: 32rem;
     border-collapse: collapse;
     margin-top: 0.75rem;
     font-size: 0.9rem;
