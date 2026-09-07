@@ -210,6 +210,37 @@ describe("dist/index.html build output", () => {
     expect(html.includes("data-interest-tier=")).toBe(true);
   });
 
+  it("renders an inline SVG source icon before each source-badge's text label", () => {
+    // Checked per-source (not asserting all 4 unconditionally): real
+    // committed data rotates daily via the cron pipeline, and a given
+    // day's digest is not guaranteed to include an item from every one
+    // of the 4 known sources (see AGENTS.md - sourcing is real, not a
+    // fixed fixture). At least one of the 4 is still required so this
+    // can't vacuously pass on a page with no badges at all.
+    const knownSources = ["hn", "arxiv", "github", "devto"] as const;
+    let matchedAtLeastOneSource = false;
+
+    for (const src of knownSources) {
+      const badgeMatch = html.match(
+        new RegExp(
+          `<span class="source-badge source-badge-${src}"[^>]*>([\\s\\S]*?)</span>`,
+        ),
+      );
+      if (!badgeMatch) continue;
+      matchedAtLeastOneSource = true;
+
+      expect(
+        badgeMatch[1],
+        `expected the "${src}" source-badge's inner markup to start with an <svg> immediately followed by "${src}"`,
+      ).toMatch(new RegExp(`^<svg[^>]*>[\\s\\S]*?</svg>${src}$`));
+    }
+
+    expect(
+      matchedAtLeastOneSource,
+      "expected at least one hn/arxiv/github/devto source-badge in today's committed digest",
+    ).toBe(true);
+  });
+
   it("includes the static empty-state markup for when filters match no stories", () => {
     expect(html.includes('id="filter-empty-state"')).toBe(true);
     expect(html.includes("No stories match the selected filters.")).toBe(true);

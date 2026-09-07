@@ -42,6 +42,30 @@ describe("StoryCard.astro source structure", () => {
     );
   });
 
+  it("renders a SourceIcon before the source text inside the source badge, not in place of it", () => {
+    expect(source).toContain("import SourceIcon from './SourceIcon.astro';");
+
+    const badgeLine = source.indexOf(
+      "class={`source-badge source-badge-${entry.data.source}`}",
+    );
+    expect(badgeLine, "expected the source-badge span").toBeGreaterThan(-1);
+
+    const iconIndex = source.indexOf("<SourceIcon", badgeLine);
+    const textIndex = source.indexOf("{entry.data.source}</span>", badgeLine);
+    expect(
+      iconIndex,
+      "expected a <SourceIcon /> inside the badge",
+    ).toBeGreaterThan(badgeLine);
+    expect(
+      textIndex,
+      "expected the existing {entry.data.source} text to still be rendered",
+    ).toBeGreaterThan(badgeLine);
+    expect(
+      iconIndex,
+      "expected the icon to render before the text, not after/replacing it",
+    ).toBeLessThan(textIndex);
+  });
+
   it("(regression) lets a newspaper story card flow across a column break instead of forcing a whole-card jump", () => {
     // Confirmed via Playwright getBoundingClientRect on a real archive
     // page: break-inside:avoid forces a card that doesn't fit the

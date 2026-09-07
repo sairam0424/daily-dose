@@ -1,0 +1,79 @@
+---
+// Small inline SVG mark shown before each story-card's source-badge text
+// (StoryCard.astro). Follows the same inline-SVG-in-Astro-component
+// convention as Logo.astro, but uses currentColor throughout (no
+// hardcoded per-theme fills) since this icon sits inside a badge that
+// already inherits the theme's --ink-soft color via .source-badge - it
+// doesn't need its own light/dark variants.
+//
+// Every glyph here is a deliberately generic, simple mark - not a
+// pixel-accurate reproduction of any source's trademarked logo. See the
+// per-source comments below for what each one represents.
+type Source = 'hn' | 'arxiv' | 'github' | 'devto';
+
+interface Props {
+  source: Source;
+}
+
+const { source } = Astro.props;
+---
+
+{
+  source === 'hn' && (
+    // Circle + "Y" mark - a generic, rounded nod to Hacker News' Y
+    // Combinator lineage, not the site's actual orange-square logo.
+    <svg class="source-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+      <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+      <path d="M5.2 5l2.8 4v3M10.8 5l-2.8 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" />
+    </svg>
+  )
+}
+{
+  source === 'arxiv' && (
+    // Document with a folded corner + text lines - a generic
+    // paper/document glyph, not arXiv's own wordmark.
+    <svg class="source-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+      <path d="M4 2h6l2 2v10H4z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" />
+      <path d="M6 7h4M6 9.5h4M6 12h2.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+    </svg>
+  )
+}
+{
+  source === 'github' && (
+    // Minimal cat-head silhouette (two filled ear triangles overlapping
+    // a filled head circle) - the generic "cat" glyph widely used
+    // across open-source projects as a stand-in for GitHub, not a
+    // reproduction of the Octocat character. This shape - distinct
+    // two-point ears sitting on a round head - reads clearly as a cat
+    // at true ~14px; two earlier attempts (disconnected ear strokes
+    // over a separate circle, then a single one-apex outline) were both
+    // confirmed too ambiguous via live Playwright render checks before
+    // landing this one.
+    <svg class="source-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+      <path d="M2.5 2 7 6.5 4 7.5Z" fill="currentColor" />
+      <path d="M13.5 2 9 6.5 12 7.5Z" fill="currentColor" />
+      <circle cx="8" cy="10" r="4.3" fill="currentColor" />
+    </svg>
+  )
+}
+{
+  source === 'devto' && (
+    // Simple "</>" code-bracket glyph - generic developer-content mark,
+    // not Dev.to's own wordmark/logo.
+    <svg class="source-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+      <path d="M5.5 4L2.5 8l3 4M10.5 4l3 4-3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    </svg>
+  )
+}
+
+<style>
+  /* Unscoped: source-icon is only ever rendered inline inside
+     StoryCard.astro's .source-badge, so scoping to this component would
+     be redundant - :global keeps the selector matching this file's own
+     markup either way, same rationale as Logo.astro's :global() rules. */
+  :global(.source-icon) {
+    vertical-align: -1px;
+    margin-right: 0.2rem;
+    flex-shrink: 0;
+  }
+</style>
