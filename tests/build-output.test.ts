@@ -907,6 +907,13 @@ describe("dist/favicon.svg", () => {
     const svg = readFileSync(svgPath, "utf-8");
     expect(svg).not.toContain(">dd<");
     expect(svg).toContain('r="7"');
-    expect(svg).toMatch(/prefers-color-scheme:\s*dark/);
+  });
+
+  it("(regression) uses only static inline fills, never a <style>/@media block - Chromium's favicon-specific SVG rasterizer (a separate, more restrictive parser than the one used for a regular <img>/page render) doesn't reliably support either, and silently falls back to an auto-generated 'dd' monogram tab icon when it can't rasterize the declared favicon - the exact symptom this file's sibling test above already guards against by a different route", () => {
+    const svgPath = join(DIST_DIR, "favicon.svg");
+    const svg = readFileSync(svgPath, "utf-8");
+    expect(svg).not.toContain("<style>");
+    expect(svg).not.toMatch(/@media/);
+    expect(svg).toMatch(/fill="#[0-9a-fA-F]{6}"/);
   });
 });
