@@ -116,6 +116,20 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         outline-offset: 2px;
       }
 
+      /* Global prose-link fallback (privacy-page audit fix): methodology.astro
+         had its own page-local `main a { color: var(--accent); }` rule after a
+         prior backlog fix found its inline links fell through to the browser
+         default blue - only .site-nav a/.site-footer-links a had ever been
+         given the accent color. Adding a second page (privacy.astro) with the
+         same unstyled-prose-link gap confirmed this was about to become the
+         same "scattered, easy-to-miss per-page rule" bug class the global
+         :focus-visible fallback above already exists to prevent - so this
+         moves the rule here once, for every current and future page's <main>
+         prose links, instead of copy-pasting it a third time. */
+      main a {
+        color: var(--accent);
+      }
+
       body {
         margin: 0;
         font-family: var(--font-body);
