@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
-import { DIST_DIR } from "./testUtils.js";
+import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
 const DIST_ARCHIVE_INDEX = join(DIST_DIR, "archive", "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
@@ -66,5 +66,12 @@ describe("archive preview cards", () => {
 
   it("(backlog) still shows the real item count per date", () => {
     expect(html).toMatch(/\d+\s*items?/);
+  });
+
+  it("(audit fix) .preview-date has a :focus-visible rule matching the site's accent pattern", () => {
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /\.preview-date(?:\[[^\]]*\])?:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
+    );
   });
 });
