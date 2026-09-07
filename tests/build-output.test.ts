@@ -176,6 +176,27 @@ describe("dist/index.html build output", () => {
     expect(filterBarMatch![1]).toContain("Tier");
   });
 
+  it("(regression) collapses the filter pills behind a mobile-only Filters toggle instead of letting 9 pills wrap into ragged rows", () => {
+    // Confirmed via a live inspection of tdd.cat's own equivalent filter
+    // bar (its .filter-mobile-trigger, at the identical 600px
+    // breakpoint): the toggle button and its aria-expanded/aria-controls
+    // wiring ship in every build; the CSS media query is what actually
+    // hides the pill groups on narrow viewports and reveals them via a
+    // JS-toggled class.
+    expect(html).toContain('id="filter-toggle"');
+    expect(html).toContain('aria-expanded="false"');
+    expect(html).toContain('aria-controls="filter-row-main"');
+    expect(html).toContain('id="filter-row-main"');
+
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /@media\s*\(max-width:\s*600px\)\s*\{[^]*?\.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
+    );
+    expect(style).toMatch(
+      /\.filter-bar(\[[^\]]*\])?\.filters-open \.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*flex/,
+    );
+  });
+
   it("(regression) lays out Source and Tier as one row split across the full width, not two stacked left-packed rows", () => {
     // Confirmed directly against tdd.cat's real Source/Signal filter row
     // (Playwright-measured): filling the content column's full width via
@@ -791,6 +812,18 @@ describe("dist/index.html build output", () => {
     ).toBeTruthy();
     expect(brandMatch![1]).toContain("<h1");
     expect(brandMatch![1]).toContain('class="tagline"');
+  });
+
+  it("(regression) reorders the mobile masthead row so the date-nav (not the theme toggle) drops to its own full-width line", () => {
+    // Confirmed via a live inspection of tdd.cat's own equivalent
+    // masthead row: pin the nav link and theme toggle to the top row and
+    // force .date-nav to the end + full width, instead of leaving it to
+    // default DOM order (which previously stranded the toggle alone on
+    // its own line at narrow widths).
+    const style = readAllPageCss(html);
+    expect(style).toMatch(
+      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility \.date-nav\s*\{[^}]*order:\s*3[^}]*width:\s*100%/,
+    );
   });
 
   it("(backlog) renders the Logo mark in the masthead, with a skin-appropriate variant for each of the 3 palette states", () => {
