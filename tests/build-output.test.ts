@@ -90,6 +90,14 @@ describe("dist/index.html build output", () => {
     expect(iconLinkMatch?.[0]).toContain("/favicon.svg");
   });
 
+  it("(regression) has a real, descriptive homepage <title>, not the bare brand name", () => {
+    const titleMatch = html.match(/<title>([^<]*)<\/title>/);
+    expect(titleMatch, "expected a <title> tag").toBeTruthy();
+    expect(titleMatch![1]).not.toBe("daily-dose");
+    expect(titleMatch![1].length).toBeGreaterThan(20);
+    expect(titleMatch![1]).toContain("The Daily Dose");
+  });
+
   it("has an og:image meta tag with an absolute URL that resolves to a real committed file", () => {
     const ogImageMatch = html.match(
       /<meta\s+[^>]*property="og:image"[^>]*content="([^"]+)"[^>]*>/i,
@@ -195,6 +203,15 @@ describe("dist/index.html build output", () => {
     expect(style).toMatch(
       /\.filter-bar(\[[^\]]*\])?\.filters-open \.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*flex/,
     );
+  });
+
+  it("(regression) gives the filter empty-state a reset button, not just a dead-end message", () => {
+    const emptyStateMatch = html.match(
+      /<p class="empty-state" id="filter-empty-state"[^>]*>([\s\S]*?)<\/p>/,
+    );
+    expect(emptyStateMatch, "expected the filter empty-state <p>").toBeTruthy();
+    expect(emptyStateMatch![1]).toContain('id="filter-reset"');
+    expect(emptyStateMatch![1]).toContain("Reset filters");
   });
 
   it("(regression) lays out Source and Tier as one row split across the full width, not two stacked left-packed rows", () => {

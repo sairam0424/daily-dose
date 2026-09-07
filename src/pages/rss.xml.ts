@@ -17,12 +17,12 @@ export async function GET(context: APIContext) {
   const dateGroups = groupEntriesByDate(allEntries);
 
   return rss({
-    title: "daily-dose",
+    title: "The Daily Dose",
     description:
       "A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.",
     site: context.site,
     items: dateGroups.map((group) => ({
-      title: `daily-dose — ${group.date}`,
+      title: `The Daily Dose — ${group.date}`,
       // group.date is always a real "YYYY-MM-DD" string validated by
       // digestSchema.ts, so this is a real calendar date, not a fabricated one.
       pubDate: new Date(group.date),

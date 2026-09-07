@@ -17,7 +17,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
 ---
 
 <Layout
-  title="daily-dose — methodology"
+  title="The Daily Dose — methodology"
   description="How daily-dose actually scores and curates every item — the real rubric, thresholds, and cost controls, not marketing copy."
   path="/methodology"
 >
@@ -42,9 +42,11 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
       Every fetched item is scored in one batched call to a real AI model
       (Claude, via a model fallback chain) that reads each item's real title, real
       engagement numbers, and — where available — its real abstract or article
-      excerpt. The model is asked for a genuine 0-10 interest score and one honest
-      sentence explaining why. All ingested text is treated as untrusted data, never
-      as instructions — this project explicitly guards against prompt injection from
+      excerpt. The model is asked for a genuine 0-10 interest score, one honest
+      sentence explaining why, and the short analysis paragraph shown on each story
+      card — all from the same call, all real model output, never separately
+      hand-written. All ingested text is treated as untrusted data, never as
+      instructions — this project explicitly guards against prompt injection from
       the sources it aggregates.
     </p>
     <p>
@@ -52,7 +54,7 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
       model's response is missing a specific item, a deterministic placeholder
       formula derived only from real, already-fetched engagement numbers is used
       instead — and this is never presented as if it were genuine model judgment. See
-      the project's own <code>AGENTS.md</code> for the full honesty policy.
+      the project's own <a href="https://github.com/sairam0424/daily-dose/blob/main/AGENTS.md" target="_blank" rel="noopener noreferrer">AGENTS.md</a> for the full honesty policy.
     </p>
     <p>
       A hard pre-flight ceiling refuses to score more than <strong>{MAX_REASONABLE_ITEMS}</strong>

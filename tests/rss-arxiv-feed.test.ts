@@ -25,7 +25,7 @@ describe("dist/rss/arxiv.xml", () => {
     expect(() => parser.parse(feedXml)).not.toThrow();
     const parsed = parser.parse(feedXml);
     expect(parsed.rss.channel).toBeTruthy();
-    expect(parsed.rss.channel.title).toBe("daily-dose — arXiv");
+    expect(parsed.rss.channel.title).toBe("The Daily Dose — arXiv");
   });
 
   it("every item's content only describes arXiv-sourced stories", () => {

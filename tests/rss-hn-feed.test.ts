@@ -23,7 +23,7 @@ describe("dist/rss/hn.xml", () => {
     expect(() => parser.parse(feedXml)).not.toThrow();
     const parsed = parser.parse(feedXml);
     expect(parsed.rss.channel).toBeTruthy();
-    expect(parsed.rss.channel.title).toBe("daily-dose — Hacker News");
+    expect(parsed.rss.channel.title).toBe("The Daily Dose — Hacker News");
   });
 
   it("every item's content only describes Hacker News-sourced stories", () => {

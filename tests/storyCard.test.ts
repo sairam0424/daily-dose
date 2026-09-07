@@ -95,4 +95,14 @@ describe("StoryCard.astro source structure", () => {
       /\[data-skin=['"]?newspaper['"]?\]\)\s*\.story-card\s*\{[^}]*break-inside:\s*auto/s,
     );
   });
+
+  it("(regression) renders a visible tier-badge in the meta row so a reader can identify a card's tier without using the filter bar", () => {
+    expect(source).toContain("class={`tier-badge tier-badge-${tier}`}");
+    expect(source).toMatch(
+      /\.tier-badge-must-read\s*\{[^}]*border-color:\s*var\(--accent\)/s,
+    );
+    expect(source).toMatch(
+      /\.tier-badge-recommended\s*\{[^}]*border-color:\s*var\(--rule\)/s,
+    );
+  });
 });

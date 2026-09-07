@@ -98,4 +98,14 @@ describe("dist/methodology/index.html", () => {
     expect(footerMatch![1]).toContain('href="/rss.xml"');
     expect(footerMatch![1]).not.toContain('href="/methodology"');
   });
+
+  it("(regression) discloses that the per-card analysis paragraph, not just the score/sentence, is real model output", () => {
+    expect(html).toContain("the short analysis paragraph shown on each story");
+  });
+
+  it("(regression) links AGENTS.md to a real, live GitHub URL instead of an unreachable bare filename", () => {
+    expect(html).toContain(
+      'href="https://github.com/sairam0424/daily-dose/blob/main/AGENTS.md"',
+    );
+  });
 });

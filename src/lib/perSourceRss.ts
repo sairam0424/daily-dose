@@ -41,14 +41,14 @@ export async function buildSourceFeed(
     }))
     .filter((group) => group.entries.length > 0)
     .map((group) => ({
-      title: `daily-dose — ${group.date}`,
+      title: `The Daily Dose — ${group.date}`,
       pubDate: new Date(group.date),
       link: `/archive/${group.date}/`,
       content: renderDayContent(group.entries.map((entry) => entry.data)),
     }));
 
   return rss({
-    title: `daily-dose — ${sourceLabel}`,
+    title: `The Daily Dose — ${sourceLabel}`,
     description: `${sourceLabel} picks from the daily-dose digest — a daily AI-curated technical digest.`,
     site: context.site,
     items,
