@@ -1,0 +1,19 @@
+{
+  "title": "Happen to Have? Answer One Before You Ask One",
+  "source": "devto",
+  "url": "https://dev.to/anchildress1/happen-to-have-answer-one-before-you-ask-one-5957",
+  "date": "2026-09-07",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "ai",
+    "showdev"
+  ],
+  "interest_score": 2,
+  "why_read": "A quirky hackathon submission for a voice-based advice exchange app with light technical detail on Gemini API usage and privacy design choices.",
+  "analysis": "This describes a voice-based Q&A exchange app where answers and questions are screened through multiple Gemini API calls for safety and relevance, with an interesting note that the author's strongest measured architectural rule turned out to be based on a confounded metric. The privacy design (ephemeral recordings, no storage of raw audio) is a reasonable practice worth noting, but overall this is a lightweight hackathon project write-up with limited generalizable engineering depth. Mostly of interest to those following the specific dev.to challenge series.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Finw7k8ubo3vhm5gn0exi.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "WeatherNext 3",
+  "source": "hn",
+  "url": "https://deepmind.google/science/weathernext/",
+  "date": "2026-09-07",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "WeatherNext 3 likely refers to Google's next-generation ML weather forecasting model, relevant to those interested in applied ML for scientific prediction.",
+  "analysis": "This item appears to reference an update to a machine-learning-based weather forecasting system, an area where transformer/graph-based models have been outperforming traditional numerical weather prediction in speed and sometimes accuracy. Such systems matter technically because they show ML displacing decades-old physics-based simulation pipelines in a domain with real economic and safety impact. Without more detail in the given data, interest is moderate but the underlying technology area is genuinely significant.",
+  "authors": [
+    "matthieu_bl"
+  ],
+  "hn_id": 49552299,
+  "points": 187,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=32"
+}

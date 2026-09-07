@@ -1,0 +1,19 @@
+{
+  "title": "Charitas Clew: Bureaucracy is heavy. Let's build the counterweight.",
+  "source": "devto",
+  "url": "https://dev.to/earlgreyhot1701d/charitas-clew-bureaucracy-is-heavy-lets-build-the-counterweight-with-google-ai-1p5k",
+  "date": "2026-09-07",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "civictech",
+    "antigravity"
+  ],
+  "interest_score": 3,
+  "why_read": "An LLM-based plain-language translator for bureaucratic notices, a reasonable applied-AI use case but largely a thin wrapper around existing language models.",
+  "analysis": "Charitas Clew uses Google AI to translate dense legal/bureaucratic notices (utility shutoffs, eviction notices, etc.) into plain language with structured outputs like key dates and a speaking script for affected users. The social use case is genuinely valuable, but from an engineering standpoint it appears to be a prompt-engineering application on top of an LLM rather than a technically novel system. Interest is modest for readers focused on applied AI patterns for accessibility and civic tech.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffs5hu35rwei32uy0m6jr.jpg"
+}

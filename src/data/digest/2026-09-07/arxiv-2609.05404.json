@@ -1,0 +1,18 @@
+{
+  "title": "Diffusion TV: Experiencing Diffusion Models through Tangible, Embodied Interaction",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05404",
+  "date": "2026-09-07",
+  "tags": [
+    "cs.HC",
+    "cs.AI"
+  ],
+  "interest_score": 3,
+  "why_read": "An interesting art/HCI installation concept but low technical substance for a software engineering audience.",
+  "analysis": "Diffusion TV is an interactive art installation using a modified CRT and antenna knob to let users physically manipulate the denoising process of a diffusion model as a metaphor for generative AI, situated in an HCI/art context rather than as a technical advance. It's a creative approach to explainable AI through embodied interaction, but offers little in the way of transferable engineering techniques or benchmarks. Worth a passing mention for HCI-curious readers, but not core technical content.",
+  "authors": [
+    "Sihwa Park"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

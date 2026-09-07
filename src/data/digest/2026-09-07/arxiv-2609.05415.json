@@ -1,0 +1,25 @@
+{
+  "title": "UniMate: One Unified Model to Animate Diverse Skeletons",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05415",
+  "date": "2026-09-07",
+  "tags": [
+    "cs.CV",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically detailed paper on a unified motion synthesis model for arbitrary skeletons, relevant to graphics/animation researchers and engineers working on generative 3D content.",
+  "analysis": "UniMate proposes a topology-aware diffusion transformer that can animate arbitrary rigged 3D skeletons from a text prompt without per-skeleton retraining, using novel attention mechanisms like spectral rotary embeddings generalized to graphs. This addresses a real bottleneck in procedural animation pipelines—cross-topology generalization—which matters for game/VFX tooling and generative 3D asset pipelines. The introduction of a large curated multi-species motion dataset (UniML3D) is also a useful contribution for future research.",
+  "authors": [
+    "Linzhan Mou",
+    "Jiahui Lei",
+    "Zhiyang Dou",
+    "Chenyue Cai",
+    "Chaoyue Song",
+    "Adam Finkelstein",
+    "Szymon Rusinkiewicz"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

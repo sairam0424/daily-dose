@@ -1,0 +1,19 @@
+{
+  "title": "From AI Solutions to Shared Knowledge: Building an MCP for the Community",
+  "source": "devto",
+  "url": "https://dev.to/pascal_cescato_692b7a8a20/from-ai-solutions-to-shared-knowledge-building-an-mcp-for-the-community-6bk",
+  "date": "2026-09-07",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "ai",
+    "mcp"
+  ],
+  "interest_score": 4,
+  "why_read": "A creative MCP server concept for turning AI chat solutions into shared, reviewed documentation, interesting as an idea though execution details are thin.",
+  "analysis": "Shared Knowledge MCP is a Model Context Protocol server that converts a solved AI conversation into a Markdown article, submits it as a GitHub PR for human review, and publishes it with an auto-generated audio version via ElevenLabs. The core idea—capturing tacit knowledge from AI chat sessions into a persistent, reviewed knowledge base—is a genuinely useful pattern for reducing redundant LLM queries, though it's a hackathon-style submission rather than a mature, battle-tested tool. Worth a skim for engineers interested in MCP tooling patterns and knowledge management workflows.",
+  "authors": [],
+  "reactions": 26,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpzvor5cgo6za59r43ubf.png"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "ReachAloud: I built a multilingual voice tool that reads emergency alerts aloud for people who can't read the screen",
+  "source": "devto",
+  "url": "https://dev.to/sarvar_04/reachaloud-i-built-a-multilingual-voice-tool-that-reads-emergency-alerts-aloud-for-people-who-15ho",
+  "date": "2026-09-07",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "a11y",
+    "elevenlabs"
+  ],
+  "interest_score": 3,
+  "why_read": "An accessibility-focused TTS tool for translating emergency alerts into spoken, multilingual audio, a reasonable but narrow application of existing text-to-speech APIs.",
+  "analysis": "ReachAloud converts text-based emergency alerts into multilingual spoken audio for people who can't read the alert text, addressing a real accessibility gap highlighted by a specific flood disaster example. The technical implementation appears to be a straightforward wrapper around TTS/translation APIs (likely ElevenLabs, given the challenge series) rather than a novel technical contribution. It's a worthwhile use case for accessibility-minded engineers but not deeply technical.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fhe9gublk00qqo9etfimr.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

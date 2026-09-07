@@ -1,0 +1,16 @@
+{
+  "title": "216M Spy TVs – The LG Smart TV Problem [video]",
+  "source": "hn",
+  "url": "https://www.youtube.com/watch?v=6IFVTcM28KA",
+  "date": "2026-09-07",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A widely-discussed video/exposé on smart TV data collection at massive scale, relevant to engineers building or evaluating consumer IoT privacy practices.",
+  "analysis": "This item covers a video investigation into LG smart TVs' data collection practices affecting hundreds of millions of devices, a topic with real technical and privacy implications for ACR (automatic content recognition) systems. The huge comment count signals strong community interest in surveillance capitalism debates around connected devices. While not deeply technical itself, it's relevant for engineers working on privacy, telemetry, or IoT design who want to understand industry practices and user backlash.",
+  "authors": [
+    "treve"
+  ],
+  "hn_id": 49592375,
+  "points": 422,
+  "favicon_url": "https://www.youtube.com/s/desktop/f82dea74/img/favicon.ico"
+}

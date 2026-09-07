@@ -1,0 +1,16 @@
+{
+  "title": "pierrenade/short-video-generator-AI",
+  "source": "github",
+  "url": "https://github.com/pierrenade/short-video-generator-AI",
+  "date": "2026-09-07",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A YouTube-to-viral-shorts automation tool that is more about content farming than genuine technical innovation.",
+  "analysis": "This project automates converting long-form YouTube videos into short clips with highlight detection, subtitles, translation, and voiceover, essentially a pipeline of existing ML components (speech-to-text, translation, TTS, video editing) glued together for content repurposing. The individual components aren't novel, and the stated purpose—generating 'viral' shorts—leans toward low-value content automation rather than genuine engineering insight. It may be useful as a reference pipeline example but isn't intellectually substantial for a technical digest.",
+  "authors": [],
+  "stars": 1166,
+  "image_url": "https://opengraph.githubassets.com/b7bcf42eca1e1f08a6a0349f707643821e7660d6be3858d04972443b8406e65c/pierrenade/short-video-generator-AI",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "WearableQA: A Benchmark for Health Reasoning over Real-World Wearable Data",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05405",
+  "date": "2026-09-07",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A carefully constructed benchmark testing LLM reasoning over real wearable health data, useful for those building or evaluating health AI applications.",
+  "analysis": "WearableQA is a benchmark of ~4000 multiple-choice questions built from real wearable sensor data across 200 users, designed to test whether LLMs can reason about longitudinal physiological signals rather than just pattern-match. The paper's dual-grounding methodology (combining literature-based physiology with statistically validated population patterns) is a thoughtful approach to benchmark construction, and the wide performance spread across 14 models (19.6%-72.9%) indicates the task has real discriminative power. This matters for engineers building health-AI copilots who need to know current LLM limitations in this domain.",
+  "authors": [
+    "Ji Soo Lee",
+    "Xilun Chen",
+    "Pierce Chuang",
+    "Ashish Shenoy",
+    "Jason Wei",
+    "Dohwan Ko",
+    "Hyunwoo J. Kim",
+    "Benoit Corda"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

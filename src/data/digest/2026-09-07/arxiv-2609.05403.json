@@ -1,0 +1,24 @@
+{
+  "title": "RegionFed: Federated Learning for Personalized Query Understanding in Heterogeneous Retail Environments",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05403",
+  "date": "2026-09-07",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A federated learning paper solving a real architectural failure mode in personalized FL for modern transformer models, relevant to ML engineers working on privacy-preserving retail/search systems.",
+  "analysis": "RegionFed addresses a concrete practical problem: existing personalized federated learning methods collapse on transformer architectures like T5 due to tied embeddings and LayerNorm interactions, and the paper proposes a gradient-level, architecture-agnostic approach that sidesteps this. The claimed results—closing the gap to a privacy-violating centralized baseline within noise while providing formal differential privacy guarantees—are a substantive technical contribution if validated. This matters for engineers deploying federated personalization in heterogeneous multi-region deployments, a common real-world constraint.",
+  "authors": [
+    "Quoc H. Nguyen",
+    "Ali Lafzi",
+    "Abhijeet Phatak",
+    "Siddharth Pratap Singh",
+    "Rohit Upadhyay",
+    "Yogananda Domlur Seetharama",
+    "Chittaranjan Tripathy"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

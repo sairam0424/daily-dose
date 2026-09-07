@@ -1,0 +1,17 @@
+{
+  "title": "bzip3",
+  "source": "hn",
+  "url": "https://github.com/iczelia/bzip3",
+  "date": "2026-09-07",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "bzip3 is a modern compressor project that engineers interested in compression algorithms and performance benchmarking will find genuinely technical and worth reading.",
+  "analysis": "bzip3 is a newer compression tool aiming to improve on bzip2 with better ratios and speed using context mixing and other techniques, appealing to engineers interested in low-level systems and compression algorithm design. HN discussions on compression tools tend to dig into benchmarks, algorithmic tradeoffs, and real-world use cases, which is substantive technical content. This kind of niche systems tool has lasting relevance for engineers who care about storage and bandwidth optimization.",
+  "authors": [
+    "tosh"
+  ],
+  "hn_id": 49598291,
+  "points": 359,
+  "image_url": "https://opengraph.githubassets.com/f28b473b01d107acaad511c2c0c25d364ae58200e3ad9f70b3f58c28b1475810/iczelia/bzip3",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

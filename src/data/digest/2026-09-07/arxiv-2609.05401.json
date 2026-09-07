@@ -1,0 +1,26 @@
+{
+  "title": "Same Trajectory, Contradictory Rewards (ROBORMBENCH): Paraphrase Fragility in Vision Language Reward Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05401",
+  "date": "2026-09-07",
+  "tags": [
+    "cs.RO",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A well-designed benchmark exposing a genuine robustness failure in VLM-based reward models for robotics, with clear practical implications for RL practitioners.",
+  "analysis": "ROBORMBENCH systematically tests whether vision-language reward models give consistent rewards across paraphrased instructions on the same robot trajectory, finding widespread instability that isn't fixed by scale or explicit reasoning—an important and underappreciated failure mode for anyone using VLMs as reward signals in robot learning. The dataset (2,390 real trajectories, 21k+ paraphrases) is sizable and the finding that trajectory-grounded reward models are more stable offers actionable guidance. This is solid empirical robotics/ML research with direct implications for RLHF-style pipelines in robotics.",
+  "authors": [
+    "Wonje Jeung",
+    "Sangyeon Yoon",
+    "Hyesoo Hong",
+    "Yoonjun Cho",
+    "Dongjae Jeon",
+    "Bumjun Kim",
+    "Jean Oh",
+    "Youngjae Yu",
+    "Albert No"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
