@@ -110,7 +110,7 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         box-sizing: border-box;
       }
 
-      /* Global keyboard focus fallback (audit fix) - @see test's (?<!\S) lookbehind */
+      /* Global keyboard focus fallback (audit fix) - @see test's (?<![\w\]]) lookbehind */
       :focus-visible {
         outline: 2px solid var(--accent);
         outline-offset: 2px;
