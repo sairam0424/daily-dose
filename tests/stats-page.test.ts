@@ -229,4 +229,10 @@ describe("stats.astro source structure", () => {
     expect(source).toMatch(/\.table-scroll\s*\{[^}]*overflow-x:\s*auto/);
     expect(source).toMatch(/\.stats-table\s*\{[^}]*min-width:\s*32rem/);
   });
+
+  it('(audit fix) gives every stats-table <th> an explicit scope="col"', () => {
+    const thMatches = source.match(/<th(?:\s[^>]*)?>(?:[^<]*)<\/th>/g) ?? [];
+    expect(thMatches).toHaveLength(10);
+    expect(thMatches.every((th) => th.includes('scope="col"'))).toBe(true);
+  });
 });
