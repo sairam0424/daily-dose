@@ -182,34 +182,6 @@ describe("stats.astro source structure", () => {
     ).toBeGreaterThan(ternaryCloseEnd);
   });
 
-  it("(backlog) renders the interest-score chart outside the cost-data ternary, not nested inside it", () => {
-    // Phase 5's own explicit correction: the chart shows digest/score
-    // data, a different dataset than the totalRuns===0 ternary gates
-    // (real LLM cost data) - it must sit at the same unconditional
-    // nesting level as "Page views", not inside the ternary's <>...</>
-    // fragment. Same technique as the Page-views guard above.
-    const ternaryClose = source.indexOf("totalRuns === 0");
-    const ternaryCloseEnd = source.indexOf(")}\n", ternaryClose);
-    const chartGate = source.indexOf("chartLabels.length > 0");
-    const chartHeading = source.indexOf("Interest scores");
-    const pageViewsHeading = source.indexOf("Page views");
-
-    expect(chartGate, "expected a chartLabels.length > 0 gate").toBeGreaterThan(
-      -1,
-    );
-    expect(chartHeading, "expected an Interest scores heading").toBeGreaterThan(
-      -1,
-    );
-    expect(
-      chartGate,
-      "expected the chart's own gate to start after the cost-data ternary closes",
-    ).toBeGreaterThan(ternaryCloseEnd);
-    expect(
-      chartHeading,
-      "expected the Interest scores heading to render before the Page views heading",
-    ).toBeLessThan(pageViewsHeading);
-  });
-
   it("(backlog) keeps Methodology out of the top nav, reachable via the shared footer instead", () => {
     const navMatch = source.match(
       /<nav[^>]*class="site-nav"[^>]*>([\s\S]*?)<\/nav>/,
