@@ -26,6 +26,7 @@ const tier = interestTier(entry.data.interest_score);
       loading="lazy"
       width="560"
       height="315"
+      onerror="this.closest('.story-card')?.classList.remove('has-image'); this.remove();"
     />
   )}
   <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">

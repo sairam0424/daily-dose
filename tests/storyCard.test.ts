@@ -42,6 +42,22 @@ describe("StoryCard.astro source structure", () => {
     );
   });
 
+  it("(regression) removes the story image AND its card's has-image class on load failure, instead of showing an empty styled box", () => {
+    // Real, observed failure: a real item's image_url (e.g. GitHub's
+    // opengraph.githubassets.com card image) started failing to load
+    // sometime after the pipeline's own reachability check passed - the
+    // exact same class of "verified reachable at write time, broke later"
+    // risk the favicon_url case above already documents. .story-image's
+    // own CSS (width:100%, aspect-ratio, a real background) styles the
+    // <img> element directly, so a plain onerror="this.remove()" alone
+    // isn't enough here - the parent .story-card also needs its
+    // has-image class removed, or it stays a wider 3-column card (see
+    // the @container story-list grid rule) with nothing in the slot.
+    expect(source).toMatch(
+      /<img[^>]*class="story-image"[^>]*onerror="this\.closest\('\.story-card'\)\?\.classList\.remove\('has-image'\); this\.remove\(\);"/s,
+    );
+  });
+
   it("renders a SourceIcon before the source text inside the source badge, not in place of it", () => {
     expect(source).toContain("import SourceIcon from './SourceIcon.astro';");
 
