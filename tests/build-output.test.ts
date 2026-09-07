@@ -844,13 +844,29 @@ describe("dist/index.html build output", () => {
     // /archive/ list page (linked via "All digests"), not duplicated here.
     expect(html).not.toMatch(/<input[^>]*type="date"/);
     expect(html).not.toContain('id="date-jump"');
-    const olderLinkMatch = html.match(
-      /<a href="\/archive\/(\d{4}-\d{2}-\d{2})\/"[^>]*>&larr; Older \(\1\)<\/a>/,
-    );
-    expect(
-      olderLinkMatch,
-      "expected an Older(<date>) link to the next real older digest date",
-    ).toBeTruthy();
+
+    // Real committed digest dates change over time (old dates get pruned,
+    // the daily cron adds new ones) - assert whichever of index.astro's two
+    // real branches actually applies right now, not "there must always be
+    // ≥2 dates". With only the latest date committed, olderDate is null and
+    // the disabled <span> branch is correct, not a bug.
+    const committedDateCount = readdirSync(DIGEST_BASE, {
+      withFileTypes: true,
+    }).filter((entry) => entry.isDirectory()).length;
+
+    if (committedDateCount > 1) {
+      const olderLinkMatch = html.match(
+        /<a href="\/archive\/(\d{4}-\d{2}-\d{2})\/"[^>]*>&larr; Older \(\1\)<\/a>/,
+      );
+      expect(
+        olderLinkMatch,
+        "expected an Older(<date>) link to the next real older digest date",
+      ).toBeTruthy();
+    } else {
+      expect(html).toMatch(
+        /<span class="date-nav-disabled"[^>]*>&larr; Older<\/span>/,
+      );
+    }
   });
 
   it("(regression) renders a scroll-to-top button, hidden by default, gated on real page length before it ever observes the real footer", () => {
