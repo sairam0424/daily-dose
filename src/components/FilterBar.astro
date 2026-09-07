@@ -14,7 +14,16 @@ const TIERS = [
 
 <div class="filter-bar" id="filter-bar">
   <p class="filter-status" id="filter-status" aria-live="polite"></p>
-  <div class="filter-row-main">
+  <button
+    type="button"
+    class="filter-toggle"
+    id="filter-toggle"
+    aria-expanded="false"
+    aria-controls="filter-row-main"
+  >
+    Filters <span class="filter-toggle-chevron" aria-hidden="true">&#9662;</span>
+  </button>
+  <div class="filter-row-main" id="filter-row-main">
     <div class="filter-row" data-filter-row="source">
       <span class="filter-label">Source:</span>
       <div class="filter-group" data-filter-group="source" role="group" aria-label="Filter by source">
@@ -111,12 +120,68 @@ const TIERS = [
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+
+  /* Hidden above the mobile breakpoint below - the two filter groups
+     stay always-visible on wider viewports, matching the pre-existing
+     behavior exactly. */
+  .filter-toggle {
+    display: none;
+  }
+
+  /* Confirmed via a live inspection of tdd.cat's own equivalent filter
+     bar (its .filter-mobile-trigger, at the identical 600px breakpoint):
+     collapse the pill groups behind a disclosure toggle on narrow
+     viewports instead of letting 9 individual pills wrap into several
+     ragged rows before any digest content appears. The always-visible
+     .filter-status line above this is unaffected, so "Showing X of Y
+     stories" still renders immediately either way. */
+  @media (max-width: 600px) {
+    .filter-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-surface);
+      color: var(--ink-soft);
+      font-family: var(--font-body);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border-radius: 3px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .filter-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .filter-toggle-chevron {
+      display: inline-block;
+    }
+
+    .filter-toggle[aria-expanded='true'] .filter-toggle-chevron {
+      transform: rotate(180deg);
+    }
+
+    .filter-row-main {
+      display: none;
+    }
+
+    .filter-bar.filters-open .filter-row-main {
+      display: flex;
+    }
+  }
 </style>
 
 <script>
   const filterBar = document.getElementById('filter-bar');
   const emptyState = document.getElementById('filter-empty-state');
   const statusLine = document.getElementById('filter-status');
+  const filterToggle = document.getElementById('filter-toggle');
 
   let activeSource = 'all';
   let activeTier = 'all';
@@ -148,6 +213,12 @@ const TIERS = [
       statusLine.textContent = `Showing ${visibleCount} of ${cards.length} stories${scope}`;
     }
   }
+
+  filterToggle?.addEventListener('click', () => {
+    const isOpen = filterToggle.getAttribute('aria-expanded') === 'true';
+    filterToggle.setAttribute('aria-expanded', String(!isOpen));
+    filterBar?.classList.toggle('filters-open', !isOpen);
+  });
 
   filterBar?.addEventListener('click', (event) => {
     const target = event.target;

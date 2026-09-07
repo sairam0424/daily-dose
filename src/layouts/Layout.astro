@@ -222,6 +222,24 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         color: var(--ink-faint);
       }
 
+      /* Confirmed via a live inspection of tdd.cat's own equivalent
+         masthead row (its .masthead-eyebrow, using the identical
+         technique): the two edge zones (nav link, theme toggle) stay on
+         the first row by default once the middle .date-nav zone (only
+         present on index.astro - a harmless no-op selector elsewhere) is
+         explicitly pulled out of source order and given a forced
+         full-width, so IT intentionally drops to its own centered row
+         below - instead of default DOM order deciding which child wraps
+         (previously the theme toggle, stranding it alone under the nav
+         row - see the reported mobile screenshot this fixes). */
+      @media (max-width: 480px) {
+        .masthead-utility .date-nav {
+          order: 3;
+          width: 100%;
+          text-align: center;
+        }
+      }
+
       .site-nav {
         display: flex;
         gap: 1rem;
