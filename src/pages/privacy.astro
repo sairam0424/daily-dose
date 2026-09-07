@@ -1,0 +1,103 @@
+---
+// Grounded in real, verified facts, not boilerplate — see the 2026-09-07
+// deep-research pass behind this page: the ICO's actual "right to be
+// informed" checklist (only the items that genuinely apply to this site
+// are included below; DPO contact, third-country transfers, automated
+// decision-making, and consent-withdrawal are all correctly omitted
+// because none of them apply here), Vercel's own stated Analytics/Speed
+// Insights retention window, and the real Art 6(1)(f) legitimate-interest
+// basis this project actually relies on. Unlike /methodology, this page
+// is proactively linked from the footer (see SiteFooter.astro) — the ICO
+// is explicit that merely having a privacy page online, unlinked, does
+// not satisfy the "easily accessible" requirement.
+import Logo from '../components/Logo.astro';
+import PreferenceControls from '../components/PreferenceControls.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Layout from '../layouts/Layout.astro';
+import { isFlagEnabled } from '../lib/featureFlags.js';
+
+const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
+---
+
+<Layout
+  title="daily-dose — privacy"
+  description="What daily-dose actually collects, why, and for how long — a short, honest privacy notice, not boilerplate."
+  path="/privacy"
+>
+  <header class="masthead">
+    <div class="masthead-utility">
+      <nav class="site-nav"><a href="/">&larr; Back to digest</a></nav>
+      <PreferenceControls devModeEnabled={devModeEnabled} />
+    </div>
+    <hgroup class="masthead-brand">
+      <h1><Logo /> Privacy</h1>
+      <p class="tagline">
+        This is a personal, open-source project. Here is exactly what it collects,
+        why, and for how long — nothing more than that.
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <h2 class="section-heading">What this site does not do</h2>
+    <p>
+      daily-dose has no user accounts, no sign-up, no comments, and no forms. It sets
+      no cookies of its own — the light/dark theme toggle is stored only in your
+      browser's <code>localStorage</code>, never sent to any server, and is not
+      personal data.
+    </p>
+
+    <h2 class="section-heading">What is collected, and why</h2>
+    <p>
+      This site uses Vercel Web Analytics and Vercel Speed Insights to understand
+      whether anyone actually reads this hobby project and whether pages load
+      acceptably fast. Neither tool uses cookies or writes anything to your browser —
+      visitors aren't individually identified or tracked across visits.
+    </p>
+    <p>Per page view, Vercel Web Analytics records: the page URL, referrer, a coarse
+      geolocation (country/region/city, derived from IP address — the IP address
+      itself is not retained), device type, and browser/OS. Vercel Speed Insights
+      separately records real-world page-load performance (Core Web Vitals) tied to
+      a route and country, not to any individual visitor.
+    </p>
+    <p>
+      The lawful basis for this is a <strong>legitimate interest</strong> (UK
+      GDPR/GDPR Art. 6(1)(f)): understanding traffic to a hobby project. This is
+      genuinely the only purpose — there is no advertising, no resale of data, and no
+      profiling of individual visitors.
+    </p>
+
+    <h2 class="section-heading">Who processes it</h2>
+    <p>
+      Vercel Inc., the host of this site, is the only third party involved. See{' '}
+      <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel's Web Analytics privacy documentation</a>
+      {' '}and{' '}
+      <a href="https://vercel.com/docs/speed-insights/privacy-policy" target="_blank" rel="noopener noreferrer">Speed Insights privacy documentation</a>
+      {' '}for their own, more detailed disclosures. Nothing collected here is sold,
+      shared with advertisers, or used for anything beyond the purpose above.
+    </p>
+
+    <h2 class="section-heading">How long it's kept</h2>
+    <p>
+      Vercel guarantees Web Analytics and Speed Insights data for <strong>at least
+      one month</strong> on this project's plan — Vercel's own retention may extend
+      longer than that minimum. This site does not separately store, export, or
+      retain any of this data itself.
+    </p>
+
+    <h2 class="section-heading">Your rights</h2>
+    <p>
+      Because no cookie or identifier persists across visits, there is no
+      per-visitor record this site (or Vercel, on its behalf) can look up, correct,
+      or delete on request — the data collected is never linked back to a specific
+      person. If you believe that's inaccurate, or have any other question, open an
+      issue on{' '}
+      <a href="https://github.com/sairam0424/daily-dose/issues" target="_blank" rel="noopener noreferrer">this project's GitHub repository</a>.
+      You also have the right to complain to your local data protection authority —
+      in the UK, that's the{' '}
+      <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">Information Commissioner's Office (ICO)</a>.
+    </p>
+  </main>
+
+  <SiteFooter />
+</Layout>
