@@ -95,4 +95,9 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
   .date-nav a:hover {
     text-decoration: underline;
   }
+
+  .date-nav a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 </style>
