@@ -14,7 +14,15 @@ export default defineConfig({
       // from the sitemap too keeps search engines from surfacing it as an
       // entry point either. The page itself still exists and works if
       // linked directly.
-      filter: (page) => !page.includes('/methodology'),
+      //
+      // /stats is excluded for a different reason: it's real HTTP Basic
+      // Auth-gated (401 for any unauthenticated crawler) - robots.txt
+      // already documents this same reasoning for omitting it from
+      // Disallow. Publishing it in the sitemap would tell crawlers it's a
+      // real, readable URL when it structurally can never return content
+      // to them, wasting crawl budget and surfacing as a spurious
+      // "blocked due to unauthorized request" error in Search Console.
+      filter: (page) => !page.includes('/methodology') && !page.includes('/stats'),
     }),
   ],
 });
