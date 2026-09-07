@@ -42,4 +42,8 @@ describe("dist/sitemap-index.xml", () => {
     );
     expect(urlListXml).toContain("/archive/");
   });
+
+  it("(regression) excludes /stats - it's real HTTP Basic Auth-gated (401), so publishing it would waste crawl budget on a URL crawlers can never read", () => {
+    expect(urlListXml).not.toContain("/stats");
+  });
 });

@@ -7,8 +7,25 @@ interface Props {
 }
 
 const { entries } = Astro.props;
+
+// ItemList schema - every field it needs (a real external url + a title)
+// already exists on each entry, so this is pure serialization of data
+// already in scope, not new content. Deliberately not Article/NewsArticle:
+// these are third-party links this site curates, not original reporting,
+// which would contradict the site's own correct og:type:website choice.
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: entries.map((entry, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: entry.data.url,
+    name: entry.data.title,
+  })),
+};
 ---
 
+<script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
 <div class="story-list-container">
   <ul class="story-list">
     {entries.map((entry, index) => (
