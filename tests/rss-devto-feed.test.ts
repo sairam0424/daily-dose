@@ -25,7 +25,7 @@ describe("dist/rss/devto.xml", () => {
     expect(() => parser.parse(feedXml)).not.toThrow();
     const parsed = parser.parse(feedXml);
     expect(parsed.rss.channel).toBeTruthy();
-    expect(parsed.rss.channel.title).toBe("daily-dose — Dev.to");
+    expect(parsed.rss.channel.title).toBe("The Daily Dose — Dev.to");
   });
 
   it("every item's content only describes Dev.to-sourced stories", () => {
