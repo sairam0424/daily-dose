@@ -90,6 +90,20 @@ describe("dist/index.html build output", () => {
     expect(iconLinkMatch?.[0]).toContain("/favicon.svg");
   });
 
+  it("(regression) self-hosts fonts instead of loading them from fonts.googleapis.com", () => {
+    expect(html).not.toContain("fonts.googleapis.com");
+    expect(html).not.toContain("fonts.gstatic.com");
+    const style = readAllPageCss(html);
+    const fontFaceSrcs = [
+      ...style.matchAll(/@font-face\{[^}]*src:url\(([^)]+)\)/g),
+    ].map((match) => match[1]);
+    expect(fontFaceSrcs.length).toBeGreaterThan(0);
+    for (const src of fontFaceSrcs) {
+      expect(src.startsWith("/fonts/")).toBe(true);
+      expect(existsSync(join(DIST_DIR, src))).toBe(true);
+    }
+  });
+
   it("(regression) has a real, descriptive homepage <title>, not the bare brand name", () => {
     const titleMatch = html.match(/<title>([^<]*)<\/title>/);
     expect(titleMatch, "expected a <title> tag").toBeTruthy();
@@ -351,11 +365,12 @@ describe("dist/index.html build output", () => {
     expect(head).toContain('localStorage.getItem("skin")');
   });
 
-  it("loads all four redesign Google Fonts", () => {
-    expect(html).toContain("Space+Grotesk");
-    expect(html).toContain("JetBrains+Mono");
-    expect(html).toContain("Fraunces");
-    expect(html).toContain("Newsreader");
+  it("loads all four redesign fonts (self-hosted, not from Google Fonts)", () => {
+    const style = readAllPageCss(html);
+    expect(style).toContain("font-family:Space Grotesk");
+    expect(style).toContain("font-family:JetBrains Mono");
+    expect(style).toContain("font-family:Fraunces");
+    expect(style).toContain("font-family:Newsreader");
   });
 
   it("(feature flag) never renders the Dev/Newspaper skin toggle by default - Newspaper is the only skin, and the theme toggle is enabled", () => {

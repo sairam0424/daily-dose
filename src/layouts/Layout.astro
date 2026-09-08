@@ -33,12 +33,61 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
     {includeRssLink && (
       <link rel="alternate" type="application/rss+xml" title="The Daily Dose" href="/rss.xml" />
     )}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500&family=Fraunces:opsz,wght@9..144,400..900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-    />
+    <style is:global>
+      /* Self-hosted, replacing the former fonts.googleapis.com ->
+         fonts.gstatic.com 2-hop external chain - one static download of
+         each family's real variable-font file (or single static weight
+         for JetBrains Mono, which this project only ever uses at one
+         weight), committed once, same "generate/download once, commit,
+         no build-time regeneration" precedent already used for
+         favicon.svg/og-image.png. Latin-script subset only (matches this
+         project's real content: English HN/arXiv/GitHub/Dev.to titles) -
+         a rare non-Latin character in fetched content (e.g. an accented
+         author name) falls back to the system font stack instead of
+         these branded typefaces, a deliberate, narrow trade-off for a
+         much simpler asset set than replicating every unicode-range
+         subset Google Fonts split this into (vietnamese/cyrillic/greek/
+         latin-ext/latin, per weight, per family). */
+      @font-face {
+        font-family: 'Fraunces';
+        font-style: normal;
+        font-weight: 400 900;
+        font-display: swap;
+        src: url('/fonts/fraunces-variable-normal.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Newsreader';
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: swap;
+        src: url('/fonts/newsreader-variable-normal.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Newsreader';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/newsreader-400-italic.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Space Grotesk';
+        font-style: normal;
+        font-weight: 500 700;
+        font-display: swap;
+        src: url('/fonts/space-grotesk-variable-normal.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+      }
+    </style>
     <script is:inline define:vars={{ devModeEnabled }}>
       (function () {
         var skin = devModeEnabled
