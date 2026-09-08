@@ -11,13 +11,46 @@ import { isFlagEnabled } from '../../lib/featureFlags.js';
 const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
+
+// CollectionPage wrapping an ItemList of the real dated sub-pages - a
+// different shape than DigestList.astro's own ItemList (which points at
+// external story URLs); this one points at this site's own internal
+// /archive/{date}/ pages, since this page lists DATES, not story items.
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'All digests',
+  url: new URL('/archive/', Astro.site).href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: dateGroups.map((group, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: new URL(`/archive/${group.date}/`, Astro.site).href,
+      name: group.date,
+    })),
+  },
+};
+
+// Real 2-level trail (Home > All digests) - the final/current-page
+// ListItem omits `item` per Google's own documented convention.
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'The Daily Dose', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'All digests' },
+  ],
+};
 ---
 
 <Layout
   title="The Daily Dose — all digests"
-  description="Every past daily-dose digest, browsable by date — AI-curated Hacker News, arXiv, GitHub, and Dev.to picks, one day at a time."
+  description="Every past daily-dose digest, browsable by date — AI-curated and scored Hacker News, arXiv, GitHub, and Dev.to picks, archived day by day since launch."
   path="/archive/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <header class="masthead">
     <div class="masthead-utility">
       <nav class="site-nav">

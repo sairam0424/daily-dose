@@ -39,6 +39,19 @@ export async function getStaticPaths() {
 const { date } = Astro.params as unknown as DateParams;
 const { entries, olderDate, newerDate } = Astro.props as DateProps;
 const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
+
+// Real 3-level trail (Home > All digests > {date}) - the final/
+// current-page ListItem omits `item` per Google's own documented
+// convention.
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'The Daily Dose', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'All digests', item: new URL('/archive/', Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: date },
+  ],
+};
 ---
 
 <Layout
@@ -46,6 +59,7 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
   description={`The daily-dose digest for ${date} — AI-curated Hacker News, arXiv, GitHub, and Dev.to picks from that day.`}
   path={`/archive/${date}/`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <header class="masthead">
     <div class="masthead-utility">
       <nav class="site-nav">
