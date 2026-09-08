@@ -33,7 +33,12 @@ const tier = interestTier(entry.data.interest_score);
   <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
     {entry.data.title}
   </a>
-  {entry.data.analysis && <p class="story-analysis">{entry.data.analysis}</p>}
+  {entry.data.analysis && (
+    <p class="story-analysis">
+      {entry.data.analysis}
+      <span class="ai-badge" title="Written by the AI model described on the methodology page">AI-analyzed</span>
+    </p>
+  )}
   <div class="story-meta">
     {entry.data.favicon_url && (
       <img
@@ -179,6 +184,26 @@ const tier = interestTier(entry.data.interest_score);
     font-size: 0.85rem;
     line-height: 1.55;
     color: var(--ink-soft);
+  }
+
+  /* Same visual weight as .source-badge (small, uppercase, bordered,
+     muted) - deliberately placed inline right after the AI-generated
+     text itself, not in the separate .story-meta badge row further
+     down, so the disclosure sits at the actual point of consumption
+     rather than somewhere else on the card. */
+  .ai-badge {
+    display: inline-block;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+    color: var(--ink-faint);
   }
 
   .lead-story .story-analysis {

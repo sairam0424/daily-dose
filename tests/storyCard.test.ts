@@ -9,9 +9,7 @@ const source = readFileSync(
 describe("StoryCard.astro source structure", () => {
   it("renders the analysis paragraph conditionally, between the title and the badge row", () => {
     const titleEnd = source.indexOf("</a>");
-    const analysisLine = source.indexOf(
-      '{entry.data.analysis && <p class="story-analysis">{entry.data.analysis}</p>}',
-    );
+    const analysisLine = source.indexOf('<p class="story-analysis">');
     const metaStart = source.indexOf('<div class="story-meta">');
 
     expect(titleEnd).toBeGreaterThan(-1);
@@ -119,5 +117,21 @@ describe("StoryCard.astro source structure", () => {
     expect(source).toMatch(
       /\.tier-badge-recommended\s*\{[^}]*border-color:\s*var\(--rule\)/s,
     );
+  });
+
+  it("(regression) discloses AI authorship inline, right next to the analysis text itself, not only in the footer/meta/methodology page", () => {
+    // Confirmed via /deep-research: footer-only/meta-only disclosure is
+    // explicitly called inadequate by multiple 2026 sources - the
+    // converging pattern is a small, persistent, inline label placed AT
+    // the AI-generated content itself, same visual weight as a byline.
+    const analysisMatch = source.match(
+      /<p class="story-analysis">([\s\S]*?)<\/p>/,
+    );
+    expect(
+      analysisMatch,
+      "expected the .story-analysis paragraph",
+    ).toBeTruthy();
+    expect(analysisMatch![1]).toContain('class="ai-badge"');
+    expect(analysisMatch![1]).toContain("AI-analyzed");
   });
 });
