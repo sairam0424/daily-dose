@@ -104,6 +104,40 @@ describe("dist/index.html build output", () => {
     }
   });
 
+  it("(regression) scopes every self-hosted @font-face block with an explicit unicode-range, and adds a self-hosted latin-extended fallback per family", () => {
+    // Without an explicit unicode-range, a @font-face rule defaults to
+    // matching every codepoint (U+0-10FFFF) - the latin-only file would
+    // then "win" for a Cyrillic character too, showing missing-glyph
+    // tofu boxes (the file physically has no such glyphs) instead of
+    // correctly falling through to the latin-extended block or the
+    // system font. Every block must declare unicode-range, and every
+    // family must have at least 2 blocks (latin + latin-ext).
+    const style = readAllPageCss(html);
+    const fontFaceBlocks = [...style.matchAll(/@font-face\{([^}]*)\}/g)].map(
+      (match) => match[1],
+    );
+    expect(fontFaceBlocks.length).toBeGreaterThanOrEqual(10);
+    for (const block of fontFaceBlocks) {
+      expect(block).toContain("unicode-range:");
+    }
+
+    const families = [
+      "Fraunces",
+      "Newsreader",
+      "Space Grotesk",
+      "JetBrains Mono",
+    ];
+    for (const family of families) {
+      const blocksForFamily = fontFaceBlocks.filter((block) =>
+        block.includes(`font-family:${family}`),
+      );
+      expect(
+        blocksForFamily.length,
+        `expected at least 2 @font-face blocks (latin + latin-ext) for ${family}`,
+      ).toBeGreaterThanOrEqual(2);
+    }
+  });
+
   it("(regression) has a real, descriptive homepage <title>, not the bare brand name", () => {
     const titleMatch = html.match(/<title>([^<]*)<\/title>/);
     expect(titleMatch, "expected a <title> tag").toBeTruthy();
