@@ -26,6 +26,7 @@ const tier = interestTier(entry.data.interest_score);
       loading="lazy"
       width="560"
       height="315"
+      referrerpolicy="no-referrer"
       onerror="this.closest('.story-card')?.classList.remove('has-image'); this.remove();"
     />
   )}
@@ -42,6 +43,7 @@ const tier = interestTier(entry.data.interest_score);
         width="16"
         height="16"
         loading="lazy"
+        referrerpolicy="no-referrer"
         onerror="this.remove()"
       />
     )}

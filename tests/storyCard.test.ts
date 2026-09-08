@@ -58,6 +58,21 @@ describe("StoryCard.astro source structure", () => {
     );
   });
 
+  it("(regression) sends no referrer on hotlinked third-party images/favicons", () => {
+    // Confirmed via /deep-research: the browser's default referrer
+    // policy already limits what leaks to daily-dose's bare origin
+    // (not which specific digest item was viewed), but that's still a
+    // real, unmitigated gap against this project's own privacy policy's
+    // minimal-third-party-exposure stance. referrerpolicy="no-referrer"
+    // closes it completely, with zero infrastructure.
+    expect(source).toMatch(
+      /<img[^>]*class="story-image"[^>]*referrerpolicy="no-referrer"/s,
+    );
+    expect(source).toMatch(
+      /<img[^>]*class="favicon-icon"[^>]*referrerpolicy="no-referrer"/s,
+    );
+  });
+
   it("renders a SourceIcon before the source text inside the source badge, not in place of it", () => {
     expect(source).toContain("import SourceIcon from './SourceIcon.astro';");
 
