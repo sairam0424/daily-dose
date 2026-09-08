@@ -46,4 +46,19 @@ describe("dist/sitemap-index.xml", () => {
   it("(regression) excludes /stats - it's real HTTP Basic Auth-gated (401), so publishing it would waste crawl budget on a URL crawlers can never read", () => {
     expect(urlListXml).not.toContain("/stats");
   });
+
+  it("(regression) gives every /archive/{date}/ URL a real <lastmod> matching its own URL date, not a blanket build timestamp", () => {
+    const dateUrlMatches = [
+      ...urlListXml.matchAll(
+        /<url><loc>https:\/\/daily-dose-hazel-delta\.vercel\.app\/archive\/(\d{4}-\d{2}-\d{2})\/<\/loc><lastmod>([^<]+)<\/lastmod><\/url>/g,
+      ),
+    ];
+    expect(
+      dateUrlMatches.length,
+      "expected at least one dated archive URL",
+    ).toBeGreaterThan(0);
+    for (const [, urlDate, lastmod] of dateUrlMatches) {
+      expect(lastmod.startsWith(urlDate)).toBe(true);
+    }
+  });
 });

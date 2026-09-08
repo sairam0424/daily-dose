@@ -23,6 +23,19 @@ export default defineConfig({
       // to them, wasting crawl budget and surfacing as a spurious
       // "blocked due to unauthorized request" error in Search Console.
       filter: (page) => !page.includes('/methodology') && !page.includes('/stats'),
+      // Real per-page freshness signal instead of no <lastmod> at all - an
+      // /archive/{date}/ URL's own date IS its real last-content-change
+      // date (each digest date's files are written once and never
+      // touched again), so this reads it straight off the URL rather
+      // than fabricating one. Every other page falls back to the build
+      // timestamp.
+      serialize(item) {
+        const dateMatch = item.url.match(/\/archive\/(\d{4}-\d{2}-\d{2})\/?$/);
+        return {
+          ...item,
+          lastmod: dateMatch ? new Date(dateMatch[1]) : new Date(),
+        };
+      },
     }),
   ],
 });
