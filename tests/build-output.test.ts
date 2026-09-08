@@ -1031,4 +1031,18 @@ describe("dist/favicon.svg", () => {
     expect(svg).not.toMatch(/@media/);
     expect(svg).toMatch(/fill="#[0-9a-fA-F]{6}"/);
   });
+
+  it("(regression) has no full-canvas background rect - a transparent tab icon like most modern products ship, not a visible background chip behind the mark", () => {
+    // Confirmed via /deep-research: removing the background is safe here
+    // (the rasterizer bug above is specific to <style>/@media, not to
+    // transparency) and neither an SVG-internal media query nor the
+    // <link rel="icon" media="..."> HTML attribute reliably swaps
+    // light/dark favicon variants across real browsers today (Firefox
+    // and Safari both have long-open bugs ignoring both mechanisms) -
+    // so one static, dual-background-legible color is used instead of
+    // a background rect or a theme-swap attempt.
+    const svgPath = join(DIST_DIR, "favicon.svg");
+    const svg = readFileSync(svgPath, "utf-8");
+    expect(svg).not.toContain("<rect");
+  });
 });
