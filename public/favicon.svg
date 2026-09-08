@@ -2,14 +2,31 @@
   <!-- Static inline fills only, deliberately no embedded stylesheet or CSS
        media-query rule - Chromium's favicon-specific SVG rasterizer (a
        separate, more restrictive parser than the one used for a regular
-       image/page render) does not reliably support either. The prior
-       dark/light-adaptive version rendered fine as a plain image element
-       but silently failed favicon rasterization, so Chrome fell back to
-       an auto-generated "dd" monogram tile in the browser tab. One
-       static, high-contrast color pair (the site's light/newspaper brand
-       colors) is used instead - the tab icon is theme-bar-agnostic by
-       design now, not tied to the page's own light/dark toggle. -->
-  <rect width="32" height="32" rx="7" fill="#f8f4e8" />
-  <circle cx="16" cy="20" r="7" fill="#7a2618" />
-  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" fill="none" stroke="#7a2618" stroke-width="1.6" stroke-linecap="round" />
+       image/page render) does not reliably support either.
+
+       No background rect either (transparent canvas) - confirmed via
+       /deep-research this is safe (the rasterizer bug above is specific
+       to embedded style/media blocks, not to transparency; a real,
+       verified precedent - CopilotKit - ships an SVG favicon the same
+       way) and matches how most modern products' tab icons look (no
+       visible background chip behind the mark).
+
+       Also confirmed via the same research: neither an SVG-internal
+       media query NOR the separate <link rel="icon" media="..."> HTML
+       attribute reliably swaps light/dark favicon variants across
+       browsers today - Firefox and Safari both have long-open,
+       unresolved bugs ignoring both mechanisms (Bugzilla #1603885,
+       WebKit #309949), so a theme-adaptive favicon isn't a real option
+       here regardless of implementation. Instead: one static color
+       (#c99356, this site's own dark-theme accent gold) chosen
+       specifically for legibility on BOTH very light and very dark
+       browser tab-bar backgrounds without any background shape to lean
+       on - a mid-lightness, mid-saturation color reads reasonably on
+       both extremes, unlike the prior dark-maroon (#7a2618) which was
+       only ever calibrated against its own light cream background rect
+       and would have low contrast on a dark tab bar now that the rect
+       is gone. Stroke widened slightly (1.6 -> 2) for more visual
+       presence now that there's no background shape underneath it. -->
+  <circle cx="16" cy="20" r="7" fill="#c99356" />
+  <path d="M4 20h24M9 15l2 2M23 15l-2 2M16 9v4" fill="none" stroke="#c99356" stroke-width="2" stroke-linecap="round" />
 </svg>

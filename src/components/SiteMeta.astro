@@ -23,7 +23,7 @@ const pageUrl = new URL(path, Astro.site);
 // indefinitely with no cache-busting signal telling the browser this is
 // a genuinely different resource now. Bump this integer any time
 // favicon.svg's actual visual content changes.
-const FAVICON_VERSION = 2;
+const FAVICON_VERSION = 3;
 ---
 
 <link rel="icon" type="image/svg+xml" href={`/favicon.svg?v=${FAVICON_VERSION}`} />
