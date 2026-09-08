@@ -162,6 +162,40 @@ describe("scoreItemsWithLLM", () => {
     expect(callArgs.thinking).toEqual({ type: "disabled" });
   });
 
+  it("(regression) instructs the model to write the analysis in plain, jargon-light language without softening technical content", async () => {
+    mockCreate.mockResolvedValueOnce(
+      toolUseResponse([
+        {
+          id: "hn-1",
+          interest_score: 7,
+          why_read: "Solid technical writeup.",
+          analysis: "A real, multi-sentence analysis.",
+          exclude: false,
+        },
+      ]),
+    );
+
+    await scoreItemsWithLLM([
+      {
+        id: "hn-1",
+        source: "hn",
+        title: "A real story",
+        points: 50,
+        numComments: 5,
+      },
+    ]);
+
+    const sentPrompt = mockCreate.mock.calls[0]![0].messages[0].content;
+    expect(sentPrompt).toContain("plain, direct English");
+    expect(sentPrompt).toContain("roughly 15-20 words per sentence");
+    expect(sentPrompt).toContain(
+      "split it into two separate sentences instead of joining them",
+    );
+    expect(sentPrompt).toContain(
+      "Do not achieve any of this by omitting, softening, or hedging any technical claim",
+    );
+  });
+
   it("falls back to the next model in the chain on NotFoundError from the primary model", async () => {
     mockCreate
       .mockRejectedValueOnce(

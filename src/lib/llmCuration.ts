@@ -205,6 +205,8 @@ function buildPrompt(items: ScorableItem[]): string {
     "",
     "Also write a short analysis (3-4 sentences) for each item, explaining what it actually is and why it matters technically - this is separate from the one-sentence reason above and can go into more real detail.",
     "",
+    "Write the analysis in plain, direct English for a technically literate reader who may not know this specific subfield - prefer everyday words over jargon whenever an equally precise plain-English alternative exists. Keep each sentence to one idea: a target of roughly 15-20 words per sentence. If a sentence would need a comma-separated list of clauses or a dash aside to fit both an idea and its justification, split it into two separate sentences instead of joining them. Do not achieve any of this by omitting, softening, or hedging any technical claim, number, or nuance - if something is genuinely complex, explain it plainly and completely rather than cutting it.",
+    "",
     "For items that include an <abstract> or <article_excerpt> tag: you have real source text available. Decide, per item, whether adapting that real text into your 3-4 sentence analysis or writing your own original analysis would be more useful for a reader deciding whether to read the full item - then output only your chosen version. Do not default to always picking one or the other; judge each item on its own.",
     "",
     "For items with no <abstract> or <article_excerpt> tag, write your own original 3-4 sentence analysis directly - there is no real source text to compare against for these.",
