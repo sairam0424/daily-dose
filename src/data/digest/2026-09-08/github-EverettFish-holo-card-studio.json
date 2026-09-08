@@ -1,0 +1,16 @@
+{
+  "title": "EverettFish/holo-card-studio",
+  "source": "github",
+  "url": "https://github.com/EverettFish/holo-card-studio",
+  "date": "2026-09-08",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "An AI-driven asset generation pipeline for turning descriptions into 3D trading-card-style Blender scenes and interactive web pages, a niche creative tool with limited generalizable technical insight.",
+  "analysis": "This tool takes a text description or reference image and produces a finished, editable 3D card design in Blender along with an interactive Three.js webpage to display it. It's aimed at hobbyists or creators wanting holographic-style collectible card visuals without manual 3D modeling. The technical interest is mostly in the automation pipeline connecting generative description parsing to Blender scene construction and web rendering, though it's a fairly narrow creative use case.",
+  "authors": [],
+  "stars": 1120,
+  "image_url": "https://opengraph.githubassets.com/f8e0a76ec113864974ff50a52d882659c6ec24e2f23d78be59cd1190a23c0d6a/EverettFish/holo-card-studio",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

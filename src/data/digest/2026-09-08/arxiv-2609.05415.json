@@ -1,0 +1,25 @@
+{
+  "title": "UniMate: One Unified Model to Animate Diverse Skeletons",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.05415",
+  "date": "2026-09-08",
+  "tags": [
+    "cs.CV",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically substantial computer graphics paper on generalizing motion synthesis across arbitrary skeleton topologies, relevant to animators and generative 3D researchers.",
+  "analysis": "UniMate tackles the problem that most learned motion-generation models are locked to specific skeleton templates, meaning a model trained on humanoids can't animate a bird or insect without retraining. The paper introduces topology-aware attention mechanisms, including a generalized rotary position embedding based on graph Laplacians, to let one model handle bipeds, quadrupeds, birds, fish, and even rigid articulated objects. It also contributes a sizeable new dataset of over 13,000 motion sequences across these categories with text descriptions. This is a solid engineering and modeling contribution for anyone working in character animation, generative 3D content, or game asset pipelines.",
+  "authors": [
+    "Linzhan Mou",
+    "Jiahui Lei",
+    "Zhiyang Dou",
+    "Chenyue Cai",
+    "Chaoyue Song",
+    "Adam Finkelstein",
+    "Szymon Rusinkiewicz"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

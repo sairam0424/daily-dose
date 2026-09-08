@@ -1,0 +1,16 @@
+{
+  "title": "Albert-Weasker/niubigeo",
+  "source": "github",
+  "url": "https://github.com/Albert-Weasker/niubigeo",
+  "date": "2026-09-08",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A marketing/SEO-adjacent tool for AI brand visibility tracking, of narrow interest outside marketing and growth engineering circles.",
+  "analysis": "This tool generates reports on 'AI brand visibility' and competitor analysis, likely tracking how brands appear in outputs from AI chatbots and search assistants, an emerging area sometimes called 'answer engine optimization.' It's more of a marketing analytics product than a technically novel engineering project. Engineers working on growth or marketing tooling may find it useful, but it offers little broader technical insight for a general software audience.",
+  "authors": [],
+  "stars": 2161,
+  "image_url": "https://opengraph.githubassets.com/381dd0c8f46f251244fe6239ad7789786992b627ca5805931cf317ba64a011ce/Albert-Weasker/niubigeo",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

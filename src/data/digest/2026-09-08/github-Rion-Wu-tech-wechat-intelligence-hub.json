@@ -1,0 +1,16 @@
+{
+  "title": "Rion-Wu-tech/wechat-intelligence-hub",
+  "source": "github",
+  "url": "https://github.com/Rion-Wu-tech/wechat-intelligence-hub",
+  "date": "2026-09-08",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A local-first personal data assistant built around WeChat chat history, interesting as an example of local LLM tooling but raises privacy questions around scraping personal messaging data.",
+  "analysis": "This project builds a local, read-only system on top of a user's own WeChat chat history to generate daily briefings, follow-ups, and 'opportunity tracking' using a CLI and integration with Codex-style coding skills. Technically it's an example of applying LLM agents to personal data mining, keeping data local rather than sending it to a cloud service, which is a reasonable privacy-conscious design choice. The high fork count relative to stars is unusual and may indicate template reuse rather than organic community engagement. The concept is interesting for personal automation enthusiasts but the value proposition is narrow and audience-specific.",
+  "authors": [],
+  "stars": 1937,
+  "image_url": "https://opengraph.githubassets.com/f1f53c29e245b8120e659985d5dcccae23b1b5ffbbe7c7c3e623c63ab2575ff0/Rion-Wu-tech/wechat-intelligence-hub",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

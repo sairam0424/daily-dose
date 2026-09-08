@@ -1,0 +1,17 @@
+{
+  "title": "Google DeepMind Releases AlphaGenome Atlas",
+  "source": "hn",
+  "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/",
+  "date": "2026-09-08",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A major genomics AI release from DeepMind with an interactive atlas, relevant to anyone working at the intersection of machine learning and biology.",
+  "analysis": "AlphaGenome is DeepMind's model for predicting regulatory effects of DNA sequences, and this appears to be a browsable atlas built on top of it, letting users explore genome-wide predictions. This matters because sequence-to-function models for the genome are a fast-moving area with real implications for understanding disease mechanisms and gene regulation. The interest here is somewhat specialized to computational biology and genomics practitioners rather than general software engineers, but the tooling and dataset scale are noteworthy.",
+  "authors": [
+    "utiiiD"
+  ],
+  "hn_id": 49611251,
+  "points": 469,
+  "image_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_herosocial.width-1300.png",
+  "favicon_url": "https://blog.google/static/blogv2/images/favicon.ico?version=pr20260902-1737"
+}

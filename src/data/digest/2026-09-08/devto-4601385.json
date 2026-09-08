@@ -1,0 +1,19 @@
+{
+  "title": "🟣 Ever Fluorescent: Live Again!",
+  "source": "devto",
+  "url": "https://dev.to/annavi11arrea1/ever-fluorescent-live-again-132b",
+  "date": "2026-09-08",
+  "tags": [
+    "webdev",
+    "rails",
+    "programming",
+    "community"
+  ],
+  "interest_score": 1,
+  "why_read": "A personal blog post announcing a hobby e-commerce site launch, with no real technical depth or reusable engineering content.",
+  "analysis": "This is a personal announcement of a Shopify/Etsy alternative e-commerce site built by an individual artist, integrating Stripe and Cloudflare with a custom admin dashboard. There is no discussion of architecture, code, or technical challenges solved, making it more of a personal milestone post than a technical article. It has essentially no content of interest to a professional software engineering audience.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7oi0che6ev1w6wzs8g31.png"
+}

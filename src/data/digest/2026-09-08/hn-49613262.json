@@ -1,0 +1,15 @@
+{
+  "title": "On the Navier–Stokes Millennium Prize Problem",
+  "source": "hn",
+  "url": "https://openai.com/index/navier-stokes-solution/",
+  "date": "2026-09-08",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A companion or alternative discussion of the same major open problem, likely offering a broader accessible overview of the mathematics involved.",
+  "analysis": "This item covers the same Millennium Prize Problem as the Buckmaster item, likely from a different author or perspective, given the near-identical engagement and timing. The Navier-Stokes existence and smoothness problem asks whether solutions to the equations governing fluid flow always exist and stay well-behaved, a question central to physics and applied math. Two competing high-engagement threads on the same topic suggests active community discussion of new results or exposition, useful context for the other item. Genuinely substantive mathematical content rather than hype.",
+  "authors": [
+    "tedsanders"
+  ],
+  "hn_id": 49613262,
+  "points": 1022
+}

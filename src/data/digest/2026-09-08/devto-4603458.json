@@ -1,0 +1,19 @@
+{
+  "title": "Most 'AI Agents' Are Just If-Statements in a Trench Coat",
+  "source": "devto",
+  "url": "https://dev.to/james_anderson_h/most-ai-agents-are-just-if-statements-in-a-trench-coat-3960",
+  "date": "2026-09-08",
+  "tags": [
+    "ai",
+    "softwareengineering",
+    "webdev",
+    "agents"
+  ],
+  "interest_score": 6,
+  "why_read": "A candid, well-argued post pushing back on agent hype by describing a real production experience where a simpler pipeline beat a supposedly autonomous agent.",
+  "analysis": "The author describes building an LLM-based agent with planning and reasoning loops, only to discover in production that it always executed the same three steps regardless of its 'autonomy,' and that a plain linear pipeline was faster, cheaper, and easier to debug. This is a useful, grounded counterpoint to marketing narratives around agentic AI, focused on observability, cost, and reliability tradeoffs that matter in real deployments. It doesn't introduce new techniques but offers a practical lesson many engineers building LLM systems will recognize. Reasonably interesting as a caution against over-engineering AI systems when a fixed workflow suffices.",
+  "authors": [],
+  "reactions": 27,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F57fhizude83fc6h1lt42.png"
+}

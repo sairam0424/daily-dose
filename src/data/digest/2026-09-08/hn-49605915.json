@@ -1,0 +1,16 @@
+{
+  "title": "Navier-Stokes – Tristan Buckmaster [pdf]",
+  "source": "hn",
+  "url": "https://cims.nyu.edu/~tristanb/statement.pdf",
+  "date": "2026-09-08",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A lecture/paper on the Navier-Stokes existence and smoothness problem by a mathematician who works on fluid singularities, of real interest to anyone following core open problems in PDE theory.",
+  "analysis": "This is a technical presentation on the Navier-Stokes Millennium Prize Problem, one of the seven unsolved Clay Institute problems worth a million dollars. Tristan Buckmaster is a mathematician known for constructing non-uniqueness results for weak solutions of Euler and Navier-Stokes equations. The high engagement suggests this touches on recent progress or a survey of the state of the art, which is a genuinely hard and consequential open question in mathematics and fluid mechanics. Worth reading for anyone with a math or physics background interested in why this problem has resisted proof for decades.",
+  "authors": [
+    "procedurecall"
+  ],
+  "hn_id": 49605915,
+  "points": 1082,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=cims.nyu.edu&sz=32"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "I-have-ADHD: A skill to stop coding agents from burying the answer",
+  "source": "hn",
+  "url": "https://github.com/ayghri/i-have-adhd",
+  "date": "2026-09-08",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A niche tool/prompt-engineering hack addressing a real annoyance with coding agents burying important output, useful for practitioners building on LLM coding assistants.",
+  "analysis": "This appears to be a 'skill' or prompt pattern designed to stop AI coding agents from hiding the actual answer at the end of long verbose responses, a common frustration when working with LLM-based coding tools. The high comment count suggests it triggered debate about whether such fixes are genuine solutions or superficial workarounds for deeper agent design problems. It's a practical, narrow contribution rather than a research breakthrough, useful for engineers actively using coding agents day to day.",
+  "authors": [
+    "domhudson"
+  ],
+  "hn_id": 49610631,
+  "points": 274,
+  "image_url": "https://opengraph.githubassets.com/a01f7a32418f8d515b85622473c88f101dddb5086522f40329801e192273c865/ayghri/i-have-adhd",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

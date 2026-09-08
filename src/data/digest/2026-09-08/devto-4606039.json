@@ -1,0 +1,19 @@
+{
+  "title": "Wiring a Reachy Mini into OpenClaw without trusting the robot",
+  "source": "devto",
+  "url": "https://dev.to/bengreenberg/wiring-a-reachy-mini-into-openclaw-without-trusting-the-robot-3lgh",
+  "date": "2026-09-08",
+  "tags": [
+    "openclaw",
+    "ai",
+    "productivity",
+    "tutorial"
+  ],
+  "interest_score": 5,
+  "why_read": "A hands-on account of wiring a home robot to a personal AI assistant with a thoughtful security-conscious architecture decision, useful as a real-world agent security case study.",
+  "analysis": "The author describes integrating a Reachy Mini desktop robot, running on a Raspberry Pi with an HTTP API, into their existing home automation and LLM assistant setup called OpenClaw. Notably, they explicitly reconsidered a naive 'agent controls robot directly' architecture for trust and security reasons, which is a genuinely useful design consideration as more people connect LLM agents to physical actuators in the home. The piece is anecdotal and specific to one hobbyist setup rather than a generalized framework, but the security reasoning around not blindly trusting robot control loops is a valuable, underdiscussed topic.",
+  "authors": [],
+  "reactions": 4,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fcdj4cnlm22xlptpgzywc.png"
+}
