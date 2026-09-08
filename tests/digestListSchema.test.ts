@@ -31,15 +31,20 @@ beforeAll(() => {
 
 describe("homepage ItemList JSON-LD", () => {
   it("(regression) ships a valid application/ld+json ItemList matching the real digest item count", () => {
-    const match = html.match(
-      /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
-    );
+    // The homepage now ships multiple <script type="application/ld+json">
+    // blocks (a site-wide WebSite node from SiteMeta.astro, plus this
+    // page's own story ItemList from DigestList.astro) - find the
+    // ItemList specifically rather than assuming it's the first block.
+    const blocks = [
+      ...html.matchAll(
+        /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+      ),
+    ].map((m) => JSON.parse(m[1]));
+    const schema = blocks.find((b) => b["@type"] === "ItemList");
     expect(
-      match,
-      'expected a <script type="application/ld+json"> block',
+      schema,
+      'expected an ItemList <script type="application/ld+json"> block',
     ).toBeTruthy();
-
-    const schema = JSON.parse(match![1]);
     expect(schema["@context"]).toBe("https://schema.org");
     expect(schema["@type"]).toBe("ItemList");
     expect(Array.isArray(schema.itemListElement)).toBe(true);

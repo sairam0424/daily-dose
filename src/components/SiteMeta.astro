@@ -24,9 +24,22 @@ const pageUrl = new URL(path, Astro.site);
 // a genuinely different resource now. Bump this integer any time
 // favicon.svg's actual visual content changes.
 const FAVICON_VERSION = 3;
+
+// Site-wide entity-disambiguation node - deliberately no Organization/
+// Person/publisher (no formal entity or named author is surfaced
+// anywhere on the site - inventing one would be a fabricated claim) and
+// deliberately no SearchAction (there is no internal search; adding one
+// would misleadingly tell crawlers a search feature exists).
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'The Daily Dose',
+  url: Astro.site?.href,
+};
 ---
 
 <link rel="icon" type="image/svg+xml" href={`/favicon.svg?v=${FAVICON_VERSION}`} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 <meta name="description" content={description} />
 <link rel="canonical" href={pageUrl} />
 
