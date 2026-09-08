@@ -187,8 +187,12 @@ describe("scoreItemsWithLLM", () => {
 
     const sentPrompt = mockCreate.mock.calls[0]![0].messages[0].content;
     expect(sentPrompt).toContain("plain, direct English");
+    expect(sentPrompt).toContain("roughly 15-20 words per sentence");
     expect(sentPrompt).toContain(
-      "Do not achieve this by omitting, softening, or hedging any technical claim",
+      "split it into two separate sentences instead of joining them",
+    );
+    expect(sentPrompt).toContain(
+      "Do not achieve any of this by omitting, softening, or hedging any technical claim",
     );
   });
 
