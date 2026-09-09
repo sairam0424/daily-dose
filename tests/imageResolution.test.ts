@@ -264,6 +264,26 @@ describe("resolveItemImage", () => {
     const result = await resolveItemImage("https://example.com/article");
     expect(result.favicon_url).toBeUndefined();
   });
+
+  it("(seo fix) rejects an otherwise-reachable image that exceeds the size ceiling via a real Content-Length header", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () =>
+          '<meta property="og:image" content="https://example.com/huge.png">',
+      }) // the page fetch
+      .mockResolvedValueOnce({
+        ok: true,
+        headers: {
+          get: (name: string) => (name === "content-length" ? "600000" : null),
+        },
+      }) // the image HEAD check - 600KB, over the ceiling
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon HEAD check
+
+    const result = await resolveItemImage("https://example.com/article");
+
+    expect(result.image_url).toBeUndefined();
+  });
 });
 
 describe("extractFirstFigureImage", () => {
