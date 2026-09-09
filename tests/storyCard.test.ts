@@ -134,4 +134,34 @@ describe("StoryCard.astro source structure", () => {
     expect(analysisMatch![1]).toContain('class="ai-badge"');
     expect(analysisMatch![1]).toContain("AI-analyzed");
   });
+
+  it("(seo fix) wraps the story title link in a real heading element for per-item topical structure", () => {
+    expect(source).toMatch(
+      /<h3 class="story-title-heading">\s*<a class="story-title"/s,
+    );
+  });
+
+  it("(seo fix) gives each story card a stable id-based permalink anchor using the item's own id", () => {
+    expect(source).toMatch(/<li\s+id=\{entry\.id\}/s);
+  });
+
+  it("(seo fix) neutralizes the heading wrapper's default browser styling so it stays visually identical", () => {
+    expect(source).toMatch(
+      /\.story-title-heading\s*\{[^}]*margin:\s*0[^}]*font-size:\s*inherit[^}]*font-weight:\s*inherit[^}]*line-height:\s*inherit/s,
+    );
+  });
+
+  it("(seo fix) gives the content-bearing story thumbnail a real, descriptive alt attribute instead of an empty one", () => {
+    expect(source).toMatch(
+      /<img\s+class="story-image"[^>]*alt=\{entry\.data\.title\}/s,
+    );
+  });
+
+  it("(regression) keeps the small favicon icon correctly decorative (empty alt)", () => {
+    expect(source).toMatch(/<img\s+class="favicon-icon"[^>]*alt=""/s);
+  });
+
+  it("(seo fix) grows the why-icon button's real hit area toward the mobile touch-target guideline", () => {
+    expect(source).toMatch(/\.why-icon\s*\{[^}]*padding:\s*0\.5rem/s);
+  });
 });
