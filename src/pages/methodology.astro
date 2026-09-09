@@ -53,8 +53,8 @@ const pricingRows = Object.entries(PRICING_PER_MILLION_TOKENS);
       If no real LLM credentials are configured (e.g. local development), or the
       model's response is missing a specific item, a deterministic placeholder
       formula derived only from real, already-fetched engagement numbers is used
-      instead — and this is never presented as if it were genuine model judgment. See
-      the project's own <a href="https://github.com/sairam0424/daily-dose/blob/main/AGENTS.md" target="_blank" rel="noopener noreferrer">AGENTS.md</a> for the full honesty policy.
+      instead — logged with a loud console warning every time, and never presented
+      as if it were genuine model judgment.
     </p>
     <p>
       A hard pre-flight ceiling refuses to score more than <strong>{MAX_REASONABLE_ITEMS}</strong>
