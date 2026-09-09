@@ -11,6 +11,7 @@
 
 const FETCH_TIMEOUT_MS = 5000;
 const IMAGE_FETCH_HEADERS = { "User-Agent": "daily-dose-pipeline" };
+const MAX_IMAGE_BYTES = 500_000;
 
 function resolveUrl(
   maybeRelative: string,
@@ -198,7 +199,10 @@ async function isImageUrlReachable(url: string): Promise<boolean> {
     });
     if (!response.ok) return false;
     const corp = response.headers.get("cross-origin-resource-policy");
-    return corp !== "same-origin" && corp !== "same-site";
+    if (corp === "same-origin" || corp === "same-site") return false;
+    const contentLength = response.headers.get("content-length");
+    if (contentLength && Number(contentLength) > MAX_IMAGE_BYTES) return false;
+    return true;
   } catch {
     return false;
   } finally {

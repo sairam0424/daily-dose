@@ -103,9 +103,8 @@ describe("dist/methodology/index.html", () => {
     expect(html).toContain("the short analysis paragraph shown on each story");
   });
 
-  it("(regression) links AGENTS.md to a real, live GitHub URL instead of an unreachable bare filename", () => {
-    expect(html).toContain(
-      'href="https://github.com/sairam0424/daily-dose/blob/main/AGENTS.md"',
-    );
+  it("(seo fix) states the placeholder-fallback honesty policy inline, without linking to the private GitHub repo", () => {
+    expect(html).not.toContain("github.com/sairam0424/daily-dose");
+    expect(html).toContain("logged with a loud console warning every time");
   });
 });

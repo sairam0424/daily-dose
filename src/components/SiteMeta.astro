@@ -2,6 +2,8 @@
 // Shared <head> metadata: favicon + description + Open Graph/Twitter Card
 // tags. Extracted so every page declares one real, page-specific
 // title/description instead of duplicating generic copy — see decisions.md.
+import { safeJsonLdString } from '../lib/jsonLd.js';
+
 interface Props {
   title: string;
   description: string;
@@ -39,7 +41,7 @@ const websiteSchema = {
 ---
 
 <link rel="icon" type="image/svg+xml" href={`/favicon.svg?v=${FAVICON_VERSION}`} />
-<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+<script type="application/ld+json" set:html={safeJsonLdString(websiteSchema)} />
 <meta name="description" content={description} />
 <link rel="canonical" href={pageUrl} />
 

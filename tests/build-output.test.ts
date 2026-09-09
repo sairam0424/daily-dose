@@ -16,9 +16,11 @@ const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 // [^"]* after "lead-story" (not an immediate closing quote) tolerates any
 // additional classes StoryCard.astro appends, e.g. "story-card lead-story
 // has-image" - see the "(regression)" test below for why this matters
-// with real data.
+// with real data. <li[^>]* (not a literal "<li ") tolerates StoryCard.astro
+// rendering `id` before `class` on the tag (added for per-item permalink
+// anchors) - this must match regardless of attribute order.
 const LEAD_STORY_LI_REGEX =
-  /<li class="story-card lead-story[^"]*"[^>]*>[\s\S]*?<\/li>/;
+  /<li[^>]*class="story-card lead-story[^"]*"[^>]*>[\s\S]*?<\/li>/;
 
 function findJsonFiles(base: string): string[] {
   return readdirSync(base, { recursive: true })

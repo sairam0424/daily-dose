@@ -44,8 +44,8 @@ describe("dist/privacy/index.html", () => {
     expect(privacyHtml.toLowerCase()).toContain("no cookies");
   });
 
-  it("links to a real complaint channel (GitHub issues) and the ICO", () => {
-    expect(privacyHtml).toContain("github.com/sairam0424/daily-dose/issues");
+  it("(seo fix) links to the real ICO complaint channel, without linking to the private GitHub repo", () => {
+    expect(privacyHtml).not.toContain("github.com/sairam0424/daily-dose");
     expect(privacyHtml).toContain("ico.org.uk");
   });
 });
