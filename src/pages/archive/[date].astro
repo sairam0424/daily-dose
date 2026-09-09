@@ -40,6 +40,14 @@ const { date } = Astro.params as unknown as DateParams;
 const { entries, olderDate, newerDate } = Astro.props as DateProps;
 const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 
+// entries is already sorted score-descending within this date (see
+// groupEntriesByDate's documented contract) - entries[0] is genuinely
+// this date's top-scored real item, not an arbitrary pick. getStaticPaths
+// only generates a page for dates with at least one real committed entry,
+// so entries[0] always exists here.
+const leadEntry = entries[0];
+const storyCountLabel = `${entries.length} ${entries.length === 1 ? "story" : "stories"}`;
+
 // Real 3-level trail (Home > All digests > {date}) - the final/
 // current-page ListItem omits `item` per Google's own documented
 // convention.
@@ -56,7 +64,7 @@ const breadcrumbSchema = {
 
 <Layout
   title={`The Daily Dose — ${date}`}
-  description={`The daily-dose digest for ${date} — AI-curated Hacker News, arXiv, GitHub, and Dev.to picks from that day.`}
+  description={`The daily-dose digest for ${date} — ${storyCountLabel} from Hacker News, arXiv, GitHub, and Dev.to, led by "${leadEntry.data.title}."`}
   path={`/archive/${date}/`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -70,7 +78,7 @@ const breadcrumbSchema = {
     </div>
     <hgroup class="masthead-brand">
       <h1><Logo /> Digest — {date}</h1>
-      <p class="tagline">The technical news worth your next fifteen minutes.</p>
+      <p class="tagline">{storyCountLabel}, led by "{leadEntry.data.title}."</p>
     </hgroup>
   </header>
 
