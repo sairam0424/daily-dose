@@ -155,6 +155,28 @@ describe("fetchGithubRepoFile", () => {
     const result = await fetchGithubRepoFile("owner", "repo", "missing.md");
     expect(result.ok).toBe(false);
   });
+
+  it("rejects a path-traversal path that would escape the item's own repo, without making a network request", async () => {
+    const result = await fetchGithubRepoFile(
+      "owner",
+      "repo",
+      "../../../other-owner/other-repo/contents/secret.txt",
+    );
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error).toContain("escape");
+    // The security guarantee is that this never even reaches the network.
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("rejects a leading-slash absolute path the same way", async () => {
+    const result = await fetchGithubRepoFile(
+      "owner",
+      "repo",
+      "../../etc/passwd",
+    );
+    expect(result.ok).toBe(false);
+    expect(fetch).not.toHaveBeenCalled();
+  });
 });
 
 describe("fetchDevtoFulltext", () => {

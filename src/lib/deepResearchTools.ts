@@ -122,7 +122,23 @@ export async function fetchGithubRepoFile(
   repo: string,
   path: string,
 ): Promise<ToolResult> {
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+  // Security: the model supplies `path`, and a value like
+  // "../../../other-owner/other-repo/contents/file.txt" would, after the
+  // URL class's own RFC-3986 dot-segment normalization, resolve to a
+  // DIFFERENT repo entirely - directly violating this tool catalog's
+  // stated design (every fetch target is derived from the item's own
+  // known repo, never a model-controlled one). Build the URL, then
+  // require the normalized pathname to still start with this repo's own
+  // prefix before ever making the request - this catches any depth/form
+  // of ".." traversal, not just a literal substring check.
+  const expectedPrefix = `/repos/${owner}/${repo}/contents/`;
+  const url = new URL(`https://api.github.com${expectedPrefix}${path}`);
+  if (!url.pathname.startsWith(expectedPrefix)) {
+    return {
+      ok: false,
+      error: `Rejected path "${path}" - it would escape ${owner}/${repo} (path traversal is not allowed).`,
+    };
+  }
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
