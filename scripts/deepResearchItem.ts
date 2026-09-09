@@ -92,7 +92,14 @@ async function callWithModelFallback(
       });
     } catch (err) {
       lastErr = err;
-      if (err instanceof NotFoundError || err instanceof BadRequestError) {
+      if (
+        err instanceof NotFoundError ||
+        err instanceof BadRequestError ||
+        err instanceof SyntaxError
+      ) {
+        // Model unavailable, rejected the request, or returned malformed
+        // JSON - try the next one. Matches llmCuration.ts's exact fallback
+        // behavior, which this function was required to reuse verbatim.
         continue;
       }
       throw err;
@@ -153,9 +160,11 @@ export async function researchItem(
     { role: "user", content: initialPrompt },
   ];
   const sourcesConsulted: string[] = [];
+  let lastModelUsed: string = MODEL_CHAIN[0];
 
   for (let turn = 1; turn <= MAX_TURNS; turn++) {
     const message = await callWithModelFallback(client, messages, tools);
+    lastModelUsed = message.model;
     messages.push({ role: "assistant", content: message.content });
 
     const toolUseBlocks = (message.content as Array<{ type: string }>).filter(
@@ -215,12 +224,7 @@ export async function researchItem(
     messages.push({ role: "user", content: toolResultBlocks });
   }
 
-  return finalizeIncomplete(
-    itemId,
-    MODEL_CHAIN[0],
-    MAX_TURNS,
-    sourcesConsulted,
-  );
+  return finalizeIncomplete(itemId, lastModelUsed, MAX_TURNS, sourcesConsulted);
 }
 
 const DEEP_RESEARCH_DIR = "src/data/deep-research";

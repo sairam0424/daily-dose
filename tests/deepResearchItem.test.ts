@@ -235,6 +235,60 @@ describe("researchItem", () => {
     // Every model in the chain got a chance, not just the first.
     expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
   });
+
+  it("falls back to the next model in the chain on a SyntaxError (malformed JSON) from the primary model", async () => {
+    // Matches llmCuration.ts's own documented Bedrock quirk (a malformed/
+    // truncated response can surface as a SyntaxError) - this loop must
+    // retry the next model exactly like scoreItemsWithLLM does, not treat
+    // it as a fatal, non-retryable error.
+    mockCreate
+      .mockRejectedValueOnce(new SyntaxError("Unexpected end of JSON input"))
+      .mockResolvedValueOnce(
+        toolUseMessage(
+          "submit_findings",
+          {
+            deepAnalysis:
+              "A real, fallback-model finding after malformed JSON.",
+            sourcesConsulted: [],
+            confidence: "medium",
+          },
+          "tool_1",
+        ),
+      );
+
+    const result = await researchItem("hn-49541888");
+
+    expect(result.status).toBe("complete");
+    expect(result.deepAnalysis).toBe(
+      "A real, fallback-model finding after malformed JSON.",
+    );
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("records the model actually used on the final turn, not always MODEL_CHAIN[0], when incomplete", async () => {
+    // Turn 1 succeeds on the primary model, turn 2 (the last, since we
+    // fill every turn with a tool call and never submit_findings) falls
+    // back to the SECOND model in the chain - the persisted "incomplete"
+    // result's model field must reflect that fallback model, not silently
+    // default back to MODEL_CHAIN[0].
+    for (let i = 0; i < MAX_TURNS - 1; i++) {
+      mockCreate.mockResolvedValueOnce(
+        toolUseMessage("fetch_hn_thread", {}, `tool_${i}`),
+      );
+    }
+    mockCreate.mockResolvedValueOnce(
+      (() => {
+        const msg = toolUseMessage("fetch_hn_thread", {}, "tool_last");
+        msg.model = MODEL_CHAIN[1];
+        return msg;
+      })(),
+    );
+
+    const result = await researchItem("hn-49541888");
+
+    expect(result.status).toBe("incomplete");
+    expect(result.model).toBe(MODEL_CHAIN[1]);
+  });
 });
 
 vi.mock("node:fs", () => ({ existsSync: vi.fn() }));
