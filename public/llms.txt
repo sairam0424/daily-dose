@@ -1,0 +1,13 @@
+# The Daily Dose
+
+> An AI-curated daily technical digest of Hacker News, arXiv, GitHub, and Dev.to. Every item is scored by a real AI model and annotated with a short analysis paragraph, disclosed inline as AI-generated - never presented as human editorial judgment.
+
+The Daily Dose surfaces the most interesting technical stories, papers, repositories, and articles each day, filterable by source and by interest tier (Notable / Recommended / Must-Read).
+
+## Pages
+
+- [Latest digest](https://daily-dose-hazel-delta.vercel.app/): today's curated picks.
+- [All digests](https://daily-dose-hazel-delta.vercel.app/archive/): every past day's digest, browsable by date.
+- [RSS feed](https://daily-dose-hazel-delta.vercel.app/rss.xml): all sources combined; per-source RSS feeds are linked from the site footer.
+- [Cost & stats](https://daily-dose-hazel-delta.vercel.app/stats): a real, public per-run LLM cost transparency ledger.
+- [Privacy](https://daily-dose-hazel-delta.vercel.app/privacy): what this site collects and why.
