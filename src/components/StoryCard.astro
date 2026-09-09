@@ -14,6 +14,7 @@ const tier = interestTier(entry.data.interest_score);
 ---
 
 <li
+  id={entry.id}
   class={`story-card${index === 0 ? ' lead-story' : ''}${entry.data.image_url ? ' has-image' : ''}`}
   data-source={entry.data.source}
   data-interest-tier={tier}
@@ -30,9 +31,11 @@ const tier = interestTier(entry.data.interest_score);
       onerror="this.closest('.story-card')?.classList.remove('has-image'); this.remove();"
     />
   )}
-  <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
-    {entry.data.title}
-  </a>
+  <h3 class="story-title-heading">
+    <a class="story-title" href={entry.data.url} target="_blank" rel="noopener noreferrer">
+      {entry.data.title}
+    </a>
+  </h3>
   {entry.data.analysis && (
     <p class="story-analysis">
       {entry.data.analysis}
@@ -134,6 +137,13 @@ const tier = interestTier(entry.data.interest_score);
 
   .lead-story .story-image {
     aspect-ratio: 16 / 8;
+  }
+
+  .story-title-heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
   }
 
   /* Dev-editorial headline (default/unscoped values). */
