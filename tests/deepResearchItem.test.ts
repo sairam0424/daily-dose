@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { NotFoundError } from "@anthropic-ai/sdk";
 
 // Declares ALL of node:fs/promises's mocked functions up front, even
 // mockWriteFile (not exercised until Task 7's tests) - Vitest only allows
@@ -74,6 +75,7 @@ vi.mock("@anthropic-ai/bedrock-sdk", () => ({
 
 const { researchItem, MAX_TURNS } =
   await import("../scripts/deepResearchItem.js");
+const { MODEL_CHAIN } = await import("../src/lib/llmCuration.js");
 
 function toolUseMessage(
   name: string,
@@ -170,5 +172,67 @@ describe("researchItem", () => {
     expect(result.status).toBe("incomplete");
     expect(result.turnsUsed).toBe(1);
     expect(result.sourcesConsulted).toEqual([]);
+  });
+
+  it("falls back to the next model in the chain on NotFoundError from the primary model", async () => {
+    mockCreate
+      .mockRejectedValueOnce(
+        new NotFoundError(
+          404,
+          {},
+          "model not found",
+          new Headers(),
+          "not_found_error",
+        ),
+      )
+      .mockResolvedValueOnce(
+        toolUseMessage(
+          "submit_findings",
+          {
+            deepAnalysis: "A real, fallback-model finding.",
+            sourcesConsulted: [],
+            confidence: "medium",
+          },
+          "tool_1",
+        ),
+      );
+
+    const result = await researchItem("hn-49541888");
+
+    expect(result.status).toBe("complete");
+    expect(result.deepAnalysis).toBe("A real, fallback-model finding.");
+    // Only one turn of the outer loop ran - the retry within
+    // callWithModelFallback happened inside that single turn, not as a
+    // second pass through the turn loop.
+    expect(result.turnsUsed).toBe(1);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError", async () => {
+    mockCreate.mockRejectedValueOnce(
+      new Error("some unexpected network failure"),
+    );
+
+    await expect(researchItem("hn-49541888")).rejects.toThrow(
+      /unexpected network failure/,
+    );
+    // Did not try further models for a non-fallback-eligible error.
+    expect(mockCreate).toHaveBeenCalledTimes(1);
+  });
+
+  it("throws a clear error when every model in MODEL_CHAIN fails with NotFoundError", async () => {
+    mockCreate.mockRejectedValue(
+      new NotFoundError(
+        404,
+        {},
+        "model not found",
+        new Headers(),
+        "not_found_error",
+      ),
+    );
+
+    await expect(researchItem("hn-49541888")).rejects.toThrow();
+    // Every model in the chain got a chance, not just the first.
+    expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
   });
 });
