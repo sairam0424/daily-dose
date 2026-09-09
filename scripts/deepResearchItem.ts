@@ -222,3 +222,61 @@ export async function researchItem(
     sourcesConsulted,
   );
 }
+
+const DEEP_RESEARCH_DIR = "src/data/deep-research";
+
+function parseArgs(argv: string[]): {
+  id: string;
+  publish: boolean;
+  force: boolean;
+} {
+  const idArg = argv.find((a) => a.startsWith("--id="));
+  const id = idArg ? idArg.slice("--id=".length) : undefined;
+  if (!id) {
+    throw new Error(
+      "Usage: deepResearchItem.ts --id=<itemId> [--publish] [--force]",
+    );
+  }
+  return {
+    id,
+    publish: argv.includes("--publish"),
+    force: argv.includes("--force"),
+  };
+}
+
+export async function main(): Promise<void> {
+  const { id, publish, force } = parseArgs(process.argv.slice(2));
+
+  if (publish) {
+    await findDigestItem(id); // throws loudly if the id doesn't exist - refuses to publish an orphaned result
+  }
+
+  const outputPath = join(DEEP_RESEARCH_DIR, `${id}.json`);
+  if (publish && existsSync(outputPath) && !force) {
+    throw new Error(
+      `${outputPath} already exists - pass --force to overwrite an existing deep-research result.`,
+    );
+  }
+
+  const result = await researchItem(id);
+  console.log(JSON.stringify(result, null, 2));
+
+  if (publish) {
+    await writeFile(
+      outputPath,
+      JSON.stringify(result, null, 2) + "\n",
+      "utf-8",
+    );
+    console.log(`Published to ${outputPath}`);
+  }
+}
+
+// Only run main() when this file is executed directly, not when its
+// exports are imported in isolation by tests - matches scripts/pipeline.ts's
+// existing convention.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error("Deep research failed:", error);
+    process.exitCode = 1;
+  });
+}

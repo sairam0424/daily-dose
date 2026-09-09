@@ -236,3 +236,114 @@ describe("researchItem", () => {
     expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
   });
 });
+
+vi.mock("node:fs", () => ({ existsSync: vi.fn() }));
+
+const { main } = await import("../scripts/deepResearchItem.js");
+const { existsSync } = await import("node:fs");
+
+describe("main (CLI)", () => {
+  const ORIGINAL_ARGV = [...process.argv];
+  const ORIGINAL_ENV = { ...process.env };
+
+  beforeEach(() => {
+    process.env.BEDROCK_ACCESS_KEY_ID = "test";
+    process.env.BEDROCK_SECRET_ACCESS_KEY = "test";
+    mockReaddir.mockResolvedValue(["2026-09-06"]);
+    mockReadFile.mockResolvedValue(validDigestItemJson());
+    mockWriteFile.mockResolvedValue(undefined);
+    (existsSync as any).mockReturnValue(false);
+    vi.stubGlobal("fetch", vi.fn());
+    mockCreate.mockReset();
+  });
+
+  afterEach(() => {
+    process.argv = [...ORIGINAL_ARGV];
+    process.env = { ...ORIGINAL_ENV };
+    mockWriteFile.mockReset();
+    vi.unstubAllGlobals();
+  });
+
+  it("throws a usage error when --id is missing", async () => {
+    process.argv = ["node", "deepResearchItem.ts"];
+    await expect(main()).rejects.toThrow(/Usage: deepResearchItem/);
+  });
+
+  it("refuses to publish when the item id does not exist", async () => {
+    process.argv = [
+      "node",
+      "deepResearchItem.ts",
+      "--id=hn-does-not-exist",
+      "--publish",
+    ];
+    mockReadFile.mockRejectedValue(new Error("ENOENT"));
+    await expect(main()).rejects.toThrow(/No committed digest item found/);
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+
+  it("refuses to overwrite an existing result without --force", async () => {
+    (existsSync as any).mockReturnValue(true);
+    process.argv = [
+      "node",
+      "deepResearchItem.ts",
+      "--id=hn-49541888",
+      "--publish",
+    ];
+    await expect(main()).rejects.toThrow(/already exists.*--force/);
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+
+  it("writes the result file when --publish is passed and no conflict exists", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ id: 49541888, title: "t", children: [] }),
+    });
+    mockCreate.mockResolvedValueOnce(
+      toolUseMessage(
+        "submit_findings",
+        {
+          deepAnalysis: "Real finding.",
+          sourcesConsulted: ["fetch_hn_thread"],
+          confidence: "high",
+        },
+        "tool_1",
+      ),
+    );
+    process.argv = [
+      "node",
+      "deepResearchItem.ts",
+      "--id=hn-49541888",
+      "--publish",
+    ];
+
+    await main();
+
+    expect(mockWriteFile).toHaveBeenCalledTimes(1);
+    const [path, contents] = mockWriteFile.mock.calls[0];
+    expect(path).toContain("src/data/deep-research/hn-49541888.json");
+    expect(JSON.parse(contents as string).deepAnalysis).toBe("Real finding.");
+  });
+
+  it("does not write anything when --publish is not passed", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ id: 49541888, title: "t", children: [] }),
+    });
+    mockCreate.mockResolvedValueOnce(
+      toolUseMessage(
+        "submit_findings",
+        {
+          deepAnalysis: "Real finding.",
+          sourcesConsulted: ["fetch_hn_thread"],
+          confidence: "high",
+        },
+        "tool_1",
+      ),
+    );
+    process.argv = ["node", "deepResearchItem.ts", "--id=hn-49541888"];
+
+    await main();
+
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+});
