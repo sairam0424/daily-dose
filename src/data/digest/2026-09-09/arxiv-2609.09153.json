@@ -1,0 +1,22 @@
+{
+  "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.09153",
+  "date": "2026-09-09",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.MA"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting architectural idea for LLM agents that encodes explicit procedural knowledge as a self-evolving graph, addressing a real weakness in long-horizon agent planning.",
+  "analysis": "Procedural Graphs propose organizing 'how-to' knowledge as a graph of procedure-to-procedure relationships, analogous to how knowledge graphs organize facts, to give LLM agents explicit guidance on what to do next during long tasks. The graph updates itself over time by comparing failed and successful trajectories and editing its own structure, which is a novel form of self-improving memory for agents. This addresses a genuine pain point in agent design: models losing track of goals or repeating unproductive actions over long action sequences. The reported ability to match or exceed hand-designed workflows without manual engineering is a meaningful practical result for agent framework builders.",
+  "authors": [
+    "Yuxing Lu",
+    "Yicheng Chen",
+    "Shanchan Wu",
+    "Sercan Ö. Arık"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

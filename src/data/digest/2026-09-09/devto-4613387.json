@@ -1,0 +1,19 @@
+{
+  "title": "I let AI write 100% of my code for 30 days. Here's what broke.",
+  "source": "devto",
+  "url": "https://dev.to/infoinlet1/i-let-ai-write-100-of-my-code-for-30-days-heres-what-broke-1aa0",
+  "date": "2026-09-09",
+  "tags": [
+    "ai",
+    "webdev",
+    "programming",
+    "career"
+  ],
+  "interest_score": 7,
+  "why_read": "A candid, detailed first-person account of building a real production SaaS app using AI-only code generation for 30 days, with honest analysis of where it broke down.",
+  "analysis": "This is a field report from a developer who committed to never typing application code by hand for 30 days, instead directing an AI to write everything for a real SaaS product with auth, billing, and an API. The value lies in the specific 'breaks' logged when the AI approach failed, which likely reveal genuine limitations around debugging, architecture decisions, or edge cases that pure prompting struggles with. This kind of grounded, experience-based report is more useful than typical hype pieces because it distinguishes clearly what worked well (like scaffolding and boilerplate) from what didn't. Worth reading for engineers evaluating how far AI-driven development can realistically go today.",
+  "authors": [],
+  "reactions": 20,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffgol7n5wmkalew8m0ekc.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Claude, change the “Add to Cart” button to blue",
+  "source": "hn",
+  "url": "https://opusfived.dev/",
+  "date": "2026-09-09",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A viral/funny anecdote about prompting Claude to change a UI element, more of a cultural moment about AI agents than a technical deep dive.",
+  "analysis": "This appears to be a title referencing someone using an AI agent (Claude) to make a trivial UI change via natural language instruction. It reflects the growing trend of using LLM agents for direct code or UI manipulation tasks. The high engagement suggests it resonated as a meme or amusing example rather than as substantive technical content. Without more detail, it's unclear whether there's deeper technical substance beyond the novelty.",
+  "authors": [
+    "matthieu_bl"
+  ],
+  "hn_id": 49623754,
+  "points": 943,
+  "image_url": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/30670832-9635-4801-aee1-22bf39bccebf/id-preview-364e3d04--0e3289c2-58d2-415e-a7ad-27daeb3a63a1.lovable.app-1788612778060.png",
+  "favicon_url": "https://opusfived.dev/favicon.ico"
+}

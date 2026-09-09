@@ -1,0 +1,19 @@
+{
+  "title": "My OSS Projects: AngleSharp",
+  "source": "devto",
+  "url": "https://dev.to/florianrappl/my-oss-projects-anglesharp-3b8j",
+  "date": "2026-09-09",
+  "tags": [
+    "dotnet",
+    "opensource",
+    "csharp",
+    "webdev"
+  ],
+  "interest_score": 6,
+  "why_read": "A personal retrospective from the creator of AngleSharp, a mature and widely used .NET HTML/CSS parsing library, explaining its design rationale and origin story.",
+  "analysis": "AngleSharp is a well-established open-source .NET library providing a spec-conformant DOM implementation for parsing HTML, SVG, MathML, CSS, and XML without requiring a browser. This retrospective post explains why it exists, essentially as an alternative to fragile regex-based HTML scraping, and gives insight into long-term open-source maintenance. It's a solid, if narrow, technical read for .NET developers doing web scraping, testing, or headless DOM manipulation. The value here is mostly in maintainer perspective and design history rather than new technical content.",
+  "authors": [],
+  "reactions": 12,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9ngyl1oof40wt34yqdyd.png"
+}

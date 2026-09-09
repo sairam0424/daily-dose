@@ -1,0 +1,19 @@
+{
+  "title": "Silver Rate Is (Almost) Optimal for Gradient Descent Acceleration",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.09152",
+  "date": "2026-09-09",
+  "tags": [
+    "math.OC",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A rigorous but narrow theoretical optimization result establishing near-optimal convergence rates for gradient descent acceleration using fixed step schedules.",
+  "analysis": "This paper is a pure theory contribution in convex optimization, proving lower bounds that nearly match known upper bounds for how much predetermined step-size schedules can accelerate gradient descent. The 'silver ratio' schedule referenced was a recent breakthrough showing surprising acceleration without momentum terms, and this paper closes the gap by showing that rate is close to optimal in both fixed-horizon and anytime settings. It's a technically dense result likely of interest mainly to optimization theorists rather than practicing engineers. Still, it settles an open theoretical question with real mathematical rigor.",
+  "authors": [
+    "Yuhan Ye",
+    "Kaizhao Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "TANGO: Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Model",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.09158",
+  "date": "2026-09-09",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete robotics paper showing a vision-language-action model controlling a full-body humanoid for navigation through clutter, with real hardware deployment.",
+  "analysis": "TANGO is a whole-body control system for humanoid robots that combines natural language instructions with vision to navigate cluttered spaces, predicting joint actions across 29 degrees of freedom rather than just planning a 2D path. It's trained purely in simulation using synthesized motion data and then deployed zero-shot onto a real Unitree G1 humanoid, which is a meaningful sim-to-real result. This matters technically because most navigation research treats robots as points moving on a floor plan, while this approach handles arms, torso, and gait together for genuine obstacle negotiation. The zero-shot real-world transfer without real navigation training data is a notable engineering achievement.",
+  "authors": [
+    "Anqi Li",
+    "Yuxin Chen",
+    "Zhaobo Li",
+    "Zhuo Cao",
+    "Junli Ren",
+    "Masayoshi Tomizuka",
+    "Dhruv Shah"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

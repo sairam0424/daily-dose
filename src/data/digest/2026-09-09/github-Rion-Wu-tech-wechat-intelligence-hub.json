@@ -1,0 +1,16 @@
+{
+  "title": "Rion-Wu-tech/wechat-intelligence-hub",
+  "source": "github",
+  "url": "https://github.com/Rion-Wu-tech/wechat-intelligence-hub",
+  "date": "2026-09-09",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A local-first tool for mining and organizing WeChat chat history into briefings and opportunity tracking, technically interesting but raises notable privacy considerations.",
+  "analysis": "This project builds a local system that indexes and searches WeChat chat history, generating daily briefings, follow-up reminders, and opportunity tracking via a command-line interface. Technically, it involves data extraction from a closed messaging platform, local search indexing, and some LLM-based summarization pipeline ('Codex skills'). The scale of forks relative to stars is unusual and could reflect bot activity or a template-heavy community, which is worth noting. Privacy implications of building surveillance-style tooling over personal chat data deserve consideration even though the tool is framed as local-first and read-only.",
+  "authors": [],
+  "stars": 2018,
+  "image_url": "https://opengraph.githubassets.com/cd57641dc168142609256af43467c19e04518ec119a2639d29850fabe3fe3012/Rion-Wu-tech/wechat-intelligence-hub",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

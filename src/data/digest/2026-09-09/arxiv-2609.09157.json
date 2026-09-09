@@ -1,0 +1,18 @@
+{
+  "title": "Learning Length-Extrapolatable Recurrent Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.09157",
+  "date": "2026-09-09",
+  "tags": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A focused theoretical/empirical contribution addressing why recurrent models fail to generalize beyond their training sequence length, with a proposed fix showing strong extrapolation gains.",
+  "analysis": "This paper tackles a known weakness of recurrent neural networks: they often break down when asked to process sequences much longer than what they were trained on. Instead of blaming vanishing or exploding gradients as the sole cause, the authors study how credit for future errors flows back to earlier time steps and introduce a technique called Credit Stabilization through Time to fix this signal. Their method reportedly lets models generalize up to 128 times beyond their training length, which is a substantial practical improvement for long-context sequence modeling. It's a solid piece of ML research relevant to anyone building or reasoning about recurrent or state-space architectures for long sequences.",
+  "authors": [
+    "Hanwen Jiang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
