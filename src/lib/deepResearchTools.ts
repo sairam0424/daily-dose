@@ -225,14 +225,22 @@ const FETCH_HN_THREAD_TOOL = {
   name: "fetch_hn_thread",
   description:
     "Fetch the real Hacker News discussion thread for this item, including its top comments.",
-  input_schema: { type: "object" as const, properties: {}, required: [] },
+  input_schema: {
+    type: "object" as const,
+    properties: {},
+    required: [] as const,
+  },
 };
 
 const FETCH_ARXIV_FULLTEXT_TOOL = {
   name: "fetch_arxiv_fulltext",
   description:
     "Fetch the real full text of this arXiv paper via its ar5iv HTML rendering.",
-  input_schema: { type: "object" as const, properties: {}, required: [] },
+  input_schema: {
+    type: "object" as const,
+    properties: {},
+    required: [] as const,
+  },
 };
 
 const FETCH_GITHUB_REPO_FILE_TOOL = {
@@ -248,7 +256,7 @@ const FETCH_GITHUB_REPO_FILE_TOOL = {
           "File or directory path within the repo, e.g. 'README.md' or '' for the repo root.",
       },
     },
-    required: ["path"],
+    required: ["path"] as const,
   },
 };
 
@@ -256,7 +264,11 @@ const FETCH_DEVTO_FULLTEXT_TOOL = {
   name: "fetch_devto_fulltext",
   description:
     "Fetch the real, uncapped full body text of this Dev.to article.",
-  input_schema: { type: "object" as const, properties: {}, required: [] },
+  input_schema: {
+    type: "object" as const,
+    properties: {},
+    required: [] as const,
+  },
 };
 
 export const SUBMIT_FINDINGS_TOOL = {
@@ -276,15 +288,22 @@ export const SUBMIT_FINDINGS_TOOL = {
         items: { type: "string" as const },
         description: "Which tool(s) you actually used.",
       },
-      confidence: { type: "string" as const, enum: ["high", "medium", "low"] },
+      confidence: {
+        type: "string" as const,
+        enum: ["high", "medium", "low"] as const,
+      },
     },
-    required: ["deepAnalysis", "sourcesConsulted", "confidence"],
+    required: ["deepAnalysis", "sourcesConsulted", "confidence"] as const,
   },
 };
 
 export const TOOLS_BY_SOURCE: Record<
   DigestItem["source"],
-  { name: string; description: string; input_schema: object }
+  {
+    name: string;
+    description: string;
+    input_schema: { type: "object"; properties?: unknown; required?: unknown };
+  }
 > = {
   hn: FETCH_HN_THREAD_TOOL,
   arxiv: FETCH_ARXIV_FULLTEXT_TOOL,

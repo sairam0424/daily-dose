@@ -71,7 +71,11 @@ function isToolUseBlock(block: { type: string }): block is ToolUseBlock {
 async function callWithModelFallback(
   client: AnthropicBedrock,
   messages: Array<{ role: "user" | "assistant"; content: unknown }>,
-  tools: Array<{ name: string; description: string; input_schema: object }>,
+  tools: Array<{
+    name: string;
+    description: string;
+    input_schema: { type: "object"; properties?: unknown; required?: unknown };
+  }>,
 ) {
   let lastErr: unknown;
   for (const model of MODEL_CHAIN) {
@@ -80,7 +84,7 @@ async function callWithModelFallback(
         model,
         max_tokens: 4096,
         messages: messages as never,
-        tools,
+        tools: tools as never,
         tool_choice: { type: "auto" as const },
         ...(MODELS_NEEDING_THINKING_DISABLED.has(model)
           ? { thinking: { type: "disabled" as const } }

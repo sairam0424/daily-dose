@@ -162,4 +162,13 @@ describe("researchItem", () => {
       /BEDROCK_ACCESS_KEY_ID/,
     );
   });
+
+  it("returns status: incomplete when model responds with text-only and no tool calls", async () => {
+    mockCreate.mockResolvedValueOnce(textOnlyMessage());
+
+    const result = await researchItem("hn-49541888");
+    expect(result.status).toBe("incomplete");
+    expect(result.turnsUsed).toBe(1);
+    expect(result.sourcesConsulted).toEqual([]);
+  });
 });
