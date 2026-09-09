@@ -150,4 +150,14 @@ describe("StoryCard.astro source structure", () => {
       /\.story-title-heading\s*\{[^}]*margin:\s*0[^}]*font-size:\s*inherit[^}]*font-weight:\s*inherit[^}]*line-height:\s*inherit/s,
     );
   });
+
+  it("(seo fix) gives the content-bearing story thumbnail a real, descriptive alt attribute instead of an empty one", () => {
+    expect(source).toMatch(
+      /<img\s+class="story-image"[^>]*alt=\{entry\.data\.title\}/s,
+    );
+  });
+
+  it("(regression) keeps the small favicon icon correctly decorative (empty alt)", () => {
+    expect(source).toMatch(/<img\s+class="favicon-icon"[^>]*alt=""/s);
+  });
 });
