@@ -8,7 +8,7 @@
  *
  * Usage: npx tsx scripts/deepResearchItem.ts --id=<itemId> [--publish] [--force]
  */
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { AnthropicBedrock } from "@anthropic-ai/bedrock-sdk";
@@ -266,6 +266,11 @@ export async function main(): Promise<void> {
   console.log(JSON.stringify(result, null, 2));
 
   if (publish) {
+    // src/data/deep-research/ does not exist on a fresh checkout (it's
+    // created on first publish, unlike src/data/digest/ which is always
+    // committed) - without this, writeFile fails with ENOENT after the
+    // real, paid Bedrock call has already completed and been discarded.
+    await mkdir(DEEP_RESEARCH_DIR, { recursive: true });
     await writeFile(
       outputPath,
       JSON.stringify(result, null, 2) + "\n",

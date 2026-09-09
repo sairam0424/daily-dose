@@ -131,6 +131,20 @@ export async function fetchGithubRepoFile(
   // require the normalized pathname to still start with this repo's own
   // prefix before ever making the request - this catches any depth/form
   // of ".." traversal, not just a literal substring check.
+  // Defense in depth on top of the normalized-prefix check below: a
+  // percent-encoded slash/backslash (%2f, %2F, %5c, %5C) combined with a
+  // literal ".." is NOT decoded by the URL class before dot-segment
+  // normalization, so it currently only fails to escape this repo because
+  // GitHub's own contents-API routing happens to resolve :owner/:repo
+  // before processing the trailing path - an assumption about a third
+  // party's behavior, not a guarantee. Reject any encoded or literal
+  // slash/backslash variant outright rather than rely on that.
+  if (/%2f|%5c|\\/i.test(path)) {
+    return {
+      ok: false,
+      error: `Rejected path "${path}" - encoded or literal slash/backslash characters are not allowed.`,
+    };
+  }
   const expectedPrefix = `/repos/${owner}/${repo}/contents/`;
   const url = new URL(`https://api.github.com${expectedPrefix}${path}`);
   if (!url.pathname.startsWith(expectedPrefix)) {
@@ -228,11 +242,35 @@ export function extractArxivId(url: string): string | undefined {
   return match ? match[1] : undefined;
 }
 
+// A GitHub owner or repo name segment: alphanumeric plus hyphen/underscore/
+// dot only. Rejecting anything else also rules out ".." or "/" ever
+// reaching fetchGithubRepoFile as owner/repo - the previous unanchored
+// regex (github\.com\/([^/]+)\/([^/]+)) matched this substring anywhere in
+// ANY string, including a non-github.com URL, and only "failed safe" as an
+// incidental side effect of unrelated normalization logic elsewhere.
+const GITHUB_PATH_SEGMENT = /^[\w.-]+$/;
+
 export function extractGithubOwnerRepo(
   url: string,
 ): { owner: string; repo: string } | undefined {
-  const match = url.match(/github\.com\/([^/]+)\/([^/]+)/);
-  return match ? { owner: match[1], repo: match[2] } : undefined;
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return undefined;
+  }
+  if (
+    parsed.hostname !== "github.com" &&
+    parsed.hostname !== "www.github.com"
+  ) {
+    return undefined;
+  }
+  const [owner, repo] = parsed.pathname.split("/").filter(Boolean);
+  if (!owner || !repo) return undefined;
+  if (!GITHUB_PATH_SEGMENT.test(owner) || !GITHUB_PATH_SEGMENT.test(repo)) {
+    return undefined;
+  }
+  return { owner, repo };
 }
 
 export const SUBMIT_FINDINGS_TOOL_NAME = "submit_findings";

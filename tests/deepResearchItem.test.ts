@@ -8,10 +8,12 @@ import { NotFoundError } from "@anthropic-ai/sdk";
 const mockReaddir = vi.fn();
 const mockReadFile = vi.fn();
 const mockWriteFile = vi.fn();
+const mockMkdir = vi.fn();
 vi.mock("node:fs/promises", () => ({
   readdir: (...args: unknown[]) => mockReaddir(...args),
   readFile: (...args: unknown[]) => mockReadFile(...args),
   writeFile: (...args: unknown[]) => mockWriteFile(...args),
+  mkdir: (...args: unknown[]) => mockMkdir(...args),
 }));
 
 const { findDigestItem } = await import("../scripts/deepResearchItem.js");
@@ -236,6 +238,25 @@ describe("researchItem", () => {
     expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
   });
 
+  it("throws the exact last SyntaxError (strict identity) when every model in MODEL_CHAIN fails with malformed JSON", async () => {
+    // Permanent regression test for a scenario an adversarial audit verified
+    // empirically but did not leave behind: an all-SyntaxError run across
+    // the full chain must still call every model exactly once, then throw
+    // the LAST model's actual error object - not a generic wrapper, and not
+    // an early bail-out after the first failure.
+    const errors = MODEL_CHAIN.map(
+      (_, i) => new SyntaxError(`Unexpected end of JSON input (model ${i})`),
+    );
+    for (const err of errors) {
+      mockCreate.mockRejectedValueOnce(err);
+    }
+
+    await expect(researchItem("hn-49541888")).rejects.toBe(
+      errors[errors.length - 1],
+    );
+    expect(mockCreate).toHaveBeenCalledTimes(MODEL_CHAIN.length);
+  });
+
   it("falls back to the next model in the chain on a SyntaxError (malformed JSON) from the primary model", async () => {
     // Matches llmCuration.ts's own documented Bedrock quirk (a malformed/
     // truncated response can surface as a SyntaxError) - this loop must
@@ -306,6 +327,7 @@ describe("main (CLI)", () => {
     mockReaddir.mockResolvedValue(["2026-09-06"]);
     mockReadFile.mockResolvedValue(validDigestItemJson());
     mockWriteFile.mockResolvedValue(undefined);
+    mockMkdir.mockResolvedValue(undefined);
     (existsSync as any).mockReturnValue(false);
     vi.stubGlobal("fetch", vi.fn());
     mockCreate.mockReset();
@@ -315,6 +337,7 @@ describe("main (CLI)", () => {
     process.argv = [...ORIGINAL_ARGV];
     process.env = { ...ORIGINAL_ENV };
     mockWriteFile.mockReset();
+    mockMkdir.mockReset();
     vi.unstubAllGlobals();
   });
 
@@ -372,6 +395,13 @@ describe("main (CLI)", () => {
 
     await main();
 
+    // Regression test for a real bug found during a live end-to-end audit:
+    // writeFile crashed with ENOENT because src/data/deep-research/ is never
+    // created on a fresh checkout (unlike src/data/digest/, which is always
+    // committed). mkdir(..., {recursive: true}) must run before writeFile.
+    expect(mockMkdir).toHaveBeenCalledWith("src/data/deep-research", {
+      recursive: true,
+    });
     expect(mockWriteFile).toHaveBeenCalledTimes(1);
     const [path, contents] = mockWriteFile.mock.calls[0];
     expect(path).toContain("src/data/deep-research/hn-49541888.json");

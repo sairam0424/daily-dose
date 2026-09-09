@@ -168,6 +168,21 @@ describe("fetchGithubRepoFile", () => {
     expect(fetch).not.toHaveBeenCalled();
   });
 
+  it("rejects a percent-encoded slash/backslash combined with '..' without making a network request", async () => {
+    // Defense in depth: a %2f/%5c-encoded slash combined with a literal
+    // ".." is not decoded by the URL class before dot-segment
+    // normalization, so it must be rejected outright rather than relying
+    // on GitHub's own server-side routing behavior.
+    const result = await fetchGithubRepoFile(
+      "owner",
+      "repo",
+      "..%2f..%2fother-owner/other-repo",
+    );
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error).toContain("slash");
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
   it("rejects a leading-slash absolute path the same way", async () => {
     const result = await fetchGithubRepoFile(
       "owner",
@@ -237,6 +252,29 @@ describe("extractGithubOwnerRepo", () => {
   it("returns undefined for a non-matching URL", () => {
     expect(
       extractGithubOwnerRepo("https://example.com/foo/bar"),
+    ).toBeUndefined();
+  });
+
+  it("returns undefined for a non-github.com host that merely contains the substring 'github.com/'", () => {
+    // Regression: the previous unanchored regex (github\.com\/([^/]+)\/([^/]+))
+    // matched this substring anywhere in ANY string, including a redirect
+    // param on a completely different host - it only "failed safe" as an
+    // incidental side effect of unrelated normalization logic downstream.
+    expect(
+      extractGithubOwnerRepo(
+        "https://evil.example.com/redirect?to=github.com/../../secrets/leak",
+      ),
+    ).toBeUndefined();
+  });
+
+  it("returns undefined when a segment contains a percent-encoded slash (survives URL normalization as one literal segment)", () => {
+    // Verified directly: new URL("https://github.com/owner/repo%2F..%2Fescape")
+    // .pathname is "/owner/repo%2F..%2Fescape" - encoded, so it does NOT
+    // split into more path segments, but it also isn't a plausible real
+    // repo name. The character-class check catches this; segment count
+    // alone would not.
+    expect(
+      extractGithubOwnerRepo("https://github.com/owner/repo%2F..%2Fescape"),
     ).toBeUndefined();
   });
 });
