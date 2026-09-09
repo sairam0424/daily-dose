@@ -17,6 +17,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "pipeline": "tsx scripts/pipeline.ts",
+    "deep-research-item": "tsx scripts/deepResearchItem.ts",
     "test": "vitest run"
   },
   "dependencies": {
