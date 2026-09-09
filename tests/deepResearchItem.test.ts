@@ -64,3 +64,102 @@ describe("findDigestItem", () => {
     await expect(findDigestItem("hn-49541888")).rejects.toThrow();
   });
 });
+
+const mockCreate = vi.fn();
+vi.mock("@anthropic-ai/bedrock-sdk", () => ({
+  AnthropicBedrock: vi
+    .fn()
+    .mockImplementation(() => ({ messages: { create: mockCreate } })),
+}));
+
+const { researchItem, MAX_TURNS } =
+  await import("../scripts/deepResearchItem.js");
+
+function toolUseMessage(
+  name: string,
+  input: Record<string, unknown>,
+  id = "tool_1",
+) {
+  return {
+    content: [{ type: "tool_use", id, name, input }],
+    model: "us.anthropic.claude-sonnet-5",
+    stop_reason: "tool_use",
+  };
+}
+
+function textOnlyMessage() {
+  return {
+    content: [{ type: "text", text: "I am done thinking." }],
+    model: "us.anthropic.claude-sonnet-5",
+    stop_reason: "end_turn",
+  };
+}
+
+describe("researchItem", () => {
+  const ORIGINAL_ENV = { ...process.env };
+
+  beforeEach(() => {
+    process.env.BEDROCK_ACCESS_KEY_ID = "test";
+    process.env.BEDROCK_SECRET_ACCESS_KEY = "test";
+    mockReaddir.mockResolvedValue(["2026-09-06"]);
+    mockReadFile.mockResolvedValue(validDigestItemJson());
+    vi.stubGlobal("fetch", vi.fn());
+  });
+
+  afterEach(() => {
+    process.env = { ...ORIGINAL_ENV };
+    mockCreate.mockReset();
+    vi.unstubAllGlobals();
+  });
+
+  it("runs a tool call then submit_findings, returning a validated complete result", async () => {
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ id: 49541888, title: "t", children: [] }),
+    });
+    mockCreate
+      .mockResolvedValueOnce(toolUseMessage("fetch_hn_thread", {}))
+      .mockResolvedValueOnce(
+        toolUseMessage(
+          "submit_findings",
+          {
+            deepAnalysis: "A real, thorough finding.",
+            sourcesConsulted: ["fetch_hn_thread"],
+            confidence: "high",
+          },
+          "tool_2",
+        ),
+      );
+
+    const result = await researchItem("hn-49541888");
+    expect(result.status).toBe("complete");
+    expect(result.turnsUsed).toBe(2);
+    expect(result.deepAnalysis).toBe("A real, thorough finding.");
+    expect(result.itemId).toBe("hn-49541888");
+  });
+
+  it("returns status: incomplete after MAX_TURNS without a submit_findings call", async () => {
+    (fetch as any).mockResolvedValue({
+      ok: true,
+      json: async () => ({ id: 49541888, title: "t", children: [] }),
+    });
+    for (let i = 0; i < MAX_TURNS; i++) {
+      mockCreate.mockResolvedValueOnce(
+        toolUseMessage("fetch_hn_thread", {}, `tool_${i}`),
+      );
+    }
+
+    const result = await researchItem("hn-49541888");
+    expect(result.status).toBe("incomplete");
+    expect(result.turnsUsed).toBe(MAX_TURNS);
+    expect(mockCreate).toHaveBeenCalledTimes(MAX_TURNS);
+  });
+
+  it("throws when Bedrock credentials are not configured", async () => {
+    delete process.env.BEDROCK_ACCESS_KEY_ID;
+    delete process.env.BEDROCK_SECRET_ACCESS_KEY;
+    await expect(researchItem("hn-49541888")).rejects.toThrow(
+      /BEDROCK_ACCESS_KEY_ID/,
+    );
+  });
+});
