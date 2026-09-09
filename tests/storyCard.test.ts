@@ -160,4 +160,8 @@ describe("StoryCard.astro source structure", () => {
   it("(regression) keeps the small favicon icon correctly decorative (empty alt)", () => {
     expect(source).toMatch(/<img\s+class="favicon-icon"[^>]*alt=""/s);
   });
+
+  it("(seo fix) grows the why-icon button's real hit area toward the mobile touch-target guideline", () => {
+    expect(source).toMatch(/\.why-icon\s*\{[^}]*padding:\s*0\.5rem/s);
+  });
 });

@@ -284,7 +284,10 @@ const tier = interestTier(entry.data.interest_score);
     display: inline-flex;
   }
 
-  /* Uses --ink-faint: this is a decorative glyph, not reading text. */
+  /* Uses --ink-faint: this is a decorative glyph, not reading text.
+     padding added (same technique as FilterBar.astro's .filter-btn fix)
+     to grow the real hit area toward the 44px mobile touch-target
+     guideline without visually bloating the glyph itself. */
   .why-icon {
     border: none;
     background: none;
@@ -292,7 +295,8 @@ const tier = interestTier(entry.data.interest_score);
     cursor: pointer;
     font-size: 0.85rem;
     line-height: 1;
-    padding: 0;
+    padding: 0.5rem;
+    margin: -0.5rem;
   }
 
   .why-icon:focus-visible {
