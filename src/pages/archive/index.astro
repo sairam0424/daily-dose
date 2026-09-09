@@ -7,6 +7,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 import { isFlagEnabled } from '../../lib/featureFlags.js';
+import { safeJsonLdString } from '../../lib/jsonLd.js';
 
 const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const allEntries = await getCollection('digest');
@@ -49,8 +50,8 @@ const breadcrumbSchema = {
   description="Every past daily-dose digest, browsable by date — AI-curated and scored Hacker News, arXiv, GitHub, and Dev.to picks, archived day by day since launch."
   path="/archive/"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={safeJsonLdString(collectionSchema)} />
+  <script type="application/ld+json" set:html={safeJsonLdString(breadcrumbSchema)} />
   <header class="masthead">
     <div class="masthead-utility">
       <nav class="site-nav">

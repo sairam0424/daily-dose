@@ -19,11 +19,16 @@ const tier = interestTier(entry.data.interest_score);
   data-source={entry.data.source}
   data-interest-tier={tier}
 >
+  {/* alt="" is deliberate, not an oversight: this image sits adjacent to
+      (a sibling of) the h3/link below carrying the exact same title text,
+      so per WCAG's "image next to identical text" guidance it should stay
+      decorative - a real alt here would make a screen reader announce the
+      same title twice per card. */}
   {entry.data.image_url && (
     <img
       class="story-image"
       src={entry.data.image_url}
-      alt={entry.data.title}
+      alt=""
       loading="lazy"
       width="560"
       height="315"

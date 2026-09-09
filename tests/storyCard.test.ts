@@ -151,10 +151,13 @@ describe("StoryCard.astro source structure", () => {
     );
   });
 
-  it("(seo fix) gives the content-bearing story thumbnail a real, descriptive alt attribute instead of an empty one", () => {
-    expect(source).toMatch(
-      /<img\s+class="story-image"[^>]*alt=\{entry\.data\.title\}/s,
-    );
+  it("(accessibility fix) keeps the story thumbnail decorative (empty alt) since it sits adjacent to the identical h3/link title text", () => {
+    // Regression: an earlier version of this fix set alt={entry.data.title},
+    // which made a screen reader announce the same title twice per card
+    // (once as the image's alt text, once as the h3/link text right next
+    // to it) - WCAG guidance is that an image adjacent to identical text
+    // should stay decorative, not carry a duplicate accessible name.
+    expect(source).toMatch(/<img\s+class="story-image"[^>]*alt=""/s);
   });
 
   it("(regression) keeps the small favicon icon correctly decorative (empty alt)", () => {

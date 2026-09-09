@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { safeJsonLdString } from '../lib/jsonLd.js';
 import StoryCard from './StoryCard.astro';
 
 interface Props {
@@ -25,7 +26,7 @@ const itemListSchema = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+<script type="application/ld+json" set:html={safeJsonLdString(itemListSchema)} />
 <div class="story-list-container">
   <ul class="story-list">
     {entries.map((entry, index) => (

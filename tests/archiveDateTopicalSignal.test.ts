@@ -44,4 +44,36 @@ describe("dated archive page topical signal", () => {
       "The technical news worth your next fifteen minutes.".length,
     );
   });
+
+  it("(regression) bounds the meta description length so a real, unbounded lead-story title can never blow past the SERP snippet ceiling", () => {
+    const descMatch = html.match(/<meta name="description" content="([^"]*)"/);
+    expect(descMatch, "expected a meta description tag").toBeTruthy();
+    // Astro HTML-escapes the quotes this template wraps the lead title in
+    // (" -> &#34;/&quot;) - decode before measuring the real reader-facing
+    // character count, not the escaped byte count.
+    const decoded = descMatch![1]
+      .replace(/&#34;|&quot;/g, '"')
+      .replace(/&amp;/g, "&");
+    expect(decoded.length).toBeLessThanOrEqual(160);
+  });
+
+  it("(regression) never produces double terminal punctuation when the lead title already ends in ?/!/.", () => {
+    // Scoped to the tagline paragraph's own text, not the whole page - a
+    // page-wide regex would false-positive on unrelated punctuation
+    // elsewhere (e.g. inside an aria-label or analysis paragraph).
+    const taglineMatch = html.match(/<p class="tagline"[^>]*>([\s\S]*?)<\/p>/);
+    expect(taglineMatch, "expected a tagline paragraph").toBeTruthy();
+    expect(taglineMatch![1]).not.toMatch(/[.?!]{2,}["…]/);
+  });
+
+  it("(regression) has a real h2 before the story list, so the heading outline is h1 -> h2 -> h3 with no skip", () => {
+    const headings = html.match(/<h[1-4][^>]*>/g) ?? [];
+    const levels = headings.map((h) => Number(h.match(/<h([1-4])/)![1]));
+    expect(levels[0]).toBe(1);
+    expect(levels).toContain(2);
+    // No level ever jumps by more than 1 from the previous heading.
+    for (let i = 1; i < levels.length; i++) {
+      expect(levels[i] - levels[i - 1]).toBeLessThanOrEqual(1);
+    }
+  });
 });
