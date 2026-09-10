@@ -34,7 +34,9 @@ export function groupEntriesByDate(
     .map(([date, dateEntries]) => ({
       date,
       entries: [...dateEntries].sort(
-        (a, b) => b.data.interest_score - a.data.interest_score,
+        (a, b) =>
+          b.data.interest_score - a.data.interest_score ||
+          a.id.localeCompare(b.id),
       ),
     }));
 }
