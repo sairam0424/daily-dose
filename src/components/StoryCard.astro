@@ -134,6 +134,16 @@ const tier = interestTier(entry.data.interest_score);
   .story-image {
     display: block;
     width: 100%;
+    /* (bug fix, same root cause as DigestPreviewCard.astro's
+       .preview-image) the width/height HTML attributes below map to a
+       fixed-pixel CSS height presentational hint, which counts as an
+       explicit height and so wins over aspect-ratio's own auto-sizing -
+       locking every card to a fixed 315px-tall square/rect regardless of
+       its real rendered width (confirmed live: every homepage story
+       image was rendering at a squashed 315x315 or 1037x315 instead of a
+       real 16:9/16:8 box). height: auto restores aspect-ratio as the
+       real source of truth. */
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: contain;
     background: var(--bg-surface);
@@ -464,7 +474,15 @@ const tier = interestTier(entry.data.interest_score);
      headline is the only element in this component with real flowing
      text, so the drop-cap is applied there instead — a deliberate,
      technically-motivated substitution, not an oversight. */
-  :global([data-skin='newspaper']) .lead-story .story-title::first-letter {
+  /* (bug fix) :not([data-source='github']) - a GitHub item's title is
+     always an owner/repo code identifier (e.g. "openai/NavierStokesAndEuler"),
+     never prose, so pulling its first character into a 3em floated
+     drop-cap produces a nonsensical oversized standalone letter glued to
+     the rest of the identifier with no natural word break - confirmed
+     live on production. The "Top Pick" label below still renders for
+     every source; only this purely-typographic drop-cap effect is
+     scoped off for source=github specifically. */
+  :global([data-skin='newspaper']) .lead-story:not([data-source='github']) .story-title::first-letter {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 3em;

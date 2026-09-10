@@ -52,6 +52,17 @@ const lead = group.entries[0];
   .preview-image {
     display: block;
     width: 100%;
+    /* (bug fix) the <img>'s own width/height HTML attributes (kept for
+       CLS prevention) map to a fixed-pixel CSS height presentational
+       hint - since that counts as an explicit, non-auto height, it wins
+       over aspect-ratio's own auto-sizing (aspect-ratio only computes a
+       missing dimension when the other is genuinely auto), locking every
+       card to the attributes' literal pixel height regardless of this
+       image's actual rendered width. height: auto restores aspect-ratio
+       as the real source of truth. Confirmed live: without this, a
+       320x180-attributed image rendered at a real 1018px card width came
+       out 1018x180 (5.6:1) instead of the intended 16:9 box. */
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 6px;
