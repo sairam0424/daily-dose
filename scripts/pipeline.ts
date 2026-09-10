@@ -548,6 +548,38 @@ export async function mapWithConcurrency<T, R>(
   return results;
 }
 
+const RETRY_BASE_DELAY_MS = 500;
+
+/** Retries `fn` up to `maxAttempts` times with exponential backoff, only
+ * used to isolate one source's transient HTTP failure from the other 3 -
+ * never used to paper over a failure with fabricated data (see AGENTS.md's
+ * "the fetch is real or the run fails" rule: this governs fabrication, not
+ * whether a source can legitimately contribute 0 real items on a bad day).
+ * Rethrows the LAST real error after exhausting all attempts - never
+ * swallows it. */
+export async function fetchWithRetry<T>(
+  label: string,
+  fn: () => Promise<T>,
+  maxAttempts = 3,
+): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      if (attempt < maxAttempts) {
+        const delayMs = RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
+        console.warn(
+          `[pipeline] ${label} fetch failed (attempt ${attempt}/${maxAttempts}): ${(err as Error).message} - retrying in ${delayMs}ms`,
+        );
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 export function buildImageableItems(
   stories: RawHnStory[],
   papers: RawArxivPaper[],
@@ -575,14 +607,50 @@ export async function main(): Promise<void> {
   const { output, limit, sources } = parseArgs(process.argv.slice(2));
   const today = todayIsoDate();
 
-  const stories = sources.includes("hn") ? await fetchHnFrontPage(limit) : [];
-  const papers = sources.includes("arxiv") ? await fetchArxivPapers(limit) : [];
-  const repos = sources.includes("github")
-    ? await fetchGithubTrendingRepos(limit)
-    : [];
-  const articles = sources.includes("devto")
-    ? await fetchDevtoArticles(limit)
-    : [];
+  const failedSources: string[] = [];
+
+  function unwrapSourceResult<T>(
+    label: string,
+    result: PromiseSettledResult<T[]>,
+  ): T[] {
+    if (result.status === "fulfilled") return result.value;
+    failedSources.push(label);
+    console.error(
+      `[pipeline] ${label} fetch failed after retries - contributing 0 items to today's digest (real data only, never fabricated as a substitute): ${
+        result.reason instanceof Error
+          ? result.reason.message
+          : String(result.reason)
+      }`,
+    );
+    return [];
+  }
+
+  const [hnResult, arxivResult, githubResult, devtoResult] =
+    await Promise.allSettled([
+      sources.includes("hn")
+        ? fetchWithRetry("HN", () => fetchHnFrontPage(limit))
+        : Promise.resolve([]),
+      sources.includes("arxiv")
+        ? fetchWithRetry("arXiv", () => fetchArxivPapers(limit))
+        : Promise.resolve([]),
+      sources.includes("github")
+        ? fetchWithRetry("GitHub", () => fetchGithubTrendingRepos(limit))
+        : Promise.resolve([]),
+      sources.includes("devto")
+        ? fetchWithRetry("Dev.to", () => fetchDevtoArticles(limit))
+        : Promise.resolve([]),
+    ]);
+
+  const stories = unwrapSourceResult<RawHnStory>("HN", hnResult);
+  const papers = unwrapSourceResult<RawArxivPaper>("arXiv", arxivResult);
+  const repos = unwrapSourceResult<RawGithubRepo>("GitHub", githubResult);
+  const articles = unwrapSourceResult<RawDevtoArticle>("Dev.to", devtoResult);
+
+  if (failedSources.length > 0 && failedSources.length === sources.length) {
+    throw new Error(
+      `All requested sources failed to fetch (${failedSources.join(", ")}) - refusing to write an empty digest.`,
+    );
+  }
 
   // Real LLM curation when configured; a deterministic, clearly-labeled
   // placeholder otherwise - never silently, always a loud console notice
