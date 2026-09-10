@@ -22,6 +22,11 @@ describe("public/llms.txt", () => {
     expect(content).not.toContain("/methodology");
   });
 
+  it("(regression) never mentions /stats - it's genuinely Basic-Auth-gated, not public", () => {
+    const content = readFileSync(LLMS_TXT_PATH, "utf-8");
+    expect(content).not.toContain("/stats");
+  });
+
   it("links to the real archive and RSS feed", () => {
     const content = readFileSync(LLMS_TXT_PATH, "utf-8");
     expect(content).toContain(
