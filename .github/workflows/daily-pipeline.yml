@@ -21,6 +21,17 @@ permissions:
   contents: write
   issues: write
 
+# Prevents a manual workflow_dispatch from overlapping the real schedule
+# (already hit once, per the "Sync with latest main" step's own comments
+# below) - a concurrent second run would double-bill the paid Bedrock call
+# and race on the git push. cancel-in-progress stays false: cancelling an
+# in-flight run mid-Bedrock-call would still leave the cost billed with no
+# committed digest to show for it, so a second overlapping run queues
+# instead of pre-empting the first.
+concurrency:
+  group: daily-pipeline
+  cancel-in-progress: false
+
 jobs:
   daily-pipeline:
     runs-on: ubuntu-latest
