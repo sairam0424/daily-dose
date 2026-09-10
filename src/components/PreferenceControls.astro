@@ -192,6 +192,14 @@ const { devModeEnabled = false } = Astro.props;
       document.documentElement.dataset.theme = 'dark';
       localStorage.setItem(THEME_KEY, 'dark');
     }
+    // (regression fix) setSkin() already re-syncs after mutating state -
+    // this handler didn't, so aria-pressed stayed stuck at its initial
+    // value forever after the first real click, even though the visual
+    // theme itself flipped correctly. Found via a real live click-then-
+    // check-DOM browser test - the existing test only pattern-matched
+    // syncControls()'s own source text, which is correct in isolation but
+    // never proved this handler actually calls it.
+    syncControls();
   });
 
   // Reconcile with the head bootstrap script's applied state (handles
