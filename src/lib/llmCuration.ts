@@ -43,7 +43,13 @@
  */
 
 import { AnthropicBedrock } from "@anthropic-ai/bedrock-sdk";
-import { NotFoundError, BadRequestError } from "@anthropic-ai/sdk";
+import {
+  NotFoundError,
+  BadRequestError,
+  PermissionDeniedError,
+  RateLimitError,
+  InternalServerError,
+} from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { UNTRUSTED_DATA_INSTRUCTION } from "./promptSafety.js";
 
@@ -91,12 +97,23 @@ export interface LlmScoringOutcome {
  * check - see the ADR), falling back through Sonnet 4.6, Opus 4.6, Haiku
  * 4.5 - all inference-profile IDs already confirmed AUTHORIZED for this
  * account (the last three originally reused from the sibling Anvilry
- * chatbot's chain). */
+ * chatbot's chain).
+ *
+ * `global.` prefix, not `us.`: the `global.` cross-region inference-profile
+ * prefix carries a documented ~9% pricing discount over `us.` (see ADR 0005's
+ * pricing update - $2.00/$10.00 per MTok global vs. $2.20/$11.00 in-region
+ * for Sonnet 5). This was evaluated but deliberately left unapplied in ADR
+ * 0005 pending a permission check, since this account's Bedrock role is
+ * already known to hard-deny some models (Opus, historically) and the ADR
+ * flagged `global.*` as needing the same kind of verification. That check
+ * was performed directly before this change (a real, disclosed, one-line
+ * Bedrock call via makeClient() using `global.anthropic.claude-sonnet-5`,
+ * confirmed authorized and successful) - not assumed. */
 export const MODEL_CHAIN = [
-  "us.anthropic.claude-sonnet-5",
-  "us.anthropic.claude-sonnet-4-6",
-  "us.anthropic.claude-opus-4-6-v1",
-  "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "global.anthropic.claude-sonnet-5",
+  "global.anthropic.claude-sonnet-4-6",
+  "global.anthropic.claude-opus-4-6-v1",
+  "global.anthropic.claude-haiku-4-5-20251001-v1:0",
 ] as const;
 
 /** Models whose Bedrock model card documents adaptive thinking as ON BY
@@ -107,7 +124,7 @@ export const MODEL_CHAIN = [
  * is known to behave this way today; every other model in MODEL_CHAIN
  * defaults thinking to off and is left untouched. */
 export const MODELS_NEEDING_THINKING_DISABLED = new Set<string>([
-  "us.anthropic.claude-sonnet-5",
+  "global.anthropic.claude-sonnet-5",
 ]);
 
 /** Real pre-flight safeguard, not a post-hoc log: if a bug ever causes far
@@ -251,12 +268,17 @@ const scoreTool = {
 /**
  * Scores every item in ONE batched Bedrock call, trying each model in
  * MODEL_CHAIN in order on NotFoundError/BadRequestError (deprecated model
- * ID, rejected inference-profile ID, etc.) or SyntaxError (a malformed/
- * truncated scores string from that model) - those are not retried by the
- * SDK itself since retrying an identical bad request cannot succeed, and a
- * different model is genuinely likely to generate cleaner output.
- * RateLimitError/InternalServerError ARE already retried by the SDK's own
- * maxRetries before ever reaching this function's catch block.
+ * ID, rejected inference-profile ID, etc.), PermissionDeniedError (this
+ * account's Bedrock role is already known to hard-deny some models, e.g.
+ * Opus historically - a 403 here must fall through to the next model, not
+ * abort the whole run, per ADR 0005's "never hard-fails on a single model"
+ * intent), RateLimitError/InternalServerError (the SDK's own maxRetries
+ * already retries these against the SAME model before giving up, but once
+ * maxRetries is exhausted the same error still reaches this catch block -
+ * treat that exhaustion as a reason to try a different model, not a reason
+ * to abort), or SyntaxError (a malformed/truncated scores string from that
+ * model) - a different model is genuinely likely to generate cleaner output
+ * or simply not be denied/rate-limited in the same way.
  */
 export async function scoreItemsWithLLM(
   items: ScorableItem[],
@@ -286,6 +308,13 @@ export async function scoreItemsWithLLM(
   const prompt = buildPrompt(items);
 
   let lastErr: unknown;
+  // Every attempt that gets a real response back from Bedrock - whether it
+  // ultimately succeeds or fails downstream parsing/validation - is real,
+  // billed token usage. Accumulate across every attempt in the chain, not
+  // just the final successful one, so a retry (e.g. on a truncated
+  // scores string) doesn't silently undercount real spend in stats.jsonl.
+  let accumulatedInputTokens = 0;
+  let accumulatedOutputTokens = 0;
   for (const model of MODEL_CHAIN) {
     try {
       const message = await client.messages.create({
@@ -298,6 +327,13 @@ export async function scoreItemsWithLLM(
           ? { thinking: { type: "disabled" as const } }
           : {}),
       });
+
+      // Count this attempt's real usage immediately - before any further
+      // processing that might throw (a missing tool_use block, a malformed
+      // scores string) - so a downstream failure never discards tokens
+      // Bedrock already billed for this attempt.
+      accumulatedInputTokens += message.usage.input_tokens;
+      accumulatedOutputTokens += message.usage.output_tokens;
 
       // Plain lookup, then a separate narrowing check below - a custom type
       // predicate here would have to restate the SDK's real ToolUseBlock
@@ -348,18 +384,22 @@ export async function scoreItemsWithLLM(
       return {
         scores,
         modelUsed: model,
-        inputTokens: message.usage.input_tokens,
-        outputTokens: message.usage.output_tokens,
+        inputTokens: accumulatedInputTokens,
+        outputTokens: accumulatedOutputTokens,
       };
     } catch (err) {
       lastErr = err;
       if (
         err instanceof NotFoundError ||
         err instanceof BadRequestError ||
+        err instanceof PermissionDeniedError ||
+        err instanceof RateLimitError ||
+        err instanceof InternalServerError ||
         err instanceof SyntaxError
       ) {
-        // Model unavailable, rejected the request, or returned malformed
-        // JSON (e.g. a truncated scores string) - try the next one.
+        // Model unavailable, rejected the request, denied/rate-limited even
+        // after the SDK's own maxRetries, or returned malformed JSON (e.g. a
+        // truncated scores string) - try the next one.
         continue;
       }
       throw err; // anything else should fail loudly, not be silently swallowed
