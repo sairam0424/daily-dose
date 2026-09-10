@@ -10,6 +10,7 @@ import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 import { isFlagEnabled } from '../../lib/featureFlags.js';
 import { safeJsonLdString } from '../../lib/jsonLd.js';
+import { quoteLeadTitle } from '../../lib/leadTitle.js';
 
 interface DateParams {
   date: string;
@@ -49,23 +50,9 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const leadEntry = entries[0];
 const storyCountLabel = `${entries.length} ${entries.length === 1 ? "story" : "stories"}`;
 
-// Real per-date title data is unbounded free text from HN/arXiv/GitHub/
-// Dev.to and can end in its own terminal punctuation ("?"/"!") or run long
-// enough to blow past the ~155-char SERP snippet ceiling (see Task 9's own
-// rationale in docs/superpowers/plans/2026-09-10-seo-fixes.md) once
-// interpolated into the description below. Stripping any trailing
-// terminal punctuation before re-adding the closing "." avoids double
-// punctuation like `..."?."`; truncating with an ellipsis (and no added
-// period, since a truncated phrase already reads as unfinished) keeps the
-// total length bounded regardless of the real title's length.
-const MAX_LEAD_TITLE_CHARS = 48;
-function quoteLeadTitle(title: string): string {
-  const stripped = title.replace(/[.?!]+$/, '');
-  if (stripped.length > MAX_LEAD_TITLE_CHARS) {
-    return `"${stripped.slice(0, MAX_LEAD_TITLE_CHARS).trimEnd()}…"`;
-  }
-  return `"${stripped}."`;
-}
+// quoteLeadTitle (real per-date title quoting/truncation, unbounded free
+// text from HN/arXiv/GitHub/Dev.to) lives in ../../lib/leadTitle.js so it
+// stays directly Vitest-testable - see that file for the full rationale.
 const leadTitleQuoted = quoteLeadTitle(leadEntry.data.title);
 
 // Real 3-level trail (Home > All digests > {date}) - the final/
