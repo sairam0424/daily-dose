@@ -361,6 +361,24 @@ describe("extractFirstFigureImage", () => {
       ),
     ).toBe("https://ar5iv.labs.arxiv.org/html/2609.04190/figure2.png");
   });
+
+  it("(live fixture) extracts the first figure image from a real arxiv.org/html LaTeXML-rendered page structure", () => {
+    const html = `
+      <div class="ltx_page_content">
+        <figure id="S1.F1" class="ltx_figure">
+          <img src="extracted/2609.04190v1/figure1.png" alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape">
+          <figcaption class="ltx_caption ltx_centering">
+            <span class="ltx_tag ltx_tag_figure">Figure 1: </span>An overview of the proposed architecture.
+          </figcaption>
+        </figure>
+      </div>
+    `;
+    expect(
+      extractFirstFigureImage(html, "https://arxiv.org/html/2609.04190"),
+    ).toBe(
+      "https://arxiv.org/html/2609.04190/extracted/2609.04190v1/figure1.png",
+    );
+  });
 });
 
 describe("resolveArxivFigureImage", () => {
@@ -372,7 +390,7 @@ describe("resolveArxivFigureImage", () => {
     vi.unstubAllGlobals();
   });
 
-  it("fetches the ar5iv rendering and extracts the first figure image", async () => {
+  it("fetches the arxiv.org/html rendering and extracts the first figure image", async () => {
     (fetch as any).mockResolvedValueOnce({
       ok: true,
       text: async () =>
@@ -380,11 +398,9 @@ describe("resolveArxivFigureImage", () => {
     });
 
     const result = await resolveArxivFigureImage("2609.04190");
-    expect(result).toBe(
-      "https://ar5iv.labs.arxiv.org/html/2609.04190/fig1.png",
-    );
+    expect(result).toBe("https://arxiv.org/html/2609.04190/fig1.png");
     expect(fetch).toHaveBeenCalledWith(
-      "https://ar5iv.labs.arxiv.org/html/2609.04190",
+      "https://arxiv.org/html/2609.04190",
       expect.objectContaining({
         signal: expect.any(AbortSignal),
         headers: { "User-Agent": "daily-dose-pipeline" },
@@ -413,7 +429,7 @@ describe("resolveArxivFigureImage", () => {
     });
     await resolveArxivFigureImage("cs.AI/0601001");
     expect(fetch).toHaveBeenCalledWith(
-      "https://ar5iv.labs.arxiv.org/html/cs.AI/0601001",
+      "https://arxiv.org/html/cs.AI/0601001",
       expect.anything(),
     );
   });
@@ -440,16 +456,14 @@ describe("resolveItemImage with arxivId fallback", () => {
         text: async () =>
           `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
       })
-      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }) // the ar5iv figure's HEAD check
+      .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }) // the arXiv figure's HEAD check
       .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage(
       "https://arxiv.org/abs/2609.04190",
       "2609.04190",
     );
-    expect(result.image_url).toBe(
-      "https://ar5iv.labs.arxiv.org/html/2609.04190/fig1.png",
-    );
+    expect(result.image_url).toBe("https://arxiv.org/html/2609.04190/fig1.png");
   });
 
   it("does not attempt the arXiv fallback when no arxivId is given", async () => {
@@ -542,7 +556,7 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
     ).resolves.toEqual(expect.objectContaining({ image_url: undefined }));
   });
 
-  it("also verifies the arXiv ar5iv fallback figure's reachability before accepting it", async () => {
+  it("also verifies the arXiv figure-fallback's reachability before accepting it", async () => {
     (fetch as any)
       .mockResolvedValueOnce({
         ok: true,
@@ -554,7 +568,7 @@ describe("resolveItemImage rejects an unreachable resolved image", () => {
         text: async () =>
           `<figure><img src="/html/2609.04190/fig1.png"></figure>`,
       })
-      .mockResolvedValueOnce({ ok: false, status: 404 }) // the HEAD check on the ar5iv figure
+      .mockResolvedValueOnce({ ok: false, status: 404 }) // the HEAD check on the arXiv figure
       .mockResolvedValueOnce({ ok: true, headers: { get: () => null } }); // the favicon (Google fallback) HEAD check
 
     const result = await resolveItemImage(

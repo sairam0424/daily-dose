@@ -186,7 +186,11 @@ export function extractFavicon(
   }
 }
 
-const AR5IV_BASE_URL = "https://ar5iv.labs.arxiv.org/html/";
+// ar5iv.labs.arxiv.org now 307-redirects every request to the plain
+// abstract page (live-confirmed for current 2026 arXiv IDs) - arxiv.org's
+// own native HTML rendering has superseded it and serves the same
+// LaTeXML-generated <figure><img> markup extractFirstFigureImage looks for.
+const AR5IV_BASE_URL = "https://arxiv.org/html/";
 
 export function extractFirstFigureImage(
   html: string,
@@ -196,10 +200,10 @@ export function extractFirstFigureImage(
     /<figure[^>]*>[\s\S]*?<img\s+[^>]*\bsrc\s*=\s*["']([^"']+)["'][\s\S]*?<\/figure>/i,
   );
   if (!figureMatch?.[1]) return undefined;
-  // ar5iv page URLs (e.g. ".../html/2609.04190") have no trailing slash, but
-  // relative figure srcs are meant to resolve as if that ID were a directory -
-  // without normalizing, the WHATWG URL resolver treats "2609.04190" as a file
-  // segment and drops it entirely.
+  // arXiv HTML-rendering page URLs (e.g. ".../html/2609.04190") have no
+  // trailing slash, but relative figure srcs are meant to resolve as if
+  // that ID were a directory - without normalizing, the WHATWG URL
+  // resolver treats "2609.04190" as a file segment and drops it entirely.
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
   return resolveUrl(figureMatch[1], normalizedBase);
 }
@@ -207,9 +211,9 @@ export function extractFirstFigureImage(
 /**
  * arXiv-specific fallback: every arXiv abstract page shares the same
  * generic og:image (rejected by isGenericImageUrl), so this fetches the
- * paper's ar5iv HTML rendering and extracts its own first real figure
- * instead - a genuinely per-paper image, not a repeated logo. arxivId
- * must be the REAL arXiv id (e.g. "2609.04190" or the old-style
+ * paper's arxiv.org/html native HTML rendering and extracts its own first
+ * real figure instead - a genuinely per-paper image, not a repeated logo.
+ * arxivId must be the REAL arXiv id (e.g. "2609.04190" or the old-style
  * "cs.AI/0601001") - NOT scripts/pipeline.ts's filename-sanitized version
  * (sanitizeArxivId), which replaces the slash old-style IDs need intact.
  */
