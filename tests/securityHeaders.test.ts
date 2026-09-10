@@ -44,4 +44,9 @@ describe("vercel.json security headers", () => {
       "strict-origin-when-cross-origin",
     );
   });
+
+  it("(sweep fix 5c) sets an immutable long-lived Cache-Control on self-hosted fonts", () => {
+    const value = findHeader("/fonts/(.*)", "Cache-Control");
+    expect(value).toBe("public, max-age=31536000, immutable");
+  });
 });
