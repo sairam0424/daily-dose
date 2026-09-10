@@ -1,0 +1,20 @@
+{
+  "title": "A positive resolution of the gap-entropy conjecture",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.10529",
+  "date": "2026-09-10",
+  "tags": [
+    "cs.LG",
+    "stat.ML"
+  ],
+  "interest_score": 3,
+  "why_read": "A theoretical result in bandit/best-arm-identification theory that resolves a specific open conjecture, of interest mainly to researchers in sequential decision theory.",
+  "analysis": "This paper proves the 'gap-entropy conjecture' for best-arm identification with Gaussian arms, giving a tight characterization of the optimal sample complexity in terms of both the gaps between arm means and an entropy-like term describing how those gaps are distributed. It's a rigorous theoretical advance in multi-armed bandit theory, providing matching upper and lower bounds up to constants. The result is mathematically elegant but highly specialized, mattering mostly to researchers working on adaptive experimentation and bandit algorithms rather than practicing engineers.",
+  "authors": [
+    "P. M. Aronow",
+    "Nathan Kallus",
+    "Patrick Lopatto"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

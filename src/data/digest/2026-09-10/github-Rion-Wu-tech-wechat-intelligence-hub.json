@@ -1,0 +1,16 @@
+{
+  "title": "Rion-Wu-tech/wechat-intelligence-hub",
+  "source": "github",
+  "url": "https://github.com/Rion-Wu-tech/wechat-intelligence-hub",
+  "date": "2026-09-10",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal messaging-data assistant tool with unclear technical novelty and potential privacy concerns around scraping and analyzing private chat history.",
+  "analysis": "This project builds a local-first system for indexing and querying one's own WeChat chat history, offering search, daily summaries, and follow-up tracking via a CLI and integration with coding-agent 'skills.' The technical approach seems to combine local data extraction with LLM-based summarization and tracking, which is a common but not particularly novel pattern in the personal-assistant space. Given WeChat's data export restrictions and privacy sensitivities, some caution is warranted, though the tool itself is framed as local and read-only. It may be useful to a narrow audience but doesn't represent a major technical advance.",
+  "authors": [],
+  "stars": 2058,
+  "image_url": "https://opengraph.githubassets.com/1d21574434fc8b4908fc064096a3314c74944000de47b966e5ac837856548181/Rion-Wu-tech/wechat-intelligence-hub",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Shopify moves back to Native from React Native",
+  "source": "hn",
+  "url": "https://shopify.engineering/back-to-native",
+  "date": "2026-09-10",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A major company reversing a widely-adopted cross-platform framework decision is a genuinely useful data point for engineers evaluating React Native versus native mobile development.",
+  "analysis": "Shopify is apparently moving parts of its mobile app back from React Native to native iOS/Android code, reversing an earlier bet on cross-platform tooling. This kind of real-world engineering retrospective is valuable because it surfaces the practical tradeoffs, performance issues, or maintenance costs that pushed a large, sophisticated team away from React Native. These postmortems tend to carry more weight than marketing content because they come with production-scale experience. Engineers making similar framework choices will find concrete lessons here.",
+  "authors": [
+    "fnthawar2"
+  ],
+  "hn_id": 49643982,
+  "points": 640,
+  "favicon_url": "https://cdn.shopify.com/shopifycloud/web/assets/v1/favicon-default-6cbad9de243dbae3.ico"
+}

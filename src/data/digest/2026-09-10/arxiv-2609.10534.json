@@ -1,0 +1,19 @@
+{
+  "title": "Likelihood-free inference with nuisance parameters through normalizing flows",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.10534",
+  "date": "2026-09-10",
+  "tags": [
+    "stat.ME",
+    "cs.LG",
+    "stat.ML"
+  ],
+  "interest_score": 4,
+  "why_read": "A technically interesting statistics method connecting normalizing flows to classical hypothesis testing, but niche and mainly of interest to statisticians rather than general engineers.",
+  "analysis": "The paper proposes using normalizing flows, a type of neural generative model, to automatically discover near-pivotal test statistics for problems with nuisance parameters, without needing an analytic likelihood. It shows the approach can recover classical results like the one-sample t-test and outperform existing methods like the Welch test in certain regimes, while being faster than profile likelihood-ratio techniques. This is a solid piece of statistical methodology work bridging machine learning and classical inference, but its audience is fairly specialized in applied statistics or physics-style likelihood-free inference. General software engineers are unlikely to find direct application.",
+  "authors": [
+    "Phil Assheton"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

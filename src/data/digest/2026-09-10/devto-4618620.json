@@ -1,0 +1,19 @@
+{
+  "title": "Someone Spammed My DEV Post. I Traced It to a Wombat.",
+  "source": "devto",
+  "url": "https://dev.to/copyleftdev/someone-spammed-my-dev-post-i-traced-it-to-a-wombat-176a",
+  "date": "2026-09-10",
+  "tags": [
+    "cybersecurity",
+    "discuss",
+    "security"
+  ],
+  "interest_score": 6,
+  "why_read": "An entertaining and well-documented investigative writeup tracing a spam comment through a redirect chain to a legitimate affiliate marketing operation, offering genuine insight into how low-effort spam economics work.",
+  "analysis": "The author traces a spam comment on their Dev.to article through a chain of URL shorteners and throwaway domains, ultimately finding it leads to a real SaaS product with an affiliate code, not malware or a scam. They calculate that only three signups a year make the whole low-effort spam operation profitable, explaining why such comment spam persists despite platform moderation. This kind of hands-on investigative tracing, backed by a public GitHub repo with raw evidence and a reproduction script, offers a concrete look at internet economics and abuse vectors. It's a lightweight but genuinely interesting piece of applied security/OSINT analysis relevant to anyone running a blog or community platform.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F256jjz11ofnca1if8h83.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

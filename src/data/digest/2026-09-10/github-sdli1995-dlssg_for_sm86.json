@@ -1,0 +1,14 @@
+{
+  "title": "sdli1995/dlssg_for_sm86",
+  "source": "github",
+  "url": "https://github.com/sdli1995/dlssg_for_sm86",
+  "date": "2026-09-10",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A reverse-engineering/patch project enabling DLSS frame generation on older RTX 30-series GPUs that officially lack support, interesting to graphics enthusiasts but potentially in a legal/EULA gray zone.",
+  "analysis": "This project appears to unlock or emulate DLSS Frame Generation (DLSSG) functionality on RTX 30-series cards, which NVIDIA restricts to newer 40/50-series hardware for architectural or business reasons. Technically, this involves understanding NVIDIA's driver-level gating and finding ways around it, which is interesting from a reverse-engineering perspective. It sits in a gray area regarding NVIDIA's terms of service and driver licensing, though it's not illegal or harmful in the sense of malware. Graphics engineers and enthusiasts interested in GPU feature-gating practices may find this notable.",
+  "authors": [],
+  "stars": 1395,
+  "image_url": "https://opengraph.githubassets.com/6f242f9d1f21b59c3bc958dbe7d78209217cb9c125441c60d6617bf5d6bf2b21/sdli1995/dlssg_for_sm86",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

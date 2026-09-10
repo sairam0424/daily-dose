@@ -1,0 +1,16 @@
+{
+  "title": "vinzdg/codenotch",
+  "source": "github",
+  "url": "https://github.com/vinzdg/codenotch",
+  "date": "2026-09-10",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 5,
+  "why_read": "A small utility app addressing a real annoyance for developers who juggle multiple AI coding tools with separate usage caps, useful but not deeply novel engineering.",
+  "analysis": "Codenotch is a macOS menu-bar style app that displays usage limits from multiple AI coding assistants like Claude Code, Cursor, Codex, and Antigravity pinned to a screen edge. This is a practical convenience tool addressing the real pain point of tracking rate limits across several paid AI subscriptions simultaneously. It's not technically groundbreaking, but it reflects a growing niche of tooling built around managing AI-assisted developer workflows. Its popularity suggests genuine utility for developers who use multiple LLM coding tools daily.",
+  "authors": [],
+  "stars": 1379,
+  "image_url": "https://opengraph.githubassets.com/401094d077ce2279f15802d0a7b35ce79542e8557a2007f842d6329d2648698e/vinzdg/codenotch",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

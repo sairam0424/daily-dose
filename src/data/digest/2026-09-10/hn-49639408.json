@@ -1,0 +1,16 @@
+{
+  "title": "More questions about whether researchers can trust OpenAI with unpublished math",
+  "source": "hn",
+  "url": "https://mathstodon.xyz/@andreasthom/117240535270608201",
+  "date": "2026-09-10",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Raises legitimate concerns about confidentiality and trust when researchers use commercial AI systems on sensitive unpublished work, relevant to research integrity and AI governance.",
+  "analysis": "This concerns whether mathematicians and other researchers can safely share unpublished proofs or ideas with OpenAI's models without risking leakage, IP loss, or scooping. It touches on real tensions between AI-assisted research productivity and the norms of academic priority and confidentiality. The discussion is likely more about trust, policy, and anecdote than deep technical mechanism, but it's a timely governance issue for anyone using AI tools on proprietary work. Software engineers dealing with confidential codebases and AI assistants face an analogous dilemma.",
+  "authors": [
+    "pred_"
+  ],
+  "hn_id": 49639408,
+  "points": 556,
+  "favicon_url": "https://mathstodon.xyz/packs/assets/favicon-16x16-74JBPGmr.png"
+}

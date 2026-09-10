@@ -1,0 +1,17 @@
+{
+  "title": "Rust is tier-1 language at Microsoft",
+  "source": "hn",
+  "url": "https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/",
+  "date": "2026-09-10",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Signals a substantive shift in a major company's language strategy, relevant to anyone tracking Rust's institutional adoption and tooling support.",
+  "analysis": "Microsoft designating Rust as a tier-1 language means official first-class support across its developer tooling and platforms, a significant institutional endorsement. This matters technically because tier-1 status typically implies better debugger support, first-party SDKs, and long-term investment signals that affect whether teams choose Rust for systems programming on Windows or Azure. It's a meaningful data point in Rust's broader adoption trajectory beyond community enthusiasm. The discussion likely covers what tier-1 status practically changes for developers.",
+  "authors": [
+    "mmastrac"
+  ],
+  "hn_id": 49643546,
+  "points": 570,
+  "image_url": "https://rustfoundation.org/wp-content/uploads/2026/09/Guest-Blog-Graphic-2.png",
+  "favicon_url": "https://rustfoundation.org/wp-content/uploads/2024/07/cropped-rust-lang-logo-black-32x32.png"
+}

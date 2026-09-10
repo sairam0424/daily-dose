@@ -1,0 +1,29 @@
+{
+  "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.10522",
+  "date": "2026-09-10",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV",
+    "cs.MM"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting systems-design approach to robot control that lets general vision-language models directly drive robots through a compact semantic action interface, relevant to anyone tracking embodied AI.",
+  "analysis": "Show-Harness proposes a middle layer of discrete, semantically meaningful action units that let a vision-language model reason about robot control without needing specialized robotics training, while a separate deterministic interpreter converts those units into low-level robot commands per embodiment. This design lets both large closed-source VLMs and small fine-tuned open models control different robots and even collect demonstrations through GUI interfaces instead of physical teleoperation hardware. It's a practical contribution to the trend of using general-purpose foundation models for embodied tasks by focusing on interface design rather than more model training. The claims of outperforming existing agentic and vision-language-action approaches are notable if they hold up under scrutiny.",
+  "authors": [
+    "Yanzhe Chen",
+    "Zechen Bai",
+    "Zhijun Cao",
+    "Wenzheng Zeng",
+    "Kevin Qinghong Lin",
+    "Yiqi Lin",
+    "Guoqiang Liang",
+    "Kevin Yuchen Ma",
+    "Qiming Huang",
+    "Mike Zheng Shou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

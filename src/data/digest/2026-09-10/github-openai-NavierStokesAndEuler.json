@@ -1,0 +1,16 @@
+{
+  "title": "openai/NavierStokesAndEuler",
+  "source": "github",
+  "url": "https://github.com/openai/NavierStokesAndEuler",
+  "date": "2026-09-10",
+  "tags": [
+    "Lean"
+  ],
+  "interest_score": 7,
+  "why_read": "Formal Lean proofs related to Navier-Stokes and Euler equations are a serious mathematical software engineering contribution, of high interest to anyone in formal verification or fluid dynamics theory.",
+  "analysis": "This repository provides Lean-formalized 'certificates' supporting results about the Navier-Stokes and Euler equations, which govern fluid dynamics and are tied to one of the Clay Millennium Prize problems around existence and smoothness of solutions. Formalizing such results in a proof assistant like Lean is technically demanding, since it requires encoding deep analysis and PDE theory in a machine-checkable form. Coming from OpenAI, this suggests continued investment in AI-assisted or AI-adjacent formal mathematics, a domain where machine verification meets frontier math research. This is a niche but technically substantial project worth attention from anyone interested in formal methods or mathematical AI.",
+  "authors": [],
+  "stars": 1711,
+  "image_url": "https://opengraph.githubassets.com/08973410a9585f8c04bd06dabd140f2c3a23a4cd45722a08e664b8a9b364331c/openai/NavierStokesAndEuler",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

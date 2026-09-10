@@ -1,0 +1,21 @@
+{
+  "title": "Characterizing Language Generation in the Limit: Finite Witnesses and a Separation-Width Hierarch",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.10525",
+  "date": "2026-09-10",
+  "tags": [
+    "cs.FL",
+    "cs.LG"
+  ],
+  "interest_score": 3,
+  "why_read": "A formal, Lean-verified theoretical characterization of language generation in the limit, of interest mainly to researchers in formal language theory and learning theory.",
+  "analysis": "This is a dense theoretical computer science paper characterizing exactly when an algorithm can generate valid unseen strings of an unknown infinite language given only positive examples, framed via a notion of 'finite witnesses' and a hierarchy of separation widths. The authors formally verify their proofs in the Lean theorem prover, which adds rigor and reproducibility uncommon in most theory papers. It connects to grammatical inference and identification-in-the-limit literature from computational learning theory. The topic is quite abstract and narrow, appealing mainly to specialists in formal language and learning theory rather than a general engineering audience.",
+  "authors": [
+    "Xiaoyu Li",
+    "Andi Han",
+    "Jiaojiao Jiang",
+    "Junbin Gao"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

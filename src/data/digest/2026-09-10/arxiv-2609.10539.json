@@ -1,0 +1,21 @@
+{
+  "title": "IdeaAMBIG: Benchmarking Implementation-Critical Gaps in Research-Idea Specifications",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.10539",
+  "date": "2026-09-10",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete benchmark for whether research paper descriptions are precise enough for an AI coding agent to faithfully reproduce methods, which is directly relevant to AI-assisted reproducibility efforts.",
+  "analysis": "The paper introduces IdeaAMBIG, a benchmark testing whether research-idea specifications contain enough detail for an LLM or human implementer to faithfully reproduce a method without guessing. It uses 660 cases, split between real reproducibility gaps mined from GitHub issues and synthetic gaps deliberately injected into clear specifications. The key finding is that current LLMs are bad at localizing exactly where a specification is ambiguous, achieving only 9.6% recovery on real cases, but once the gap is pointed out they can generate reasonable clarifications 80% of the time. This is a useful, measurable contribution to the growing area of AI-driven research reproduction and paper-to-code translation.",
+  "authors": [
+    "Yiling Ma",
+    "Yilun Zhao",
+    "Sihong Wu",
+    "Manasi Patwardhan",
+    "Arman Cohan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
