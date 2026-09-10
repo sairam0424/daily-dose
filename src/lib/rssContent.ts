@@ -39,11 +39,20 @@ import { escapeHtml } from "./htmlEscape.js";
 // One real <li> per story: title, interest score, source, and the actual
 // why_read text pulled from the committed digest data — never a fabricated
 // summary, matching SOUL.md's honesty rules for anything a reader sees.
+//
+// (security fix) `url` was missed in the original pass at this pattern -
+// digestSchema.ts's httpUrlSchema only restricts the URL's *scheme*
+// (rejects javascript:/data:/etc.), it does not escape or re-encode the
+// value, so an otherwise-http(s) URL containing a literal '"'/'<'/'>' still
+// passes validation unchanged and could break out of the href attribute
+// here - proven live via a real @astrojs/rss build. url gets the exact
+// same two-escapes-survive-one-reader-unescape treatment as title/source/
+// why_read below, for the same reason.
 function renderStoryListItem(item: DigestItem): string {
   const { title, url, interest_score, source, why_read } = item;
   return (
     `<li>` +
-    `<strong><a href="${url}">${escapeHtml(title)}</a></strong> ` +
+    `<strong><a href="${escapeHtml(url)}">${escapeHtml(title)}</a></strong> ` +
     `(score: ${interest_score.toFixed(1)}, source: ${escapeHtml(source)})` +
     `<p>${escapeHtml(why_read)}</p>` +
     `</li>`

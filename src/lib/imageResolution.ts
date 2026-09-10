@@ -9,27 +9,32 @@
  * fetched elsewhere.
  */
 
+import { isIP, isIPv4, isIPv6 } from "node:net";
+import { lookup as dnsLookup } from "node:dns/promises";
+
 const FETCH_TIMEOUT_MS = 5000;
 const IMAGE_FETCH_HEADERS = { "User-Agent": "daily-dose-pipeline" };
 const MAX_IMAGE_BYTES = 500_000;
 const MAX_REDIRECTS = 5;
 
-const PRIVATE_HOST_PATTERNS: readonly RegExp[] = [
+// Cheap, sync, best-effort pre-filter for the OBVIOUS literal-IP/localhost
+// cases - used only by the sync resolveUrl() below as an early rejection
+// before a candidate URL is even considered. This is NOT the real security
+// boundary (it's a plain string regex, easily bypassed by IPv6 forms, an
+// attacker-controlled DNS name, etc. - confirmed via a real adversarial
+// audit) - the authoritative check is the async, DNS-resolving
+// isUnsafeHost() below, run immediately before every real fetch() call in
+// fetchFollowingRedirects.
+const OBVIOUS_PRIVATE_HOST_PATTERNS: readonly RegExp[] = [
   /^127\./,
   /^10\./,
   /^172\.(1[6-9]|2\d|3[01])\./,
   /^192\.168\./,
   /^169\.254\./,
+  /^0(\.0){0,3}$/,
   /^localhost$/i,
+  /^\[::1?\]$/i,
 ];
-
-/** SSRF hardening: rejects loopback/link-local/private-network hosts so a
- * resolved image/page URL - including a redirect target re-checked on every
- * hop by fetchFollowingRedirects - can never point this pipeline's real
- * fetch calls at an internal service. */
-function isPrivateOrLoopbackHost(hostname: string): boolean {
-  return PRIVATE_HOST_PATTERNS.some((pattern) => pattern.test(hostname));
-}
 
 function resolveUrl(
   maybeRelative: string,
@@ -40,12 +45,134 @@ function resolveUrl(
     if (url.protocol !== "http:" && url.protocol !== "https:") {
       return undefined;
     }
-    if (isPrivateOrLoopbackHost(url.hostname)) {
+    if (OBVIOUS_PRIVATE_HOST_PATTERNS.some((p) => p.test(url.hostname))) {
       return undefined;
     }
     return url.toString();
   } catch {
     return undefined;
+  }
+}
+
+function ipv4ToInt(ip: string): number {
+  const parts = ip.split(".").map(Number);
+  return (
+    ((parts[0] << 24) | (parts[1] << 16) | (parts[2] << 8) | parts[3]) >>> 0
+  );
+}
+
+function ipv4InRange(ip: string, base: string, prefixBits: number): boolean {
+  const mask = prefixBits === 0 ? 0 : (~0 << (32 - prefixBits)) >>> 0;
+  return (ipv4ToInt(ip) & mask) === (ipv4ToInt(base) & mask);
+}
+
+/** Real numeric range checks (not string matching) against every IPv4
+ * range that must never be reached by this pipeline's own real fetch
+ * calls: RFC 1918 private ranges, loopback, link-local (also the AWS/GCP/
+ * Azure cloud metadata address), the "this host" /8, shared CGNAT space,
+ * IETF protocol-assignment /24, benchmarking, multicast, and reserved. */
+function isPrivateOrLoopbackIpv4(ip: string): boolean {
+  return (
+    ipv4InRange(ip, "0.0.0.0", 8) ||
+    ipv4InRange(ip, "10.0.0.0", 8) ||
+    ipv4InRange(ip, "100.64.0.0", 10) ||
+    ipv4InRange(ip, "127.0.0.0", 8) ||
+    ipv4InRange(ip, "169.254.0.0", 16) ||
+    ipv4InRange(ip, "172.16.0.0", 12) ||
+    ipv4InRange(ip, "192.0.0.0", 24) ||
+    ipv4InRange(ip, "192.168.0.0", 16) ||
+    ipv4InRange(ip, "198.18.0.0", 15) ||
+    ipv4InRange(ip, "224.0.0.0", 4) ||
+    ipv4InRange(ip, "240.0.0.0", 4)
+  );
+}
+
+/** IPv6 loopback/link-local/unique-local, plus IPv4-mapped (::ffff:a.b.c.d)
+ * and the NAT64 well-known prefix (64:ff9b::/96) unwrapped to their
+ * embedded IPv4 address and re-checked against isPrivateOrLoopbackIpv4 -
+ * both forms live-proven (during adversarial review) to bypass a
+ * hostname-string-only regex entirely, since they never literally contain
+ * "127." or "169.254." as substrings. */
+function isPrivateOrLoopbackIpv6(ip: string): boolean {
+  const normalized = ip.toLowerCase();
+  if (normalized === "::1" || normalized === "::") return true;
+  if (/^fe[89ab][0-9a-f]:/.test(normalized)) return true; // fe80::/10
+  if (/^f[cd][0-9a-f]{2}:/.test(normalized)) return true; // fc00::/7
+
+  const mappedDotted = normalized.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+  if (mappedDotted) return isPrivateOrLoopbackIpv4(mappedDotted[1]);
+
+  const nat64Dotted = normalized.match(/^64:ff9b::(\d+\.\d+\.\d+\.\d+)$/);
+  if (nat64Dotted) return isPrivateOrLoopbackIpv4(nat64Dotted[1]);
+
+  const hexEmbedded = normalized.match(
+    /^(?:::ffff|64:ff9b:):([0-9a-f]{1,4}):([0-9a-f]{1,4})$/,
+  );
+  if (hexEmbedded) {
+    const hi = Number.parseInt(hexEmbedded[1], 16);
+    const lo = Number.parseInt(hexEmbedded[2], 16);
+    const embeddedIpv4 = [
+      (hi >> 8) & 0xff,
+      hi & 0xff,
+      (lo >> 8) & 0xff,
+      lo & 0xff,
+    ].join(".");
+    return isPrivateOrLoopbackIpv4(embeddedIpv4);
+  }
+  // Any other address inside the ::ffff:/96 or 64:ff9b::/96 prefixes that
+  // the two patterns above didn't parse - fail closed rather than assume
+  // safe, since both prefixes exist specifically to embed an IPv4 address.
+  if (normalized.startsWith("::ffff:") || normalized.startsWith("64:ff9b::")) {
+    return true;
+  }
+  return false;
+}
+
+function isPrivateOrLoopbackIp(ip: string): boolean {
+  if (isIPv4(ip)) return isPrivateOrLoopbackIpv4(ip);
+  if (isIPv6(ip)) return isPrivateOrLoopbackIpv6(ip);
+  return true; // couldn't classify - fail closed, deny
+}
+
+/** SSRF hardening, the real authoritative check: resolves `hostname` via
+ * real DNS and rejects it if ANY resolved address is loopback/link-local/
+ * private-network/reserved. A hostname-string regex alone cannot catch
+ * this - confirmed live during adversarial review: an attacker-controlled
+ * domain name pointing its own DNS A/AAAA record at an internal address
+ * (DNS rebinding's classic setup) sails straight through any check that
+ * only ever looks at the hostname string, since the real fetch() call
+ * resolves DNS independently, after and unrelated to that string check.
+ * If `hostname` is itself already an IP literal (bracketed IPv6 or bare
+ * IPv4), dns.lookup() returns it unchanged, so this same function handles
+ * both cases uniformly. Fails closed (treats as unsafe) on any DNS error,
+ * an empty result, or an unclassifiable address.
+ *
+ * Known, accepted residual limitation: this checks DNS immediately before
+ * each real fetch, which shrinks but does not fully eliminate a DNS-
+ * rebinding race (a name could theoretically re-resolve to a different,
+ * unsafe address in the moments between this check and fetch()'s own
+ * internal resolution). Fully closing that requires pinning the actual
+ * socket connection to the specific IP validated here (a custom fetch
+ * dispatcher/connect hook) - a larger change, not done here; the
+ * concrete, live-proven bypasses this fix closes (literal private/
+ * loopback IPs, IPv6 loopback, IPv4-mapped/NAT64 IPv6, and a
+ * DNS-resolved name pointing at one) are the realistic threat model for
+ * this pipeline's actual inputs (third-party page URLs, not attacker-
+ * controlled infrastructure with rebinding-grade DNS control). */
+async function isUnsafeHost(hostname: string): Promise<boolean> {
+  const bareHost =
+    hostname.startsWith("[") && hostname.endsWith("]")
+      ? hostname.slice(1, -1)
+      : hostname;
+  if (isIP(bareHost)) {
+    return isPrivateOrLoopbackIp(bareHost);
+  }
+  try {
+    const records = await dnsLookup(bareHost, { all: true, verbatim: true });
+    if (records.length === 0) return true;
+    return records.some((record) => isPrivateOrLoopbackIp(record.address));
+  } catch {
+    return true;
   }
 }
 
@@ -55,25 +182,33 @@ class UnsafeRedirectError extends Error {}
  * which never re-validates a redirect's Location header - a public first
  * hop could otherwise hide a private-network second hop (SSRF via open
  * redirect). Manually follows up to MAX_REDIRECTS 3xx responses, re-running
- * the same scheme/private-host check (resolveUrl) on every hop, and throws
- * UnsafeRedirectError (caught by every call site's existing try/catch, same
- * as a real network error) if any hop - including the very first URL - is
- * unsafe or unresolvable, or if the chain is too long. */
+ * both the cheap sync pre-filter (resolveUrl) AND the real, DNS-resolving
+ * isUnsafeHost() check on every hop immediately before the real fetch(),
+ * and throws UnsafeRedirectError (caught by every call site's existing
+ * try/catch, same as a real network error) if any hop - including the
+ * very first URL - is unsafe or unresolvable, or if the chain is too
+ * long. */
 async function fetchFollowingRedirects(
   initialUrl: string,
   init: RequestInit,
 ): Promise<Response> {
-  const validatedInitialUrl = resolveUrl(initialUrl, initialUrl);
-  if (!validatedInitialUrl) {
-    throw new UnsafeRedirectError(
-      `Refusing to fetch unsafe URL: ${initialUrl}`,
-    );
-  }
-
-  let currentUrl = validatedInitialUrl;
+  let currentUrl = initialUrl;
 
   for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
-    const response = await fetch(currentUrl, { ...init, redirect: "manual" });
+    const validated = resolveUrl(currentUrl, currentUrl);
+    if (!validated) {
+      throw new UnsafeRedirectError(
+        `Refusing to fetch unsafe URL: ${currentUrl}`,
+      );
+    }
+    const parsed = new URL(validated);
+    if (await isUnsafeHost(parsed.hostname)) {
+      throw new UnsafeRedirectError(
+        `Refusing to fetch unsafe URL (resolved to a private/loopback address): ${validated}`,
+      );
+    }
+
+    const response = await fetch(validated, { ...init, redirect: "manual" });
 
     const isRedirect =
       typeof response.status === "number" &&
@@ -84,13 +219,7 @@ async function fetchFollowingRedirects(
     const location = response.headers.get("location");
     if (!location) return response;
 
-    const nextUrl = resolveUrl(location, currentUrl);
-    if (!nextUrl) {
-      throw new UnsafeRedirectError(
-        `Refusing to follow redirect to unsafe URL: ${location}`,
-      );
-    }
-    currentUrl = nextUrl;
+    currentUrl = new URL(location, validated).toString();
   }
 
   throw new UnsafeRedirectError(`Too many redirects fetching ${initialUrl}`);

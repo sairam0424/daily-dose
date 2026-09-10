@@ -240,6 +240,32 @@ describe("renderDayContent escaping (regression)", () => {
     expect(oneUnescape).toContain("&amp;");
   });
 
+  it("(security fix) escapes a url containing attribute-breakout characters, closing a real script-tag-breakout gap an adversarial audit proved live", () => {
+    // digestSchema.ts's httpUrlSchema only restricts the URL's *scheme*
+    // (rejects javascript:/data:/etc.) - it does not escape or re-encode
+    // the value, so an otherwise-valid http(s) URL containing a literal
+    // '"'/'<'/'>' passes schema validation unchanged. Before this fix,
+    // renderStoryListItem interpolated url raw into href="${url}", so a
+    // url like this one broke out of the attribute and injected a real
+    // <script> tag once a real RSS reader XML-unescaped content:encoded -
+    // proven live via the actual @astrojs/rss builder during review.
+    const fakeItem: DigestItem = {
+      title: "A real story",
+      source: "hn",
+      url: 'http://evil.example.com/"><script>alert(document.cookie)</script>',
+      date: "2026-09-04",
+      tags: [],
+      interest_score: 5,
+      why_read: "A real reason.",
+      authors: [],
+    };
+
+    const content = renderDayContent([fakeItem]);
+
+    expect(content).not.toContain('"><script>alert(document.cookie)</script>');
+    expect(content).toContain("&quot;&gt;&lt;script&gt;");
+  });
+
   // (backlog fix) A real gap found during a post-redesign audit: every
   // <item>'s own <link>/<guid> only ever pointed at the daily archive
   // page, and content:encoded never linked out to the item's real

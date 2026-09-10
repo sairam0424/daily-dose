@@ -1,4 +1,18 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+// The real SSRF-hardening authoritative check (isUnsafeHost, imageResolution.ts)
+// does a real DNS lookup before every fetch - mocked here so every test in
+// this file resolves to a fixed, real, safe public IP by default (never a
+// real network call in tests, matching this repo's established convention).
+// Individual tests override this per-call to simulate a hostname resolving
+// to a private/loopback address (DNS rebinding's classic setup).
+const mockDnsLookup = vi
+  .fn()
+  .mockResolvedValue([{ address: "93.184.216.34", family: 4 }]);
+vi.mock("node:dns/promises", () => ({
+  lookup: (...args: unknown[]) => mockDnsLookup(...args),
+}));
+
 import {
   extractOgImage,
   extractFavicon,
@@ -329,6 +343,57 @@ describe("resolveItemImage", () => {
     expect(result).toEqual({});
     // Only 2 fetch calls: the unsafe 3rd hop must never be attempted.
     expect(fetch).toHaveBeenCalledTimes(2);
+  });
+
+  // Regression tests for real, live-proven bypasses found during an
+  // adversarial audit of the original hostname-string-only SSRF check -
+  // each of these previously reached the mocked fetch() (i.e. would have
+  // reached a REAL internal server in production) before the fix below.
+
+  it("(SSRF hardening regression) rejects an IPv6 loopback literal ([::1])", async () => {
+    const result = await resolveItemImage("http://[::1]/secret");
+    expect(result).toEqual({});
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("(SSRF hardening regression) rejects an IPv4-mapped IPv6 loopback literal ([::ffff:127.0.0.1])", async () => {
+    const result = await resolveItemImage("http://[::ffff:127.0.0.1]/secret");
+    expect(result).toEqual({});
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("(SSRF hardening regression) rejects 0.0.0.0 and the bare-'0' form", async () => {
+    const result1 = await resolveItemImage("http://0.0.0.0/secret");
+    const result2 = await resolveItemImage("http://0/secret");
+    expect(result1).toEqual({});
+    expect(result2).toEqual({});
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("(SSRF hardening regression) rejects a hostname whose real DNS resolves to a private address (DNS rebinding's classic setup)", async () => {
+    // The hostname string itself is innocuous - only a real DNS lookup
+    // (mocked here, real in production) reveals it points at a private
+    // address. This is exactly the bypass a hostname-string-only check
+    // cannot catch, confirmed live during adversarial review.
+    mockDnsLookup.mockResolvedValueOnce([{ address: "127.0.0.1", family: 4 }]);
+
+    const result = await resolveItemImage(
+      "https://attacker-controlled.example/x",
+    );
+
+    expect(result).toEqual({});
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("(SSRF hardening regression) fails closed when DNS resolution itself errors", async () => {
+    mockDnsLookup.mockRejectedValueOnce(new Error("DNS lookup failed"));
+
+    const result = await resolveItemImage(
+      "https://real-lookup-failure.example/x",
+    );
+
+    expect(result).toEqual({});
+    expect(fetch).not.toHaveBeenCalled();
   });
 });
 
