@@ -35,6 +35,11 @@ concurrency:
 jobs:
   daily-pipeline:
     runs-on: ubuntu-latest
+    # Workflow-level backstop alongside the per-fetch AbortController timeouts
+    # in scripts/pipeline.ts - if a real network call ever hangs past its own
+    # timeout for any reason, the job itself is capped instead of running
+    # (and billing runner minutes) indefinitely.
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
