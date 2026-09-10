@@ -74,6 +74,15 @@ interface AlgoliaHnResponse {
 
 const HN_ALGOLIA_SEARCH_URL = "https://hn.algolia.com/api/v1/search";
 
+/** Same shape/value as src/lib/imageResolution.ts's own FETCH_TIMEOUT_MS —
+ * that file only bounds the decorative image-enrichment fetches; this one
+ * bounds the 4 CORE source fetches below (and each of fetchDevtoArticles's
+ * two call sites), none of which had any timeout before this fix. A hung
+ * TCP connection to any of these 4 free, keyless APIs previously had no
+ * bound at all — the pipeline could wait indefinitely instead of failing
+ * loudly and retrying (see fetchWithRetry). */
+export const FETCH_TIMEOUT_MS = 5000;
+
 /**
  * Fetches the current Hacker News front page from the free, keyless Algolia
  * Search API (no API key required, no auth headers needed).
@@ -84,29 +93,36 @@ const HN_ALGOLIA_SEARCH_URL = "https://hn.algolia.com/api/v1/search";
  */
 export async function fetchHnFrontPage(limit = 5): Promise<RawHnStory[]> {
   const url = `${HN_ALGOLIA_SEARCH_URL}?tags=front_page&hitsPerPage=${limit}`;
-  const response = await fetch(url);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw new Error(
-      `HN Algolia API request failed: ${response.status} ${response.statusText}`,
-    );
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+
+    if (!response.ok) {
+      throw new Error(
+        `HN Algolia API request failed: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    const data = (await response.json()) as AlgoliaHnResponse;
+
+    return data.hits.map((hit) => {
+      const hnId = Number.parseInt(hit.objectID, 10);
+      const discussionUrl = `https://news.ycombinator.com/item?id=${hnId}`;
+
+      return {
+        title: hit.title ?? `HN discussion ${hnId}`,
+        url: hit.url && hit.url.trim().length > 0 ? hit.url : discussionUrl,
+        points: hit.points ?? 0,
+        num_comments: hit.num_comments ?? 0,
+        hn_id: hnId,
+        author: hit.author,
+      };
+    });
+  } finally {
+    clearTimeout(timeout);
   }
-
-  const data = (await response.json()) as AlgoliaHnResponse;
-
-  return data.hits.map((hit) => {
-    const hnId = Number.parseInt(hit.objectID, 10);
-    const discussionUrl = `https://news.ycombinator.com/item?id=${hnId}`;
-
-    return {
-      title: hit.title ?? `HN discussion ${hnId}`,
-      url: hit.url && hit.url.trim().length > 0 ? hit.url : discussionUrl,
-      points: hit.points ?? 0,
-      num_comments: hit.num_comments ?? 0,
-      hn_id: hnId,
-      author: hit.author,
-    };
-  });
 }
 
 const ARXIV_API_URL = "https://export.arxiv.org/api/query";
@@ -146,54 +162,61 @@ function toArray<T>(value: T | T[] | undefined): T[] {
  */
 export async function fetchArxivPapers(limit = 5): Promise<RawArxivPaper[]> {
   const url = `${ARXIV_API_URL}?search_query=${ARXIV_SEARCH_QUERY}&sortBy=submittedDate&sortOrder=descending&max_results=${limit}`;
-  const response = await fetch(url);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw new Error(
-      `arXiv API request failed: ${response.status} ${response.statusText}`,
-    );
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+
+    if (!response.ok) {
+      throw new Error(
+        `arXiv API request failed: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    const xml = await response.text();
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+      attributeNamePrefix: "@_",
+    });
+    const parsed = parser.parse(xml) as ArxivFeed;
+    const entries = toArray(parsed.feed?.entry);
+
+    return entries.map((entry) => {
+      // Entry ids look like "http://arxiv.org/abs/2409.12345v1" — strip the
+      // leading .../abs/ prefix and the trailing version suffix (vN) to get
+      // the stable arXiv ID.
+      const arxivId = entry.id.replace(/^.*\/abs\//, "").replace(/v\d+$/, "");
+
+      // Atom feeds often indent/wrap <title> content across lines — collapse
+      // all whitespace runs (including newlines) to single spaces and trim.
+      const title = entry.title.replace(/\s+/g, " ").trim();
+
+      const authors = toArray(entry.author)
+        .map((author) => author.name)
+        .filter((name): name is string => Boolean(name));
+
+      const categories = toArray(entry.category)
+        .map((category) => category["@_term"])
+        .filter((term): term is string => Boolean(term));
+
+      // Same whitespace-collapsing as title above - arXiv abstracts are
+      // indented/wrapped across many lines in the raw XML.
+      const summary = (entry.summary ?? "").replace(/\s+/g, " ").trim();
+
+      return {
+        title,
+        url: `https://arxiv.org/abs/${arxivId}`,
+        arxivId,
+        publishedDate: entry.published,
+        authors,
+        categories,
+        summary,
+      };
+    });
+  } finally {
+    clearTimeout(timeout);
   }
-
-  const xml = await response.text();
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    attributeNamePrefix: "@_",
-  });
-  const parsed = parser.parse(xml) as ArxivFeed;
-  const entries = toArray(parsed.feed?.entry);
-
-  return entries.map((entry) => {
-    // Entry ids look like "http://arxiv.org/abs/2409.12345v1" — strip the
-    // leading .../abs/ prefix and the trailing version suffix (vN) to get
-    // the stable arXiv ID.
-    const arxivId = entry.id.replace(/^.*\/abs\//, "").replace(/v\d+$/, "");
-
-    // Atom feeds often indent/wrap <title> content across lines — collapse
-    // all whitespace runs (including newlines) to single spaces and trim.
-    const title = entry.title.replace(/\s+/g, " ").trim();
-
-    const authors = toArray(entry.author)
-      .map((author) => author.name)
-      .filter((name): name is string => Boolean(name));
-
-    const categories = toArray(entry.category)
-      .map((category) => category["@_term"])
-      .filter((term): term is string => Boolean(term));
-
-    // Same whitespace-collapsing as title above - arXiv abstracts are
-    // indented/wrapped across many lines in the raw XML.
-    const summary = (entry.summary ?? "").replace(/\s+/g, " ").trim();
-
-    return {
-      title,
-      url: `https://arxiv.org/abs/${arxivId}`,
-      arxivId,
-      publishedDate: entry.published,
-      authors,
-      categories,
-      summary,
-    };
-  });
 }
 
 /** Filesystem-safe arXiv ID: some arXiv IDs contain a slash (old-style
@@ -230,6 +253,18 @@ function isoDateDaysAgo(days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
+/** Distinguishable error type for a real, confirmed-exhausted GitHub Search
+ * API rate limit (403 + `x-ratelimit-remaining: 0`) — see fetchWithRetry
+ * below, which special-cases this error to skip retrying rather than
+ * amplifying the outage by re-issuing the same already-rejected request 2
+ * more times before the limit has any chance to reset. */
+export class GithubRateLimitError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "GithubRateLimitError";
+  }
+}
+
 /**
  * Fetches recently-created, fast-rising GitHub repos from GitHub's free,
  * keyless public Search API (no API key required - unauthenticated search
@@ -246,30 +281,53 @@ export async function fetchGithubTrendingRepos(
   const query = `created:>${sinceDate} fork:false`;
   const url = `${GITHUB_SEARCH_URL}?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${limit}`;
 
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": "daily-dose-pipeline",
-      Accept: "application/vnd.github+json",
-    },
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw new Error(
-      `GitHub Search API request failed: ${response.status} ${response.statusText}`,
-    );
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "User-Agent": "daily-dose-pipeline",
+        Accept: "application/vnd.github+json",
+      },
+    });
+
+    if (!response.ok) {
+      // A real, confirmed-exhausted rate limit (not just any 403 - GitHub
+      // returns 403 for other reasons too, e.g. a blocked User-Agent) is
+      // never worth retrying immediately: the limit only resets after real
+      // wall-clock time passes, so re-issuing the identical request just
+      // burns 2 more attempts against an already-empty quota instead of
+      // isolating the failure the way fetchWithRetry does for a genuinely
+      // transient error.
+      if (
+        response.status === 403 &&
+        response.headers.get("x-ratelimit-remaining") === "0"
+      ) {
+        throw new GithubRateLimitError(
+          `GitHub Search API rate limit exceeded (403, x-ratelimit-remaining: 0) - not retrying, since the limit cannot reset before the next attempt.`,
+        );
+      }
+      throw new Error(
+        `GitHub Search API request failed: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    const data = (await response.json()) as GithubSearchResponse;
+
+    return data.items.map((item) => ({
+      fullName: item.full_name,
+      url: item.html_url,
+      description: item.description ?? "",
+      stars: item.stargazers_count,
+      forks: item.forks_count,
+      language: item.language,
+      createdAt: item.created_at,
+    }));
+  } finally {
+    clearTimeout(timeout);
   }
-
-  const data = (await response.json()) as GithubSearchResponse;
-
-  return data.items.map((item) => ({
-    fullName: item.full_name,
-    url: item.html_url,
-    description: item.description ?? "",
-    stars: item.stargazers_count,
-    forks: item.forks_count,
-    language: item.language,
-    createdAt: item.created_at,
-  }));
 }
 
 /** Filesystem-safe GitHub repo id: full_name is "owner/repo" - replace the
@@ -347,44 +405,78 @@ export async function fetchDevtoArticles(
   limit = 5,
 ): Promise<RawDevtoArticle[]> {
   const url = `${DEVTO_ARTICLES_URL}?top=1&per_page=${limit}`;
-  const response = await fetch(url, { headers: DEVTO_HEADERS });
+  const listController = new AbortController();
+  const listTimeout = setTimeout(
+    () => listController.abort(),
+    FETCH_TIMEOUT_MS,
+  );
 
-  if (!response.ok) {
-    throw new Error(
-      `Dev.to API request failed: ${response.status} ${response.statusText}`,
-    );
+  let items: DevtoListItem[];
+  try {
+    const response = await fetch(url, {
+      signal: listController.signal,
+      headers: DEVTO_HEADERS,
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Dev.to API request failed: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    items = (await response.json()) as DevtoListItem[];
+  } finally {
+    clearTimeout(listTimeout);
   }
 
-  const items = (await response.json()) as DevtoListItem[];
-
+  // Each per-article detail fetch is retried INDEPENDENTLY via its own
+  // fetchWithRetry call - a single article's transient failure previously
+  // rejected this function's whole Promise.all, which made the caller's
+  // fetchWithRetry("Dev.to", ...) retry the ENTIRE batch (the list fetch
+  // plus every other already-succeeded detail fetch) just to re-attempt
+  // the one that failed. Isolating retries here means N-1 successful
+  // requests are never needlessly re-issued for 1 failing one.
   return Promise.all(
-    items.map(async (item) => {
-      const detailUrl = `${DEVTO_ARTICLES_URL}/${item.id}`;
-      const detailResponse = await fetch(detailUrl, {
-        headers: DEVTO_HEADERS,
-      });
-
-      if (!detailResponse.ok) {
-        throw new Error(
-          `Dev.to article detail request failed for id ${item.id}: ${detailResponse.status} ${detailResponse.statusText}`,
+    items.map((item) =>
+      fetchWithRetry(`Dev.to article ${item.id}`, async () => {
+        const detailUrl = `${DEVTO_ARTICLES_URL}/${item.id}`;
+        const detailController = new AbortController();
+        const detailTimeout = setTimeout(
+          () => detailController.abort(),
+          FETCH_TIMEOUT_MS,
         );
-      }
 
-      const detail = (await detailResponse.json()) as DevtoDetailItem;
-      const fullBodyText = (detail.body_markdown ?? "").trim();
+        try {
+          const detailResponse = await fetch(detailUrl, {
+            signal: detailController.signal,
+            headers: DEVTO_HEADERS,
+          });
 
-      return {
-        id: item.id,
-        title: item.title,
-        url: item.url,
-        bodyText: fullBodyText.slice(0, DEVTO_BODY_EXCERPT_LENGTH),
-        reactions: item.public_reactions_count,
-        comments: item.comments_count,
-        tags: item.tag_list,
-        publishedAt: item.published_timestamp,
-        coverImage: item.cover_image ?? undefined,
-      };
-    }),
+          if (!detailResponse.ok) {
+            throw new Error(
+              `Dev.to article detail request failed for id ${item.id}: ${detailResponse.status} ${detailResponse.statusText}`,
+            );
+          }
+
+          const detail = (await detailResponse.json()) as DevtoDetailItem;
+          const fullBodyText = (detail.body_markdown ?? "").trim();
+
+          return {
+            id: item.id,
+            title: item.title,
+            url: item.url,
+            bodyText: fullBodyText.slice(0, DEVTO_BODY_EXCERPT_LENGTH),
+            reactions: item.public_reactions_count,
+            comments: item.comments_count,
+            tags: item.tag_list,
+            publishedAt: item.published_timestamp,
+            coverImage: item.cover_image ?? undefined,
+          };
+        } finally {
+          clearTimeout(detailTimeout);
+        }
+      }),
+    ),
   );
 }
 
@@ -568,6 +660,15 @@ export async function fetchWithRetry<T>(
       return await fn();
     } catch (err) {
       lastErr = err;
+      if (err instanceof GithubRateLimitError) {
+        // A confirmed-exhausted GitHub rate limit cannot be fixed by
+        // retrying immediately - the limit only resets after real
+        // wall-clock time passes, so re-issuing the identical request just
+        // amplifies the outage (2 more guaranteed-403 attempts) instead of
+        // isolating it. Rethrow right away rather than burning the
+        // remaining attempts.
+        throw err;
+      }
       if (attempt < maxAttempts) {
         const delayMs = RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
         console.warn(
@@ -601,6 +702,37 @@ export function buildImageableItems(
       .filter((article) => !article.coverImage)
       .map((article) => ({ id: `devto-${article.id}`, url: article.url })),
   ];
+}
+
+/**
+ * The actual content-moderation enforcement point: filters `items` down to
+ * those the real LLM scoring pass did NOT flag `exclude: true` (see
+ * llmCuration.ts's `exclude` field), logging a loud console.warn naming
+ * each skipped item's id. Previously this check lived inline, duplicated
+ * once per per-source loop inside main() (which makes real network calls
+ * and is otherwise untested), so the actual skip behavior had zero direct
+ * test coverage — pulled out here into one small, pure, directly-testable
+ * function used by all 4 source loops below. When `llmScores` is undefined
+ * (no LLM configured, or the whole call failed - see 3b's fallback above),
+ * nothing is excluded — placeholder scoring never makes an exclusion
+ * judgment call, only the real LLM does.
+ */
+export function filterExcludedItems<T>(
+  items: T[],
+  getId: (item: T) => string,
+  llmScores: Map<string, ScoreResult> | undefined,
+): T[] {
+  return items.filter((item) => {
+    const id = getId(item);
+    const fromLlm = llmScores?.get(id);
+    if (fromLlm?.exclude) {
+      console.warn(
+        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
+      );
+      return false;
+    }
+    return true;
+  });
 }
 
 export async function main(): Promise<void> {
@@ -665,22 +797,37 @@ export async function main(): Promise<void> {
     ];
 
     if (scorableItems.length > 0) {
-      const outcome = await scoreItemsWithLLM(scorableItems);
-      llmScores = outcome.scores;
+      try {
+        const outcome = await scoreItemsWithLLM(scorableItems);
+        llmScores = outcome.scores;
 
-      const statsEntry = await recordAndCheckCost(
-        today,
-        outcome.modelUsed,
-        outcome.inputTokens,
-        outcome.outputTokens,
-        scorableItems.length,
-      );
+        const statsEntry = await recordAndCheckCost(
+          today,
+          outcome.modelUsed,
+          outcome.inputTokens,
+          outcome.outputTokens,
+          scorableItems.length,
+        );
 
-      console.log(
-        `Scored ${scorableItems.length} items via real Bedrock LLM call (${outcome.modelUsed}): ` +
-          `${outcome.inputTokens} input / ${outcome.outputTokens} output tokens, ` +
-          `$${statsEntry.costUsd.toFixed(4)}${statsEntry.flaggedAnomalous ? " [FLAGGED ANOMALOUS - see warning above]" : ""}.`,
-      );
+        console.log(
+          `Scored ${scorableItems.length} items via real Bedrock LLM call (${outcome.modelUsed}): ` +
+            `${outcome.inputTokens} input / ${outcome.outputTokens} output tokens, ` +
+            `$${statsEntry.costUsd.toFixed(4)}${statsEntry.flaggedAnomalous ? " [FLAGGED ANOMALOUS - see warning above]" : ""}.`,
+        );
+      } catch (error) {
+        // The real HN/arXiv/GitHub/Dev.to data already fetched successfully
+        // above - a total LLM failure (e.g. every model in the fallback
+        // chain rejecting, a network error to Bedrock) must not throw away
+        // that real data and abort the whole day's digest. Fall back to
+        // the existing per-item placeholder scorers for EVERY item in this
+        // run, exactly the same real fallback already used below for the
+        // partial "LLM omitted this one item" case - never a fabricated
+        // substitute, per AGENTS.md. llmScores stays undefined so every
+        // per-source loop below naturally uses its placeholder scorer.
+        console.error(
+          `[pipeline] Real Bedrock LLM call failed entirely (${(error as Error).message}) - falling back to deterministic placeholder scoring for all ${scorableItems.length} items in this run rather than aborting the digest.`,
+        );
+      }
     }
   } else {
     console.warn(
@@ -706,15 +853,14 @@ export async function main(): Promise<void> {
 
   const files: WritableDigestFile[] = [];
 
-  for (const story of stories) {
+  const includedStories = filterExcludedItems(
+    stories,
+    (story) => `hn-${story.hn_id}`,
+    llmScores,
+  );
+  for (const story of includedStories) {
     const id = `hn-${story.hn_id}`;
     const fromLlm = llmScores?.get(id);
-    if (fromLlm?.exclude) {
-      console.warn(
-        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
-      );
-      continue;
-    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -747,15 +893,14 @@ export async function main(): Promise<void> {
     files.push({ item, filename: `hn-${item.hn_id}.json` });
   }
 
-  for (const paper of papers) {
+  const includedPapers = filterExcludedItems(
+    papers,
+    (paper) => `arxiv-${sanitizeArxivId(paper.arxivId)}`,
+    llmScores,
+  );
+  for (const paper of includedPapers) {
     const id = `arxiv-${sanitizeArxivId(paper.arxivId)}`;
     const fromLlm = llmScores?.get(id);
-    if (fromLlm?.exclude) {
-      console.warn(
-        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
-      );
-      continue;
-    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -789,15 +934,14 @@ export async function main(): Promise<void> {
     });
   }
 
-  for (const repo of repos) {
+  const includedRepos = filterExcludedItems(
+    repos,
+    (repo) => `github-${sanitizeGithubId(repo.fullName)}`,
+    llmScores,
+  );
+  for (const repo of includedRepos) {
     const id = `github-${sanitizeGithubId(repo.fullName)}`;
     const fromLlm = llmScores?.get(id);
-    if (fromLlm?.exclude) {
-      console.warn(
-        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
-      );
-      continue;
-    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
@@ -831,15 +975,14 @@ export async function main(): Promise<void> {
     });
   }
 
-  for (const article of articles) {
+  const includedArticles = filterExcludedItems(
+    articles,
+    (article) => `devto-${article.id}`,
+    llmScores,
+  );
+  for (const article of includedArticles) {
     const id = `devto-${article.id}`;
     const fromLlm = llmScores?.get(id);
-    if (fromLlm?.exclude) {
-      console.warn(
-        `[curation] Excluding ${id} from the digest - the real LLM flagged it as harmful/inappropriate content.`,
-      );
-      continue;
-    }
     if (llmScores && !fromLlm) {
       console.warn(
         `[curation] LLM response did not include a score for ${id} - falling back to placeholder scoring for this one item only.`,
