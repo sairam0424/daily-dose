@@ -51,6 +51,18 @@ beforeAll(() => {
 });
 
 describe("dist/rss.xml build output", () => {
+  it("declares its own atom:link rel=self pointing at the combined feed's own URL", () => {
+    const parser = new XMLParser(RSS_PARSER_OPTIONS);
+    const parsed = parser.parse(rssXml);
+    const selfLink = parsed.rss.channel["atom:link"];
+    expect(selfLink).toBeTruthy();
+    expect(selfLink["@_rel"]).toBe("self");
+    expect(selfLink["@_type"]).toBe("application/rss+xml");
+    expect(selfLink["@_href"]).toBe(
+      "https://daily-dose-hazel-delta.vercel.app/rss.xml",
+    );
+  });
+
   it("(regression) parser tolerates a realistically large entity count without hitting fast-xml-parser's default DoS ceiling", () => {
     // Synthetic, deterministic fixture - independent of how many real
     // entities today's committed data happens to contain, so this stays a
@@ -106,15 +118,21 @@ describe("dist/rss.xml build output", () => {
 });
 
 describe("renderDayContent escaping (regression)", () => {
-  // A real, latent bug found during review: @astrojs/rss's rss() already
-  // entity-escapes the entire composed content string exactly once when
-  // serializing <content:encoded>. If renderDayContent ALSO pre-escaped
-  // field values, a title/why_read containing a literal &, <, or > would
-  // come out double-escaped ("&amp;amp;" instead of "&amp;") - invisible
-  // with the tiny current dataset (no such characters in it yet), but a
-  // real bug the moment one appears. This test proves the fix end-to-end
-  // through the real rss() call, not just by inspecting the raw string.
-  it("never double-escapes a title containing a literal ampersand", async () => {
+  // A real gap found by a research sweep (see docs/superpowers/plans/
+  // 2026-09-10-research-sweep-fixes.md item 1d): renderStoryListItem's
+  // hand-written structural tags (<li>/<strong>/<a href>/<p>) are
+  // deliberately left RAW here so they survive @astrojs/rss's own single
+  // escape pass, plus a real RSS reader's single XML-unescape, and come
+  // back out as real HTML. But the untrusted field values (title/
+  // why_read/source) must NOT become live markup after that same single
+  // reader-side unescape - fixed by escaping them once HERE, before
+  // rss()'s own escape pass ever sees them. Net effect: untrusted values
+  // go through TWO escapes (this file's, then rss()'s) against the
+  // reader's ONE real unescape, so they still read back as inert escaped
+  // text - never a live <script> tag or a raw ampersand a downstream
+  // parser could misinterpret as an entity start - even after that
+  // unescape.
+  it("escapes an untrusted title/why_read/source exactly once at this layer, leaving the structural tags raw", () => {
     const fakeItem: DigestItem = {
       title: "React & Redux: a comparison",
       source: "hn",
@@ -128,9 +146,51 @@ describe("renderDayContent escaping (regression)", () => {
 
     const content = renderDayContent([fakeItem]);
 
-    // renderDayContent's own output must be RAW (unescaped) - proves this
-    // layer does not pre-escape.
-    expect(content).toContain("React & Redux");
+    // Field values are escaped exactly once at this layer - a single "&"
+    // becomes a single "&amp;", not left raw and not double-escaped to
+    // "&amp;amp;" at THIS layer (rss()'s own pass, tested separately
+    // below, is a different layer and intentionally adds a second one).
+    expect(content).toContain("React &amp; Redux");
+    expect(content).not.toContain("React & Redux");
+    expect(content).toContain(
+      "Covers &lt;state management&gt; in depth &amp; is well-argued.",
+    );
+    // The hand-written structural tags stay raw at this layer.
+    expect(content).toContain("<li>");
+    expect(content).toContain("<strong>");
+  });
+
+  it("(security fix) escapes a title containing a literal <script> tag to inert text, not live markup, at this layer", () => {
+    const fakeItem: DigestItem = {
+      title: "<script>alert(1)</script>",
+      source: "hn",
+      url: "https://example.com",
+      date: "2026-09-04",
+      tags: [],
+      interest_score: 5,
+      why_read: "A real reason.",
+      authors: [],
+    };
+
+    const content = renderDayContent([fakeItem]);
+
+    expect(content).toContain("&lt;script&gt;alert(1)&lt;/script&gt;");
+    expect(content).not.toContain("<script>alert(1)</script>");
+  });
+
+  it("(security fix) keeps an untrusted <script> payload inert end-to-end through the real rss() call, even after simulating a real reader's single XML-unescape", async () => {
+    const fakeItem: DigestItem = {
+      title: "React & Redux <script>alert(1)</script>",
+      source: "hn",
+      url: "https://example.com",
+      date: "2026-09-04",
+      tags: [],
+      interest_score: 5,
+      why_read: "A real reason.",
+      authors: [],
+    };
+
+    const content = renderDayContent([fakeItem]);
 
     const feed = await rssBuilder({
       title: "test",
@@ -147,10 +207,75 @@ describe("renderDayContent escaping (regression)", () => {
     });
     const xml = await feed.text();
 
-    // Exactly one level of escaping in the final XML - "&amp;", never the
-    // double-escaped "&amp;amp;" the bug would have produced.
-    expect(xml).toContain("React &amp; Redux");
-    expect(xml).not.toContain("&amp;amp;");
+    // rss()'s own single escape pass runs on top of this file's escape,
+    // so the untrusted title now shows up double-escaped in the raw built
+    // XML - a real, visible, and INTENTIONAL trade-off (this security fix
+    // deliberately overturns the old "never double-escape" assumption for
+    // untrusted field values specifically, while leaving structural tags
+    // single-escaped as before).
+    expect(xml).toContain("&amp;amp;");
+    expect(xml).toContain("&amp;lt;script&amp;gt;");
+    expect(xml).not.toContain("<script>alert(1)</script>");
+
+    // Simulate exactly what a spec-compliant RSS reader does: XML-unescape
+    // the <content:encoded> text node's value exactly once (the
+    // mandatory, unavoidable step any reader performs just to read the
+    // text node) to recover what it treats as this item's real HTML. A
+    // single simultaneous-pass regex replace (not chained .replace calls)
+    // matches how a real XML parser decodes entities in one left-to-right
+    // scan over the ORIGINAL text, so it can't accidentally create or
+    // consume an entity that was only produced by an earlier replacement.
+    const match = xml.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/);
+    expect(match).toBeTruthy();
+    const ENTITY_DECODE: Record<string, string> = {
+      "&amp;": "&",
+      "&lt;": "<",
+      "&gt;": ">",
+      "&quot;": '"',
+      "&apos;": "'",
+    };
+    const oneUnescape = match![1].replace(
+      /&amp;|&lt;|&gt;|&quot;|&apos;/g,
+      (entity) => ENTITY_DECODE[entity]!,
+    );
+
+    // The hand-written structural tags come back as real, live HTML...
+    expect(oneUnescape).toContain("<li>");
+    expect(oneUnescape).toContain("<strong>");
+    // ...but the untrusted payload is still inert escaped text, not a
+    // live <script> tag, even after this one real unescape.
+    expect(oneUnescape).not.toContain("<script>alert(1)</script>");
+    expect(oneUnescape).toContain("&lt;script&gt;");
+    // A literal "&" in the real title also still reads back as a single,
+    // inert "&amp;" (not a raw "&" a downstream HTML parser could treat
+    // as starting a new, different entity).
+    expect(oneUnescape).toContain("&amp;");
+  });
+
+  it("(security fix) escapes a url containing attribute-breakout characters, closing a real script-tag-breakout gap an adversarial audit proved live", () => {
+    // digestSchema.ts's httpUrlSchema only restricts the URL's *scheme*
+    // (rejects javascript:/data:/etc.) - it does not escape or re-encode
+    // the value, so an otherwise-valid http(s) URL containing a literal
+    // '"'/'<'/'>' passes schema validation unchanged. Before this fix,
+    // renderStoryListItem interpolated url raw into href="${url}", so a
+    // url like this one broke out of the attribute and injected a real
+    // <script> tag once a real RSS reader XML-unescaped content:encoded -
+    // proven live via the actual @astrojs/rss builder during review.
+    const fakeItem: DigestItem = {
+      title: "A real story",
+      source: "hn",
+      url: 'http://evil.example.com/"><script>alert(document.cookie)</script>',
+      date: "2026-09-04",
+      tags: [],
+      interest_score: 5,
+      why_read: "A real reason.",
+      authors: [],
+    };
+
+    const content = renderDayContent([fakeItem]);
+
+    expect(content).not.toContain('"><script>alert(document.cookie)</script>');
+    expect(content).toContain("&quot;&gt;&lt;script&gt;");
   });
 
   // (backlog fix) A real gap found during a post-redesign audit: every

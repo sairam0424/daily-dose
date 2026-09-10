@@ -167,4 +167,23 @@ describe("StoryCard.astro source structure", () => {
   it("(seo fix) grows the why-icon button's real hit area toward the mobile touch-target guideline", () => {
     expect(source).toMatch(/\.why-icon\s*\{[^}]*padding:\s*0\.5rem/s);
   });
+
+  it("(perf fix) loads the lead story's hero image eagerly at high priority, keeping every other card lazy", () => {
+    // The lead story (index === 0) is this page's LCP element - an
+    // unconditional loading="lazy" delays the browser from even
+    // discovering it until layout, adding avoidable time to LCP.
+    // Every other card should stay lazy, unchanged.
+    const imageMatch = source.match(/<img\s+class="story-image"[^>]*\/>/s);
+    expect(imageMatch, "expected the story-image <img> tag").toBeTruthy();
+    const imageTag = imageMatch![0];
+
+    expect(imageTag).toContain("loading={index === 0 ? 'eager' : 'lazy'}");
+    expect(imageTag).toContain(
+      "fetchpriority={index === 0 ? 'high' : undefined}",
+    );
+  });
+
+  it("(perf fix) leaves the decorative favicon icon's loading behavior untouched (still unconditionally lazy)", () => {
+    expect(source).toMatch(/<img\s+class="favicon-icon"[^>]*loading="lazy"/s);
+  });
 });

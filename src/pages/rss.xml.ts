@@ -21,6 +21,8 @@ export async function GET(context: APIContext) {
     description:
       "A daily AI-curated technical digest — Hacker News, arXiv, GitHub, and Dev.to.",
     site: context.site,
+    xmlns: { atom: "http://www.w3.org/2005/Atom" },
+    customData: `<atom:link href="${new URL(context.request.url).href}" rel="self" type="application/rss+xml" />`,
     items: dateGroups.map((group) => ({
       title: `The Daily Dose — ${group.date}`,
       // group.date is always a real "YYYY-MM-DD" string validated by

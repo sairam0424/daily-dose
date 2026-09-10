@@ -6,6 +6,12 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   site: 'https://daily-dose-hazel-delta.vercel.app',
+  // This project has zero astro:assets/<Image> usage anywhere (all images
+  // are plain <img> tags pointed at already-resolved external/committed
+  // URLs - see imageResolution.ts) - the noop image service avoids
+  // bundling sharp's ~18MB native libvips binary into the deployed
+  // function for a feature that's never invoked.
+  image: { service: { entrypoint: 'astro/assets/services/noop' } },
   integrations: [
     sitemap({
       // Methodology is deliberately delisted from every nav/footer (PR #79)

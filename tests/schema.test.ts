@@ -44,6 +44,22 @@ describe("DigestItemSchema", () => {
     expect(() => DigestItemSchema.parse(badUrl)).toThrow();
   });
 
+  it("rejects a javascript: scheme url", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      url: "javascript:alert(1)",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a data: scheme url", () => {
+    const result = DigestItemSchema.safeParse({
+      ...validItem,
+      url: "data:text/html,<script>alert(1)</script>",
+    });
+    expect(result.success).toBe(false);
+  });
+
   it("accepts a valid item with reading_minutes set", () => {
     const result = DigestItemSchema.safeParse({
       title: "A paper",

@@ -8,7 +8,21 @@
 // for the same reason) can only resolve the real subpath, and
 // tests/middleware.test.ts needs to import isValidBasicAuth from this
 // file directly.
+import { createHash, timingSafeEqual } from "node:crypto";
 import { defineMiddleware } from "astro/middleware";
+
+// Comparing raw, variable-length password strings with `===` is a timing
+// side-channel (CWE-208): a mismatch on the first byte returns faster than
+// a mismatch on the last, letting an attacker infer the password one byte
+// at a time. `timingSafeEqual` closes that, but it throws on a
+// length-mismatched pair - hashing both sides to a fixed-length SHA-256
+// digest first sidesteps that entirely (a real, easy-to-hit bug this
+// avoids), while still comparing in constant time.
+function safeCompare(a: string, b: string): boolean {
+  const digestA = createHash("sha256").update(a).digest();
+  const digestB = createHash("sha256").update(b).digest();
+  return timingSafeEqual(digestA, digestB);
+}
 
 export function isValidBasicAuth(
   header: string | null,
@@ -27,7 +41,7 @@ export function isValidBasicAuth(
       return false;
     }
     const password = decoded.slice(separatorIndex + 1);
-    return password === expectedPassword;
+    return safeCompare(password, expectedPassword);
   } catch {
     return false;
   }
@@ -44,7 +58,16 @@ export function isStatsPath(pathname: string): boolean {
   return normalized === "/stats";
 }
 
-export const onRequest = defineMiddleware((context, next) => {
+// /stats is the one credentialed route in this repo - it must never be
+// cached by a shared/browser cache (a stale cached response served to the
+// wrong requester, or a 401 cached and replayed after the real credential
+// is supplied, are both real leaks). Neither the 401 nor the real
+// authenticated 200 response gets an explicit Cache-Control anywhere else
+// (vercel.json's one immutable-cache rule is scoped to /_astro/(.*) only),
+// so both branches below set it directly.
+const STATS_CACHE_CONTROL = "private, no-store";
+
+export const onRequest = defineMiddleware(async (context, next) => {
   if (!isStatsPath(context.url.pathname)) {
     return next();
   }
@@ -62,9 +85,14 @@ export const onRequest = defineMiddleware((context, next) => {
   if (!isValidBasicAuth(header, expectedPassword)) {
     return new Response("Authentication required.", {
       status: 401,
-      headers: { "WWW-Authenticate": 'Basic realm="daily-dose stats"' },
+      headers: {
+        "WWW-Authenticate": 'Basic realm="daily-dose stats"',
+        "Cache-Control": STATS_CACHE_CONTROL,
+      },
     });
   }
 
-  return next();
+  const response = await next();
+  response.headers.set("Cache-Control", STATS_CACHE_CONTROL);
+  return response;
 });

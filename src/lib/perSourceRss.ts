@@ -51,6 +51,11 @@ export async function buildSourceFeed(
     title: `The Daily Dose — ${sourceLabel}`,
     description: `${sourceLabel} picks from the daily-dose digest — a daily AI-curated technical digest.`,
     site: context.site,
+    xmlns: { atom: "http://www.w3.org/2005/Atom" },
+    // Per-source routes each need their own correct self-URL, not the
+    // combined /rss.xml feed's — context.request.url is this specific
+    // route's real request (e.g. /rss/hn.xml), not a shared constant.
+    customData: `<atom:link href="${new URL(context.request.url).href}" rel="self" type="application/rss+xml" />`,
     items,
   });
 }

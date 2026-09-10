@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           # astro@7.3.2+ (bumped to close a critical AVIF RCE, see PR #112)
           # requires Node >=22.12.0 and fails its own CLI version check
@@ -28,8 +28,10 @@ jobs:
           # Node 20 ("Node.js v20.20.2 is not supported by Astro!").
           node-version: 22
 
+      # npm ci enforces the exact locked tree (package-lock.json) instead of
+      # allowing silent re-resolution the way npm install can.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Builds the Astro static site against whatever digest JSON files are
       # already committed under src/data/digest/. This does NOT invoke the
@@ -38,6 +40,14 @@ jobs:
       # of CI, to avoid unnecessary load and flaky-test risk on every run.
       - name: Build
         run: npm run build
+
+      # Automated accessibility gate: runs axe-core (via jsdom) against a
+      # representative subset of the real built HTML - homepage, one archive
+      # date page, methodology, privacy - failing the build on any real
+      # violation. See scripts/a11yCheck.ts and docs/superpowers/plans/
+      # 2026-09-10-research-sweep-fixes.md item 6a.
+      - name: Accessibility check
+        run: npx tsx scripts/a11yCheck.ts
 
       # Network-free unit/schema tests only.
       - name: Test
