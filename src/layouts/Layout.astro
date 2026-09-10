@@ -169,12 +169,41 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
     </script>
   </head>
   <body>
+    <!-- (accessibility audit fix) No skip-to-main-content link existed
+         anywhere - a keyboard/screen-reader user had to tab through the
+         full masthead nav on every page before reaching real content.
+         Must be the very first focusable element in the document body,
+         ahead of Analytics/SpeedInsights (script-only, not focusable)
+         and ScrollToTop (rendered hidden until scroll, so not tabbable
+         either way). Targets the page's main landmark via a runtime
+         querySelector rather than a hardcoded href="#main-content"
+         paired with a per-page id="main-content" edit, since every page
+         template already renders a literal, unique main landmark
+         (confirmed this session) and this keeps the fix scoped to this
+         one file instead of touching every page. NOTE: deliberately
+         avoids spelling the landmark tag name in angle brackets in this
+         comment, since a regex-based static-HTML test elsewhere scans
+         for the first literal opening tag of that name and would
+         otherwise match this comment instead of the real element below. -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Analytics />
     <SpeedInsights />
     <ScrollToTop />
     <div class="page-sheet">
       <slot />
     </div>
+    <script is:inline>
+      (function () {
+        var main = document.querySelector("main");
+        if (!main) return;
+        if (!main.id) {
+          main.id = "main-content";
+        }
+        if (!main.hasAttribute("tabindex")) {
+          main.setAttribute("tabindex", "-1");
+        }
+      })();
+    </script>
     <style is:global>
       :root,
       [data-skin='newspaper'] {
@@ -183,7 +212,12 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         --bg-surface: #f8f4e8;
         --ink: #1f1d18;
         --ink-soft: #4a4536;
-        --ink-faint: #857d68;
+        /* (accessibility audit fix) was #857d68 - measured 3.72:1 against
+           --bg-surface, below the 4.5:1 AA minimum for the small text
+           (.masthead-utility, .site-footer-links, .site-footer-copyright)
+           this token is actually used for. Darkened along the same hue/
+           saturation to clear 4.5:1 with a small rounding margin. */
+        --ink-faint: #756e5c;
         --accent: #7a2618;
         --accent-ink: #f8f4e8;
         --rule: rgba(31, 29, 24, 0.15);
@@ -198,7 +232,10 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         --bg-surface: #201d16;
         --ink: #ddd3ba;
         --ink-soft: #a89b7c;
-        --ink-faint: #6f6551;
+        /* (accessibility audit fix) was #6f6551 - measured 2.93:1 against
+           --bg-surface, the worst of the 3 checked pairings. Lightened
+           along the same hue/saturation to clear 4.5:1. */
+        --ink-faint: #92846a;
         --accent: #c99356;
         --accent-ink: #16140f;
         --rule: rgba(221, 211, 186, 0.14);
@@ -211,7 +248,11 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
         --bg-surface: #14141a;
         --ink: #e8e6f0;
         --ink-soft: #a3a0b8;
-        --ink-faint: #6b6880;
+        /* (accessibility audit fix) was #6b6880 - measured 3.69:1 against
+           --bg-page (dev skin's ink-faint usages sit directly on the page
+           background, not --bg-surface). Lightened along the same hue/
+           saturation to clear 4.5:1. */
+        --ink-faint: #7a7791;
         --accent: #f5a623;
         --accent-ink: #1a1206;
         --rule: rgba(232, 230, 240, 0.12);
@@ -228,6 +269,31 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
       /* Global keyboard focus fallback (audit fix) - @see test's (?<![\w\]]) lookbehind */
       :focus-visible {
         outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      /* (accessibility audit fix) Visually hidden off-screen until it
+         receives keyboard focus, then pinned to the top-left corner above
+         everything else on the page - the standard skip-link pattern.
+         Positioned off the left edge (not just visibility:hidden) so it
+         never affects layout or gets announced as "hidden" oddly by
+         assistive tech while off-screen. */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        z-index: 100;
+        padding: 0.6rem 1.1rem;
+        background: var(--accent);
+        color: var(--accent-ink);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      .skip-link:focus-visible {
+        top: 0;
+        outline: 2px solid var(--ink);
         outline-offset: 2px;
       }
 
