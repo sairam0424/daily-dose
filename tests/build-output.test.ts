@@ -247,8 +247,10 @@ describe("dist/index.html build output", () => {
     expect(html).toContain('id="filter-row-main"');
 
     const style = readAllPageCss(html);
+    // Newer CSS minifiers rewrite `(max-width: 600px)` to the equivalent
+    // Media Query Level 4 range syntax `(width<=600px)` - accept both.
     expect(style).toMatch(
-      /@media\s*\(max-width:\s*600px\)\s*\{[^]*?\.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
+      /@media\s*\((?:max-width:\s*600px|width\s*<=\s*600px)\)\s*\{[^]*?\.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*none/,
     );
     expect(style).toMatch(
       /\.filter-bar(\[[^\]]*\])?\.filters-open \.filter-row-main(\[[^\]]*\])?\s*\{[^}]*display:\s*flex/,
@@ -624,14 +626,23 @@ describe("dist/index.html build output", () => {
     const style = readAllPageCss(html);
     expect(style).not.toMatch(/@media\s*\(max-width:\s*1000px\)/);
     expect(style).not.toMatch(/@media\s*\(max-width:\s*640px\)/);
-    expect(style).toMatch(/@container\s+story-list\s*\(min-width:\s*480px\)/);
-    expect(style).toMatch(/@container\s+story-list\s*\(min-width:\s*700px\)/);
+    // Newer CSS minifiers rewrite `(min-width: Npx)` to the equivalent
+    // Media Query Level 4 range syntax `(width>=Npx)` - accept both.
+    expect(style).toMatch(
+      /@container\s+story-list\s*\((?:min-width:\s*480px|width\s*>=\s*480px)\)/,
+    );
+    expect(style).toMatch(
+      /@container\s+story-list\s*\((?:min-width:\s*700px|width\s*>=\s*700px)\)/,
+    );
   });
 
   it("(Phase 1) establishes a container-query context around .story-list", () => {
     const style = readAllPageCss(html);
+    // Newer CSS minifiers merge the separate `container-name`/`container-type`
+    // longhands into the equivalent `container: <name> / <type>` shorthand -
+    // accept both forms.
     expect(style).toMatch(
-      /\.story-list-container(\[[^\]]*\])?\s*\{[^}]*container-type:\s*inline-size/,
+      /\.story-list-container(\[[^\]]*\])?\s*\{[^}]*(?:container-type:\s*inline-size|container:\s*story-list\s*\/\s*inline-size)/,
     );
   });
 
@@ -666,8 +677,12 @@ describe("dist/index.html build output", () => {
     // @container block, preserving the assertion's original intent.
     const style = readAllPageCss(html);
     expect(style).toMatch(/\.story-list(\[[^\]]*\])?\s*\{[^}]*display:\s*grid/);
+    // Newer CSS minifiers rewrite `(min-width: 640px)` to the equivalent
+    // Media Query Level 4 range syntax `(width>=640px)`, and merge the
+    // separate `grid-column`/`grid-row` longhands into the equivalent
+    // `grid-area: <row> / <column>` shorthand - accept both forms of each.
     expect(style).toMatch(
-      /@container\s+story-list\s*\(min-width:\s*640px\)\s*\{[\s\S]*?\.lead-story(\[[^\]]*\])?\s*\{[^}]*grid-column:\s*span 4[^}]*grid-row:\s*span 2/,
+      /@container\s+story-list\s*\((?:min-width:\s*640px|width\s*>=\s*640px)\)\s*\{[\s\S]*?\.lead-story(\[[^\]]*\])?\s*\{[^}]*(?:grid-column:\s*span 4[^}]*grid-row:\s*span 2|grid-area:\s*span 2\s*\/\s*span 4)/,
     );
   });
 
@@ -757,8 +772,12 @@ describe("dist/index.html build output", () => {
   it("(backlog) explicitly resets border-color on Newspaper's card-hover state, not just via source-order", () => {
     const style = readAllPageCss(html);
     if (!style.includes("translateY(-1px)")) return; // Phase 4 was skipped - fine.
+    // "#0000" is a minifier-equivalent rewrite of "transparent" (4-digit
+    // hex with zero alpha) - CSS minifiers bundled with newer Vite/Astro
+    // toolchains emit it as a shorter equivalent; accept either so this
+    // assertion doesn't depend on a specific minifier's output style.
     expect(style).toMatch(
-      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover\s*\{[^}]*border-color:\s*transparent/,
+      /\[data-skin=['"]?newspaper['"]?\][^{]*\.story-card(\[[^\]]*\])?:hover\s*\{[^}]*border-color:\s*(transparent|#0000\b)/,
     );
   });
 
@@ -889,8 +908,11 @@ describe("dist/index.html build output", () => {
     // default DOM order (which previously stranded the toggle alone on
     // its own line at narrow widths).
     const style = readAllPageCss(html);
+    // Newer CSS minifiers rewrite `(max-width: 480px)` to the equivalent
+    // Media Query Level 4 range syntax `(width<=480px)` - accept both so
+    // this doesn't depend on a specific minifier's output style.
     expect(style).toMatch(
-      /@media\s*\(max-width:\s*480px\)\s*\{[^}]*\.masthead-utility \.date-nav\s*\{[^}]*order:\s*3[^}]*width:\s*100%/,
+      /@media\s*\((?:max-width:\s*480px|width\s*<=\s*480px)\)\s*\{[^}]*\.masthead-utility \.date-nav\s*\{[^}]*order:\s*3[^}]*width:\s*100%/,
     );
   });
 
@@ -978,7 +1000,9 @@ describe("dist/index.html build output", () => {
     // the real-footer observer target are both present in the shipped
     // script, not an arbitrary fixed-scroll-distance sentinel.
     expect(html).toMatch(/scrollHeight\s*>\s*window\.innerHeight\s*\*\s*4/);
-    expect(html).toMatch(/querySelector\(["']\.site-footer["']\)/);
+    // Newer JS minifiers may emit template-literal (backtick) string
+    // delimiters instead of quotes - accept any of the three.
+    expect(html).toMatch(/querySelector\((["'`])\.site-footer\1\)/);
   });
 
   it("(regression) tracks the scroll-to-top button's right offset to .page-sheet's real edge, not the viewport's edge", () => {
@@ -991,8 +1015,11 @@ describe("dist/index.html build output", () => {
     // which moved fully in-flow instead, since it doesn't need
     // scroll-reachability the way this button does).
     const style = readAllPageCss(html);
+    // CSS `max()`/`min()` accept the same math-function grammar as
+    // `calc()`, so a nested `calc(...)` is redundant - newer CSS
+    // minifiers strip it as a no-op simplification. Accept either form.
     expect(style).toMatch(
-      /\.scroll-to-top(\[[^\]]*\])?\s*\{[^}]*right:\s*max\(1rem,\s*calc\(50vw\s*-\s*574px\s*\+\s*1rem\)\)/,
+      /\.scroll-to-top(\[[^\]]*\])?\s*\{[^}]*right:\s*max\(1rem,\s*(?:calc\()?50vw\s*-\s*574px\s*\+\s*1rem\)?\)/,
     );
   });
 
@@ -1009,9 +1036,11 @@ describe("dist/index.html build output", () => {
     expect(html).toMatch(
       /querySelectorAll[^;]*\.story-list \.story-card:not\(\[hidden\]\) \.story-title/,
     );
-    expect(html).toMatch(/key\s*===\s*["']j["']/);
-    expect(html).toMatch(/key\s*===\s*["']k["']/);
-    expect(html).toMatch(/key\s*===\s*["']t["']/);
+    // Newer JS minifiers may emit template-literal (backtick) string
+    // delimiters instead of quotes - accept any of the three.
+    expect(html).toMatch(/key\s*===\s*["'`]j["'`]/);
+    expect(html).toMatch(/key\s*===\s*["'`]k["'`]/);
+    expect(html).toMatch(/key\s*===\s*["'`]t["'`]/);
     // Must never hijack real typing in an editable field.
     expect(html).toMatch(/isContentEditable/);
   });
