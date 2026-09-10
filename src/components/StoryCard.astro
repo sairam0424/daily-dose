@@ -153,6 +153,15 @@ const tier = interestTier(entry.data.interest_score);
 
   .lead-story .story-image {
     aspect-ratio: 16 / 8;
+    /* (bug fix, real user report) the lead card spans the widest grid
+       track (up to 4 columns - see the @container rule above), so at
+       typical desktop widths this box's aspect-ratio-computed height
+       alone was 500px+, pushing the headline/analysis text below the
+       fold on first view. object-fit:contain (already set on the base
+       .story-image rule) safely letterboxes into a shorter box using the
+       existing --bg-surface background, so capping height here doesn't
+       crop or distort the image the way object-fit:cover would. */
+    max-height: 280px;
   }
 
   .story-title-heading {

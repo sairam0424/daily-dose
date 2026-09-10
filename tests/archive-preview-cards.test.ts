@@ -4,6 +4,15 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
 import { DIST_DIR, readAllPageCss } from "./testUtils.js";
 
+const previewCardSource = readFileSync(
+  new URL("../src/components/DigestPreviewCard.astro", import.meta.url),
+  "utf-8",
+);
+const archiveIndexSource = readFileSync(
+  new URL("../src/pages/archive/index.astro", import.meta.url),
+  "utf-8",
+);
+
 const DIST_ARCHIVE_INDEX = join(DIST_DIR, "archive", "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
 
@@ -92,5 +101,33 @@ describe("archive preview cards", () => {
     const rule = ruleMatch![1];
     expect(rule).toMatch(/height:\s*auto/);
     expect(rule).toMatch(/aspect-ratio:\s*16\s*\/\s*9/);
+  });
+
+  it("(regression) hides the preview image by default (real user request) - no showImage prop is passed without the flag", () => {
+    // Real request: even after the aspect-ratio fix above, a real card
+    // image still dominated each dated entry on this listing page more
+    // than the date/title/excerpt it's meant to support. This flag
+    // defaults to off (ENABLE_ARCHIVE_PREVIEW_IMAGES unset in a real CI
+    // build), so the built page must contain no .preview-image <img> at
+    // all until the flag is explicitly turned on.
+    expect(html).not.toContain('class="preview-image"');
+  });
+
+  it("(regression) gates DigestPreviewCard's image render behind a showImage prop, defaulting to false", () => {
+    expect(previewCardSource).toMatch(
+      /const\s*\{\s*group,\s*showImage\s*=\s*false\s*\}\s*=\s*Astro\.props;/,
+    );
+    expect(previewCardSource).toMatch(
+      /\{showImage\s*&&\s*lead\.data\.image_url\s*&&/,
+    );
+  });
+
+  it("(regression) archive/index.astro sources showImage from an ENABLE_ARCHIVE_PREVIEW_IMAGES flag, off by default", () => {
+    expect(archiveIndexSource).toMatch(
+      /isFlagEnabled\(import\.meta\.env\.ENABLE_ARCHIVE_PREVIEW_IMAGES\)/,
+    );
+    expect(archiveIndexSource).toContain(
+      "showImage={showArchivePreviewImages}",
+    );
   });
 });

@@ -10,6 +10,13 @@ import { isFlagEnabled } from '../../lib/featureFlags.js';
 import { safeJsonLdString } from '../../lib/jsonLd.js';
 
 const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
+// Off by default per explicit user request: even at a correctly
+// proportioned 16:9 box, a real card image still dominates each dated
+// entry on this listing page more than the date/title/excerpt it's meant
+// to support. Gated behind a flag rather than deleted outright, so it can
+// be re-enabled later with a smaller/different treatment without
+// resurrecting the markup from history.
+const showArchivePreviewImages = isFlagEnabled(import.meta.env.ENABLE_ARCHIVE_PREVIEW_IMAGES);
 const allEntries = await getCollection('digest');
 const dateGroups = groupEntriesByDate(allEntries);
 
@@ -69,7 +76,7 @@ const breadcrumbSchema = {
     {dateGroups.length > 0 ? (
       <ul class="date-list">
         {dateGroups.map((group) => (
-          <DigestPreviewCard group={group} />
+          <DigestPreviewCard group={group} showImage={showArchivePreviewImages} />
         ))}
       </ul>
     ) : (
