@@ -211,4 +211,17 @@ describe("StoryCard.astro source structure", () => {
       /\.story-image\s*\{[^}]*width:\s*100%;[^}]*height:\s*auto;[^}]*aspect-ratio:\s*16 \/ 9;/s,
     );
   });
+
+  it("(regression) caps the lead story's hero image height so the headline stays visible on first view", () => {
+    // Real user report: the lead card spans up to 4 grid columns, so at
+    // typical desktop widths this image's aspect-ratio-computed height
+    // alone was 500px+, pushing the headline/analysis text below the
+    // fold. object-fit:contain (already set on the base .story-image
+    // rule) letterboxes into this shorter box using the existing
+    // --bg-surface background, so this cap doesn't crop or distort the
+    // image.
+    expect(source).toMatch(
+      /\.lead-story \.story-image\s*\{[^}]*max-height:\s*280px;/s,
+    );
+  });
 });

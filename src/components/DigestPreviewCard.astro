@@ -3,15 +3,16 @@ import type { DigestDateGroup } from '../lib/digestGrouping.js';
 
 interface Props {
   group: DigestDateGroup;
+  showImage?: boolean;
 }
 
-const { group } = Astro.props;
+const { group, showImage = false } = Astro.props;
 const lead = group.entries[0];
 ---
 
 <li class="preview-card">
   <a class="preview-date" href={`/archive/${group.date}/`}>{group.date}</a>
-  {lead.data.image_url && (
+  {showImage && lead.data.image_url && (
     <img class="preview-image" src={lead.data.image_url} alt="" width="320" height="180" loading="lazy" />
   )}
   <p class="preview-title">{lead.data.title}</p>
