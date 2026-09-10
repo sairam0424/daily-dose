@@ -71,6 +71,23 @@ jobs:
           BEDROCK_SECRET_ACCESS_KEY: ${{ secrets.BEDROCK_SECRET_ACCESS_KEY }}
           BEDROCK_REGION: ${{ vars.BEDROCK_REGION }}
 
+      # recordAndCheckCost() (src/lib/costTracking.ts) already computes
+      # flaggedAnomalous and appends it to every line of stats.jsonl, but
+      # until now that flag only ever reached a console.warn - a
+      # successful-but-anomalous run produced zero durable alert, since the
+      # only alerting step below triggers on if: failure(), which a
+      # successful run by definition never hits. This step reads the line
+      # the pipeline run above just appended and turns that flag into a job
+      # output the alerting step can also key off of.
+      - name: Check for cost anomaly
+        id: cost_check
+        run: |
+          if tail -n 1 src/data/stats.jsonl | grep -q '"flaggedAnomalous":true'; then
+            echo "anomalous=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "anomalous=false" >> "$GITHUB_OUTPUT"
+          fi
+
       # Real, previously observed failure (2026-09-04 scheduled run): if
       # another push lands on main between this job's checkout and its own
       # push below (e.g. an unrelated PR merge), the auto-commit-action's
@@ -119,21 +136,34 @@ jobs:
       # later. This is that revisit. No Slack webhook, no new secret - an
       # official, GitHub-maintained action (SHA-pinned like every other
       # action step in this workflow) files or updates a labeled Issue
-      # instead. `if: failure()` means this step only runs when a prior step
-      # in this job failed.
-      - name: File or update failure issue
-        if: failure()
+      # instead. Triggers on either a prior step failing OR the cost-check
+      # step above flagging an anomalous-but-successful run - previously
+      # this only fired on `if: failure()`, so a real cost anomaly on an
+      # otherwise-successful run produced no durable alert at all (see
+      # docs/superpowers/plans/2026-09-10-research-sweep-fixes.md, 3i).
+      - name: File or update failure/anomaly issue
+        if: failure() || steps.cost_check.outputs.anomalous == 'true'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        env:
+          # job.status (not the failure()/success() status-check functions,
+          # which GitHub restricts to if: conditionals only) reflects the
+          # job's status from the steps executed so far, so this is "failure"
+          # whenever a prior step failed and still "success" when only the
+          # cost-anomaly condition tripped this step.
+          JOB_STATUS: ${{ job.status }}
         with:
           script: |
             const label = "automated-failure";
             const { owner, repo } = context.repo;
             const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
             const timestamp = new Date().toISOString();
+            const reason = process.env.JOB_STATUS === "failure"
+              ? "failed"
+              : "flagged an anomalous cost (see src/data/stats.jsonl)";
 
             // Dedup: comment on the existing open failure issue instead of
-            // filing a new one, so repeated scheduled failures don't spam
-            // the issue tracker with duplicates.
+            // filing a new one, so repeated scheduled failures/anomalies
+            // don't spam the issue tracker with duplicates.
             const existing = await github.rest.issues.listForRepo({
               owner,
               repo,
@@ -147,7 +177,7 @@ jobs:
                 owner,
                 repo,
                 issue_number: issue.number,
-                body: `Another scheduled run of \`daily-pipeline.yml\` failed.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
+                body: `Another scheduled run of \`daily-pipeline.yml\` ${reason}.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
               });
             } else {
               // issues.create auto-creates the `label` if it doesn't exist
@@ -155,8 +185,8 @@ jobs:
               await github.rest.issues.create({
                 owner,
                 repo,
-                title: "daily-pipeline.yml scheduled run failed",
-                body: `The scheduled \`daily-pipeline.yml\` run failed.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
+                title: "daily-pipeline.yml scheduled run failed or flagged a cost anomaly",
+                body: `The scheduled \`daily-pipeline.yml\` run ${reason}.\n\nRun: ${runUrl}\nTime: ${timestamp}`,
                 labels: [label],
               });
             }
