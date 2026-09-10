@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import {
   scoreStoryPlaceholder,
@@ -13,6 +13,7 @@ import {
   computeReadingMinutes,
   buildImageableItems,
   mapWithConcurrency,
+  fetchWithRetry,
 } from "../scripts/pipeline.js";
 
 // Fixed, hand-constructed RawHnStory fixtures (the shape fetchHnFrontPage
@@ -283,5 +284,82 @@ describe("pipeline.ts analysis wiring (source-text check - main()'s per-source l
   it("includes analysis in the candidate object right after why_read, once per source loop", () => {
     const matches = pipelineSource.match(/why_read,\n\s+analysis,/g) ?? [];
     expect(matches.length).toBe(4);
+  });
+});
+
+describe("fetchWithRetry", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it("succeeds on the first attempt with no retry", async () => {
+    const fn = vi.fn().mockResolvedValue("ok");
+    const promise = fetchWithRetry("HN", fn);
+    await vi.runAllTimersAsync();
+    await expect(promise).resolves.toBe("ok");
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("succeeds on the 2nd attempt after 1 failure, logging a warning", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const fn = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("transient failure"))
+      .mockResolvedValueOnce("ok");
+
+    const promise = fetchWithRetry("arXiv", fn);
+    await vi.runAllTimersAsync();
+
+    await expect(promise).resolves.toBe("ok");
+    expect(fn).toHaveBeenCalledTimes(2);
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).toContain("arXiv");
+  });
+
+  it("(regression) exhausts all 3 attempts and rethrows the exact last error, not a generic wrapper", async () => {
+    const errors = [
+      new Error("failure 1"),
+      new Error("failure 2"),
+      new Error("failure 3"),
+    ];
+    const fn = vi
+      .fn()
+      .mockRejectedValueOnce(errors[0])
+      .mockRejectedValueOnce(errors[1])
+      .mockRejectedValueOnce(errors[2]);
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    // Attach the rejection expectation before advancing timers, so the
+    // handler is registered before fetchWithRetry's internal promise
+    // actually rejects - otherwise Node briefly flags it as an unhandled
+    // rejection even though the test itself passes.
+    const assertion = expect(fetchWithRetry("GitHub", fn)).rejects.toBe(
+      errors[2],
+    );
+    await vi.runAllTimersAsync();
+    await assertion;
+    expect(fn).toHaveBeenCalledTimes(3);
+  });
+
+  it("uses exponential backoff (500ms, then 1000ms) between attempts", async () => {
+    const setTimeoutSpy = vi.spyOn(global, "setTimeout");
+    const fn = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("failure 1"))
+      .mockRejectedValueOnce(new Error("failure 2"))
+      .mockResolvedValueOnce("ok");
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const promise = fetchWithRetry("Dev.to", fn);
+    await vi.runAllTimersAsync();
+    await promise;
+
+    const delays = setTimeoutSpy.mock.calls.map((call) => call[1]);
+    expect(delays).toEqual([500, 1000]);
   });
 });
