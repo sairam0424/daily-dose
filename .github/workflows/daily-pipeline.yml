@@ -39,8 +39,10 @@ jobs:
           # theoretical one - keep both workflow files on the same floor.
           node-version: 22
 
+      # npm ci enforces the exact locked tree (package-lock.json) instead of
+      # allowing silent re-resolution the way npm install can.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Real network calls: HN Algolia API, arXiv Atom API, and (with
       # BEDROCK_ACCESS_KEY_ID/BEDROCK_SECRET_ACCESS_KEY set as repo secrets)

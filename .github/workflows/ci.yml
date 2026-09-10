@@ -28,8 +28,10 @@ jobs:
           # Node 20 ("Node.js v20.20.2 is not supported by Astro!").
           node-version: 22
 
+      # npm ci enforces the exact locked tree (package-lock.json) instead of
+      # allowing silent re-resolution the way npm install can.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Builds the Astro static site against whatever digest JSON files are
       # already committed under src/data/digest/. This does NOT invoke the
