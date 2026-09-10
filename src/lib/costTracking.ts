@@ -17,33 +17,30 @@
 import { appendFile, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
-/** us-east-1, on-demand, Standard tier, per-million-token USD. Haiku's
- * figure is Anthropic's long-standing published Haiku-tier price point;
- * Sonnet 4.6 and Opus were confirmed directly from AWS's own blog posts
- * during research - see docs/adr/0003-wire-real-bedrock-curation.md for
- * the exact citations.
- *
- * Claude Sonnet 5's figure is confirmed as of 2026-09-03 - see
- * docs/adr/0005-add-sonnet-5-as-first-choice-model.md's Update section for
- * the full research. Two independent real sources: Anthropic's own pricing
- * page (platform.claude.com/docs/en/about-claude/pricing) states the
- * standard direct-API rate is $2/$10 per million input/output tokens; AWS's
- * own public Price List Bulk API (pricing.us-east-1.amazonaws.com/offers/
- * v1.0/aws/AmazonBedrockFoundationModels/.../us-east-1/index.json, no auth
- * required) lists "Claude Sonnet 5 (Amazon Bedrock Edition)" at $2.20/$11.00
- * per million tokens for the In-Region/Geo (Standard) tier - the tier that
- * applies to this project's exact model ID, "us.anthropic.claude-sonnet-5"
- * (a US-region-prefixed cross-region profile, not "global.anthropic.claude-
- * sonnet-5", which bills at the cheaper $2.00/$10.00 Global cross-Region
- * tier instead). */
+/** Global cross-Region inference-profile tier, per-million-token USD -
+ * MODEL_CHAIN (llmCuration.ts) switched from "us."-prefixed regional
+ * profiles to "global."-prefixed ones (see that file's own comment: a
+ * real, disclosed Bedrock call confirmed the IAM role permits it for
+ * Sonnet 5/Sonnet 4.6/Haiku 4.5 - Opus remains explicitly IAM-denied
+ * either way, unrelated to this prefix). Confirmed directly against
+ * Anthropic's own pricing page (platform.claude.com/docs/en/about-claude/
+ * pricing, fetched 2026-09-10): "Regional and multi-region endpoints
+ * include a 10% premium over global endpoints" - i.e. the table below is
+ * each model's real, standard/global rate, and the old "us."-prefixed
+ * keys' dollar figures already matched this exactly for all 3 non-Sonnet-5
+ * models; only Sonnet 5's old entry ($2.20/$11.00) was the 1.1x-premium
+ * regional rate and has been corrected to its real global rate here. */
 export const PRICING_PER_MILLION_TOKENS: Record<
   string,
   { input: number; output: number }
 > = {
-  "us.anthropic.claude-sonnet-5": { input: 2.2, output: 11.0 },
-  "us.anthropic.claude-sonnet-4-6": { input: 3.0, output: 15.0 },
-  "us.anthropic.claude-opus-4-6-v1": { input: 5.0, output: 25.0 },
-  "us.anthropic.claude-haiku-4-5-20251001-v1:0": { input: 1.0, output: 5.0 },
+  "global.anthropic.claude-sonnet-5": { input: 2.0, output: 10.0 },
+  "global.anthropic.claude-sonnet-4-6": { input: 3.0, output: 15.0 },
+  "global.anthropic.claude-opus-4-6-v1": { input: 5.0, output: 25.0 },
+  "global.anthropic.claude-haiku-4-5-20251001-v1:0": {
+    input: 1.0,
+    output: 5.0,
+  },
 };
 
 export function calculateCostUsd(

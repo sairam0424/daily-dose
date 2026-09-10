@@ -22,7 +22,7 @@ const {
   MIN_HISTORY_FOR_ANOMALY_CHECK,
 } = await import("../src/lib/costTracking.js");
 
-const MODEL = "us.anthropic.claude-sonnet-5";
+const MODEL = "global.anthropic.claude-sonnet-5";
 
 function statsLine(entry: Record<string, unknown>): string {
   return JSON.stringify(entry) + "\n";
@@ -56,10 +56,10 @@ describe("calculateCostUsd", () => {
     expect(cost).toBeCloseTo(pricing.input + pricing.output);
   });
 
-  it("pins Claude Sonnet 5's real researched rate ($2.20/$11.00 per MTok, ADR 0005) so it can't silently drift", () => {
+  it("pins Claude Sonnet 5's real Global-tier rate ($2.00/$10.00 per MTok, Anthropic's own pricing page) so it can't silently drift", () => {
     expect(PRICING_PER_MILLION_TOKENS[MODEL]).toEqual({
-      input: 2.2,
-      output: 11.0,
+      input: 2.0,
+      output: 10.0,
     });
   });
 
