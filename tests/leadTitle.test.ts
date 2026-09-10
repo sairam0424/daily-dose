@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { MAX_LEAD_TITLE_CHARS, quoteLeadTitle } from "../src/lib/leadTitle.js";
+import {
+  buildArchiveDateTitle,
+  MAX_LEAD_TITLE_CHARS,
+  quoteLeadTitle,
+} from "../src/lib/leadTitle.js";
 
 describe("quoteLeadTitle", () => {
   it("quotes a short title with a trailing period", () => {
@@ -57,5 +61,49 @@ describe("quoteLeadTitle", () => {
 
     // The emoji itself survived intact in the truncated, quoted result.
     expect(result).toContain(emoji);
+  });
+
+  it("respects a custom, tighter maxChars budget for narrower contexts like a <title> tag", () => {
+    const title =
+      "A real, unbounded lead story title that is much longer than a tight budget allows";
+    expect(quoteLeadTitle(title, 10)).toBe('"A real, un…"');
+  });
+});
+
+describe("buildArchiveDateTitle", () => {
+  const MAX_SAFE_TITLE_LENGTH = 60;
+
+  it("builds the expected 'The Daily Dose — {date} — led by {quoted title}' shape for a short title", () => {
+    // Short enough (10 chars) to fit the real remaining per-title budget
+    // (60 - the fixed prefix's 37 chars - quoteLeadTitle's own 3 wrapping
+    // chars = 20) without truncation.
+    expect(buildArchiveDateTitle("2026-09-09", "iPhone Duo")).toBe(
+      'The Daily Dose — 2026-09-09 — led by "iPhone Duo."',
+    );
+  });
+
+  it("(regression) stays at or under the real ~60-char SERP-truncation ceiling for a real, long lead title", () => {
+    // A real committed lead title from this session (2026-09-06's top
+    // arXiv paper) - 104 characters, more than double
+    // MAX_LEAD_TITLE_CHARS, and easily long enough to blow past 60 chars
+    // once the fixed "The Daily Dose — {date} — led by " prefix is
+    // added if leadTitleQuoted's own 48-char body budget were reused
+    // verbatim in the <title> tag instead of a tag-specific budget.
+    const realLongLeadTitle =
+      "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning";
+    const title = buildArchiveDateTitle("2026-09-06", realLongLeadTitle);
+    expect(title.length).toBeLessThanOrEqual(MAX_SAFE_TITLE_LENGTH);
+    expect(title.startsWith("The Daily Dose — 2026-09-06 — led by ")).toBe(
+      true,
+    );
+  });
+
+  it("honors a custom maxChars budget", () => {
+    const title = buildArchiveDateTitle(
+      "2026-09-09",
+      "openai/NavierStokesAndEuler",
+      40,
+    );
+    expect(title.length).toBeLessThanOrEqual(40);
   });
 });

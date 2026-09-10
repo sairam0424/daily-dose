@@ -17,9 +17,15 @@
 // total length bounded regardless of the real title's length.
 export const MAX_LEAD_TITLE_CHARS = 48;
 
-/** Quote (and, if it exceeds MAX_LEAD_TITLE_CHARS, truncate) a real
- * lead-story title for display. */
-export function quoteLeadTitle(title: string): string {
+/** Quote (and, if it exceeds `maxChars`, truncate) a real lead-story title
+ * for display. `maxChars` defaults to the looser body-copy budget
+ * (MAX_LEAD_TITLE_CHARS, calibrated against the ~155-char meta-description
+ * ceiling); pass a smaller value for a tighter context, e.g. a `<title>`
+ * tag's own, much shorter SERP-truncation ceiling. */
+export function quoteLeadTitle(
+  title: string,
+  maxChars: number = MAX_LEAD_TITLE_CHARS,
+): string {
   const stripped = title.replace(/[.?!]+$/, "");
   // Array.from() iterates a string by Unicode code point, not UTF-16 code
   // unit - a plain String.prototype.slice() on a title containing an
@@ -33,8 +39,36 @@ export function quoteLeadTitle(title: string): string {
   // instead guarantees truncation only ever lands on a whole-character
   // boundary.
   const codePoints = Array.from(stripped);
-  if (codePoints.length > MAX_LEAD_TITLE_CHARS) {
-    return `"${codePoints.slice(0, MAX_LEAD_TITLE_CHARS).join("").trimEnd()}…"`;
+  if (codePoints.length > maxChars) {
+    return `"${codePoints.slice(0, maxChars).join("").trimEnd()}…"`;
   }
   return `"${stripped}."`;
+}
+
+// A page's <title> tag has a much tighter real SERP-truncation budget
+// (see tests/titleLength.test.ts's MAX_SAFE_TITLE_LENGTH, 60 chars) than
+// quoteLeadTitle's own default MAX_LEAD_TITLE_CHARS body budget, which is
+// calibrated against the far looser ~155-char meta-description ceiling.
+// Reusing a quoteLeadTitle(title) call meant for the description verbatim
+// in a <title> tag would blow past that tighter budget on every real
+// digest date checked this session (the fixed
+// "The Daily Dose — YYYY-MM-DD — led by " prefix alone already consumes
+// well over half of it) - compute the real remaining budget for the
+// quoted title instead of reusing the description's own truncation.
+const TITLE_TAG_MAX_CHARS = 60;
+
+/** Build the archive date page's <title> tag: the fixed
+ * "The Daily Dose — {date} — led by {quoted lead title}" shape, with the
+ * lead title truncated against whatever budget remains under
+ * `maxChars` (default: the real ~60-char SERP-truncation ceiling) after
+ * the fixed prefix and quoteLeadTitle's own wrapping quotes/terminal
+ * punctuation (3 chars) are accounted for. */
+export function buildArchiveDateTitle(
+  date: string,
+  leadTitle: string,
+  maxChars: number = TITLE_TAG_MAX_CHARS,
+): string {
+  const prefix = `The Daily Dose — ${date} — led by `;
+  const quotedTitleBudget = Math.max(0, maxChars - prefix.length - 3);
+  return `${prefix}${quoteLeadTitle(leadTitle, quotedTitleBudget)}`;
 }

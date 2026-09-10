@@ -10,7 +10,7 @@ import Layout from '../../layouts/Layout.astro';
 import { groupEntriesByDate } from '../../lib/digestGrouping.js';
 import { isFlagEnabled } from '../../lib/featureFlags.js';
 import { safeJsonLdString } from '../../lib/jsonLd.js';
-import { quoteLeadTitle } from '../../lib/leadTitle.js';
+import { buildArchiveDateTitle, quoteLeadTitle } from '../../lib/leadTitle.js';
 
 interface DateParams {
   date: string;
@@ -50,10 +50,15 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
 const leadEntry = entries[0];
 const storyCountLabel = `${entries.length} ${entries.length === 1 ? "story" : "stories"}`;
 
-// quoteLeadTitle (real per-date title quoting/truncation, unbounded free
-// text from HN/arXiv/GitHub/Dev.to) lives in ../../lib/leadTitle.js so it
-// stays directly Vitest-testable - see that file for the full rationale.
+// quoteLeadTitle/buildArchiveDateTitle (real per-date title
+// quoting/truncation, unbounded free text from HN/arXiv/GitHub/Dev.to)
+// live in ../../lib/leadTitle.js so they stay directly Vitest-testable -
+// see that file for the full rationale.
 const leadTitleQuoted = quoteLeadTitle(leadEntry.data.title);
+// The <title> tag has a much tighter SERP-truncation budget than the
+// meta description below, so it gets its own, separately-truncated
+// quoted lead title rather than reusing leadTitleQuoted verbatim.
+const pageTitle = buildArchiveDateTitle(date, leadEntry.data.title);
 
 // Real 3-level trail (Home > All digests > {date}) - the final/
 // current-page ListItem omits `item` per Google's own documented
@@ -70,7 +75,7 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title={`The Daily Dose — ${date}`}
+  title={pageTitle}
   description={`The daily-dose digest for ${date} — ${storyCountLabel} from Hacker News, arXiv, GitHub, and Dev.to, led by ${leadTitleQuoted}`}
   path={`/archive/${date}/`}
 >
