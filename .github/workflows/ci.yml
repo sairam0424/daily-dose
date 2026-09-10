@@ -39,6 +39,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Automated accessibility gate: runs axe-core (via jsdom) against a
+      # representative subset of the real built HTML - homepage, one archive
+      # date page, methodology, privacy - failing the build on any real
+      # violation. See scripts/a11yCheck.ts and docs/superpowers/plans/
+      # 2026-09-10-research-sweep-fixes.md item 6a.
+      - name: Accessibility check
+        run: npx tsx scripts/a11yCheck.ts
+
       # Network-free unit/schema tests only.
       - name: Test
         run: npx vitest run
