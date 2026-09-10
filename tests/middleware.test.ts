@@ -96,6 +96,10 @@ describe("onRequest — Cache-Control on /stats", () => {
       context,
       fakeNext(new Response("unused - no valid credential supplied")),
     );
+    // onRequest's real return type is Response | void (Astro's
+    // MiddlewareHandler allows a void "fall through" return) - narrow it
+    // here since this test's whole point is asserting on a real Response.
+    if (!response) throw new Error("expected onRequest to return a Response");
     expect(response.status).toBe(401);
     expect(response.headers.get("cache-control")).toBe("private, no-store");
   });
@@ -108,6 +112,7 @@ describe("onRequest — Cache-Control on /stats", () => {
       context,
       fakeNext(new Response("real stats page markup")),
     );
+    if (!response) throw new Error("expected onRequest to return a Response");
     expect(response.status).toBe(200);
     expect(response.headers.get("cache-control")).toBe("private, no-store");
   });

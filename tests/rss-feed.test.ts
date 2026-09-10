@@ -51,6 +51,18 @@ beforeAll(() => {
 });
 
 describe("dist/rss.xml build output", () => {
+  it("declares its own atom:link rel=self pointing at the combined feed's own URL", () => {
+    const parser = new XMLParser(RSS_PARSER_OPTIONS);
+    const parsed = parser.parse(rssXml);
+    const selfLink = parsed.rss.channel["atom:link"];
+    expect(selfLink).toBeTruthy();
+    expect(selfLink["@_rel"]).toBe("self");
+    expect(selfLink["@_type"]).toBe("application/rss+xml");
+    expect(selfLink["@_href"]).toBe(
+      "https://daily-dose-hazel-delta.vercel.app/rss.xml",
+    );
+  });
+
   it("(regression) parser tolerates a realistically large entity count without hitting fast-xml-parser's default DoS ceiling", () => {
     // Synthetic, deterministic fixture - independent of how many real
     // entities today's committed data happens to contain, so this stays a
