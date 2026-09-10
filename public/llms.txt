@@ -9,5 +9,4 @@ The Daily Dose surfaces the most interesting technical stories, papers, reposito
 - [Latest digest](https://daily-dose-hazel-delta.vercel.app/): today's curated picks.
 - [All digests](https://daily-dose-hazel-delta.vercel.app/archive/): every past day's digest, browsable by date.
 - [RSS feed](https://daily-dose-hazel-delta.vercel.app/rss.xml): all sources combined; per-source RSS feeds are linked from the site footer.
-- [Cost & stats](https://daily-dose-hazel-delta.vercel.app/stats): a real, public per-run LLM cost transparency ledger.
 - [Privacy](https://daily-dose-hazel-delta.vercel.app/privacy): what this site collects and why.
