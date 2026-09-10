@@ -12,6 +12,24 @@
 const FETCH_TIMEOUT_MS = 5000;
 const IMAGE_FETCH_HEADERS = { "User-Agent": "daily-dose-pipeline" };
 const MAX_IMAGE_BYTES = 500_000;
+const MAX_REDIRECTS = 5;
+
+const PRIVATE_HOST_PATTERNS: readonly RegExp[] = [
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2\d|3[01])\./,
+  /^192\.168\./,
+  /^169\.254\./,
+  /^localhost$/i,
+];
+
+/** SSRF hardening: rejects loopback/link-local/private-network hosts so a
+ * resolved image/page URL - including a redirect target re-checked on every
+ * hop by fetchFollowingRedirects - can never point this pipeline's real
+ * fetch calls at an internal service. */
+function isPrivateOrLoopbackHost(hostname: string): boolean {
+  return PRIVATE_HOST_PATTERNS.some((pattern) => pattern.test(hostname));
+}
 
 function resolveUrl(
   maybeRelative: string,
@@ -22,10 +40,60 @@ function resolveUrl(
     if (url.protocol !== "http:" && url.protocol !== "https:") {
       return undefined;
     }
+    if (isPrivateOrLoopbackHost(url.hostname)) {
+      return undefined;
+    }
     return url.toString();
   } catch {
     return undefined;
   }
+}
+
+class UnsafeRedirectError extends Error {}
+
+/** Fetches `url` without relying on `fetch`'s automatic redirect following,
+ * which never re-validates a redirect's Location header - a public first
+ * hop could otherwise hide a private-network second hop (SSRF via open
+ * redirect). Manually follows up to MAX_REDIRECTS 3xx responses, re-running
+ * the same scheme/private-host check (resolveUrl) on every hop, and throws
+ * UnsafeRedirectError (caught by every call site's existing try/catch, same
+ * as a real network error) if any hop - including the very first URL - is
+ * unsafe or unresolvable, or if the chain is too long. */
+async function fetchFollowingRedirects(
+  initialUrl: string,
+  init: RequestInit,
+): Promise<Response> {
+  const validatedInitialUrl = resolveUrl(initialUrl, initialUrl);
+  if (!validatedInitialUrl) {
+    throw new UnsafeRedirectError(
+      `Refusing to fetch unsafe URL: ${initialUrl}`,
+    );
+  }
+
+  let currentUrl = validatedInitialUrl;
+
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+    const response = await fetch(currentUrl, { ...init, redirect: "manual" });
+
+    const isRedirect =
+      typeof response.status === "number" &&
+      response.status >= 300 &&
+      response.status < 400;
+    if (!isRedirect) return response;
+
+    const location = response.headers.get("location");
+    if (!location) return response;
+
+    const nextUrl = resolveUrl(location, currentUrl);
+    if (!nextUrl) {
+      throw new UnsafeRedirectError(
+        `Refusing to follow redirect to unsafe URL: ${location}`,
+      );
+    }
+    currentUrl = nextUrl;
+  }
+
+  throw new UnsafeRedirectError(`Too many redirects fetching ${initialUrl}`);
 }
 
 /** Extracts one attribute's value from the first <meta> tag matching
@@ -118,7 +186,11 @@ export function extractFavicon(
   }
 }
 
-const AR5IV_BASE_URL = "https://ar5iv.labs.arxiv.org/html/";
+// ar5iv.labs.arxiv.org now 307-redirects every request to the plain
+// abstract page (live-confirmed for current 2026 arXiv IDs) - arxiv.org's
+// own native HTML rendering has superseded it and serves the same
+// LaTeXML-generated <figure><img> markup extractFirstFigureImage looks for.
+const AR5IV_BASE_URL = "https://arxiv.org/html/";
 
 export function extractFirstFigureImage(
   html: string,
@@ -128,10 +200,10 @@ export function extractFirstFigureImage(
     /<figure[^>]*>[\s\S]*?<img\s+[^>]*\bsrc\s*=\s*["']([^"']+)["'][\s\S]*?<\/figure>/i,
   );
   if (!figureMatch?.[1]) return undefined;
-  // ar5iv page URLs (e.g. ".../html/2609.04190") have no trailing slash, but
-  // relative figure srcs are meant to resolve as if that ID were a directory -
-  // without normalizing, the WHATWG URL resolver treats "2609.04190" as a file
-  // segment and drops it entirely.
+  // arXiv HTML-rendering page URLs (e.g. ".../html/2609.04190") have no
+  // trailing slash, but relative figure srcs are meant to resolve as if
+  // that ID were a directory - without normalizing, the WHATWG URL
+  // resolver treats "2609.04190" as a file segment and drops it entirely.
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
   return resolveUrl(figureMatch[1], normalizedBase);
 }
@@ -139,9 +211,9 @@ export function extractFirstFigureImage(
 /**
  * arXiv-specific fallback: every arXiv abstract page shares the same
  * generic og:image (rejected by isGenericImageUrl), so this fetches the
- * paper's ar5iv HTML rendering and extracts its own first real figure
- * instead - a genuinely per-paper image, not a repeated logo. arxivId
- * must be the REAL arXiv id (e.g. "2609.04190" or the old-style
+ * paper's arxiv.org/html native HTML rendering and extracts its own first
+ * real figure instead - a genuinely per-paper image, not a repeated logo.
+ * arxivId must be the REAL arXiv id (e.g. "2609.04190" or the old-style
  * "cs.AI/0601001") - NOT scripts/pipeline.ts's filename-sanitized version
  * (sanitizeArxivId), which replaces the slash old-style IDs need intact.
  */
@@ -153,7 +225,7 @@ export async function resolveArxivFigureImage(
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(ar5ivUrl, {
+    const response = await fetchFollowingRedirects(ar5ivUrl, {
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
     });
@@ -192,7 +264,7 @@ async function isImageUrlReachable(url: string): Promise<boolean> {
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(url, {
+    const response = await fetchFollowingRedirects(url, {
       method: "HEAD",
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
@@ -237,7 +309,7 @@ export async function resolveItemImage(
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(pageUrl, {
+    const response = await fetchFollowingRedirects(pageUrl, {
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
     });
