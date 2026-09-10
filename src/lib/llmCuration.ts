@@ -45,6 +45,7 @@
 import { AnthropicBedrock } from "@anthropic-ai/bedrock-sdk";
 import { NotFoundError, BadRequestError } from "@anthropic-ai/sdk";
 import { z } from "zod";
+import { escapeHtml } from "./htmlEscape.js";
 import { UNTRUSTED_DATA_INSTRUCTION } from "./promptSafety.js";
 
 export interface ScorableItem {
@@ -162,7 +163,13 @@ function buildPrompt(items: ScorableItem[]): string {
   const itemBlocks = items
     .map((item) => {
       const lines = [`<item id="${item.id}" source="${item.source}">`];
-      lines.push(`<title>${item.title}</title>`);
+      // Structural escaping, defense-in-depth alongside promptSafety.ts's
+      // instruction-layer UNTRUSTED_DATA_INSTRUCTION below: an untrusted
+      // title containing a literal "</title>" could otherwise close this
+      // tag early and blur the intended boundary between "this is title
+      // text" and "this is the next structural tag" for the model. See
+      // docs/superpowers/plans/2026-09-10-research-sweep-fixes.md item 1e.
+      lines.push(`<title>${escapeHtml(item.title)}</title>`);
       if (item.points !== undefined) {
         lines.push(
           `<engagement>${item.points} points, ${item.numComments ?? 0} comments on Hacker News</engagement>`,
