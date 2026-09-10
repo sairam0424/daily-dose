@@ -28,7 +28,7 @@ Two rules protect this project's honesty, and both are load-bearing, not stylist
 npm install
 ```
 
-Requires Node.js LTS 20 or 22+ (the pipeline script runs via `tsx`, which needs a current Node). No database, no external service account, no API key — the HN Algolia endpoint used by the pipeline is free and keyless.
+Requires Node.js 22.12+ (astro@7.3.2+, bumped in PR #112 to close a critical AVIF RCE, refuses to run on anything older via its own CLI version check — Node 20 no longer works). No database, no external service account, no API key — the HN Algolia endpoint used by the pipeline is free and keyless.
 
 ## Build / Test / Run Commands
 

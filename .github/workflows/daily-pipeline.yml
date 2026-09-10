@@ -31,7 +31,13 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Kept in sync with ci.yml - astro@7.3.2+ (PR #112) requires
+          # Node >=22.12.0. This job's own `npm run pipeline` step doesn't
+          # call astro's CLI directly, but installing astro as a dependency
+          # under an unsupported Node version is a real, previously
+          # confirmed CI failure mode elsewhere in this repo, not a
+          # theoretical one - keep both workflow files on the same floor.
+          node-version: 22
 
       - name: Install dependencies
         run: npm install

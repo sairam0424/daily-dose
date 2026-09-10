@@ -70,9 +70,14 @@ describe("findDigestItem", () => {
 
 const mockCreate = vi.fn();
 vi.mock("@anthropic-ai/bedrock-sdk", () => ({
-  AnthropicBedrock: vi
-    .fn()
-    .mockImplementation(() => ({ messages: { create: mockCreate } })),
+  // A plain `function` (not an arrow function) is required here so the
+  // mock stays constructible - the real SDK client is instantiated via
+  // `new AnthropicBedrock(...)`, and arrow functions have no
+  // `[[Construct]]` slot. Vitest 4 enforces this natively (it no longer
+  // papers over it the way 3.x did) - see https://vitest.dev/api/vi#vi-spyon.
+  AnthropicBedrock: vi.fn().mockImplementation(function () {
+    return { messages: { create: mockCreate } };
+  }),
 }));
 
 const { researchItem, MAX_TURNS } =
