@@ -29,7 +29,8 @@ const tier = interestTier(entry.data.interest_score);
       class="story-image"
       src={entry.data.image_url}
       alt=""
-      loading="lazy"
+      loading={index === 0 ? 'eager' : 'lazy'}
+      fetchpriority={index === 0 ? 'high' : undefined}
       width="560"
       height="315"
       referrerpolicy="no-referrer"
