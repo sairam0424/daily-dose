@@ -74,4 +74,23 @@ describe("archive preview cards", () => {
       /\.preview-date(?:\[[^\]]*\])?:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--accent\)/,
     );
   });
+
+  it("(regression) sets height:auto on the preview image so aspect-ratio governs its box instead of the width/height HTML attributes", () => {
+    // Real, screenshot-confirmed bug: the <img>'s width="320" height="180"
+    // attributes (kept for CLS prevention) map to a fixed-pixel CSS
+    // height presentational hint, which counts as an explicit height and
+    // so wins over aspect-ratio's own auto-sizing. Confirmed live: a
+    // real card at 1018px wide rendered its image at 1018x180 (5.6:1)
+    // instead of the intended 16:9 box, and object-fit:cover then
+    // cropped nearly all of the image's vertical content away. height:
+    // auto restores aspect-ratio as the real source of truth.
+    const style = readAllPageCss(html);
+    const ruleMatch = style.match(
+      /\.preview-image(?:\[[^\]]*\])?\s*\{([^}]*)\}/s,
+    );
+    expect(ruleMatch, "expected a .preview-image rule").toBeTruthy();
+    const rule = ruleMatch![1];
+    expect(rule).toMatch(/height:\s*auto/);
+    expect(rule).toMatch(/aspect-ratio:\s*16\s*\/\s*9/);
+  });
 });

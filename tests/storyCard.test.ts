@@ -186,4 +186,29 @@ describe("StoryCard.astro source structure", () => {
   it("(perf fix) leaves the decorative favicon icon's loading behavior untouched (still unconditionally lazy)", () => {
     expect(source).toMatch(/<img\s+class="favicon-icon"[^>]*loading="lazy"/s);
   });
+
+  it("(regression) excludes GitHub lead stories from the Newspaper skin's headline drop-cap", () => {
+    // Real, screenshot-confirmed bug: a GitHub item's title is always an
+    // owner/repo code identifier (e.g. "openai/NavierStokesAndEuler"),
+    // never prose - pulling its first character into a 3em floated
+    // drop-cap produced a nonsensical oversized standalone letter glued
+    // to the rest of the identifier with no natural word break.
+    expect(source).toMatch(
+      /\.lead-story:not\(\[data-source=['"]github['"]\]\)\s*\.story-title::first-letter/,
+    );
+  });
+
+  it("(regression) sets height:auto on the story image so aspect-ratio governs its box instead of the width/height HTML attributes", () => {
+    // Real, live-confirmed bug: the <img>'s width="560" height="315"
+    // attributes (kept for CLS prevention) map to a fixed-pixel CSS
+    // height presentational hint, which counts as an explicit height and
+    // so wins over aspect-ratio's own auto-sizing - every homepage story
+    // image rendered as a squashed fixed-height box (e.g. 1037x315
+    // instead of a real 16:9/16:8 box) regardless of its actual rendered
+    // width. height: auto restores aspect-ratio as the real source of
+    // truth.
+    expect(source).toMatch(
+      /\.story-image\s*\{[^}]*width:\s*100%;[^}]*height:\s*auto;[^}]*aspect-ratio:\s*16 \/ 9;/s,
+    );
+  });
 });
