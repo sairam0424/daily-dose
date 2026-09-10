@@ -1,5 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { NotFoundError } from "@anthropic-ai/sdk";
+import {
+  NotFoundError,
+  PermissionDeniedError,
+  RateLimitError,
+  InternalServerError,
+} from "@anthropic-ai/sdk";
 
 // Mock @anthropic-ai/bedrock-sdk entirely - the automated suite must never
 // make a real network/LLM call. Only the manual `npm run pipeline` command
@@ -305,7 +310,106 @@ describe("scoreItemsWithLLM", () => {
     expect(secondCallArgs.thinking).toBeUndefined();
   });
 
-  it("throws (does not silently swallow) an error class that is not NotFoundError/BadRequestError/SyntaxError", async () => {
+  it("(regression) falls back to the next model in the chain on PermissionDeniedError from the primary model - this account's Bedrock role is already known to hard-deny some models, and a 403 here must not abort the whole run", async () => {
+    mockCreate
+      .mockRejectedValueOnce(
+        new PermissionDeniedError(
+          403,
+          {},
+          "You don't have access to this model",
+          new Headers(),
+          "permission_error",
+        ),
+      )
+      .mockResolvedValueOnce(
+        toolUseResponse([
+          {
+            id: "hn-1",
+            interest_score: 5,
+            why_read: "Fine.",
+            analysis: "A real, multi-sentence fallback-model analysis.",
+            exclude: false,
+          },
+        ]),
+      );
+
+    const outcome = await scoreItemsWithLLM([
+      {
+        id: "hn-1",
+        source: "hn",
+        title: "A real story",
+        points: 10,
+        numComments: 2,
+      },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("(regression) falls back to the next model in the chain on RateLimitError from the primary model, once the SDK's own maxRetries against that same model is exhausted", async () => {
+    mockCreate
+      .mockRejectedValueOnce(
+        new RateLimitError(
+          429,
+          {},
+          "rate limited",
+          new Headers(),
+          "rate_limit_error",
+        ),
+      )
+      .mockResolvedValueOnce(
+        toolUseResponse([
+          {
+            id: "hn-1",
+            interest_score: 5,
+            why_read: "Fine.",
+            analysis: "A real, multi-sentence fallback-model analysis.",
+            exclude: false,
+          },
+        ]),
+      );
+
+    const outcome = await scoreItemsWithLLM([
+      { id: "hn-1", source: "hn", title: "A real story" },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("(regression) falls back to the next model in the chain on InternalServerError from the primary model, once the SDK's own maxRetries against that same model is exhausted", async () => {
+    mockCreate
+      .mockRejectedValueOnce(
+        new InternalServerError(
+          500,
+          {},
+          "internal error",
+          new Headers(),
+          "api_error",
+        ),
+      )
+      .mockResolvedValueOnce(
+        toolUseResponse([
+          {
+            id: "hn-1",
+            interest_score: 5,
+            why_read: "Fine.",
+            analysis: "A real, multi-sentence fallback-model analysis.",
+            exclude: false,
+          },
+        ]),
+      );
+
+    const outcome = await scoreItemsWithLLM([
+      { id: "hn-1", source: "hn", title: "A real story" },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[1]);
+    expect(mockCreate).toHaveBeenCalledTimes(2);
+  });
+
+  it("throws (does not silently swallow) an error class that is not in the retryable set (NotFoundError/BadRequestError/PermissionDeniedError/RateLimitError/InternalServerError/SyntaxError)", async () => {
     mockCreate.mockRejectedValueOnce(
       new Error("some unexpected network failure"),
     );
@@ -443,6 +547,73 @@ describe("scoreItemsWithLLM", () => {
     expect(outcome.scores.get("hn-1")?.why_read).toBe(
       "Genuinely substantive discussion.",
     );
+  });
+
+  it("(regression) accumulates real billed token usage across every attempt in the chain - including failed ones - not just the final successful attempt", async () => {
+    mockCreate
+      .mockResolvedValueOnce({
+        content: [
+          {
+            type: "tool_use",
+            id: "toolu_attempt1",
+            name: "record_scores",
+            // Truncated mid-string -> SyntaxError on JSON.parse, but this
+            // attempt still got a real response with real, billed usage.
+            input: {
+              scores: '[{"id":"hn-1","interest_score":8,"why_read":"Fine.',
+            },
+          },
+        ],
+        stop_reason: "max_tokens",
+        usage: { input_tokens: 50, output_tokens: 100 },
+      })
+      .mockResolvedValueOnce({
+        content: [
+          {
+            type: "tool_use",
+            id: "toolu_attempt2",
+            name: "record_scores",
+            input: {
+              scores: '[{"id":"hn-1","interest_score":8,"why_read":"Fine.',
+            },
+          },
+        ],
+        stop_reason: "max_tokens",
+        usage: { input_tokens: 60, output_tokens: 200 },
+      })
+      .mockResolvedValueOnce({
+        content: [
+          {
+            type: "tool_use",
+            id: "toolu_attempt3",
+            name: "record_scores",
+            input: {
+              scores: [
+                {
+                  id: "hn-1",
+                  interest_score: 8,
+                  why_read: "Genuinely substantive discussion.",
+                  analysis: "A real, multi-sentence analysis.",
+                  exclude: false,
+                },
+              ],
+            },
+          },
+        ],
+        stop_reason: "tool_use",
+        usage: { input_tokens: 70, output_tokens: 300 },
+      });
+
+    const outcome = await scoreItemsWithLLM([
+      { id: "hn-1", source: "hn", title: "x" },
+    ]);
+
+    expect(outcome.modelUsed).toBe(MODEL_CHAIN[2]);
+    expect(mockCreate).toHaveBeenCalledTimes(3);
+    // Sum of all 3 attempts (50+60+70, 100+200+300), not just the final
+    // successful attempt's 70/300 - every attempt was real, billed usage.
+    expect(outcome.inputTokens).toBe(180);
+    expect(outcome.outputTokens).toBe(600);
   });
 
   it("throws if the tool_use input is missing analysis (the new required field)", async () => {
