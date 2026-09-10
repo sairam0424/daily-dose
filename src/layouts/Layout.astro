@@ -185,7 +185,9 @@ const devModeEnabled = isFlagEnabled(import.meta.env.ENABLE_DEV_MODE);
          comment, since a regex-based static-HTML test elsewhere scans
          for the first literal opening tag of that name and would
          otherwise match this comment instead of the real element below. -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav aria-label="Skip links">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+    </nav>
     <Analytics />
     <SpeedInsights />
     <ScrollToTop />

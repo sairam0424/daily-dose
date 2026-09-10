@@ -82,7 +82,7 @@ const breadcrumbSchema = {
   <script type="application/ld+json" set:html={safeJsonLdString(breadcrumbSchema)} />
   <header class="masthead">
     <div class="masthead-utility">
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Primary">
         <a href="/">&larr; Latest digest</a>
         <a href="/archive/">All digests</a>
       </nav>
@@ -99,7 +99,7 @@ const breadcrumbSchema = {
     <FilterBar />
     <DigestList entries={entries} />
 
-    <nav class="date-nav">
+    <nav class="date-nav" aria-label="Date navigation">
       <span>
         {olderDate ? <a href={`/archive/${olderDate}/`}>&larr; Older ({olderDate})</a> : null}
       </span>
