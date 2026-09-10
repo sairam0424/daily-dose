@@ -99,6 +99,21 @@ describe("extractOgImage", () => {
       "https://example.com/real-cover.png",
     );
   });
+
+  it("(SSRF hardening) rejects an og:image resolving to a link-local/metadata-service address", () => {
+    const html = `<meta property="og:image" content="http://169.254.169.254/latest/meta-data/">`;
+    expect(extractOgImage(html, "https://example.com/article")).toBeUndefined();
+  });
+
+  it("(SSRF hardening) rejects an og:image resolving to a private RFC1918 address", () => {
+    const html = `<meta property="og:image" content="http://192.168.1.1/cover.png">`;
+    expect(extractOgImage(html, "https://example.com/article")).toBeUndefined();
+  });
+
+  it("(SSRF hardening) rejects an og:image resolving to localhost", () => {
+    const html = `<meta property="og:image" content="http://localhost:8080/cover.png">`;
+    expect(extractOgImage(html, "https://example.com/article")).toBeUndefined();
+  });
 });
 
 describe("isGenericImageUrl", () => {
@@ -172,6 +187,13 @@ describe("extractFavicon", () => {
 
   it("rejects javascript: scheme in favicon link href and falls back to Google", () => {
     const html = `<link rel="icon" href="javascript:alert('xss')">`;
+    expect(extractFavicon(html, "https://example.com/page")).toBe(
+      "https://www.google.com/s2/favicons?domain=example.com&sz=32",
+    );
+  });
+
+  it("(SSRF hardening) rejects a favicon link resolving to a private network address and falls back to Google", () => {
+    const html = `<link rel="icon" href="http://10.0.0.5/favicon.ico">`;
     expect(extractFavicon(html, "https://example.com/page")).toBe(
       "https://www.google.com/s2/favicons?domain=example.com&sz=32",
     );
@@ -283,6 +305,30 @@ describe("resolveItemImage", () => {
     const result = await resolveItemImage("https://example.com/article");
 
     expect(result.image_url).toBeUndefined();
+  });
+
+  it("(SSRF hardening) rejects a redirect chain whose 2nd hop targets a private/link-local address, even though the 1st hop was a public host", async () => {
+    (fetch as any)
+      .mockResolvedValueOnce({
+        status: 302,
+        headers: {
+          get: (name: string) =>
+            name === "location" ? "https://public-cdn.example.com/next" : null,
+        },
+      }) // 1st hop: public host redirects onward
+      .mockResolvedValueOnce({
+        status: 302,
+        headers: {
+          get: (name: string) =>
+            name === "location" ? "http://169.254.169.254/secret" : null,
+        },
+      }); // 2nd hop: redirect target is a link-local/metadata-service address
+
+    const result = await resolveItemImage("https://example.com/article");
+
+    expect(result).toEqual({});
+    // Only 2 fetch calls: the unsafe 3rd hop must never be attempted.
+    expect(fetch).toHaveBeenCalledTimes(2);
   });
 });
 

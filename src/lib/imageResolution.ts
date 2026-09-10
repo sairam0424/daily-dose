@@ -12,6 +12,24 @@
 const FETCH_TIMEOUT_MS = 5000;
 const IMAGE_FETCH_HEADERS = { "User-Agent": "daily-dose-pipeline" };
 const MAX_IMAGE_BYTES = 500_000;
+const MAX_REDIRECTS = 5;
+
+const PRIVATE_HOST_PATTERNS: readonly RegExp[] = [
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2\d|3[01])\./,
+  /^192\.168\./,
+  /^169\.254\./,
+  /^localhost$/i,
+];
+
+/** SSRF hardening: rejects loopback/link-local/private-network hosts so a
+ * resolved image/page URL - including a redirect target re-checked on every
+ * hop by fetchFollowingRedirects - can never point this pipeline's real
+ * fetch calls at an internal service. */
+function isPrivateOrLoopbackHost(hostname: string): boolean {
+  return PRIVATE_HOST_PATTERNS.some((pattern) => pattern.test(hostname));
+}
 
 function resolveUrl(
   maybeRelative: string,
@@ -22,10 +40,60 @@ function resolveUrl(
     if (url.protocol !== "http:" && url.protocol !== "https:") {
       return undefined;
     }
+    if (isPrivateOrLoopbackHost(url.hostname)) {
+      return undefined;
+    }
     return url.toString();
   } catch {
     return undefined;
   }
+}
+
+class UnsafeRedirectError extends Error {}
+
+/** Fetches `url` without relying on `fetch`'s automatic redirect following,
+ * which never re-validates a redirect's Location header - a public first
+ * hop could otherwise hide a private-network second hop (SSRF via open
+ * redirect). Manually follows up to MAX_REDIRECTS 3xx responses, re-running
+ * the same scheme/private-host check (resolveUrl) on every hop, and throws
+ * UnsafeRedirectError (caught by every call site's existing try/catch, same
+ * as a real network error) if any hop - including the very first URL - is
+ * unsafe or unresolvable, or if the chain is too long. */
+async function fetchFollowingRedirects(
+  initialUrl: string,
+  init: RequestInit,
+): Promise<Response> {
+  const validatedInitialUrl = resolveUrl(initialUrl, initialUrl);
+  if (!validatedInitialUrl) {
+    throw new UnsafeRedirectError(
+      `Refusing to fetch unsafe URL: ${initialUrl}`,
+    );
+  }
+
+  let currentUrl = validatedInitialUrl;
+
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+    const response = await fetch(currentUrl, { ...init, redirect: "manual" });
+
+    const isRedirect =
+      typeof response.status === "number" &&
+      response.status >= 300 &&
+      response.status < 400;
+    if (!isRedirect) return response;
+
+    const location = response.headers.get("location");
+    if (!location) return response;
+
+    const nextUrl = resolveUrl(location, currentUrl);
+    if (!nextUrl) {
+      throw new UnsafeRedirectError(
+        `Refusing to follow redirect to unsafe URL: ${location}`,
+      );
+    }
+    currentUrl = nextUrl;
+  }
+
+  throw new UnsafeRedirectError(`Too many redirects fetching ${initialUrl}`);
 }
 
 /** Extracts one attribute's value from the first <meta> tag matching
@@ -153,7 +221,7 @@ export async function resolveArxivFigureImage(
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(ar5ivUrl, {
+    const response = await fetchFollowingRedirects(ar5ivUrl, {
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
     });
@@ -192,7 +260,7 @@ async function isImageUrlReachable(url: string): Promise<boolean> {
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(url, {
+    const response = await fetchFollowingRedirects(url, {
       method: "HEAD",
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
@@ -237,7 +305,7 @@ export async function resolveItemImage(
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(pageUrl, {
+    const response = await fetchFollowingRedirects(pageUrl, {
       signal: controller.signal,
       headers: IMAGE_FETCH_HEADERS,
     });
