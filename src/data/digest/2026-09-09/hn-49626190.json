@@ -1,0 +1,17 @@
+{
+  "title": "Shopify acquires Tailwind",
+  "source": "hn",
+  "url": "https://tailwindcss.com/blog/tailwind-is-joining-shopify",
+  "date": "2026-09-09",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Business acquisition news relevant to developers who use Shopify or Tailwind's design tools, but not a technical deep dive.",
+  "analysis": "This is an acquisition announcement: Shopify buying Tailwind, presumably the social media marketing/Pinterest scheduling tool rather than the CSS framework of the same name. It matters mostly for e-commerce and marketing tooling ecosystems, not for engineering practice directly. The high comment count likely reflects confusion or discussion about naming collision with the popular Tailwind CSS framework. Limited technical depth for a software engineering audience.",
+  "authors": [
+    "EdwinHoksberg"
+  ],
+  "hn_id": 49626190,
+  "points": 827,
+  "image_url": "https://tailwindcss.com/_next/static/media/og-image.103kpqahmns2b.jpg",
+  "favicon_url": "https://tailwindcss.com/favicons/favicon-32x32.png?v=4"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Albert-Weasker/niubigeo",
+  "source": "github",
+  "url": "https://github.com/Albert-Weasker/niubigeo",
+  "date": "2026-09-09",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 2,
+  "why_read": "This looks like a marketing product for AI brand visibility reports with paid upsells, offering little genuine open-source technical substance.",
+  "analysis": "The repository description reads like promotional copy for a commercial SaaS product selling AI brand visibility and competitor analysis reports, with explicit pricing and paid service links. There is minimal indication of any novel technical architecture, algorithm, or open-source contribution beyond serving as a landing page or client for a paid service. This is more advertising than an engineering project worth engineers' attention in a technical digest. The GitHub star count may reflect marketing efforts rather than genuine technical interest.",
+  "authors": [],
+  "stars": 2248,
+  "image_url": "https://opengraph.githubassets.com/0bc095b127d7fa43f2eeda450aef9b5ecfe8828f4f32487b4d7b26d326197f3e/Albert-Weasker/niubigeo",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

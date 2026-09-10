@@ -1,0 +1,20 @@
+{
+  "title": "I Hid a Rule in CLAUDE.md. Only One Reviewer Could Prove It Read It.",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/i-hid-a-rule-in-claudemd-only-one-reviewer-could-prove-it-read-it-4ik9",
+  "date": "2026-09-09",
+  "tags": [
+    "ai",
+    "codereview",
+    "discuss",
+    "devtool"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, well-designed experiment testing whether AI code review tools actually read project-specific rule files versus just pattern-matching common issues.",
+  "analysis": "The author designed a clever test by hiding an arbitrary, non-obvious naming convention rule in CLAUDE.md and AGENTS.md files, then intentionally violating it to see which AI code review tool, CodeRabbit or Qodo, could actually detect and explain the violation. This distinguishes genuine rule-reading behavior from tools that merely happen to flag common security issues that would be caught regardless. It's a useful methodology for engineers evaluating AI code review tools, since it isolates true instruction-following from lucky pattern matches. The specificity and rigor of the test setup make this more credible than typical marketing-style comparisons.",
+  "authors": [],
+  "reactions": 12,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fazmdhfpq7fpaad8emuam.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

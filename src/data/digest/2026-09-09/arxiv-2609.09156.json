@@ -1,0 +1,23 @@
+{
+  "title": "ReCite: Agentic Reasoning for Faithful Citation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.09156",
+  "date": "2026-09-09",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "An agentic approach to improve citation accuracy in AI-generated academic text by verifying that cited papers actually support the claims made, addressing a real and underappreciated failure mode.",
+  "analysis": "ReCite is a system designed to fix a subtler citation problem than outright fabrication: LLMs citing real papers that don't actually support the claim being made. It uses an agent-based pipeline that plans queries, retrieves candidates, and verifies logical consistency between claim and evidence before accepting a citation. This is relevant to anyone building AI writing assistants or literature review tools, since citation misattribution undermines trust even when references are real. The reported improvement over larger generative models in strict citation accuracy suggests the architecture, not just scale, matters here.",
+  "authors": [
+    "Yuyang Huang",
+    "Bobo Li",
+    "Jiajia Song",
+    "Yuzhe Ding",
+    "Chong Teng",
+    "Fei Li",
+    "Donghong Ji"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
