@@ -12,6 +12,13 @@ on:
   pull_request:
     branches: [main]
 
+# Least-privilege default: this workflow only checks out, builds, and tests -
+# it never needs to write anything back to the repo (contrast with
+# daily-pipeline.yml, which explicitly requests contents: write only for its
+# own auto-commit step).
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -32,6 +39,26 @@ jobs:
       # allowing silent re-resolution the way npm install can.
       - name: Install dependencies
         run: npm ci
+
+      # Fails on any known high/critical-severity vulnerability in the
+      # resolved dependency tree. Advisory data comes from the npm registry
+      # itself - no extra token or third-party service required.
+      - name: Dependency audit
+        run: npm audit --audit-level=high
+
+      # tsconfig.json already extends astro/tsconfigs/strict, but `astro
+      # build` below does not run full type diagnostics on its own - this is
+      # the dedicated step that actually enforces it (see @astrojs/check).
+      # continue-on-error is intentional and temporary: a real local run of
+      # `astro check` on this codebase surfaces 37 pre-existing errors (all
+      # `entry.data` typed as `unknown` from the Content Collections glob
+      # loader, e.g. src/components/StoryCard.astro, src/lib/digestGrouping.ts)
+      # that predate this workflow step and are out of scope for a CI-only
+      # change - see this PR's description. Flip this to blocking once those
+      # are fixed.
+      - name: Type check
+        run: npm run typecheck
+        continue-on-error: true
 
       # Builds the Astro static site against whatever digest JSON files are
       # already committed under src/data/digest/. This does NOT invoke the

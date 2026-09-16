@@ -18,7 +18,8 @@
     "preview": "astro preview",
     "pipeline": "tsx scripts/pipeline.ts",
     "deep-research-item": "tsx scripts/deepResearchItem.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@anthropic-ai/bedrock-sdk": "^0.33.3",
@@ -33,6 +34,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@types/jsdom": "^30.0.0",
     "@types/node": "^22.10.5",
     "axe-core": "^4.13.0",
