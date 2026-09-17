@@ -6,9 +6,9 @@
   "tags": [
     "cs.LG"
   ],
-  "interest_score": 6,
-  "why_read": "A rigorous theoretical result showing that seemingly well-covered logged datasets can still be exponentially uninformative for policy evaluation has real implications for anyone relying on off-policy evaluation guarantees.",
-  "analysis": "Off-policy evaluation tries to estimate how well a new decision-making policy would perform using only historical logged data, and this paper proves a surprising negative result about when that is fundamentally hard. They construct explicit small POMDPs (partially observed decision processes) where standard notions of data coverage all look fine, yet accurately evaluating a known target policy still requires an exponential number of logged episodes in the planning horizon. The mechanism is that when the logger's behavior depends on history, resets can erase exactly the information needed to determine the answer, even though naive coverage metrics don't detect this. This is a technically dense theory paper mainly relevant to researchers in reinforcement learning and causal inference who care about the mathematical limits of offline evaluation.",
+  "interest_score": 5,
+  "why_read": "A theoretical result establishing exponential sample complexity lower bounds for off-policy evaluation under history-dependent logging is a rigorous but narrow contribution to reinforcement learning theory.",
+  "analysis": "This is a theoretical reinforcement learning paper showing that logged datasets, even ones that visit every hidden state frequently, can still be exponentially uninformative about a target policy's value when the data-collection logger's behavior depends on history. The authors construct explicit POMDP examples proving this hardness result and match it with an optimal estimator, resolving an open hardness question posed in prior work. This is a solid piece of theory work, valuable mainly to researchers working on off-policy evaluation and reinforcement learning foundations rather than a broad engineering audience.",
   "authors": [
     "Pranaya Jajoo"
   ],

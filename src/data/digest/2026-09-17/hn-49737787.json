@@ -1,0 +1,17 @@
+{
+  "title": "CCC invites all model citizens to 40C3",
+  "source": "hn",
+  "url": "https://events.ccc.de/en/2026/09/12/40c3-model-citizens/",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "This is an announcement for the Chaos Communication Congress conference, useful mainly for attendees rather than a technical deep dive.",
+  "analysis": "40C3 refers to the 40th Chaos Communication Congress, a long-running hacker and security conference in Germany known for talks on security research, privacy, and digital rights. The item itself is just an invitation/announcement rather than technical content, though the underlying conference itself often produces substantial security research. Interest here is mostly for people planning attendance rather than engineers seeking technical substance from this specific post.",
+  "authors": [
+    "antonly"
+  ],
+  "hn_id": 49737787,
+  "points": 300,
+  "image_url": "https://events.ccc.de/media/37c3-53598978540.webp",
+  "favicon_url": "https://events.ccc.de/cccv_logo.svg"
+}

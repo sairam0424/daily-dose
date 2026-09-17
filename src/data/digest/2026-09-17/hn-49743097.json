@@ -1,0 +1,17 @@
+{
+  "title": "Hister: A private search engine for the pages you visit and the files you keep",
+  "source": "hn",
+  "url": "https://github.com/asciimoo/hister",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A local-first personal search tool for browsing history and files touches on a genuinely useful and technically interesting problem of private full-text indexing.",
+  "analysis": "Hister appears to be a tool that indexes and searches your own browsing history and local files without sending data to a third party. Building a fast, private local search index that handles both web content and file content is a nontrivial engineering problem involving text extraction, indexing, and ranking. This kind of personal-data tool is appealing to privacy-conscious engineers, though its technical depth depends heavily on implementation details not visible from the title alone.",
+  "authors": [
+    "bookofjoe"
+  ],
+  "hn_id": 49743097,
+  "points": 327,
+  "image_url": "https://opengraph.githubassets.com/717e435695d8ec78010e3fb25ff92ebbe9ef3ceac2f6c291a5f03777b61be92f/asciimoo/hister",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

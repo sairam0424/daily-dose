@@ -10,8 +10,8 @@
     "database"
   ],
   "interest_score": 7,
-  "why_read": "A clever and concrete application of database branching to binary-search through time for finding when a data bug was introduced is a genuinely useful technique worth reading in detail.",
-  "analysis": "The article proposes applying the git-bisect concept to data debugging: instead of scrolling through logs, use database branching (via Neon's copy-on-write branches) to instantly recreate the database state at any past timestamp and query it directly. It reports concrete numbers, such as roughly 1.7 seconds per branch-and-query probe, letting a 24-hour window at one-minute precision be searched in about 13 probes instead of 1,440 full scans. This is a practical and clever technique that generalizes an already-loved workflow (git bisect) to a common and painful class of problem, tracking down when data corruption started. It's a solid, concrete engineering idea with real numbers backing it up, making it more valuable than a typical listicle-style post.",
+  "why_read": "An inventive application of database branching (via Neon) to enable 'bisecting' historical data changes is a genuinely clever practical technique worth reading.",
+  "analysis": "This post applies the concept of git bisect, the technique of binary-searching commit history to find when a bug was introduced, to the problem of finding when a data anomaly first appeared in a database. It uses Neon's ability to create instant, cheap database branches at arbitrary points in time to run targeted queries rather than relying on full backups or slow table scans. The author gives concrete performance numbers, like 1.7 seconds per probe and about 13 probes needed for a 24-hour window at one-minute precision. This is a practical, well-reasoned technique that could genuinely change how engineers debug data correctness issues in production systems.",
   "authors": [],
   "reactions": 19,
   "reading_minutes": 1,

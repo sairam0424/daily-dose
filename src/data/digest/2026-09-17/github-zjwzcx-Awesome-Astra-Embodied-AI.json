@@ -4,11 +4,11 @@
   "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI",
   "date": "2026-09-17",
   "tags": [],
-  "interest_score": 2,
-  "why_read": "A curated 'awesome list' invoking an apparently speculative or unreleased 'GPT-6 Astra' branding raises concerns about credibility and substance.",
-  "analysis": "This repository claims to be about 'GPT-6 Astra' for embodied AI and robotics, but as of any public knowledge there is no confirmed model called GPT-6, making the framing suspicious or premature. Awesome-lists are curated collections of links and are generally low on original technical content, serving mainly as reference indexes rather than primary research or engineering work. Given the questionable naming and lack of description beyond the title, this looks more like a speculative or attention-grabbing list than a substantive technical resource. It could still link out to genuinely interesting embodied AI papers, but its own framing undermines confidence in that.",
+  "interest_score": 3,
+  "why_read": "An 'awesome list' style repo referencing 'GPT-6' for embodied AI robotics is likely speculative or aggregating unofficial resources rather than substantive content, since GPT-6 doesn't officially exist.",
+  "analysis": "This repo seems to be a curated list of resources related to embodied AI and robotics, branded around a speculative or unofficial 'GPT-6 Astra' reference that isn't a confirmed real product. Awesome-list repositories can be useful as reference indexes, but the framing here raises questions about accuracy or hype-driven content. Without clear provenance of what 'GPT-6 Astra' actually refers to, it's hard to gauge real technical value versus speculative marketing.",
   "authors": [],
-  "stars": 820,
-  "image_url": "https://opengraph.githubassets.com/5cee50ef46dfc4b2195cc3b8a53ea14b97b2b4d9daa8d6c08cd27564f73167d6/zjwzcx/Awesome-Astra-Embodied-AI",
+  "stars": 821,
+  "image_url": "https://opengraph.githubassets.com/61fa6d82d0110e796a9db7fabfc8b3cc166bf24e1712a7d1a478808c53722279/zjwzcx/Awesome-Astra-Embodied-AI",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }
