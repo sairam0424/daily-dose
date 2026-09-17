@@ -1,0 +1,17 @@
+{
+  "title": "My temporary PHP fix from 2014 has nearly 20M installs. Today I'm deprecating it",
+  "source": "hn",
+  "url": "https://jakeasmith.com/blog/http-build-url/",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A firsthand account of a hacky fix becoming deeply embedded infrastructure is a relatable and instructive story about the long tail of software maintenance.",
+  "analysis": "This is a personal story about a quick patch to a PHP library or tool from 2014 that ended up being installed nearly 20 million times, and the author's decision to finally deprecate it. It touches on real issues in open source maintenance: how temporary fixes calcify into permanent dependencies, and the difficulty of retiring widely used code without breaking things. This kind of narrative is valuable less for novel technical content and more as a case study in software supply chain inertia. Engineers who maintain public packages will likely recognize the pattern and appreciate the lessons about versioning, communication, and deprecation strategy.",
+  "authors": [
+    "jakeasmith"
+  ],
+  "hn_id": 49718773,
+  "points": 288,
+  "image_url": "https://jakeasmith.com/blog/http-build-url/og.png",
+  "favicon_url": "https://jakeasmith.com/favicon.svg"
+}

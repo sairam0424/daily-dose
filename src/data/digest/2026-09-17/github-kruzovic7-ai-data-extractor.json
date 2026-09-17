@@ -1,0 +1,16 @@
+{
+  "title": "kruzovic7/ai-data-extractor",
+  "source": "github",
+  "url": "https://github.com/kruzovic7/ai-data-extractor",
+  "date": "2026-09-17",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical utility for extracting and consolidating chat histories from multiple AI coding assistants addresses a real annoyance for developers using several such tools.",
+  "analysis": "This tool extracts conversation histories from a range of AI coding assistants including Claude Code, Cursor, Windsurf, Aider, and Cline/Roo Code, presumably normalizing them into a common format for review, search, or archiving. This is a useful bit of developer tooling glue rather than a research breakthrough, solving the practical problem of chat logs being scattered across proprietary tool formats. Its value depends heavily on how many of these tools a given developer actually uses and whether the extraction is reliable across format changes.",
+  "authors": [],
+  "stars": 833,
+  "image_url": "https://opengraph.githubassets.com/ec6586a8949629eaf203a08e3e18dd31f13075c9ea0030a19f15dd44191eeab7/kruzovic7/ai-data-extractor",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

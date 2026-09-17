@@ -1,0 +1,20 @@
+{
+  "title": "Objective vs. Search: Decomposing What Makes a Good Tokeniser",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.19145",
+  "date": "2026-09-17",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful ablation study isolating what actually matters in tokenizer design gives concrete, actionable guidance for anyone building or choosing tokenizers for language models.",
+  "analysis": "The paper disentangles two aspects of tokenizer algorithms, the optimization objective (compression versus likelihood) and the search procedure (bottom-up merging versus top-down pruning), by constructing two new hybrid tokenizers that fill out the 2x2 design space. Testing across model sizes, vocabulary sizes, and languages, they find the search procedure matters more than the objective for bits-per-byte performance, but neither factor cleanly predicts grammatical performance on the BLiMP benchmark. This is a rigorous, well-designed experiment that clarifies a genuinely confusing area of LLM preprocessing that most practitioners treat as a black box. It offers concrete, evidence-based guidance rather than just another benchmark comparison.",
+  "authors": [
+    "Ahmetcan Yavuz",
+    "Clara Meister",
+    "Tiago Pimentel"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

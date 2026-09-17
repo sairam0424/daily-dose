@@ -1,0 +1,19 @@
+{
+  "title": "API Performance Testing: How to Design Realistic Tests",
+  "source": "devto",
+  "url": "https://dev.to/gramli/api-performance-testing-how-to-design-realistic-tests-59gn",
+  "date": "2026-09-17",
+  "tags": [
+    "testing",
+    "performance",
+    "api",
+    "webdev"
+  ],
+  "interest_score": 5,
+  "why_read": "A solid but fairly standard overview of performance testing fundamentals and design principles, useful mainly as a refresher rather than offering novel insight.",
+  "analysis": "This article walks through the basics of performance testing types and how to design realistic test scenarios, including determining expected load, handling external service dependencies, and matching test environments to production. It's a competent introductory guide rather than a deep technical exploration with specific tooling or numeric case studies. Experienced engineers who already understand load testing fundamentals likely won't find much new here, but it could serve as a good onboarding reference for less experienced testers.",
+  "authors": [],
+  "reactions": 33,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjn7c345u4x5xwstkdkfn.png"
+}

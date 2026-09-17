@@ -1,0 +1,17 @@
+{
+  "title": "Exponential Hardness of Off-Policy Evaluation under History-Dependent Logging",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.19135",
+  "date": "2026-09-17",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A rigorous theoretical result showing that off-policy evaluation can be exponentially hard even under seemingly favorable coverage conditions is important for researchers who rely on these guarantees.",
+  "analysis": "This paper constructs explicit small POMDP examples where standard coverage conditions used to justify off-policy evaluation are satisfied, yet accurately estimating a policy's value still requires exponentially many logged episodes. The key mechanism is that a reset in the environment can erase information about an unknown transition that determines the target policy's true value, breaking the usual statistical guarantees. This resolves an open question from prior work about whether history-dependent logging with model-based revealing conditions is tractable, showing that it is not. It's a technically dense theory paper mainly relevant to researchers working on reinforcement learning evaluation guarantees rather than practitioners.",
+  "authors": [
+    "Pranaya Jajoo"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

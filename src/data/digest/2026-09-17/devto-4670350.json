@@ -1,0 +1,19 @@
+{
+  "title": "A 4 GB Laptop GPU Beats a 12-Core CPU by 4.3x on Gemma 4",
+  "source": "devto",
+  "url": "https://dev.to/gde/a-4-gb-laptop-gpu-beats-a-12-core-cpu-by-43x-on-gemma-4-4150",
+  "date": "2026-09-17",
+  "tags": [
+    "machinelearning",
+    "gpu",
+    "benchmarking",
+    "python"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, controlled benchmark comparing CPU versus a modest laptop GPU for local LLM inference gives useful real-world numbers for people running small models on consumer hardware.",
+  "analysis": "The article compares running a small Gemma model quantized to 4-bit through llama.cpp on the same laptop, once purely on CPU and once offloaded to a 4GB GTX 1650 Ti GPU, changing only a single command-line flag. It reports a 4.3x decode speed improvement on the GPU while using only about 1.6GB of VRAM, with byte-identical inputs and binaries across both runs to ensure a fair comparison. This kind of controlled, apples-to-apples local benchmark is genuinely useful for people deciding whether a budget GPU is worth using for local LLM inference. The methodology, keeping everything constant except one flag, makes the result more trustworthy than typical vague benchmark claims.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fdocs%2Fcpu-vs-1650ti%2Fdevto-cover.274ec661.jpg"
+}

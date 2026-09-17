@@ -1,0 +1,16 @@
+{
+  "title": "yifanzhang-pro/recurrent-looped-tranformer",
+  "source": "github",
+  "url": "https://github.com/yifanzhang-pro/recurrent-looped-tranformer",
+  "date": "2026-09-17",
+  "tags": [
+    "HTML"
+  ],
+  "interest_score": 6,
+  "why_read": "A project page for a recurrent looped transformer architecture touches on an active research direction of adding recurrence to transformers for better reasoning or length generalization.",
+  "analysis": "Recurrent Looped Transformers apply the same transformer block repeatedly in a loop, a design intended to let models do more computation per input without adding parameters, similar in spirit to universal transformers. This architectural idea is relevant to ongoing research into improving reasoning depth and algorithmic generalization in transformers without simply scaling parameter count. Since the repo is primarily HTML, it's a project/paper landing page rather than a full codebase, which limits how much can be learned from browsing it directly. Still, the underlying research direction is worth knowing about for anyone tracking transformer architecture variants.",
+  "authors": [],
+  "stars": 870,
+  "image_url": "https://opengraph.githubassets.com/4c4a18cd5e97ac4f21c55979b347ee59aeed3191c8abf81589d4f571c12285c8/yifanzhang-pro/recurrent-looped-tranformer",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Git Bisect for Your Data",
+  "source": "devto",
+  "url": "https://dev.to/devopsdaily/git-bisect-for-your-data-12dd",
+  "date": "2026-09-17",
+  "tags": [
+    "postgres",
+    "neon",
+    "debugging",
+    "database"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever, well-explained application of database branching to enable git-bisect-style debugging of data anomalies over time is a genuinely useful technique for engineers.",
+  "analysis": "The article proposes using time-travel database branching, apparently via Neon's branch-from-a-timestamp feature, to binary-search through historical data states and find exactly when a data bug was introduced, mirroring how git bisect finds a bad commit. It gives concrete performance numbers, such as ~1.7 seconds per probe and about 13 probes to search a 24-hour window at one-minute precision, making the technique's feasibility clear. This is a practical, well-quantified debugging technique that many engineers dealing with data integrity issues would find directly applicable. It's a good example of turning a database feature into a systematic debugging workflow rather than ad hoc log scrolling.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ff99fp0ehjbkaq2gscqld.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

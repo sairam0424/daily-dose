@@ -1,0 +1,20 @@
+{
+  "title": "How AI Actually Calls an API? Tool Calling Explained from Scratch",
+  "source": "devto",
+  "url": "https://dev.to/aws/how-ai-actually-calls-an-api-tool-calling-explained-from-scratch-4lf8",
+  "date": "2026-09-17",
+  "tags": [
+    "ai",
+    "mcp",
+    "aws",
+    "tutorial"
+  ],
+  "interest_score": 5,
+  "why_read": "A clear, beginner-friendly explanation of how LLM tool calling actually works under the hood is useful for engineers newer to building LLM applications.",
+  "analysis": "The article explains that when an LLM 'calls a tool,' it isn't actually executing code itself; it's producing a structured text output requesting a specific function call, which the surrounding application code then executes and feeds the result back into the model. This demystifies a commonly misunderstood mechanism behind AI agents and assistants that can check weather, prices, or dates despite having a fixed training cutoff. It's an introductory-level piece rather than novel research, useful mainly for developers just starting to build with LLM APIs.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmhtvo6zedugelnfp6o2v.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

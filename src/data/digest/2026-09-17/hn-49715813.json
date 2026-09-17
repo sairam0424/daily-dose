@@ -1,0 +1,15 @@
+{
+  "title": "Fujitsu launches made-in-Japan next-generation CPU FUJITSU-MONAKA",
+  "source": "hn",
+  "url": "https://global.fujitsu/en-global/pr/news/2026/09/14-02",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A major national semiconductor effort producing a new server CPU architecture is technically noteworthy and rare outside the usual x86/ARM/RISC-V players dominated by US firms.",
+  "analysis": "Fujitsu's FUJITSU-MONAKA is a new ARM-based high-core-count CPU aimed at HPC and datacenter workloads, developed domestically in Japan as a successor to the A64FX used in the Fugaku supercomputer. It signals continued national investment in sovereign chip design capability rather than just fabrication. The discussion likely covers core count, memory bandwidth, and how it competes with Graviton, Ampere, and other ARM server chips. Worth a skim for anyone tracking the ARM server ecosystem's diversification beyond the usual hyperscaler silicon.",
+  "authors": [
+    "my123"
+  ],
+  "hn_id": 49715813,
+  "points": 356
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Keys Not Included: recovering the signing keys for US driver's license barcodes",
+  "source": "hn",
+  "url": "https://ryan.science/blog/keys-not-included",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 9,
+  "why_read": "A deep, hands-on security research writeup on cracking cryptographic signing keys used in real-world government-issued ID barcodes is exactly the kind of rigorous applied-crypto content worth reading.",
+  "analysis": "This describes independent security research into how US driver's license PDF417 barcodes are cryptographically signed, and how the researchers managed to recover or forge the signing keys. This has real-world implications for ID verification systems used by bars, retailers, and age-verification services that trust these barcodes as tamper-proof. The technical content likely covers weak key generation, small keyspace attacks, or implementation flaws in a widely deployed but under-scrutinized system. This is the kind of practical, consequential security research that engineers and security professionals genuinely value.",
+  "authors": [
+    "Ryan5453"
+  ],
+  "hn_id": 49735930,
+  "points": 264,
+  "image_url": "https://ryan.science/tessa.png",
+  "favicon_url": "https://ryan.science/tessa.png"
+}

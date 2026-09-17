@@ -1,0 +1,23 @@
+{
+  "title": "Dreaming the Sound of Contact: Leveraging Video and Audio Generation for Zero-Shot Force-Aware Manipulation and Data Generation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.19137",
+  "date": "2026-09-17",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "An inventive use of generated audio to add missing force information to video-generated robot manipulation plans tackles a real limitation in learning-from-video robotics approaches.",
+  "analysis": "Video generation models can produce plausible robot motion trajectories, but they lack information about contact forces needed for tasks like pressing, wiping, or inserting objects. This work uses the loudness of AI-generated contact sounds paired with generated video to derive a time-varying target force profile, which a real robot then tracks using closed-loop force control. It's a clever workaround that adds a missing physical signal to an otherwise purely visual generative pipeline, tested on a real Franka Panda arm. The approach is niche but represents a genuinely creative idea for bridging generative AI and physical robot control.",
+  "authors": [
+    "Guanhua Ji",
+    "Tianyu Li",
+    "Dayoon Suh",
+    "Yuqian Zhang",
+    "Boyan Zhang",
+    "Nadia Figueroa"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

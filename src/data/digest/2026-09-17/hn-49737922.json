@@ -1,0 +1,16 @@
+{
+  "title": "How GLM built its own inference infrastructure",
+  "source": "hn",
+  "url": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+  "date": "2026-09-17",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A detailed engineering account of building custom LLM inference infrastructure at scale is exactly the kind of systems-level detail engineers building AI infra want.",
+  "analysis": "This piece describes how the team behind GLM (a large language model family) built their own inference serving stack rather than relying entirely on existing frameworks like vLLM or TensorRT-LLM. Such write-ups typically cover batching strategies, KV-cache management, quantization choices, and hardware utilization tricks that materially affect cost and latency at scale. Given 221 comments, it likely sparked substantial technical debate about tradeoffs versus off-the-shelf inference engines. This is genuinely useful for engineers working on production LLM serving systems.",
+  "authors": [
+    "whiteros_e"
+  ],
+  "hn_id": 49737922,
+  "points": 275,
+  "favicon_url": "https://z-cdn.chatglm.cn/z-blog/z-icon.svg"
+}

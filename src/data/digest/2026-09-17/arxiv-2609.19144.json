@@ -1,0 +1,22 @@
+{
+  "title": "A Zeroth-Order Paradigm for LLM Preference Alignment",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.19144",
+  "date": "2026-09-17",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A theoretically grounded alternative to standard preference optimization methods for LLM alignment, but its practical impact requires further validation beyond the paper's own benchmarks.",
+  "analysis": "This paper proposes ComPO, a zeroth-order optimization method for aligning language models with human preferences that uses comparison oracles instead of directly differentiating a preference loss. The motivation is a known problem called likelihood displacement, where standard direct preference optimization methods can degrade probability mass on preferred responses in ways that hurt quality. The authors provide convergence guarantees under certain assumptions and show improvements over existing methods on several open models like Llama and Qwen3. This is solid theoretical work but is fairly specialized, likely most useful to researchers actively working on alignment methods rather than general practitioners.",
+  "authors": [
+    "Peter Chen",
+    "Xi Chen",
+    "Wotao Yin",
+    "Tianyi Lin"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

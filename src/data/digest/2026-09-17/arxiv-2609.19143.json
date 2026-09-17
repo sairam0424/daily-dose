@@ -1,0 +1,22 @@
+{
+  "title": "PANORAMA: Panoptic Grounded Captioning via Mask Proposal Selection",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.19143",
+  "date": "2026-09-17",
+  "tags": [
+    "cs.CV",
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A new benchmark and model for jointly generating detailed captions and pixel-accurate segmentation masks addresses a real gap in vision-language systems used for robotics and image understanding.",
+  "analysis": "The paper introduces panoptic grounded captioning, the task of describing every object and background region in an image while linking each phrase to precise pixel masks, plus a new human-annotated benchmark called PanoCaps to evaluate it. Their model, PANORAMA, selects masks from a pool of proposals conditioned on phrase representations rather than generating masks from scratch, which lets it handle both single objects and groups of instances. It reports state-of-the-art results on their new benchmark and competitive performance on existing grounding tasks. This is a solid, incremental contribution to multimodal grounding research relevant to teams building detailed scene understanding systems.",
+  "authors": [
+    "Sara Pieri",
+    "Evangelos Kazakos",
+    "Shizhe Chen",
+    "Josef Sivic",
+    "Cordelia Schmid"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
