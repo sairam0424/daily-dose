@@ -1,0 +1,20 @@
+{
+  "title": "Show a model your old code and it writes your old bugs: 32 runs, 0% reuse",
+  "source": "devto",
+  "url": "https://dev.to/remdore/show-a-model-your-old-code-and-it-writes-your-old-bugs-32-runs-0-reuse-2epm",
+  "date": "2026-09-17",
+  "tags": [
+    "ai",
+    "codequality",
+    "programming",
+    "refactoring"
+  ],
+  "interest_score": 8,
+  "why_read": "A rigorous small experiment showing that LLM code generation directly mirrors the quality and bugs of existing code in the repo is a concrete, actionable insight for anyone using AI coding tools.",
+  "analysis": "The author ran 32 trials asking models to implement the same feature against two versions of their own repository, one before and one after a refactor that removed duplicated buggy code. Every run against the pre-refactor commit reproduced the same bugs the human refactor had fixed, while every run against the post-refactor commit correctly reused the clean shared component. This is a well-designed natural experiment demonstrating that code-context quality strongly and consistently determines AI-generated code quality, a finding with direct practical implications for teams relying on AI pair programming.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffnvwcnnfad8yezrfqyry.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

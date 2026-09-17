@@ -9,8 +9,8 @@
     "cs.LG"
   ],
   "interest_score": 6,
-  "why_read": "A new zeroth-order preference optimization method with theoretical convergence guarantees is a solid but fairly narrow contribution to LLM alignment research.",
-  "analysis": "The paper introduces ComPO, a method for aligning language models to human preferences using comparison-based feedback rather than direct gradient descent on a preference loss, addressing a known failure mode called likelihood displacement. It provides convergence guarantees under certain assumptions and tests the approach on several open models like Llama, Qwen3, and Gemma, showing improvements over existing direct alignment methods. This is a fairly technical contribution mainly of interest to researchers working specifically on RLHF-adjacent alignment techniques rather than general practitioners.",
+  "why_read": "A new zeroth-order alignment method for LLM preference tuning with theoretical guarantees is relevant to researchers working on RLHF alternatives.",
+  "analysis": "ComPO proposes optimizing LLM preference alignment using comparison oracles rather than directly differentiating a preference loss, targeting a known issue called likelihood displacement in methods like DPO. The paper provides convergence guarantees under certain conditions and extends to an online variant using KL control against a reference policy. Experiments across several open model families show improvements in win rates over existing direct alignment baselines, making this a reasonably rigorous contribution to the alignment literature, though its practical impact depends on validation beyond synthetic win-rate metrics.",
   "authors": [
     "Peter Chen",
     "Xi Chen",

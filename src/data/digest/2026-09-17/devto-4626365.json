@@ -9,9 +9,9 @@
     "api",
     "webdev"
   ],
-  "interest_score": 5,
-  "why_read": "A solid, practical overview of designing realistic performance tests covers useful fundamentals but doesn't offer much beyond standard advice for experienced engineers.",
-  "analysis": "This article covers the basics of performance testing, including how to define realistic load scenarios, handle external service dependencies, and match test environments to production. It's a reasonably thorough introduction to designing performance tests that yield meaningful, actionable results rather than misleading numbers. The content is useful for engineers newer to performance testing but likely too basic for those already experienced in this area.",
+  "interest_score": 4,
+  "why_read": "A general overview of designing realistic API performance tests covers well-known territory that experienced engineers likely already know.",
+  "analysis": "This article walks through basic performance testing concepts, types of load tests, and considerations like matching test environments to production and handling external service dependencies. It's a reasonable primer for engineers new to performance testing, but doesn't appear to introduce novel techniques or deep technical insight beyond standard practice. The content is competent but generic, more suited to junior engineers than as a genuinely fresh technical read.",
   "authors": [],
   "reactions": 35,
   "reading_minutes": 1,

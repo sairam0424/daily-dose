@@ -7,8 +7,8 @@
     "Python"
   ],
   "interest_score": 5,
-  "why_read": "A practical utility for extracting and consolidating chat histories from various AI coding assistants could be genuinely useful for developers working across multiple tools.",
-  "analysis": "This tool extracts conversation histories from popular AI coding assistants like Claude Code, Cursor, Windsurf, Aider, and Cline, likely for backup, analysis, or migration purposes. This addresses a real practical pain point since many of these tools store conversation data in different proprietary or hard-to-access formats. It's a useful utility rather than a novel technical breakthrough, but solves a concrete workflow problem for developers using multiple AI coding tools.",
+  "why_read": "A utility for extracting chat histories from popular AI coding assistants is a practical tool for engineers who want to analyze or migrate their AI-assisted coding sessions.",
+  "analysis": "This tool extracts conversation histories from tools like Claude Code, Cursor, Windsurf, Aider, and Cline/Roo Code, likely normalizing different storage formats into something more portable or analyzable. It's a useful utility for engineers who want to audit, back up, or study their own AI-assisted coding sessions across multiple tools. The value is practical rather than deeply technical, but the interoperability angle across several popular AI coding tools is a genuine convenience.",
   "authors": [],
   "stars": 834,
   "image_url": "https://opengraph.githubassets.com/745bef6ec09dcd0d667604fb00bae97651511991dd9ad43c42b0ab22b2c21864/kruzovic7/ai-data-extractor",

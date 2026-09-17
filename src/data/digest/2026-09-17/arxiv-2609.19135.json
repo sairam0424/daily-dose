@@ -7,8 +7,8 @@
     "cs.LG"
   ],
   "interest_score": 5,
-  "why_read": "A theoretical result establishing exponential sample complexity lower bounds for off-policy evaluation under history-dependent logging is a rigorous but narrow contribution to reinforcement learning theory.",
-  "analysis": "This is a theoretical reinforcement learning paper showing that logged datasets, even ones that visit every hidden state frequently, can still be exponentially uninformative about a target policy's value when the data-collection logger's behavior depends on history. The authors construct explicit POMDP examples proving this hardness result and match it with an optimal estimator, resolving an open hardness question posed in prior work. This is a solid piece of theory work, valuable mainly to researchers working on off-policy evaluation and reinforcement learning foundations rather than a broad engineering audience.",
+  "why_read": "A theoretical result showing exponential sample complexity for off-policy evaluation under history-dependent logging is a niche but rigorous contribution to reinforcement learning theory.",
+  "analysis": "The paper constructs explicit POMDP examples showing that even with good state and belief coverage, off-policy evaluation can require an exponential number of logged episodes when the logging policy depends on history. This resolves an open question about whether certain coverage conditions guarantee tractable evaluation, showing they do not in this setting. It's a solid theoretical contribution mainly of interest to RL theorists working on off-policy evaluation guarantees, with limited direct applicability for practitioners.",
   "authors": [
     "Pranaya Jajoo"
   ],

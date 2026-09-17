@@ -8,8 +8,8 @@
     "cs.AI"
   ],
   "interest_score": 7,
-  "why_read": "A careful ablation study isolating what actually matters in tokenizer design (search procedure vs. optimization objective) gives concrete, actionable guidance for building better LLM tokenizers.",
-  "analysis": "This paper disentangles two confounded design choices in text tokenization for language models: the optimization objective (compression vs likelihood) and the search procedure (bottom-up vs top-down), by building two new hybrid tokenizers to fill out the full 2x2 combination. Testing across model sizes and languages, they find that the search procedure, not the objective, is what drives compression performance measured in bits-per-byte, though this doesn't predict grammatical performance on the BLiMP benchmark. This is a rigorous piece of applied research that clarifies a widely-used but poorly understood component of LLM pipelines, useful for anyone building or tuning tokenizers.",
+  "why_read": "A careful ablation study disentangling tokenizer design choices offers concrete, actionable insight for anyone building or tuning language models.",
+  "analysis": "This paper decomposes tokenizer design into two independent axes, the optimization objective and the search procedure, and builds two new tokenizers to isolate their effects. The key finding is that the search procedure, bottom-up merging versus top-down pruning, matters more than the stated objective for compression-based language modeling performance, at least by the bits-per-byte metric. This is a solid empirical contribution that gives practical guidance for tokenizer construction, though the BLiMP results show no clear signal, tempering the practical takeaway somewhat.",
   "authors": [
     "Ahmetcan Yavuz",
     "Clara Meister",

@@ -5,10 +5,10 @@
   "date": "2026-09-17",
   "tags": [],
   "interest_score": 3,
-  "why_read": "An 'awesome list' style repo referencing 'GPT-6' for embodied AI robotics is likely speculative or aggregating unofficial resources rather than substantive content, since GPT-6 doesn't officially exist.",
-  "analysis": "This repo seems to be a curated list of resources related to embodied AI and robotics, branded around a speculative or unofficial 'GPT-6 Astra' reference that isn't a confirmed real product. Awesome-list repositories can be useful as reference indexes, but the framing here raises questions about accuracy or hype-driven content. Without clear provenance of what 'GPT-6 Astra' actually refers to, it's hard to gauge real technical value versus speculative marketing.",
+  "why_read": "An 'awesome list' repo referencing a speculative or possibly nonexistent 'GPT-6 Astra' model for embodied AI/robotics raises credibility concerns and offers little verified substance.",
+  "analysis": "This repository is framed as a curated list around 'GPT-6 Astra' for embodied AI and robotics, but GPT-6 has not been released or announced by OpenAI, making the framing questionable or speculative. Awesome-list repos can be useful as reference indexes of papers and tools in a subfield, but the specific claim in the description undermines confidence in the curation's rigor. Readers should treat this skeptically until it's clear what content and sourcing the list actually contains.",
   "authors": [],
-  "stars": 821,
-  "image_url": "https://opengraph.githubassets.com/61fa6d82d0110e796a9db7fabfc8b3cc166bf24e1712a7d1a478808c53722279/zjwzcx/Awesome-Astra-Embodied-AI",
+  "stars": 823,
+  "image_url": "https://opengraph.githubassets.com/9c4ad30c4d360ee6abb6102364666a547f164e02c4f812de134751db4798c1c4/zjwzcx/Awesome-Astra-Embodied-AI",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

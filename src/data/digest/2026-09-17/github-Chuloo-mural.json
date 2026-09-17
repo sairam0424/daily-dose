@@ -7,10 +7,10 @@
     "Kotlin"
   ],
   "interest_score": 3,
-  "why_read": "A consumer language-learning app is a reasonable product but offers little novel technical substance for an engineering audience.",
-  "analysis": "Mural is described as a native iPhone app for learning languages through conversation, likely leveraging speech recognition and possibly an LLM backend for conversational practice. Being written in Kotlin for what's described as a native iPhone app is a bit odd, suggesting either cross-platform tooling or a naming inconsistency in the repo metadata. Without more architectural detail, this reads more as a product showcase than a technically substantive project worth engineers' time.",
+  "why_read": "A native iOS language-learning conversation app is a consumer product rather than something offering deep engineering insight for a technical digest.",
+  "analysis": "Mural is described as a native iPhone app for learning languages through conversation, positioned as an app users eventually delete once they've learned enough. This is primarily a product/UX story rather than a technically deep engineering topic, though the native Kotlin Multiplatform approach for an iOS app is mildly interesting. It's more relevant to consumer app builders than to a general software engineering audience.",
   "authors": [],
-  "stars": 1313,
-  "image_url": "https://opengraph.githubassets.com/ea05cc2752832b98b663bd2c6c8fecb448560b3b219e8ee7eb3ec9b0c1cb7c27/Chuloo/mural",
+  "stars": 1316,
+  "image_url": "https://opengraph.githubassets.com/004a7a53be3a4c77a6fb5d421317285ca68cd1027b6afb86058ddf5680a7f42b/Chuloo/mural",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }
