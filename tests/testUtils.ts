@@ -39,3 +39,28 @@ export function readAllPageCss(pageHtml: string): string {
 
   return `${inlineStyles}\n${externalCss}`;
 }
+
+// Astro's default text-node rendering HTML-entity-escapes all 5 XML-
+// significant characters (&<>"'), not just the 3 strictly required in a
+// text node — real, confirmed via a live title containing an apostrophe
+// ("driver's license") rendering as "driver&#39;s license" in dist
+// output. Any test comparing a raw digest-item string field (title,
+// why_read) against rendered HTML must decode entities first, or it
+// silently only ever passes for titles with no HTML-significant
+// characters — which happened to be every title ever committed, until
+// one real HN story finally had an apostrophe.
+const ENTITY_DECODE: Record<string, string> = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&#39;": "'",
+  "&apos;": "'",
+};
+
+export function decodeHtmlEntities(html: string): string {
+  return html.replace(
+    /&amp;|&lt;|&gt;|&quot;|&#39;|&apos;/g,
+    (entity) => ENTITY_DECODE[entity]!,
+  );
+}

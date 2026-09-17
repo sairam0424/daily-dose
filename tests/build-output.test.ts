@@ -8,7 +8,7 @@ import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
 import { formatReadingBadge } from "../src/lib/readingTime.js";
-import { DIST_DIR, readAllPageCss } from "./testUtils.js";
+import { DIST_DIR, decodeHtmlEntities, readAllPageCss } from "./testUtils.js";
 
 const DIST_INDEX = join(DIST_DIR, "index.html");
 const DIGEST_BASE = join(import.meta.dirname, "..", "src", "data", "digest");
@@ -503,7 +503,14 @@ describe("dist/index.html build output", () => {
       leadTitleMatch,
       "expected a .story-title link inside the lead story",
     ).toBeTruthy();
-    const leadTitle = leadTitleMatch![1].trim();
+    // (regression) real titles can contain apostrophes/&/<>/" - Astro's
+    // default text-node rendering HTML-entity-escapes all 5 of those, so
+    // the raw JSON title (source of truth in topTitles) never
+    // byte-matches the rendered HTML for such a title without decoding
+    // first. Confirmed live: "Keys Not Included: recovering the signing
+    // keys for US driver's license barcodes" rendered as
+    // "driver&#39;s license" and failed a raw-string comparison here.
+    const leadTitle = decodeHtmlEntities(leadTitleMatch![1].trim());
     expect(
       topTitles.has(leadTitle),
       `expected the lead story ("${leadTitle}") to be one of the max-score (${maxScore}) items: ${JSON.stringify([...topTitles])}`,

@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { DigestItemSchema } from "../src/lib/digestSchema.js";
-import { DIST_DIR, readAllPageCss } from "./testUtils.js";
+import { DIST_DIR, decodeHtmlEntities, readAllPageCss } from "./testUtils.js";
 
 const previewCardSource = readFileSync(
   new URL("../src/components/DigestPreviewCard.astro", import.meta.url),
@@ -63,14 +63,21 @@ describe("archive preview cards", () => {
     const { maxScoreItems } = readMaxScoreItemsForLatestDate();
     expect(maxScoreItems.length).toBeGreaterThan(0);
 
+    // (regression) real titles/why_read can contain apostrophes/&/<>/" -
+    // Astro's default text-node rendering HTML-entity-escapes all 5 of
+    // those, so a raw JSON title never byte-matches rendered HTML for
+    // such a title without decoding the HTML side first. Confirmed live:
+    // a title containing "driver's license" rendered as "driver&#39;s
+    // license" and this raw html.includes() check silently never matched.
+    const decodedHtml = decodeHtmlEntities(html);
     const matchedTitle = maxScoreItems.find((item) =>
-      html.includes(item.title),
+      decodedHtml.includes(item.title),
     );
     expect(
       matchedTitle,
       `expected the archive index to show one of the top-scored titles: ${JSON.stringify(maxScoreItems.map((i) => i.title))}`,
     ).toBeTruthy();
-    expect(html).toContain(matchedTitle!.why_read.slice(0, 40));
+    expect(decodedHtml).toContain(matchedTitle!.why_read.slice(0, 40));
   });
 
   it("(backlog) still shows the real item count per date", () => {
