@@ -115,7 +115,7 @@ jobs:
         # Pinned to a full commit SHA, not the mutable v5 tag - a tag can be
         # re-pointed to different code later; a SHA cannot. v5 currently
         # resolves to v5.2.0 (confirmed via `gh api .../git/refs/tags/v5`).
-        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
         with:
           commit_message: "chore(digest): automated daily pipeline run"
           commit_user_name: "github-actions[bot]"
