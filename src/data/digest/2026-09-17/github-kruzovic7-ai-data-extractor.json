@@ -7,10 +7,10 @@
     "Python"
   ],
   "interest_score": 5,
-  "why_read": "A practical utility for extracting and consolidating chat histories from multiple AI coding assistants addresses a real annoyance for developers using several such tools.",
-  "analysis": "This tool extracts conversation histories from a range of AI coding assistants including Claude Code, Cursor, Windsurf, Aider, and Cline/Roo Code, presumably normalizing them into a common format for review, search, or archiving. This is a useful bit of developer tooling glue rather than a research breakthrough, solving the practical problem of chat logs being scattered across proprietary tool formats. Its value depends heavily on how many of these tools a given developer actually uses and whether the extraction is reliable across format changes.",
+  "why_read": "A tool for extracting chat histories from AI coding assistants is a niche but practically useful utility for developers who use multiple coding-agent tools.",
+  "analysis": "This is a utility for pulling out and presumably normalizing conversation logs from tools like Claude Code, Cursor, Windsurf, Aider, and Cline/Roo Code. It's useful for developers who want to archive, search, or analyze their own AI-assisted coding sessions across different tools, since each tool typically stores this data in a different proprietary format. The value is mostly practical and workflow-oriented rather than a novel technical contribution, but the multi-tool support suggests real engineering effort in reverse-engineering various storage formats. It's a modest but genuinely handy piece of developer tooling for a growing use case.",
   "authors": [],
-  "stars": 833,
-  "image_url": "https://opengraph.githubassets.com/ec6586a8949629eaf203a08e3e18dd31f13075c9ea0030a19f15dd44191eeab7/kruzovic7/ai-data-extractor",
+  "stars": 834,
+  "image_url": "https://opengraph.githubassets.com/745bef6ec09dcd0d667604fb00bae97651511991dd9ad43c42b0ab22b2c21864/kruzovic7/ai-data-extractor",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

@@ -8,9 +8,9 @@
     "cs.AI",
     "cs.LG"
   ],
-  "interest_score": 5,
-  "why_read": "A theoretically grounded alternative to standard preference optimization methods for LLM alignment, but its practical impact requires further validation beyond the paper's own benchmarks.",
-  "analysis": "This paper proposes ComPO, a zeroth-order optimization method for aligning language models with human preferences that uses comparison oracles instead of directly differentiating a preference loss. The motivation is a known problem called likelihood displacement, where standard direct preference optimization methods can degrade probability mass on preferred responses in ways that hurt quality. The authors provide convergence guarantees under certain assumptions and show improvements over existing methods on several open models like Llama and Qwen3. This is solid theoretical work but is fairly specialized, likely most useful to researchers actively working on alignment methods rather than general practitioners.",
+  "interest_score": 6,
+  "why_read": "A theoretically grounded alternative to standard preference optimization methods like DPO, with convergence guarantees and empirical gains, is relevant to anyone fine-tuning LLMs on preference data.",
+  "analysis": "The paper introduces ComPO, a zeroth-order (gradient-free at the pair level) method for aligning LLMs with human preferences that uses comparison oracles instead of directly backpropagating a preference loss, aiming to address a known failure mode called likelihood displacement. It provides convergence guarantees under specific technical assumptions and extends to an online variant with KL control, then tests across several open model families including Llama, Mistral, Qwen3, and Gemma. This is a fairly dense theoretical paper that will mainly interest researchers working on alignment methods rather than general practitioners, but the empirical validation across many model families adds credibility. The core idea of leveraging comparison signals more robustly is a reasonable and non-trivial contribution to the alignment toolkit.",
   "authors": [
     "Peter Chen",
     "Xi Chen",

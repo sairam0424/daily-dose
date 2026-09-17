@@ -8,8 +8,8 @@
     "cs.AI"
   ],
   "interest_score": 7,
-  "why_read": "A careful ablation study isolating what actually matters in tokenizer design gives concrete, actionable guidance for anyone building or choosing tokenizers for language models.",
-  "analysis": "The paper disentangles two aspects of tokenizer algorithms, the optimization objective (compression versus likelihood) and the search procedure (bottom-up merging versus top-down pruning), by constructing two new hybrid tokenizers that fill out the 2x2 design space. Testing across model sizes, vocabulary sizes, and languages, they find the search procedure matters more than the objective for bits-per-byte performance, but neither factor cleanly predicts grammatical performance on the BLiMP benchmark. This is a rigorous, well-designed experiment that clarifies a genuinely confusing area of LLM preprocessing that most practitioners treat as a black box. It offers concrete, evidence-based guidance rather than just another benchmark comparison.",
+  "why_read": "A careful controlled study isolating whether tokenizer quality comes from the optimization objective or the search algorithm gives genuinely useful, non-obvious guidance for building better tokenizers.",
+  "analysis": "The paper disentangles two design axes of subword tokenizers, whether they optimize for compression or likelihood, and whether they search bottom-up or top-down, by constructing two new hybrid tokenizers that fill in the missing combinations. Testing across model sizes, vocabulary sizes, and languages, they find that the search procedure (bottom-up vs top-down) matters more than the optimization objective for compression-based metrics, though not for a targeted linguistic benchmark called BLiMP. This is a rigorous ablation-style contribution to a foundational but often glossed-over part of language model design, useful for anyone building or choosing tokenizers. The clear methodology and concrete empirical findings make it a solid, substantive read for NLP practitioners.",
   "authors": [
     "Ahmetcan Yavuz",
     "Clara Meister",

@@ -8,8 +8,8 @@
     "cs.AI"
   ],
   "interest_score": 6,
-  "why_read": "An inventive use of generated audio to add missing force information to video-generated robot manipulation plans tackles a real limitation in learning-from-video robotics approaches.",
-  "analysis": "Video generation models can produce plausible robot motion trajectories, but they lack information about contact forces needed for tasks like pressing, wiping, or inserting objects. This work uses the loudness of AI-generated contact sounds paired with generated video to derive a time-varying target force profile, which a real robot then tracks using closed-loop force control. It's a clever workaround that adds a missing physical signal to an otherwise purely visual generative pipeline, tested on a real Franka Panda arm. The approach is niche but represents a genuinely creative idea for bridging generative AI and physical robot control.",
+  "why_read": "An inventive use of generated audio to infer contact-force profiles for robot manipulation tackles a real gap in video-generation-based robot learning.",
+  "analysis": "Video-generation methods for teaching robots manipulation typically only capture motion, not the physical forces needed for contact-rich tasks like pushing or inserting objects. This paper's trick is to also generate audio alongside video and use the loudness of the generated contact sounds as a proxy signal for how much force should be applied at each moment. They then execute these audio-derived force profiles on a real Franka Panda robotic arm using closed-loop force control, and show it succeeds where a motion-only baseline fails. It's a clever, somewhat unusual cross-modal signal (sound implying force) applied to a real hardware evaluation, making it a creative and technically interesting robotics contribution.",
   "authors": [
     "Guanhua Ji",
     "Tianyu Li",

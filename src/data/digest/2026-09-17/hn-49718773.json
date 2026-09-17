@@ -5,13 +5,13 @@
   "date": "2026-09-17",
   "tags": [],
   "interest_score": 7,
-  "why_read": "A firsthand account of a hacky fix becoming deeply embedded infrastructure is a relatable and instructive story about the long tail of software maintenance.",
-  "analysis": "This is a personal story about a quick patch to a PHP library or tool from 2014 that ended up being installed nearly 20 million times, and the author's decision to finally deprecate it. It touches on real issues in open source maintenance: how temporary fixes calcify into permanent dependencies, and the difficulty of retiring widely used code without breaking things. This kind of narrative is valuable less for novel technical content and more as a case study in software supply chain inertia. Engineers who maintain public packages will likely recognize the pattern and appreciate the lessons about versioning, communication, and deprecation strategy.",
+  "why_read": "A widely-installed open-source maintainer reflecting on a decade-old quick fix and its deprecation is a relatable and instructive story about software longevity and maintenance burden.",
+  "analysis": "This is a first-person account from a PHP package maintainer describing how a temporary fix committed in 2014 ended up embedded in nearly 20 million installations, and the process of finally deprecating it. It's a good illustration of how quick hacks calcify into long-term dependencies within widely used ecosystems like Composer/PHP packages. The story likely covers backward compatibility concerns, communication with downstream consumers, and the emotional weight of removing legacy code that people depend on. This resonates with any engineer who maintains open-source software or has to sunset old workarounds responsibly.",
   "authors": [
     "jakeasmith"
   ],
   "hn_id": 49718773,
-  "points": 288,
+  "points": 295,
   "image_url": "https://jakeasmith.com/blog/http-build-url/og.png",
   "favicon_url": "https://jakeasmith.com/favicon.svg"
 }

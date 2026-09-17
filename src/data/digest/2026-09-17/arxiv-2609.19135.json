@@ -7,8 +7,8 @@
     "cs.LG"
   ],
   "interest_score": 6,
-  "why_read": "A rigorous theoretical result showing that off-policy evaluation can be exponentially hard even under seemingly favorable coverage conditions is important for researchers who rely on these guarantees.",
-  "analysis": "This paper constructs explicit small POMDP examples where standard coverage conditions used to justify off-policy evaluation are satisfied, yet accurately estimating a policy's value still requires exponentially many logged episodes. The key mechanism is that a reset in the environment can erase information about an unknown transition that determines the target policy's true value, breaking the usual statistical guarantees. This resolves an open question from prior work about whether history-dependent logging with model-based revealing conditions is tractable, showing that it is not. It's a technically dense theory paper mainly relevant to researchers working on reinforcement learning evaluation guarantees rather than practitioners.",
+  "why_read": "A rigorous theoretical result showing that seemingly well-covered logged datasets can still be exponentially uninformative for policy evaluation has real implications for anyone relying on off-policy evaluation guarantees.",
+  "analysis": "Off-policy evaluation tries to estimate how well a new decision-making policy would perform using only historical logged data, and this paper proves a surprising negative result about when that is fundamentally hard. They construct explicit small POMDPs (partially observed decision processes) where standard notions of data coverage all look fine, yet accurately evaluating a known target policy still requires an exponential number of logged episodes in the planning horizon. The mechanism is that when the logger's behavior depends on history, resets can erase exactly the information needed to determine the answer, even though naive coverage metrics don't detect this. This is a technically dense theory paper mainly relevant to researchers in reinforcement learning and causal inference who care about the mathematical limits of offline evaluation.",
   "authors": [
     "Pranaya Jajoo"
   ],
