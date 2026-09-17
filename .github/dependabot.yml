@@ -1,0 +1,25 @@
+version: 2
+updates:
+  # npm dependencies (astro, the Bedrock/Anthropic SDKs, zod, vitest, etc.)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      # Batch routine patch/minor bumps into one PR to cut review noise;
+      # majors always get their own PR since this repo treats major version
+      # bumps as real decisions (see PR #112's Astro major bump for a CVE).
+      npm-minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions used by ci.yml, daily-pipeline.yml, codeql.yml, etc. -
+  # every action here is already SHA-pinned with a version comment, so a
+  # Dependabot bump shows up as both a SHA change and a version-comment diff.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10

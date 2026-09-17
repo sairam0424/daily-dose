@@ -1,0 +1,49 @@
+name: CodeQL
+
+# Static analysis (SAST) for the JS/TS codebase - runs on every push/PR to
+# main plus a weekly cron so drive-by dependency or config changes still get
+# scanned even without a fresh push. This repo is private; GitHub Advanced
+# Security (required for private-repo code-scanning alert visibility) may or
+# may not be enabled on this account's plan - the branch-protection API
+# already 403'd here with an "Upgrade to GitHub Pro" message, so treat this
+# workflow's SARIF-upload step as unverified until a real run confirms
+# whether alerts actually surface in the Security tab.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      security-events: write
+      # Needed on private repos so the CodeQL action can read the run's own
+      # workflow status.
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@4bd7200e1f146b1c937cae12d258b50f41a53cf8 # v4.38.0
+        with:
+          languages: javascript-typescript
+
+      # No separate build step: CodeQL's javascript-typescript extractor is
+      # source-based (interpreted language), so it does not need an
+      # autobuild/manual-build step the way compiled languages do.
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@4bd7200e1f146b1c937cae12d258b50f41a53cf8 # v4.38.0
+        with:
+          category: "/language:javascript-typescript"
