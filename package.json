@@ -22,8 +22,8 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "@anthropic-ai/bedrock-sdk": "^0.33.3",
-    "@anthropic-ai/sdk": "^0.123.0",
+    "@anthropic-ai/bedrock-sdk": "^0.33.5",
+    "@anthropic-ai/sdk": "^0.125.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.10",
