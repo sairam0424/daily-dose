@@ -1,0 +1,16 @@
+{
+  "title": "tamaratran/fast-jev-compaction",
+  "source": "github",
+  "url": "https://github.com/tamaratran/fast-jev-compaction",
+  "date": "2026-09-18",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A plugin for Claude Code that changes how conversation history gets summarized during compaction, a practical detail for engineers using long-running AI coding sessions.",
+  "analysis": "'Compaction' in AI coding assistants refers to summarizing older conversation history to fit within a model's context window as a session grows long. This plugin reportedly replaces the default summary with a scoring system that decides, per tool call and result, whether to keep it verbatim, truncate it, or drop it entirely, aiming to preserve more useful detail than a generic summary would. This is a fairly niche but genuinely useful engineering detail for people building or heavily using long AI coding sessions, since context management quality directly affects agent reliability.",
+  "authors": [],
+  "stars": 3142,
+  "image_url": "https://opengraph.githubassets.com/fcd63044f4b1d46261c9408a3ac40f128d804d0413045457e9e361f42f370103/tamaratran/fast-jev-compaction",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

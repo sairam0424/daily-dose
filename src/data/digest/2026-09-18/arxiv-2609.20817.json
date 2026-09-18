@@ -1,0 +1,26 @@
+{
+  "title": "FAMOS: Feed-Forward 3D Articulation Modeling from Sparse Observations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20817",
+  "date": "2026-09-18",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 5,
+  "why_read": "A technical advance in reconstructing how objects move (like hinges and joints) from limited camera views, relevant to robotics and 3D vision researchers.",
+  "analysis": "FAMOS predicts which parts of an object can move and how (their joint parameters) using only a handful of point-cloud snapshots, rather than requiring dense scans or per-category shape assumptions. Its key architectural idea, a Multi-state Articulation Transformer, combines information across multiple partial views using attention mechanisms that alternate between per-observation and global reasoning. The authors also built a synthetic data generator to address the shortage of large, varied training datasets for articulated objects. This is a solid, narrow research contribution mainly of interest to people working on robot perception or 3D object modeling rather than general engineers.",
+  "authors": [
+    "Kevin Qu",
+    "Tao Sun",
+    "Massimiliano Viola",
+    "Liyuan Zhu",
+    "Zhizhuo Zhou",
+    "Sayan Deb Sarkar",
+    "Konrad Schindler",
+    "Iro Armeni"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

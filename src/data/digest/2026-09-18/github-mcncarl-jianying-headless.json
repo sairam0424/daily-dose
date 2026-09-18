@@ -1,0 +1,16 @@
+{
+  "title": "mcncarl/jianying-headless",
+  "source": "github",
+  "url": "https://github.com/mcncarl/jianying-headless",
+  "date": "2026-09-18",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A tool for programmatically driving Jianying (a popular Chinese video editor) in headless mode, useful mainly to a narrow audience doing automated video editing pipelines.",
+  "analysis": "Jianying is a widely used video editing application, and 'headless' automation of it would let developers script video creation and export without manual UI interaction, useful for content pipelines or bulk editing tasks. The description is sparse, mentioning 'native Jianying drafts,' 'isolated editing/export,' and a 'standalone Agent Skill,' but doesn't clarify how the automation is achieved (e.g., API reverse-engineering, UI scripting) or its reliability. This could be technically interesting to reverse-engineering enthusiasts or media-automation engineers, but the lack of detail and its private-source nature limit broader assessment.",
+  "authors": [],
+  "stars": 1001,
+  "image_url": "https://opengraph.githubassets.com/1e026cf659662fc55508475d5a516ef4b50aedeeb912f0e80d645b7cc7ef0e2a/mcncarl/jianying-headless",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

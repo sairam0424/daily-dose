@@ -1,0 +1,16 @@
+{
+  "title": "How to Write with an LLM",
+  "source": "hn",
+  "url": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/",
+  "date": "2026-09-18",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A discussion on techniques for co-writing with an LLM touches a common practical workflow question but is more opinion/process than technical deep-dive.",
+  "analysis": "This piece appears to cover approaches to using large language models as writing collaborators, likely including prompting strategies, editing workflows, or voice-preservation tricks. It is a practical, low-technical-depth topic compared to research papers or systems posts, more about applied craft than new technical insight. Its high comment count suggests it sparked debate about authorship and process rather than delivering novel technical content.",
+  "authors": [
+    "joeriddles"
+  ],
+  "hn_id": 49747070,
+  "points": 352,
+  "image_url": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/workshop_hu_1de7cdec7d0e03c9.jpg"
+}

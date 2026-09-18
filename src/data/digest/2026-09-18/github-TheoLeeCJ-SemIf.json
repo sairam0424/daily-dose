@@ -1,0 +1,16 @@
+{
+  "title": "TheoLeeCJ/SemIf",
+  "source": "github",
+  "url": "https://github.com/TheoLeeCJ/SemIf",
+  "date": "2026-09-18",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "An intriguing but under-explained concept of using small open-weight language models to implement 'semantic if' conditionals running locally on consumer hardware.",
+  "analysis": "The idea of a 'semantic if,' evaluating a conditional branch based on meaning rather than exact value matching, using a locally-run open model on a single consumer GPU (a 3090), is a neat and potentially useful primitive for building AI-infused applications without cloud API costs. The description is terse and doesn't explain implementation details, accuracy, latency, or how it integrates into existing code, which limits how much can be judged. It's positioned as independent from other named projects mentioned elsewhere in this batch ('Jev,' 'TypeSafe'), suggesting a broader ecosystem story not detailed here.",
+  "authors": [],
+  "stars": 1572,
+  "image_url": "https://opengraph.githubassets.com/70768201df2a18a4ff9d79a846f342b780e1855030e6f984d87c0336f6127708/TheoLeeCJ/SemIf",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

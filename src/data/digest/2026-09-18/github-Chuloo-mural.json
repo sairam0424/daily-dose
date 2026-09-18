@@ -1,0 +1,16 @@
+{
+  "title": "Chuloo/mural",
+  "source": "github",
+  "url": "https://github.com/Chuloo/mural",
+  "date": "2026-09-18",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 3,
+  "why_read": "A consumer language-learning app for iPhone with a catchy tagline, but not a technically deep or novel engineering project based on the given description.",
+  "analysis": "Mural appears to be a native iOS app for practicing language learning through conversation, likely powered by some kind of conversational AI. The description is marketing-oriented rather than technical, giving no detail on the underlying model, architecture, or notable engineering approach. Written in Kotlin despite being described as a 'native iPhone' app is a bit odd and worth noting as a possible inconsistency in the provided metadata. Overall this reads more like a product launch than a technical resource for engineers.",
+  "authors": [],
+  "stars": 1362,
+  "image_url": "https://opengraph.githubassets.com/692eceb3e893c0b4e65d1fec873e0db220f14468c4668bf0ac265bf35157ad79/Chuloo/mural",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

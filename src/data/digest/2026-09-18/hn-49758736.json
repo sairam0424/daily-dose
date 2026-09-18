@@ -1,0 +1,16 @@
+{
+  "title": "Android 17 is the first since 3.x to add new APIs without releasing to the AOSP",
+  "source": "hn",
+  "url": "https://grapheneos.social/@GrapheneOS/117282080803799576",
+  "date": "2026-09-18",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A concrete governance change in how Android exposes new APIs is genuinely relevant to Android developers tracking platform openness trends.",
+  "analysis": "The claim is that Android 17 introduces new public APIs without first landing the corresponding code in the open-source AOSP repository, a shift from past practice. This matters because AOSP visibility affects custom ROM developers, security researchers, and companies building Android forks who rely on inspecting implementation code. If accurate, it signals a further tightening of Google's control over the platform's genuinely open portions, which has real downstream effects for the broader Android ecosystem.",
+  "authors": [
+    "theanonymousone"
+  ],
+  "hn_id": 49758736,
+  "points": 391,
+  "favicon_url": "https://grapheneos.social/packs/assets/favicon-16x16-74JBPGmr.png"
+}

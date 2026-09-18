@@ -1,0 +1,19 @@
+{
+  "title": "Embedding Models Measure in Peculiar Ways",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20821",
+  "date": "2026-09-18",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused empirical study showing that text embeddings poorly capture real physical quantities like mass and distance, which matters for anyone using embeddings for reasoning tasks involving measurements.",
+  "analysis": "The researchers test whether embedding models, which convert text into vectors meant to capture meaning, correctly represent physical measurement concepts such as mass, distance, time, and volume that have objectively verifiable equivalences. They find embeddings weakly encode true physical relationships and instead are swayed by surface-level string similarity, for example treating '5 km' as similar to '5 miles' because of shared characters rather than actual unit conversion. Attempts to recalibrate similarity scores didn't fix the underlying misalignment. This is a useful negative result for anyone building retrieval or reasoning systems that assume embeddings understand quantities correctly.",
+  "authors": [
+    "Juri Opitz",
+    "Andrianos Michail"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
