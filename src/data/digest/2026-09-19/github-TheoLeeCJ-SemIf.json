@@ -1,0 +1,16 @@
+{
+  "title": "TheoLeeCJ/SemIf",
+  "source": "github",
+  "url": "https://github.com/TheoLeeCJ/SemIf",
+  "date": "2026-09-19",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A project implementing 'semantic if' conditionals using local open models on consumer hardware, an interesting niche idea for LLM-infused control flow.",
+  "analysis": "This project seems to implement a 'semantic if' construct, likely letting code branch based on a language model's judgment of a natural-language condition rather than strict boolean logic, running locally on a consumer GPU (a 3090). This is a niche but conceptually interesting idea in the growing space of blending LLM reasoning with traditional program control flow. The description is sparse, so it's unclear how robust or production-ready the implementation is.",
+  "authors": [],
+  "stars": 1909,
+  "image_url": "https://opengraph.githubassets.com/3e3b506284ee8645c5219fbcf977337250a3ec7a6027d3bebe7108be94dc3e2a/TheoLeeCJ/SemIf",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

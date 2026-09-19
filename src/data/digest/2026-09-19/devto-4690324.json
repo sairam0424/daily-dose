@@ -1,0 +1,19 @@
+{
+  "title": "Thrown Into a Huge Unfamiliar Codebase? Here's Your Survival Guide.",
+  "source": "devto",
+  "url": "https://dev.to/james_anderson_h/thrown-into-a-huge-unfamiliar-codebase-heres-your-survival-guide-2gah",
+  "date": "2026-09-19",
+  "tags": [
+    "beginners",
+    "webdev",
+    "programming",
+    "career"
+  ],
+  "interest_score": 4,
+  "why_read": "A general advice piece on strategies for orienting yourself in a large unfamiliar codebase, useful but fairly generic career advice rather than novel technical content.",
+  "analysis": "This article offers practical advice for onboarding into a large, unfamiliar codebase, emphasizing learning by tracing execution and making small changes rather than passively reading files top to bottom. The core idea, that understanding a codebase's 'shape' and key paths matters more than exhaustive reading, is sound and commonly echoed advice among experienced engineers. It doesn't introduce novel tools or techniques, so its value is mainly as accessible, well-articulated advice for less experienced developers rather than as new technical content.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fndl77o9v9cuu255nkjmg.png"
+}

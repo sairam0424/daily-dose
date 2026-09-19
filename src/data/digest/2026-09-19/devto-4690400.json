@@ -1,0 +1,19 @@
+{
+  "title": "Frozendict 🧊: State of the Art Immutable Hashmap for Python and Node JS.",
+  "source": "devto",
+  "url": "https://dev.to/wiseai/frozendict-state-of-the-art-immutable-hashmap-for-python-and-node-js-284o",
+  "date": "2026-09-19",
+  "tags": [
+    "rust",
+    "python",
+    "javascript",
+    "tutorial"
+  ],
+  "interest_score": 3,
+  "why_read": "Announces a Rust-backed immutable dictionary library for Python and Node.js, a modest but functional utility with a very promotional tone.",
+  "analysis": "This is a library announcement for 'frozndict,' an immutable, insertion-ordered, hashable dictionary implemented in Rust with bindings for Python and Node.js, aimed at replacing existing pure-Python or C-extension frozendict implementations. The technical premise, that mutable dicts can't be used as cache keys and a fast immutable alternative is useful, is legitimate and common in functional-style Python code. However, the excerpt is dominated by jokey marketing language rather than substantive benchmarks or design details, so the actual technical merit is hard to fully judge from what's given.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi9olczam88ztvt7juesj.webp"
+}

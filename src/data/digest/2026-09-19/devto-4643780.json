@@ -1,0 +1,19 @@
+{
+  "title": "Dev log #21 Hardening WebRTC-Direct and solving SCM leaks",
+  "source": "devto",
+  "url": "https://dev.to/yashksaini/dev-log-hardening-webrtc-direct-and-solving-scm-leaks-i5k",
+  "date": "2026-09-19",
+  "tags": [
+    "opensource",
+    "devrel",
+    "discuss",
+    "distributedsystems"
+  ],
+  "interest_score": 6,
+  "why_read": "A detailed weekly devlog on fixing real WebRTC-Direct and SCM polling bugs in libp2p, useful for engineers working on peer-to-peer networking internals.",
+  "analysis": "This devlog describes concrete engineering work on py-libp2p, focusing on stabilizing WebRTC-Direct transport across different language implementations and fixing a race condition involving ICE credential setup before connection replay. It also mentions fixing issues with source control management (SCM) polling that caused CI agents to hallucinate failures. This is grounded, specific systems-networking work rather than hype, which makes it a reasonably solid read for engineers interested in p2p protocol implementation details, though it's fairly niche to that community.",
+  "authors": [],
+  "reactions": 31,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fans5p4b3ar2b4irkhzf8.png"
+}

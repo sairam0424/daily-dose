@@ -1,0 +1,23 @@
+{
+  "title": "Paint-Anything: Unified Any-Color Control for Image Generation and Editing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20816",
+  "date": "2026-09-19",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "Presents a method for precise hex-color control in AI image generation and editing, useful for anyone building design tools on top of diffusion models.",
+  "analysis": "Paint-Anything tackles a practical gap in AI image generation: letting users specify an exact 24-bit hex color for an object rather than getting an approximate or inconsistent result. The authors built a large training dataset with object-level color labels and used pure-color synthetic anchors to improve fidelity at high-noise diffusion timesteps, reporting large gains on their new benchmark over base models like FLUX.2-4B. This is a reasonably narrow but practically useful contribution for design and creative tooling built on diffusion models.",
+  "authors": [
+    "Ji Xie",
+    "Dewei Zhou",
+    "Xinyu Huang",
+    "Zhennan Chen",
+    "Xun Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

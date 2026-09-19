@@ -1,0 +1,15 @@
+{
+  "title": "I built non-autoregressive decision models with RL a year ago",
+  "source": "hn",
+  "url": "https://laya.convaiinnovations.com/",
+  "date": "2026-09-19",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A personal account of building non-autoregressive decision models with reinforcement learning, useful for ML practitioners interested in alternatives to autoregressive generation.",
+  "analysis": "This is a first-person writeup describing work on non-autoregressive decision models combined with reinforcement learning, predating some current trends in this area. Non-autoregressive approaches attempt to generate outputs without the token-by-token sequential dependency typical of transformers, which can improve speed and change training dynamics. Without more detail in the abstract, it's hard to assess the technical depth, but the topic itself is a legitimate and current research area in ML.",
+  "authors": [
+    "nandakishor_ml"
+  ],
+  "hn_id": 49765348,
+  "points": 1012
+}

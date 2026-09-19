@@ -1,0 +1,16 @@
+{
+  "title": "tamaratran/fast-jev-compaction",
+  "source": "github",
+  "url": "https://github.com/tamaratran/fast-jev-compaction",
+  "date": "2026-09-19",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A Claude Code plugin that changes how conversation history is compacted by scoring and pruning tool calls, a niche but practical LLM tooling utility.",
+  "analysis": "This is a plugin for Claude Code that modifies the default context-compaction behavior by scoring each tool call and its result for relevance, dropping or truncating low-value entries while keeping important ones verbatim. This addresses a real pain point in long-running agent sessions where naive summarization loses important details. It's a fairly narrow, tool-specific utility, useful mainly to people actively using Claude Code for agentic workflows.",
+  "authors": [],
+  "stars": 4174,
+  "image_url": "https://opengraph.githubassets.com/410fb27843c866a6473dca1124a07dc4d5181301da8de6f61791034a80da4431/tamaratran/fast-jev-compaction",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

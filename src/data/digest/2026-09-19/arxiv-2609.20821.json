@@ -1,0 +1,19 @@
+{
+  "title": "Embedding Models Measure in Peculiar Ways",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20821",
+  "date": "2026-09-19",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting empirical finding that text embedding models poorly capture real physical measurement relationships, relying instead on superficial string similarity.",
+  "analysis": "The paper tests whether embedding models, which are used to measure semantic similarity between pieces of text, actually understand physical quantities like mass, distance, time, and volume in a way that respects real-world equivalence (e.g., recognizing that 1000 grams equals 1 kilogram). It finds embeddings largely fail to capture this and instead are swayed by how similar the strings look, and that simple recalibration doesn't fix this. This is a useful cautionary result for anyone building retrieval or search systems on top of embeddings that involve numeric or measurement-heavy content. It's a focused, well-scoped empirical study rather than a flashy result, but genuinely useful for practitioners.",
+  "authors": [
+    "Juri Opitz",
+    "Andrianos Michail"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

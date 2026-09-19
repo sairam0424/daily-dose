@@ -1,0 +1,16 @@
+{
+  "title": "mcncarl/jianying-headless",
+  "source": "github",
+  "url": "https://github.com/mcncarl/jianying-headless",
+  "date": "2026-09-19",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A headless automation tool for Jianying (a Chinese video editing app), niche utility for automating video editing pipelines.",
+  "analysis": "This repository provides headless, private-source tooling for driving Jianying (CapCut's Chinese counterpart) drafts programmatically, enabling isolated editing and export plus an 'Agent Skill' integration. It's a narrow, application-specific automation tool likely useful mainly to people building video content pipelines around this particular editor. The description is thin and doesn't reveal much about implementation quality or robustness.",
+  "authors": [],
+  "stars": 1523,
+  "image_url": "https://opengraph.githubassets.com/d2c66f3d5ea890abed20d4ad6b3dad79c13bbd167640be95dfb27f414e8a7481/mcncarl/jianying-headless",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

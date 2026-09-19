@@ -1,0 +1,19 @@
+{
+  "title": "What Do You Do While AI Codes? I Make Mine Argue With Itself.",
+  "source": "devto",
+  "url": "https://dev.to/debashish_ghosal/what-do-you-do-while-ai-codes-i-make-mine-argue-with-itself-2gl7",
+  "date": "2026-09-19",
+  "tags": [
+    "ai",
+    "healthydebate",
+    "testing",
+    "llm"
+  ],
+  "interest_score": 5,
+  "why_read": "An honest account of building a multi-model AI code review system and discovering the initial version was fake theater rather than real analysis, a useful cautionary tale about LLM tooling pitfalls.",
+  "analysis": "The author describes building a system where two LLMs are set up to 'debate' the correctness of a pull request, only to discover upon inspecting raw logs that the second model wasn't actually engaging with new evidence but replaying pre-generated text. This is a genuinely useful and honest failure report about a common pitfall in multi-model LLM review pipelines: apparent back-and-forth reasoning that is actually just theatrical replay. It's a good practical lesson for anyone building LLM-based code review or verification tools, told with concrete specificity rather than hype.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fm18hiegckl9r3iujf4iy.png"
+}

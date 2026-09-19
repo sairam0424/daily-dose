@@ -1,0 +1,19 @@
+{
+  "title": "Why AI Coding Agents Crash at 3 AM: The Happy-Path Mirage & The Forced Continuity Defect",
+  "source": "devto",
+  "url": "https://dev.to/gde/why-ai-coding-agents-crash-at-3-am-the-happy-path-mirage-the-forced-continuity-defect-46pd",
+  "date": "2026-09-19",
+  "tags": [
+    "ai",
+    "programming",
+    "architecture",
+    "productivity"
+  ],
+  "interest_score": 2,
+  "why_read": "A heavily stylized blog post with grandiose framing about AI coding agent failures that reads more like rhetoric than substantive technical analysis.",
+  "analysis": "The piece uses dramatic narrative devices (a fabricated Randal Schwartz quote, '3 AM' framing) to discuss why LLM-based coding agents fail in production under real-world conditions like network latency and race conditions. While the underlying observation that agents fail to handle non-happy-path conditions is valid and relevant, the excerpt is long on evocative storytelling and short on concrete technical detail or evidence. It reads as opinion/thought-leadership content rather than a rigorous technical breakdown.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqwed3lsgbikup1qr2wt5.png"
+}

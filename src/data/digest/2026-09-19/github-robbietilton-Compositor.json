@@ -1,0 +1,16 @@
+{
+  "title": "robbietilton/Compositor",
+  "source": "github",
+  "url": "https://github.com/robbietilton/Compositor",
+  "date": "2026-09-19",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 4,
+  "why_read": "An open-source Photoshop alternative for Mac written in Swift, of general interest to Mac developers and designers but not deeply novel technically.",
+  "analysis": "Compositor appears to be a native macOS image editing application positioned as an alternative to Photoshop, built in Swift. Without more architectural detail in the description, it's hard to judge what's technically novel versus a straightforward reimplementation of familiar editing tools. It could be interesting to Mac developers curious about building complex creative tools natively, but the description alone doesn't convey unique technical contributions.",
+  "authors": [],
+  "stars": 2328,
+  "image_url": "https://opengraph.githubassets.com/381a1b73ce5000dd1e98c10155706f87296fa67fb31803fe2ded342394b22783/robbietilton/Compositor",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
