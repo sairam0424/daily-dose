@@ -1,0 +1,17 @@
+{
+  "title": "Qwen Image 2.1",
+  "source": "hn",
+  "url": "https://qwen.ai/blog?id=qwen-image-2.1",
+  "date": "2026-09-20",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new release of Qwen's image generation model, relevant to anyone tracking the fast-moving open-weight image-gen space.",
+  "analysis": "Qwen Image 2.1 appears to be a new version of Alibaba's open image generation/editing model line, competing with models like FLUX and Stable Diffusion. These releases matter technically because open-weight image models let developers self-host and fine-tune without relying on closed APIs, and each iteration typically brings quality, speed, or licensing improvements. Without more detail on benchmarks or license terms, it's hard to gauge exactly how much of a leap this is, but the space is fast-moving and worth tracking.",
+  "authors": [
+    "jmillikin"
+  ],
+  "hn_id": 49775499,
+  "points": 442,
+  "image_url": "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png",
+  "favicon_url": "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png"
+}

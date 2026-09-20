@@ -1,0 +1,16 @@
+{
+  "title": "ChatGPT now knows what you do on other websites via ad collector",
+  "source": "hn",
+  "url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+  "date": "2026-09-20",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Raises a concrete privacy concern about how ChatGPT's ad-related data collection might link browsing behavior to AI conversations.",
+  "analysis": "This HN item discusses a discovery that ChatGPT can apparently access information about a user's activity on other websites through some ad-tracking-adjacent mechanism, which is a significant privacy story if accurate. The technical details matter a lot here (what exactly is being collected, via what pipe, and whether it is opt-in) but aren't given in the title alone. Given the popularity and comment volume, this likely sparked serious debate about data flows between OpenAI and third-party ad networks. Engineers building products atop LLM APIs or worried about telemetry leakage should find this relevant.",
+  "authors": [
+    "lmbbuchodi"
+  ],
+  "hn_id": 49776729,
+  "points": 507,
+  "favicon_url": "https://storage.ghost.io/c/b8/53/b853e3d4-3186-409d-9c7f-7da931a60431/content/images/size/w256h256/2026/03/buchodi-60x60-01.png"
+}

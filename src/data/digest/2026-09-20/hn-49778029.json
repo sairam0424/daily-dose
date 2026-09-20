@@ -1,0 +1,17 @@
+{
+  "title": "Samsung is expected to more than double output of its HBM4 and HBM4E DRAM",
+  "source": "hn",
+  "url": "https://en.sedaily.com/finance/2026/09/20/samsung-to-double-hbm4-output-next-year-sources-say",
+  "date": "2026-09-20",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Concrete supply-side news about HBM4/HBM4E memory production capacity, which directly affects AI accelerator availability and pricing.",
+  "analysis": "This reports that Samsung plans to significantly ramp up production of HBM4 and HBM4E, the next-generation high-bandwidth memory used in AI accelerators like GPUs and custom silicon. HBM supply is currently a major bottleneck for AI chip makers, so a doubling in output from a major supplier has real implications for hardware availability and pricing across the industry. This is more of a hardware/business story than a deep technical one, but it's grounded in a concrete, verifiable claim rather than speculation.",
+  "authors": [
+    "giuliomagnifico"
+  ],
+  "hn_id": 49778029,
+  "points": 286,
+  "image_url": "https://wimg.sedaily.com/news/cms/2026/09/20/rcv.YNA.20260318.PYH2026031803840001300_P1.jpg",
+  "favicon_url": "https://en.sedaily.com/favicon.ico"
+}

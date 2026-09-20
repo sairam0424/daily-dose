@@ -1,0 +1,16 @@
+{
+  "title": "TheoLeeCJ/SemIf",
+  "source": "github",
+  "url": "https://github.com/TheoLeeCJ/SemIf",
+  "date": "2026-09-20",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A tool for running 'semantic if' conditionals using local open models on consumer hardware, a niche but interesting idea for agentic control flow.",
+  "analysis": "This project implements 'semantic ifs', meaning conditional branches in code whose condition is evaluated by a language model's judgment rather than explicit logic, running locally on a consumer GPU (a 3090) instead of a cloud API. This is a real and increasingly discussed pattern in agentic programming, where natural-language conditions get evaluated inline in control flow. Running it on local open models rather than cloud APIs is a meaningful cost and privacy consideration. The description is otherwise terse and references other tools ('Jev', 'TypeSafe') without context, suggesting this is part of some broader ecosystem or meme not explained here.",
+  "authors": [],
+  "stars": 2426,
+  "image_url": "https://opengraph.githubassets.com/eccfc4d7f8710db0d8b05091cea90ed6a4eb7b33fb8724cade56ae0881c99282/TheoLeeCJ/SemIf",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

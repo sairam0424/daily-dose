@@ -1,0 +1,19 @@
+{
+  "title": "I Resurrected a Dead CRC Crate and It Suddenly Went Viral",
+  "source": "devto",
+  "url": "https://dev.to/wiseai/i-resurrected-a-dead-crc-crate-and-it-suddenly-went-viral-3894",
+  "date": "2026-09-20",
+  "tags": [
+    "rust",
+    "python",
+    "javascript",
+    "tutorial"
+  ],
+  "interest_score": 5,
+  "why_read": "A lighthearted but genuinely useful account of reviving an abandoned, widely-used CRC-32 Rust crate with modern tooling and cross-language bindings.",
+  "analysis": "The author found a popular but essentially abandoned crc32 crate on crates.io, unmaintained since around Rust 1.0's release, and rewrote it with no_std support, Python bindings, proc-macro codegen, CI/CD, and OS packaging. This is a real and common problem in open source supply chains, where widely-depended-upon utility crates go unmaintained yet remain load-bearing in many projects. The piece has a breezy, humorous tone but touches on genuine practical concerns around dependency maintenance and modernizing legacy checksum code. It's a decent read for anyone interested in Rust ecosystem maintenance or CRC implementation details, if somewhat light on deep technical specifics in the excerpt shown.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9u3nfxe10yn8kpczchs8.png"
+}

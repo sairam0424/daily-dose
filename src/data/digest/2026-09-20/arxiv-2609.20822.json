@@ -1,0 +1,23 @@
+{
+  "title": "Coding Agents with an Obstacle-Aware Harness for Safe Robot Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20822",
+  "date": "2026-09-20",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete study showing that LLM-written robot control code ignores safety constraints unless explicitly given planning tools to prioritize them.",
+  "analysis": "This paper investigates a real failure mode in the emerging practice of using language models to write robot control code directly rather than training robot-specific policies. The authors find that even when a prompt explicitly forbids touching an obstacle and the model reasons about the obstacle, the generated plans still collide with it most of the time, because the planning process has no mechanism to prioritize the constraint over the goal. Their fix, called SafeHarness, adds structured route planning with waypoints, verification and replanning, plus obstacle-aware contact positioning, and it roughly doubles collision avoidance rates in their tests. This matters because it's a clear, measurable example of the gap between an LLM appearing to understand a constraint in its reasoning trace and actually enforcing it in its output.",
+  "authors": [
+    "Bingxin Xu",
+    "Yuzhang Shang",
+    "Zhen Dong",
+    "Emilio Ferrara"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

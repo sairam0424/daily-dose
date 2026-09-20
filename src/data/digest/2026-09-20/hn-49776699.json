@@ -1,0 +1,17 @@
+{
+  "title": "Pirate Face Rescues LLM Models from Deletion",
+  "source": "hn",
+  "url": "https://pirateface.co/",
+  "date": "2026-09-20",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "A quirky story about someone using a workaround to save LLM models from deletion, likely more amusing than technically substantial.",
+  "analysis": "The title suggests a light, possibly meme-driven story about circumventing some deletion/moderation mechanism using a 'pirate face' trick to preserve LLM model files or checkpoints. This sounds like a curiosity or hack rather than a deep technical contribution, and the framing suggests entertainment value over substance. It could reveal something about content moderation loopholes in model hosting platforms, but without more context the technical payload seems thin.",
+  "authors": [
+    "skepticalgenius"
+  ],
+  "hn_id": 49776699,
+  "points": 396,
+  "image_url": "https://pirateface.co/og/home",
+  "favicon_url": "https://pirateface.co/icon.png?e9817f5c19b19218"
+}

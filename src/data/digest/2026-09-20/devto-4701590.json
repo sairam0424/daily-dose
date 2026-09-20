@@ -1,0 +1,19 @@
+{
+  "title": "Stop Paying the build_runner Tax: Why I Refuse to Use Mockito in Modern Dart",
+  "source": "devto",
+  "url": "https://dev.to/gde/stop-paying-the-buildrunner-tax-why-i-refuse-to-use-mockito-in-modern-dart-4cif",
+  "date": "2026-09-20",
+  "tags": [
+    "dart",
+    "flutter",
+    "testing",
+    "architecture"
+  ],
+  "interest_score": 4,
+  "why_read": "A practical opinion piece on ditching code-generated Mockito mocks in Dart/Flutter for the faster, generation-free mocktail library.",
+  "analysis": "The article argues against using Mockito with build_runner code generation in Dart/Flutter testing, citing the friction of waiting on codegen every time an interface changes during TDD. It advocates switching to mocktail, a mocking library that doesn't require code generation, to preserve developer flow state. This is a fairly common and well-trodden opinion in the Flutter community, so while it's a legitimate practical tip, it doesn't offer deep novel technical insight beyond what many Flutter developers already know or have argued elsewhere. Useful primarily for Dart/Flutter developers still using Mockito who haven't considered alternatives.",
+  "authors": [],
+  "reactions": 0,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx204wt36b3p53pnf950f.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "FAMOS: Feed-Forward 3D Articulation Modeling from Sparse Observations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20817",
+  "date": "2026-09-20",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 5,
+  "why_read": "A feed-forward model for inferring how 3D objects with movable parts are jointed, based on sparse point-cloud views.",
+  "analysis": "FAMOS predicts which parts of an object move and how their joints work, using a small set of unordered partial point clouds rather than requiring a full 3D scan or a fixed number of views. It uses a transformer architecture that attends both within individual observations and across all of them jointly, plus a training objective that rewards using the motion evidence spread across multiple views. The authors also built a synthetic data generator to work around limited real-world datasets for this task. The results show improvements over both other feed-forward approaches and slower optimization-based ones, making it relevant to robotics and 3D asset creation pipelines that need to understand articulated objects like drawers, doors, or hinges.",
+  "authors": [
+    "Kevin Qu",
+    "Tao Sun",
+    "Massimiliano Viola",
+    "Liyuan Zhu",
+    "Zhizhuo Zhou",
+    "Sayan Deb Sarkar",
+    "Konrad Schindler",
+    "Iro Armeni"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

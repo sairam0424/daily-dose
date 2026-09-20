@@ -1,0 +1,19 @@
+{
+  "title": "Architecting a Resilient DevSecOps Pipeline for Enterprise AI Agents",
+  "source": "devto",
+  "url": "https://dev.to/gde/architecting-a-resilient-devsecops-pipeline-for-enterprise-ai-agents-on4",
+  "date": "2026-09-20",
+  "tags": [
+    "ai",
+    "devsecops",
+    "github",
+    "security"
+  ],
+  "interest_score": 3,
+  "why_read": "A fairly generic overview of securing CI/CD pipelines for AI agent systems, covering secret scanning and SCA tools without much novel depth.",
+  "analysis": "This piece describes a four-stage DevSecOps pipeline architecture aimed at securing enterprise AI agent deployments, mentioning secret scanning, AI-assisted code review, Veracode SCA, and static analysis as pipeline stages. The problems it raises, like leaked API keys and prompt injection risks in agentic systems, are real and worth naming, but the excerpt reads as a fairly standard checklist-style overview rather than offering a novel architecture or deep technical insight. It leans toward marketing-adjacent content given the tool name-drops (Veracode) and generic framing. Useful as a primer for teams new to securing agentic AI pipelines, but not deeply technical.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1400%2F1%2AzWubiPyAk5YCdtX9j1_mUA.png"
+}

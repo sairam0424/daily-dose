@@ -1,0 +1,19 @@
+{
+  "title": "Blacksmith's GitHub Actions runners finished the same job 3 to 4 times faster than GitHub hosted Actions, across 10 trials",
+  "source": "devto",
+  "url": "https://dev.to/alexgeorgiev17/blacksmiths-github-actions-runners-finished-the-same-job-3-to-4-times-faster-than-github-hosted-59oj",
+  "date": "2026-09-20",
+  "tags": [
+    "githubactions",
+    "devops",
+    "ci",
+    "productivity"
+  ],
+  "interest_score": 6,
+  "why_read": "A hands-on, methodologically transparent benchmark comparing Blacksmith's bare-metal CI runners against GitHub-hosted ones, with real numbers from repeated trials.",
+  "analysis": "The author ran the same GitHub Actions job 10 times each on GitHub's shared ubuntu-latest runner and on Blacksmith's bare-metal runner, measuring actual work time rather than relying on GitHub's reported wall-clock duration. They found Blacksmith consistently 3.17x to 3.77x faster with tighter variance across trials, and also noted an operational quirk where jobs wouldn't even queue on a personal repo, only within an organization. This is useful, concrete, and disclosed as unaffiliated/unpaid, which adds credibility for engineers evaluating CI cost/speed tradeoffs. It's a narrow but well-executed practical benchmark rather than deep technical exploration.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqqt9df0e5nsfjvwwqqxc.png"
+}

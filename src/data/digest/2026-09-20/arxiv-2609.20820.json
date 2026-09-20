@@ -1,0 +1,23 @@
+{
+  "title": "Workspace Models: Lightweight Robotic Memory via Saliency-Driven Supervision",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.20820",
+  "date": "2026-09-20",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A robotics memory technique that distills expensive vision-language model reasoning into a lightweight token usable cheaply at deployment time.",
+  "analysis": "This paper addresses the problem that long-horizon robot manipulation tasks require memory of past events, but feeding a robot's full history into a policy causes it to latch onto spurious correlations and hurts performance. Existing fixes call a vision-language model repeatedly during actual robot operation to compress history, which is computationally expensive. The authors instead train a compact 'workspace token' offline using VLM supervision, then use only this lightweight token at deployment, removing the need for costly VLM calls while apparently also improving task performance. It's a solid, narrow contribution to efficient robot policy architectures rather than a broad breakthrough.",
+  "authors": [
+    "Nitish Dashora",
+    "Douglas Chen",
+    "Idan Shenfeld",
+    "John Marangola",
+    "Pulkit Agrawal",
+    "Max Simchowitz"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

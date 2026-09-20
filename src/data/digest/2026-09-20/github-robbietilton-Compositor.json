@@ -1,0 +1,16 @@
+{
+  "title": "robbietilton/Compositor",
+  "source": "github",
+  "url": "https://github.com/robbietilton/Compositor",
+  "date": "2026-09-20",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 5,
+  "why_read": "A native Swift-based Photoshop alternative for Mac, interesting for developers curious about building complex image-editing apps outside Adobe's ecosystem.",
+  "analysis": "This is a Mac-native image editing application positioned as an alternative to Photoshop, built in Swift rather than as an Electron wrapper, which likely means better performance and tighter OS integration. Building a full-featured raster/compositing editor is a substantial engineering effort involving layers, blending modes, filters, and performance-critical rendering code. Without more detail on feature parity, file format support, or architecture, it's hard to know how mature or capable it actually is versus existing open alternatives. Still, a genuine native competitor in this space is a notable undertaking worth a look for those interested in creative tools or Swift/AppKit graphics programming.",
+  "authors": [],
+  "stars": 3629,
+  "image_url": "https://opengraph.githubassets.com/7ddc9d7cf39f861ff89c4340b3325e1134942024309a9a212856842af18dab50/robbietilton/Compositor",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

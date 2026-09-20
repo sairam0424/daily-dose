@@ -1,0 +1,19 @@
+{
+  "title": "i built a green blob that lives on my desktop. now it has feelings.",
+  "source": "devto",
+  "url": "https://dev.to/mikachu/i-built-a-green-blob-that-lives-on-my-desktop-and-now-it-has-feelings-4pjd",
+  "date": "2026-09-20",
+  "tags": [
+    "showdev",
+    "python",
+    "linux",
+    "opensource"
+  ],
+  "interest_score": 2,
+  "why_read": "A hobbyist desktop pet built with GTK4/Cairo in Python, cute but technically slight beyond basic state-machine driven animation.",
+  "analysis": "Mochi is a Linux desktop companion pet built with Python, GTK4, PyGObject, and Cairo, explicitly using deterministic state machines rather than any AI model to simulate emotions. The technical approach (state lifecycles, timers, interaction memory) is straightforward and well within the realm of simple game-like desktop applications, not a novel architecture. It's a fun personal project and reasonably transparent about not overselling 'AI feelings,' but there isn't much here that would teach an engineer something new. Best suited as light, low-stakes reading rather than a serious technical piece.",
+  "authors": [],
+  "reactions": 27,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvroccpz0dnmvpyi2tgfm.png"
+}
