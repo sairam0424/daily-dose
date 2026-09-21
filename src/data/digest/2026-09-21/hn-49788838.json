@@ -1,0 +1,17 @@
+{
+  "title": "Grok 4.7",
+  "source": "hn",
+  "url": "https://x.ai/news/grok-4-7",
+  "date": "2026-09-21",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Announcement of a new model version from xAI, of interest to those tracking frontier LLM releases.",
+  "analysis": "This is presumably the release announcement for Grok 4.7, a new version of xAI's large language model. Without benchmarks, architecture details, or an abstract, it's unclear what specific improvements or capabilities are being introduced. Given the fast pace of LLM releases, this is likely more of a product announcement than deep technical content, though comment volume suggests community interest in comparing it to competitors.",
+  "authors": [
+    "meetpateltech"
+  ],
+  "hn_id": 49788838,
+  "points": 469,
+  "image_url": "https://x.ai/images/news/grok-4-7-og.webp",
+  "favicon_url": "https://x.ai/favicon.ico?favicon.2d4mbjsd0b5n4.ico?dpl=b0df7db9f1b09bcd76a4b9f28f04f003729b8709"
+}

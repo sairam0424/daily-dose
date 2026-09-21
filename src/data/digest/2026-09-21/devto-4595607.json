@@ -1,0 +1,20 @@
+{
+  "title": "My AI Agent Isn't Allowed to Decide Anything",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/my-ai-agent-isnt-allowed-to-decide-anything-2fe2",
+  "date": "2026-09-21",
+  "tags": [
+    "ai",
+    "showdev",
+    "googlecloud",
+    "gemini"
+  ],
+  "interest_score": 4,
+  "why_read": "A first-person account of building a constrained decision-support agent for media production scheduling, with some real rule-based-versus-AI design discussion.",
+  "analysis": "The author describes a hackathon project, Shot-Delivery Guardian, that helps reorder work in a video/film post-production pipeline when deadlines are at risk, but deliberately keeps final decisions rule-based rather than letting an AI model choose freely. The stated design principle, that the AI only surfaces options while a hard-coded rule layer enforces business constraints so it can never violate a client agreement or deadline dependency, is a genuinely useful pattern for building trustworthy AI-assisted tools. The reported metrics (3 out of 5 correct picks, zero broken rules) are informal and hackathon-scale rather than rigorously benchmarked. It's a reasonable case study on agent guardrails but not deeply technical or broadly generalizable as written.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fn3bpttf3oqnebnc478cc.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

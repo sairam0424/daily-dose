@@ -1,0 +1,16 @@
+{
+  "title": "tamaratran/fast-jev-compaction",
+  "source": "github",
+  "url": "https://github.com/tamaratran/fast-jev-compaction",
+  "date": "2026-09-21",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but concrete tool for improving how Claude Code manages long conversation context by scoring and pruning tool-call history instead of summarizing it.",
+  "analysis": "This is a plugin for Claude Code (Anthropic's coding assistant) that changes how the tool handles running out of context space: instead of compressing old messages into a lossy summary, it scores each tool call and result for relevance and either drops, truncates, or keeps them verbatim. This is a practical engineering approach to a real pain point in long AI coding sessions, where summarization can lose important detail. The idea of selective retention versus blanket summarization is a reasonable technical contribution, though it's a fairly narrow tool aimed at a specific developer workflow.",
+  "authors": [],
+  "stars": 5947,
+  "image_url": "https://opengraph.githubassets.com/3b23a44e0ea499211716c051c62ba6b0a75309654fac4ff89a673fc0da7e3496/tamaratran/fast-jev-compaction",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.22067",
+  "date": "2026-09-21",
+  "tags": [
+    "cs.HC",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A large-scale qualitative study of what real users actually care about when delegating tasks to an AI agent, based on tens of thousands of Reddit posts.",
+  "analysis": "The researchers analyzed over 73,000 Reddit posts about a coding/agent tool (OpenClaw) using an LLM to categorize what human values (like autonomy, cost, oversight, and access) users associate with different aspects of agent use. Their key finding is that user satisfaction tends to track the conditions users set around a task, like whether they can supervise or afford it, more than the actual output of the agent, and that supervision-related values were often unmet. This is a useful empirical contribution for anyone designing agentic AI products, since it suggests the friction users report is less about output quality and more about controllability and oversight. It's a human-computer-interaction study rather than a systems or algorithms paper, but the finding is specific and actionable.",
+  "authors": [
+    "Renkai Ma",
+    "Ruyuan Wan",
+    "Xuan Lu",
+    "Fan Yang",
+    "Chen Chen",
+    "Lingyao Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

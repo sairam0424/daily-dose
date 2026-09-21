@@ -1,0 +1,16 @@
+{
+  "title": "zai-org/ZCode",
+  "source": "github",
+  "url": "https://github.com/zai-org/ZCode",
+  "date": "2026-09-21",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "Another entrant in the crowded space of coding-agent CLI harnesses, description offers no distinguishing technical detail.",
+  "analysis": "ZCode is described as Z.ai's coding agent harness, presumably a framework or CLI tool for running LLM-based coding agents, similar in category to tools like Aider, Claude Code, or Cursor's agent mode. The description is marketing language ('Powerful, intelligent, extensible') without concrete technical specifics on architecture, model support, or differentiation. Given the saturation of similar tools, this entry doesn't provide enough information to judge genuine novelty.",
+  "authors": [],
+  "stars": 5558,
+  "image_url": "https://opengraph.githubassets.com/337c8a78956ab42a1d8607407a0fe1d77231a6b4c43b60357290fd6f3d1ea27a/zai-org/ZCode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Kev: Tiny Jev-like family of decision models built on top of Qwen3.5",
+  "source": "hn",
+  "url": "https://github.com/jaredpalmer/kev/tree/main",
+  "date": "2026-09-21",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A niche small-model release title that is hard to evaluate without further technical detail.",
+  "analysis": "The title references 'Kev', a small decision-model family built on Qwen3.5, likely aimed at agentic or classification tasks given the term 'decision models.' Without more detail on training methodology, benchmarks, or use case, it's hard to assess real technical contribution versus incremental fine-tuning. The reference to 'Jev-like' suggests this may be part of a broader naming trend or family seen elsewhere in this batch (e.g., fast-jev-compaction), which raises minor coherence questions.",
+  "authors": [
+    "tosh"
+  ],
+  "hn_id": 49783999,
+  "points": 395,
+  "image_url": "https://opengraph.githubassets.com/cd0465804d6345f473fb48b86b2024e4fc56637a2e0f94840ace160f2ccff7d0/jaredpalmer/kev",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

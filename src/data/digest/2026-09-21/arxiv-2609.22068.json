@@ -1,0 +1,35 @@
+{
+  "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.22068",
+  "date": "2026-09-21",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete method for automatically generating large numbers of verifiable coding tasks from real open-source repositories to train coding AI agents via reinforcement learning.",
+  "analysis": "CodeMidas turns existing open-source code into reinforcement-learning training tasks by having AI agents explore a codebase, infer what a piece of functionality is supposed to do, write tests against the real implementation, and filter out unreliable tasks through repeated execution checks. This produced over 5,500 tasks across 3,185 repositories and 23 languages, and training a coding model on them improved performance on issue-repair, whole-program-writing, and terminal-command benchmarks by meaningful margins (8.5-17%). The interesting technical contribution is generating reliable, checkable training signal directly from source code rather than relying on scarce human-written issues or commits, which is a real bottleneck in training coding agents. This is a solid, well-evaluated systems paper likely to interest engineers working on LLM-based coding tools.",
+  "authors": [
+    "Bowen Ye",
+    "Lei Li",
+    "Shicheng Li",
+    "Zihao Yue",
+    "Linghao Zhang",
+    "Hanglong Lv",
+    "Yuanxin Liu",
+    "Wenhan Ma",
+    "Hao Tian",
+    "Rang Li",
+    "Jinhao Dong",
+    "Yikai Zhao",
+    "Xiangwei Deng",
+    "Hailin Zhang",
+    "Liang Zhao",
+    "Qi Liu",
+    "Lingpeng Kong",
+    "Tong Yang",
+    "Fuli Luo"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

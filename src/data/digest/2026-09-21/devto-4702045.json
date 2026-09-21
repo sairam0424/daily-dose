@@ -1,0 +1,19 @@
+{
+  "title": "What If Your AI Agent Never Had to Leave the Browser? (Demo 🚀)",
+  "source": "devto",
+  "url": "https://dev.to/sylwia-lask/what-if-your-ai-agent-never-had-to-leave-the-browser-demo--5g",
+  "date": "2026-09-21",
+  "tags": [
+    "ai",
+    "webdev",
+    "mcp",
+    "typescript"
+  ],
+  "interest_score": 5,
+  "why_read": "An update on WebMCP, an experimental browser API letting websites expose tools directly to AI agents, relevant to those tracking agentic web standards.",
+  "analysis": "WebMCP is described as an experimental browser API that lets a website explicitly declare tools an AI agent can call, essentially bringing the Model Context Protocol idea (used for LLM tool-calling) into the browser itself. The bulk of this piece is personal conference-recap fluff about the author's talk rather than substantive technical explanation, with a pointer to an earlier, now partly outdated article for details. For readers wanting to understand WebMCP itself, this post is mostly a teaser rather than a deep technical explainer.",
+  "authors": [],
+  "reactions": 71,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyv8119jpkpgyckuk1v1c.png"
+}

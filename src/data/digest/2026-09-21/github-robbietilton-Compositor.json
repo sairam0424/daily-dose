@@ -1,0 +1,16 @@
+{
+  "title": "robbietilton/Compositor",
+  "source": "github",
+  "url": "https://github.com/robbietilton/Compositor",
+  "date": "2026-09-21",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 5,
+  "why_read": "A native Mac image-editing app positioned as a Photoshop alternative, of interest to those wanting non-Adobe creative tools.",
+  "analysis": "Compositor appears to be a Swift-based, presumably native macOS image editor aiming to replace Adobe Photoshop for at least some use cases. Without more detail on feature parity, performance, or file-format support, it's hard to assess how complete or capable it actually is versus existing alternatives like Affinity Photo or Pixelmator. Still, a from-scratch native Mac app in this space is a nontrivial undertaking and the strong star count suggests real community interest.",
+  "authors": [],
+  "stars": 4379,
+  "image_url": "https://opengraph.githubassets.com/a53a8eab646a406c45fa96f4a6b92ee04fdbd629ff3cc8659465c201da66775c/robbietilton/Compositor",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

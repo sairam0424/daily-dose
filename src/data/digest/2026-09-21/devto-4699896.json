@@ -1,0 +1,19 @@
+{
+  "title": "Dev log #22 Tearing out the old: Deleting 3,800 lines of legacy p2p code",
+  "source": "devto",
+  "url": "https://dev.to/yashksaini/dev-log-22-tearing-out-the-old-deleting-3800-lines-of-legacy-p2p-code-3n0i",
+  "date": "2026-09-21",
+  "tags": [
+    "productivity",
+    "discuss",
+    "ai",
+    "opensource"
+  ],
+  "interest_score": 4,
+  "why_read": "A developer's weekly log about removing legacy pubsub code (Floodsub) from a Rust libp2p-based peer-to-peer networking project.",
+  "analysis": "This is a personal devlog describing the removal of an outdated peer-to-peer messaging protocol (Floodsub) in favor of the more efficient Gossipsub standard, within a Rust project called minip2p. The post gives some concrete detail, deleting nearly 4,000 lines while adding only 160, and touches on real libp2p ecosystem concepts that P2P networking engineers would recognize. It's a fairly niche, informal update rather than a deep technical dive, useful mainly to readers already following this specific project or interested in libp2p internals.",
+  "authors": [],
+  "reactions": 34,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fuarz7f275t29lk144qeq.png"
+}

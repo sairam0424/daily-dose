@@ -1,0 +1,21 @@
+{
+  "title": "Designer-RSI: Evolving Procedural Memory from User Traffic for Agentic Graphic Design",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.22086",
+  "date": "2026-09-21",
+  "tags": [
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting practical case study on giving an AI agent a growing library of learned procedures for complex creative software tasks.",
+  "analysis": "This paper studies how an AI agent controlling professional graphic-design software can improve over time by building up a memory of reusable, natural-language 'skills' derived from its own successes and failures, without updating model weights. The system starts with 76 skills drawn from documentation and grows to 139 after several rounds of real user tasks, raising task success from 72.7% to 99.3% on one benchmark. The core idea, that an agent can get better purely by accumulating and refining a memory of procedures rather than retraining, is a practical and generalizable technique for agentic AI systems facing tasks with no automatic way to check correctness. The specific application to graphic design software is a good testbed but the underlying mechanism could apply more broadly to agent tooling.",
+  "authors": [
+    "Hongyang Du",
+    "Lan Yan",
+    "Christian Flores",
+    "Asim Kadav"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

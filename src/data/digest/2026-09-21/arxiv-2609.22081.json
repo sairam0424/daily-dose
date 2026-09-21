@@ -1,0 +1,20 @@
+{
+  "title": "Cross-sector generalization of accident-process role classification in occupational accident narratives",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.22081",
+  "date": "2026-09-21",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 3,
+  "why_read": "A narrow applied NLP study on classifying roles in French workplace accident reports, of interest mainly to safety-analytics specialists.",
+  "analysis": "The paper evaluates whether machine learning models trained to classify sentence roles in construction-industry accident reports (like describing a hazardous condition versus the accident event itself) can transfer to other industries like metallurgy and chemicals without retraining. It finds that fine-tuning the model for the task, rather than just using frozen pretrained language representations, notably improves this cross-domain transfer, reaching about 85-86% balanced accuracy. This is solid applied NLP work but has a narrow audience, mostly occupational safety researchers and those building industrial text-classification pipelines rather than general software engineers.",
+  "authors": [
+    "Aho Yapi",
+    "Pierre Latouche",
+    "Arnaud Guillin",
+    "Yan Bailly"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
