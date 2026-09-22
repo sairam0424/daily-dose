@@ -1,0 +1,29 @@
+{
+  "title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.24984",
+  "date": "2026-09-22",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR"
+  ],
+  "interest_score": 6,
+  "why_read": "A technical advance in AI video generation that lets a model remember and consistently render a 3D scene from different viewpoints over long explorations.",
+  "analysis": "WorldCrafter is a video generation model designed to let a user interactively explore a scene as if walking through a 3D world, while staying visually consistent with earlier views. The key technical idea is a memory system that compresses previously seen views into a small set of tokens tailored to whatever new viewpoint is being requested, avoiding the need for explicit 3D depth calculations. It's trained jointly with the video generator and combined with a distillation technique to allow real-time-ish streaming exploration from just one starting image or text prompt. This kind of work matters for game engines, virtual reality content generation, and simulation, where keeping a generated world visually stable over time is a persistent challenge.",
+  "authors": [
+    "Wangbo Yu",
+    "Kunhao Liu",
+    "Wenbo Hu",
+    "Shenghai Yuan",
+    "Chaoran Feng",
+    "Haiyang Zhou",
+    "Yukun Huang",
+    "Yiran Wang",
+    "Wang Zhao",
+    "Yingmin Luo",
+    "Ying Shan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

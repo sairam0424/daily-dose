@@ -1,0 +1,15 @@
+{
+  "title": "Pentagon says overreliance on AI contributed to missile strike on Iran school",
+  "source": "hn",
+  "url": "https://www.bloomberg.com/graphics/2026-iran-school-attack/",
+  "date": "2026-09-22",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A serious real-world account of AI-assisted military decision-making leading to a fatal strike, raising major questions about automation bias and accountability.",
+  "analysis": "This item reports on a Pentagon assessment that excessive reliance on an AI system contributed to a missile strike that hit a school in Iran. It touches on automation bias, the reliability of AI targeting or decision-support systems, and accountability in high-stakes military use of AI. This is a critical topic for engineers working on AI systems used in safety-critical or high-stakes decision contexts, since it illustrates concrete real-world consequences of overtrusting model outputs. The story matters beyond pure engineering as a case study in deploying automated systems without adequate human oversight.",
+  "authors": [
+    "devonnull"
+  ],
+  "hn_id": 49806430,
+  "points": 338
+}

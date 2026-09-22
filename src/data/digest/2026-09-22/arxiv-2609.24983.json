@@ -1,0 +1,30 @@
+{
+  "title": "onPanda: Efficient Annotation of On-Policy Alignment Data for LLMs and Agents via Token-Level Correction",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.24983",
+  "date": "2026-09-22",
+  "tags": [
+    "cs.CL",
+    "cs.HC",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical annotation tool for building higher-quality AI training data more efficiently, relevant to anyone working on LLM fine-tuning or alignment pipelines.",
+  "analysis": "onPanda is an interactive tool that speeds up the process of creating training data for aligning language models by letting a human annotator fix just the first wrong token in a generated response rather than rewriting the whole thing. After the correction, the model regenerates the rest of the response from that fixed point, and the process repeats until the output is acceptable. Because most of the final text still comes from the model itself, the resulting data stays close to the model's natural output distribution, which the authors say is better suited for certain types of fine-tuning. The authors report the tool cuts median annotation time by 52% compared to fully manual editing, and they release an accompanying dataset and benchmark.",
+  "authors": [
+    "Lei Yang",
+    "Mengyin Liu",
+    "Jia Wang",
+    "Hangyu Guo",
+    "Liang Zhao",
+    "Zheng Ge",
+    "Kang An",
+    "Binxing Jiao",
+    "Qi Han",
+    "Daxin Jiang",
+    "Siqi Shen",
+    "Xiangyu Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

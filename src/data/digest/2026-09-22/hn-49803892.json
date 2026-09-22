@@ -1,0 +1,17 @@
+{
+  "title": "Claude Opus 5.5",
+  "source": "hn",
+  "url": "https://www.anthropic.com/claude-opus-5-5",
+  "date": "2026-09-22",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A major frontier model release worth knowing about, though the actual HN discussion signal-to-noise on these launches is often low.",
+  "analysis": "This item refers to the announcement of an Anthropic model called 'Claude Opus 5.5,' presumably a new frontier large language model release.",
+  "authors": [
+    "km144"
+  ],
+  "hn_id": 49803892,
+  "points": 1081,
+  "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/f4d37a1d1f582f53f4e89440062b649b6273a093-1200x630.jpg",
+  "favicon_url": "https://www.anthropic.com/favicon.ico"
+}

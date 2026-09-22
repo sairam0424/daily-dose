@@ -1,0 +1,19 @@
+{
+  "title": "Why the Best Software Advice Is the Hardest to Follow",
+  "source": "devto",
+  "url": "https://dev.to/remojansen/why-the-best-software-advice-is-the-hardest-to-follow-4kg8",
+  "date": "2026-09-22",
+  "tags": [
+    "software",
+    "career",
+    "learning",
+    "discuss"
+  ],
+  "interest_score": 4,
+  "why_read": "A reasonable, if somewhat generic, reflection on the distinction between clear-cut coding rules and harder-to-apply judgment calls in software engineering.",
+  "analysis": "This article distinguishes between 'practical advice' in software engineering, like keeping functions small, which is easy to verify and enforce via linters, and 'judgment-based advice,' which requires weighing competing principles without a clear right answer. The piece argues the harder, judgment-based advice tends to be more valuable despite being harder to teach or standardize. It's a fairly common observation in software engineering writing, presented clearly but without deep novel insight or concrete examples of the judgment-based advice it's building toward in the excerpt shown.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F6u76zj8in13hmmrwl63t.png"
+}

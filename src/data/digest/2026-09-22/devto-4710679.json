@@ -1,0 +1,19 @@
+{
+  "title": "The Grand Unifying Architecture of Frontend",
+  "source": "devto",
+  "url": "https://dev.to/playfulprogramming/the-grand-unifying-architecture-of-frontend-bhk",
+  "date": "2026-09-22",
+  "tags": [
+    "webdev",
+    "javascript",
+    "solidjs",
+    "architecture"
+  ],
+  "interest_score": 5,
+  "why_read": "An opinionated essay proposing a unifying framework for thinking about where state should live in frontend architecture, useful context for ongoing debates like SPA vs HTMX.",
+  "analysis": "This essay argues that decades of shifting frontend architecture debates, from server-rendered pages to SPAs to HTMX, all boil down to how three core responsibilities, including client-side navigation, get divided between server and client. It's a conceptual, opinion-driven piece rather than a hands-on technical tutorial, aiming to give readers a mental framework rather than new code or data. The framing may help engineers reason about architecture choices, but the excerpt doesn't yet show concrete examples or evidence backing the 'unifying' claim.",
+  "authors": [],
+  "reactions": 4,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fzz3id3ryb20mdgc9qac4.png"
+}

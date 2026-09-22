@@ -1,0 +1,15 @@
+{
+  "title": "GPT-6 Sol and Luna",
+  "source": "hn",
+  "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+  "date": "2026-09-22",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Another major model launch announcement, useful to track for engineers building on top of frontier LLM APIs.",
+  "analysis": "This is a Hacker News thread about OpenAI announcing new models referred to as 'GPT-6 Sol and Luna.' Without more detail, it is hard to assess technical substance, but new frontier model releases from OpenAI are generally significant for developers building AI-powered products.",
+  "authors": [
+    "OfficialTurkey"
+  ],
+  "hn_id": 49805509,
+  "points": 1046
+}

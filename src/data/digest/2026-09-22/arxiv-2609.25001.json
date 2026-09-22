@@ -1,0 +1,32 @@
+{
+  "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.25001",
+  "date": "2026-09-22",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A large, carefully constructed benchmark and dataset for evaluating AI agents' gameplay abilities across different time horizons, useful for anyone building or evaluating game-playing agents.",
+  "analysis": "GameHorizon Suite is a new dataset and benchmark for testing AI models on video game tasks that require visual understanding, planning, and precise control over different time horizons. It includes 5,000 hours of gameplay recordings from 21 AAA games collected from 100 expert human players, plus an automated pipeline for generating multi-horizon instructions. The suite also includes an offline benchmark with standardized questions and an online benchmark that checks whether offline scores predict real gameplay performance. The authors tested 47 different AI models on it, revealing a clear hierarchy of task difficulty and large gaps between model capabilities.",
+  "authors": [
+    "Yiran Wang",
+    "Xingyilang Yin",
+    "Junfu Pu",
+    "Guangzhi Wang",
+    "Kaifeng Li",
+    "Mingyu Ouyang",
+    "Huiqiang Sun",
+    "Lingen Li",
+    "Cheng Cheng",
+    "Wangbo Yu",
+    "Honghao Chen",
+    "Xiaodong Cun",
+    "Chi-Man Pun",
+    "Zhiguo Cao",
+    "Ying Shan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

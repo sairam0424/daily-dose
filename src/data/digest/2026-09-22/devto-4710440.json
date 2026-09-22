@@ -1,0 +1,19 @@
+{
+  "title": "Cheap RAG in Go with Gemini File Search: no vector DB, two calls, one hosted store",
+  "source": "devto",
+  "url": "https://dev.to/lovestaco/cheap-rag-in-go-with-gemini-file-search-no-vector-db-two-calls-one-hosted-store-4kb5",
+  "date": "2026-09-22",
+  "tags": [
+    "go",
+    "ai",
+    "rag",
+    "gemini"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical, concrete walkthrough of building a lightweight retrieval-augmented generation system in Go using Gemini's hosted File Search instead of a self-managed vector database.",
+  "analysis": "This post describes building a retrieval-augmented generation (RAG) tool in Go using Google's Gemini File Search API, which handles chunking, embedding, and indexing documents automatically on Google's servers. The author explicitly avoids building a traditional RAG stack of vector database, embedding pipeline, chunker, and reranker, instead relying on just two API calls to a hosted document store. This is useful and practical for engineers who want a fast, low-maintenance way to build grounded, citation-backed retrieval tools without managing infrastructure themselves. The post promises to cover specific pitfalls encountered along the way, which could be valuable for anyone considering the same approach.",
+  "authors": [],
+  "reactions": 33,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3xtz7jv8zbbfbxvcsws4.png"
+}

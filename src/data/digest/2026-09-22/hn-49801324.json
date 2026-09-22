@@ -1,0 +1,15 @@
+{
+  "title": "OpenAI GPT–6 Astra breaks Enigma message that has resisted solution since 2005",
+  "source": "hn",
+  "url": "https://www.cryptocellar.org/bgac/the-mvueh-break.html",
+  "date": "2026-09-22",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An interesting claim about AI cryptanalysis solving a long-unsolved Enigma-style cipher, which would be a notable technical achievement if verified.",
+  "analysis": "This item claims that an OpenAI model broke an encrypted message that had resisted cryptanalysis since 2005, styled like an Enigma-cipher challenge.",
+  "authors": [
+    "sohkamyung"
+  ],
+  "hn_id": 49801324,
+  "points": 531
+}

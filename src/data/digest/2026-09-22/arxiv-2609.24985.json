@@ -1,0 +1,29 @@
+{
+  "title": "Critical-State RL: Diagnosing Trainable States for Multi-Turn Tool Use",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.24985",
+  "date": "2026-09-22",
+  "tags": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically substantive method for figuring out which specific steps in a multi-step AI agent interaction actually deserve reinforcement learning training, addressing a real weak spot in agent training pipelines.",
+  "analysis": "This paper tackles a real problem in training AI agents that use tools across multiple conversation turns: rewards often depend on what happens later, so it's unclear which specific action in a sequence should get credit or blame during training. The authors introduce 'Critical-State RL,' a method that statistically separates variation in reward that is genuinely caused by the current action from noise caused by what happens afterward. They test this on a tool-use benchmark and show that training specifically on the identified critical decision points improves performance by around 14 percentage points on one task type, while training on other points does not help. This is a useful contribution for anyone building reinforcement learning pipelines for AI agents that call external tools or APIs.",
+  "authors": [
+    "Zixiang Chen",
+    "Wenting Zhao",
+    "Zhepeng Cen",
+    "Akshara Prabhakar",
+    "Jielin Qiu",
+    "Jianguo Zhang",
+    "Zhiwei Liu",
+    "Tulika Manoj Awalgaonkar",
+    "Liangwei Yang",
+    "Shelby Heinecke",
+    "Silvio Savarese",
+    "Huan Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
