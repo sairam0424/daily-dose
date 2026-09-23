@@ -1,0 +1,16 @@
+{
+  "title": "jaredpalmer/kev",
+  "source": "github",
+  "url": "https://github.com/jaredpalmer/kev",
+  "date": "2026-09-23",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A small, trainable family of decision models built on Qwen3.5 offers a lightweight, self-hostable alternative to the other 'Jev'-branded decision tools in this batch.",
+  "analysis": "This is a compact decision-model family built on top of the Qwen3.5 base model, intended to be trained and run locally rather than relying on a cloud API, similar in spirit to the other 'Jev'-style tools appearing in this list. Being trainable and self-hostable gives it appeal for engineers wanting customizable, low-latency classification or scoring without external dependencies. The description is brief and lacks benchmarks or architectural details, so its actual performance and quality relative to alternatives is unclear. It fits into what appears to be an emerging ecosystem of small, fast decision-making models rather than being a standalone breakthrough.",
+  "authors": [],
+  "stars": 5959,
+  "image_url": "https://opengraph.githubassets.com/abe9bf2b3a84619bdd0bd4a929768f6df92cc2d5abe45e511ef0dc95d445bbae/jaredpalmer/kev",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

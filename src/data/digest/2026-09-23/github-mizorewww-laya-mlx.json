@@ -1,0 +1,16 @@
+{
+  "title": "mizorewww/laya-mlx",
+  "source": "github",
+  "url": "https://github.com/mizorewww/laya-mlx",
+  "date": "2026-09-23",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A native Apple Silicon (MLX) runtime claiming sub-15ms inference for small typed decision models is a useful practical engineering detail for anyone deploying such models locally on Macs.",
+  "analysis": "This project provides a native MLX runtime, Apple's machine learning framework for Apple Silicon, specifically optimized for the 'Laya' typed decision models mentioned elsewhere in this batch. The claimed 7-14ms latency on an M3 Max chip for short decisions, without needing PyTorch or a cloud API, is a meaningful practical engineering result for anyone wanting fast, local, on-device inference. This kind of hardware-specific optimization work is valuable for the growing on-device AI ecosystem, though it's a narrow, tool-specific contribution rather than a broad innovation. As with related items, the reported popularity numbers seem unusually high for such a specialized runtime.",
+  "authors": [],
+  "stars": 5940,
+  "image_url": "https://opengraph.githubassets.com/49a46cb78f2d61b22d3466d81deeecda45fcca2a8cbbdf5bdc54e16d28ac4cd1/mizorewww/laya-mlx",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

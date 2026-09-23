@@ -1,0 +1,16 @@
+{
+  "title": "zai-org/ZCode",
+  "source": "github",
+  "url": "https://github.com/zai-org/ZCode",
+  "date": "2026-09-23",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A coding agent harness from Z.ai with minimal differentiating detail provided, making it hard to judge its technical merit beyond marketing language.",
+  "analysis": "This entry describes a coding agent harness from Z.ai, described only with vague marketing terms like 'powerful, intelligent, extensible' without concrete technical details on architecture, benchmarks, or unique features. Without more substantive information, it's impossible to assess what distinguishes this from the many other coding agent harnesses currently being built. The high star and fork counts suggest some traction, but the description alone gives little reason for a technically minded reader to dig deeper. This entry would benefit from more specifics on its actual design or performance claims.",
+  "authors": [],
+  "stars": 6531,
+  "image_url": "https://opengraph.githubassets.com/a6b9690cb52e9b47b3282e1a9f676865d22a5e53d44f366efbf34435ada3dbb8/zai-org/ZCode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

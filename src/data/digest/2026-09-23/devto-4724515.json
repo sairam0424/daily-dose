@@ -1,0 +1,19 @@
+{
+  "title": "I Turned DEV.to Into a Walkable 3D Library — Debugging It Has Been a Nightmare",
+  "source": "devto",
+  "url": "https://dev.to/mikachu/i-turned-devto-into-a-walkable-3d-library-debugging-it-has-been-a-nightmare-4lkd",
+  "date": "2026-09-23",
+  "tags": [
+    "buildinpublic",
+    "webdev",
+    "nextjs",
+    "ai"
+  ],
+  "interest_score": 4,
+  "why_read": "A personal project blog post about building a 3D 'walkable library' visualization of Dev.to using vibe-coding tools, offering some genuine insight into debugging AI-generated code once complexity exceeds what regeneration can fix.",
+  "analysis": "The author built a first-person 3D interface that turns Dev.to's live article catalog into an explorable virtual library with shelves and rooms, generated substantially through AI-assisted 'vibe coding.' The interesting technical nugget is the author's admission that once the project scaled to thousands of live articles, simply regenerating AI responses stopped working and they had to manually debug animation loops and reference handling. This offers a genuine, relatable lesson about the limits of AI-assisted coding once systems grow complex, which is useful context for engineers experimenting with similar workflows. Overall it's a fun personal project write-up rather than a deep technical resource, but the debugging reflections have some value.",
+  "authors": [],
+  "reactions": 46,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fs4n0kxkyv15gwcnc1xnm.jpeg"
+}

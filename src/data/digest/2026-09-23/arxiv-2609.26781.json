@@ -1,0 +1,24 @@
+{
+  "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.26781",
+  "date": "2026-09-23",
+  "tags": [
+    "cs.CL",
+    "cs.MA"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting empirical study on scaling multi-agent LLM systems to over a thousand concurrent workers without central coordination, with concrete performance numbers on coding benchmarks.",
+  "analysis": "This paper proposes a fully decentralized multi-agent system where many LLM-driven workers coordinate through shared workspaces and messaging rather than a central orchestrator, aiming to avoid the bottleneck that a single coordinator creates at scale. They test scaling from 1 to 1024 agents on hard coding tasks, reporting substantial improvements in test-pass rates as the number of agents grows, such as raising pandoc task success from about 34% to 55%. This addresses a genuine practical concern in agentic AI systems: how to let many LLM agents work together without a bottlenecked coordinator, and the reported emergent self-organization behavior is intellectually interesting. The results are promising but rely on a specific benchmark and a somewhat unusual GPT-5.6 model naming that warrants some caution about reproducibility and generality.",
+  "authors": [
+    "Zhihao Zhan",
+    "Ting Song",
+    "Li Dong",
+    "Shaohan Huang",
+    "Jianxun Lian",
+    "Yan Xia",
+    "Furu Wei"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

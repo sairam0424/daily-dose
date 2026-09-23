@@ -1,0 +1,19 @@
+{
+  "title": "Flash-dLLM: IO-Aware KV Caching and Parallel Decoding for Fast, Memory-Efficient Diffusion LLMs",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.26796",
+  "date": "2026-09-23",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 8,
+  "why_read": "A well-benchmarked systems paper addressing a real inference bottleneck in diffusion-based language models, with concrete large speedups reported on standard benchmarks.",
+  "analysis": "Diffusion language models are a newer alternative to standard autoregressive LLMs, generating text through iterative refinement rather than one token at a time, but they have been slow to run in practice. This paper identifies that GPU memory movement, not compute, is the main bottleneck when combining key-value caching with parallel decoding in these models, and proposes a fused caching kernel plus a self-verifying draft-and-verify decoding scheme that needs no extra model. The reported 5x and 11x speedups over the previous best method on math and code benchmarks are a substantial systems contribution if they hold up under independent testing. This is a solid engineering-oriented paper likely to interest people working on LLM inference infrastructure.",
+  "authors": [
+    "Quan Nguyen-Tri",
+    "Mukul Ranjan",
+    "Zhiqiang Shen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

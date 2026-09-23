@@ -1,0 +1,16 @@
+{
+  "title": "Claude Code reads AGENTS.md only when telemetry is on [fixed]",
+  "source": "hn",
+  "url": "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on/",
+  "date": "2026-09-23",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete, verifiable bug report showing Claude Code silently gated a documented feature (reading AGENTS.md) behind telemetry opt-in is exactly the kind of transparency issue engineers care about.",
+  "analysis": "This item describes a bug where Anthropic's Claude Code tool only read project configuration files like AGENTS.md when telemetry/analytics were enabled, an undisclosed coupling between a core feature and data collection. Such issues matter because they affect trust in developer tools and raise questions about how vendors gate functionality based on telemetry consent. The fact that it was fixed after being surfaced suggests real accountability dynamics at play, and the high comment count suggests substantial community scrutiny of a widely used coding assistant. This is a good example of practical software engineering ethics and debugging investigation that engineers would want to know about.",
+  "authors": [
+    "pszypowicz"
+  ],
+  "hn_id": 49814947,
+  "points": 437,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=blog.szypowi.cz&sz=32"
+}

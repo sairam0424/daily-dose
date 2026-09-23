@@ -1,0 +1,17 @@
+{
+  "title": "Jev in 25 Lines of Python",
+  "source": "hn",
+  "url": "https://www.nobodywho.ai/posts/jev-in-25-lines/",
+  "date": "2026-09-23",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A minimal implementation of a 'jev' decision engine in 25 lines of Python is likely to interest engineers curious about how far simple classifier-style tools can be stripped down, though without more detail its real depth is unclear.",
+  "analysis": "This appears to be a lightweight demonstration of building a small classification or decision-making tool in very little code, echoing the 'Jev' concept seen elsewhere in this batch of items. High HN engagement suggests it struck a chord, likely because minimalism and clarity are prized in tooling discussions. Without an abstract, it's hard to assess technical depth, but the concept of compact, non-autoregressive decision engines is genuinely interesting to ML practitioners. The lack of a description limits confidence in judging true substance versus hype.",
+  "authors": [
+    "bashbjorn"
+  ],
+  "hn_id": 49812769,
+  "points": 614,
+  "image_url": "https://www.nobodywho.ai/assets/images/blog/2026/jev-in-25-lines/jev.png",
+  "favicon_url": "https://www.nobodywho.ai/assets/favicon/favicon-32x32.png"
+}

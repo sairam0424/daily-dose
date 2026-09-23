@@ -1,0 +1,17 @@
+{
+  "title": "Claude discovers a novel enzyme system with CRISPR-like repeats",
+  "source": "hn",
+  "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+  "date": "2026-09-23",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A claim that an AI model helped discover a novel biological enzyme system is a notable AI-for-science result worth scrutinizing, though such claims often warrant skepticism about the actual scientific contribution versus hype.",
+  "analysis": "The headline claims Anthropic's Claude model assisted in identifying a previously unknown enzyme system bearing similarity to CRISPR-associated repeat structures, which would be a notable AI-for-science achievement if verified. These claims are important because they test whether large language models can genuinely contribute novel scientific insight versus simply pattern-matching known biology. The very high comment count (452) suggests significant debate, likely including skepticism about the rigor and true novelty of the finding. Readers should treat this as an interesting but unverified claim requiring deeper investigation into the actual paper or lab work behind it.",
+  "authors": [
+    "raahelb"
+  ],
+  "hn_id": 49820134,
+  "points": 413,
+  "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/394de337d8a5d8db93a1c048fa1cb53e16a09625-2048x1240.jpg",
+  "favicon_url": "https://www.anthropic.com/favicon.ico"
+}

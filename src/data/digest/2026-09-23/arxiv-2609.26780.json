@@ -1,0 +1,24 @@
+{
+  "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.26780",
+  "date": "2026-09-23",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused technical contribution to multi-party dialogue memory systems for LLMs, tackling the specific and underexplored problem of tracking who said what to whom over time.",
+  "analysis": "This paper addresses the challenge of building long-term conversational memory for AI systems in group chat settings, where correctly attributing statements to speakers and tracking evolving relationships is much harder than in two-person dialogue. Their proposed SpeakerMem-R1 system keeps two parallel memory tracks, one storing verbatim speaker-labeled messages and another storing derived person- and group-level states, combined at query time. The reported results show meaningful accuracy gains from reinforcement learning training over standard supervised fine-tuning, and the system claims state-of-the-art results on a public leaderboard. This is a fairly narrow but technically substantive contribution relevant to anyone building conversational AI memory systems for multi-user contexts.",
+  "authors": [
+    "Haobo Zheng",
+    "Tan Tang",
+    "Yan Chen",
+    "Weijie Wang",
+    "Yingcai Wu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

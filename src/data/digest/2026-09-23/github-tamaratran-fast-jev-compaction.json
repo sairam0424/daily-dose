@@ -1,0 +1,16 @@
+{
+  "title": "tamaratran/fast-jev-compaction",
+  "source": "github",
+  "url": "https://github.com/tamaratran/fast-jev-compaction",
+  "date": "2026-09-23",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A Claude Code plugin using fast scoring decisions to manage context compaction is a niche but practically relevant tool for engineers running long agentic coding sessions.",
+  "analysis": "This plugin replaces the standard summarization-based compaction in Claude Code with a scoring-based approach, where each tool call and its result gets a quick relevance score to decide what to keep verbatim, truncate, or drop. This design goal, avoiding lossy rewriting of context by an LLM, mirrors the concerns addressed by the CliffCompaction paper elsewhere in this batch. It's a fairly narrow, tool-specific utility rather than a broadly applicable innovation, but it addresses a real pain point for people running long agentic coding sessions. The stated star count seems high relative to what is a fairly niche plugin, warranting some skepticism.",
+  "authors": [],
+  "stars": 6564,
+  "image_url": "https://opengraph.githubassets.com/ca53bbb5f094724a8f0bc12fc96df42376f31fbcc43d0706e4742c8155c65682/tamaratran/fast-jev-compaction",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

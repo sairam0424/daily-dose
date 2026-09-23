@@ -1,0 +1,22 @@
+{
+  "title": "A Decentralized Partially Observable Team Decision Methodology with Delayed Information Sharing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.26783",
+  "date": "2026-09-23",
+  "tags": [
+    "math.OC",
+    "cs.LG",
+    "eess.SY",
+    "stat.ML"
+  ],
+  "interest_score": 4,
+  "why_read": "A theoretically dense paper on decentralized decision-making under partial observability, useful mainly to researchers in control theory and multi-agent reinforcement learning rather than general software engineers.",
+  "analysis": "This paper tackles the problem of multiple agents cooperating to make decisions when each has only partial, private, and delayed information about a shared environment with unknown dynamics. It combines ideas from team decision theory with low-rank approximations of Markov decision processes to let each agent learn a decentralized policy without a central coordinator. The authors also provide theoretical guarantees on how closely the decentralized solution approximates what a centralized planner could achieve. This is a solid theoretical contribution but is quite specialized, appealing mostly to researchers in control theory, multi-agent systems, or reinforcement learning theory rather than general practitioners.",
+  "authors": [
+    "Xiaoxing Ren",
+    "Thomas Parisini",
+    "Andreas A. Malikopoulos"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

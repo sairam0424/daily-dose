@@ -1,0 +1,19 @@
+{
+  "title": "A 4 GB Laptop GPU vs a 6-Core CPU on Gemma 4, Re-Measured in ABBA Order: 4.1x",
+  "source": "devto",
+  "url": "https://dev.to/gde/a-4-gb-laptop-gpu-vs-a-6-core-cpu-on-gemma-4-re-measured-in-abba-order-41x-5g56",
+  "date": "2026-09-23",
+  "tags": [
+    "gemma",
+    "llamacpp",
+    "cuda",
+    "benchmarking"
+  ],
+  "interest_score": 5,
+  "why_read": "A small but methodologically careful local benchmark comparing a laptop GPU versus CPU for running a quantized language model, with a thoughtful attempt to control for thermal bias via alternating run order.",
+  "analysis": "This post benchmarks a small quantized language model (Gemma, served via llama.cpp) running on a laptop's GPU versus its CPU, reporting the GPU decodes about 4.14 times faster. The interesting methodological detail is running tests in alternating CPU-GPU-GPU-CPU order to control for thermal throttling bias, finding this order effect shifts results by about 2%, a small but real confound many informal benchmarks ignore. This kind of careful, reproducible local benchmarking is useful for engineers deciding whether cheap discrete GPUs are worth using for local LLM inference on modest hardware. It's a niche, DIY-style benchmark rather than a groundbreaking result, but the rigor is commendable for a personal blog post.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fdocs%2Fcpu-vs-1650ti-abba%2Fdevto-cover.78380332.jpg"
+}
