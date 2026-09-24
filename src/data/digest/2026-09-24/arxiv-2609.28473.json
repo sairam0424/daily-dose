@@ -1,0 +1,27 @@
+{
+  "title": "On the Diffusibility of High-Dimensional Latents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.28473",
+  "date": "2026-09-24",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A technically deep paper on an important tradeoff in diffusion model architecture design that matters for state-of-the-art image generation systems.",
+  "analysis": "This paper studies representation autoencoders used to let diffusion models generate images in a compressed feature space rather than raw pixels, which is a common efficiency trick in modern generative models. It finds that fine-tuning encoders for better reconstruction quality inadvertently shrinks the effective dimensionality of the useful signal, which then hurts the standard velocity-prediction training objective used in flow matching. The proposed fix is switching to predicting the clean data directly rather than the noise-removal direction, which better matches the lower-dimensional signal manifold. This is a genuinely useful and somewhat counterintuitive finding for anyone building or tuning diffusion-based image generators.",
+  "authors": [
+    "Chao Feng",
+    "Zhiyang Xu",
+    "Bowei Chen",
+    "Yuanjun Xiong",
+    "Xiyao Wang",
+    "Jui-Hsien Wang",
+    "Richard Zhang",
+    "Zhe Lin",
+    "Andrew Owens",
+    "Yijun Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

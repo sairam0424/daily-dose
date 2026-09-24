@@ -1,0 +1,17 @@
+{
+  "title": "Show HN: Make cursed fonts like Times New Bastard",
+  "source": "hn",
+  "url": "https://bastardica.mitpit.com",
+  "date": "2026-09-24",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A fun, well-executed generative typography tool that's technically interesting for anyone curious about font design automation.",
+  "analysis": "This Show HN presents a tool for generating deliberately grungy, glitchy, 'cursed' fonts in the style of Times New Bastard, a known distressed typeface. It likely involves procedural manipulation of font outlines or glyph data to introduce visual noise and distortion programmatically. The appeal is mostly aesthetic and creative rather than solving a hard technical problem, but font tooling internals can be genuinely interesting to explore. It's a lighter, more playful entry compared to the rest of the list.",
+  "authors": [
+    "MitPitt"
+  ],
+  "hn_id": 49823738,
+  "points": 408,
+  "image_url": "https://bastardica.mitpit.com/scr2.png",
+  "favicon_url": "https://bastardica.mitpit.com/favicon.svg"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Where Should I Join? Robot Group Joining via Language-Guided Goal Prediction",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.28467",
+  "date": "2026-09-24",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but technically interesting robotics paper on teaching robots to join human groups appropriately, relevant to social robotics researchers.",
+  "analysis": "This paper tackles the specific problem of a robot deciding where and how to insert itself into an existing human group, such as a conversation circle or a queue, based on natural language descriptions and real-time group geometry. The approach uses spectral partitioning to identify candidate group subsets and a vision-language model to rank them, then predicts a socially appropriate joining pose. This is a fairly specialized subproblem within social robotics with applications like guide robots or mobility aids, and the reported real-robot experiments add some credibility. It's a narrow but genuinely novel research contribution rather than an incremental tweak to existing navigation methods.",
+  "authors": [
+    "Zilin Fang",
+    "Zishuo Wang",
+    "Gim Hee Lee",
+    "David Hsu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

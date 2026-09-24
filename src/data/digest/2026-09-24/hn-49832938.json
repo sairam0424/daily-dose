@@ -1,0 +1,15 @@
+{
+  "title": "Why is the liver so weirdly regenerative?",
+  "source": "hn",
+  "url": "https://dynomight.substack.com/p/liver",
+  "date": "2026-09-24",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A good popular-science explainer on liver biology that's tangential to software but genuinely interesting from a systems and biology curiosity standpoint.",
+  "analysis": "This piece explores why the liver, unlike most other organs, can regenerate significant portions of its tissue after injury or partial removal. It likely covers the cellular mechanisms involved, such as hepatocyte proliferation and epigenetic reprogramming pathways that other organs lack or suppress. While not software-related, this kind of cross-disciplinary science content often appeals to engineers with a general STEM curiosity, and the topic has genuine research depth behind it. It's a fine addition for variety in a digest, though its direct relevance to a software engineering audience is limited.",
+  "authors": [
+    "jbotz"
+  ],
+  "hn_id": 49832938,
+  "points": 205
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Even Sharper Bounds for Transductive Learning and Its Applications",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.28459",
+  "date": "2026-09-24",
+  "tags": [
+    "cs.LG",
+    "cs.IT",
+    "math.ST"
+  ],
+  "interest_score": 4,
+  "why_read": "A dense theoretical statistics paper on generalization bounds that will mainly interest specialists in learning theory rather than general engineers.",
+  "analysis": "This paper develops tighter mathematical bounds for transductive learning, a setting where the model has access to unlabeled test data during training and generalization is judged relative to that specific fixed test set rather than an unknown distribution. The authors introduce a new complexity measure using advanced probabilistic tools like modified log-Sobolev inequalities, closing a gap between transductive and standard inductive learning bounds. This work is mathematically rigorous but highly abstract, offering limited immediate practical takeaways for typical software engineers. It's the kind of paper valuable mainly to researchers working directly on statistical learning theory foundations.",
+  "authors": [
+    "Yingzhen Yang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

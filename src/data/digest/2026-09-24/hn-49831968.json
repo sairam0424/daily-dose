@@ -1,0 +1,17 @@
+{
+  "title": "F-Droid 2.0",
+  "source": "hn",
+  "url": "https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html",
+  "date": "2026-09-24",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A major version release of a long-running open-source Android app store that many privacy-conscious engineers rely on, worth a skim for what changed.",
+  "analysis": "F-Droid is a free and open-source app repository for Android that avoids Google Play's tracking and proprietary blobs. Version 2.0 likely represents a significant rewrite or UI/infrastructure overhaul after years of incremental updates. The high comment count on Hacker News suggests active discussion about its packaging, reproducible builds, or app selection policies, which are recurring technical debates in that community. It's a niche but technically substantive topic for engineers interested in software supply-chain trust and open ecosystems.",
+  "authors": [
+    "daveoc64"
+  ],
+  "hn_id": 49831968,
+  "points": 869,
+  "image_url": "https://f-droid.org/assets/fdroid-logo_bfHl7nsLHOUQxzdU8-rGIhn4bAgl6z7k2mA3fWoCyT4=.png",
+  "favicon_url": "https://f-droid.org/assets/favicon_AfYQ36xPEzFjJiCTyBFVmfWkajkehilUd2geASywhxM=.png"
+}

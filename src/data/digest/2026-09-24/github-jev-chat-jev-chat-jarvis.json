@@ -1,0 +1,16 @@
+{
+  "title": "jev-chat/jev-chat-jarvis",
+  "source": "github",
+  "url": "https://github.com/jev-chat/jev-chat-jarvis",
+  "date": "2026-09-24",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 3,
+  "why_read": "A messaging co-pilot app that reads chat screens and suggests replies, of limited technical novelty and some concerning privacy implications around screen-reading tools.",
+  "analysis": "This project is a mobile app that acts as a conversational co-pilot within apps like QQ, X, and Feishu, reading on-screen content to suggest candidate replies that the user can manually insert into the input field. It claims to be non-intrusive, using only read-only screen access without hooking or modifying the host apps' binaries, which somewhat limits invasiveness but still raises questions about screen-reading permissions and data handling. Technically, this is a fairly standard use of screen-reading APIs combined with an LLM backend to generate response suggestions, without much novel engineering beyond integration work. The privacy and terms-of-service implications of automated screen scraping on third-party chat apps are worth noting even though the tool keeps a human in the loop before sending.",
+  "authors": [],
+  "stars": 6055,
+  "image_url": "https://opengraph.githubassets.com/04fb3448303e899cd9b77ff834ef75684ac7a958179ae7473ad9f281e4d0a824/jev-chat/jev-chat-jarvis",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

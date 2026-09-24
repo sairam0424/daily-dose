@@ -1,0 +1,23 @@
+{
+  "title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.28470",
+  "date": "2026-09-24",
+  "tags": [
+    "cs.AI",
+    "cs.CY"
+  ],
+  "interest_score": 6,
+  "why_read": "A large-scale empirical study on AI tutoring efficacy with a notable cost-effectiveness finding relevant to anyone building educational AI products.",
+  "analysis": "This paper reports results from a large study comparing AI tutoring, human tutoring, and no tutoring on GRE test preparation, using over 175,000 collected messages and more than 2,300 human participants. The headline finding is that a leading AI tutor achieved learning gains statistically equivalent to expert human tutors at roughly 918 times lower cost per percentage point gained. It also examines correlations between AI response speed, student engagement, and eventual learning outcomes, offering some practical design signals for tutoring system builders. The methodology appears reasonably rigorous for an applied AI-in-education study, though as with most self-reported evaluations, replication and independent scrutiny would strengthen the claims.",
+  "authors": [
+    "Curtis Northcutt",
+    "Inaara Hasmani",
+    "Kevin Feng",
+    "Trevor Khangi",
+    "Andreas Plesner",
+    "Jonas Mueller"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

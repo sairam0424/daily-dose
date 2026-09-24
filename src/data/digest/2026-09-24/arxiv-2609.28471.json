@@ -1,0 +1,18 @@
+{
+  "title": "Contrastive Learning for Authorship Verification",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.28471",
+  "date": "2026-09-24",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A solid applied NLP paper on authorship verification with strong reported accuracy, useful for practitioners in forensic or plagiarism-detection tooling.",
+  "analysis": "This paper compares contrastive learning against standard classification approaches for determining whether two texts were written by the same author, a task called authorship verification. The authors identify practical training factors like loss function choice, batch size, and context length that meaningfully affect performance, and they report a strong 98.4% accuracy using a ModernBERT-based bi-encoder on a standard benchmark. This is a fairly incremental but well-executed piece of applied machine learning research with clear practical takeaways for anyone building authorship or similarity detection systems. It's not groundbreaking science but is methodologically useful.",
+  "authors": [
+    "Peter Kirby"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "mizorewww/laya-mlx",
+  "source": "github",
+  "url": "https://github.com/mizorewww/laya-mlx",
+  "date": "2026-09-24",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical companion project optimizing the Laya decision models for fast local inference on Apple Silicon, appealing to engineers who care about on-device ML performance.",
+  "analysis": "This project provides a native MLX runtime implementation for running Laya's typed decision models directly on Apple Silicon hardware, specifically citing 7 to 14 millisecond inference times on an M3 Max chip. It explicitly avoids dependencies on PyTorch or cloud APIs, targeting fully local and low-latency inference for structured decision tasks. This is technically appealing to engineers building on-device applications who want to avoid the overhead and privacy tradeoffs of calling out to hosted LLM APIs. The claimed performance numbers are notable but would benefit from independent verification and comparison against other lightweight local inference setups.",
+  "authors": [],
+  "stars": 6215,
+  "image_url": "https://opengraph.githubassets.com/4f4f05861bc88972cea6a8dd81f6c75a0948bd2ced9baedfb01c62a4dc190187/mizorewww/laya-mlx",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

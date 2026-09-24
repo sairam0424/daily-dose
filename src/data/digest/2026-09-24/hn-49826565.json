@@ -1,0 +1,17 @@
+{
+  "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+  "source": "hn",
+  "url": "https://transluce.org/agent-activity",
+  "date": "2026-09-24",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An interesting real-world data point about AI-driven hacking attempts being observed in the wild, relevant to anyone tracking offensive AI agent capabilities.",
+  "analysis": "This references data reportedly gathered by urlquery.net, a URL-scanning service, showing early evidence of autonomous AI agents attempting exploitation or hacking activity against monitored infrastructure. If accurate, this is a notable milestone in the trend of using LLM-based agents for offensive security tasks, moving from human-directed scripts to more autonomous probing behavior. The topic matters to security engineers who need to understand emerging threat models as agentic AI tools become more capable and accessible. As with many self-reported observations shared informally online, the underlying methodology and verification should be scrutinized before drawing strong conclusions.",
+  "authors": [
+    "snikolaev"
+  ],
+  "hn_id": 49826565,
+  "points": 235,
+  "image_url": "https://transluce.org/cards/urlquery-agent-activity-social.png",
+  "favicon_url": "https://transluce.org/favicon.ico"
+}
