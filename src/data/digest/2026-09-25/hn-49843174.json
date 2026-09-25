@@ -1,0 +1,17 @@
+{
+  "title": "Git-bug: Distributed, offline-first bug tracker embedded in Git",
+  "source": "hn",
+  "url": "https://github.com/git-bug/git-bug",
+  "date": "2026-09-25",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A distributed, Git-embedded bug tracker is a genuinely interesting infrastructure idea for engineers who want tooling that works fully offline and merges like code.",
+  "analysis": "Git-bug stores issues and bug reports as data inside the Git repository itself, using Git's distributed object model rather than a centralized server like GitHub Issues. This means bug tracking data can be branched, merged, and synced offline just like source code, which appeals to teams wanting a fully decentralized workflow. The approach raises interesting questions about conflict resolution, data modeling in Git objects, and tooling integration that would interest engineers who care about developer tooling design. It is a niche but technically substantive project relevant to anyone frustrated with vendor lock-in in issue tracking.",
+  "authors": [
+    "alentred"
+  ],
+  "hn_id": 49843174,
+  "points": 292,
+  "image_url": "https://repository-images.githubusercontent.com/140680839/98c44d00-69a6-11e9-9a1c-a6265bc3bcd9",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

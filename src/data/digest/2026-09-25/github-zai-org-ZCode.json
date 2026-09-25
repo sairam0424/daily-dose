@@ -1,0 +1,16 @@
+{
+  "title": "zai-org/ZCode",
+  "source": "github",
+  "url": "https://github.com/zai-org/ZCode",
+  "date": "2026-09-25",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "Another entrant in the crowded coding-agent-harness space, with high stars but a description too thin to judge real differentiation.",
+  "analysis": "ZCode is described as Z.ai's coding agent harness, part of the rapidly growing category of tools that wrap LLMs with tool use, file access, and execution loops to act as autonomous coding assistants. The description gives essentially no technical detail beyond marketing adjectives like 'powerful' and 'extensible,' so it's hard to assess what, if anything, is architecturally novel compared to existing agents like Claude Code or Codex. Given how saturated this space has become, genuine interest depends heavily on implementation details not visible here. The star count alone isn't a reliable signal of technical substance.",
+  "authors": [],
+  "stars": 6770,
+  "image_url": "https://opengraph.githubassets.com/2c8ef383646ce5f02267beae15f36717c1a9a5f334321771f912d64202d0e9a9/zai-org/ZCode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

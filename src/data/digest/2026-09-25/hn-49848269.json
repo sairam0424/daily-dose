@@ -1,0 +1,17 @@
+{
+  "title": "Ollaya – Ollama for open-source, Jev-style decision models",
+  "source": "hn",
+  "url": "https://ollaya.dev/",
+  "date": "2026-09-25",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "Vague marketing-style framing around 'Jev-style decision models' with little clear technical substance beyond an Ollama analogy.",
+  "analysis": "The title positions this as an 'Ollama for decision models,' implying a local runtime for some class of lightweight, non-generative predictive models rather than large language models. Without more detail on what 'Jev-style' models actually are or how they differ from standard classifiers or decision trees, it's hard to assess genuine novelty. The framing leans heavily on buzzy analogy rather than explaining the underlying architecture or benchmarks. This reads as a product launch post that may be interesting to niche audiences but lacks clear technical depth from the title alone.",
+  "authors": [
+    "Ardakilic"
+  ],
+  "hn_id": 49848269,
+  "points": 292,
+  "image_url": "https://ollaya.dev/static/og.png?v=7bd2eae221",
+  "favicon_url": "https://ollaya.dev/favicon.svg"
+}

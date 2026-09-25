@@ -1,0 +1,17 @@
+{
+  "title": "Platform-independent SIMD in Go",
+  "source": "hn",
+  "url": "https://go.dev/blog/simd-experiment",
+  "date": "2026-09-25",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete technical deep dive into implementing portable SIMD in Go, a topic of real interest to performance-focused systems engineers.",
+  "analysis": "Go historically lacks first-class SIMD support, so writing vectorized code that works across CPU architectures requires workarounds using assembly, code generation, or compiler intrinsics. This item likely describes a library or technique that abstracts these differences to give Go programmers portable, high-performance vector operations. This is a genuinely useful systems-level topic since manual SIMD tuning is a common bottleneck in performance-critical Go code. The high point count and comment volume suggest it resonated with engineers who care about low-level performance work.",
+  "authors": [
+    "yurivish"
+  ],
+  "hn_id": 49843269,
+  "points": 344,
+  "image_url": "https://go.dev/doc/gopher/runningsquare.jpg",
+  "favicon_url": "https://go.dev/images/favicon-gopher.png"
+}

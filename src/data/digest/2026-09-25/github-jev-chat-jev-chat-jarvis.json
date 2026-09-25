@@ -1,0 +1,16 @@
+{
+  "title": "jev-chat/jev-chat-jarvis",
+  "source": "github",
+  "url": "https://github.com/jev-chat/jev-chat-jarvis",
+  "date": "2026-09-25",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 2,
+  "why_read": "A screen-reading chat auto-reply assistant for messaging apps, technically modest and raising real privacy and platform-terms concerns.",
+  "analysis": "This tool reads on-screen chat content in apps like QQ, X, and Feishu to suggest and auto-fill reply candidates, explicitly advertising that it does not hook or modify the host app and only reads the screen. Technically this is a fairly standard screen-scraping plus LLM-suggestion pattern rather than a novel technical contribution. It raises real questions about violating platform terms of service and about the ethics of automating personal conversations without recipients' knowledge. It's a product more than an engineering advance, with limited transferable technical insight for a professional digest.",
+  "authors": [],
+  "stars": 6505,
+  "image_url": "https://opengraph.githubassets.com/9b5ccd5be174755b477f1a6f634cfb4aadb95abf7ae7eb93cbeb70303a4b4c65/jev-chat/jev-chat-jarvis",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

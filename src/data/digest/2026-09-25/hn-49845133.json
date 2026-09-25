@@ -1,0 +1,17 @@
+{
+  "title": "Factorio that you can touch",
+  "source": "hn",
+  "url": "https://factorio.com/blog/post/fff-447",
+  "date": "2026-09-25",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A neat physical/tangible reimplementation of the game Factorio, interesting as a maker/hardware project but of limited direct engineering transferability.",
+  "analysis": "This appears to be a project translating the automation-and-logistics puzzle game Factorio into a physical, touchable form, likely using robotics, mechanical parts, or tangible interfaces. It's a creative crossover between game design and physical computing, which can be fun to read about but doesn't carry deep generalizable technical lessons for most software engineers. The appeal is largely novelty and craftsmanship rather than a transferable engineering insight. Still, such projects can showcase interesting mechanical/software integration challenges worth a quick look.",
+  "authors": [
+    "ibobev"
+  ],
+  "hn_id": 49845133,
+  "points": 300,
+  "image_url": "https://cdn.factorio.com/assets/img/blog/fff-447-thumbnail.png",
+  "favicon_url": "https://factorio.com/static/img/favicon.ico"
+}

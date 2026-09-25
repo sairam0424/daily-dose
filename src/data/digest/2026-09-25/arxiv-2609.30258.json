@@ -1,0 +1,21 @@
+{
+  "title": "Temporal Gradient Inversion for Private Trajectory Reconstruction in Embodied Reinforcement Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.30258",
+  "date": "2026-09-25",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A privacy attack showing that gradients shared during distributed robot learning can be inverted to reconstruct entire sensor and action sequences, not just single frames.",
+  "analysis": "In federated or distributed reinforcement learning, robots are meant to keep raw camera and sensor data private and only share gradients, but this paper shows those gradients leak much more than assumed. The attack, called TRACE, exploits correlations between gradients across consecutive time steps to reconstruct whole trajectories of observations and actions, achieving strong image reconstruction quality and near-perfect recovery of the robot's actions. It runs in just a few milliseconds per frame, much faster than prior optimization-based attacks, making it a practical rather than purely theoretical threat. This is a solid, well-scoped security/privacy paper relevant to anyone deploying gradient-sharing schemes in embodied or robotic learning systems.",
+  "authors": [
+    "Sudip Bhujel",
+    "Shanghao Shi",
+    "Ruiquan Huang",
+    "Ning Zhang",
+    "Yang Xiao"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
