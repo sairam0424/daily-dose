@@ -1,0 +1,19 @@
+{
+  "title": "Everyone's learning to prompt better. That's the wrong skill.",
+  "source": "devto",
+  "url": "https://dev.to/infoinlet1/everyones-learning-to-prompt-better-thats-the-wrong-skill-544o",
+  "date": "2026-09-26",
+  "tags": [
+    "ai",
+    "career",
+    "webdev",
+    "discuss"
+  ],
+  "interest_score": 5,
+  "why_read": "A contrarian take arguing prompt engineering is overrated and pointing toward a different underlying skill, likely to prompt some genuine reflection for engineers investing heavily in prompting techniques.",
+  "analysis": "The author argues that the current obsession with learning prompting techniques is misdirected effort, since it doesn't address the deeper problem that determines whether AI-assisted work actually succeeds. Although the excerpt cuts off before revealing what the 'one skill that matters' actually is, the framing (that better prompts can't fix certain fundamental risks) is a reasonable critique of prompt-engineering hype. It's a personal essay rather than a technical deep dive, so its value is more in reframing thinking than in offering concrete techniques.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Foh727hef485cks6ddhal.png"
+}

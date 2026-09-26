@@ -1,0 +1,19 @@
+{
+  "title": "Agentic Detection of Online Conspiracies",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.30250",
+  "date": "2026-09-26",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche but methodologically interesting NLP paper on using agentic LLM tool-use to detect conspiracy theory framing with social context, evaluated on a large Hebrew Twitter dataset.",
+  "analysis": "The paper tackles the problem that conspiracy-related text can be sarcastic, critical, or genuinely endorsing, and argues that resolving this ambiguity requires social context rather than just the text itself. They build an agent that can query for relevant context as needed and show it outperforms both text-only classifiers and non-agentic models given the same context. The dataset, a large slice of Hebrew tweets spanning elections, COVID, and vaccine campaigns, is a notable resource for computational social science. It's a specialized contribution mostly of interest to NLP and computational social science researchers rather than general software engineers.",
+  "authors": [
+    "Lior Biton",
+    "Oren Tsur"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

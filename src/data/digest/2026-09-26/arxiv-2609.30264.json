@@ -1,0 +1,23 @@
+{
+  "title": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.30264",
+  "date": "2026-09-26",
+  "tags": [
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid robotics/planning paper addressing a real weakness in world models used for control, with strong reported gains on manipulation benchmarks.",
+  "analysis": "The paper identifies a subtle but important problem: world models trained to predict what actually happens next are not necessarily good at telling apart different hypothetical actions, which is exactly what planning algorithms need. Their proposed method, AD-WM, adds training objectives that force the model to preserve information distinguishing one action from another, without changing anything at test time. The reported jump from 3.7% to 52% success on a hard manipulation benchmark, and real robot improvements from 42% to 71%, are large enough to suggest a genuine and not just incremental improvement. This is a solid contribution for people working on model-based robot control and planning.",
+  "authors": [
+    "Jiabin Qiu",
+    "Zixuan Chen",
+    "Hongye Cao",
+    "Jieqi Shi",
+    "Jing Huo",
+    "Yang Gao"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

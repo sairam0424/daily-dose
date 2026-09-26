@@ -1,0 +1,19 @@
+{
+  "title": "I Built a Better Codex Pet Than OpenAI Did",
+  "source": "devto",
+  "url": "https://dev.to/mikachu/i-built-a-better-codex-pet-than-openai-did-eib",
+  "date": "2026-09-26",
+  "tags": [
+    "opensource",
+    "python",
+    "linux",
+    "showdev"
+  ],
+  "interest_score": 2,
+  "why_read": "A lighthearted personal project post about building a competing 'desktop pet' feature for coding agents, entertaining but of minimal technical substance.",
+  "analysis": "This is a casual blog post about the author building their own version of OpenAI's Codex Pets feature, a cute animated overlay showing coding agent status, for a Linux alpha project called Mochi. The author openly acknowledges it's not a fair comparison since Codex Pets is a polished multi-platform feature from a large company. There's little genuine technical depth here, it reads mainly as a fun side-project writeup rather than something offering transferable engineering insight.",
+  "authors": [],
+  "reactions": 26,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fw6f927f50lncfh46mbfb.png"
+}

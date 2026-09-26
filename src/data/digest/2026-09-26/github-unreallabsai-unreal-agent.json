@@ -1,0 +1,16 @@
+{
+  "title": "unreallabsai/unreal-agent",
+  "source": "github",
+  "url": "https://github.com/unreallabsai/unreal-agent",
+  "date": "2026-09-26",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 4,
+  "why_read": "Another entrant in the crowded agent-harness space, this one focused on async-first design and written in Go, worth a cursory look for architecture ideas.",
+  "analysis": "This is yet another coding/task agent harness, distinguished mainly by being built with an 'async-first' architecture and written in Go rather than the more common Python or TypeScript. The description is extremely sparse, giving no detail on what async-first actually buys users technically, such as concurrency model or how it handles long-running agent tasks. Given how saturated this space currently is with similar frameworks, it's hard to judge genuine differentiation without more documentation.",
+  "authors": [],
+  "stars": 1965,
+  "image_url": "https://opengraph.githubassets.com/feb21f2029257f70b014c091a43f556380b2f5afbaf2de7133fc6eee15d73c6d/unreallabsai/unreal-agent",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

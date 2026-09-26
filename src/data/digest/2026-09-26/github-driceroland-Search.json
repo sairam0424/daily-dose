@@ -1,0 +1,16 @@
+{
+  "title": "driceroland/Search",
+  "source": "github",
+  "url": "https://github.com/driceroland/Search",
+  "date": "2026-09-26",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 4,
+  "why_read": "A minimal WebKit-based macOS browser, useful for engineers curious about building lightweight native browser shells but not groundbreaking.",
+  "analysis": "This is a small, fast browser built on Apple's WebKit engine for macOS, likely appealing to users who want a lighter alternative to Safari or Chrome. Building on WebKit rather than a custom engine is a sensible and common approach for indie macOS browsers, minimizing maintenance burden. Without more architectural detail in the description, it's hard to say what specifically makes it noteworthy beyond being another WebKit wrapper, though its GitHub star count suggests decent community interest.",
+  "authors": [],
+  "stars": 2105,
+  "image_url": "https://opengraph.githubassets.com/65082f3415253c626a3ddfd66a662f2b73e3a9f2221cc445715e0912d996a2a2/driceroland/Search",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

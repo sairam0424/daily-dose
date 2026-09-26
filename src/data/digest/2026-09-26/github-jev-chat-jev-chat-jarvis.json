@@ -1,0 +1,16 @@
+{
+  "title": "jev-chat/jev-chat-jarvis",
+  "source": "github",
+  "url": "https://github.com/jev-chat/jev-chat-jarvis",
+  "date": "2026-09-26",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 3,
+  "why_read": "A screen-reading assistant tool for auto-suggesting chat replies in Chinese social apps, interesting mainly as a UI automation approach rather than for broad technical novelty.",
+  "analysis": "This tool reads on-screen chat content in apps like QQ and X without hooking into or modifying the app itself, and suggests candidate replies that the user can insert with one click. The 'non-invasive, read-only' design is a reasonable privacy-conscious approach to building assistant tools on closed platforms. Technically it's a fairly standard screen-scraping-plus-LLM-suggestion pattern, so the main interest is in seeing this applied to a real popular use case, dating or chat-response assistance, at reasonable scale given its star count.",
+  "authors": [],
+  "stars": 6670,
+  "image_url": "https://opengraph.githubassets.com/553c3b06992ab8ee6faa532d5d0a8928904f48df1c4ff92ef3b5f8359d0f373f/jev-chat/jev-chat-jarvis",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

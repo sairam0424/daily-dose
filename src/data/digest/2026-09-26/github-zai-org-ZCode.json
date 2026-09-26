@@ -1,0 +1,16 @@
+{
+  "title": "zai-org/ZCode",
+  "source": "github",
+  "url": "https://github.com/zai-org/ZCode",
+  "date": "2026-09-26",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A new coding agent harness from Z.ai with meaningful GitHub traction, worth a glance for engineers tracking the crowded coding-agent tooling space.",
+  "analysis": "ZCode is described as Z.ai's own harness for running coding agents, built in TypeScript, with over 6800 stars suggesting real community interest. The description is thin and marketing-heavy, so it's hard to tell what technically distinguishes it from the many other coding agent frameworks currently proliferating. Given the current glut of similar tools, this is worth a quick look but not clearly a must-read without more detail on its actual architecture or differentiation.",
+  "authors": [],
+  "stars": 6832,
+  "image_url": "https://opengraph.githubassets.com/8c077d85f9a95da7eaa923935802bd80e30e3b28beaf28be76e1a09da7ffa727/zai-org/ZCode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

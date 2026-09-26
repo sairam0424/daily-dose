@@ -1,0 +1,17 @@
+{
+  "title": "PipePipe: NewPipe hard fork implementing SponsorBlock",
+  "source": "hn",
+  "url": "https://github.com/InfinityLoop1308/PipePipe",
+  "date": "2026-09-26",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A concrete open-source fork adding ad-skipping crowdsourced data to a YouTube frontend, relevant to engineers interested in mobile app forking and API reverse engineering.",
+  "analysis": "PipePipe is a fork of NewPipe, itself a YouTube client that avoids Google's official API, and this fork adds SponsorBlock integration to automatically skip sponsored segments. It is technically interesting for how it maintains extraction logic against a platform that actively works to block third-party clients. The project sits in a legal and ethical gray zone regarding YouTube's terms of service, which is worth noting but does not make it inherently harmful.",
+  "authors": [
+    "Qision"
+  ],
+  "hn_id": 49842764,
+  "points": 294,
+  "image_url": "https://opengraph.githubassets.com/f1d0234c937bece0ec4b2af58eeda70c5110e6ed1d8d1fe229bcd232511f9a81/InfinityLoop1308/PipePipe",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Breaking Up with Google Play: Why Conversations Is Now Free",
+  "source": "hn",
+  "url": "https://gultsch.de/posts/breaking-up-with-google-play/",
+  "date": "2026-09-26",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A concrete, high-profile example of a developer abandoning Google Play billing that touches on app store policy fights many engineers care about.",
+  "analysis": "This is about the Conversations XMPP app going free after its developer left the Google Play ecosystem, likely over billing fees or policy friction. It matters to engineers as a real-world data point in the ongoing debate over app store monopoly power and alternative distribution. The story is more about business/policy than deep technical content, but it is grounded in a specific, verifiable decision rather than speculation.",
+  "authors": [
+    "ezst"
+  ],
+  "hn_id": 49855315,
+  "points": 623,
+  "favicon_url": "https://gultsch.de/favicon.ico"
+}

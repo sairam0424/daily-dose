@@ -1,0 +1,19 @@
+{
+  "title": "If AI Writes the Code and AI Reviews the Code, What Exactly Is the Developer Verifying?",
+  "source": "devto",
+  "url": "https://dev.to/robertadam987_/if-ai-writes-the-code-and-ai-reviews-the-code-what-exactly-is-the-developer-verifying-b5h",
+  "date": "2026-09-26",
+  "tags": [
+    "ai",
+    "programming",
+    "productivity",
+    "discuss"
+  ],
+  "interest_score": 6,
+  "why_read": "A relevant and timely reflection on what human code review actually needs to verify when both code generation and code review are increasingly automated by AI.",
+  "analysis": "The piece raises a genuinely important question as AI tools handle more of the software development pipeline: what is left for a human reviewer to meaningfully check when AI writes, tests, and reviews the same code? It cites a real data point that GitHub Copilot's review feature now handles over one in five code reviews on GitHub, which is a striking figure about how far AI has penetrated real workflows. The core argument, that AI reviewing AI-generated code risks encoding the same blind spots or wrong assumptions rather than catching them, is a solid and underappreciated point for engineering teams adopting these tools. It's more thoughtful than typical AI-hype content, focusing on a concrete failure mode (shared assumptions) rather than vague warnings.",
+  "authors": [],
+  "reactions": 27,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnmlimsjfl503pt2jxjme.png"
+}
