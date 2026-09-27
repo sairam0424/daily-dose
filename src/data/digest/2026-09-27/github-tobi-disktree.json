@@ -1,0 +1,16 @@
+{
+  "title": "tobi/disktree",
+  "source": "github",
+  "url": "https://github.com/tobi/disktree",
+  "date": "2026-09-27",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "A fast, GPU-accelerated disk usage treemap tool written in Rust, useful as a practical utility for developers managing storage.",
+  "analysis": "Disktree is a visual disk space analyzer that renders a treemap of what's consuming disk space, built in Rust and using GPUI, a GPU-accelerated UI toolkit associated with the Zed editor ecosystem. It's tailored for Omarchy, indicating it targets a specific Linux/Arch-based setup, which narrows its immediate audience. This is a solid, practical utility project rather than a research breakthrough, and tools like this are perennially useful for engineers who need to quickly find what's eating their disk space. The choice of GPUI for rendering is a technically interesting detail for anyone curious about GPU-accelerated desktop tooling outside of games.",
+  "authors": [],
+  "stars": 1580,
+  "image_url": "https://opengraph.githubassets.com/df409312e889f90ba8d9d20df097ce40830a2a27d04a80f0b077cb12afbbb6a5/tobi/disktree",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

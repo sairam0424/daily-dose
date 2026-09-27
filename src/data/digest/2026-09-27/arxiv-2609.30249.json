@@ -1,0 +1,23 @@
+{
+  "title": "RAPID: Robot Agentic Programming from Demonstrations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.30249",
+  "date": "2026-09-27",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A robotics paper that turns a single video demonstration into a verified, reusable robot program by having a coding agent write and refine trajectory-optimization code.",
+  "analysis": "RAPID takes one human video demonstration and automatically infers a task specification, the low-level action primitives, and a way to test the resulting program, then uses an agentic code-generation loop to write and refine a robot program that reproduces the task. Rather than encoding raw motion, it represents the strategy in terms of object relationships and trajectory-optimization primitives, which the authors argue makes it generalize better across different object poses, shapes, and materials. It was tested on eight contact-rich manipulation tasks in simulation and successfully deployed on a real Franka robot arm. This is a genuinely useful direction for reducing the amount of hand-engineering needed to program robots for new manipulation tasks, though real-world robustness beyond the tested tasks remains to be seen.",
+  "authors": [
+    "Yuyao Liu",
+    "Jiayuan Mao",
+    "David Hsu",
+    "Leslie Pack Kaelbling",
+    "Tomás Lozano-Pérez"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

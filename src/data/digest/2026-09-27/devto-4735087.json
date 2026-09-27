@@ -1,0 +1,19 @@
+{
+  "title": "I Tried to Prompt a 3D DEV Library Into Existence. Then I Had to Build My Own Level Editor.",
+  "source": "devto",
+  "url": "https://dev.to/mikachu/i-tried-to-prompt-a-3d-dev-library-into-existence-then-i-had-to-build-my-own-level-editor-37gf",
+  "date": "2026-09-27",
+  "tags": [
+    "devchallenge",
+    "sanitychallenge",
+    "ai",
+    "sanity"
+  ],
+  "interest_score": 3,
+  "why_read": "A hackathon submission describing an experimental 3D spatial browser for DEV articles, more of a creative demo than a technically rigorous project.",
+  "analysis": "The author describes building 'Oniria,' a 3D virtual library where DEV.to articles are represented as books on shelves that a user can walk through, built using Sanity as a backend for content and spatial memory. It grew out of an attempt to use AI to generate a 3D library tool, which failed, leading the author to build a custom level editor instead. This is an interesting creative experiment in alternative content browsing, but it reads mainly as a fun hackathon project rather than something offering broadly applicable engineering lessons. The idea of 'information as geography' is a neat concept, though the practical utility and technical depth of the writeup itself seem limited.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fq2u14p7nbbw94iduds9q.png"
+}

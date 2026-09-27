@@ -1,0 +1,15 @@
+{
+  "title": "The Normalization of Inexplicable Failures",
+  "source": "hn",
+  "url": "https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html",
+  "date": "2026-09-27",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An essay likely reflecting on how engineers and organizations increasingly shrug off unexplained bugs and outages as normal, a genuinely relevant industry trend.",
+  "analysis": "This piece seems to explore why complex modern software systems increasingly produce failures that nobody can fully explain, and how teams have adapted by simply accepting this uncertainty. That's a real and growing phenomenon as systems become more distributed, layered with third-party dependencies, and increasingly touched by opaque ML components. The topic matters because it speaks to reliability engineering, debugging culture, and the growing gap between system complexity and human understanding. Substantial comment engagement suggests it resonated with practitioners who recognize the pattern from their own work.",
+  "authors": [
+    "pxx"
+  ],
+  "hn_id": 49867486,
+  "points": 232
+}

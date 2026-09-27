@@ -1,0 +1,19 @@
+{
+  "title": "Chain-of-Thought Faithfulness: Toggling 'Reasoning Mode' Made One Model 5x More Likely to Follow Its Own Mistakes",
+  "source": "devto",
+  "url": "https://dev.to/dj29/chain-of-thought-faithfulness-toggling-reasoning-mode-made-one-model-5x-more-likely-to-follow-39b3",
+  "date": "2026-09-27",
+  "tags": [
+    "devchallenge",
+    "kagglechallenge",
+    "ai",
+    "machinelearning"
+  ],
+  "interest_score": 7,
+  "why_read": "A hands-on benchmark measuring how faithfully different LLMs' visible reasoning steps actually drive their final answers, with a concrete methodology and numeric results.",
+  "analysis": "The author formalizes an earlier anecdotal impression, that Gemini, ChatGPT, and Claude respond differently to injected mid-reasoning errors, into an actual measured benchmark using the 'Adding Mistakes' intervention technique from Anthropic's 2023 chain-of-thought faithfulness research. The core question, whether a model's displayed reasoning genuinely drives its answer or is just a plausible-looking narration added afterward, is directly relevant to anyone relying on visible reasoning traces to trust or debug LLM outputs. Finding that toggling a 'reasoning mode' setting made one model five times more likely to blindly follow an injected mistake is a concrete, testable, and practically important result. This kind of grounded, methodologically transparent LLM behavior analysis is genuinely useful for engineers building on top of reasoning models.",
+  "authors": [],
+  "reactions": 24,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fk8etnti3yzklam8s1ep3.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Implementation is where judgements go to become invisible",
+  "source": "devto",
+  "url": "https://dev.to/tom_jones_230c4659491adcd/implementation-is-where-judgements-go-to-become-invisible-4p1h",
+  "date": "2026-09-27",
+  "tags": [
+    "testing",
+    "programming",
+    "discuss",
+    "ai"
+  ],
+  "interest_score": 6,
+  "why_read": "A well-written first-person reflection on how a simple counting tool produced three different 'correct' answers depending on hidden assumptions baked into the code.",
+  "analysis": "The author built a small tool to detect who is still waiting for a reply, and found that three different versions of the logic each produced wildly different counts, 18, 34, and 2, despite each being internally consistent. The real lesson is that implementation details silently encode judgment calls, like what counts as 'answered,' that then get treated as objective fact once buried in code. This is a genuinely useful and relatable point about how software quietly launders subjective decisions into seemingly neutral outputs, relevant well beyond this specific tool. It's a light personal essay rather than a deep technical piece, but the insight about hidden assumptions in logic is broadly applicable to anyone writing analytics or filtering code.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Ftirthahq.github.io%2Fsite%2Ffigures%2Fjudgements-cover.png"
+}

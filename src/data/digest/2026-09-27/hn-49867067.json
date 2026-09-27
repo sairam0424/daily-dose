@@ -1,0 +1,16 @@
+{
+  "title": "On caring for user data: NeoVim caused Vim undo files to be deleted",
+  "source": "hn",
+  "url": "https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/",
+  "date": "2026-09-27",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real data-loss incident report about Neovim deleting Vim undo files, useful for anyone who cares about backward-compatibility footguns in widely used editors.",
+  "analysis": "This describes an incident where Neovim's handling of undo files caused unintended deletion of Vim's undo history, raising questions about compatibility assumptions between forks of a shared codebase. It matters because undo files can represent hours of unsaved editing history, and silent data loss bugs in ubiquitous tools like Vim/Neovim affect huge numbers of developers. The high comment count suggests substantial community debate over blame, responsibility, and how forks should treat shared file formats. This is a good case study in software stewardship and defensive design around user data.",
+  "authors": [
+    "jandeboevrie"
+  ],
+  "hn_id": 49867067,
+  "points": 341,
+  "image_url": "https://unsung.aresluna.org/_media/they-had-no-concept-of-a-duty-of-care-to-their-users/ogimage.jpg"
+}

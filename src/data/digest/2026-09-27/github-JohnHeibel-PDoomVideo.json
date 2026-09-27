@@ -1,0 +1,16 @@
+{
+  "title": "JohnHeibel/PDoomVideo",
+  "source": "github",
+  "url": "https://github.com/JohnHeibel/PDoomVideo",
+  "date": "2026-09-27",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 3,
+  "why_read": "Source code for an AI-generated music video about AI existential risk, more of a novelty art project than a technical resource.",
+  "analysis": "This repository holds the code behind a music video themed around 'P(doom)', the informal probability estimate some AI safety commentators assign to catastrophic AI outcomes, apparently produced with or referencing Claude Opus. It seems to be primarily a creative/artistic project rather than something offering reusable engineering techniques or research findings. Its notable star count is likely driven by novelty and community interest in AI safety culture rather than genuine technical substance. Worth a passing mention but not something with much lasting technical value for a professional digest.",
+  "authors": [],
+  "stars": 1243,
+  "image_url": "https://opengraph.githubassets.com/561507f7d51e826b956de6ac2f7748e248ae3897521a094ae125a2a63907e5db/JohnHeibel/PDoomVideo",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

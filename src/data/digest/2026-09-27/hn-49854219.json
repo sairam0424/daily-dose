@@ -1,0 +1,16 @@
+{
+  "title": "Flip Fluid on Flip Dots",
+  "source": "hn",
+  "url": "https://mitxela.com/projects/flipflip",
+  "date": "2026-09-27",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A niche but charming hardware/graphics hack simulating fluid dynamics on flip-dot displays.",
+  "analysis": "This is likely a project applying fluid simulation (FLIP - Fluid Implicit Particle method) to flip-dot displays, an old mechanical display technology with black-and-white flipping tiles. It sits at the intersection of physics simulation and retro hardware, which tends to attract engineers interested in creative constraints. The technical interest is moderate since it's a fun demo rather than something with broad applicability, but flip-dot hacking projects are usually well documented and satisfying to read.",
+  "authors": [
+    "blutack"
+  ],
+  "hn_id": 49854219,
+  "points": 357,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=mitxela.com&sz=32"
+}

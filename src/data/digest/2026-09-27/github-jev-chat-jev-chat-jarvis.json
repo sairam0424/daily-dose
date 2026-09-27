@@ -1,0 +1,16 @@
+{
+  "title": "jev-chat/jev-chat-jarvis",
+  "source": "github",
+  "url": "https://github.com/jev-chat/jev-chat-jarvis",
+  "date": "2026-09-27",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 3,
+  "why_read": "A screen-reading chat-assistance tool for messaging apps that suggests replies, of narrow interest and light on technical novelty.",
+  "analysis": "This is a mobile tool that reads on-screen chat content in apps like QQ, X, and Feishu, then suggests candidate replies the user can insert manually, explicitly marketed as non-invasive and not modifying the host apps. The technical approach, screen scraping plus LLM-based reply suggestion, is a common pattern with not much novel engineering to highlight. Its popularity likely stems from being genuinely useful to end users in a specific regional messaging ecosystem rather than any technical breakthrough. It is a legitimate assistive productivity tool, not something that should be excluded, but it's not particularly noteworthy from an engineering standpoint.",
+  "authors": [],
+  "stars": 6773,
+  "image_url": "https://opengraph.githubassets.com/ca39735687d721f1bff57686a1f88f85c2ea270419296be28572b2dfe9581baa/jev-chat/jev-chat-jarvis",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

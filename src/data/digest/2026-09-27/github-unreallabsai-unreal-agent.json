@@ -1,0 +1,16 @@
+{
+  "title": "unreallabsai/unreal-agent",
+  "source": "github",
+  "url": "https://github.com/unreallabsai/unreal-agent",
+  "date": "2026-09-27",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 5,
+  "why_read": "A Go-based async-first agent harness, part of the crowded but active space of infrastructure for running LLM agents.",
+  "analysis": "The description is extremely minimal, just calling it an 'async-first agent harness,' making it hard to evaluate what distinguishes it from the many other agent frameworks currently being built. Its notable star count suggests some community traction, and building agent harnesses in Go rather than Python is a less common choice that could appeal to engineers wanting better concurrency and deployment characteristics. Without more detail on its design or unique features, it's difficult to say whether it offers real architectural innovation versus being another wrapper around LLM tool-calling loops.",
+  "authors": [],
+  "stars": 1986,
+  "image_url": "https://opengraph.githubassets.com/7fde63c9652fb3d07073b539bda4b3c2d8012e00640cd7c4547d71713df091ae/unreallabsai/unreal-agent",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
