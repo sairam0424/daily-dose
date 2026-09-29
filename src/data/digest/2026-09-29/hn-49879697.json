@@ -1,0 +1,17 @@
+{
+  "title": "Kids turned low-traffic NPR Spotify comments into a secret group chat",
+  "source": "hn",
+  "url": "https://www.thisamericanlife.org/897/transcript",
+  "date": "2026-09-29",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A fun social/cultural anecdote about creative use of Spotify comments, but it's light on technical substance.",
+  "analysis": "This is a human-interest story about kids exploiting an obscure, low-traffic comment section as an improvised messaging platform rather than a deep technical piece. It touches on emergent behavior and platform design gaps but doesn't offer engineering depth. Still mildly interesting as a case study in how features get repurposed in unintended ways.",
+  "authors": [
+    "simonpure"
+  ],
+  "hn_id": 49879697,
+  "points": 268,
+  "image_url": "https://www.thisamericanlife.org/sites/all/themes/thislife/img/social-blue.png",
+  "favicon_url": "https://www.thisamericanlife.org/sites/all/themes/thislife/favicons/favicon-32x32.png"
+}

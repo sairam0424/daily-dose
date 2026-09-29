@@ -1,0 +1,19 @@
+{
+  "title": "Gap-free Differentially Private PCA for Gaussian Data",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.31614",
+  "date": "2026-09-29",
+  "tags": [
+    "cs.DS",
+    "cs.LG"
+  ],
+  "interest_score": 4,
+  "why_read": "A theoretical result on differentially private PCA for Gaussian data, useful mainly to specialists in private statistics and differential privacy theory.",
+  "analysis": "This paper presents an algorithm for principal component analysis with formal differential privacy guarantees that avoids the usual 'eigenvalue gap' assumption required by prior methods. Removing the gap requirement is a meaningful theoretical improvement since real datasets rarely have well-separated eigenvalues. However the abstract itself gives almost no detail on techniques or bounds, and the topic is narrow, appealing mostly to researchers in differential privacy and statistics rather than general engineers.",
+  "authors": [
+    "Alina Ene",
+    "Huy L. Nguyen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

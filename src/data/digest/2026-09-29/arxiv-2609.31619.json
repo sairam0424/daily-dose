@@ -1,0 +1,27 @@
+{
+  "title": "Learning to Stop without Learning to Stop: Self-Supervised Confidence Training Improves Reasoning Efficiency",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.31619",
+  "date": "2026-09-29",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "A clever result showing that training models to predict their own confidence indirectly makes reasoning chains shorter without explicitly optimizing for brevity.",
+  "analysis": "This paper shows that fine-tuning reasoning LLMs to self-predict confidence at intermediate reasoning steps reduces generated tokens by up to 25% at equal accuracy, even though the training objective never mentions length or stopping. The mechanism is self-supervised, needs only 600 training examples, and works across several model families including Gemma, Qwen, and GPT-OSS. This is notable because it suggests token efficiency can emerge as a side effect of teaching models better self-assessment rather than requiring explicit length penalties or early-stopping heuristics. It's a genuinely useful and cheap technique for anyone running expensive chain-of-thought inference at scale.",
+  "authors": [
+    "Parsa Hosseini",
+    "Akasha Tigalappanavara",
+    "Sumit Nawathe",
+    "Chenrui Fan",
+    "Sourya Basu",
+    "Genta Indra Winata",
+    "Anirban Das",
+    "Soheil Feizi",
+    "Nima Chitsazan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

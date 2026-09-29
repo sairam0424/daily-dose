@@ -1,0 +1,20 @@
+{
+  "title": "First-Order Stationarity of Reverse Diffusions",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.31612",
+  "date": "2026-09-29",
+  "tags": [
+    "stat.ML",
+    "cs.LG"
+  ],
+  "interest_score": 4,
+  "why_read": "A dense theoretical paper connecting optimization theory to diffusion model sampling, of interest mainly to researchers studying generative model foundations.",
+  "analysis": "The paper develops convergence guarantees for the reverse-time sampling process used in diffusion models, showing that certain SDE-based methods contract error at a predictable exponential rate under conditions on the noise schedule, unlike ODE-based reverse processes. It draws an analogy to gradient-norm convergence guarantees in nonconvex optimization, offering a 'stationarity' certificate for samplers even without global convergence guarantees. This is solid theoretical work but highly abstract and mainly relevant to specialists studying the mathematical foundations of diffusion models rather than practitioners.",
+  "authors": [
+    "Zhifeng Chen",
+    "Chenyang Jiang",
+    "Yazhen Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

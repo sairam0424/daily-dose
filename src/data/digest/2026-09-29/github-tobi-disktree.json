@@ -1,0 +1,16 @@
+{
+  "title": "tobi/disktree",
+  "source": "github",
+  "url": "https://github.com/tobi/disktree",
+  "date": "2026-09-29",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "A fast, GPU-accelerated disk usage treemap visualizer built in Rust, a solid but incremental addition to a well-established tool category.",
+  "analysis": "This is a disk-space visualization tool (treemap style, similar to WinDirStat or Baobab) built using Rust and GPUI for GPU-accelerated rendering, tied to the Omarchy environment. Disk usage analyzers are a mature, well-solved problem, so the main technical interest here is the implementation choice of Rust plus a GPU UI toolkit for snappier rendering on large filesystems. It's a nice-to-have utility rather than a novel technical contribution.",
+  "authors": [],
+  "stars": 1812,
+  "image_url": "https://opengraph.githubassets.com/f7c1bbdfab499edb949e60a87b873131650ca83ae8197f35791d1f145fcf39fc/tobi/disktree",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

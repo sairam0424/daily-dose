@@ -1,0 +1,17 @@
+{
+  "title": "Parley: Federated, decentralised chat that speaks plain IRC",
+  "source": "hn",
+  "url": "https://git.mills.io/prologic/parley",
+  "date": "2026-09-29",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A decentralized chat project bridging modern federated protocols with plain IRC is a solid niche technical topic for protocol enthusiasts.",
+  "analysis": "Parley seems to be a project that lets federated/decentralized chat systems interoperate with classic IRC clients, which is technically interesting for anyone working on messaging protocols or federation (ActivityPub-style or similar). Bridging old and new protocols involves real engineering tradeoffs around identity, moderation, and message delivery guarantees. It's a niche but legitimate systems topic that appeals to protocol-minded engineers.",
+  "authors": [
+    "davidcollantes"
+  ],
+  "hn_id": 49875913,
+  "points": 298,
+  "image_url": "https://git.mills.io/repo-avatars/640d1c8d0740a84bc305d7d7f83dc71164e891e05a7ac78a26d5199d985d7cd1",
+  "favicon_url": "https://git.mills.io/assets/img/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Claude e Obsidian - Como uma QA utiliza essas ferramentas no dia-a-dia",
+  "source": "devto",
+  "url": "https://dev.to/he4rt/claude-e-obsidian-como-uma-qa-utiliza-essas-ferramentas-no-dia-a-dia-51jc",
+  "date": "2026-09-29",
+  "tags": [
+    "ai",
+    "productivity",
+    "braziliandevs",
+    "claude"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal workflow post about a QA professional using Obsidian and Claude for note-taking and test organization, useful mainly as a lightweight productivity anecdote.",
+  "analysis": "This Portuguese-language article describes how a QA engineer uses Obsidian (a local markdown note-taking app) combined with Claude to organize test case documentation and daily QA work. It's a practical personal-productivity story rather than a deep technical dive, focused on tool choice rationale (Obsidian over Notion) and local-first note storage for work security reasons. Useful for readers interested in QA workflows or note-taking setups, but limited generalizable engineering insight.",
+  "authors": [],
+  "reactions": 90,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fg4v9ciar0s4sjo21b037.jpg"
+}

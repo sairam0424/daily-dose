@@ -1,0 +1,17 @@
+{
+  "title": "Sonnet 5.5",
+  "source": "hn",
+  "url": "https://www.anthropic.com/claude-sonnet-5-5",
+  "date": "2026-09-29",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A new frontier model release (Claude Sonnet 5.5) is directly relevant to engineers building with LLMs and drives significant discussion.",
+  "analysis": "This appears to be the announcement or discussion thread for Anthropic's Sonnet 5.5 model release. Model releases from major labs are technically significant because they shift capability baselines and pricing/performance tradeoffs that engineers rely on when building products. The high comment count suggests substantive discussion of benchmarks, real-world coding performance, or comparisons to competitors, which is useful signal even without more detail here.",
+  "authors": [
+    "D2OQZG8l5BI1S06"
+  ],
+  "hn_id": 49881850,
+  "points": 547,
+  "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/eaa6046f4ae8c88e368c3c530c4c1312f7ff6f2e-1200x630.jpg",
+  "favicon_url": "https://www.anthropic.com/favicon.ico"
+}

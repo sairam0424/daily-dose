@@ -1,0 +1,16 @@
+{
+  "title": "dzhng/jevgrep",
+  "source": "github",
+  "url": "https://github.com/dzhng/jevgrep",
+  "date": "2026-09-29",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A semantic code-search CLI that lets you find code by describing its behavior in natural language, useful for navigating large codebases with AI assistance.",
+  "analysis": "jevgrep is a command-line tool that uses an AI agent to find relevant files and code by natural-language description rather than exact string or regex matching like traditional grep. This fits into a growing category of AI-assisted code navigation tools aimed at making large, unfamiliar codebases easier to explore. Its practical value depends on accuracy and speed versus existing semantic search tools, but the concept is genuinely useful for day-to-day development work.",
+  "authors": [],
+  "stars": 1433,
+  "image_url": "https://opengraph.githubassets.com/4008a4c57cd4d5eef9b71757cbb7e990d31d4c385a95966e3abf70d77f47e892/dzhng/jevgrep",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "User Model Extraction via Belief Self-Distillation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.31603",
+  "date": "2026-09-29",
+  "tags": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting interpretability paper showing LLMs form an internal, causally editable model of who the user is, with direct implications for how safety refusals actually work.",
+  "analysis": "The authors build a technique, Belief Self-Distillation, that extracts a compact representation of what an LLM believes about its user and can write that belief back into the model to test causal effects. They find that a model's refusal behavior depends not just on the literal request but on its inferred beliefs about who is asking, and that this can be manipulated while holding the request constant. They also find that independently trained models converge on similar internal geometries for representing users, a striking universality finding. This matters for AI safety research because it suggests refusal and alignment behavior is more manipulable and less robust than commonly assumed.",
+  "authors": [
+    "Ali Holmov",
+    "Yiran Huang",
+    "Kirill Bykov",
+    "Zeynep Akata"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

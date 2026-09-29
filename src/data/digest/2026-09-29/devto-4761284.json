@@ -1,0 +1,20 @@
+{
+  "title": "Half the AI agents in production are if-statements with a GPU bill",
+  "source": "devto",
+  "url": "https://dev.to/cyclopt_dimitrisk/half-the-ai-agents-in-production-are-if-statements-with-a-gpu-bill-4934",
+  "date": "2026-09-29",
+  "tags": [
+    "ai",
+    "programming",
+    "architecture",
+    "discuss"
+  ],
+  "interest_score": 6,
+  "why_read": "A pointed critique of over-engineered AI agent systems in production, arguing many 'agents' are unnecessarily complex wrappers around logic that regex or simple code could handle.",
+  "analysis": "The article argues that many production 'AI agent' systems are needlessly complex, citing a concrete example where an LLM is used to extract structured data (invoice numbers) that a simple regex handles more reliably and cheaply. It frames this as 'resume-driven AI engineering,' where flashy architectures (vector databases, multi-model orchestration) are chosen for appearances rather than genuine necessity, at the cost of latency, expense, and debuggability. This is a useful, grounded engineering critique that pushes back against AI hype with a practical cost/complexity lens relevant to anyone building production LLM systems.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvel6twrsakfhdm3hyv8q.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

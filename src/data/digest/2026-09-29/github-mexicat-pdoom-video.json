@@ -1,0 +1,16 @@
+{
+  "title": "mexicat/pdoom-video",
+  "source": "github",
+  "url": "https://github.com/mexicat/pdoom-video",
+  "date": "2026-09-29",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A creative code-rendered music video project, more of an artistic novelty than a technical resource for engineers.",
+  "analysis": "This repository appears to be the source code behind a procedurally/code-rendered music video referencing AI existential risk ('P(doom)'), likely using web/creative-coding techniques given the TypeScript stack. It's a fun creative-coding showcase but offers limited generalizable engineering insight beyond animation/rendering tricks. Interest is low for a technical digest focused on substantive engineering content, though it's harmless and mildly amusing.",
+  "authors": [],
+  "stars": 1773,
+  "image_url": "https://opengraph.githubassets.com/cb840f245a207f022b739aa5980e70d44239c2eaa5af91599958dcec3c0960f4/mexicat/pdoom-video",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

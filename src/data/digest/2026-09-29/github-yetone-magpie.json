@@ -1,0 +1,16 @@
+{
+  "title": "yetone/magpie",
+  "source": "github",
+  "url": "https://github.com/yetone/magpie",
+  "date": "2026-09-29",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 6,
+  "why_read": "A menu-bar tool for routing different coding agent frontends to alternative model backends, relevant to the growing ecosystem of swappable LLM backends for coding assistants.",
+  "analysis": "Magpie appears to be a utility that lets you plug alternate LLM backends (like DeepSeek or Kimi) into existing coding-agent frontends (like Codex or Claude Code), managed from a menu-bar app written in Go. This reflects a real practical need as engineers try to reduce cost or vendor lock-in by mixing agent UIs with cheaper or open model backends. It's a useful piece of glue infrastructure in the fast-moving AI coding tool space, though its long-term relevance depends on how stable these agent APIs remain.",
+  "authors": [],
+  "stars": 1593,
+  "image_url": "https://opengraph.githubassets.com/83a4faaf96cd5afe0cd08e316e2295c521be4cbcb5fc1e8a28a6b82616443e8c/yetone/magpie",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

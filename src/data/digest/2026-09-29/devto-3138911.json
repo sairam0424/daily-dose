@@ -1,0 +1,19 @@
+{
+  "title": "Dear Coder: Open This If You're Feeling AI FOMO",
+  "source": "devto",
+  "url": "https://dev.to/canro91/dear-coder-open-this-if-youre-feeling-ai-fomo-58d4",
+  "date": "2026-09-29",
+  "tags": [
+    "career",
+    "ai",
+    "programming",
+    "beginners"
+  ],
+  "interest_score": 3,
+  "why_read": "A motivational opinion piece urging developers to focus on fundamentals rather than chase every new AI trend, light on technical substance and partly a promotion for the author's book.",
+  "analysis": "This post is a reassurance piece aimed at developers experiencing AI-related FOMO, arguing that fundamentals like avoiding N+1 queries, pagination bugs, and SQL injection still matter more than chasing every new AI buzzword. It doesn't provide new technical insight or data, functioning mostly as career advice and soft promotion for the author's paid course/book. It may resonate emotionally with some readers but offers little substantive engineering content for a technical digest.",
+  "authors": [],
+  "reactions": 31,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbcz2rmmn05m2klpu6qdp.png"
+}

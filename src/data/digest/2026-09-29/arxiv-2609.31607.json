@@ -1,0 +1,23 @@
+{
+  "title": "Statistical attribute alignment for black-box generative AI via output post-processing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.31607",
+  "date": "2026-09-29",
+  "tags": [
+    "stat.ME",
+    "cs.AI",
+    "cs.LG",
+    "math.ST"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical post-processing method to statistically steer black-box generative AI outputs toward a target attribute distribution, relevant to fairness and synthetic data work.",
+  "analysis": "This paper tackles a concrete, practical problem: given only query access to a generative model (no internals), how do you select outputs so the overall attribute distribution (e.g. demographic balance in generated images) matches a target, using as few queries as possible. It provides algorithms with provable query-efficiency and near-optimality as the number of outputs grows, tested on text-to-image and synthetic persona generation. This is useful for engineers building fairness-aware or representative synthetic datasets on top of commercial APIs where you can't retrain or fine-tune the underlying model.",
+  "authors": [
+    "Kevin Jiang",
+    "Morgane Austern",
+    "Edgar Dobriban",
+    "Jason M. Klusowski"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
