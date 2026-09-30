@@ -1,0 +1,18 @@
+{
+  "title": "Say Please (if only as a reminder)",
+  "source": "devto",
+  "url": "https://dev.to/btarbox/say-please-if-only-as-a-reminder-1bc9",
+  "date": "2026-09-30",
+  "tags": [
+    "ai",
+    "llm",
+    "security"
+  ],
+  "interest_score": 6,
+  "why_read": "A clearly written conceptual piece explaining why system prompts alone are weak security controls for LLMs, using an effective museum-guard-glass analogy.",
+  "analysis": "The author argues that instructions embedded in an LLM's system prompt function as polite requests rather than enforceable rules, because the model processes them probabilistically like any other text. The museum analogy of a sign, a guard, and bulletproof glass nicely maps to three layers of real AI safety: prompts, active monitoring, and hard technical restrictions that don't rely on model cooperation at all. This is a good conceptual explainer for engineers building LLM applications who might mistakenly treat prompt instructions as a real security boundary. It's not novel research, but it's a clear, well-argued explanation of an important and often misunderstood point in applied AI safety.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqdgifyen8oyurte86q6q.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "A Privacy Analysis of Web and Mobile Conversational AI Agents [pdf]",
+  "source": "hn",
+  "url": "https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf",
+  "date": "2026-09-30",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A technical privacy analysis of real conversational AI apps is directly relevant to engineers building or evaluating AI products.",
+  "analysis": "This is apparently a research paper (PDF) analyzing privacy practices of web and mobile conversational AI agents, likely covering data collection, tracking, and third-party sharing. Given how many products now embed LLM-based assistants, a rigorous look at what data these tools actually collect and how it's transmitted is valuable and often surprising. This kind of empirical privacy audit is more substantive than typical opinion pieces because it presumably involves actual traffic analysis or app teardown methodology.",
+  "authors": [
+    "damaru2"
+  ],
+  "hn_id": 49890226,
+  "points": 406,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=jorgegarciaherrero.com&sz=32"
+}

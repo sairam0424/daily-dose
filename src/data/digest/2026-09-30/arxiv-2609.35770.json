@@ -1,0 +1,22 @@
+{
+  "title": "FurE: Efficient Instance-Specific 3D Fur Reconstruction without Animal-Fur Datasets",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.35770",
+  "date": "2026-09-30",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR"
+  ],
+  "interest_score": 6,
+  "why_read": "A neat computer graphics paper on reconstructing realistic animal fur from photos without needing large fur-specific datasets.",
+  "analysis": "FurE is a method for turning multi-view photos of animals into editable, strand-by-strand 3D fur models, which is a genuinely hard graphics problem because fur is fine-grained and hard to see through. The key trick is reusing a decoder trained on human hair data to compensate for the lack of animal fur datasets, and it achieves a claimed 10x speedup over prior per-strand optimization methods. This is a solid, narrow computer graphics contribution useful for people working in visual effects, gaming, or digital humans/animals pipelines rather than general software engineers.",
+  "authors": [
+    "Srinjay Sarkar",
+    "Prakhar Kaushik",
+    "Soumava Paul",
+    "Alan Yuille"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

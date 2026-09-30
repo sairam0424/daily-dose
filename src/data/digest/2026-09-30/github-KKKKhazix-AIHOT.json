@@ -1,0 +1,16 @@
+{
+  "title": "KKKKhazix/AIHOT",
+  "source": "github",
+  "url": "https://github.com/KKKKhazix/AIHOT",
+  "date": "2026-09-30",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A configurable framework for building your own 'trending topics' news site by swapping in your own sources and curation rules.",
+  "analysis": "This GitHub project is a TypeScript framework for automatically finding trending items and generating a daily digest site, with sources and selection criteria meant to be customized by the user. It's essentially a generic, self-hostable version of a 'hot topics aggregator,' which could be useful as a template for building internal or niche news digests. The high star count suggests real community interest, likely from developers wanting a quick way to spin up their own curated content site rather than from deep technical novelty.",
+  "authors": [],
+  "stars": 3093,
+  "image_url": "https://repository-images.githubusercontent.com/1393965829/168bf9e1-1ac8-406f-bfe0-3d8b9f514cb4",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

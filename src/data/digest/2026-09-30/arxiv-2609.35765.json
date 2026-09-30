@@ -1,0 +1,20 @@
+{
+  "title": "Retrieving Biblical Intertextual References in Karen Blixen's Seven Gothic Tales",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.35765",
+  "date": "2026-09-30",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche but methodologically careful NLP study on finding hidden Bible references in 19th/20th century Danish literary texts.",
+  "analysis": "This paper builds a benchmark of confirmed biblical references in Karen Blixen's short stories and tests various text-retrieval methods, from classic keyword search (BM25) to modern neural sentence encoders, at finding them among tens of thousands of Bible verses. It finds that a properly normalized keyword search does surprisingly well, and that fine-tuning a Danish neural encoder substantially improves results, especially on subtler allusions rather than direct quotes. Interestingly, expert review found the model surfaced legitimate references that weren't even in the original scholarly annotations, suggesting real practical value for literary research. This is a digital-humanities paper with limited direct relevance to most software engineers but interesting as a case study in retrieval evaluation and its limits.",
+  "authors": [
+    "András Kovács",
+    "Alexander Conroy",
+    "Daniel Hershcovich",
+    "Jens Bjerring-Hansen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

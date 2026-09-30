@@ -1,0 +1,19 @@
+{
+  "title": "Your GitHub profile shows your follower count. It also shows attackers your whole attack surface.",
+  "source": "devto",
+  "url": "https://dev.to/rudratosh/your-github-profile-shows-your-follower-count-it-also-shows-attackers-your-whole-attack-surface-j7b",
+  "date": "2026-09-30",
+  "tags": [
+    "github",
+    "security",
+    "githubactions",
+    "webdev"
+  ],
+  "interest_score": 7,
+  "why_read": "A practical security warning showing how a popular trend of GitHub profile-README automation workflows can leak real information about tokens and permissions to attackers.",
+  "analysis": "This post explains a genuine and underappreciated security issue: GitHub Actions used to auto-update profile README badges publicly expose the workflow's permission scopes, secrets handling patterns, and trusted third-party actions. That information effectively hands an attacker a map of the account's attack surface, including what a compromised token could access. The piece promises a concrete, minimal fix rather than just raising alarm, which makes it practically actionable for any developer who has set up this popular self-updating profile trend. This is a solid, specific piece of applied security advice relevant to a large number of GitHub users.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyd6mkb6bwdjkqpfxedni.png"
+}

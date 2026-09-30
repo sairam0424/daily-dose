@@ -1,0 +1,29 @@
+{
+  "title": "PDMD: Projected Distribution Matching Distillation for Video Diffusion Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.35768",
+  "date": "2026-09-30",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused technical fix for a known instability problem in fast video-generation model distillation, with concrete before/after benchmark gains.",
+  "analysis": "Distribution Matching Distillation speeds up video diffusion models by cutting the number of denoising steps needed, but the paper explains that a known failure mode causes errors to accumulate and degrade image quality during training. PDMD adds a mathematically justified correction, a projection step, that filters out a systematic part of this error using only a small code change. It shows measurable improvements on standard video-generation benchmarks (VBench, VideoGen-Eval) across both a large video model and a joint video-audio model, and requires no new losses, networks, or extra training stages. This is a useful, low-overhead engineering fix rather than a flashy new architecture, which is why it's a solid moderate-interest item mainly for people working directly on generative video models.",
+  "authors": [
+    "Zimo Wang",
+    "Junkun Yuan",
+    "Angtian Wang",
+    "Haotian Yang",
+    "Canyu Zhang",
+    "Siyuan Yuan",
+    "Xingchang Huang",
+    "Bo Liu",
+    "Yizhi Wang",
+    "Yiding Yang",
+    "Chongyang Ma",
+    "Gordon Guocheng Qian"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

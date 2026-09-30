@@ -1,0 +1,15 @@
+{
+  "title": "Dots: Always-on agents",
+  "source": "hn",
+  "url": "https://openai.com/index/introducing-dots/",
+  "date": "2026-09-30",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "An 'always-on agents' product suggests continued exploration of autonomous agent architectures, though the title alone gives little technical detail.",
+  "analysis": "This item describes a product or framework called 'Dots' focused on persistent, always-running AI agents rather than one-shot prompt/response interactions. Always-on agent design raises real engineering questions around state management, cost control, and safety that are worth tracking, but the brief title doesn't reveal how these are addressed. The engagement numbers suggest community interest but not necessarily technical depth.",
+  "authors": [
+    "alvis"
+  ],
+  "hn_id": 49896604,
+  "points": 445
+}

@@ -1,0 +1,16 @@
+{
+  "title": "dzhng/jevgrep",
+  "source": "github",
+  "url": "https://github.com/dzhng/jevgrep",
+  "date": "2026-09-30",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A CLI tool letting AI coding agents find relevant code by describing behavior in natural language rather than exact text matches, an interesting twist on grep.",
+  "analysis": "jevgrep positions itself as a semantic alternative to grep for coding agents, letting them search a codebase by describing what code does rather than matching literal strings or regexes. This targets a real pain point in AI-assisted coding tools, where finding the right file or function by intent rather than keyword can meaningfully improve agent performance. Its usefulness will depend heavily on how well the underlying 'Jev' search actually understands code semantics, which isn't verifiable from the description alone. It's a fairly narrow but practically relevant tool for anyone building or using AI coding agent pipelines.",
+  "authors": [],
+  "stars": 1772,
+  "image_url": "https://opengraph.githubassets.com/1f0f50003753fdd75a601796ce0175a76b3ad6ec510f250fe194618d1c11a1b4/dzhng/jevgrep",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

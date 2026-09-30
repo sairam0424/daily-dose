@@ -1,0 +1,19 @@
+{
+  "title": "I Built My First AI Agent With AWS AgentCore, and the Hardest Part Wasn't the AI",
+  "source": "devto",
+  "url": "https://dev.to/hemapriya_kanagala/i-built-my-first-ai-agent-with-aws-agentcore-and-the-hardest-part-wasnt-the-ai-54lf",
+  "date": "2026-09-30",
+  "tags": [
+    "discuss",
+    "aws",
+    "beginners",
+    "agents"
+  ],
+  "interest_score": 4,
+  "why_read": "A first-person account of building a customer support AI agent using AWS Bedrock AgentCore, useful mainly as a beginner-level integration walkthrough.",
+  "analysis": "This post describes a learner's experience wiring together many AWS services, including AgentCore Runtime, Gateway, Lambda, a knowledge base, memory, and a browser tool, to build a multi-feature customer support agent. The real insight offered is that the hardest part was managing complexity and sequencing understanding rather than the AI logic itself, a common and valid lesson in systems integration. It's a personal learning-project writeup rather than a novel technique or rigorous benchmark, so its value is mostly for readers new to AWS's agent tooling ecosystem.",
+  "authors": [],
+  "reactions": 59,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fwbozh88bo65t4of3wlnc.jpeg"
+}

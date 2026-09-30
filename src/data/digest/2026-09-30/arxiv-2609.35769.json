@@ -1,0 +1,34 @@
+{
+  "title": "Telescopic Language Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.35769",
+  "date": "2026-09-30",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely interesting training method that makes a single language model usable at many different compute budgets without separate training runs.",
+  "analysis": "Telescopic Language Models are trained so that any truncated prefix of the network's layers is itself a valid, working language model, not just the full model. This is done by randomly training on truncated versions during each step alongside the full model, with no architecture change and modest extra training cost. The claimed result is a large improvement over prior 'nested model' approaches (like Matryoshka suites) which only work well at a few fixed depths and are near-random everywhere else. This matters practically because it could let one trained model be deployed cheaply across many hardware/latency budgets instead of training or compressing separately for each one.",
+  "authors": [
+    "Zhilin Guo",
+    "Boqiao Zhang",
+    "Hakan Aktas",
+    "Kyle Fogarty",
+    "Nursena Koprucu Aslan",
+    "Wenzhao Li",
+    "Canberk Baykal",
+    "Albert Miao",
+    "Siyu Hong",
+    "Yixiao Liu",
+    "Adam Wu",
+    "Ashish Kumar Singh",
+    "Sakar Khattar",
+    "Chenliang Zhou",
+    "Weihao Xia",
+    "Cristina Nader Vasconcelos",
+    "Cengiz Oztireli"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

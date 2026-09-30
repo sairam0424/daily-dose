@@ -1,0 +1,16 @@
+{
+  "title": "tobi/disktree",
+  "source": "github",
+  "url": "https://github.com/tobi/disktree",
+  "date": "2026-09-30",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical, fast disk-usage visualization tool written in Rust for the Omarchy Linux setup, useful for everyday systems work.",
+  "analysis": "Disktree is a treemap-based disk usage viewer, similar in spirit to tools like WinDirStat or Baobab, built in Rust using the GPUI graphics toolkit and tailored for the Omarchy environment. Treemap visualizations are a genuinely effective way to spot which folders or files are eating disk space at a glance. This is a solid, practical utility rather than a research breakthrough, appealing mainly to people who use or are curious about the Omarchy setup and want fast native tooling.",
+  "authors": [],
+  "stars": 1909,
+  "image_url": "https://opengraph.githubassets.com/667b09447515f9e6b86cce27f1d3535e33abd727a12ec3029e3478511d81b326/tobi/disktree",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

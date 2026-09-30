@@ -1,0 +1,16 @@
+{
+  "title": "Niko1221/Strata",
+  "source": "github",
+  "url": "https://github.com/Niko1221/Strata",
+  "date": "2026-09-30",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 7,
+  "why_read": "A one-click local inference setup letting a large 125B-parameter mixture-of-experts model run on consumer GPUs with as little as 8GB VRAM.",
+  "analysis": "Strata packages a large mixture-of-experts language model to run locally on modest consumer hardware, exposing an OpenAI/Anthropic-compatible API on localhost, which is significant because 125B-parameter models normally require far more VRAM than 8GB. Achieving this likely relies on aggressive quantization and expert-offloading techniques specific to mixture-of-experts architectures. This matters to engineers who want private, local, cost-free inference comparable to commercial APIs without needing enterprise-grade GPUs. The claim's plausibility depends on quality tradeoffs from compression, which isn't verifiable from the description alone, but the practical accessibility angle is genuinely useful.",
+  "authors": [],
+  "stars": 1721,
+  "image_url": "https://opengraph.githubassets.com/2170de9a1ff17d0215bf18fb6225de3b574773bc445ea81035085c06fa0f1ac1/Niko1221/Strata",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

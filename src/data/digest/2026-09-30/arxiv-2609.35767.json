@@ -1,0 +1,25 @@
+{
+  "title": "Learning Native Reflection in Unified Models with Interleaved Reinforcement Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2609.35767",
+  "date": "2026-09-30",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "An RL training method that lets an AI model that both understands and generates images learn to fix its own mistakes across multiple rounds.",
+  "analysis": "UMM-Reflection tackles the problem that image-generation models can only tell if a self-correction attempt worked after actually rendering it, making naive training methods miss good repair strategies. The method applies reinforcement learning across entire multi-step 'look, judge, revise' trajectories within one unified model, rather than training the image-generation and reflection parts separately or using an external judge. It shows solid, transferable gains on multiple established image-generation benchmarks that weren't used during training. This is a fairly specialized generative-AI research contribution, valuable mainly to people working on multimodal or image-generation model training rather than general practitioners.",
+  "authors": [
+    "Yijia Fan",
+    "Ziqi Huang",
+    "Zhongang Cai",
+    "Yan Li",
+    "Zimo Wen",
+    "Wanqi Yin",
+    "Haiwen Diao",
+    "Ziwei Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

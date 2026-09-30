@@ -1,0 +1,17 @@
+{
+  "title": "How Delhi cut electricity loss from 50 to 5 percent",
+  "source": "hn",
+  "url": "https://spectrum.ieee.org/delhi-electricity-loss",
+  "date": "2026-09-30",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete infrastructure case study on how Delhi drastically reduced electricity transmission losses is a substantive real-world engineering and policy story.",
+  "analysis": "This piece covers how Delhi's power distribution system cut technical and non-technical electricity losses from around 50% to 5%, likely through metering, grid upgrades, and anti-theft enforcement. Such large infrastructure turnarounds are rare and offer real lessons in operations, incentive design, and engineering execution at scale. It sits outside typical software topics but is the kind of applied systems story that engineers interested in infrastructure and public systems would find genuinely informative.",
+  "authors": [
+    "rbanffy"
+  ],
+  "hn_id": 49892245,
+  "points": 421,
+  "image_url": "https://spectrum.ieee.org/media-library/image.jpg?id=67793961&width=1200&height=600&coordinates=0%2C250%2C0%2C250",
+  "favicon_url": "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjU5NjY0OS9vcmlnaW4ucG5nIiwiZXhwaXJlc19hdCI6MTg0ODgxODUwNn0.1LlzHtxZSVXyzapxWjeSrRIRu5qo3CeB8FaWpd2tl_o/img.png?width=48&height=48"
+}

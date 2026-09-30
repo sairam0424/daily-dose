@@ -1,0 +1,15 @@
+{
+  "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+  "source": "hn",
+  "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+  "date": "2026-09-30",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new frontier model release claiming near-top performance at lower cost is worth a quick look for anyone tracking the LLM price/performance frontier.",
+  "analysis": "This appears to be an announcement of a new large language model ('GPT 6.1 Sol') positioned as nearly matching a top-tier competitor model ('Astra') at a fifth of the cost. The high comment count suggests active debate about benchmark validity and real-world usefulness rather than settled consensus. Without more detail on architecture or benchmarks in the title alone, the technical substance can't be fully judged from this listing, but pricing/performance shifts in frontier models are relevant to engineers choosing APIs.",
+  "authors": [
+    "crorella"
+  ],
+  "hn_id": 49896586,
+  "points": 747
+}

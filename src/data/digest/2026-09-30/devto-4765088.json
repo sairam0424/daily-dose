@@ -1,0 +1,20 @@
+{
+  "title": "AI Agent Governance on AWS: Block Agents, Prove EU AI Act Compliance",
+  "source": "devto",
+  "url": "https://dev.to/aws-builders/ai-agent-governance-on-aws-block-agents-prove-eu-ai-act-compliance-1829",
+  "date": "2026-09-30",
+  "tags": [
+    "aws",
+    "ai",
+    "governance",
+    "discuss"
+  ],
+  "interest_score": 5,
+  "why_read": "A concrete case study on adding real-time governance controls, like blocking runaway agents and redacting PII, on top of a multi-agent AWS system for EU AI Act compliance.",
+  "analysis": "This post extends an earlier observability project by adding an enforcement and compliance layer ('Traccia') that can actually block problematic agent actions and generate audit evidence for the EU AI Act's credit-scoring rules. The interesting technical detail is the author's honest admission that some of their governance policies never triggered in testing, and their explanation of why that's still useful. It's a fairly product-specific and promotional piece built on a synthetic (not production) demo system, so it should be read as a vendor-adjacent case study rather than independent research. Still, the intersection of AI agent governance and emerging regulation is a genuinely relevant and growing area for engineers building agentic systems.",
+  "authors": [],
+  "reactions": 33,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fchghvwi77wv73r5ciwhx.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

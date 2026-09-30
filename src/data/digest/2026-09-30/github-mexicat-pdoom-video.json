@@ -1,0 +1,16 @@
+{
+  "title": "mexicat/pdoom-video",
+  "source": "github",
+  "url": "https://github.com/mexicat/pdoom-video",
+  "date": "2026-09-30",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A creative code-rendered music video project, interesting as a generative-art/creative-coding piece but not a technical tool in itself.",
+  "analysis": "This repository holds the code used to procedurally render a music video themed around AI-doom probability ('P(doom)'), likely using some kind of shader or generative graphics pipeline. It's the kind of creative-coding project that's fun to look at and might teach some rendering or animation tricks, but it isn't a reusable tool or research contribution. Its interest is mostly aesthetic and cultural rather than a broadly applicable engineering technique.",
+  "authors": [],
+  "stars": 1978,
+  "image_url": "https://opengraph.githubassets.com/9bc7f54a1fb335331f56a8eee89ceb315aeb4cd8750542fb853e0f4c1894f67a/mexicat/pdoom-video",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
