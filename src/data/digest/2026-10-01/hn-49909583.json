@@ -1,0 +1,17 @@
+{
+  "title": "A brief history of the Bloomberg terminal",
+  "source": "hn",
+  "url": "https://spectrum.ieee.org/bloomberg-terminal",
+  "date": "2026-10-01",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A historical look at the Bloomberg Terminal is a solid read for engineers interested in the technical and business evolution of a legendary enterprise system.",
+  "analysis": "The Bloomberg Terminal is one of the longest-running and most profitable enterprise software products in history, combining a proprietary keyboard, closed network, and dense data interface. A history piece on it would likely cover its origins in the 1980s, its unusual pricing model, and why it remains hard to displace despite modern web-based competitors. This is interesting from a systems and business-model perspective even though it is not cutting-edge technology. The topic has enduring appeal for engineers curious about why some legacy enterprise systems persist for decades.",
+  "authors": [
+    "rbanffy"
+  ],
+  "hn_id": 49909583,
+  "points": 215,
+  "image_url": "https://spectrum.ieee.org/media-library/image.jpg?id=67857174&width=1200&height=600&coordinates=0%2C50%2C0%2C50",
+  "favicon_url": "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjU5NjY0OS9vcmlnaW4ucG5nIiwiZXhwaXJlc19hdCI6MTg0ODgxODUwNn0.1LlzHtxZSVXyzapxWjeSrRIRu5qo3CeB8FaWpd2tl_o/img.png?width=48&height=48"
+}

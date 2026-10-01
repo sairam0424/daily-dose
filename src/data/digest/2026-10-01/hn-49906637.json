@@ -1,0 +1,16 @@
+{
+  "title": "You said no MCP",
+  "source": "hn",
+  "url": "https://earendil.com/posts/you-said-no-mcp/",
+  "date": "2026-10-01",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Likely a discussion about MCP (Model Context Protocol) adoption pushback, relevant to engineers tracking AI tooling trends but with no real content to verify depth.",
+  "analysis": "The title suggests a piece about someone resisting or critiquing the Model Context Protocol, a standard for connecting AI models to external tools and data. Given no abstract, the actual argument and technical depth are unknown. The high comment count suggests a contentious topic in the AI tooling community, likely debating whether MCP is overhyped or genuinely useful. Worth noting for engineers following the MCP ecosystem but score reflects uncertainty about actual content quality.",
+  "authors": [
+    "yarapavan"
+  ],
+  "hn_id": 49906637,
+  "points": 603,
+  "favicon_url": "https://earendil.com/static/favicon/favicon.ico"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Louis-CFM/coucou",
+  "source": "github",
+  "url": "https://github.com/Louis-CFM/coucou",
+  "date": "2026-10-01",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 3,
+  "why_read": "A lightweight menu-bar companion widget for monitoring Claude Code sessions is a niche novelty tool rather than a significant technical contribution.",
+  "analysis": "This is a small macOS/Windows utility that displays a cute animated character in the notch or menu bar area to show the status of ongoing Claude Code AI coding sessions. It's essentially a UI convenience layer rather than a deep technical tool, likely just polling session state and rendering a simple animation. The appeal is mostly aesthetic and about ambient awareness of AI agent activity rather than solving a hard engineering problem. Fun for AI coding tool enthusiasts, but low substance for a technical digest.",
+  "authors": [],
+  "stars": 1244,
+  "image_url": "https://repository-images.githubusercontent.com/1391438314/b0bc531a-8a82-4336-ae24-ee11920769df",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

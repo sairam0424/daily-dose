@@ -1,0 +1,19 @@
+{
+  "title": "Gemma 4 on a Tesla T4, Part 3: Int4 Embeddings Serve E2B in 2.86 GiB at 2.30x bf16",
+  "source": "devto",
+  "url": "https://dev.to/gde/gemma-4-on-a-tesla-t4-part-3-int4-embeddings-serve-e2b-in-286-gib-at-230x-bf16-3kch",
+  "date": "2026-10-01",
+  "tags": [
+    "gemma",
+    "vllm",
+    "cuda",
+    "machinelearning"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous, quantified benchmark on quantizing LLM embedding tables to 4-bit shows a concrete and substantial memory and throughput improvement with verified output correctness.",
+  "analysis": "This article tackles the specific detail that in a quantized Gemma 4 E2B model, the embedding tables stay in 16-bit precision even though weights are already compressed, and on a memory-constrained Tesla T4 those embeddings end up dominating memory use. The author packs the embeddings down to 4-bit as well, cutting model load size from 6.33 to 2.86 GiB and roughly doubling usable KV cache capacity for handling more context. Critically, they verify that all greedy-decoded test outputs are token-identical to the higher precision version, which supports the claim that this optimization doesn't harm answer quality. The reported 11-37% throughput gain over Google's own official quantized export, backed by concrete numbers, makes this a genuinely useful technical result for anyone deploying small LLMs on budget GPUs.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fgpu-vllm-t4-2b-w4a16%2Farticle%2Fdevto-t4-emb4-art.c42232ae.jpg"
+}

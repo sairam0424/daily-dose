@@ -1,0 +1,19 @@
+{
+  "title": "TypeScript Compiler API: Preserving Child Node Narrowing in Reusable Type Guards 🔧",
+  "source": "devto",
+  "url": "https://dev.to/nyaomaru/typescript-compiler-api-preserving-child-node-narrowing-in-reusable-type-guards-4pgh",
+  "date": "2026-10-01",
+  "tags": [
+    "typescript",
+    "opensource",
+    "webdev",
+    "frontend"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused, technically precise walkthrough of a real TypeScript type-narrowing limitation and how to work around it in reusable type guards.",
+  "analysis": "This article digs into a specific and genuinely tricky TypeScript problem: how to write a reusable type guard function that preserves not just the top-level narrowed type but also a narrowed property on a nested child object. The author shows that this issue isn't unique to the TypeScript Compiler API's AST types but is a general problem with how TypeScript handles 'property refinement' across function boundaries. This is a legitimate pain point for library authors building type-safe utilities, and understanding it helps engineers write more robust, reusable type-checking code. The explanation is grounded in concrete code examples, making it practically useful rather than abstract.",
+  "authors": [],
+  "reactions": 37,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjq3mvksok7rwzsn7tnih.gif"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "dzhng/jevgrep",
+  "source": "github",
+  "url": "https://github.com/dzhng/jevgrep",
+  "date": "2026-10-01",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A semantic code-search CLI tool for AI coding agents addresses a real pain point in making LLM-based tools find relevant code efficiently.",
+  "analysis": "This tool lets a user or an AI coding agent search a codebase by describing what code does in natural language, rather than relying on exact text matches like traditional grep. It is built specifically to help AI coding agents retrieve relevant files and context, which is an increasingly important problem as these agents are given larger codebases to operate on. The approach likely relies on some embedding or language-model-based matching layer, though exact implementation details are not given. This fits into a growing ecosystem of tools trying to make LLM-based coding assistants more precise and efficient at codebase navigation.",
+  "authors": [],
+  "stars": 1906,
+  "image_url": "https://opengraph.githubassets.com/4857bc28725f3c180326a610f920259d07ba8e00647fa4c8991d60035e7a2ce0/dzhng/jevgrep",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

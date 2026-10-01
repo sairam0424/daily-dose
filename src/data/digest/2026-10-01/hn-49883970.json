@@ -1,0 +1,16 @@
+{
+  "title": "I could've accessed 17T Microsoft records",
+  "source": "hn",
+  "url": "https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records",
+  "date": "2026-10-01",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A security researcher's account of discovering access to a massive trove of Microsoft records is likely a substantive security disclosure worth engineers' attention.",
+  "analysis": "This appears to be a security research write-up describing how someone found a vulnerability or misconfiguration exposing 17 trillion Microsoft records, likely cloud telemetry, logs, or similar data at scale. Such large-scale exposure findings are technically significant because they reveal weaknesses in how major cloud providers isolate or protect customer or internal data. Without the full write-up, exact technical details are unknown, but the scale and specificity of the number suggest a credible disclosure rather than vague speculation. This is the kind of story that matters for anyone working in cloud security or incident response.",
+  "authors": [
+    "luispa"
+  ],
+  "hn_id": 49883970,
+  "points": 242,
+  "image_url": "https://blog.faav.net/assets/images/647380bf-4a6a-462c-b2f6-f16f2f02bc19.png"
+}

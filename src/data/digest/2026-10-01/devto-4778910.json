@@ -1,0 +1,19 @@
+{
+  "title": "Building an Offline Arduino UNO Q Cyberdeck That Identifies Birdsong and Draws Vintage Field Notes",
+  "source": "devto",
+  "url": "https://dev.to/cloudinary/building-an-offline-arduino-uno-q-cyberdeck-that-identifies-birdsong-and-draws-vintage-field-notes-1cjg",
+  "date": "2026-10-01",
+  "tags": [
+    "arduino",
+    "iot",
+    "cloudinary",
+    "ai"
+  ],
+  "interest_score": 5,
+  "why_read": "A fun hardware hacking project combining offline edge AI, audio classification, and generative art, interesting as a maker project though not groundbreaking engineering.",
+  "analysis": "This project describes building an offline 'cyberdeck' using the Arduino UNO Q that identifies bird sounds with an edge-based audio classifier and generates illustrated field notes using an image generation API. It combines several real techniques: running a local small language model, retraining an edge audio classification model with balanced data, and syncing data to GitHub via serverless functions. While mostly a maker/hobbyist showcase rather than a deep technical innovation, it demonstrates a practical end-to-end pipeline linking embedded hardware, edge ML, and cloud generative APIs. The appeal is primarily to makers and edge-AI hobbyists rather than engineers solving production problems.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9utit2uix6jp8aewof64.jpeg"
+}

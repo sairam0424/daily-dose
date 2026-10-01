@@ -1,0 +1,19 @@
+{
+  "title": "🎡 Social Ferris Wheel: Sanity is the Hub",
+  "source": "devto",
+  "url": "https://dev.to/annavi11arrea1/social-ferris-wheel-sanity-is-the-hub-2m7j",
+  "date": "2026-10-01",
+  "tags": [
+    "devchallenge",
+    "sanitychallenge",
+    "sanity",
+    "ai"
+  ],
+  "interest_score": 2,
+  "why_read": "A lightweight hackathon-style submission describing a personal social media workflow tool built with Sanity and Claude, with limited broader technical insight.",
+  "analysis": "This is a hackathon challenge submission describing a small personal project that consolidates social media drafting into a single content hub using Sanity Studio, a Claude AI agent, and a human review queue. The build is described as a workflow convenience tool for a solo entrepreneur rather than demonstrating any new technical technique or architecture. It mentions a 'Sanity Context MCP' integration for the AI agent to read business context, but no implementation depth or results are given. This is a low-depth 'vibe coding' demo rather than content with lasting technical value for a broader engineering audience.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F590pgxcylpzb99su14sq.png"
+}
