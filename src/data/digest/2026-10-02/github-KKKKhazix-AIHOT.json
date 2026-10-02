@@ -1,0 +1,16 @@
+{
+  "title": "KKKKhazix/AIHOT",
+  "source": "github",
+  "url": "https://github.com/KKKKhazix/AIHOT",
+  "date": "2026-10-02",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A template framework for building your own AI-curated 'daily hot topics' site, useful mainly as a starting point rather than a novel technical contribution.",
+  "analysis": "This is a Chinese-language GitHub project describing itself as a framework for building a site that automatically finds trending topics and writes a daily digest, where you can swap in your own sources and curation criteria. It's essentially a templated pipeline combining scraping/aggregation with LLM-based summarization, aimed at anyone wanting their own niche 'hacker news'-style site. The high star count suggests strong interest, likely driven by its practical turnkey nature, but technically it's an application of well-established patterns (scraping plus LLM summarization) rather than a novel technique.",
+  "authors": [],
+  "stars": 4642,
+  "image_url": "https://repository-images.githubusercontent.com/1393965829/168bf9e1-1ac8-406f-bfe0-3d8b9f514cb4",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

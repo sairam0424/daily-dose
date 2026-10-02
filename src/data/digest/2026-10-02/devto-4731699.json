@@ -1,0 +1,19 @@
+{
+  "title": "Structs Aren't on the Stack. How C# Actually Manages Memory.",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/structs-arent-on-the-stack-how-c-actually-manages-memory-128p",
+  "date": "2026-10-02",
+  "tags": [
+    "csharp",
+    "dotnet",
+    "programming",
+    "beginners"
+  ],
+  "interest_score": 7,
+  "why_read": "A clear technical correction of a widespread C#/.NET memory-model misconception, useful for any C# developer who wants to actually understand GC and performance.",
+  "analysis": "This article challenges the oversimplified 'structs on stack, classes on heap' rule taught in most C# courses, explaining what the CLR actually does with struct and class instances in memory. The real behavior is more nuanced: structs can end up on the heap when boxed or stored inside a class, and understanding this matters for diagnosing GC pauses and mutability bugs. This is a genuinely useful, correctness-focused explainer on a topic many working C# developers get wrong, making it solid technical content despite being an introductory-level piece.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2FnykHheY.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "dzhng/jevgrep",
+  "source": "github",
+  "url": "https://github.com/dzhng/jevgrep",
+  "date": "2026-10-02",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A semantic code-search CLI built for AI coding agents, tackling the practical problem of finding relevant files by intent rather than exact text match.",
+  "analysis": "Jevgrep is a command-line tool that lets you search a codebase by describing what code does in natural language rather than grepping for literal strings, intended to feed relevant context to coding agents. This fits into a growing category of tools trying to solve the 'context retrieval' problem for LLM-based coding assistants, which is one of the harder practical issues in making agents work on large codebases. It's a reasonably novel and useful niche tool, though it depends heavily on the quality of the underlying 'Jev' search/indexing technology, which isn't elaborated on here.",
+  "authors": [],
+  "stars": 2001,
+  "image_url": "https://opengraph.githubassets.com/db09350da0181d00be8f7cedd2483e04b1afa4182db445b52317da69044ba5ae/dzhng/jevgrep",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

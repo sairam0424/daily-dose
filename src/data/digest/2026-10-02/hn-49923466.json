@@ -1,0 +1,17 @@
+{
+  "title": "RIP, vector database",
+  "source": "hn",
+  "url": "https://turbopuffer.com/blog/rip-vector-database",
+  "date": "2026-10-02",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A provocative take on the vector-database hype cycle, likely useful for engineers deciding on RAG/search architecture.",
+  "analysis": "This piece is almost certainly an opinion/analysis article arguing that dedicated vector databases are being displaced or absorbed by other systems (e.g., Postgres extensions, search engines, or embedded libraries) now that vector search has become a commodity feature. This is a live and consequential debate for anyone building retrieval-augmented generation systems, since the choice between a specialized vector DB and bolting vector search onto an existing database has real cost and complexity tradeoffs. The high comment count suggests substantive technical disagreement in the discussion thread itself, which is often where the real value is on HN.",
+  "authors": [
+    "razin"
+  ],
+  "hn_id": 49923466,
+  "points": 268,
+  "image_url": "https://turbopuffer.com/og/turbopuffer.png",
+  "favicon_url": "https://turbopuffer.com/favicon.ico"
+}

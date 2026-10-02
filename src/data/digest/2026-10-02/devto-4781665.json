@@ -1,0 +1,19 @@
+{
+  "title": "I Turned My GitHub Profile Into a Cyberpunk Console With a City Built From My Contributions",
+  "source": "devto",
+  "url": "https://dev.to/georgekobaidze/i-turned-my-github-profile-into-a-cyberpunk-console-with-a-city-built-from-my-contributions-h4c",
+  "date": "2026-10-02",
+  "tags": [
+    "python",
+    "showdev",
+    "github",
+    "design"
+  ],
+  "interest_score": 3,
+  "why_read": "A fun, technically clever SVG hack for a GitHub profile README, interesting as a UI trick but low in broader technical substance.",
+  "analysis": "This post describes building an elaborate animated 'cyberpunk city' GitHub profile page using only SVG images (no JavaScript or CSS), built from the author's own contribution history data. The core technical interest is in how they sliced and stitched together 23 images into a seamless console-like interface within GitHub's restrictive profile README sandbox. It's a creative constraint-based hack rather than something with broad applicability, so it's a fun read but of limited lasting technical value.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fglxvqocyi6xnscs80y44.png"
+}

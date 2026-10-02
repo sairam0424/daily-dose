@@ -1,0 +1,17 @@
+{
+  "title": "StreetComplete on iOS is now in public beta",
+  "source": "hn",
+  "url": "https://github.com/streetcomplete/StreetComplete/issues/5421",
+  "date": "2026-10-02",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A niche but useful update for an open-source mapping/OSM contribution app reaching iOS, relevant mainly to OSM contributors and mobile open-source fans.",
+  "analysis": "StreetComplete is a well-known open-source Android app that gamifies improving OpenStreetMap data by asking users simple yes/no or multiple-choice questions about their surroundings. This item reports that the app is now in public beta on iOS, closing a long-standing platform gap. It's a solid piece of open-source and civic-tech news but technically narrow in scope, mostly interesting to OSM contributors and mobile developers curious about cross-platform rewrites.",
+  "authors": [
+    "Snowly"
+  ],
+  "hn_id": 49920160,
+  "points": 513,
+  "image_url": "https://opengraph.githubassets.com/1214691b40da9a4bc4a5f40865a62f189fb798e48ff011b7e4a9cad9eaca61af/streetcomplete/StreetComplete/issues/5421",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

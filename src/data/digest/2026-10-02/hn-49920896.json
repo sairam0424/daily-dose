@@ -1,0 +1,15 @@
+{
+  "title": "How to speed up the Rust compiler in September 2026",
+  "source": "hn",
+  "url": "https://nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html",
+  "date": "2026-10-02",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Deep, build-system-specific engineering content on compiler performance that's a recurring and well-regarded series for Rust users.",
+  "analysis": "This looks like the latest installment of a recurring blog series tracking concrete improvements to Rust compiler (rustc) build times, likely covering recent changes to incremental compilation, parallel frontend work, or codegen optimizations. These posts are typically written by compiler contributors and are valued by the Rust community for being specific and measurable rather than vague. It's a niche topic but one with real technical depth for anyone who cares about build times in large Rust codebases.",
+  "authors": [
+    "trickypr"
+  ],
+  "hn_id": 49920896,
+  "points": 227
+}

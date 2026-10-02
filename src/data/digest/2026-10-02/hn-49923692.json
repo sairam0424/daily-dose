@@ -1,0 +1,17 @@
+{
+  "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
+  "source": "hn",
+  "url": "https://blog.cloudflare.com/clef-decision-models/",
+  "date": "2026-10-02",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A new open-weight model release paired with an RL fine-tuning platform is directly relevant to ML practitioners experimenting with decision-making or agentic models.",
+  "analysis": "Clef appears to be an open-weight model release framed around 'decision models' alongside a new reinforcement-learning fine-tuning platform, suggesting it targets agent-style or decision-making tasks rather than general chat. Open-weighting matters because it lets researchers inspect, fine-tune, and deploy the model without API lock-in, and pairing it with an RL fine-tuning platform suggests tooling aimed at post-training customization. Without deeper benchmarks or technical detail in the given text, it's hard to judge how it compares to existing open models, but the combination of weights plus training infra is a meaningful technical offering.",
+  "authors": [
+    "jasondavies"
+  ],
+  "hn_id": 49923692,
+  "points": 410,
+  "image_url": "https://blog.cloudflare.com/_emdash/api/media/file/01M3TJV43SPQCPKJ6GBXFCDKNE.01M3TJV53VYDMVNCZDPH1FBFYN.png",
+  "favicon_url": "https://blog.cloudflare.com/favicon.ico"
+}

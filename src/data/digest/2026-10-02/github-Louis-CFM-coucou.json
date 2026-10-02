@@ -1,0 +1,16 @@
+{
+  "title": "Louis-CFM/coucou",
+  "source": "github",
+  "url": "https://github.com/Louis-CFM/coucou",
+  "date": "2026-10-02",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 5,
+  "why_read": "A playful macOS/Windows/Linux menu-bar companion that visualizes AI coding agent activity, appealing mostly as a fun utility rather than deep technical innovation.",
+  "analysis": "Coucou is a small desktop widget that sits in the macOS notch or top of the screen on other OSes and shows the status of running coding agents like Claude Code or Gemini CLI. It's essentially a lightweight monitoring UI layered on top of existing agent CLIs, likely polling logs or APIs to animate a little character. The technical bar is low, but it reflects a growing ecosystem of tools built around 'watching' AI coding agents work, which is a notable trend even if this particular tool is more novelty than infrastructure.",
+  "authors": [],
+  "stars": 2462,
+  "image_url": "https://repository-images.githubusercontent.com/1391438314/b0bc531a-8a82-4336-ae24-ee11920769df",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "10 Internal Inconsistencies in 3 Published Groundwater Surveys",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/10-internal-inconsistencies-in-3-published-groundwater-surveys-4634",
+  "date": "2026-10-02",
+  "tags": [
+    "devchallenge",
+    "sanitychallenge",
+    "sanity",
+    "ai"
+  ],
+  "interest_score": 7,
+  "why_read": "A thoughtful write-up of an AI agent built to sanity-check geophysical survey data, with real domain expertise and genuine found errors in published science.",
+  "analysis": "The author, trained in geophysics, built an AI agent that answers questions about groundwater resistivity readings in the Niger Delta by citing specific tables and figures from published surveys, built for a 'query real content' hackathon challenge. In the process of building it, they found and verified 10 internal inconsistencies across three published groundwater papers, which is a genuinely interesting side effect of rigorous agent-building. This combines domain expertise (geophysics, borehole siting, resistivity interpretation) with practical RAG-style agent engineering in a way that feels substantive rather than superficial. It's a strong example of AI-plus-domain-expert work with real stakes, since bad borehole siting in a polluted region can affect drinking water safety.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7wmnxqzd67oeq2sumilt.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "feder-cr/dots",
+  "source": "github",
+  "url": "https://github.com/feder-cr/dots",
+  "date": "2026-10-02",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "An open-source browser-automation AI agent explicitly designed to evade bot detection, relevant to anyone building or defending against scraping agents.",
+  "analysis": "This project builds an AI agent that controls its own browser instance and is specifically engineered to avoid being blocked by anti-bot systems, which is a technically interesting and ethically gray area. The core challenge it addresses is real: modern anti-bot defenses (fingerprinting, behavioral analysis, CAPTCHAs) are a genuine arms race, and tools like this are a window into current evasion techniques. It's useful reading for engineers on either side of that arms race, though its stated purpose of 'not getting blocked' edges toward facilitating scraping against site owners' wishes rather than a neutral automation tool.",
+  "authors": [],
+  "stars": 2379,
+  "image_url": "https://opengraph.githubassets.com/657d2bcad96f7aa6d35639b2fba5e80424568a44bf2f05c8c5ca019c834c10c4/feder-cr/dots",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
