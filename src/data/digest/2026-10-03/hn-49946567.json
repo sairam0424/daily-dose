@@ -1,0 +1,15 @@
+{
+  "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+  "source": "hn",
+  "url": "https://claude.dev/blog/getting-the-most-out-of-opus-5-5/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Practical tips for using a specific Claude model variant effectively, useful for engineers who already rely on Claude Code day to day.",
+  "analysis": "This piece appears to be a guide on getting better results from an Anthropic Claude model variant called 'Opus 5.5' within Claude's chat interface and the Claude Code coding assistant. Such guides typically cover prompting strategies, context management, and workflow integration tips rather than new research. It's useful to practitioners already embedded in that specific tool ecosystem but has limited broader technical novelty.",
+  "authors": [
+    "saikatsg"
+  ],
+  "hn_id": 49946567,
+  "points": 141
+}

@@ -6,11 +6,11 @@
   "tags": [
     "TypeScript"
   ],
-  "interest_score": 4,
-  "why_read": "A framework for building your own personalized 'trending topics' aggregator/newsletter site, useful mainly as a template rather than offering novel technical ideas.",
-  "analysis": "AIHOT is a TypeScript framework that lets you build your own site which automatically finds trending topics and generates a daily digest, letting you plug in your own sources and curation criteria. It's essentially a customizable aggregation and summarization pipeline, likely LLM-powered given the 'self-writing daily report' framing, aimed at people who want their own niche trend-tracking site. The high star count suggests strong adoption in Chinese-language developer communities, but the core idea is more of a practical utility than a deep technical innovation.",
+  "interest_score": 3,
+  "why_read": "A framework for building your own curated 'trending topics' news site, useful mainly if you want to run a similar digest yourself.",
+  "analysis": "This is a TypeScript framework that lets you build a website that automatically finds trending topics and generates daily reports, which you can customize with your own sources and curation criteria. It's essentially a template/toolkit for building a Hacker-News-style or industry digest site rather than a novel technical breakthrough. The high star count suggests it filled a popular niche for Chinese-language developer audiences wanting to build their own tech news aggregators, but there's limited deep technical substance to highlight.",
   "authors": [],
-  "stars": 4959,
+  "stars": 5390,
   "image_url": "https://repository-images.githubusercontent.com/1393965829/168bf9e1-1ac8-406f-bfe0-3d8b9f514cb4",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

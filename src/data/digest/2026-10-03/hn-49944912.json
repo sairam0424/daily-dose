@@ -1,0 +1,16 @@
+{
+  "title": "FTL: A new operating system for clouds",
+  "source": "hn",
+  "url": "https://ftl-os.org/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A new systems-level OS design targeting cloud infrastructure is a substantive engineering topic worth engineers' attention.",
+  "analysis": "FTL appears to be a proposed or implemented operating system designed specifically for cloud environments, which is a meaningfully different design space than general-purpose OSes like Linux. Cloud-native OS designs often rethink assumptions around multi-tenancy, scheduling, isolation, and resource sharing at a lower level than container runtimes. The discussion volume suggests engineers found enough substance to debate design tradeoffs, which is a good signal for technical depth.",
+  "authors": [
+    "romac"
+  ],
+  "hn_id": 49944912,
+  "points": 140,
+  "image_url": "https://ftl-os.org/og.png"
+}

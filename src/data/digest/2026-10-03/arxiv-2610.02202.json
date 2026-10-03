@@ -9,8 +9,8 @@
     "cs.IR"
   ],
   "interest_score": 7,
-  "why_read": "A clever and well-constructed benchmark testing whether AI retrieval systems can find the prior papers that actually inspired real researchers' breakthroughs, revealing current retrieval and agentic search are both still weak at this.",
-  "analysis": "ScholarCatalyst asks a sharp question: can an AI system find the specific prior paper that gave a real researcher the key idea for their work, using only literature available before that work began. The authors got 184 lead authors of 207 CS papers to label which candidate papers did or could have inspired their project, with reasons, making this a rare dataset grounded in real scientific judgment rather than citation counts. The results are humbling for current AI: even agentic search using an LLM calling a retrieval tool does no better than plain embedding search, and even an agent built on a strong model only reaches 0.51 recall@20. This matters because it highlights a real gap between today's retrieval tools and the kind of intuitive, context-aware literature sense that drives genuine scientific insight.",
+  "why_read": "A clever benchmark testing whether AI retrieval systems can find the specific prior papers that genuinely inspired a piece of research, which current methods struggle with.",
+  "analysis": "ScholarCatalyst asks whether AI systems can identify which earlier papers truly helped inspire a given research project, using ground-truth labels from the actual authors of 207 computer science papers explaining what influenced their work. The surprising finding is that agentic search using an LLM calling a retrieval tool performs no better than plain embedding-based retrieval, and even a strong model like Claude only reaches 51% recall at 20 results. This suggests current AI tools lack the kind of intuitive judgment experienced scientists use to find relevant prior work, which is a meaningful limitation for AI-assisted research tools. It's a thoughtful benchmark construction with real human expert annotations rather than synthetic labels, which adds credibility.",
   "authors": [
     "Sohyeon Kim",
     "Yoonho Lee",

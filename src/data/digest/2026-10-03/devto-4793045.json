@@ -1,0 +1,19 @@
+{
+  "title": "I Made Spider-Man Swing Without Animating a Single Frame",
+  "source": "devto",
+  "url": "https://dev.to/lovestaco/i-made-spider-man-swing-without-animating-a-single-frame-blender-rigging-and-mcp-14f7",
+  "date": "2026-10-03",
+  "tags": [
+    "blender",
+    "mcp",
+    "ai",
+    "beginners"
+  ],
+  "interest_score": 4,
+  "why_read": "A fun personal project showing how an LLM-driven Blender MCP server can automate 3D character animation for a promotional video, interesting as an applied AI tooling demo but lightweight on rigor.",
+  "analysis": "The author describes using Blender's MCP server integration to let an AI assistant control a 3D animation tool and produce a Spider-Man-style swinging animation without manually keyframing it, as part of marketing content for their own code review product. It's a creative demonstration of AI-driven creative tooling, specifically how MCP (Model Context Protocol) servers let LLMs control complex professional software like Blender. The technical depth is modest, mostly a narrative of discovery rather than an analysis of underlying techniques, and it doubles as promotional content for an unrelated product.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F49dufu4f9a09v9pc8xu6.gif"
+}

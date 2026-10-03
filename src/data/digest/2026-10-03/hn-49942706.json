@@ -1,0 +1,17 @@
+{
+  "title": "Kolibri: A Sovereign Open-Weight Model",
+  "source": "hn",
+  "url": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new open-weight model release framed around sovereignty/independence from big AI labs, worth a quick look for its claims and benchmarks.",
+  "analysis": "This is a Hacker News discussion thread about Kolibri, described as a 'sovereign' open-weight AI model. The high comment count suggests debate over what 'sovereign' actually means technically versus marketing, and how it compares to existing open-weight models like Llama or Mistral. Without more detail on architecture or training data, it's hard to assess true novelty, but open-weight releases are generally useful for the community to inspect and build on.",
+  "authors": [
+    "bastitx"
+  ],
+  "hn_id": 49942706,
+  "points": 475,
+  "image_url": "https://aleph-alpha.com/_astro/00-cover.Du35XCGh_zJqw.jpeg",
+  "favicon_url": "https://aleph-alpha.com/favicon-96x96.png"
+}

@@ -8,8 +8,8 @@
     "cs.LG"
   ],
   "interest_score": 6,
-  "why_read": "A technically interesting diffusion model tweak that predicts and refreshes conditioning embeddings at every denoising step, improving training efficiency, appealing mainly to generative modeling researchers.",
-  "analysis": "Normally diffusion transformers condition every denoising step on a fixed embedding of the text prompt or class label computed once at the start. This paper instead trains a model to predict evolving embeddings as the image moves from noisy to clean, recomputing the conditioning signal at every step so it adapts to the current state of generation. Combined with an existing technique called REPA, their final model reaches a strong FID score of 1.32 using roughly a third of the training compute. It's a focused, technical contribution to image generation efficiency rather than a flashy new application, of interest mainly to people building or training diffusion models.",
+  "why_read": "A technically interesting tweak to diffusion image generation that improves efficiency by predicting adaptive conditioning embeddings instead of reusing a static one.",
+  "analysis": "Normally, diffusion-based image generators condition every denoising step on the same fixed embedding of a text prompt or class label. This paper instead trains a model to predict new embeddings at each step that adapt to the current noisy image state, treating generation as a kind of sequence prediction problem. The approach, combined with an existing method called REPA, achieves a strong FID score of 1.32 on ImageNet while using roughly a third of the training compute. This is a solid efficiency and quality improvement for class-conditional image generation research, though it's narrowly scoped to a specific benchmark setup.",
   "authors": [
     "Sihan Xu",
     "Ji Xie",

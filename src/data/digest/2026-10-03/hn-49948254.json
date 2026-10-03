@@ -1,0 +1,17 @@
+{
+  "title": "Federal judge calls Flock 'indiscriminate mass surveillance'",
+  "source": "hn",
+  "url": "https://techcrunch.com/2026/10/03/federal-judge-calls-flock-indiscriminate-mass-surveillance/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A legal ruling on mass surveillance technology (automated license plate readers) with real implications for privacy law and tech policy.",
+  "analysis": "This concerns a federal judge's ruling characterizing Flock Safety's automated license plate reader network as indiscriminate mass surveillance, which is significant for engineers working on or around surveillance tech, policy, or privacy-preserving systems. It's less about novel engineering and more about legal and societal consequences of widely deployed camera/AI systems. Still relevant to technologists who build or evaluate such systems and care about their societal impact.",
+  "authors": [
+    "sbulaev"
+  ],
+  "hn_id": 49948254,
+  "points": 130,
+  "image_url": "https://techcrunch.com/wp-content/uploads/2026/08/flock-camera-pole.jpg?resize=1200,799",
+  "favicon_url": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png?w=32"
+}

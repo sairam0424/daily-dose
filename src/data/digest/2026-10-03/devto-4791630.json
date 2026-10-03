@@ -1,0 +1,19 @@
+{
+  "title": "I Was Overwhelmed, So I Turned My GitHub Profile Into a Roguelike Dungeon",
+  "source": "devto",
+  "url": "https://dev.to/g00ds0ul/i-was-overwhelmed-so-i-turned-my-github-profile-into-a-roguelike-dungeon-17a8",
+  "date": "2026-10-03",
+  "tags": [
+    "csharp",
+    "gamedev",
+    "github",
+    "showdev"
+  ],
+  "interest_score": 3,
+  "why_read": "A fun personal GitHub profile hack turning contribution graphs into a roguelike dungeon visualization, enjoyable but not deeply technical.",
+  "analysis": "This is a build log describing how the author created an SVG-based GitHub profile README that renders as a roguelike dungeon, redrawn daily via a GitHub Action, inspired by a similar 'cyberpunk console' project. It's a creative use of GitHub's README rendering and automation capabilities but doesn't introduce new technical concepts beyond clever SVG and automation tricks. Readers interested in GitHub profile customization or novelty projects might enjoy it, but it offers little lasting technical insight.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F6kyvcofukgzaqo0lhkbd.png"
+}

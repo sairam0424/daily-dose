@@ -6,11 +6,11 @@
   "tags": [
     "Python"
   ],
-  "interest_score": 5,
-  "why_read": "An ambitious experiment in using Claude Code plus generative asset tools to automatically mod arbitrary PC games, interesting as a demo of agentic tool-use chains even if practically rough.",
-  "analysis": "Universal Modder is a set of skills and tools that let Claude Code attempt to reverse-engineer and modify almost any PC game you own, generating new art, 3D assets, and audio via the fal generative media API, then testing the mod in-game. It's an interesting example of chaining an LLM coding agent with reverse engineering tools and generative content APIs to automate a traditionally very manual, game-specific hobby. The practical reliability of fully automated game reverse-engineering across arbitrary titles is questionable, and there are likely legal/ToS gray areas around modifying commercial game binaries this way, but as a technical experiment in agentic tool orchestration it's notable.",
+  "interest_score": 6,
+  "why_read": "An ambitious project letting an AI agent reverse-engineer and mod arbitrary PC games using generative art/3D/audio tools, interesting as an applied agentic AI use case.",
+  "analysis": "This project equips Claude Code with specialized skills and tools, including an MCP integration with a generative media service, to let it analyze a game's files, reverse engineer assets, and inject AI-generated art, 3D models, or audio as mods. It's a creative and technically nontrivial application of LLM agents combined with reverse engineering and generative content pipelines. The approach raises interesting questions about automated game modding workflows and the robustness of letting an agent poke at arbitrary binary game files. It sits in a legal gray area around modifying commercial game assets, though modding itself is broadly accepted in gaming communities.",
   "authors": [],
-  "stars": 2124,
-  "image_url": "https://opengraph.githubassets.com/abcd439931405b9d1963162a60e559c6aa6c5a60b6682df1966363451af9223c/rehan-remade/universal-modder",
+  "stars": 2623,
+  "image_url": "https://opengraph.githubassets.com/5d1ea98c3fa6e8e7c27c08d63a046a7e50fcfd234e20d4e6a5fdce0ffc0afffb/rehan-remade/universal-modder",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

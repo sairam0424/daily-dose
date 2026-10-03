@@ -1,0 +1,19 @@
+{
+  "title": "I Made 866 Commits in 5 Weeks. My Understanding Didn't Keep Up.",
+  "source": "devto",
+  "url": "https://dev.to/mikachu/i-made-866-commits-in-5-weeks-my-understanding-didnt-keep-up-cmo",
+  "date": "2026-10-03",
+  "tags": [
+    "ai",
+    "productivity",
+    "programming",
+    "beginners"
+  ],
+  "interest_score": 6,
+  "why_read": "A candid personal reflection on the real cost of AI-accelerated coding, specifically that shipping speed can outpace genuine understanding of your own code.",
+  "analysis": "The author describes making hundreds of commits per week using AI coding assistance across multiple projects, then noticing that their ability to produce code was outpacing their ability to explain why it worked. This is a thoughtful, honest account of a tension many engineers are quietly experiencing as AI tools accelerate output without necessarily building deeper understanding. It doesn't present new tools or research, but it's a genuine first-person account of a problem that's increasingly relevant to engineering practice and code quality norms. The reflection on the gap between 'does it work' and 'do I understand why it works' is a useful framing for teams adopting AI coding tools broadly.",
+  "authors": [],
+  "reactions": 38,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqqd5zylxhjf21t3car2e.png"
+}

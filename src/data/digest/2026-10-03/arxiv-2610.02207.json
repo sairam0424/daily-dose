@@ -10,8 +10,8 @@
     "cs.LG"
   ],
   "interest_score": 7,
-  "why_read": "A solid systems/graphics paper showing how to make expensive neural avatar animation nearly 1000x cheaper by approximating it with simple linear blendshapes, with real mobile performance numbers.",
-  "analysis": "This paper tackles a real bottleneck in 3D Gaussian avatar rendering: the per-frame neural network inference needed to animate photorealistic avatars is too slow for real-time use on weaker devices. The authors show that this expensive neural step can often be approximated by a simple linear combination of precomputed 'blendshapes', similar to classic facial animation techniques, learned via block-local PCA. Their distillation method, GALA, swaps the heavy neural decoder for a lightweight coefficient predictor and linear blend, cutting CPU cost by up to three orders of magnitude while keeping most visual quality, reaching 60fps on mobile. This is a genuinely useful systems contribution for anyone building real-time avatar or telepresence applications.",
+  "why_read": "A clever and well-validated technique for making real-time 3D avatar animation dramatically cheaper on mobile devices.",
+  "analysis": "This paper tackles a genuine bottleneck in 3D Gaussian avatar rendering: the neural network inference needed each frame to animate a character is expensive, especially on mobile hardware. The authors show that this per-frame neural computation can be approximated by a simple linear combination of precomputed 'blendshapes', similar to classic facial animation techniques, learned via a shallow coefficient predictor. This cuts CPU animation cost by up to 1000x while keeping most of the visual quality, and works across different existing avatar models without retraining them. The result is a practical, broadly applicable speedup for VR/AR and mobile avatar applications, backed by concrete numbers.",
   "authors": [
     "Ramazan Fazylov",
     "Stamatis Lefkimmiatis",

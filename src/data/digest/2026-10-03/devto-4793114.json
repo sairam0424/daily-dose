@@ -1,0 +1,19 @@
+{
+  "title": "Turn Your GitHub Contribution Graph Into an ASCII City",
+  "source": "devto",
+  "url": "https://dev.to/sizzlebop/turn-your-github-contribution-graph-into-an-ascii-city-ic5",
+  "date": "2026-10-03",
+  "tags": [
+    "github",
+    "opensource",
+    "go",
+    "showdev"
+  ],
+  "interest_score": 3,
+  "why_read": "A similar lighthearted contribution-graph visualization project, this time rendering an ASCII city skyline, more a fun hack than a technical deep dive.",
+  "analysis": "Skyline is a small Go command-line tool that converts a GitHub contribution history into an ASCII-art city skyline, with buildings representing weeks and windows representing days, including an animated SVG version for profile READMEs. It's a neat demonstration of mapping tabular activity data to a visual metaphor and generating both terminal and SVG output from the same data. The technical content is lightweight, mostly about simple data-to-visual mapping and GitHub profile tricks, appealing more as a fun personal project than a substantive engineering piece.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Feulsjeuse6wn9bho0g8d.gif"
+}

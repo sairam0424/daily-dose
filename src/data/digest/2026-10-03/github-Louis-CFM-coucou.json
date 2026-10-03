@@ -6,11 +6,11 @@
   "tags": [
     "Swift"
   ],
-  "interest_score": 5,
-  "why_read": "A lightweight cross-platform menu-bar companion that monitors multiple AI coding agents at once, a nice quality-of-life tool for developers juggling several agentic coding tools.",
-  "analysis": "Coucou is a small cross-platform utility, built in Swift, that sits in your menu bar or notch area and shows the status of various AI coding agents like Claude Code, Codex, Cursor, and Gemini CLI. It addresses a real emerging pain point: developers now often run multiple AI coding agents in parallel and need a simple way to glance at what's happening across them without switching windows. It's not a deep technical breakthrough but a thoughtfully scoped developer-experience tool riding the current wave of agentic coding tool adoption.",
+  "interest_score": 4,
+  "why_read": "A lightweight cross-platform menu bar widget that monitors AI coding agents, a nice-to-have utility rather than a significant technical contribution.",
+  "analysis": "Coucou is a small native app that sits in your macOS notch or top-of-screen area on Windows/Linux and shows the status of AI coding agents like Claude Code, Codex, Cursor, and Gemini CLI. It's a convenience and ambient-awareness tool rather than something that introduces new techniques, but it's a sign of growing tooling built around managing multiple concurrent AI coding agents. Worth a glance for developers juggling several AI assistants at once, but not deeply technical.",
   "authors": [],
-  "stars": 2971,
+  "stars": 3221,
   "image_url": "https://repository-images.githubusercontent.com/1391438314/b0bc531a-8a82-4336-ae24-ee11920769df",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

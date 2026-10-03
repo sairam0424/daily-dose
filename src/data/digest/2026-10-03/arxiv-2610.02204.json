@@ -9,8 +9,8 @@
     "eess.SY"
   ],
   "interest_score": 6,
-  "why_read": "An interesting robotics self-improvement framework that boosts task success dramatically through simulated practice and skill refinement without retraining model weights, though the GPT-6/Claude-Fable naming oddities warrant caution about the claims.",
-  "analysis": "RPG is a framework that lets a robot improve its own task execution by practicing in simulation, diagnosing failures using execution feedback and privileged simulator state, and refining reusable symbolic skills and prompts, all without updating the underlying model's weights. It reports a jump from 28.6% to 95.0% success across 22 manipulation tasks over 15 rounds of practice, outperforming baselines, and then validates the frozen result on real physical robot trials. The core idea, that most improvement can come from better skill libraries and prompts rather than retraining, is appealing for making robot deployment cheaper and more maintainable. Note the abstract references odd/implausible model names like 'GPT-6' and 'Claude Fable 5.1', which may be placeholder or fabricated details worth viewing skeptically.",
+  "why_read": "An interesting robotics self-improvement framework that boosts task success rates substantially using simulation practice rather than retraining weights.",
+  "analysis": "RPG is a framework where a robot system improves itself by practicing manipulation tasks in simulation, diagnosing failures using execution feedback and privileged simulator state, and refining a library of reusable skills and prompts without updating the underlying model's weights. The reported jump from 28.6% to 95% success over 15 practice rounds, and perfect physical trial results after calibration, is a notable result if it replicates. It's a good example of combining classical robotics practice loops with LLM-based skill coordination rather than pure end-to-end learning. The approach is somewhat complex and the real-world validation set is small (30 trials), so some caution is warranted on generalization.",
   "authors": [
     "Yen-Jen Wang",
     "Haozhe Jiang",
