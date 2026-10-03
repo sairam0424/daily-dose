@@ -1,0 +1,22 @@
+{
+  "title": "Embedding Prediction Helps Image Generation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02203",
+  "date": "2026-10-03",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically interesting diffusion model tweak that predicts and refreshes conditioning embeddings at every denoising step, improving training efficiency, appealing mainly to generative modeling researchers.",
+  "analysis": "Normally diffusion transformers condition every denoising step on a fixed embedding of the text prompt or class label computed once at the start. This paper instead trains a model to predict evolving embeddings as the image moves from noisy to clean, recomputing the conditioning signal at every step so it adapts to the current state of generation. Combined with an existing technique called REPA, their final model reaches a strong FID score of 1.32 using roughly a third of the training compute. It's a focused, technical contribution to image generation efficiency rather than a flashy new application, of interest mainly to people building or training diffusion models.",
+  "authors": [
+    "Sihan Xu",
+    "Ji Xie",
+    "Zilin Wang",
+    "Hui Shen",
+    "Stella X. Yu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

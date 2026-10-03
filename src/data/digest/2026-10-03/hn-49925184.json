@@ -1,0 +1,15 @@
+{
+  "title": "Mike Tomlin spent 12 years building a Minecraft city",
+  "source": "hn",
+  "url": "https://www.nytimes.com/athletic/7648198/2026/10/01/mike-tomlin-minecraft-nfl-coach/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "A human-interest story about a long-running creative hobby project rather than anything with technical substance for engineers.",
+  "analysis": "This is a feature story about someone who spent twelve years incrementally building a massive city in Minecraft, which is impressive dedication but not a technical topic in the engineering sense. There's no discussion of game engine internals, modding, or systems design mentioned here, just the scale and persistence of the build. It may appeal to readers for the human story but offers little for a technical digest focused on software engineering substance.",
+  "authors": [
+    "CoryOndrejka"
+  ],
+  "hn_id": 49925184,
+  "points": 214
+}

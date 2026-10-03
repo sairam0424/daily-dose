@@ -1,0 +1,17 @@
+{
+  "title": "Apple Pass Designer",
+  "source": "hn",
+  "url": "https://developer.apple.com/pass-designer/",
+  "date": "2026-10-03",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A niche but genuinely technical look at Apple's tool for designing Wallet passes, interesting to iOS/Wallet developers and anyone curious about little-known Apple developer tooling.",
+  "analysis": "Apple Pass Designer is apparently a lesser-known internal or developer-facing tool for creating Apple Wallet passes, the kind of thing most iOS developers encounter only when building ticketing or loyalty-card features. The discussion volume suggests people are sharing tips, reverse-engineered details, or surprise at its existence/behavior. It's a fairly narrow topic but genuinely technical and could save real time for anyone who has struggled with Wallet pass JSON schemas and signing certificates.",
+  "authors": [
+    "soheilpro"
+  ],
+  "hn_id": 49937276,
+  "points": 287,
+  "image_url": "https://developer.apple.com/news/images/og/pass-designer-og.png",
+  "favicon_url": "https://developer.apple.com/favicon.ico"
+}

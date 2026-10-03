@@ -1,0 +1,19 @@
+{
+  "title": "Kharcha: a 4B model that reads Indian bank SMS so the money stays on your laptop",
+  "source": "devto",
+  "url": "https://dev.to/itskumaryash/kharcha-a-4b-model-that-reads-indian-bank-sms-so-the-money-stays-on-your-laptop-2n8j",
+  "date": "2026-10-03",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "hf26challenge"
+  ],
+  "interest_score": 5,
+  "why_read": "A nicely scoped personal project showing a small on-device language model used for genuinely private, practical expense tracking from bank SMS messages.",
+  "analysis": "Kharcha is a small local app using a 4-billion-parameter open-weight language model to parse Indian bank and UPI SMS messages into structured expense ledger entries, entirely on-device for privacy. It handles multiple Indian banks' SMS formats, payment app notifications, and even casual Hinglish spoken-number input like 'dhai hazaar', and it learns from user corrections over time. The privacy motivation is well-articulated and realistic, since financial SMS data is highly sensitive and most existing finance apps upload it to a server. It's a modest hackathon-style project, but it's a concrete, relatable example of practical small-model on-device NLP rather than another chatbot wrapper.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fsejy8368y675bxh1lokz.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

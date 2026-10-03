@@ -1,0 +1,16 @@
+{
+  "title": "feder-cr/dots",
+  "source": "github",
+  "url": "https://github.com/feder-cr/dots",
+  "date": "2026-10-03",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "An open-source AI browsing agent explicitly marketed around evading bot detection, which is technically interesting but raises questions about intended use.",
+  "analysis": "This project provides an AI agent paired with its own browser, specifically advertised as one that 'does not get blocked,' implying built-in techniques to bypass anti-bot and anti-scraping defenses. Technically this touches on real engineering challenges around browser automation detection, fingerprinting, and headless browser stealth, which is a legitimately hard problem space. However, the framing suggests its primary selling point is circumventing site defenses rather than any novel agent architecture, which limits its value as a technical case study and raises some ethical concerns about intended use against websites' terms of service.",
+  "authors": [],
+  "stars": 2475,
+  "image_url": "https://opengraph.githubassets.com/78d218e784d2604ad88dd0bc51099b85905f7df9885e906bf691baa6e4180778/feder-cr/dots",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

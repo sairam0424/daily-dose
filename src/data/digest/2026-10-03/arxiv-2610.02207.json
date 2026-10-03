@@ -1,0 +1,22 @@
+{
+  "title": "One Basis to Animate Them All: Gaussian Blendshape Distillation for Real-Time Avatars",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02207",
+  "date": "2026-10-03",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.HC",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A solid systems/graphics paper showing how to make expensive neural avatar animation nearly 1000x cheaper by approximating it with simple linear blendshapes, with real mobile performance numbers.",
+  "analysis": "This paper tackles a real bottleneck in 3D Gaussian avatar rendering: the per-frame neural network inference needed to animate photorealistic avatars is too slow for real-time use on weaker devices. The authors show that this expensive neural step can often be approximated by a simple linear combination of precomputed 'blendshapes', similar to classic facial animation techniques, learned via block-local PCA. Their distillation method, GALA, swaps the heavy neural decoder for a lightweight coefficient predictor and linear blend, cutting CPU cost by up to three orders of magnitude while keeping most visual quality, reaching 60fps on mobile. This is a genuinely useful systems contribution for anyone building real-time avatar or telepresence applications.",
+  "authors": [
+    "Ramazan Fazylov",
+    "Stamatis Lefkimmiatis",
+    "Ivan Laptev"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

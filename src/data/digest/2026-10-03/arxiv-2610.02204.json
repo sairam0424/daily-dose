@@ -1,0 +1,28 @@
+{
+  "title": "Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02204",
+  "date": "2026-10-03",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "eess.SY"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting robotics self-improvement framework that boosts task success dramatically through simulated practice and skill refinement without retraining model weights, though the GPT-6/Claude-Fable naming oddities warrant caution about the claims.",
+  "analysis": "RPG is a framework that lets a robot improve its own task execution by practicing in simulation, diagnosing failures using execution feedback and privileged simulator state, and refining reusable symbolic skills and prompts, all without updating the underlying model's weights. It reports a jump from 28.6% to 95.0% success across 22 manipulation tasks over 15 rounds of practice, outperforming baselines, and then validates the frozen result on real physical robot trials. The core idea, that most improvement can come from better skill libraries and prompts rather than retraining, is appealing for making robot deployment cheaper and more maintainable. Note the abstract references odd/implausible model names like 'GPT-6' and 'Claude Fable 5.1', which may be placeholder or fabricated details worth viewing skeptically.",
+  "authors": [
+    "Yen-Jen Wang",
+    "Haozhe Jiang",
+    "Shuying Deng",
+    "Haoru Xue",
+    "Weirui Ye",
+    "Rocky Duan",
+    "Nika Haghtalab",
+    "S. Shankar Sastry",
+    "Pieter Abbeel",
+    "Haozhi Qi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
