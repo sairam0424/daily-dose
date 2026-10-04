@@ -1,0 +1,16 @@
+{
+  "title": "CopilotKit/OpenDots",
+  "source": "github",
+  "url": "https://github.com/CopilotKit/OpenDots",
+  "date": "2026-10-04",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "An AI-coworker product spanning text, voice calls, and Slack, interesting as a glimpse of agent integration patterns but light on technical depth from the description alone.",
+  "analysis": "OpenDots appears to be a framework or product for deploying AI agents that persist across different communication channels like chat, voice calls, and Slack, acting as an 'always-on' team member. This is relevant to the growing space of agentic AI tooling and multi-channel integration, which is a real engineering challenge involving state management and channel-specific APIs. Without more detail on the underlying architecture, it's hard to assess novelty beyond the product pitch. It's worth a skim for people tracking the AI-agent tooling ecosystem rather than a deep technical resource.",
+  "authors": [],
+  "stars": 3196,
+  "image_url": "https://opengraph.githubassets.com/b9ac7f49e0c7947d63b727ac02d45c71118a91ee94cf68bfeed0ee8bafc325b6/CopilotKit/OpenDots",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Agents don't need memory, they need documentation",
+  "source": "hn",
+  "url": "https://liao.gg/blog/agents-dont-need-memory",
+  "date": "2026-10-04",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A thought-provoking argument about LLM agent design that challenges a popular trend (giving agents persistent memory) with a simpler alternative.",
+  "analysis": "The piece argues that instead of building complex memory systems for AI agents, teams should invest in better documentation that the agent can retrieve and reason over at runtime. This is a genuinely useful framing for practitioners building agentic systems, since it reduces architectural complexity and avoids some failure modes of stateful memory. The large comment count suggests real debate among engineers about agent architecture tradeoffs. It's an opinion piece rather than a benchmark or implementation, but the core idea is practically actionable.",
+  "authors": [
+    "kmeh"
+  ],
+  "hn_id": 49945933,
+  "points": 342
+}

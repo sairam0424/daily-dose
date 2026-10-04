@@ -1,0 +1,16 @@
+{
+  "title": "wy51ai/floorplan-3d",
+  "source": "github",
+  "url": "https://github.com/wy51ai/floorplan-3d",
+  "date": "2026-10-04",
+  "tags": [
+    "HTML"
+  ],
+  "interest_score": 3,
+  "why_read": "A floorplan-to-3D visualization tool, likely useful for a specific niche but with too little description here to judge its technical depth.",
+  "analysis": "The repository name and language (HTML) suggest a web-based tool for converting or visualizing 2D floorplans in 3D, possibly using WebGL or a similar rendering approach. Without a description or abstract, it's hard to assess what specific algorithmic or architectural contribution it makes beyond being a demo or utility. Its decent star count suggests practical usefulness for people in real estate, architecture, or interior design visualization. It's a reasonable niche tool but not clearly a technically deep read for a general engineering audience.",
+  "authors": [],
+  "stars": 1388,
+  "image_url": "https://opengraph.githubassets.com/fce0290207ba9115d7580bc7af9de38dfa6a0d36e444a473d64d3e5aa86c935f/wy51ai/floorplan-3d",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

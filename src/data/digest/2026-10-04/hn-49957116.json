@@ -1,0 +1,17 @@
+{
+  "title": "Turn off Apple Intelligence on macOS 27 and get its disk space back",
+  "source": "hn",
+  "url": "https://github.com/omlahore/RemoveMacAI",
+  "date": "2026-10-04",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A niche but concrete how-to on reclaiming disk space from Apple Intelligence models, useful mainly to macOS power users.",
+  "analysis": "This is a practical tip post explaining how to disable Apple Intelligence features on a future macOS version to free up disk space consumed by on-device AI models. It's useful and specific but fairly narrow in scope, appealing mostly to macOS users concerned about storage. The mention of 'macOS 27' suggests either a typo or far-future speculation, which should be read with some caution. Technically it's a minor systems/configuration tip rather than a deep technical story.",
+  "authors": [
+    "privacyisntdead"
+  ],
+  "hn_id": 49957116,
+  "points": 289,
+  "image_url": "https://repository-images.githubusercontent.com/1394989252/13dcf083-d511-4f51-9681-c6ccbda3cae9",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

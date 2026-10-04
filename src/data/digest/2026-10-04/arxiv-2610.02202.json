@@ -1,0 +1,32 @@
+{
+  "title": "ScholarCatalyst: A Benchmark for Retrieving Papers That Inspire New Research",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02202",
+  "date": "2026-10-04",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.IR"
+  ],
+  "interest_score": 6,
+  "why_read": "A novel benchmark probing whether AI can find the specific prior papers that genuinely inspired a piece of new research, exposing a real gap in current retrieval systems.",
+  "analysis": "The authors built a dataset where real paper authors identify which earlier works actually helped shape their finished research, along with explanations, creating a much more meaningful retrieval target than typical citation prediction. They find that even agentic search systems using large language models perform barely better than simple embedding-based retrieval, and that a strong model like Claude only reaches about half the target recall. This suggests current AI systems lack the kind of intuition expert scientists use to find relevant prior work buried in huge literatures. It's a thoughtful contribution for anyone interested in AI-assisted literature review or the limits of retrieval-augmented reasoning.",
+  "authors": [
+    "Sohyeon Kim",
+    "Yoonho Lee",
+    "Bo Liu",
+    "Dayoon Ko",
+    "Rulin Shao",
+    "Seungone Kim",
+    "Graham Neubig",
+    "Pang Wei Koh",
+    "Aakanksha Chowdhery",
+    "Akari Asai",
+    "Omar Khattab",
+    "Yejin Choi",
+    "Gunhee Kim",
+    "Chelsea Finn"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

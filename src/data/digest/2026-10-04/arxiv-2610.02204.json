@@ -1,0 +1,28 @@
+{
+  "title": "Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02204",
+  "date": "2026-10-04",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "eess.SY"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting robotics framework that lets a robot system improve itself through simulated practice without retraining the underlying model weights.",
+  "analysis": "RPG lets a robot manipulation system diagnose its own failures in simulation, build and refine reusable 'skills' and prompts, and test revisions before committing them, all without changing the core multimodal model's weights. The reported improvement from 28.6% to 95.0% success across many practice rounds, and successful transfer to real physical trials, is a substantial result if it holds up. The approach is essentially an automated prompt-and-skill-library refinement loop guided by simulated and real feedback, which is a practical way to improve agent reliability without expensive retraining. Some result numbers and model names cited look unusual, so readers should treat specific figures with some caution.",
+  "authors": [
+    "Yen-Jen Wang",
+    "Haozhe Jiang",
+    "Shuying Deng",
+    "Haoru Xue",
+    "Weirui Ye",
+    "Rocky Duan",
+    "Nika Haghtalab",
+    "S. Shankar Sastry",
+    "Pieter Abbeel",
+    "Haozhi Qi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

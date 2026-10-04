@@ -1,0 +1,22 @@
+{
+  "title": "One Basis to Animate Them All: Gaussian Blendshape Distillation for Real-Time Avatars",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02207",
+  "date": "2026-10-04",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.HC",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A clever technique for making realistic 3D avatar animation dramatically cheaper to compute, which could matter for real-time graphics and mobile applications.",
+  "analysis": "The paper shows that the expensive neural computation needed to animate pretrained 3D Gaussian avatars can be approximated well by a simple linear combination of precomputed 'blendshapes,' reducing a heavy neural network call to a lightweight lookup and blend. They build these blendshapes using a localized form of principal component analysis tuned for rendering quality under a given memory budget, then train a small network to predict blend coefficients per frame. The result is up to a thousand-fold reduction in CPU animation cost while keeping most of the visual quality, enabling 60fps avatar animation on mobile devices. This is a solid, well-validated systems contribution for real-time graphics rather than a fundamental new modeling idea.",
+  "authors": [
+    "Ramazan Fazylov",
+    "Stamatis Lefkimmiatis",
+    "Ivan Laptev"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

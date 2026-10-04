@@ -1,0 +1,16 @@
+{
+  "title": "feder-cr/dots",
+  "source": "github",
+  "url": "https://github.com/feder-cr/dots",
+  "date": "2026-10-04",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "An open-source browser-automation AI agent designed specifically to avoid bot detection, which is technically interesting but raises obvious questions about appropriate use.",
+  "analysis": "This project provides an AI agent with its own browser that is engineered not to be blocked by typical anti-bot measures, implying techniques like fingerprint spoofing or human-like interaction patterns. Browser automation that evades detection is a well-known cat-and-mouse technical area, useful for legitimate scraping and testing but also easily misused for things like scalping or circumventing rate limits. The description alone doesn't specify intended use cases, so judgment on its real purpose is limited. It is a dual-use tool rather than clearly malicious, so it stays in scope but merits a skeptical read.",
+  "authors": [],
+  "stars": 2600,
+  "image_url": "https://opengraph.githubassets.com/be4934cb2e4e1b76c7c8ad20f8f9a8d04a5cd77a683c7507ef196fa27ba4ede2/feder-cr/dots",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

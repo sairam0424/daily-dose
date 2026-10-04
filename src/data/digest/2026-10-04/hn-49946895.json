@@ -1,0 +1,16 @@
+{
+  "title": "The work by Valve's Timur Kristóf on improving old AMD GPUs on Linux",
+  "source": "hn",
+  "url": "https://www.phoronix.com/news/XDC-2026-Valve-Timur-AMDGPU",
+  "date": "2026-10-04",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A deep look at real open-source driver optimization work improving performance for older AMD GPUs on Linux, which matters to anyone running Linux graphics stacks.",
+  "analysis": "This covers ongoing work by a Valve-affiliated developer to optimize the open-source AMD GPU driver stack (likely RADV/Mesa) for older hardware generations under Linux. Such work is technically meaty because GPU driver optimization requires deep knowledge of shader compilers, hardware architecture quirks, and performance profiling. It directly benefits Linux gaming and compute users with aging AMD cards, and the HN discussion likely surfaces real benchmarks and technical detail. This is a solid, substantive systems-engineering story.",
+  "authors": [
+    "speckx"
+  ],
+  "hn_id": 49946895,
+  "points": 456,
+  "image_url": "https://www.phoronix.net/image.php?id=2026&image=timur"
+}

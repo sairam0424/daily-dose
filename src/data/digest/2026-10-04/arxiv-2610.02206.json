@@ -1,0 +1,22 @@
+{
+  "title": "KaliBench: A Fine-Grained Benchmark for Cybersecurity Tool Use on Kali Linux with Runtime-Free Verifiable Rewards",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.02206",
+  "date": "2026-10-04",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CR"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous new benchmark testing whether LLMs can correctly generate real cybersecurity tool commands, revealing current models are still quite weak at this precise task.",
+  "analysis": "KaliBench tests language models on translating natural-language security requests into exact command-line invocations for over 1,600 tools on Kali Linux, a distribution built for penetration testing. The benchmark is notable for using deterministic, verifiable checks rather than vague scoring, and for showing that even strong open models get under 42% exact-command accuracy without hints. The authors also show that targeted fine-tuning with these verifiable rewards can bring an 8-billion-parameter model up to the level of a much larger mixture-of-experts model. This is useful empirical work for anyone evaluating LLMs as security operations assistants, showing real limits and a concrete path to improve them.",
+  "authors": [
+    "Pengfei Li",
+    "Naufal Suryanto",
+    "Sicheng Zhang",
+    "Muzammal Naseer"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

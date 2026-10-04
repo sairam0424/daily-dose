@@ -1,0 +1,17 @@
+{
+  "title": "Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s",
+  "source": "hn",
+  "url": "https://github.com/Niko1221/Strata",
+  "date": "2026-10-04",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Running a large 125B-parameter model at high throughput on a single consumer GPU is a genuinely notable practical engineering feat worth understanding.",
+  "analysis": "The post describes getting a sizeable language model running locally on an RTX 4090 at a reported 100 tokens per second, which would be unusually fast for a model of that scale on consumer hardware. This likely involves aggressive quantization, mixture-of-experts routing, or clever memory offloading tricks that are of real interest to people doing local LLM inference. The title names seem to reference models/numbers that may be exaggerated or satirical, so some skepticism about exact claims is warranted. Still, the underlying topic, squeezing large models onto affordable hardware, is a recurring and valuable engineering theme.",
+  "authors": [
+    "snehesht"
+  ],
+  "hn_id": 49953495,
+  "points": 563,
+  "image_url": "https://opengraph.githubassets.com/e22e260751b43c6480c0ea7fa4ea92307cf82c358b707e75c0e7f9299bdf7059/Niko1221/Strata",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

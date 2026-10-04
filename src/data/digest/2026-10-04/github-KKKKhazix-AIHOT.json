@@ -1,0 +1,16 @@
+{
+  "title": "KKKKhazix/AIHOT",
+  "source": "github",
+  "url": "https://github.com/KKKKhazix/AIHOT",
+  "date": "2026-10-04",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A framework for building your own niche trending-topics news site, useful mainly to people wanting to run a personalized aggregator rather than a technically novel system.",
+  "analysis": "This GitHub project provides a website framework for automatically finding trending topics and generating daily reports, letting the user plug in their own sources and curation criteria. It appears aimed at building personalized or industry-specific news aggregation sites rather than advancing any particular algorithm or technique. The high star count suggests popularity, likely driven by its practical utility for Chinese-language content creators, rather than deep technical innovation. It is a useful tool but not a technically rich read for engineers.",
+  "authors": [],
+  "stars": 5770,
+  "image_url": "https://repository-images.githubusercontent.com/1393965829/168bf9e1-1ac8-406f-bfe0-3d8b9f514cb4",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
