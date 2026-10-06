@@ -1,0 +1,17 @@
+{
+  "title": "Web Search API",
+  "source": "hn",
+  "url": "https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/",
+  "date": "2026-10-06",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new web search API launch is relevant to engineers building retrieval-augmented or agentic systems, though the actual technical substance depends heavily on details not in the title.",
+  "analysis": "This appears to be an announcement of a new web search API, likely from a major AI or search provider, aimed at developers who want programmatic access to search results for integration into applications or AI agents.",
+  "authors": [
+    "tosh"
+  ],
+  "hn_id": 49963171,
+  "points": 484,
+  "image_url": "https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/og.png?v=1deaa8fb09156b56",
+  "favicon_url": "https://developers.cloudflare.com/favicon.ico"
+}

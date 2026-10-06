@@ -1,0 +1,23 @@
+{
+  "title": "RNADyn: A Benchmark for Generating and Understanding RNA Dynamics",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.03712",
+  "date": "2026-10-06",
+  "tags": [
+    "cs.LG",
+    "physics.bio-ph",
+    "q-bio.BM"
+  ],
+  "interest_score": 5,
+  "why_read": "A solid but niche benchmark and model for RNA molecular dynamics that will mainly interest computational biology and structural biology researchers.",
+  "analysis": "RNADynBench provides thousands of curated molecular dynamics simulation trajectories for RNA, addressing a lack of standardized data in this subfield. The accompanying model, RNADynNet, unifies trajectory generation and dynamics prediction from a single structural snapshot using a shared architecture. This is a specialized contribution mostly relevant to people working on RNA structure or drug design rather than general software engineers.",
+  "authors": [
+    "Yiming Huang",
+    "Lennart Bastian",
+    "Hanqun Cao",
+    "Luis Vollmers",
+    "Tolga Birdal"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

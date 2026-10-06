@@ -1,0 +1,16 @@
+{
+  "title": "Beam: Reflection's 501B open-weight model",
+  "source": "hn",
+  "url": "https://reflection.ai/blog/introducing-beam",
+  "date": "2026-10-06",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A large open-weight model release is noteworthy for anyone tracking the frontier of openly available LLMs, since weight availability affects research reproducibility and local deployment options.",
+  "analysis": "Beam is described as a 501-billion-parameter open-weight model from Reflection, placing it among the largest openly released models to date.",
+  "authors": [
+    "Philpax"
+  ],
+  "hn_id": 49969183,
+  "points": 305,
+  "favicon_url": "https://reflection.ai/favicon.ico?favicon.3aeq0adjuwkbp.ico"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "kargulstudio/sales-crm",
+  "source": "github",
+  "url": "https://github.com/kargulstudio/sales-crm",
+  "date": "2026-10-06",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A generic sales CRM project with no description provided, giving little basis to judge its technical distinctiveness beyond being a TypeScript web app.",
+  "analysis": "This repository appears to be a sales CRM implementation written in TypeScript, but no description or architectural detail is given to assess what makes it technically notable. Without more context, it reads as one of many CRM clones rather than something offering a clear new idea or technique.",
+  "authors": [],
+  "stars": 1462,
+  "image_url": "https://opengraph.githubassets.com/47771c473a064cfda7dd50fe453783647d88df6c99efb06e384a8105b1b275c9/kargulstudio/sales-crm",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

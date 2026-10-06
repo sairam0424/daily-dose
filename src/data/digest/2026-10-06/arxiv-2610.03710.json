@@ -1,0 +1,27 @@
+{
+  "title": "EyeRobot 2.0: Active Gaze for Precise Manipulation without Wrist Cameras",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.03710",
+  "date": "2026-10-06",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A robotics paper showing that an active, foveated stereo-camera gaze system can match or beat wrist-camera setups, which is a meaningful hardware-simplification result for manipulation research.",
+  "analysis": "EyeRobot 2.0 uses two actively steerable cameras that physically point toward a 3D fixation point, mimicking human eye movements, instead of relying on a camera mounted on the robot's wrist. The system is trained hierarchically: one policy learns to aim the gaze at a goal object, and another learns when to shift fixation based on task progress, both using reinforcement learning on real robot data. Across over a thousand real and simulated trials, this approach substantially closes the performance gap with wrist-camera policies and even outperforms them when the object blocks the wrist camera's view, which is a notable practical finding for manipulation system design.",
+  "authors": [
+    "Kush Hari",
+    "Justin Kerr",
+    "Nidhya Shivakumar",
+    "Samarth Mahapatra",
+    "Carmelo Sferrazza",
+    "Jiahui Lei",
+    "Jitendra Malik",
+    "C. Karen Liu",
+    "Ken Goldberg",
+    "Angjoo Kanazawa"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

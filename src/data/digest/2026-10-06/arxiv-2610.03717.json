@@ -1,0 +1,26 @@
+{
+  "title": "Less Decoder is More Encoder: Geometric Representation Learning from Novel View Synthesis",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.03717",
+  "date": "2026-10-06",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful architectural study showing that decoder design choices, not supervision signal, determine whether novel view synthesis models learn useful 3D representations.",
+  "analysis": "The paper argues that existing encoder-decoder novel view synthesis models learn poor geometric representations because overly expressive decoders and pixel-level targets let the model shortcut around building real 3D understanding. Their proposed method, SNAP, uses a constrained pose-conditioned decoder and reconstructs in latent space instead of pixel space, forcing the encoder itself to capture transferable geometric features. The resulting representations are shown to help across five different downstream tasks including depth estimation and robot manipulation, suggesting a general insight about representation learning architecture choices beyond just this one task.",
+  "authors": [
+    "Keerthi Kaashyap",
+    "Dennis Anthony",
+    "Akshay Krishnan",
+    "Nhi Ngoc Nguyen",
+    "Jeremy Collins",
+    "James Hays",
+    "Shreyas Kousik",
+    "Animesh Garg"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

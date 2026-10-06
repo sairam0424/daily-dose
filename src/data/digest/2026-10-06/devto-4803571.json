@@ -1,0 +1,19 @@
+{
+  "title": "Build a Tiny Virtual Pet on Arduino in 60 Minutes 🐾",
+  "source": "devto",
+  "url": "https://dev.to/heraistudio/build-a-tiny-virtual-pet-on-arduino-in-60-minutes-2cf",
+  "date": "2026-10-06",
+  "tags": [
+    "arduino",
+    "beginners",
+    "programming",
+    "hacktoberfest"
+  ],
+  "interest_score": 3,
+  "why_read": "A fun, approachable beginner Arduino tutorial for building a Tamagotchi-style virtual pet, nice for hobbyists but not technically deep.",
+  "analysis": "This is a short beginner-friendly hardware tutorial showing how to build a virtual pet with an animated face on an Arduino Uno Q's LED matrix. It's aimed at newcomers to hardware hacking, particularly around Hacktoberfest events, and doesn't cover any advanced or novel technical ground.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdvrnvtfr1l854y335hld.png"
+}

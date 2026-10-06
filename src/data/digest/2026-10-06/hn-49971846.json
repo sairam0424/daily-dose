@@ -1,0 +1,15 @@
+{
+  "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+  "source": "hn",
+  "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
+  "date": "2026-10-06",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "This highlights a concrete, legally and ethically interesting failure mode of generative AI: unintentionally reproducing identifiable creators' signatures on fabricated content.",
+  "analysis": "ChatGPT image generation reportedly adds real cartoonists' signatures onto AI-generated fake New Yorker-style cartoons, raising copyright, attribution, and training-data provenance questions.",
+  "authors": [
+    "rdmuser"
+  ],
+  "hn_id": 49971846,
+  "points": 216
+}

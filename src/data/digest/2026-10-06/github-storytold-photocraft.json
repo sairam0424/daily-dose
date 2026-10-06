@@ -1,0 +1,16 @@
+{
+  "title": "storytold/photocraft",
+  "source": "github",
+  "url": "https://github.com/storytold/photocraft",
+  "date": "2026-10-06",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A clean-room Rust reimplementation of Photoshop is an ambitious systems engineering project that will interest people curious about graphics programming, GPU rendering, or large-scale app architecture in Rust.",
+  "analysis": "This project aims to reimplement core Adobe Photoshop functionality from scratch in Rust without referencing Adobe's source code, which is a substantial undertaking spanning image compositing, layers, filters, and UI. Its real technical interest lies in the engineering choices needed to make a performant, memory-safe image editor, and it's a good read for anyone interested in Rust graphics stacks or large open-source clones of proprietary software.",
+  "authors": [],
+  "stars": 2128,
+  "image_url": "https://opengraph.githubassets.com/1bbfabb2b4c05633f4e8776e555eeb1d68619bb3414e06e834e591f7179e230e/storytold/photocraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

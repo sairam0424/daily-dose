@@ -1,0 +1,19 @@
+{
+  "title": "⚡ Dad Complains About Electric Bill, So I Built Him an Energy Dashboard and Found the Panels Lied ⚡",
+  "source": "devto",
+  "url": "https://dev.to/annavi11arrea1/dad-complains-about-electric-bill-so-i-built-him-an-energy-dashboard-and-found-the-panels-lied-3jhg",
+  "date": "2026-10-06",
+  "tags": [
+    "devchallenge",
+    "weekendchallenge",
+    "hf26challenge",
+    "opensource"
+  ],
+  "interest_score": 5,
+  "why_read": "A relatable and well-constructed personal data project combining solar monitoring, utility bill data, and smart home device tracking into one dashboard with real anomaly detection.",
+  "analysis": "The author built a home energy dashboard that pulls live per-panel solar production data, flags underperforming or dead microinverters, compares actual output against a government solar production model, and merges this with utility bill and smart-plug data. This is a good practical example of integrating multiple real-world APIs and data sources into a single diagnostic tool, which has broader relevance to anyone building home automation or monitoring dashboards. It's a personal project rather than a generalizable technique, but the engineering of pulling together disparate data sources is genuinely useful to see.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F8vonltrklsylgntty0n3.png"
+}

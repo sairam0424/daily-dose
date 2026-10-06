@@ -1,0 +1,23 @@
+{
+  "title": "What Should World Models Forget? Stratified Retention for Continual Adaptation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.03713",
+  "date": "2026-10-06",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV",
+    "eess.IV",
+    "eess.SP"
+  ],
+  "interest_score": 6,
+  "why_read": "A conceptually interesting reframing of forgetting in continual learning, arguing that world models need to selectively forget outdated facts while permanently retaining physical invariants.",
+  "analysis": "The paper points out that standard continual learning treats any performance drop on old data as failure, but for world models whose job is to track a changing environment, forgetting outdated facts is sometimes correct behavior. It proposes separating knowledge into things that should never change, like physics, and things that should be updated as soon as the world changes, like specific object states. It also proposes a new evaluation method, differential retention, that can tell apart appropriate updating from genuine catastrophic forgetting, which existing benchmarks cannot do.",
+  "authors": [
+    "Nishit Anand",
+    "Ramani Duraiswami",
+    "Dinesh Manocha"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

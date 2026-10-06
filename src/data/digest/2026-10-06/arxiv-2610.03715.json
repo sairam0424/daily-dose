@@ -1,0 +1,27 @@
+{
+  "title": "4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.03715",
+  "date": "2026-10-06",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR"
+  ],
+  "interest_score": 6,
+  "why_read": "A new benchmark testing whether AI agents can reconstruct dynamic physical scenes as executable code, exposing a real gap between static and dynamic scene understanding.",
+  "analysis": "4DCodeBench asks AI systems to watch videos of real or synthetic physical events, like fluid flow or fracture, and produce executable graphics/simulation code that reproduces the behavior. The benchmark finds that models good at static 3D reconstruction still struggle badly with dynamics, which is a useful, concrete finding for anyone working on video understanding or program synthesis for physics.",
+  "authors": [
+    "Ruihong Shen",
+    "Žiga Kovačič",
+    "Peter Kulits",
+    "Xingrui Wang",
+    "Zizhang Li",
+    "Joshua B. Tenenbaum",
+    "Alan Yuille",
+    "Jieneng Chen",
+    "Jiajun Wu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

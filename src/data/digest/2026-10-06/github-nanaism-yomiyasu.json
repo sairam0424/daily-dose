@@ -1,0 +1,16 @@
+{
+  "title": "nanaism/yomiyasu",
+  "source": "github",
+  "url": "https://github.com/nanaism/yomiyasu",
+  "date": "2026-10-06",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A narrow but practical utility that refines AI-generated Japanese text into more natural phrasing, useful mainly for people building or using Japanese-language AI tools.",
+  "analysis": "This is an 'agent skill' designed to post-process AI-generated Japanese so it reads more naturally to native speakers, addressing a known weakness of LLM output in non-English languages. It's a small, focused tool rather than a research contribution, with value concentrated among Japanese-language NLP practitioners and localization engineers.",
+  "authors": [],
+  "stars": 1518,
+  "image_url": "https://opengraph.githubassets.com/0753e371a3b5932351d6d4479a5a895c74619a8b210d4af744c237244cb42e5a/nanaism/yomiyasu",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

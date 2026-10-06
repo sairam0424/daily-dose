@@ -1,0 +1,16 @@
+{
+  "title": "rehan-remade/universal-modder",
+  "source": "github",
+  "url": "https://github.com/rehan-remade/universal-modder",
+  "date": "2026-10-06",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting applied agent project letting Claude Code autonomously reverse-engineer and mod PC games using generative art/3D/audio tools, useful for anyone curious about practical agentic coding workflows.",
+  "analysis": "This repository packages 'skills' and tool integrations so an AI coding agent can perform game reverse engineering, generate replacement assets via a generative media API, and test the modded game automatically. It's a concrete example of agentic AI being applied to a messy, real-world software task rather than a toy benchmark. The novelty is more in the orchestration and tooling glue than in any new underlying algorithm.",
+  "authors": [],
+  "stars": 3857,
+  "image_url": "https://opengraph.githubassets.com/739e78dced1f69f3347fac0065c8061f87cda7b4be1e514d55e898f97b10e4af/rehan-remade/universal-modder",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
