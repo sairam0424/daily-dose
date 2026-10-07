@@ -1,0 +1,19 @@
+{
+  "title": "🌿 AI Nature Quest: I Built an AI That Wants You to Stop Using It",
+  "source": "devto",
+  "url": "https://dev.to/extinctsion/ai-nature-quest-i-built-an-ai-that-wants-you-to-stop-using-it-56g6",
+  "date": "2026-10-07",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "gemma",
+    "githubcopilot"
+  ],
+  "interest_score": 2,
+  "why_read": "A lighthearted hackathon project encouraging outdoor activity via AI-generated quests is a cute idea with minimal technical depth.",
+  "analysis": "This is a Hacktoberfest challenge submission describing a simple app that generates outdoor activity suggestions and then encourages users to put their phone away. The core technical implementation is a straightforward prompt-based quest generator with time and category options, not a deep technical achievement. It is a fun small project with a nice concept around digital wellbeing, but it offers little for a professional engineering audience. More of a demo or portfolio piece than a technical learning resource.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fhzsy0hl7yif7620i1y80.png"
+}

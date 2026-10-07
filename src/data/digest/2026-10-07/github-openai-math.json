@@ -1,0 +1,16 @@
+{
+  "title": "openai/math",
+  "source": "github",
+  "url": "https://github.com/openai/math",
+  "date": "2026-10-07",
+  "tags": [
+    "Lean"
+  ],
+  "interest_score": 7,
+  "why_read": "An OpenAI repository focused on formal mathematics using the Lean proof assistant signals real investment in verifiable mathematical reasoning, a meaningful direction for AI reliability.",
+  "analysis": "This repository, written primarily in Lean, suggests work related to formal theorem proving or benchmark datasets for mathematical reasoning with machine checkable proofs. Lean-based projects matter because formal proofs provide a hard guarantee of correctness, unlike typical LLM-generated math which can look right but be subtly wrong. Coming from OpenAI, this likely connects to ongoing efforts to make AI mathematical reasoning verifiable rather than just plausible-sounding. Worth attention for anyone tracking the intersection of formal methods and large language models.",
+  "authors": [],
+  "stars": 1574,
+  "image_url": "https://opengraph.githubassets.com/1daa919456670372d7709cb8bffdbbe88e2a9714c1950056ac8c656e11b77475/openai/math",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

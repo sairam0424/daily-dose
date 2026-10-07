@@ -1,0 +1,15 @@
+{
+  "title": "deadinside28/bloodborne_pc",
+  "source": "github",
+  "url": "https://github.com/deadinside28/bloodborne_pc",
+  "date": "2026-10-07",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 6,
+  "why_read": "A reverse-engineering project porting or enabling a PlayStation exclusive game on PC is a notable technical feat in game preservation and emulation circles.",
+  "analysis": "This repository appears related to running or porting the game Bloodborne on PC, which is a notable reverse-engineering challenge given it was a PlayStation console exclusive built on proprietary engine code. Projects like this typically involve deep binary analysis, graphics API translation, and significant trial-and-error debugging without official documentation. The C++ codebase and strong star count suggest serious technical effort and community interest, though the project sits in a legal gray zone around reverse engineering copyrighted game code. Interesting from a reverse-engineering and systems programming perspective even if its practical use is niche.",
+  "authors": [],
+  "stars": 1241,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

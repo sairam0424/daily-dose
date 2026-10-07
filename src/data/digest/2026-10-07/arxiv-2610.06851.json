@@ -1,0 +1,24 @@
+{
+  "title": "Base Models Can Reason By Taking a Cue From Training Data",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.06851",
+  "date": "2026-10-07",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely surprising and well-executed interpretability finding showing that simple starting-token tricks can dramatically boost base model reasoning performance, with real implications for understanding RL fine-tuning.",
+  "analysis": "The paper shows that merely forcing a base language model to start its answer with specific filler phrases like 'Okay' or 'Alright' can boost math and coding accuracy nearly as much as expensive reinforcement learning fine-tuning. The authors trace this effect back to associations formed during pretraining between certain phrases and particular reasoning behaviors in the training data. They demonstrate the effect is so strong that even arbitrary words like 'chicken' can be turned into effective reasoning cues through targeted data interventions. This has real implications for understanding what RL fine-tuning is actually doing and raises interesting questions about model safety and refusal behavior tied to superficial textual cues.",
+  "authors": [
+    "Sophie L. Wang",
+    "Amil Dravid",
+    "Rulin Shao",
+    "Kevin Farhat",
+    "Sewon Min",
+    "Alexei A. Efros"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

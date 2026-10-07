@@ -1,0 +1,16 @@
+{
+  "title": "facebookincubator/muse-gadget-sdk",
+  "source": "github",
+  "url": "https://github.com/facebookincubator/muse-gadget-sdk",
+  "date": "2026-10-07",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 6,
+  "why_read": "An SDK for building hardware gadgets tied to Meta's Muse smart glasses platform is relevant to developers working in wearable or AR hardware ecosystems.",
+  "analysis": "This is an open-source SDK, written in C, intended to let developers build companion hardware gadgets for Meta's Muse product line, likely smart glasses or related wearables. SDKs like this matter because they determine how open or locked-down a hardware ecosystem will be for third-party developers. Without more detail it's hard to assess the depth of the API, but the moderate star and fork counts suggest genuine developer interest. Relevant mainly to those building wearable tech or integrating with Meta's hardware platforms.",
+  "authors": [],
+  "stars": 1542,
+  "image_url": "https://opengraph.githubassets.com/d433cf7fa6a8c0a45c7a31a6ec7232d22bc14d8355413e2ec777b203f6bc21b3/facebookincubator/muse-gadget-sdk",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

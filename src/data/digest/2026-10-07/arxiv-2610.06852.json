@@ -1,0 +1,23 @@
+{
+  "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.06852",
+  "date": "2026-10-07",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 4,
+  "why_read": "A narrow but practical tool for automatically reformatting flowchart figures across aspect ratios addresses a real paper-writing annoyance but has limited broader technical reach.",
+  "analysis": "This paper tackles the specific problem of reformatting flowchart diagrams in research papers for different display formats like slides, posters, and social media without breaking the connections between boxes. The authors use an agentic pipeline with separate stages for parsing, styling, and layout, each checked by a critic model for correctness. The output is editable diagram XML rather than a flat image, which is a sensible design choice for real use. It's a legitimate but niche contribution mostly useful to people who make a lot of technical diagrams.",
+  "authors": [
+    "Shih-Chen Tseng",
+    "Chih-Hsuan Chen",
+    "Ryan Yang",
+    "Hsi-An Chen",
+    "Chun-Wei Tuan Mu",
+    "Yu-Lun Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

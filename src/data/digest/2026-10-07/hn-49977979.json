@@ -1,0 +1,17 @@
+{
+  "title": "Mistral Large 4",
+  "source": "hn",
+  "url": "https://mistral.ai/news/mistral-large-4/\\",
+  "date": "2026-10-07",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A major new frontier LLM release from Mistral is directly relevant to engineers tracking model capability and competitive landscape.",
+  "analysis": "Mistral Large 4 is a flagship large language model release from a major European AI lab competing with OpenAI, Google, and Anthropic. The huge comment count suggests substantial community scrutiny of benchmarks, licensing, and real-world usability. For engineers choosing or evaluating models, releases like this shift the practical options for self-hosting or API use. Worth reading mainly for benchmark comparisons and architectural details if disclosed.",
+  "authors": [
+    "Philpax"
+  ],
+  "hn_id": 49977979,
+  "points": 1557,
+  "image_url": "https://mistral.ai/cms-media/api/media/file/cover-mistral-sovereign%20copie.webp",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=mistral.ai&sz=32"
+}

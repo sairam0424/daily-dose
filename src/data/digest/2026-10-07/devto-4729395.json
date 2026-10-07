@@ -1,0 +1,19 @@
+{
+  "title": "Why Your TypeScript Code Still Crashes in Production",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/why-your-typescript-code-still-crashes-in-production-2bf4",
+  "date": "2026-10-07",
+  "tags": [
+    "typescript",
+    "javascript",
+    "beginners",
+    "discuss"
+  ],
+  "interest_score": 5,
+  "why_read": "A clear explainer on why TypeScript's compile-time types don't prevent all runtime errors covers a genuinely common and important misconception for JavaScript developers.",
+  "analysis": "This article explains the common pitfall where TypeScript's type system, which only exists at compile time, fails to protect against runtime errors like undefined property access. It touches on structural typing and the gap between what the type checker assumes and what actually happens when real data, like API responses, doesn't match expectations. This is useful, practical knowledge for less experienced TypeScript developers, though it's not covering anything advanced or novel to experienced engineers. The explanatory, mental-model-building style makes it a decent educational read for the right audience.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2F9mMLA0t.png"
+}

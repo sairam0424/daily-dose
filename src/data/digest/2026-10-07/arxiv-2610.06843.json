@@ -1,0 +1,23 @@
+{
+  "title": "Recursive Video In-Context Learning for Agentic Robot",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.06843",
+  "date": "2026-10-07",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CL",
+    "cs.MA"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics paper proposing a hierarchical memory structure for video demonstrations could meaningfully improve how robot agents learn from and reuse past examples.",
+  "analysis": "This work addresses a real bottleneck in robot learning agents: full demonstration videos are too slow to replay for every decision, while compressed keyframes lose the fine contact details that determine success, like whether a grasp actually holds. The proposed method builds a navigable hierarchy from coarse task structure down to short clips of specific sub-goals, letting the agent zoom in only when needed. It reports solid improvements on two robot manipulation benchmarks using just one demonstration per task, which is a meaningful practical result. The approach is training-free, making it easier for others to adopt without retraining existing policies.",
+  "authors": [
+    "Wenrui Bao",
+    "Xinxin Liu",
+    "Bingxin Xu",
+    "Yuzhang Shang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

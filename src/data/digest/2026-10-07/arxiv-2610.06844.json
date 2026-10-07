@@ -1,0 +1,24 @@
+{
+  "title": "Learning to Read the Contextual Tokens in Diffusion Transformers",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.06844",
+  "date": "2026-10-07",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "An interpretability study peering inside diffusion image generators reveals that intermediate text tokens secretly encode a surprisingly complete picture of the image being generated.",
+  "analysis": "This paper investigates what the internal 'contextual tokens' in multimodal diffusion transformers, the models behind modern text-to-image generation, actually represent during the generation process. By training a small adapter that lets a frozen language model query these hidden tokens, the researchers show they encode rich scene information well before the image is finished rendering. Interestingly, this information persists even with no text prompt at all, suggesting these tokens accumulate image content purely from the evolving visual signal. The authors use this insight to build a new training technique that improves generation quality, making this both an interpretability and a practical contribution.",
+  "authors": [
+    "Omer Dahary",
+    "Etai Sella",
+    "Hadar Averbuch-Elor",
+    "Daniel Cohen-Or",
+    "Or Patashnik"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
