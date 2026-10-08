@@ -1,0 +1,16 @@
+{
+  "title": "Margaret Hamilton has died",
+  "source": "hn",
+  "url": "https://news.mit.edu/2026/margaret-hamilton-computing-pioneer-dies-1007",
+  "date": "2026-10-08",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A tribute to the death of Margaret Hamilton, the software engineer whose work on Apollo guidance code shaped modern software engineering practice.",
+  "analysis": "Margaret Hamilton led the team that wrote the onboard flight software for the Apollo program, and she is widely credited with helping establish software engineering as a formal discipline. Her work famously included error-handling logic that saved the Apollo 11 landing when the system was overloaded with spurious data. This news item is a tribute rather than a technical deep dive, but it's a meaningful moment for the field to reflect on foundational contributions to reliable systems design.",
+  "authors": [
+    "muglug"
+  ],
+  "hn_id": 49998895,
+  "points": 575,
+  "favicon_url": "https://news.mit.edu/themes/mit/assets/img/favicon/favicon.ico"
+}

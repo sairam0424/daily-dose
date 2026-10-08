@@ -1,0 +1,16 @@
+{
+  "title": "alchaincyf/huashu-art-motion",
+  "source": "github",
+  "url": "https://github.com/alchaincyf/huashu-art-motion",
+  "date": "2026-10-08",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A creative-coding 'skill' for generating animated art in 35 styles via code, interesting mainly as a generative-art/animation toolkit rather than deep engineering.",
+  "analysis": "This repository packages a set of code-based templates or prompts (an AI agent 'skill') for producing animated artwork across 35 different artistic styles with narrative/explanation syntax, written in JavaScript. It likely targets creative coders or people building AI-driven animation/video content rather than solving a hard technical problem. The appeal is mostly in the breadth of style coverage and ease of use for non-specialists wanting generative animations. Technically it's more of a curated template library than a novel algorithmic contribution.",
+  "authors": [],
+  "stars": 1634,
+  "image_url": "https://opengraph.githubassets.com/b9cfa946e5dbcdda479fabbd2dd40ab2ad30181571afcc79149b8f70c21c0471/alchaincyf/huashu-art-motion",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

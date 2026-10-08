@@ -1,0 +1,16 @@
+{
+  "title": "QingYunA/answer-me-with-html",
+  "source": "github",
+  "url": "https://github.com/QingYunA/answer-me-with-html",
+  "date": "2026-10-08",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche AI agent 'skill' for formatting LLM answers as single-page HTML, more of a utility novelty than a deep technical advance.",
+  "analysis": "This project packages a prompt/skill pattern that instructs an AI agent to respond to complex questions by generating a single, readable HTML page rather than plain text. It's a lightweight wrapper around existing LLM capabilities rather than a new technique, though it addresses a real usability pain point of long unformatted chat answers. The significant star count suggests it resonates with people building agent tooling for better output presentation. Technical depth is modest, but it's a practical pattern worth a quick skim for agent UX design.",
+  "authors": [],
+  "stars": 2053,
+  "image_url": "https://opengraph.githubassets.com/db60cb3424f929f7872062278e466ca85007d73757e05f9dd3600ea8087cf792/QingYunA/answer-me-with-html",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

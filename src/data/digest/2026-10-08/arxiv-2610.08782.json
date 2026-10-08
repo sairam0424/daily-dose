@@ -1,0 +1,24 @@
+{
+  "title": "4D-HOF: Hand-Object Flow Matching for Feed-Forward 4D Interaction Reconstruction",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.08782",
+  "date": "2026-10-08",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR"
+  ],
+  "interest_score": 5,
+  "why_read": "A computer vision paper on reconstructing realistic hand-object interactions over time, relevant to AR/VR and robotics perception research.",
+  "analysis": "4D-HOF addresses the problem of reconstructing how hands and objects move and interact together over a video sequence, which is notoriously hard because of occlusion and physical contact constraints. Instead of expensive per-video optimization or unconstrained generative sampling, it uses a flow-matching model that nudges rough estimates from existing vision models toward physically plausible, consistent interactions. The ability to apply physical constraints during generation rather than as post-processing is a reasonable technical contribution. This is a fairly specialized topic mainly of interest to people working in 3D vision, AR/VR hand tracking, or robotic manipulation perception.",
+  "authors": [
+    "Shiqi Li",
+    "Sean Cho",
+    "Yijie Li",
+    "Fengzhi Guo",
+    "Bowen Wen",
+    "Cheng Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

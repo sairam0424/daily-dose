@@ -1,0 +1,19 @@
+{
+  "title": "Bash Isn't a Programming Language. It's a Text Substitution Engine.",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/bash-isnt-a-programming-language-its-a-text-substitution-engine-5eml",
+  "date": "2026-10-08",
+  "tags": [
+    "bash",
+    "linux",
+    "devops",
+    "beginners"
+  ],
+  "interest_score": 6,
+  "why_read": "A clear, example-driven explainer of Bash's actual execution model, useful for engineers who rely on shell scripting without fully understanding its quirks.",
+  "analysis": "The article reframes Bash not as a conventional programming language but as a text-substitution and command-execution engine, which explains common gotchas like why spaces around '=' break variable assignment. It promises to cover the expansion pipeline, subshell variable scoping ('subshell amnesia'), and silent failure patterns that cause scripts to break unexpectedly in production. This kind of conceptual reframing is genuinely useful for engineers who write shell scripts by memorized convention rather than real understanding. It's a beginner-to-intermediate level piece, but the mental model it teaches has real practical value for debugging deployment scripts.",
+  "authors": [],
+  "reactions": 23,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2Fqc345jS.png"
+}

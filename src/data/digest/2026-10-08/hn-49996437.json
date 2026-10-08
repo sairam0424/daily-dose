@@ -1,0 +1,17 @@
+{
+  "title": "Claude Haiku 5.5",
+  "source": "hn",
+  "url": "https://www.anthropic.com/claude-haiku-5-5",
+  "date": "2026-10-08",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new smaller/faster Claude model release is relevant to anyone building LLM-powered products on cost and latency tradeoffs.",
+  "analysis": "This is presumably Anthropic's announcement of an updated small/fast model in the Claude family, aimed at latency and cost-sensitive use cases rather than peak capability. These releases matter practically for engineers choosing between quality and inference cost, but they're incremental rather than scientifically novel. The comment volume suggests people are testing it against competitors and sharing benchmark impressions.",
+  "authors": [
+    "sfkgtbor"
+  ],
+  "hn_id": 49996437,
+  "points": 646,
+  "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/89e9b0fbfe0181f6ca565d913686ce8e49b5e9c2-1200x630.jpg",
+  "favicon_url": "https://www.anthropic.com/favicon.ico"
+}

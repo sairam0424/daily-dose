@@ -1,0 +1,21 @@
+{
+  "title": "DepthWorld: 3D World Model for Robot Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.08780",
+  "date": "2026-10-08",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics world-model paper that adds real 3D depth supervision to video prediction models, addressing a known weakness in current approaches.",
+  "analysis": "Current video-based 'world models' used for robot planning are trained only on RGB video and often produce frame sequences that look locally plausible but don't actually form a consistent 3D scene over time. This paper builds a calibrated 3D version of the DROID robot dataset using stereo depth and a joint optimization across episodes, then trains a diffusion-based model to predict both RGB and depth together. They report a measurable image quality improvement (+1.48 dB PSNR) from adding depth supervision, which is a concrete, testable result rather than just a qualitative claim. This is a solid applied contribution for people building robot simulators or planning systems based on learned world models.",
+  "authors": [
+    "Jai Bardhan",
+    "Josef Sivic",
+    "Vladimir Petrik"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

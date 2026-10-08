@@ -1,0 +1,27 @@
+{
+  "title": "QF3: Fast Flow RL with Filtered Q-Gradients",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.08789",
+  "date": "2026-10-08",
+  "tags": [
+    "cs.RO",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A solid robotics RL paper introducing a faster off-policy method for training flow-based policies, with real hardware transfer results.",
+  "analysis": "QF3 is a reinforcement learning algorithm for training 'flow policies,' a increasingly popular way to represent robot behavior that borrows ideas from diffusion-style generative models. The key technical contribution is backpropagating a critic's gradient through a one-step approximation of the flow policy, while restricting that gradient to action dimensions it trusts, which stabilizes training. The paper demonstrates a 10x speedup over a recent on-policy baseline and claims the first zero-shot sim-to-hardware transfer of a humanoid locomotion policy trained this way. This is a meaningful, measurable advance for people working on sample-efficient robot learning rather than just an incremental tweak.",
+  "authors": [
+    "Chung Min Kim",
+    "Brent Yi",
+    "David McAllister",
+    "Hongsuk Choi",
+    "Himanshu Gaurav Singh",
+    "Jinkun Cao",
+    "Ken Goldberg",
+    "Pieter Abbeel",
+    "Carmelo Sferrazza",
+    "Angjoo Kanazawa"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

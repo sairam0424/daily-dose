@@ -1,0 +1,23 @@
+{
+  "title": "IdeaAnchor: Teaching LLMs to Turn Literature into Research Ideas",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.08781",
+  "date": "2026-10-08",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "An LLM training approach for generating research ideas from literature, interesting conceptually but part of a crowded and hard-to-evaluate subfield.",
+  "analysis": "IdeaAnchor trains language models to synthesize new research ideas from sets of papers by mining structured 'anchors' from how real papers cite and build on prior work, rather than relying only on prompting. It combines demonstration learning, self-distillation, and reinforcement learning, plus retrieval at inference time, and reports improved ideation quality through ablations. The idea of giving models explicit structured supervision for synthesis rather than vague feedback is a genuine methodological contribution. That said, automatic evaluation of 'research idea quality' is notoriously unreliable, so claims here should be read with some skepticism.",
+  "authors": [
+    "Ziyu Chen",
+    "Yilun Zhao",
+    "Jiashuo Sun",
+    "Yiling Ma",
+    "Manasi Patwardhan",
+    "Arman Cohan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

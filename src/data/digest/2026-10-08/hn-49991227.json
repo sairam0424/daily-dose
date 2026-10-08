@@ -1,0 +1,17 @@
+{
+  "title": "Shipping JPEG XL in Chrome",
+  "source": "hn",
+  "url": "https://developer.chrome.com/blog/jpeg-xl-in-chrome",
+  "date": "2026-10-08",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete, technically substantive browser engineering update about adding a new, more efficient image codec to Chrome.",
+  "analysis": "JPEG XL is a next-generation image format offering better compression efficiency and features like lossless transcoding from JPEG, progressive decoding, and high dynamic range support. Chrome dropped JPEG XL support in 2022 citing limited interest, so this post likely covers a reversal or renewed implementation effort, which is significant for web performance engineering. The discussion volume indicates genuine engineering interest around format wars, licensing, and real-world image compression tradeoffs. This is a solid read for anyone working on web performance or image delivery pipelines.",
+  "authors": [
+    "AshleysBrain"
+  ],
+  "hn_id": 49991227,
+  "points": 476,
+  "image_url": "https://developer.chrome.com/static/blog/jpeg-xl-in-chrome/images/cover.png",
+  "favicon_url": "https://www.gstatic.com/devrel-devsite/prod/vc572093a046b25fad0d22bd3210637939b9c971bea06a064d6f48a166bf893c5/chrome/images/favicon.png"
+}
