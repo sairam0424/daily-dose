@@ -1,0 +1,16 @@
+{
+  "title": "nullmoth/nvidia-macos-driver",
+  "source": "github",
+  "url": "https://github.com/nullmoth/nvidia-macos-driver",
+  "date": "2026-10-09",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely hard and niche engineering feat, writing a working Metal graphics driver for unsupported NVIDIA GPUs on modern macOS.",
+  "analysis": "Apple dropped NVIDIA GPU support in macOS years ago, so building a working Metal driver for RTX cards on Sequoia via Hackintosh-style OpenCore setups is a substantial reverse-engineering effort. Writing GPU drivers, especially translating to Apple's Metal API, requires deep knowledge of both the hardware's command submission model and Apple's graphics stack. This is the kind of low-level systems work that is rare and technically impressive regardless of practical mainstream need. The project being written in Rust and fully open source adds further technical interest for systems programmers.",
+  "authors": [],
+  "stars": 1093,
+  "image_url": "https://opengraph.githubassets.com/5f98ac573aab8bcf70c00d7adc704464e4f3762d0295428b627283961ca8adfd/nullmoth/nvidia-macos-driver",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

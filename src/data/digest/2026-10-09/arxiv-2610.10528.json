@@ -1,0 +1,34 @@
+{
+  "title": "Long-WAM: Scaling the Context of World-Action Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.10528",
+  "date": "2026-10-09",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A systems-and-modeling paper on giving robot control models longer visual memory in real time, with concrete deployment numbers on real hardware.",
+  "analysis": "Long-WAM studies how much past visual context a robot control model needs to act well, and finds that simply having more history only helps if the underlying video model was trained in a causal, autoregressive way. Using that insight, they show success rates jumping substantially, from 63.3% to 78.7%, as context length increases on a benchmark called RoboCasa GR-1. They also engineered the system to run in real time on actual edge GPUs, reporting 107.4 milliseconds per action chunk, and demonstrated clearly superior performance on a dynamic cup-stacking task compared to other named baselines. This combination of a clear empirical insight plus real hardware deployment numbers makes it a solid applied robotics contribution.",
+  "authors": [
+    "Wei Huang",
+    "Bohan Zhang",
+    "Chenzhi Liu",
+    "Isabella Liu",
+    "Shuai Yang",
+    "Weian Mao",
+    "Luozhou Wang",
+    "Yicheng Xiao",
+    "Weifeng Lin",
+    "Qixin Hu",
+    "Bryan Chu",
+    "Sifei Liu",
+    "Linxi Fan",
+    "Xiaojuan Qi",
+    "Song Han",
+    "Yukang Chen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Decentralized SGD under Heavy-Tailed Noise: Optimal Convergence Rates and the Role of Gradient Clipping",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.10527",
+  "date": "2026-10-09",
+  "tags": [
+    "math.OC",
+    "cs.LG",
+    "cs.MA"
+  ],
+  "interest_score": 5,
+  "why_read": "A theoretical optimization paper proving convergence guarantees for gradient clipping in decentralized SGD under heavy-tailed noise, mainly of interest to optimization researchers.",
+  "analysis": "The paper addresses a fairly specific but important theoretical question: whether decentralized stochastic gradient descent with gradient clipping can achieve optimal convergence rates when noise does not behave nicely, i.e. has heavy tails. They show mathematically that clipped decentralized SGD does achieve order-optimal rates and even benefits from adding more agents, something not previously shown for clipping-based decentralized methods. The key technical contribution is a sharper analysis of how much nodes disagree with each other during training, isolating network effects as a secondary concern. This is a solid theoretical result but speaks mainly to researchers working on distributed optimization theory rather than practitioners.",
+  "authors": [
+    "Aleksandar Armacki",
+    "Haoyuan Cai",
+    "Ali H. Sayed"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

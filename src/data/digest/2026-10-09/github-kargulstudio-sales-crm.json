@@ -1,0 +1,16 @@
+{
+  "title": "kargulstudio/sales-crm",
+  "source": "github",
+  "url": "https://github.com/kargulstudio/sales-crm",
+  "date": "2026-10-09",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A fairly generic open-source CRM project, useful as a reference implementation but not technically novel.",
+  "analysis": "This is a sales CRM built in TypeScript, which is a common and well-trodden application category in open source. Without distinguishing architectural or technical features mentioned, it's hard to say what sets it apart from the many existing CRM projects. It may be useful to developers looking for a CRM starting point or learning reference, but it is not groundbreaking. The reasonably high star count suggests decent usability or marketing rather than unique technical merit.",
+  "authors": [],
+  "stars": 1658,
+  "image_url": "https://opengraph.githubassets.com/842d16ae4984815b8d32c854700192309605fb8dc6eb67e080f2190f8a985792/kargulstudio/sales-crm",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

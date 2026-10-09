@@ -1,0 +1,16 @@
+{
+  "title": "openai/math",
+  "source": "github",
+  "url": "https://github.com/openai/math",
+  "date": "2026-10-09",
+  "tags": [
+    "Lean"
+  ],
+  "interest_score": 7,
+  "why_read": "A formal mathematics repository from OpenAI using the Lean proof assistant, likely of real interest to people working on formal verification and AI-assisted theorem proving.",
+  "analysis": "This repository uses Lean, a language for writing machine-checked mathematical proofs, suggesting it relates to formal math or AI math-reasoning research. Given OpenAI's recent public work on AI systems solving olympiad-level and research-level math problems, this is likely connected to that effort, perhaps as a benchmark, proof library, or verification toolkit. The high star count signals strong community interest, likely from both the formal-methods and AI research communities. Worth checking out for anyone tracking the intersection of LLMs and formally verified mathematics.",
+  "authors": [],
+  "stars": 12096,
+  "image_url": "https://opengraph.githubassets.com/28783cc9a27854cf254caa4ceeb593634f4003e86facf4ce7bdea437e6a6a7b8/openai/math",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

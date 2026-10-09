@@ -1,0 +1,17 @@
+{
+  "title": "Man discovers his parents' coffee machine used 1TB of data in 10 days",
+  "source": "hn",
+  "url": "https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/",
+  "date": "2026-10-09",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A concrete and slightly absurd story about embedded device telemetry gone wrong, interesting for IoT/networking engineers.",
+  "analysis": "The story describes a smart coffee machine quietly consuming a terabyte of data in just ten days, which is a real anomaly worth diagnosing. It likely touches on topics like excessive polling, misconfigured cloud sync, or chatty IoT firmware that engineers building connected devices should care about. It is a lighter, human-interest technical story rather than deep engineering content, but the root cause analysis could be genuinely instructive. Good cautionary tale about IoT telemetry design.",
+  "authors": [
+    "ck2"
+  ],
+  "hn_id": 49995495,
+  "points": 370,
+  "image_url": "https://www.dexerto.com/cdn-image/wp-content/uploads/2026/10/07/coffee-maker-stock-photo.jpg",
+  "favicon_url": "https://www.dexerto.com/favicon/dexerto/favicon.ico"
+}

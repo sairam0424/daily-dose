@@ -1,0 +1,17 @@
+{
+  "title": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities",
+  "source": "hn",
+  "url": "https://quesma.com/blog/invisible-cities-one-shot/",
+  "date": "2026-10-09",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "An exploratory look at a frontier AI model's long-form generative and visualization capabilities, interesting as an AI capability demo.",
+  "analysis": "This is an experiment giving a large AI model, apparently a recent Opus version, an open-ended creative task over an extended run time to visualize a literary work. It is a capability-probing exercise rather than rigorous benchmarking, so conclusions are anecdotal. Still, long-horizon unsupervised generation tasks like this reveal interesting things about model planning, consistency, and failure modes over time. Likely of interest to people tracking what frontier models can autonomously produce.",
+  "authors": [
+    "stared"
+  ],
+  "hn_id": 50004790,
+  "points": 354,
+  "image_url": "https://quesma.com/_astro/thumbnail.CbJSiyQh.jpg",
+  "favicon_url": "https://quesma.com/favicon.ico"
+}

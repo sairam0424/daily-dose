@@ -1,0 +1,20 @@
+{
+  "title": "The September cut took 17% of my Claude Code week. Subagents were taking 48%.",
+  "source": "devto",
+  "url": "https://dev.to/aidiveyt/the-september-cut-took-17-of-my-claude-code-week-subagents-were-taking-48-98n",
+  "date": "2026-10-09",
+  "tags": [
+    "ai",
+    "claudecode",
+    "productivity",
+    "discuss"
+  ],
+  "interest_score": 6,
+  "why_read": "A detailed, data-driven dissection of how AI coding agent subagents consume disproportionate usage quota, useful for heavy Claude Code users optimizing cost and workflow.",
+  "analysis": "The author analyzed their own actual usage logs, 455 sessions and 63,000 requests, to figure out why their weekly AI coding quota was running out faster after a service change. They found that subagents, helper processes spawned to do subtasks, were consuming a much larger share of tokens than the user's own direct interactions. They also caught and corrected a double-counting bug in the raw logs that would have overstated token usage by roughly double. This is a concrete, reproducible-methodology piece of real operational data about a widely used AI coding tool, which is genuinely useful for other heavy users trying to manage cost and quota.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvqyknt95uy4ie9ubjfzt.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

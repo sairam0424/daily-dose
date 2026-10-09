@@ -1,0 +1,16 @@
+{
+  "title": "Whistle: Speech to Text in 16.9 MB",
+  "source": "hn",
+  "url": "https://cactuscompute.com/blog/whistle",
+  "date": "2026-10-09",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A tiny, locally runnable speech-to-text model is practically useful and technically interesting for edge/embedded applications.",
+  "analysis": "Whistle appears to be a very small speech recognition model, around 17 megabytes, small enough to run on constrained devices. If accuracy holds up, this matters because most speech-to-text systems are large and need cloud inference or beefy hardware. Shrinking models to this size usually involves aggressive quantization or distillation tricks worth understanding. The high comment count suggests people are actively testing and comparing it against alternatives like Whisper.",
+  "authors": [
+    "gmays"
+  ],
+  "hn_id": 50008427,
+  "points": 512,
+  "favicon_url": "https://cactuscompute.com/assets/favicon.ico"
+}

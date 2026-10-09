@@ -1,0 +1,23 @@
+{
+  "title": "Never Look Back: Understanding Persistence in 3D Object Memory from Egocentric Videos",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.10538",
+  "date": "2026-10-09",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid robotics/computer vision paper on building persistent object memory from first-person video, relevant to embodied AI research.",
+  "analysis": "This paper builds a system called Ledger that lets a robot or AI assistant remember where objects are and what happened to them, even after they leave the camera's view. It clusters repeated observations to filter out noise and keeps short text descriptions so questions can be answered without re-watching video. The reported gains, such as raising accuracy from 29.7% to 42.6% on one benchmark, are substantial and suggest real improvement over naive baselines. This is a meaningful step toward embodied AI assistants with longer-term spatial memory rather than just reacting to the current frame.",
+  "authors": [
+    "Shravan Chaudhari",
+    "William Paul",
+    "Suchi Saria",
+    "Rama Chellappa",
+    "Homanga Bharadhwaj"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

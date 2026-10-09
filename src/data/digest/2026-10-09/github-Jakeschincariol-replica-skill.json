@@ -1,0 +1,16 @@
+{
+  "title": "Jakeschincariol/replica-skill",
+  "source": "github",
+  "url": "https://github.com/Jakeschincariol/replica-skill",
+  "date": "2026-10-09",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A set of AI agent skills for cloning apps raises both practical interest and ethical questions depending on how it's used.",
+  "analysis": "This repository packages prompts or workflows for Claude-based agents to reverse-engineer, rebuild, test, and iterate on existing applications. Technically, it is an interesting demonstration of agentic workflows applied to software reverse engineering and iterative development. However, 'clone any app' framing raises concerns about intellectual property and competitive cloning, though the tool itself is a general-purpose automation framework rather than inherently malicious. It's a borderline case worth including but flagged for its ambiguous real-world use.",
+  "authors": [],
+  "stars": 1082,
+  "image_url": "https://opengraph.githubassets.com/4c32072b3f1f13f37fef256f8afc60db17e3397e85c43ddb8a65de6a97eebc27/Jakeschincariol/replica-skill",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

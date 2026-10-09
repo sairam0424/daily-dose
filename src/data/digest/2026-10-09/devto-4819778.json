@@ -1,0 +1,20 @@
+{
+  "title": "I got Jev to zero mistakes. I'm still using Flash-Lite.",
+  "source": "devto",
+  "url": "https://dev.to/theycallmeswift/i-got-jev-to-zero-mistakes-im-still-using-flash-lite-2mo7",
+  "date": "2026-10-09",
+  "tags": [
+    "ai",
+    "gemini",
+    "testing",
+    "jev"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical, data-driven comparison of a new hyped lightweight model against a cheaper incumbent for a real production decision task.",
+  "analysis": "The author compares a new small 'decision model' called Jev against Google's Gemini Flash-Lite for a classification-style task that returns calibrated probabilities over fixed options rather than free text. Instead of relying on hype, they ran both on real production data thousands of times and measured actual performance and cost, which is a credible way to evaluate model claims. It is a useful case study in picking the right-sized model for a narrow task rather than defaulting to whatever is trending. The piece is grounded in a real evaluation harness (benchspec) which adds some concrete methodology to back the claims.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvvnv8n9pu6407t272avj.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

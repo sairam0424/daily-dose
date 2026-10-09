@@ -1,0 +1,23 @@
+{
+  "title": "EngramEdit: Decoupled Knowledge Updates in LLMs through Conditional Memory",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.10533",
+  "date": "2026-10-09",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically detailed method for editing specific facts inside a large language model without full retraining, relevant to knowledge-editing research.",
+  "analysis": "EngramEdit builds on conditional memory architectures that store facts in lookup tables keyed by word sequences, separate from the model's general reasoning weights. The core challenge they solve is that the same fact can be phrased many ways, each potentially hitting different memory entries, so naive edits either miss some phrasings or corrupt unrelated facts. Their method computes target representations across multiple phrasings and updates shared entries carefully, weighting against frequently reused ones to limit collateral damage. The reported near-perfect editing success and preserved unrelated knowledge make this a concrete advance in making LLMs updatable after deployment.",
+  "authors": [
+    "Hongru Cai",
+    "Ran Wei",
+    "Wenjie Wang",
+    "Chengfa Wu",
+    "Ning Song",
+    "Yongqi Li",
+    "Wenjie Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

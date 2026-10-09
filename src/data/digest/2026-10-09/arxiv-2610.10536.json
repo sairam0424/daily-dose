@@ -1,0 +1,20 @@
+{
+  "title": "Decoupling Exploration from Optimization in RLVR",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.10536",
+  "date": "2026-10-09",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever architectural idea for improving reinforcement learning in LLMs by separating exploration from the final optimized model.",
+  "analysis": "The paper tackles a known problem in reinforcement learning with verifiable rewards, where encouraging a model to explore novel reasoning paths often degrades its overall quality. Their fix trains separate explorer models with a novelty bonus, filters their outputs for correctness, then distills the good ones into a clean student model trained without that novelty pressure. This decoupling lets them scale up exploration aggressively without the usual quality collapse, and they show better results than a strong baseline across seven math benchmarks. This is a practically useful training recipe for anyone building reasoning-focused LLMs via RL.",
+  "authors": [
+    "Saif Punjwani",
+    "Micah Goldblum"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

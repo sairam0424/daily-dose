@@ -1,0 +1,19 @@
+{
+  "title": "To Retry or Not to Retry? That Is the Question.",
+  "source": "devto",
+  "url": "https://dev.to/gramli/to-retry-or-not-to-retry-that-is-the-question-1j2l",
+  "date": "2026-10-09",
+  "tags": [
+    "devchallenge",
+    "kagglechallenge",
+    "ai",
+    "machinelearning"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused and well-reasoned benchmark idea testing whether AI models correctly judge if an HTTP request is safe to retry, a real and tricky distributed systems problem.",
+  "analysis": "The author builds a benchmark around a narrow but practically important question: whether language models can correctly reason about retry safety for failed HTTP requests given status codes, idempotency keys, and timing. This is a genuinely subtle distributed systems problem, since naive retries can cause duplicate processing of POST requests or mask real failures. Framing an LLM evaluation around this kind of nuanced, real-world engineering judgment call is more interesting than generic coding benchmarks. The piece seems to combine solid systems knowledge with a reasonable evaluation methodology.",
+  "authors": [],
+  "reactions": 43,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkwmpr58hbcmut3j173us.jpg"
+}

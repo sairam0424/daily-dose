@@ -1,0 +1,16 @@
+{
+  "title": "alchaincyf/huashu-art-motion",
+  "source": "github",
+  "url": "https://github.com/alchaincyf/huashu-art-motion",
+  "date": "2026-10-09",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A code-driven animation toolkit covering many artistic styles, interesting mainly to creative coders rather than general software engineers.",
+  "analysis": "This project appears to be a Chinese-language 'skill' package offering 35 artistic animation styles and nine narration grammars, letting users turn static images or ideas into animated content through code. It likely targets creative coding, generative art, or video content automation workflows. Without more detail on the underlying techniques, it reads more like a curated template library than a novel technical contribution. Of niche interest to those doing generative art or short-form video automation.",
+  "authors": [],
+  "stars": 2444,
+  "image_url": "https://opengraph.githubassets.com/a4ec0a29ad32ebb5eef054bab5ce04346d7786967d44fde22f267230b6f6fb77/alchaincyf/huashu-art-motion",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

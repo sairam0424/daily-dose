@@ -1,0 +1,15 @@
+{
+  "title": "I hired an illustrator to draw my house. Now it's my Home Assistant dashboard",
+  "source": "hn",
+  "url": "https://antonfrolov.substack.com/p/i-hired-an-illustrator-to-draw-my",
+  "date": "2026-10-09",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A fun personal project combining custom art with Home Assistant, mostly of interest to smart-home hobbyists rather than general engineers.",
+  "analysis": "This is a home automation hobby project where someone commissioned custom artwork of their house to use as an interactive dashboard background. It is creative and well-executed but represents a niche, cosmetic use case rather than a technical breakthrough. There may be some useful detail on how they wired illustration regions to live Home Assistant entity states. Mostly appeals to smart-home enthusiasts and UI tinkerers.",
+  "authors": [
+    "soheilpro"
+  ],
+  "hn_id": 49986882,
+  "points": 363
+}
