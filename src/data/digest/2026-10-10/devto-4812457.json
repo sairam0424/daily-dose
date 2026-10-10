@@ -1,0 +1,20 @@
+{
+  "title": "I built an offline AI that knows your last frost date, no internet, no API",
+  "source": "devto",
+  "url": "https://dev.to/sarvar_04/i-built-an-offline-ai-that-knows-your-last-frost-date-no-internet-no-api-3b8e",
+  "date": "2026-10-10",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "opensource"
+  ],
+  "interest_score": 4,
+  "why_read": "A fun small offline-AI hobby project combining a tabular forecasting model and a local LLM to predict garden frost dates, interesting as a practical example of running small AI stacks locally.",
+  "analysis": "FrostWise is a hobby project combining an open-weight tabular machine learning model for frost-date prediction with a locally-run Gemma language model to generate planting advice, all running offline with no API calls. It's a nice small-scale demonstration of composing a traditional ML model with a local LLM for a practical, narrow use case, built for a specific person with poor internet access. The technical depth is modest, but it's a relatable, concrete example of privacy-respecting, fully local AI tooling.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fduwuvmt1n9j9mnsa92h8.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "storytold/wordcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/wordcraft",
+  "date": "2026-10-10",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious clean-room Rust reimplementation of Microsoft Word, interesting as a systems/document-format engineering challenge.",
+  "analysis": "Wordcraft is an open-source project attempting to rebuild Microsoft Word's functionality from scratch in Rust, which is notable given the complexity of the .docx format and rich text editing features like layout, styles, and compatibility. Clean-room reimplementations of major proprietary software are technically demanding and educational, often revealing how much hidden complexity exists in software most people take for granted. Its early-stage star count suggests it's a young but ambitious effort worth watching rather than a mature product yet.",
+  "authors": [],
+  "stars": 1859,
+  "image_url": "https://opengraph.githubassets.com/4012655fb4889a6e5377e67325efdb5160192d80bd0013c4e8323f30b0903b26/storytold/wordcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

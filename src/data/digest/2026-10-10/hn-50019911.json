@@ -1,0 +1,15 @@
+{
+  "title": "Cloudflare acquires Deno",
+  "source": "hn",
+  "url": "https://deno.com/blog/cloudflare",
+  "date": "2026-10-10",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A major acquisition that reshapes the JavaScript runtime landscape and signals Cloudflare's edge-compute strategy.",
+  "analysis": "Cloudflare, a large edge-network and serverless-compute company, is acquiring Deno, the company behind the Deno JavaScript/TypeScript runtime created by Node.js's original author. This matters because Deno has been a serious alternative runtime with its own package ecosystem and deployment platform, and the acquisition likely affects Deno Deploy's future and Cloudflare's Workers strategy. Engineers who build on Deno or Cloudflare Workers will want to understand what changes for tooling, hosting, and long-term support.",
+  "authors": [
+    "ilreb"
+  ],
+  "hn_id": 50019911,
+  "points": 1039
+}

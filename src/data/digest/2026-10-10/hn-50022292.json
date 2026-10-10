@@ -1,0 +1,17 @@
+{
+  "title": "Triple-A Minesweeper",
+  "source": "hn",
+  "url": "https://minesweeper.mikelacher.com/",
+  "date": "2026-10-10",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A playful high-production take on a classic game, fun but not a deep technical read for most engineers.",
+  "analysis": "This appears to be a project reimagining the simple classic game Minesweeper with high-end 'AAA' game production values, likely covering graphics, animation, and sound design techniques. It is a creative showcase more than a rigorous technical deep dive, though it may contain interesting notes on game engine techniques or shader work.",
+  "authors": [
+    "robin_reala"
+  ],
+  "hn_id": 50022292,
+  "points": 573,
+  "image_url": "https://minesweeper.mikelacher.com/images/share.png",
+  "favicon_url": "https://minesweeper.mikelacher.com/images/favicon-32.png"
+}

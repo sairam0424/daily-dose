@@ -1,0 +1,18 @@
+{
+  "title": "On the estimation and validity of AI time horizons---a statistical look at the METR plot",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12466",
+  "date": "2026-10-10",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous statistical re-examination of the widely-cited METR AI time-horizon metric, useful for anyone trying to interpret AI capability benchmarks correctly.",
+  "analysis": "METR's 'time horizon' metric estimates how long a human-equivalent task an AI model can complete with 50% success, and this paper re-analyzes that metric using splines and item-response theory instead of assuming a simple linear relationship. The authors find the relationship between human task time and AI difficulty is flat in the 2-30 minute range but roughly linear outside it, meaning a jump from 3 to 30 minutes is much easier for AI than one from 30 minutes to 5 hours despite being the same 10x multiplier. This has real implications for how people should interpret AI progress claims based on this benchmark, since the common 'doubling time' framing may be misleading at different scales.",
+  "authors": [
+    "Drew T. Nguyen",
+    "William Fithian"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

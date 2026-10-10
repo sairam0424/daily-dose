@@ -1,0 +1,16 @@
+{
+  "title": "nullmoth/nvidia-macos-driver",
+  "source": "github",
+  "url": "https://github.com/nullmoth/nvidia-macos-driver",
+  "date": "2026-10-10",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "An unofficial Metal driver bringing NVIDIA RTX GPU support back to macOS, a notable reverse-engineering feat since Apple dropped Nvidia support years ago.",
+  "analysis": "This project provides a Metal graphics driver enabling NVIDIA GeForce RTX cards to work on macOS 15 Sequoia via Hackintosh-style OpenCore setups, something Apple has not officially supported since dropping Nvidia driver support years ago. Building a Metal driver for a GPU architecture Apple never endorsed requires serious low-level graphics and kernel driver reverse-engineering work. This is a niche but technically impressive hobbyist/community effort that will interest hackintosh and GPU driver enthusiasts.",
+  "authors": [],
+  "stars": 1848,
+  "image_url": "https://opengraph.githubassets.com/e1cb80ccbe9fd2f475395145ed13f0e40f79be161ec2c648404fc3422668802d/nullmoth/nvidia-macos-driver",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
