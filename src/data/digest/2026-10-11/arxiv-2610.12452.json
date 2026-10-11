@@ -1,0 +1,23 @@
+{
+  "title": "BrickBench: Evaluating Agentic Brick Design",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12452",
+  "date": "2026-10-11",
+  "tags": [
+    "cs.AI",
+    "cs.CV",
+    "cs.GR"
+  ],
+  "interest_score": 5,
+  "why_read": "A quirky but technically interesting benchmark testing whether AI agents can design physically buildable LEGO sets from text prompts.",
+  "analysis": "BrickBench asks AI agents to generate LEGO assemblies from text descriptions, requiring the agent to pick real parts and satisfy both physical buildability and design intent. This is a creative stress test of spatial reasoning and constraint satisfaction in language-driven agents, which is harder than typical text or image generation because the output must physically assemble. The authors found current AI agents can usually meet basic physical and semantic requirements but still fall short of human designers in overall quality. It's a niche but well-constructed benchmark that illustrates current limits of agentic spatial reasoning.",
+  "authors": [
+    "Peter Kulits",
+    "Yiqing Xu",
+    "R. Kenny Jones",
+    "Cordelia Schmid",
+    "Jiajun Wu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

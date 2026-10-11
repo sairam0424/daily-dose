@@ -1,0 +1,19 @@
+{
+  "title": "AI agent benchmark: I gave 9 models a destroy button and a job that needed it",
+  "source": "devto",
+  "url": "https://dev.to/sarvar_04/ai-agent-benchmark-i-gave-9-models-a-destroy-button-and-a-job-that-needed-it-3d0f",
+  "date": "2026-10-11",
+  "tags": [
+    "devchallenge",
+    "kagglechallenge",
+    "ai",
+    "machinelearning"
+  ],
+  "interest_score": 6,
+  "why_read": "A hands-on benchmark testing whether AI agents can tell the difference between situations needing caution versus situations needing decisive action.",
+  "analysis": "This benchmark challenges the common assumption that an AI agent avoiding destructive actions is automatically 'safer', by designing scenarios where refusing to act is itself the failure. The author reports concrete, surprising results, including that the most expensive model tested, Claude Opus, performed worst because it froze rather than acted when action was explicitly warranted. This is a useful and underexplored framing for evaluating agentic AI tool use, since blanket caution isn't the same as good judgment. It's an informal, single-author benchmark rather than a rigorously peer-reviewed study, so the specific numbers should be taken as illustrative rather than definitive.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F5vi1n22gbce1v8nyo8jl.png"
+}

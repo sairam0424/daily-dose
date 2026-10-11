@@ -1,0 +1,16 @@
+{
+  "title": "zhongerxin/iPhone-use",
+  "source": "github",
+  "url": "https://github.com/zhongerxin/iPhone-use",
+  "date": "2026-10-11",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but technically interesting project letting an AI coding agent control a real iPhone over USB for automation and testing.",
+  "analysis": "This project lets an AI coding assistant (Codex) drive a physical iPhone via USB, handling tasks like app installation, UI automation, and screen capture with fallback to screenshots when live streaming fails. It's a practical bridge between AI agents and real mobile hardware, useful for app testing, automation scripting, or exploring how far AI-driven device control can go. The approach of using USB-level control rather than purely software emulation suggests more reliable interaction with real app behavior than simulators. It's a specialized tool, likely most valuable to mobile QA engineers or those building AI agent-driven testing pipelines.",
+  "authors": [],
+  "stars": 2549,
+  "image_url": "https://opengraph.githubassets.com/c84d522738f16ae29c706c38b52a111eb1507ef155607e5337822f68d4ca9934/zhongerxin/iPhone-use",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

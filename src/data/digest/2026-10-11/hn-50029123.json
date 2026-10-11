@@ -1,0 +1,17 @@
+{
+  "title": "Telegram Desktop vulnerability allowed any user's file to be stolen",
+  "source": "hn",
+  "url": "https://beaksec.github.io/posts/telegram-desktop-one-click-account-takeover/",
+  "date": "2026-10-11",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete file-stealing vulnerability in a widely used desktop messaging client is directly relevant to engineers thinking about app security.",
+  "analysis": "This describes a security vulnerability in Telegram Desktop that let an attacker exfiltrate arbitrary files belonging to another user on the same system. Vulnerabilities in widely deployed messaging software are useful case studies for understanding real-world attack vectors like path traversal, inter-process communication flaws, or sandbox escapes. Without more detail it's unclear exactly which mechanism was exploited, but the topic itself is squarely relevant to security-minded engineers.",
+  "authors": [
+    "g-b-r"
+  ],
+  "hn_id": 50029123,
+  "points": 399,
+  "image_url": "https://beaksec.github.io/assets/img/posts/telegram-desktop-one-click-account-takeover/cover.png",
+  "favicon_url": "https://beaksec.github.io/assets/img/favicons/favicon-96x96.png"
+}

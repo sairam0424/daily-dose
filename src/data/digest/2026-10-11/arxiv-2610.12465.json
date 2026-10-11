@@ -1,0 +1,24 @@
+{
+  "title": "A Balanced Data Diet: Addressing the Exploration Bottleneck in Mega-Scale RL for Robot Control",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12465",
+  "date": "2026-10-11",
+  "tags": [
+    "cs.RO",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A solid robotics reinforcement-learning paper showing how smarter sampling of training scenarios lets massive parallel simulation actually pay off.\n",
+  "analysis": "The paper addresses a practical bottleneck in training robots with reinforcement learning at huge scale: randomly resetting simulated environments wastes most of the learning signal on tasks the robot has already mastered or cannot yet attempt. Their fix, called Success Guided Sampling, focuses training on tasks at the edge of what the robot can currently do, similar in spirit to curriculum learning. They scaled this to over a million parallel simulated environments and solved harder tasks like multi-terrain quadruped walking and precise robotic assembly that previous methods couldn't. They also showed the resulting policies transfer to real hardware using only camera input, which is a meaningful sim-to-real result.",
+  "authors": [
+    "Octi Zhang",
+    "Mateo Guaman Castro",
+    "Patrick Yin",
+    "Ignacio Dagnino",
+    "Abhishek Gupta",
+    "Rosario Scalise",
+    "Byron Boots"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

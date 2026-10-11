@@ -1,0 +1,17 @@
+{
+  "title": "Bitwarden Dual License Model",
+  "source": "hn",
+  "url": "https://community.bitwarden.com/t/published-version-update-in-app-stores/102750",
+  "date": "2026-10-11",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Licensing changes at a popular open-source password manager affect how engineers and companies can use and fork the software.",
+  "analysis": "Bitwarden moving to or clarifying a dual-license model is relevant to anyone who self-hosts, forks, or builds on top of open-source security software. Dual licensing (often open-source plus a commercial license) changes incentives for contributors and downstream users, and often triggers debate about whether a project is still meaningfully 'open'. The large comment count suggests this touched a nerve around open-source sustainability and trust in widely used infrastructure.",
+  "authors": [
+    "Cider9986"
+  ],
+  "hn_id": 50033407,
+  "points": 335,
+  "image_url": "https://us1.discourse-cdn.com/flex001/uploads/bitwarden1/original/3X/7/f/7f03815c05cadc57a3915c4e7d01826f041b39ac.png",
+  "favicon_url": "https://us1.discourse-cdn.com/flex001/uploads/bitwarden1/optimized/3X/7/a/7a270efc3aae0860aca62ffb8641044e2668ea37_2_32x32.png"
+}

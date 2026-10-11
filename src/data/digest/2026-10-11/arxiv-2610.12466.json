@@ -1,0 +1,18 @@
+{
+  "title": "On the estimation and validity of AI time horizons---a statistical look at the METR plot",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12466",
+  "date": "2026-10-11",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous statistical critique of METR's influential 'AI time horizon' metric, useful for anyone citing those benchmark numbers.",
+  "analysis": "METR's time-horizon metric converts AI capability into an intuitive number: how long a task would take a human if the AI can solve it with 50% success. This paper challenges the assumption that difficulty scales linearly with the logarithm of human completion time, instead fitting a more flexible curve that shows the relationship is flat for short tasks and steeper for longer ones. The practical implication is that comparing capability jumps using simple multipliers (like 10x longer tasks) can be misleading. This matters for anyone using these headline AI capability numbers to make real risk or progress assessments.",
+  "authors": [
+    "Drew T. Nguyen",
+    "William Fithian"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

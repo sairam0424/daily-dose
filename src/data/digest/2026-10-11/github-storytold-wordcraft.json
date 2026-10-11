@@ -1,0 +1,16 @@
+{
+  "title": "storytold/wordcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/wordcraft",
+  "date": "2026-10-11",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "An ambitious clean-room reimplementation of Microsoft Word in Rust is a serious engineering challenge worth examining for document format and rendering internals.",
+  "analysis": "Rebuilding a word processor from scratch, especially one aiming for compatibility with Word's complex document model, formatting engine, and file formats, is a substantial systems engineering undertaking. Doing it in Rust suggests attention to performance and memory safety, which is relevant for engineers interested in text layout engines, rich text editing, or binary/XML document format parsing (like .docx). The 'clean-room' framing implies the implementation was built without referencing Microsoft's actual source, which is notable from both a legal and reverse-engineering perspective. This is the kind of project that reveals a lot about the hidden complexity of software that looks simple on the surface.",
+  "authors": [],
+  "stars": 3153,
+  "image_url": "https://opengraph.githubassets.com/a5d997e41773bd456dacc344b7a9d35b9d2b0e7a6c4e7098dc96df6d14d440c0/storytold/wordcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

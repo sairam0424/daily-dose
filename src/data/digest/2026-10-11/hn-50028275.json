@@ -1,0 +1,17 @@
+{
+  "title": "REA Reverse – Engineer Anything",
+  "source": "hn",
+  "url": "https://rea.tools/",
+  "date": "2026-10-11",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A high-engagement HN post about a reverse-engineering tool but with no technical detail provided here to judge its actual substance.",
+  "analysis": "This item only gives a title and engagement numbers, so there's no way to verify what 'REA Reverse' actually does beyond its name implying some kind of reverse-engineering or decompilation tool. The high comment count suggests it sparked discussion, possibly around its capabilities, licensing, or comparisons to existing tools like Ghidra or IDA. Without an abstract or description, assessment has to rest mostly on the title and popularity signal alone.",
+  "authors": [
+    "modinfo"
+  ],
+  "hn_id": 50028275,
+  "points": 688,
+  "image_url": "https://rea.tools/assets/social-card.png",
+  "favicon_url": "https://rea.tools/assets/favicon.svg"
+}

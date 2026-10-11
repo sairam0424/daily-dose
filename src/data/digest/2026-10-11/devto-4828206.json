@@ -1,0 +1,19 @@
+{
+  "title": "Git Isn't a Diff Tracker: How Blobs, Trees, DAG Commits, and the Index Actually Work Under the Hood",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/git-isnt-a-diff-tracker-how-blobs-trees-dag-commits-and-the-index-actually-work-under-the-hood-19eo",
+  "date": "2026-10-11",
+  "tags": [
+    "git",
+    "programming",
+    "devops",
+    "webdev"
+  ],
+  "interest_score": 7,
+  "why_read": "A clear technical explainer on Git's actual internal data model, useful for engineers who use Git daily but don't understand its internals.",
+  "analysis": "This article explains that Git fundamentally stores immutable content-addressed snapshots rather than diffs, organizing them as blobs, trees, and commits forming a directed acyclic graph. Understanding this model demystifies commands like rebase and reset, and clarifies behaviors that confuse engineers who think of Git as a patch-based system like older tools such as CVS or SVN. This kind of foundational explainer has lasting value because Git's internal design is widely used but rarely taught well, and misunderstanding it leads to real workflow mistakes. It's a solid, substantive piece aimed squarely at working engineers.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2FR9pEpzM.png"
+}

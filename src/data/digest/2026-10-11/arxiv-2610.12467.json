@@ -1,0 +1,24 @@
+{
+  "title": "CSF: Contextual Safety Filtering for Motion Generators",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12467",
+  "date": "2026-10-11",
+  "tags": [
+    "cs.RO",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics safety paper addressing a real gap: knowing whether an action is dangerous depends on who or what it is being performed on.",
+  "analysis": "This paper tackles the problem that AI-generated motion for humanoid robots can be ambiguous in safety terms, since the same gesture might be safe towards an object but dangerous towards a person. The authors propose a training-free filtering system that uses example safe and unsafe trajectories to build a mathematical safety boundary, enforced through a control technique called a control barrier function. They tested it on a real humanoid robot (Unitree G1) and report it cuts dangerous events by up to 90% while mostly preserving normal behavior. This is a meaningful contribution to practical robot safety, especially as humanoid robots increasingly interact with people in shared spaces.",
+  "authors": [
+    "Lizhi Yang",
+    "Yiling Hou",
+    "Yao Tang",
+    "Junheng Li",
+    "Daniel Weng",
+    "Blake Werner",
+    "Aaron D. Ames"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

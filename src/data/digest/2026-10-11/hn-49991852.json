@@ -1,0 +1,17 @@
+{
+  "title": "2D Vehicles",
+  "source": "hn",
+  "url": "https://patkerr.co.uk/2d-vehicles/",
+  "date": "2026-10-11",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Likely a game-development or simulation project about 2D vehicle physics, interesting mainly to graphics/game programmers.",
+  "analysis": "The title '2D Vehicles' with no further description suggests a demo or write-up about simulating vehicle physics or AI in two dimensions, a classic topic in game development and procedural animation. Such projects often cover topics like steering behaviors, suspension modeling, or collision handling, which can be instructive for graphics programmers. Without more detail, it's hard to assess the depth or novelty of the specific implementation.",
+  "authors": [
+    "Michelangelo11"
+  ],
+  "hn_id": 49991852,
+  "points": 330,
+  "image_url": "https://patkerr.co.uk/2d-vehicles/social-card.jpg",
+  "favicon_url": "https://patkerr.co.uk/favicon.svg"
+}

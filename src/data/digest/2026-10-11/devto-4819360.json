@@ -1,0 +1,19 @@
+{
+  "title": "How Do We Extract the “Why” from a PR into a CHANGELOG with Jev? 🤔",
+  "source": "devto",
+  "url": "https://dev.to/nyaomaru/how-do-we-extract-the-why-from-a-pr-into-a-changelog-with-jev-52pk",
+  "date": "2026-10-11",
+  "tags": [
+    "opensource",
+    "githubactions",
+    "ai",
+    "typescript"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical dev-tool deep dive on using an LLM to reliably extract the 'why' behind a code change for changelog generation.",
+  "analysis": "This post describes a real engineering problem: automatically extracting the rationale behind a pull request to populate changelog entries, which is harder than extracting the surface-level 'what changed' because reasons are often implicit or missing. The author is building a tool called changelog-bot and explicitly tries to avoid letting the AI invent plausible-sounding but false justifications, which is a sensible and non-trivial constraint on LLM-based summarization. This is a useful, grounded example of applying language models carefully to a developer workflow problem rather than hype-driven AI usage. It's a niche tool but the underlying problem of faithful summarization versus hallucinated justification is broadly relevant.",
+  "authors": [],
+  "reactions": 56,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fu1ftyxif2qza2zkzjzyx.gif"
+}

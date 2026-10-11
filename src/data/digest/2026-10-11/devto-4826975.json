@@ -1,0 +1,19 @@
+{
+  "title": "WildProof: Go Outside With a Question, Come Back With Evidence",
+  "source": "devto",
+  "url": "https://dev.to/dj29/wildproof-go-outside-with-a-question-come-back-with-evidence-574e",
+  "date": "2026-10-11",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "opensource",
+    "ai"
+  ],
+  "interest_score": 3,
+  "why_read": "A hackathon-style offline field-observation app with a thoughtful design around uncertainty, but limited broad technical novelty.",
+  "analysis": "WildProof is an offline-first app for recording field observations like nature walks, explicitly structured to separate directly observed facts from AI-inferred guesses and unknowns. The idea of being transparent about confidence levels in AI-assisted analysis is a reasonable design principle, though it's not a particularly novel technical contribution. It reads as a hackathon submission (for a Hacktoberfest challenge) focused on product concept and UX rather than deep technical innovation. Still, the observed/inferred/unknown framing for AI outputs is a decent small pattern worth noting for anyone building similar tools.",
+  "authors": [],
+  "reactions": 35,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fii8e3wlu09t1pt7yjsc5.png"
+}
