@@ -1,0 +1,16 @@
+{
+  "title": "storytold/wordcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/wordcraft",
+  "date": "2026-10-12",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious clean-room Rust reimplementation of Microsoft Word is a serious systems engineering undertaking worth a look for anyone interested in document format compatibility.",
+  "analysis": "This project claims to reimplement Microsoft Word's functionality from scratch in Rust, which would require reverse-engineering or reimplementing the complex .docx format, layout engine, and rich text editing behavior. Building a compatible word processor is notoriously hard due to decades of legacy formatting quirks and OOXML complexity, so a serious attempt is technically interesting regardless of how complete it is. The choice of Rust suggests a focus on memory safety and performance for a traditionally C++-dominated application category. Worth checking the actual feature completeness before taking the claim at face value.",
+  "authors": [],
+  "stars": 5883,
+  "image_url": "https://opengraph.githubassets.com/1b3f3937db8b6b2c03608287290723810927a454b59f9802ff89000f0f18119b/storytold/wordcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

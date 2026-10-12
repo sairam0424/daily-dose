@@ -1,0 +1,16 @@
+{
+  "title": "wheresryan22/anatomy",
+  "source": "github",
+  "url": "https://github.com/wheresryan22/anatomy",
+  "date": "2026-10-12",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 4,
+  "why_read": "An AI agent skill for generating interactive isometric SVG illustrations of machines, interesting mainly as an example of structured generative design tooling.",
+  "analysis": "This repo packages a reusable 'skill' for AI coding agents to produce detailed isometric diagrams of mechanical or complex systems, outputting SVG with optional WebGL shader effects. It's an example of the growing trend of packaging domain-specific generation templates for use with agentic coding assistants rather than a general-purpose graphics library. Technically modest since it mostly orchestrates prompt templates and rendering conventions, but it could be a handy utility for technical documentation or visualization work.",
+  "authors": [],
+  "stars": 3268,
+  "image_url": "https://opengraph.githubassets.com/1b3f3937db8b6b2c03608287290723810927a454b59f9802ff89000f0f18119b/wheresryan22/anatomy",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

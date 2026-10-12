@@ -1,0 +1,19 @@
+{
+  "title": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
+  "source": "devto",
+  "url": "https://dev.to/gde/what-llms-know-that-you-dont-know-they-know-stop-inventing-prompt-dsls-and-ride-50-years-of-2bl6",
+  "date": "2026-10-12",
+  "tags": [
+    "ai",
+    "programming",
+    "unix",
+    "architecture"
+  ],
+  "interest_score": 4,
+  "why_read": "An opinionated argument for reusing established Unix conventions like Makefiles instead of inventing custom prompt DSLs for LLM agents, with a provocative but thin evidentiary basis.",
+  "analysis": "The core claim is that because LLMs are pretrained on decades of Unix documentation and conventions like Makefiles and init.d scripts, prompting them using those familiar formats works better than inventing novel bespoke instruction syntax. This is a plausible and somewhat interesting idea about leveraging pretraining distribution match for better prompt engineering, but the piece as excerpted is heavy on rhetorical flourish and light on rigorous evidence or benchmarks. It could be useful food for thought for people writing agent instruction files, but should be read skeptically rather than as established fact.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4ifoyhfo9dj5uu8s5xqz.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "NYC's \"Click to Cancel\" rule is now in effect",
+  "source": "hn",
+  "url": "https://www.nyc.gov/main/click-to-cancel",
+  "date": "2026-10-12",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A regulatory/consumer-protection story with limited direct technical content, though relevant to engineers who build cancellation or subscription flows.",
+  "analysis": "This covers a New York City consumer protection rule requiring businesses to make subscription cancellation as easy as signup, mirroring the FTC's federal rule. It's mostly a legal and business story rather than a technical one, though it has implications for engineers who implement billing and subscription cancellation flows. Worth a skim for product and backend engineers working on compliance but not deeply technical.",
+  "authors": [
+    "gregsadetsky"
+  ],
+  "hn_id": 50045946,
+  "points": 319,
+  "favicon_url": "https://www.nyc.gov/etc.clientlibs/nycgov/clientlibs/clientlib-site/resources/favicon/icon-192x192.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "mhtsec/ARTEX",
+  "source": "github",
+  "url": "https://github.com/mhtsec/ARTEX",
+  "date": "2026-10-12",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 5,
+  "why_read": "An award-winning autonomous AI penetration testing framework, technically interesting but needs careful ethical framing in a professional digest.",
+  "analysis": "ARTEX appears to be an AI-driven autonomous penetration testing system that reportedly won a competitive 'agent vs agent' cybersecurity challenge, suggesting real technical capability in automated vulnerability discovery and exploitation. Autonomous pentesting agents are a legitimate and fast-growing research area relevant to both red-team security work and understanding AI agent risk, which fits the broader trend covered by other items in this batch. It is a dual-use tool, like most offensive security frameworks, so it is relevant for defenders and researchers rather than inherently malicious, and is comparable to existing open pentesting frameworks like Metasploit in intent. Worth including with the usual caveats about offensive security tooling being for authorized testing only.",
+  "authors": [],
+  "stars": 3141,
+  "image_url": "https://opengraph.githubassets.com/90a7318cc783819e9066775b8fa69f517b92292c7e9e8af124da361e7a30774c/mhtsec/ARTEX",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

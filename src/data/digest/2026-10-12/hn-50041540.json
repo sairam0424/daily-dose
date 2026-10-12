@@ -1,0 +1,16 @@
+{
+  "title": "IRCv3",
+  "source": "hn",
+  "url": "https://ircv3.net/",
+  "date": "2026-10-12",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "IRCv3 is a long-running effort to modernize a decades-old chat protocol, and it's a solid reference for engineers interested in protocol design and backward compatibility.",
+  "analysis": "IRCv3 is the ongoing specification effort to add modern features like message tags, better authentication, and extensibility to the classic IRC protocol. It matters technically because it shows how a 1988-era text protocol can be incrementally extended without breaking old clients. The HN discussion likely covers tradeoffs between legacy compatibility and modern chat features like read receipts or reactions. Useful for anyone building or maintaining chat systems or interested in protocol evolution.",
+  "authors": [
+    "basilikum"
+  ],
+  "hn_id": 50041540,
+  "points": 339,
+  "favicon_url": "https://ircv3.net/favicon/favicon-32x32.png"
+}

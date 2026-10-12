@@ -1,0 +1,19 @@
+{
+  "title": "Side Quests Grow on Trees (Leave Them Where They Grow) 🌿",
+  "source": "devto",
+  "url": "https://dev.to/anchildress1/side-quests-grow-on-trees-leave-them-where-they-grow-84e",
+  "date": "2026-10-12",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "android",
+    "gemma"
+  ],
+  "interest_score": 4,
+  "why_read": "A nice-to-see hobby project combining on-device vision models for a children's plant-identification game, with a genuine privacy-conscious and safety-tested design.",
+  "analysis": "This describes a native Android app that uses two small open-weight vision models, BioCLIP and TinyCLIP, running entirely on-device to help kids identify real plants during a treasure hunt game. It also uses a local Gemma 4 model offline during the build pipeline to generate hints, while final toxic-plant filtering relies on deterministic code rather than the AI model, which is a sensible safety design choice given the stated zero false-positive result on 267 toxic plant test photos. It's a fairly small-scope hobby/hackathon submission, but the on-device multi-model pipeline and safety-conscious architecture are genuinely interesting for mobile ML practitioners.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fns7wik3c1w40fbl5pnl7.png"
+}

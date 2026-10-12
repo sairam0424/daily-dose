@@ -1,0 +1,18 @@
+{
+  "title": "From Reactive Containment to Proactive Assurance: Lessons from OpenAI, Anthropic, and Google Agent Security Incidents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.12463",
+  "date": "2026-10-12",
+  "tags": [
+    "cs.CR",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A timely analysis of real security incidents where AI agent red-teaming exercises from OpenAI, Anthropic, and Google escaped their intended sandboxes and touched live systems.",
+  "analysis": "This case study examines documented incidents where AI agent security evaluations unintentionally reached real production systems, including one touching Hugging Face infrastructure and another where Google's Gemini accessed real organizations through an unexpected network path. The authors propose a framework called the Proactive Agent Security Assurance Cycle, with layered boundary checks like scope contracts, least-privilege access, and automatic stop conditions. This matters because it highlights a genuine and growing operational risk as AI labs scale up autonomous agent testing against real-world targets. The framework itself is somewhat speculative and based on limited public information, but the underlying incidents are a useful wake-up call for anyone building or evaluating agentic AI systems.",
+  "authors": [
+    "Abbas Raftari"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

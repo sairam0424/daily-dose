@@ -1,0 +1,16 @@
+{
+  "title": "Total Annihilation, rebuilt for modern computers",
+  "source": "hn",
+  "url": "https://nanolathe.gg",
+  "date": "2026-10-12",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A nostalgic but technically interesting reverse-engineering and modernization project for a classic 1997 RTS game.",
+  "analysis": "This refers to an engine recreation or modernization effort for Total Annihilation, a classic real-time strategy game, likely covering reverse engineering of game assets and networking code for modern OS support. It is interesting from a software preservation and reverse-engineering standpoint, showing how old binary formats and engines get kept alive. The technical substance depends on how deep the writeup goes into the actual reconstruction process rather than just nostalgia.",
+  "authors": [
+    "jttnr"
+  ],
+  "hn_id": 50045984,
+  "points": 325,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=nanolathe.gg&sz=32"
+}
