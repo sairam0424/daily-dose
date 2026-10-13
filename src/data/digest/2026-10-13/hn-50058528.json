@@ -1,0 +1,15 @@
+{
+  "title": "A Modern Web App in C",
+  "source": "hn",
+  "url": "https://prophitt.me/writing/a-modern-web-app-in-c",
+  "date": "2026-10-13",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A deep dive into building a modern web application using plain C is a genuinely unusual and educational systems-programming exercise.",
+  "analysis": "This piece likely explores building web app backend/frontend infrastructure using C instead of typical higher-level web frameworks, touching on memory management, HTTP handling, and templating from scratch. Such projects are valuable for engineers wanting to understand what frameworks abstract away and for appreciating low-level performance tradeoffs. The high comment count suggests spirited debate about practicality versus a learning exercise.",
+  "authors": [
+    "prophittcorey"
+  ],
+  "hn_id": 50058528,
+  "points": 409
+}

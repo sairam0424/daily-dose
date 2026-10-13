@@ -1,0 +1,20 @@
+{
+  "title": "Can Language Models Play the Wikipedia Game?",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13948",
+  "date": "2026-10-13",
+  "tags": [
+    "cs.AI",
+    "cs.IR"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever and rigorous benchmark testing LLM navigation and reasoning via the Wikipedia Game, offering real comparative data across languages and model types.",
+  "analysis": "The researchers use the Wikipedia Game — navigating from one article to a target using only hyperlinks — as a controlled testbed for evaluating how well language models can do multi-step, graph-based information retrieval using semantic cues. They compare embedding models and LLMs like GPT-4o, GPT-o3 mini, and DeepSeek-R1 against human performance and TF-IDF baselines, across five languages and five academic datasets. The finding that no model clearly beats humans, and that rankings vary heavily by language and topic, is a useful and sobering data point for anyone deploying LLMs for retrieval tasks. The methodology, building large local Wikipedia and citation graphs via OpenAlex without needing third-party APIs, is also a reusable technical contribution.",
+  "authors": [
+    "Alexander Hickey",
+    "Joanna Knight",
+    "James Bishop"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

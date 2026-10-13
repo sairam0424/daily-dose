@@ -1,0 +1,22 @@
+{
+  "title": "Hide and Seek: HIDE Concepts to SEEK explanations for black box models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13935",
+  "date": "2026-10-13",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A new model-agnostic interpretability method that avoids needing model weights or labeled concept datasets is a solid, practically useful contribution to explainable AI.",
+  "analysis": "Hide and Seek (HnS) is a technique for explaining what visual concepts drive a black-box vision model's output, without needing access to the model's internal weights or large hand-labeled datasets of concepts. It works by finding images containing a target concept, masking that concept region, and measuring how much the model's output changes, giving a causal attribution signal. This extends concept-based explanation beyond classification to tasks like image captioning and satellite segmentation, which prior methods couldn't handle. The validation against ground-truth attributions on CelebA and COCO-Stuff gives some confidence the method is measuring something real rather than just plausible-looking explanations.",
+  "authors": [
+    "Bhanu Tokas",
+    "Rahul Nair",
+    "Rockwell Jackson",
+    "Hannah Kerner"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

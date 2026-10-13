@@ -1,0 +1,21 @@
+{
+  "title": "AI Models Can Provably Hide Arbitrary Capabilities",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13928",
+  "date": "2026-10-13",
+  "tags": [
+    "cs.LG",
+    "cs.CR"
+  ],
+  "interest_score": 8,
+  "why_read": "A striking AI-safety result showing that hidden backdoored capabilities can be cryptographically embedded in model weights and remain undetectable even under full white-box access.",
+  "analysis": "The authors construct a proof-of-concept where a secret, encrypted sub-network is embedded inside a host model's weights and only activates upon a secret trigger, using cryptographic techniques called digital lockers. They show this hidden capability survives common detection methods including fine-tuning, weight noising, gradient-based trigger search, and latent adversarial training, even with full access to model weights. This directly challenges a core assumption behind AI safety evaluations, that dangerous capabilities can always be found through sufficient probing. It's a meaningful theoretical and practical result for anyone thinking about how trustworthy capability audits of released models can really be.",
+  "authors": [
+    "Andis Draguns",
+    "Sumeet Ramesh Motwani",
+    "Raymond Douglas",
+    "Christian Schroeder de Witt"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

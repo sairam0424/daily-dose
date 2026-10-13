@@ -1,0 +1,18 @@
+{
+  "title": "KL Before and After Mixing: A Round-Complexity Separation in Parallel Sampling",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13924",
+  "date": "2026-10-13",
+  "tags": [
+    "cs.LG",
+    "cs.IT"
+  ],
+  "interest_score": 4,
+  "why_read": "A highly technical, narrow theoretical result about parallel sampling algorithms and divergence measures, of interest mainly to specialists in sampling theory and information theory.",
+  "analysis": "This paper analyzes parallel sampling schemes, where multiple coordinates of a distribution are generated together in rounds, and shows a gap between two ways of measuring how close the output is to the true target distribution. It proves that for a specific balanced binary string distribution, the number of rounds needed differs sharply, logarithmic-squared versus double-logarithmic, depending on which divergence criterion is used. This is dense, abstract probability theory relevant to understanding the fundamental limits of parallelizing generative sampling, but the practical implications for working engineers are minimal and the writing is highly technical.",
+  "authors": [
+    "Tianyi Wu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

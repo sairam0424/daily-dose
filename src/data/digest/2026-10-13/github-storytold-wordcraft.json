@@ -1,0 +1,16 @@
+{
+  "title": "storytold/wordcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/wordcraft",
+  "date": "2026-10-13",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious clean-room reimplementation of Microsoft Word in Rust is a notable engineering feat worth a look, though its real-world completeness and format fidelity are unproven from the description alone.",
+  "analysis": "This project claims to be a from-scratch, legally clean implementation of Word-like document editing functionality written entirely in Rust. Rewriting complex legacy document formats and rich-text editing behavior is a huge undertaking involving layout engines, format compatibility (likely DOCX), and UI complexity. The high star count suggests strong community curiosity, but without more detail on fidelity, performance, or format support, it's hard to gauge how production-ready or just a demo it is.",
+  "authors": [],
+  "stars": 9297,
+  "image_url": "https://opengraph.githubassets.com/9174a681307b1280868b21969e6be66e22f73541a4886c0900013b709916eb68/storytold/wordcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

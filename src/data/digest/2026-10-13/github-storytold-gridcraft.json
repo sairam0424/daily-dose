@@ -1,0 +1,16 @@
+{
+  "title": "storytold/gridcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/gridcraft",
+  "date": "2026-10-13",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "Another clean-room Office clone, this time an Excel-style spreadsheet in Rust, part of the same ArtCraft suite as the Word clone.",
+  "analysis": "GridCraft is presented as an open-source, from-scratch spreadsheet application built in Rust, aiming for Excel-like functionality including formulas and grid editing. Building a correct, performant spreadsheet engine, with formula parsing, dependency graphs, and recalculation, is a genuinely hard systems problem. As with the companion Word clone, the actual completeness and compatibility with real Excel files isn't clear from the description, so interest depends on implementation quality not evident here.",
+  "authors": [],
+  "stars": 3879,
+  "image_url": "https://opengraph.githubassets.com/3bdf4a9bdc35f1ff96a8ecced1675169ecacfc3c60fb31e55e5d9debcc330bcb/storytold/gridcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

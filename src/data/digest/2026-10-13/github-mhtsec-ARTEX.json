@@ -1,0 +1,16 @@
+{
+  "title": "mhtsec/ARTEX",
+  "source": "github",
+  "url": "https://github.com/mhtsec/ARTEX",
+  "date": "2026-10-13",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 6,
+  "why_read": "An AI-driven autonomous penetration testing framework that won a security competition is technically relevant for security researchers and red teams, assuming it is used for legitimate authorized testing.",
+  "analysis": "ARTEX appears to be an AI-powered autonomous penetration testing system, written in Go, that won a Baidu-sponsored offense/defense competition, suggesting credible technical validation. Automating parts of penetration testing with AI agents is an active and legitimate security research area, used for finding vulnerabilities before attackers do. The tool's dual-use nature means it's valuable for defenders and red teams but could be misused if deployed against unauthorized targets, which is a normal caveat for any pentesting tool rather than a reason to exclude it.",
+  "authors": [],
+  "stars": 3617,
+  "image_url": "https://opengraph.githubassets.com/83605a931353b3a4ece02f79ba5cacc177a587f3380ef6d59d5df7ca82e466ae/mhtsec/ARTEX",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

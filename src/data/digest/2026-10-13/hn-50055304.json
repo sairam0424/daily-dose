@@ -1,0 +1,17 @@
+{
+  "title": "Hackers activate automatic defrosting in supermarket fridges across Europe",
+  "source": "hn",
+  "url": "https://www.tomshardware.com/tech-industry/cyber-security/unprecedented-cyberattack-cripples-supermarket-fridges-across-europe-as-hackers-activate-automatic-defrosting-delivery-and-store-prices-also-impacted-by-incident",
+  "date": "2026-10-13",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An interesting real-world story about IoT security failures in commercial refrigeration systems, though it reads more like a security incident report than deep technical analysis.",
+  "analysis": "The story describes hackers remotely triggering defrost cycles on supermarket refrigeration units across Europe, apparently by exploiting internet-connected industrial control systems. This matters because it highlights how exposed and poorly secured operational technology and IoT devices are in critical infrastructure like food supply chains. It's a good real-world case study in IoT security negligence even without deep technical detail in the title alone.",
+  "authors": [
+    "Zeekaas"
+  ],
+  "hn_id": 50055304,
+  "points": 464,
+  "image_url": "https://cdn.mos.cms.futurecdn.net/o7hTqTruL84oHxvg6pYS3K-2000-80.jpg",
+  "favicon_url": "https://vanilla.futurecdn.net/tomshardware/1779911/favicon.ico"
+}

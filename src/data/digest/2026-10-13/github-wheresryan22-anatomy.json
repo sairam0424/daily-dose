@@ -1,0 +1,16 @@
+{
+  "title": "wheresryan22/anatomy",
+  "source": "github",
+  "url": "https://github.com/wheresryan22/anatomy",
+  "date": "2026-10-13",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche AI agent tool for generating illustrative SVG diagrams of machines is a fun creative application but of limited broad engineering interest.",
+  "analysis": "This is a 'skill' plugin, likely for an LLM agent framework, that generates detailed interactive isometric SVG illustrations of mechanical or complex systems, optionally enhanced with WebGL shaders. It's a creative and visually appealing use of generative AI for technical illustration, which could be handy for documentation or educational content. The underlying technique is a prompt/template pipeline rather than a novel algorithm, so the technical depth is modest even if the output quality is impressive.",
+  "authors": [],
+  "stars": 6416,
+  "image_url": "https://opengraph.githubassets.com/1b9809cc97fbd8b2190c8e57e092bf022c0856c6e04a320b79c744937a066046/wheresryan22/anatomy",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

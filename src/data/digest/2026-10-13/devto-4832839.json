@@ -1,0 +1,20 @@
+{
+  "title": "\"Light don go\": when Nigeria''s power cuts out, my laptop sends me outside",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/light-don-go-when-nigerias-power-cuts-out-my-laptop-sends-me-outside-38k8",
+  "date": "2026-10-13",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "productivity"
+  ],
+  "interest_score": 2,
+  "why_read": "A whimsical personal hackathon project that nudges the author to stretch during power outages, with little broader technical substance beyond a simple battery-status trigger and UI.",
+  "analysis": "This is a Hacktoberfest challenge submission describing a small app that detects when a laptop switches to battery power during Nigerian electricity outages and displays a full-screen stretch-break reminder. The technical implementation seems to be a simple battery-status listener paired with a themed UI and a local AI model (Gemma) generating a motivational line. It's a charming personal story about local infrastructure problems, but there is minimal reusable technical insight for other engineers.",
+  "authors": [],
+  "reactions": 29,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frk9zrof15vljtel3o9tq.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "THE UNHEARD: A Game That Sends You Outside, Teaches a Machine to Listen, and Makes It Prove Every Word",
+  "source": "devto",
+  "url": "https://dev.to/iclaldogan/the-unheard-a-game-that-sends-you-outside-teaches-a-machine-to-listen-and-makes-it-prove-every-43go",
+  "date": "2026-10-13",
+  "tags": [
+    "devchallenge",
+    "hf26challenge"
+  ],
+  "interest_score": 4,
+  "why_read": "A creative gamified concept pairing audio AI models with a 'go outside and record sounds' mechanic, interesting as a design idea though light on hard technical novelty.",
+  "analysis": "THE UNHEARD is a game concept where players record real-world sounds and teach a frozen CLAP audio embedding model to recognize them via a separate retrieval memory, explicitly avoiding any model fine-tuning. The architecture, a local React PWA with a FastAPI backend, SQLite storage, and Gemma via Ollama for dialogue, is a reasonable local-first AI app stack. The core technical idea, pairing frozen embeddings with an updatable external memory rather than retraining, is a legitimate and relevant pattern in retrieval-augmented AI systems, even though the project itself is a hackathon submission rather than rigorous research.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Futwx2ar2udsipq6vr6ww.jpg"
+}

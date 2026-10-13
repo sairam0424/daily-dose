@@ -1,0 +1,16 @@
+{
+  "title": "storytold/cadcraft",
+  "source": "github",
+  "url": "https://github.com/storytold/cadcraft",
+  "date": "2026-10-13",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "A third entry in the same clean-room Office/CAD suite, this time cloning AutoCAD-style functionality in Rust, continuing an ambitious but unverified pattern.",
+  "analysis": "CADCraft is described as an open-source CAD and drafting application built in Rust, aiming to replicate AutoCAD-style workflows. CAD software involves complex geometric modeling, precision math, and often proprietary file format support, making this a technically demanding project if it delivers real functionality. Given it's part of the same 'storytold' family as the Word and Excel clones, it's worth noting as a pattern of ambitious clean-room reimplementations, though real-world usability remains unverified from the description.",
+  "authors": [],
+  "stars": 3521,
+  "image_url": "https://opengraph.githubassets.com/143f38cb7667e427864c70787e6011e454c0899b998b6c6c5c28778015241d93/storytold/cadcraft",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

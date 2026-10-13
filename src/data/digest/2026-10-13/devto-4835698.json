@@ -1,0 +1,19 @@
+{
+  "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
+  "source": "devto",
+  "url": "https://dev.to/gde/if-you-never-do-anything-else-to-fix-your-prompts-do-this-one-thing-3069",
+  "date": "2026-10-13",
+  "tags": [
+    "ai",
+    "programming",
+    "architecture",
+    "productivity"
+  ],
+  "interest_score": 3,
+  "why_read": "A prompt-engineering opinion piece claiming to explain LLM hallucination through a 1986 philosophy reference, long on dramatic framing but likely short on rigorous technical grounding.",
+  "analysis": "This article argues that LLM hallucination of nonexistent APIs stems from an 'autoregressive grammar trap' and ties this to Fernando Flores and Terry Winograd's 1986 work on language and commitment in computing. While connecting classical computer science philosophy to modern LLM behavior is an interesting angle, the excerpt is heavy on dramatic narrative and light on concrete, actionable technical guidance so far. Readers looking for genuinely new mitigation techniques for hallucination may find the practical payoff thin compared to the lengthy setup.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F19w2sm4no5mtyl4ohrel.png"
+}

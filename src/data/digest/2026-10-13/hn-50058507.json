@@ -1,0 +1,16 @@
+{
+  "title": "GLM-Legal",
+  "source": "hn",
+  "url": "https://z.ai/blog/glm-legal",
+  "date": "2026-10-13",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A specialized large language model for legal tasks is relevant to practitioners building domain-specific AI tools, though legal-domain LLMs are now a crowded space.",
+  "analysis": "GLM-Legal appears to be a legal-domain fine-tuned or specialized version of a GLM language model, aimed at tasks like contract review or legal research. Domain-specific LLMs are a well-established trend, and the technical interest depends heavily on benchmarks, training methodology, and how it compares to general-purpose models with retrieval augmentation. Without more detail in the title alone, it's hard to assess novelty versus marketing.",
+  "authors": [
+    "ilreb"
+  ],
+  "hn_id": 50058507,
+  "points": 444,
+  "favicon_url": "https://z-cdn.chatglm.cn/z-blog/z-icon.svg"
+}
