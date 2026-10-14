@@ -1,0 +1,16 @@
+{
+  "title": "ARahim3/DigUp",
+  "source": "github",
+  "url": "https://github.com/ARahim3/DigUp",
+  "date": "2026-10-14",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 6,
+  "why_read": "An on-device semantic search tool for Mac files using a local embedding model is a practical and privacy-respecting application of recent small-model embedding research.",
+  "analysis": "DigUp lets users search their Mac's files, including photos, PDFs, recordings, and code, by meaning rather than exact filename or text match, using Google DeepMind's EmbeddingGemma model running entirely on-device. This matters because it avoids sending personal data to the cloud while still getting semantic search quality that previously required large server-side models. The use of a small, efficient embedding model for multimodal local search reflects a broader trend of shrinking powerful models down for consumer hardware. It's a solid practical demonstration of applied embedding model technology rather than a research contribution itself.",
+  "authors": [],
+  "stars": 2350,
+  "image_url": "https://opengraph.githubassets.com/63afd4d25195d5b683e77188e8355124550bb49200a3ffe363f1f57f70d98a5b/ARahim3/DigUp",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

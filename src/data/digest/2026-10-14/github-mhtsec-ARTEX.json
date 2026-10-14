@@ -1,0 +1,16 @@
+{
+  "title": "mhtsec/ARTEX",
+  "source": "github",
+  "url": "https://github.com/mhtsec/ARTEX",
+  "date": "2026-10-14",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 5,
+  "why_read": "An award-winning autonomous AI penetration testing framework is technically interesting but should be read with appropriate caution given dual-use security tooling implications.",
+  "analysis": "ARTEX appears to be an AI-driven autonomous penetration testing system, described as a winning project from a Baidu offense/defense security competition. Such systems combine LLM-based reasoning with traditional security tooling to automate vulnerability discovery and exploitation chains, which is a genuinely active and interesting research area in security automation. The project is dual-use by nature, like any penetration testing framework, but these tools are standard in the offensive security community and used for legitimate red-teaming and defense research. Worth noting for engineers interested in how AI agents are being applied to real-world security workflows.",
+  "authors": [],
+  "stars": 3871,
+  "image_url": "https://opengraph.githubassets.com/7477fd879a6817d569feb4a0f7234072fda21a031f59f658e8d5d168e06e4e1b/mhtsec/ARTEX",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

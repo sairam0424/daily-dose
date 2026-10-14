@@ -1,0 +1,18 @@
+{
+  "title": "Constructive Bounds for the Topological Expressivity of Neural Networks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13931",
+  "date": "2026-10-14",
+  "tags": [
+    "math.AT",
+    "cs.LG"
+  ],
+  "interest_score": 4,
+  "why_read": "A theoretical math paper on neural network expressivity using topology, interesting mainly to researchers studying the mathematical limits of what networks can represent.",
+  "analysis": "This paper studies how complex a shape a ReLU neural network's output can be, measured using topological invariants called Betti numbers which roughly count independent loops and holes in a space. The authors give explicit formulas for network architectures (number of layers and neurons) needed to produce outputs with specified topological complexity, improving on prior bounds. This is a niche theoretical contribution relevant to researchers interested in the mathematical foundations of deep learning expressivity rather than practitioners. The conjectured tight bound for sphere-like outputs is an interesting open question but has no immediate practical application.",
+  "authors": [
+    "Kosio Beshkov"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

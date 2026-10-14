@@ -1,0 +1,16 @@
+{
+  "title": "wheresryan22/anatomy",
+  "source": "github",
+  "url": "https://github.com/wheresryan22/anatomy",
+  "date": "2026-10-14",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A fun generative-art tool for creating detailed technical illustrations automatically, interesting as a creative AI application but not deeply novel engineering.",
+  "analysis": "This is an 'agent skill' - likely a plugin or prompt template for an AI coding/creative assistant - that automates generation of isometric SVG illustrations of machines and systems, with optional WebGL shader effects. It's primarily a creative tool combining LLM-driven content generation with procedural graphics techniques rather than a fundamentally new technique. The high star count suggests strong community interest, probably due to the visually impressive output and ease of use. Technically it's a nice demonstration of combining generative AI with vector/3D graphics pipelines, but it doesn't introduce new algorithms or research.",
+  "authors": [],
+  "stars": 8171,
+  "image_url": "https://opengraph.githubassets.com/4cd5deb4708794a0ba891825090e06f6467c218ba93220955d54c5f1d2c8aae5/wheresryan22/anatomy",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

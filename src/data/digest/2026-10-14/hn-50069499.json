@@ -1,0 +1,17 @@
+{
+  "title": "11 year old unsoundness bugs found in Rust borrow checker",
+  "source": "hn",
+  "url": "https://github.com/rust-lang/rust/issues/164250",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A genuinely technical deep-dive into long-standing soundness holes in Rust's type system is valuable for anyone who relies on Rust's safety guarantees.",
+  "analysis": "This concerns bugs in Rust's borrow checker that allow memory-unsafe code to compile despite Rust's core promise of safety without a garbage collector. Such issues are rare and significant because they undermine a central selling point of the language, so understanding how and why they slipped through for over a decade is instructive. It likely covers edge cases in lifetime inference or variance that formal verification and testing missed. This is the kind of post that teaches real lessons about type system design and verification.",
+  "authors": [
+    "formerly_proven"
+  ],
+  "hn_id": 50069499,
+  "points": 657,
+  "image_url": "https://opengraph.githubassets.com/527ed16f3c9f045366b9ea42e29f199fbb28666619b05d90dcc5b3598440fbe4/rust-lang/rust/issues/164250",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

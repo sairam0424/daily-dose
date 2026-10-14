@@ -1,0 +1,17 @@
+{
+  "title": "Apple HomeView",
+  "source": "hn",
+  "url": "https://www.apple.com/apple-homeview/",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Likely about Apple's new home automation interface, interesting mainly to Apple ecosystem users rather than engineers broadly.",
+  "analysis": "This seems to reference a new or redesigned Apple home automation feature or app, possibly tied to a recent OS release. Without a description, it's unclear whether this covers underlying architecture, APIs, or just a UI refresh for consumers. The high comment count suggests strong opinions, likely about usability or ecosystem lock-in rather than deep technical mechanisms. Interest here is more product-related than engineering-related.",
+  "authors": [
+    "etothet"
+  ],
+  "hn_id": 50071017,
+  "points": 638,
+  "image_url": "https://www.apple.com/v/apple-homeview/a/images/meta/apple-homeview__lk7n65hb6bm2_og.png?202610121723",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=www.apple.com&sz=32"
+}

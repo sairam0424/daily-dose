@@ -1,0 +1,22 @@
+{
+  "title": "Hide and Seek: HIDE Concepts to SEEK explanations for black box models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.13935",
+  "date": "2026-10-14",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A new concept-attribution method for explaining black-box vision models that avoids needing model weights or large labeled datasets is a useful practical interpretability tool.\n",
+  "analysis": "Hide and Seek (HnS) is an interpretability technique that explains vision model predictions using human-understandable concepts, like 'wears glasses' or 'has grass', without needing access to the model's internal weights. It works by finding images matching a concept, locating and masking that concept region, then checking how much the model's output changes, which gives a measure of how much that concept influenced the decision. The method is validated on face attribute (CelebA) and scene segmentation (COCO-Stuff) datasets and extends to tasks like captioning and satellite imagery where prior concept-attribution tools didn't apply. This matters because black-box interpretability tools that only need API-level access are more broadly usable in real deployments where model internals are proprietary.",
+  "authors": [
+    "Bhanu Tokas",
+    "Rahul Nair",
+    "Rockwell Jackson",
+    "Hannah Kerner"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

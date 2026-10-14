@@ -1,0 +1,16 @@
+{
+  "title": "storytold/craft-launcher",
+  "source": "github",
+  "url": "https://github.com/storytold/craft-launcher",
+  "date": "2026-10-14",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 3,
+  "why_read": "An application launcher project with minimal technical description, likely of narrow interest unless it introduces a distinctive architecture or UX approach.",
+  "analysis": "This appears to be a desktop application launcher written in Rust, associated with a product called 'Craft'. Without further description of its design or novel features, it's hard to judge technical depth beyond it being a reasonably popular open-source utility. Rust-based launchers are common in the ecosystem, and this project's distinguishing features aren't clear from the available information. It may be worth a look for those interested in Rust desktop app development patterns, but it doesn't stand out as groundbreaking from the data given.",
+  "authors": [],
+  "stars": 2296,
+  "image_url": "https://opengraph.githubassets.com/444af889f2b87adcedf659a2a2d4d121cd565b9d0e708f3840021c9eb12416e5/storytold/craft-launcher",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
