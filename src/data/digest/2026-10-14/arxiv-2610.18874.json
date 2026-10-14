@@ -1,0 +1,25 @@
+{
+  "title": "ChunkAct: Action Chunking for Agentic Robotics",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.18874",
+  "date": "2026-10-14",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete efficiency improvement for LLM-driven robot control that cuts redundant reasoning calls by batching routine action sequences into 'chunks,' with solid quantitative gains on a standard benchmark.",
+  "analysis": "ChunkAct addresses a real inefficiency in agentic robotics: today's systems call an LLM to reason before every single low-level action, which is wasteful once a plan is already decided. The paper's fix is to let the system execute a whole chunk of pre-planned actions autonomously and only call the LLM again when something fails or a new decision is needed. This cuts LLM calls by almost 3x and token usage by over 4x while also improving task success rate on the LIBERO-Pro benchmark, which is a meaningful systems-level contribution for anyone building LLM-controlled robots.",
+  "authors": [
+    "Bingxin Xu",
+    "Wenrui Bao",
+    "Xinxin Liu",
+    "Jiawei Zhou",
+    "Yuzhang Shang",
+    "Emilio Ferrara"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Building Better Agents through End-to-End Evals",
+  "source": "devto",
+  "url": "https://dev.to/dailycontext/building-better-agents-through-end-to-end-evals-pgh",
+  "date": "2026-10-14",
+  "tags": [
+    "ai",
+    "agents",
+    "evals",
+    "aie"
+  ],
+  "interest_score": 6,
+  "why_read": "A grounded, practically-detailed account of building evaluation systems for AI agents doing real bookkeeping work, with specifics about synthetic data generation that go beyond typical agent-hype posts.",
+  "analysis": "The article describes building end-to-end evaluations for an AI agent that automates bookkeeping tasks like reconciliation and variance analysis, emphasizing that teams must deeply understand the human workflow before automating it. It introduces the idea of 'synthetic businesses' or 'worlds,' realistic simulated company data with intentionally messy records, used to generate test scenarios before real customer data exists. This addresses a genuinely hard, underdiscussed problem in agent development: how to evaluate agents rigorously when deployment data doesn't yet exist. It's a useful, specific case study rather than generic advice about AI agents.",
+  "authors": [],
+  "reactions": 34,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9f39ycw3nmggoxt5bwmd.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Cepheid: Decoupling Scale from Structure for Cross-Family Motion Completion",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.18871",
+  "date": "2026-10-14",
+  "tags": [
+    "cs.CV",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but technically interesting approach to inferring dense mesh motion from sparse observations across very different object types like cloth and animal bodies, relevant mainly to computer graphics and vision researchers.",
+  "analysis": "The paper tackles 'motion completion,' filling in full mesh deformation from only a few tracked points, a task long limited by needing training data from one specific geometry type like a human body or garment. Its key trick is separating the overall scale of the deformation from its structural pattern, learning a scale-independent model and estimating the physical amplitude separately. This lets one trained model generalize across wildly different object families, including animals and robot-grasped soft objects, without needing skeletons or point correspondences. It's a solid graphics/vision contribution but has a narrow audience outside that community.",
+  "authors": [
+    "Chih-Hai Su",
+    "Tsung-Wei Ke",
+    "Yu-Lun Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

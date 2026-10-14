@@ -1,0 +1,16 @@
+{
+  "title": "Iosevka is an open-source, sans-serif and slab-serif monospace font",
+  "source": "hn",
+  "url": "https://typeof.net/Iosevka/",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Iosevka is a well-regarded, highly customizable open-source monospace font popular among developers, useful mainly as a practical tool recommendation rather than deep technical content.",
+  "analysis": "Iosevka is a programmatically generated monospace typeface family that lets users customize ligatures, width, weight, and character variants through a build configuration. It is widely used in terminals and code editors because of its narrow width and legibility at small sizes. The technical interest here is more about typography engineering and build tooling than cutting-edge research, but it is a solid, battle-tested tool many developers already rely on.",
+  "authors": [
+    "otobrglez"
+  ],
+  "hn_id": 50084240,
+  "points": 690,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=typeof.net&sz=32"
+}

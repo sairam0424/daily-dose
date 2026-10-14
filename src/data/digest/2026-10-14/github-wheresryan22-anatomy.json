@@ -6,11 +6,11 @@
   "tags": [
     "JavaScript"
   ],
-  "interest_score": 5,
-  "why_read": "A fun generative-art tool for creating detailed technical illustrations automatically, interesting as a creative AI application but not deeply novel engineering.",
-  "analysis": "This is an 'agent skill' - likely a plugin or prompt template for an AI coding/creative assistant - that automates generation of isometric SVG illustrations of machines and systems, with optional WebGL shader effects. It's primarily a creative tool combining LLM-driven content generation with procedural graphics techniques rather than a fundamentally new technique. The high star count suggests strong community interest, probably due to the visually impressive output and ease of use. Technically it's a nice demonstration of combining generative AI with vector/3D graphics pipelines, but it doesn't introduce new algorithms or research.",
+  "interest_score": 4,
+  "why_read": "A fun creative tool that uses an LLM agent skill to auto-generate interactive isometric diagrams of machines as SVG/WebGL, more of a neat demo than a foundational technical advance.",
+  "analysis": "This is an 'agent skill,' essentially a prompt/tool template, that directs an LLM to produce detailed isometric illustrations of mechanical systems as interactive SVGs, optionally enhanced with WebGL shaders for 3D effects. It's a creative application of generative AI to technical illustration rather than a new technique or architecture. Its high star count likely reflects novelty and shareability on social media rather than deep technical substance, though it could be a handy tool for documentation or educational diagrams.",
   "authors": [],
-  "stars": 8171,
-  "image_url": "https://opengraph.githubassets.com/4cd5deb4708794a0ba891825090e06f6467c218ba93220955d54c5f1d2c8aae5/wheresryan22/anatomy",
+  "stars": 9978,
+  "image_url": "https://opengraph.githubassets.com/72cd4eae814a714a2ec075aa458c02d1e9b0add923f402b6082a286c744ca8b8/wheresryan22/anatomy",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

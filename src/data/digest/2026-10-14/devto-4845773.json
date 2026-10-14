@@ -1,0 +1,20 @@
+{
+  "title": "Memory Isn’t Learning: Why AI Agents Keep Making the Same Mistakes",
+  "source": "devto",
+  "url": "https://dev.to/dailycontext/memory-isnt-learning-why-ai-agents-keep-making-the-same-mistakes-cpc",
+  "date": "2026-10-14",
+  "tags": [
+    "ai",
+    "agents",
+    "memory",
+    "aie"
+  ],
+  "interest_score": 5,
+  "why_read": "A conceptual essay distinguishing 'memory' from genuine 'learning' in AI agents, raising a real and underappreciated limitation but light on concrete technical solutions in the visible excerpt.",
+  "analysis": "The piece argues that giving agents more context, longer memory, or vector database storage does not equate to actual learning or improved judgment over time, since agents can still repeat the same mistakes. This is a legitimate and often overlooked distinction in agent design discourse, as most 'memory' systems are really just retrieval rather than genuine behavioral adaptation. The excerpt is mostly scene-setting and anecdote though, so it's unclear from what's shown whether the full article offers a concrete technical mechanism or stays at the level of a thoughtful opinion piece.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F91efzweikljl6q02lhwm.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

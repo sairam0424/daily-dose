@@ -1,0 +1,40 @@
+{
+  "title": "What Matters in Quality-Aware VLA Pretraining: A Benchmark and Empirical Study",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.18869",
+  "date": "2026-10-14",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A careful empirical study on how to use imperfect human demonstration data when pretraining robot vision-language-action models, useful for robotics practitioners but fairly narrow in scope.",
+  "analysis": "The paper studies how to best use demonstrations of varying quality, not just perfect ones, when pretraining robot control models that combine vision, language, and action. It compares three strategies, weighting demonstrations by quality, filtering out bad ones, or conditioning the model on quality labels, across three different model architectures and 24 tasks. The authors introduce a new benchmark, AXIS-Bench, with recorded object states to make these comparisons reproducible, and show real-world task success nearly tripling with simulation pretraining. This is useful, rigorous robotics research but is mostly of interest to people actually building VLA systems.",
+  "authors": [
+    "Mingxuan Yan",
+    "Litian Gong",
+    "Dihong Huang",
+    "Zhixu Li",
+    "Tianyu Zhang",
+    "Wenqian Zhang",
+    "Hefeifei Jiang",
+    "Peihao Li",
+    "Jian Zhang",
+    "Mengfei Zhao",
+    "Yikai Tang",
+    "Hai Zhai",
+    "Zehao Wang",
+    "Ruijian Liang",
+    "Yanjia Huang",
+    "Lin Shao",
+    "Changliu Liu",
+    "Kaiyu Hang",
+    "Zhiwen Fan",
+    "Masayoshi Tomizuka",
+    "Jianfei Yang",
+    "Jiachen Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

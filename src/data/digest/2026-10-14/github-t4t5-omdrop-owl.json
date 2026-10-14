@@ -6,11 +6,11 @@
   "tags": [
     "Shell"
   ],
-  "interest_score": 5,
-  "why_read": "A practical reverse-engineering project implementing Apple's AirDrop protocol for non-Apple devices, useful for interoperability but relatively niche.",
-  "analysis": "This project reimplements Apple's proprietary AirDrop file-sharing protocol so that non-Apple devices like Linux or Android machines can send and receive files with Apple devices. Building this requires reverse-engineering Apple's undocumented Bluetooth/Wi-Fi Direct discovery and transfer protocol, which is a nontrivial and interesting technical challenge. It's a shell-script-based implementation, suggesting it wraps lower-level tools rather than being a from-scratch protocol stack. This is useful for cross-platform interoperability but is a niche utility rather than a broadly applicable technique.",
+  "interest_score": 4,
+  "why_read": "A niche but genuinely useful interoperability tool that reimplements Apple's AirDrop protocol for non-Apple devices, interesting mainly to people who need cross-platform file sharing without cloud services.",
+  "analysis": "This project reverse-engineers Apple's proprietary AirDrop protocol so that non-Apple devices (presumably Linux, Windows, Android) can send and receive files directly with Apple devices. That's a nontrivial reverse-engineering and protocol-compatibility effort, since AirDrop uses undocumented BLE and Wi-Fi Direct mechanisms layered with Apple-specific crypto. It's a solid practical utility for a specific cross-platform-interop use case rather than a broadly applicable technical advance.",
   "authors": [],
-  "stars": 2584,
-  "image_url": "https://opengraph.githubassets.com/f2fc56087dfd902ba5a6a110118593bdb5e3c9eba63c2a08bceb231481e7157b/t4t5/omdrop-owl",
+  "stars": 2678,
+  "image_url": "https://opengraph.githubassets.com/e6a43eb1f56959e8bb4292292fdcff1fbd03ca98624892c127eabd78b0d00df5/t4t5/omdrop-owl",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

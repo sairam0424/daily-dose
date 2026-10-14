@@ -1,0 +1,16 @@
+{
+  "title": "Passkeys are not a trap",
+  "source": "hn",
+  "url": "https://scotthelme.co.uk/passkeys-are-not-a-trap/",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A pointed rebuttal in the ongoing passkeys adoption debate, worth reading for engineers deciding whether to implement WebAuthn-based passwordless auth and weighing lock-in concerns.",
+  "analysis": "Passkeys have faced criticism for tying credentials to platform ecosystems (Apple, Google, Microsoft) raising fears of vendor lock-in and recovery problems; this piece argues against that framing. The high comment count signals a contentious but technically substantive discussion about key portability, backup mechanisms, and real-world UX failures of WebAuthn. For engineers implementing authentication systems, understanding both sides of this debate has direct practical value.",
+  "authors": [
+    "speckx"
+  ],
+  "hn_id": 50088935,
+  "points": 424,
+  "favicon_url": "https://storage.ghost.io/c/ee/88/ee889f88-37ef-43e5-9180-f9b88ee6261d/content/images/2023/07/profile-pic--3--1.ico"
+}

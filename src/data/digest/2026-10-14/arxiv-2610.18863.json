@@ -1,0 +1,22 @@
+{
+  "title": "Data Free Training of Diffusion Models for Lattice Field Theories",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.18863",
+  "date": "2026-10-14",
+  "tags": [
+    "hep-lat",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A clever physics-ML result showing diffusion models can be trained without ground-truth samples by bootstrapping off their own generated data, which could meaningfully reduce the cost of simulating lattice field theories.",
+  "analysis": "Sampling valid field configurations in lattice field theory is normally very expensive, and training a generative model to do it faster usually requires already having good samples, a circular problem. This paper shows diffusion models can instead be trained using only the known unnormalized probability density of the target distribution, bootstrapping from the model's own generated samples via a 'target score identity.' They test this in a standard toy model (2D phi^4 theory) across different physical phases and get performance comparable to training on expensive traditional Monte Carlo data. This is a solid, if niche, contribution to the growing intersection of generative ML and computational physics.",
+  "authors": [
+    "Dennis Grinwald",
+    "Ankur Singha",
+    "Khaled Kahouli",
+    "Karl Jansen",
+    "Shinichi Nakajima"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

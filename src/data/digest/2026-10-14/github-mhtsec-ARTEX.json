@@ -7,10 +7,10 @@
     "Go"
   ],
   "interest_score": 5,
-  "why_read": "An award-winning autonomous AI penetration testing framework is technically interesting but should be read with appropriate caution given dual-use security tooling implications.",
-  "analysis": "ARTEX appears to be an AI-driven autonomous penetration testing system, described as a winning project from a Baidu offense/defense security competition. Such systems combine LLM-based reasoning with traditional security tooling to automate vulnerability discovery and exploitation chains, which is a genuinely active and interesting research area in security automation. The project is dual-use by nature, like any penetration testing framework, but these tools are standard in the offensive security community and used for legitimate red-teaming and defense research. Worth noting for engineers interested in how AI agents are being applied to real-world security workflows.",
+  "why_read": "An award-winning autonomous AI penetration-testing framework from a Chinese security competition, technically interesting for offensive security researchers but also a dual-use tool that needs careful framing.",
+  "analysis": "ARTEX is described as an AI-driven autonomous penetration testing system that won a major Baidu-sponsored 'agent+' offense/defense competition, suggesting it integrates LLM agents into real exploitation and reconnaissance workflows. This is technically relevant to the growing field of agentic security tooling, where AI increasingly automates tasks traditionally done by human red teamers. It is legitimate security research tooling similar to other open pentesting frameworks, not inherently malicious, though as with any such tool there is dual-use risk if used against systems without authorization.",
   "authors": [],
-  "stars": 3871,
-  "image_url": "https://opengraph.githubassets.com/7477fd879a6817d569feb4a0f7234072fda21a031f59f658e8d5d168e06e4e1b/mhtsec/ARTEX",
+  "stars": 4074,
+  "image_url": "https://opengraph.githubassets.com/e6ee46cacf6fe591ebd7ca01f156f4fdc35a5e730504f4b247346b495ffcb514/mhtsec/ARTEX",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

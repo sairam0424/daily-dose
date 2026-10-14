@@ -1,0 +1,19 @@
+{
+  "title": "Your Browser Can Do WHAT?! 5 AI Features That Actually Work",
+  "source": "devto",
+  "url": "https://dev.to/sylwia-lask/your-browser-can-do-what-5-ai-features-that-actually-work-1blb",
+  "date": "2026-10-14",
+  "tags": [
+    "ai",
+    "react",
+    "javascript",
+    "webdev"
+  ],
+  "interest_score": 4,
+  "why_read": "A conference-talk recap about in-browser AI using WebAssembly and WebGPU, potentially useful as an overview of browser-based ML tooling but the excerpt is mostly conference photos and personal narrative rather than technical depth.",
+  "analysis": "The piece promises to cover five working in-browser AI features enabled by WebGPU and WebAssembly, which is a genuinely relevant topic since browser-based ML inference has matured significantly with WebGPU adoption. However, the available excerpt is dominated by conference photos and personal anecdotes rather than concrete technical content, benchmarks, or code. If the rest of the article delivers the promised feature walkthroughs it could be useful, but based on what's shown here it reads as lightweight.",
+  "authors": [],
+  "reactions": 85,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F90o18t6tkw38pe11snwy.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Design for Churn",
+  "source": "devto",
+  "url": "https://dev.to/dailycontext/design-for-churn-5c6h",
+  "date": "2026-10-14",
+  "tags": [
+    "aie",
+    "design",
+    "churn",
+    "ai"
+  ],
+  "interest_score": 5,
+  "why_read": "A thought-provoking opinion piece arguing that AI-assisted coding is shifting software economics from durability toward disposability, citing real research on code churn and defect density.",
+  "analysis": "The author argues that as AI makes writing code cheaper, the traditional preference for long-lived, carefully-preserved code gives way to a model where frequent rewriting is economically rational rather than a sign of poor engineering. It grounds this in real prior research, including Microsoft's work linking code churn to defect density and GitClear's data on AI's effect on code rewrite rates. This reframes a widely-cited concern (AI increases churn, which is bad) into a deliberate design philosophy, which is a genuinely interesting contrarian angle worth engaging with critically. It's an opinion essay rather than empirical research, so its claims should be read as a perspective to debate rather than settled findings.",
+  "authors": [],
+  "reactions": 32,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4cyn0n0uzj2m1wnya1y0.jpeg"
+}

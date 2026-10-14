@@ -1,0 +1,25 @@
+{
+  "title": "Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.18868",
+  "date": "2026-10-14",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious attempt to train long-horizon autonomous agents using dense, verifiable progress rewards derived from a hidden task specification, addressing the real sparse-reward bottleneck in agent training.",
+  "analysis": "Long-horizon agentic tasks, things that take hours or days of autonomous work, are hard to train because success/failure signals only arrive at the very end, giving the model little to learn from along the way. The authors build a dataset of over a thousand tasks with a 'latent world' specification that lets them measure partial progress at every step, then convert that into a dense reward signal for reinforcement learning. The resulting model reportedly matches or beats several named frontier models on agent benchmarks despite being trained on narrower data, which if accurate is a notable result on generalization. The claims about matching named proprietary models should be read with some skepticism since those models and benchmarks move quickly and self-reported comparisons can be cherry-picked.",
+  "authors": [
+    "Wenbo Hu",
+    "Shraman Pramanick",
+    "Krishna Kumar Singh",
+    "Nanyun Peng",
+    "Kai-Wei Chang",
+    "Yong Jae Lee"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

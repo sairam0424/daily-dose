@@ -1,0 +1,16 @@
+{
+  "title": "How Amazon pushes up prices all across the Internet",
+  "source": "hn",
+  "url": "https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An investigative look at how Amazon's marketplace dynamics (buy box algorithms, MAP enforcement, matching bots) ripple out to inflate prices on competing retailers, which is useful market-structure context for engineers building e-commerce or pricing systems.",
+  "analysis": "The article reportedly argues that Amazon's dominant position and repricing algorithms create an anchor effect that pressures other online retailers to keep prices high rather than compete on price. This is relevant to engineers working on marketplaces, pricing engines, or anti-trust-adjacent policy discussions, since it touches on how algorithmic pricing can produce collusion-like outcomes without explicit coordination. It is more an economics/policy story than a code deep-dive, but the mechanism described has real technical substance in terms of market and algorithm design.",
+  "authors": [
+    "sighborg"
+  ],
+  "hn_id": 50084757,
+  "points": 690,
+  "favicon_url": "https://storage.ghost.io/c/f0/60/f060ef3f-d4e0-4af4-9255-1373fbf0a44f/content/images/size/w256h256/2025/07/Artboard-9v@2x-1.png"
+}

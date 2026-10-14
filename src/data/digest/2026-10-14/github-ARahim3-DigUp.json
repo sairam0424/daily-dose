@@ -7,10 +7,10 @@
     "Swift"
   ],
   "interest_score": 6,
-  "why_read": "An on-device semantic search tool for Mac files using a local embedding model is a practical and privacy-respecting application of recent small-model embedding research.",
-  "analysis": "DigUp lets users search their Mac's files, including photos, PDFs, recordings, and code, by meaning rather than exact filename or text match, using Google DeepMind's EmbeddingGemma model running entirely on-device. This matters because it avoids sending personal data to the cloud while still getting semantic search quality that previously required large server-side models. The use of a small, efficient embedding model for multimodal local search reflects a broader trend of shrinking powerful models down for consumer hardware. It's a solid practical demonstration of applied embedding model technology rather than a research contribution itself.",
+  "why_read": "A practical, fully on-device semantic search tool across local files using Google DeepMind's small EmbeddingGemma model, appealing for privacy-conscious users wanting Spotlight-like search with actual content understanding.",
+  "analysis": "DigUp lets you search your own computer's files, photos, PDFs, recordings, and code by meaning rather than exact filename, using an embedding model that runs entirely locally without sending data to the cloud. Built on Google DeepMind's EmbeddingGemma 2, a lightweight embedding model, it supports Mac, Windows, and Linux. This is a nice demonstration of how small, efficient embedding models now make semantic search viable without cloud infrastructure, which is a meaningful practical shift for privacy and cost reasons.",
   "authors": [],
-  "stars": 2350,
-  "image_url": "https://opengraph.githubassets.com/63afd4d25195d5b683e77188e8355124550bb49200a3ffe363f1f57f70d98a5b/ARahim3/DigUp",
+  "stars": 3619,
+  "image_url": "https://opengraph.githubassets.com/34cb402751085a5bfdcead3a353b3ed82b04dea5b792d33433100bfea585cf48/ARahim3/DigUp",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

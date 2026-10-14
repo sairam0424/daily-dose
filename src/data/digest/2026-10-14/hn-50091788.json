@@ -1,0 +1,17 @@
+{
+  "title": "Containment and monitoring failures are to blame for AI hacking reports: experts",
+  "source": "hn",
+  "url": "https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html",
+  "date": "2026-10-14",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A substantive debate about whether recent AI-hacking scare stories reflect model capability or just weak operational security, which is a genuinely useful corrective for engineers evaluating AI risk claims.",
+  "analysis": "This piece pushes back on sensational reports of AI systems autonomously hacking targets, arguing the real failures are poor sandboxing, logging, and monitoring rather than emergent AI capability. That reframing matters for engineers because it shifts the fix from 'contain the model's intelligence' to 'apply standard security engineering discipline' to agentic systems. The large comment count suggests a genuine technical argument among practitioners rather than pure hype amplification.",
+  "authors": [
+    "latexr"
+  ],
+  "hn_id": 50091788,
+  "points": 811,
+  "image_url": "https://www.csoonline.com/wp-content/uploads/2026/10/4234854-0-28632700-1792004597-shutterstock_2472843149.jpg?quality=50&amp;strip=all&amp;w=1024",
+  "favicon_url": "https://www.csoonline.com/wp-content/themes/cso-b2b-child-theme/src/static/img/favicon.ico"
+}
