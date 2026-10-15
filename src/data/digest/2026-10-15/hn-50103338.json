@@ -1,0 +1,17 @@
+{
+  "title": "Wayland desktop for Linux with skeuomorphic design",
+  "source": "hn",
+  "url": "https://github.com/fyzugx/DEsk",
+  "date": "2026-10-15",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A niche but interesting UI/UX project bringing retro skeuomorphic design to a modern Wayland Linux desktop, appealing to desktop environment enthusiasts.",
+  "analysis": "This appears to be a Wayland-based Linux desktop environment that embraces skeuomorphic design, meaning interface elements that mimic real-world textures and objects rather than flat minimalist design. Desktop environment projects are a long-running area of interest in the Linux community, and a design philosophy swing back toward skeuomorphism is a notable stylistic choice. Without more detail it's hard to judge the underlying technical architecture, but building a Wayland compositor and shell is nontrivial engineering.",
+  "authors": [
+    "FinalDestiny"
+  ],
+  "hn_id": 50103338,
+  "points": 466,
+  "image_url": "https://opengraph.githubassets.com/1d3d92c3e0dcd3578cbbf19cd8c47ea68b6ec716a82eb6c98a33459c3e69addf/fyzugx/DEsk",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

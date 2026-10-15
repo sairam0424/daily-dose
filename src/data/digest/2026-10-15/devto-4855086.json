@@ -1,0 +1,20 @@
+{
+  "title": "I Built an Open-Weight AI That Prices Etsy Shops, On Your Laptop",
+  "source": "devto",
+  "url": "https://dev.to/sarvar_04/i-built-an-open-weight-ai-that-prices-etsy-shops-on-your-laptop-24dk",
+  "date": "2026-10-15",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "tabpfn",
+    "opensource"
+  ],
+  "interest_score": 5,
+  "why_read": "A small practical project applying a lightweight tabular ML model to run entirely locally for small-business pricing decisions, interesting as an example of on-device ML for a concrete use case.",
+  "analysis": "The author built a tool called PricePilot that predicts optimal pricing for Etsy shop listings using a model that runs entirely on the user's own laptop rather than a cloud service, using the TabPFN tabular prediction model. The motivation is a real small-business pain point around pricing physical products with many interacting factors like material, size, and season, and avoiding sending private sales data to third-party SaaS pricing tools. Using TabPFN, a relatively new foundation model designed specifically for small tabular datasets, is a mildly interesting technical choice worth knowing about even if the overall project is a modest hackathon submission. The privacy-and-cost framing is a reasonable practical argument for local inference even though the underlying ML technique isn't itself novel.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fsi0m0zsur30mbpblo58v.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Modeling and Understanding Neural Weights of Humanoid Policies with Diffusion",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.20606",
+  "date": "2026-10-15",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A novel application of diffusion models to directly generate functioning humanoid robot control networks, with real-world walking and dancing demonstrations.",
+  "analysis": "The researchers compress the weights of a trained humanoid robot controller into a compact latent space using an autoencoder, then train a diffusion model to generate new sets of weights in that space. The resulting generated networks actually work when deployed on a real Unitree G1 robot, producing behaviors like walking and spin kicks. Beyond generation, they find a consistent structural pattern in the first layer of weights that reflects the robot's physical joint layout, and this pattern shows up whether the network was trained by reinforcement learning or imitation learning. That's a genuinely interesting finding about what these control networks are implicitly learning, independent of the training method used.",
+  "authors": [
+    "Huixuan Cheng",
+    "Bike Zhang",
+    "Shankar Sastry",
+    "Koushil Sreenath"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Wanted to download an ISO, ended up writing a kernel exploit",
+  "source": "hn",
+  "url": "https://blog.dfb.sh/blog/eap770-root-for-two-zeros/",
+  "date": "2026-10-15",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A relatable, likely detailed account of accidentally discovering a real kernel vulnerability while doing a mundane task, which security engineers enjoy for the technical narrative.",
+  "analysis": "This looks like a first-person writeup of someone trying to simply download an ISO file and stumbling into a kernel-level security bug along the way. These kinds of accidental-discovery stories are popular in security circles because they show how fragile and exploitable even common software paths can be. Without the full writeup it's hard to assess the technical depth, but the premise and HN engagement suggest a well-told, concrete exploit development story.",
+  "authors": [
+    "0xdeafbeef"
+  ],
+  "hn_id": 50070625,
+  "points": 340,
+  "image_url": "https://blog.dfb.sh/og.jpg",
+  "favicon_url": "https://blog.dfb.sh/favicon.ico"
+}

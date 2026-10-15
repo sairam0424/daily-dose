@@ -1,0 +1,16 @@
+{
+  "title": "AdFection: Targeted ads turned into a pipeline for zero-click mercenary spyware",
+  "source": "hn",
+  "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+  "date": "2026-10-15",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A serious investigative piece on how ad-tech infrastructure can be abused to deliver zero-click spyware, relevant to anyone working in security or ad-tech.",
+  "analysis": "The title describes an investigation into how targeted advertising systems can serve as a delivery mechanism for 'zero-click mercenary spyware', meaning malware that infects a device without any user interaction. This connects two areas of real technical concern: the opaque, programmatic ad-bidding pipeline and the exploit market for mobile and desktop zero-days. If accurate, this is a meaningful security story because it highlights an underappreciated attack surface that ordinary users can't defend against. The high comment count suggests substantial discussion, likely debating technical plausibility and mitigations.",
+  "authors": [
+    "jcomp"
+  ],
+  "hn_id": 50101813,
+  "points": 357,
+  "favicon_url": "https://citizenlab.ca/wp-content/uploads/2025/10/cropped-Favicon-Large-32x32.png"
+}

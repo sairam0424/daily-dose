@@ -1,0 +1,21 @@
+{
+  "title": "Your Transformer Is Secretly Elastic",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.20588",
+  "date": "2026-10-15",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A genuinely useful practical technique letting a single pretrained transformer flexibly trade off speed and accuracy at deployment time without retraining, which matters for anyone running these models in production.",
+  "analysis": "Normally if you want a smaller, faster version of a model you must choose from a small number of fixed preset sizes, which forces a one-time tradeoff decision. This paper instead ranks every individual neuron and attention head in an already-trained transformer by importance, letting the model be pruned smoothly to any target size on the fly without retraining. They show this works across 27 different vision and text transformer models, and that a pruned version of a large vision model loses less than 1 percent accuracy while removing 427 million parameters. The practical payoff is clear: at 60 percent pruning they get 1.8x higher throughput on real GPU hardware, a concrete efficiency win for production deployment.",
+  "authors": [
+    "Walter Simoncini",
+    "Dheeraj Varghese",
+    "Gertjan J. Burghouts",
+    "Cees G. M. Snoek"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

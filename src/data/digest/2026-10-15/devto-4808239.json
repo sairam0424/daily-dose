@@ -1,0 +1,19 @@
+{
+  "title": "I Vibe-Coded My Way Out of Angular Upgrades",
+  "source": "devto",
+  "url": "https://dev.to/gramli/i-vibe-coded-my-way-out-of-angular-upgrades-4fkh",
+  "date": "2026-10-15",
+  "tags": [
+    "ai",
+    "vibecoding",
+    "angular",
+    "showdev"
+  ],
+  "interest_score": 4,
+  "why_read": "A fairly standard account of using an AI coding assistant to automate a tedious Angular upgrade process, useful mainly as an anecdotal pattern rather than a deep technical insight.",
+  "analysis": "The author describes creating a custom 'skill' prompt for the Codex AI coding assistant that follows the official Angular upgrade guide, handles migrations, and validates the build. They hit a classic CI pitfall where a local success didn't match a clean CI environment because of a package-lock mismatch, which is a common and instructive gotcha. This is a reasonable real-world example of using AI coding tools for maintenance tasks, but it's a fairly narrow and anecdotal case study rather than a generalizable technical insight.",
+  "authors": [],
+  "reactions": 32,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F294m2kq52bb6uybxx6mq.jpg"
+}
