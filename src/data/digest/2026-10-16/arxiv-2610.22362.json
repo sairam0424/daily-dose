@@ -1,0 +1,25 @@
+{
+  "title": "CoDA: Co-Evolution of Data Engines and Action Policies",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22362",
+  "date": "2026-10-16",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A framework pairing simulated environment generation with policy training in a feedback loop, aimed at robotics researchers studying automated curriculum design.",
+  "analysis": "CoDA couples a simulation data generator with a robot policy so that the system can identify where the policy fails and automatically generate new training scenarios and dense reward signals to address those failures. The reported improvements in out-of-distribution manipulation success are substantial, going from single digits to large majorities under perturbation. This is a fairly technical contribution mainly relevant to people building automated curricula or sim-to-real pipelines for robot learning, with limited broader audience appeal.",
+  "authors": [
+    "Tianjiao Yu",
+    "Zhilin Ou",
+    "Yifan Shen",
+    "Xinzhuo Li",
+    "Yuanzhe Liu",
+    "Onkar Kishor Susladkar",
+    "Fan Wang",
+    "Ismini Lourentzou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

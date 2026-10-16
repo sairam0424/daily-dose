@@ -1,0 +1,28 @@
+{
+  "title": "LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22372",
+  "date": "2026-10-16",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A new benchmark for teaching robots to follow personal preferences during manipulation tasks, useful for robotics researchers working on personalization and preference learning.",
+  "analysis": "LIBERO-PeRM extends the existing LIBERO robotic manipulation benchmark to specifically test whether robot policies can learn and generalize user preferences, separate from just completing the task. It introduces 312 tasks across five suites with paired demonstrations with and without stated preferences, and shows current vision-language-action models struggle at zero-shot personalization. This is a solid, narrow contribution for robotics and embodied-AI researchers but has limited relevance outside that subfield.",
+  "authors": [
+    "Zhixu Li",
+    "Keqian Tang",
+    "Litian Gong",
+    "Jingyu Yao",
+    "Wenqian Zhang",
+    "Tianze Xu",
+    "Zehao Wang",
+    "Yuping Wang",
+    "Junge Zhang",
+    "Jiachen Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

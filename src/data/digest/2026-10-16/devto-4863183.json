@@ -1,0 +1,19 @@
+{
+  "title": "Don't Assume Your Cloud T4 Runs at Spec: Gemma 4 Decode Falls 7% as the Card Warms",
+  "source": "devto",
+  "url": "https://dev.to/gde/dont-assume-your-cloud-t4-runs-at-spec-gemma-4-decode-falls-7-as-the-card-warms-3fd3",
+  "date": "2026-10-16",
+  "tags": [
+    "nvidia",
+    "googlecloud",
+    "llm",
+    "performance"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, data-backed investigation showing cloud GPU inference speed can silently drop 7% from thermal power throttling without any throttle flag firing.",
+  "analysis": "This article documents a real measured phenomenon on a rented NVIDIA T4 GPU, where decode speed for an LLM dropped from 115 to 107 tokens/second purely because the chip warmed up and the fixed power limit forced a lower clock speed, even though no official thermal throttle indicator triggered. This is a useful, concrete finding for anyone running or benchmarking inference workloads on shared cloud GPUs, since it shows published spec numbers and short benchmarks can be misleading for sustained workloads. The author published full scripts and logs, which adds credibility and lets others reproduce the measurement themselves.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Ft4-thermal-drift%2Fmain%2Fdocs%2Farticle%2Fdevto-cover.c2f75cb3.jpg"
+}

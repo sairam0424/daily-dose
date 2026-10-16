@@ -1,0 +1,16 @@
+{
+  "title": "jhaizhou-ops/d2r-mobile",
+  "source": "github",
+  "url": "https://github.com/jhaizhou-ops/d2r-mobile",
+  "date": "2026-10-16",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 6,
+  "why_read": "A reverse-engineered compatibility layer bringing Diablo II: Resurrected to iOS/macOS natively, interesting as a feat of systems/platform engineering even if legally gray.",
+  "analysis": "This project is a compatibility layer that lets players run their own copy of Diablo II: Resurrected on iPhone, iPad, and Mac without an official port, requiring users to supply their own game files. Technically it's notable because getting a modern Windows game engine with full touch controls and 60fps running natively on Apple's mobile platforms is a serious reverse-engineering and porting effort. It sits in a legal gray zone since it's an unofficial compatibility layer for a commercial game, though it explicitly requires owning the original files rather than distributing copyrighted assets.",
+  "authors": [],
+  "stars": 3527,
+  "image_url": "https://opengraph.githubassets.com/a76556a1814bf4584d6e9c27022f917af88fc1c33c7aae429e885a29e486a16c/jhaizhou-ops/d2r-mobile",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
