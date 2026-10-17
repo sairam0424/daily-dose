@@ -1,0 +1,20 @@
+{
+  "title": "Docker Compose 5.6's jobs type only starts through docker compose run",
+  "source": "devto",
+  "url": "https://dev.to/alexgeorgiev17/docker-compose-56s-jobs-type-only-starts-through-docker-compose-run-4c1a",
+  "date": "2026-10-17",
+  "tags": [
+    "docker",
+    "devops",
+    "containers",
+    "performance"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, hands-on investigation into a newly released and under-documented Docker Compose feature, useful for anyone adopting it early.",
+  "analysis": "The author tests Docker Compose 5.6's new 'jobs' section, a feature for defining one-off tasks like database migrations alongside regular long-running services. They discover specific undocumented behaviors, such as jobs requiring an explicit trigger block and only being startable via 'docker compose run', not 'up', 'create', or scheduled triggers. This kind of practical exploration fills gaps left by sparse official release notes and could save other engineers real debugging time when adopting the feature. It's a useful, narrowly-scoped piece of applied DevOps investigation rather than a deep architectural discussion.",
+  "authors": [],
+  "reactions": 10,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fl1i1pf6rmu2y8i60dotz.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

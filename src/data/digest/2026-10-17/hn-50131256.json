@@ -1,0 +1,16 @@
+{
+  "title": "Solar surpasses nuclear power globally for first time",
+  "source": "hn",
+  "url": "https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/",
+  "date": "2026-10-17",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "An energy-policy milestone with broad relevance but limited direct technical engineering content for a software-focused digest.",
+  "analysis": "This reports that global solar electricity generation has overtaken nuclear generation, a notable milestone in the energy transition. It's more of a macro energy/policy story than a software engineering one, though it touches on topics like grid integration and energy storage that engineers in climate tech care about. The large comment count hints at a lively debate about methodology, intermittency, and comparisons between energy sources. Useful context for generalist readers, but not core technical content for a software-engineer audience.",
+  "authors": [
+    "xbmcuser"
+  ],
+  "hn_id": 50131256,
+  "points": 436,
+  "favicon_url": "https://www.pv-magazine.com/wp-content/themes/pvmagazine-international/resources/favicons/favicon.ico"
+}

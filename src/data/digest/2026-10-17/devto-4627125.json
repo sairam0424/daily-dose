@@ -1,0 +1,19 @@
+{
+  "title": "10 Prompting Techniques My Deep Learning Exam Taught Me (That I Actually Use Now)",
+  "source": "devto",
+  "url": "https://dev.to/dj29/10-prompting-techniques-my-deep-learning-exam-taught-me-that-i-actually-use-now-43h0",
+  "date": "2026-10-17",
+  "tags": [
+    "promptengineering",
+    "ai",
+    "discuss",
+    "beginners"
+  ],
+  "interest_score": 4,
+  "why_read": "A fairly basic overview of named prompting techniques that most experienced LLM users already know, with limited new technical depth.",
+  "analysis": "The article catalogs common prompt engineering patterns like zero-shot, few-shot, chain-of-thought, and tree-of-thought prompting, reframed with developer-relevant examples instead of textbook ones. This is useful as an accessible primer for engineers newer to working with LLMs, but it doesn't present new research, benchmarks, or non-obvious insights. Anyone who has already worked with prompting strategies in production will find little new here. It reads more as a study-notes summary than an original technical contribution.",
+  "authors": [],
+  "reactions": 29,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9jlghfmkd6eo2usgc88g.png"
+}

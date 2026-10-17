@@ -1,0 +1,25 @@
+{
+  "title": "CoDA: Co-Evolution of Data Engines and Action Policies",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22362",
+  "date": "2026-10-17",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting robotics training framework where a simulation data generator and a control policy co-evolve to specifically target the policy's weaknesses.",
+  "analysis": "CoDA builds a feedback loop where a vision-language model diagnoses why a robot policy is failing, then uses that diagnosis to generate new simulated training scenarios and reward shaping specifically aimed at those failures. This targeted approach to synthetic data generation reportedly boosts out-of-distribution task success substantially compared to standard fine-tuning or other closed-loop baselines. The underlying idea of using a critic model to drive adaptive curriculum generation is broadly applicable beyond robotics, to any agent trained on simulated data. It's a dense, technical paper best suited to those working on embodied AI or simulation-based training pipelines.",
+  "authors": [
+    "Tianjiao Yu",
+    "Zhilin Ou",
+    "Yifan Shen",
+    "Xinzhuo Li",
+    "Yuanzhe Liu",
+    "Onkar Kishor Susladkar",
+    "Fan Wang",
+    "Ismini Lourentzou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

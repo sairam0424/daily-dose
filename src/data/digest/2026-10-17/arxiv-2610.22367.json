@@ -1,0 +1,21 @@
+{
+  "title": "Discovering state-of-the-art quantum circuits with large language models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22367",
+  "date": "2026-10-17",
+  "tags": [
+    "quant-ph",
+    "cs.AI"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely novel application of LLMs to automatically discover better quantum circuit designs, with concrete resource-count improvements over prior state of the art.",
+  "analysis": "The authors built a system where large language models propose quantum circuit designs and a separate automated evaluator checks and scores them, iterating evolutionarily. Across eight different quantum computing tasks, this approach found circuits using fewer Toffoli gates and fewer qubits than previously known best designs in seven of them. In the eighth case it discovered an entirely new reversible-circuit architecture for a cryptographic primitive called modular inversion, making a previously impractical classical algorithm usable in the quantum reversible setting. This is a credible example of LLMs contributing new, verifiable algorithmic engineering results rather than just text generation, which is unusually substantive.",
+  "authors": [
+    "Andi Gu",
+    "Alek H. Kemeny",
+    "Susanne F. Yelin",
+    "Mikhail D. Lukin"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
