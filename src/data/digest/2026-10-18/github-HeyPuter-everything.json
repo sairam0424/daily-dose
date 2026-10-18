@@ -1,0 +1,16 @@
+{
+  "title": "HeyPuter/everything",
+  "source": "github",
+  "url": "https://github.com/HeyPuter/everything",
+  "date": "2026-10-18",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A vague, high-ambition open-source rewrite project with a one-line description giving little indication of real technical substance.",
+  "analysis": "The description 'rebuilding and open-sourcing the world's software from scratch' is extremely broad and doesn't specify what is actually being built, what architecture is used, or what problem it solves. Puter is known as a web-based desktop/OS-in-browser project, so this may be a related effort, but without more concrete detail it's hard to assess genuine technical merit. Grand, vague mission statements like this are common marketing framing and the actual engineering content could be anywhere from trivial to substantial.",
+  "authors": [],
+  "stars": 2207,
+  "image_url": "https://repository-images.githubusercontent.com/1417456983/5c0a81d9-f7dd-47d5-aaf1-e55aca876fea",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

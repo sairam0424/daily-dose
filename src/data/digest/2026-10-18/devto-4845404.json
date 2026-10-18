@@ -1,0 +1,19 @@
+{
+  "title": "Fine-Tuning Qwen3-8B with Tinker: From 50% to 76% Accuracy, and Burning Through My Budget",
+  "source": "devto",
+  "url": "https://dev.to/gramli/fine-tuning-qwen3-8b-with-tinker-from-50-to-76-accuracy-and-burning-through-my-budget-48mh",
+  "date": "2026-10-18",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "machinelearning"
+  ],
+  "interest_score": 5,
+  "why_read": "A hands-on walkthrough of fine-tuning a small open-weight model to triage prompt complexity, a practical and relatable cost-optimization pattern for LLM apps.",
+  "analysis": "The author fine-tunes Qwen3-8B using a service called Tinker to build a 'Complexity Scorer' that routes simple prompts to cheaper models and complex ones to expensive reasoning models, reporting an accuracy jump from 50% to 76%. This is a commonly useful pattern in production LLM systems, often called model routing or cascading, and seeing a concrete fine-tuning walkthrough with real numbers is useful even if informal. It's a hackathon submission so the rigor is limited, and the 'burning through budget' framing suggests practical lessons about fine-tuning costs that other engineers will relate to. Overall a decent practical case study rather than a polished research contribution.",
+  "authors": [],
+  "reactions": 33,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F31hxytlggz1f83c6zhct.jpg"
+}

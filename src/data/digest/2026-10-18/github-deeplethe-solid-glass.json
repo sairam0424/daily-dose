@@ -1,0 +1,16 @@
+{
+  "title": "deeplethe/solid-glass",
+  "source": "github",
+  "url": "https://github.com/deeplethe/solid-glass",
+  "date": "2026-10-18",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A UI design system for AI applications, interesting mainly to frontend engineers but light on deep technical novelty based on the description alone.",
+  "analysis": "This appears to be a component/design system, likely built in TypeScript/React, aimed at giving AI-powered apps a consistent visual language described as 'material, physical, tactile, technical.' Design systems are useful infrastructure but are typically more about consistency and aesthetics than algorithmic or architectural innovation. Worth a glance for frontend developers building AI products, but not something with broad technical depth for a general engineering audience.",
+  "authors": [],
+  "stars": 2015,
+  "image_url": "https://opengraph.githubassets.com/8f1a9c1913a845002e4879f61d6c78e0b9bf56b916058825344816f6499916fd/deeplethe/solid-glass",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

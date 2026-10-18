@@ -1,0 +1,16 @@
+{
+  "title": "feder-cr/git-ai",
+  "source": "github",
+  "url": "https://github.com/feder-cr/git-ai",
+  "date": "2026-10-18",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 4,
+  "why_read": "A git tool reimagined for AI agent workflows, a timely but still thin-on-detail concept given the one-line description.",
+  "analysis": "This project claims to redesign git specifically for AI coding agents, which is a currently hot area since agents often struggle with traditional version control semantics like merge conflicts or commit granularity. Without more detail on what's actually different -- new commands, different diffing, agent-specific metadata -- it's hard to judge if this is a thin wrapper or a genuine rethink of version control primitives. The high star count suggests community curiosity about the agent-tooling space more than confirmed technical depth.",
+  "authors": [],
+  "stars": 2098,
+  "image_url": "https://repository-images.githubusercontent.com/1420751050/cba1c927-c4af-483f-8eb5-4c847aea6f02",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

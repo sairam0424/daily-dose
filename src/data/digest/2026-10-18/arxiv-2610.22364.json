@@ -1,0 +1,30 @@
+{
+  "title": "T2-z: Test-Time Optimization of Environment Latents for Robotic World Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22364",
+  "date": "2026-10-18",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics paper tackling the practical problem of adapting world models to unknown environment properties like friction using minimal test-time data.",
+  "analysis": "T2-Z adds a learnable 'environment latent' variable to a robot's predictive world model, letting it capture hidden physical properties such as friction or mass without being told what those properties are. The key trick is a two-stage training process that separates learning general dynamics from learning how to represent environment-specific variation, then at test time only the latent is optimized using a handful of real interactions. The reported improvements are substantial, cutting prediction error roughly in half and more than doubling task success rate across simulated and real robot tests. This addresses a genuine practical bottleneck in sim-to-real transfer, though as with many robotics papers the real-world generalization claims should be read with some caution given typically small test suites.",
+  "authors": [
+    "Chenyuan Zhou",
+    "Yining Hong",
+    "Huang Huang",
+    "Yunfan Jiang",
+    "Wenlong Huang",
+    "David Held",
+    "Vitor Campagnolo Guizilini",
+    "Yue Wang",
+    "Li Fei-Fei",
+    "Jiajun Wu",
+    "Leonidas Guibas",
+    "Yejin Choi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

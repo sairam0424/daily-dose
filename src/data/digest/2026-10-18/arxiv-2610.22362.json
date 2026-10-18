@@ -1,0 +1,25 @@
+{
+  "title": "CoDA: Co-Evolution of Data Engines and Action Policies",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22362",
+  "date": "2026-10-18",
+  "tags": [
+    "cs.RO",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting approach where a simulation generator and a robot policy improve each other in a loop, systematically targeting the policy's actual weaknesses.",
+  "analysis": "CoDA pairs a simulated-environment generator with a robot action policy, using a shared memory of past failures and a vision-language model critic to decide what new training scenarios would actually help the policy improve. It converts diagnosed failure patterns into dense reward-like signals through a method called Text2potential, which gives the policy more informative feedback than just success or failure. The reported jumps in out-of-distribution success rates, going from single digits to double digits or more, are notable if they hold up outside the paper's specific benchmarks. This is a reasonably novel systems-level idea for automating curriculum design in robot learning rather than hand-crafting training scenarios.",
+  "authors": [
+    "Tianjiao Yu",
+    "Zhilin Ou",
+    "Yifan Shen",
+    "Xinzhuo Li",
+    "Yuanzhe Liu",
+    "Onkar Kishor Susladkar",
+    "Fan Wang",
+    "Ismini Lourentzou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

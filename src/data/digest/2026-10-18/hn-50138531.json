@@ -1,0 +1,17 @@
+{
+  "title": "DeepSeek search and fetch – $0.75 per 1000 successful requests",
+  "source": "hn",
+  "url": "https://api-docs.deepseek.com/guides/search/",
+  "date": "2026-10-18",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A concrete pricing/API launch for AI-driven web search and content fetching that engineers building agentic systems will want to compare against alternatives.",
+  "analysis": "DeepSeek appears to be launching a paid search-and-fetch API priced per successful request, likely aimed at developers building LLM agents that need web access. The interest here is practical: pricing models and reliability of such infrastructure services directly affect cost and architecture decisions for RAG and agent pipelines. Without more detail on latency, coverage, or rate limits it's hard to judge technical depth, but the topic itself is relevant to a lot of current AI engineering work. High comment count suggests real debate about pricing fairness and alternatives.",
+  "authors": [
+    "fagnerbrack"
+  ],
+  "hn_id": 50138531,
+  "points": 517,
+  "image_url": "https://api-docs.deepseek.com/img/deepseek-social-card.jpeg",
+  "favicon_url": "https://api-docs.deepseek.com/img/favicon.svg"
+}
