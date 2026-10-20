@@ -1,0 +1,15 @@
+{
+  "title": "Wine ported to OpenBSD",
+  "source": "hn",
+  "url": "https://marc.info/?l=openbsd-ports&m=179236125692175",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A substantial systems-engineering milestone porting Wine's Windows compatibility layer to OpenBSD, which is technically nontrivial given platform differences.",
+  "analysis": "Wine translates Windows API calls into native calls on Unix-like systems, and porting it to OpenBSD requires handling that OS's stricter security model and different syscall/ABI conventions. OpenBSD famously lacks features other BSDs/Linux have (like certain executable memory permissions), which historically made Wine ports hard. This is a genuine engineering achievement of interest to OS and compatibility-layer enthusiasts. The discussion thread likely covers technical obstacles encountered.",
+  "authors": [
+    "iamnothere"
+  ],
+  "hn_id": 50152307,
+  "points": 485
+}

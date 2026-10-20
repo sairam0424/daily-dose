@@ -1,0 +1,16 @@
+{
+  "title": "chenglou/handwired",
+  "source": "github",
+  "url": "https://github.com/chenglou/handwired",
+  "date": "2026-10-20",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A playful, educational project that turns ordinary JavaScript code into a trainable neural network, interesting for its novel framing even if not production-useful.",
+  "analysis": "This project appears to let you write normal-looking JavaScript logic and then have it behave as a differentiable neural network, blurring the line between regular code and learned models. It's likely aimed at teaching or exploring how neural networks relate to standard programming constructs rather than solving a production ML problem. This kind of conceptual, exploratory tool can spark genuine insight about differentiable programming even though it's not meant for serious deployment.",
+  "authors": [],
+  "stars": 1808,
+  "image_url": "https://opengraph.githubassets.com/4bdfbe83a0c94e2a9e00c83cbd6f9dbe50452fe6ef8180635b79900a6defc363/chenglou/handwired",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

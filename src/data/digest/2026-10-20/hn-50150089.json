@@ -1,0 +1,16 @@
+{
+  "title": "I built a drone with only one motor [video]",
+  "source": "hn",
+  "url": "https://www.youtube.com/watch?v=Ndftcft6XhU",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A single-motor drone is a neat mechanical engineering demo but mostly a fun build log rather than deep technical content.",
+  "analysis": "Most drones use four or more motors for stability and control; building one with a single motor requires creative control schemes, likely using control surfaces, variable pitch, or asymmetric thrust vectoring for stabilization. This is an interesting hobbyist engineering challenge showing how far minimal-actuator designs can go. It's more of a fun video demo than a paper, so the depth is limited to what's shown.",
+  "authors": [
+    "hakonjdjohnsen"
+  ],
+  "hn_id": 50150089,
+  "points": 345,
+  "favicon_url": "https://www.youtube.com/s/desktop/2fe123f7/img/favicon.ico"
+}

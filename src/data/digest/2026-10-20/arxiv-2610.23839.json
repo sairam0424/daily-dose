@@ -1,0 +1,40 @@
+{
+  "title": "DiscoveryRSI: Recursively Learning to Discover Valuable Hypotheses",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.23839",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 4,
+  "why_read": "An ambitious but oddly specific claim about an AI system generating and refining scientific hypotheses, undercut by suspicious benchmark comparisons against apparently nonexistent models.",
+  "analysis": "The paper proposes a multi-agent system that generates, tests, and iteratively improves scientific hypotheses, measured against a custom benchmark called DFM-Bench. It claims comparisons against 'GPT-6 Luna', 'GPT-6', and 'Claude Opus 5', none of which are real released models as of this writing, which raises serious doubts about the paper's provenance or accuracy. Given that red flag, the specific numeric claims should be treated with skepticism rather than taken at face value. The underlying idea of recursive self-improvement for hypothesis generation is interesting in principle but this particular write-up undermines its own credibility.",
+  "authors": [
+    "Jianyuan Zhong",
+    "Chenwei Wu",
+    "Zhaochen Yu",
+    "Xixian Jiang",
+    "Xuewei Li",
+    "Hao Xiao",
+    "Xilin Dai",
+    "Junyang Wang",
+    "Jiaru Zou",
+    "Zhiqing Cui",
+    "Boyuan Zheng",
+    "Jing Xiong",
+    "Zhen Zhang",
+    "Qiang Gao",
+    "Michael Morley",
+    "Luis Nakayama",
+    "Qiang Xu",
+    "Liyue Shen",
+    "Tao Gui",
+    "Leo Anthony Celi",
+    "James Zou",
+    "Zhenfei Yin",
+    "Yingcheng Wu",
+    "Ling Yang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "AI-Driven Reproducibility and Analytical Robustness in Scientific Discovery",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.23845",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete empirical test of whether AI agents can genuinely reproduce and stress-test published scientific analyses, with a public benchmark.",
+  "analysis": "The authors built a benchmark of 20 published cancer-registry studies and had an AI agent try to reproduce 2,190 specific factual claims from them, succeeding on about 77%. They also built a pipeline that proposes alternative reasonable analysis choices and reruns studies to see if conclusions still hold, flagging about 9.5% of findings as sensitive to those choices. This is a meaningful, measurable contribution to using LLMs for scientific quality control rather than just generation. It matters because reproducibility failures are a known crisis in science and this offers a scalable way to catch them.",
+  "authors": [
+    "Shicheng Liu",
+    "Krista Opsahl-Ong",
+    "Andrew Drozdov",
+    "Julian Killingback",
+    "Arnav Singhvi",
+    "Ronak Pradeep",
+    "Michael Bendersky",
+    "James C. Dickerson",
+    "Monica S. Lam"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

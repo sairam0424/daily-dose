@@ -1,0 +1,20 @@
+{
+  "title": "Bank alerts to a day-book, with a local Gemma",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/bank-alerts-to-a-day-book-with-a-local-gemma-21dl",
+  "date": "2026-10-20",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "gemma",
+    "opensource"
+  ],
+  "interest_score": 4,
+  "why_read": "A real-world small-business automation story using a local AI model to parse bank notification emails into a ledger, interesting as a practical use case but modest in technical depth.",
+  "analysis": "The author built a tool that takes pasted bank alert emails from a Nigerian POS cash agent and uses a locally-run Gemma language model to extract structured transaction data into a simple daily ledger. This is a nice example of applying a small local LLM to a concrete, low-resource use case instead of using cloud APIs, which matters for privacy and offline use in regions with unreliable connectivity. The technical content is fairly light, mostly product-building narrative rather than deep model or engineering insight.",
+  "authors": [],
+  "reactions": 26,
+  "reading_minutes": 1,
+  "image_url": "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

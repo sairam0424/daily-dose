@@ -1,0 +1,16 @@
+{
+  "title": "ahwootech/BRUTAL",
+  "source": "github",
+  "url": "https://github.com/ahwootech/BRUTAL",
+  "date": "2026-10-20",
+  "tags": [
+    "C#"
+  ],
+  "interest_score": 6,
+  "why_read": "A low-level C# game engine framework giving direct access to native APIs and Vulkan, notable for powering real shipping games like RimWorld's new engine.",
+  "analysis": "BRUTAL provides thin, low-level bindings to native graphics and system APIs (including Vulkan) from C#, letting developers build custom engines without the overhead of a full game engine like Unity or Unreal. It's notable because it underlies real production projects, including Kitten Space Agency and RimWorld's rewritten engine, lending it credibility beyond a hobby project. This is relevant to engine programmers interested in low-level graphics programming in a managed language.",
+  "authors": [],
+  "stars": 1989,
+  "image_url": "https://repository-images.githubusercontent.com/1419746236/f38b3a5a-d796-4e95-8fcb-b17c874620b4",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

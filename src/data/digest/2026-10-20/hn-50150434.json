@@ -1,0 +1,17 @@
+{
+  "title": "Timestral: Mistral's time-series foundation models",
+  "source": "hn",
+  "url": "https://mistral.ai/news/timestral/",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A new open time-series foundation model from Mistral is a notable release worth understanding for anyone doing forecasting work.",
+  "analysis": "This refers to a time-series foundation model released by Mistral, aimed at forecasting tasks like demand or sensor prediction without task-specific training. Foundation models for time series are a fast-moving area, trying to replicate the 'pretrain once, use everywhere' success of language models for numeric sequences. The high engagement suggests real community interest in benchmarking and comparing it against existing players like Chronos or TimesFM. Worth a skim to see benchmark claims and licensing terms.",
+  "authors": [
+    "groar"
+  ],
+  "hn_id": 50150434,
+  "points": 531,
+  "image_url": "https://mistral.ai/cms-media/api/media/file/og-timestral.webp",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=mistral.ai&sz=32"
+}

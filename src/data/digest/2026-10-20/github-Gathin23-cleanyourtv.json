@@ -1,0 +1,16 @@
+{
+  "title": "Gathin23/cleanyourtv",
+  "source": "github",
+  "url": "https://github.com/Gathin23/cleanyourtv",
+  "date": "2026-10-20",
+  "tags": [
+    "Java"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical utility for debloating Android TV devices, useful to many but technically modest in scope.",
+  "analysis": "This tool removes bloatware and unwanted preinstalled apps from Android/Google TV devices over Wi-Fi, likely using ADB commands under the hood, and gives a cleaner launcher experience similar to Apple TV. It's a popular consumer-facing utility rather than a novel technical contribution, essentially packaging known ADB debloat scripts into a friendlier tool. Useful for end users, less interesting for engineers seeking deep technical content.",
+  "authors": [],
+  "stars": 5178,
+  "image_url": "https://opengraph.githubassets.com/307197a165acaef2f2450fef51077dd5f80694f6db52bf36d65b9589c11b8a81/Gathin23/cleanyourtv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
