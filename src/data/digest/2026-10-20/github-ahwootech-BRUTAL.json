@@ -7,10 +7,10 @@
     "C#"
   ],
   "interest_score": 6,
-  "why_read": "A low-level C# game engine framework giving direct access to native APIs and Vulkan, notable for powering real shipping games like RimWorld's new engine.",
-  "analysis": "BRUTAL provides thin, low-level bindings to native graphics and system APIs (including Vulkan) from C#, letting developers build custom engines without the overhead of a full game engine like Unity or Unreal. It's notable because it underlies real production projects, including Kitten Space Agency and RimWorld's rewritten engine, lending it credibility beyond a hobby project. This is relevant to engine programmers interested in low-level graphics programming in a managed language.",
+  "why_read": "An open-source low-level C# game engine framework offering direct access to native APIs and Vulkan, notable for underpinning real shipped projects like RimWorld's new engine.",
+  "analysis": "BRUTAL is a C# framework for building games or game engines with direct, low-level access to native APIs and the Vulkan graphics API, bypassing higher-level abstractions typical of C# game development. What makes it credible is that it reportedly underlies Kitten Space Agency and RimWorld's Waylith engine, meaning it has real production usage rather than being just a hobby project. For engine programmers, having thin low-level bindings in C# rather than C++ is an interesting tradeoff between performance and developer ergonomics. This is a solid technical resource for engineers building custom game engines who want to avoid heavier frameworks like Unity or Unreal.",
   "authors": [],
-  "stars": 1989,
+  "stars": 2057,
   "image_url": "https://repository-images.githubusercontent.com/1419746236/f38b3a5a-d796-4e95-8fcb-b17c874620b4",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

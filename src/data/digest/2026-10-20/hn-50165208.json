@@ -1,0 +1,16 @@
+{
+  "title": "Apple broke an essential presentation feature of iPads",
+  "source": "hn",
+  "url": "https://teddysvoronos.com/2026-10-19-apple-broke-an-essential-presentation-feature-of-ipads/",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A complaint about Apple removing or breaking a specific iPad presentation feature, interesting mainly to people who rely on iPads for professional presentations.",
+  "analysis": "This post describes a specific software regression where Apple apparently broke functionality that let iPads be used effectively for presentations, such as mirroring or external display behavior. These kinds of platform regressions are common complaints and often reveal real usability issues introduced by OS updates. The topic is narrower than typical high-impact engineering news but matters to the subset of professionals who present from iPads regularly. The high comment count suggests many people have experienced similar frustrations or have workarounds to share.",
+  "authors": [
+    "evanb"
+  ],
+  "hn_id": 50165208,
+  "points": 469,
+  "image_url": "https://teddysvoronos.com/assets/img/headshot-nav.jpg"
+}

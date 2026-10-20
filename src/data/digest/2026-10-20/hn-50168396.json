@@ -1,0 +1,16 @@
+{
+  "title": "Voxtral 3",
+  "source": "hn",
+  "url": "https://mistral.ai/news/voxtral-3/",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new release of Mistral's Voxtral speech model family is relevant for engineers working on speech recognition or audio AI.",
+  "analysis": "Voxtral is a speech-related model line, and this appears to be a major version update given the title, likely covering speech transcription or audio understanding capabilities. Without further detail in the title alone, it's hard to assess what specific improvements this version brings over prior releases. Given the solid engagement numbers, the community likely finds genuine value in benchmarking it against other speech models. Readers interested in audio AI, voice assistants, or transcription pipelines would find this relevant.",
+  "authors": [
+    "ilreb"
+  ],
+  "hn_id": 50168396,
+  "points": 484,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=mistral.ai&sz=32"
+}

@@ -7,10 +7,10 @@
     "Java"
   ],
   "interest_score": 5,
-  "why_read": "A practical utility for debloating Android TV devices, useful to many but technically modest in scope.",
-  "analysis": "This tool removes bloatware and unwanted preinstalled apps from Android/Google TV devices over Wi-Fi, likely using ADB commands under the hood, and gives a cleaner launcher experience similar to Apple TV. It's a popular consumer-facing utility rather than a novel technical contribution, essentially packaging known ADB debloat scripts into a friendlier tool. Useful for end users, less interesting for engineers seeking deep technical content.",
+  "why_read": "A practical utility for stripping bloatware and ads from Android TV devices over Wi-Fi, useful to hobbyists who want a cleaner smart TV experience.",
+  "analysis": "This tool lets users debloat Android or Google TV devices remotely over Wi-Fi, removing unwanted preinstalled apps and transforming the interface into something closer to an Apple TV-style simple home screen. It's a practical consumer-facing utility rather than a deep technical innovation, likely built on ADB (Android Debug Bridge) commands to disable or remove system packages. The high star count suggests real demand from users frustrated with ad-laden smart TV software. It's useful and well-executed but not technically groundbreaking.",
   "authors": [],
-  "stars": 5178,
-  "image_url": "https://opengraph.githubassets.com/307197a165acaef2f2450fef51077dd5f80694f6db52bf36d65b9589c11b8a81/Gathin23/cleanyourtv",
+  "stars": 11579,
+  "image_url": "https://opengraph.githubassets.com/89970b244d36cda85a5ba134ca6ba6c8bdc82fc938c6df11333c289a62a29f46/Gathin23/cleanyourtv",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

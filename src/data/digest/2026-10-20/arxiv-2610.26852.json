@@ -1,0 +1,30 @@
+{
+  "title": "CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.26852",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A multi-robot navigation framework that uses shared uncertainty-aware forecasting to improve safety around people, relevant to robotics researchers working on social navigation.",
+  "analysis": "CoopUQ addresses the problem of multiple robots navigating safely in spaces shared with humans by having robots share and fuse predictions about where people and other robots will be. It specifically accounts for uncertainty, so robots become more cautious in situations where predictions are unreliable, such as occlusions or unusual crowd behavior. The method was tested both in simulated Unity environments and on real robots, which adds some practical credibility. This is a solid but fairly incremental contribution to the social robot navigation literature, of interest mainly to robotics specialists rather than general software engineers.",
+  "authors": [
+    "Zehao Wang",
+    "Jianpeng Yao",
+    "Yuping Wang",
+    "Yiping Li",
+    "Jiaqi Li",
+    "Zhixu Li",
+    "Kanghoon Lee",
+    "Jinfeng Wang",
+    "Cong Liu",
+    "Zhaowei Tan",
+    "Jinkyoo Park",
+    "Jiachen Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

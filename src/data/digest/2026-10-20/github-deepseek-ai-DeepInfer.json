@@ -1,0 +1,16 @@
+{
+  "title": "deepseek-ai/DeepInfer",
+  "source": "github",
+  "url": "https://github.com/deepseek-ai/DeepInfer",
+  "date": "2026-10-20",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "The GitHub repository behind the DeepInfer inference framework for DeepSeek models, worth a look for anyone deploying these models in production.",
+  "analysis": "This is the actual code repository for DeepInfer, a high-performance, large-scale inference framework specifically built for serving DeepSeek language models. With over 12,000 stars and 1,000+ forks shortly after presumed release, it is clearly getting substantial community attention, likely due to DeepSeek's popularity as an open alternative to closed frontier models. Efficient inference frameworks matter a lot in practice because serving costs often dominate the economics of running LLMs at scale. Readers deploying DeepSeek models would want to evaluate whether this offers meaningful speed or memory advantages over existing serving stacks like vLLM or TensorRT-LLM.",
+  "authors": [],
+  "stars": 12039,
+  "image_url": "https://opengraph.githubassets.com/ca2a0c4e3ded706893ee1cc98ca94ffdb5f2fd5a5f1027ff1b5c20714af225ab/deepseek-ai/DeepInfer",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,31 @@
+{
+  "title": "OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.26860",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "cs.MM"
+  ],
+  "interest_score": 6,
+  "why_read": "A new benchmark and framework for giving multimodal AI models persistent memory and tool access shows measurable gains over simple chain-of-thought reasoning.",
+  "analysis": "OpenVLHarness is a system that gives vision-language models structured access to external tools and a persistent memory for images, data, and web references across multi-step reasoning tasks. The core finding is that just increasing how much a model 'thinks' internally gives only modest improvement, but giving it the ability to call tools and remember evidence gives much larger gains, 9 to 12 points across 22 benchmarks. It's a solid piece of applied AI engineering research relevant to anyone building agentic systems that need to combine visual perception with external information. The efficiency claim, outperforming other systems at a fraction of the token cost, is notable if it holds up.",
+  "authors": [
+    "Yu Zhou",
+    "Cheng-Fu Yang",
+    "Rui Sun",
+    "Di Wu",
+    "Sibo Peng",
+    "Mingyang Zhang",
+    "Zhen Yang",
+    "Ruiyi Zhang",
+    "Nanyun Peng",
+    "Zhe Gan",
+    "Kai-Wei Chang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

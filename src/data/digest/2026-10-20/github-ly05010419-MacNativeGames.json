@@ -6,11 +6,11 @@
   "tags": [
     "C"
   ],
-  "interest_score": 3,
-  "why_read": "A list or collection of native Mac games with minimal description provided, limiting assessment of its technical depth.",
-  "analysis": "Based on the name and language (C), this repository likely catalogs or packages games that run natively on macOS, possibly without needing Rosetta or Wine-like compatibility layers. Without a description, it's hard to judge whether this involves genuine technical work like porting or is simply a curated list. The interest for engineers is limited unless it includes build systems or porting techniques.",
+  "interest_score": 4,
+  "why_read": "A repository seemingly focused on native Mac games, but with no description provided it's hard to judge the actual technical content or purpose.",
+  "analysis": "This GitHub repo has a notable star count and is written in C, suggesting it could be a collection, list, or toolkit related to games that run natively on macOS, possibly addressing the common complaint about lack of native Mac gaming support. Without a description, it's unclear whether this is source code, documentation, or a curated list. The reasonably strong engagement suggests real interest from Mac users, a community historically underserved in native gaming. More context would be needed to judge the real technical substance.",
   "authors": [],
-  "stars": 1692,
-  "image_url": "https://opengraph.githubassets.com/8aa92da11f654da89f60d75685f2011d665e420af24a434e503a5f91b0c05a31/ly05010419/MacNativeGames",
+  "stars": 2787,
+  "image_url": "https://opengraph.githubassets.com/5984437d01570c5772ca29b56612abc5b8ee041da352aec6b46757c4d2f93bf2/ly05010419/MacNativeGames",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }
