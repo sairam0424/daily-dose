@@ -1,0 +1,19 @@
+{
+  "title": "is-kit Reached 100 Stars ⭐🎉 Here’s What Changed Since 50",
+  "source": "devto",
+  "url": "https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf",
+  "date": "2026-10-21",
+  "tags": [
+    "typescript",
+    "opensource",
+    "webdev",
+    "frontend"
+  ],
+  "interest_score": 3,
+  "why_read": "A promotional milestone update for a TypeScript utility library, light on technical substance beyond incremental feature additions.",
+  "analysis": "This post celebrates a TypeScript library, is-kit, reaching 100 GitHub stars and recaps API changes and a bug found in a dependency (Effect) since the last milestone post. It includes some genuine technical detail about a type-inference edge case, which may interest TypeScript library authors, but overall it reads as a project update/promotional piece rather than substantive technical content. Useful mainly to those already using or curious about this specific small library.",
+  "authors": [],
+  "reactions": 61,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdl5sbp292yypl6esr2xw.gif"
+}

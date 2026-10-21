@@ -1,0 +1,24 @@
+{
+  "title": "Industrial ReMEmbR: Scaling Spatiotemporal Memory to Robot Fleets",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.28624",
+  "date": "2026-10-21",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.SE"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical systems paper on scaling shared robot memory across fleets while handling privacy, bandwidth, and compute constraints, relevant to applied robotics engineers.",
+  "analysis": "This paper extends NVIDIA's ReMEmbR memory system to warehouse robot fleets, addressing the real engineering problem of how to store and query video-derived knowledge without transmitting raw camera footage. It splits a vision-language model so the vision encoder runs on-robot (on Jetson hardware) and the language decoder runs on a server, generating scene descriptions only when queried to save compute. It also folds in privacy features like blurring detected people for GDPR compliance. This is a good example of applied systems engineering for multi-robot deployments rather than a fundamental research advance.",
+  "authors": [
+    "Jad Yammine",
+    "Malek Wahidi",
+    "Abrar Anwar",
+    "Yan Chang",
+    "Mihir Acharya",
+    "Anthony Rizk"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

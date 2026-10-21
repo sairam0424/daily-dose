@@ -1,0 +1,16 @@
+{
+  "title": "Leonxlnx/earshot",
+  "source": "github",
+  "url": "https://github.com/Leonxlnx/earshot",
+  "date": "2026-10-21",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "A CPU-only tool giving AI coding agents the ability to hear and react to audio feedback is a novel niche idea worth a quick look.",
+  "analysis": "Earshot appears to give AI coding agents an audio interface, letting them listen to sounds like test failures, build beeps, or terminal alerts and respond accordingly, running without needing a GPU. This is an interesting niche idea in the growing space of tooling that extends what coding agents can perceive beyond text, potentially useful for integrating with existing dev environments that signal via sound. The CPU-only constraint suggests a lightweight, practical design rather than heavy ML dependency. It's a fairly novel concept, though real-world usefulness depends on how robust the audio detection actually is.",
+  "authors": [],
+  "stars": 2050,
+  "image_url": "https://opengraph.githubassets.com/5f142d1212565859dab6f7204467934a28953a6a8e22eaabe60e065e2b06fa7c/Leonxlnx/earshot",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

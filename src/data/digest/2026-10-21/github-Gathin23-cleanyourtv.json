@@ -1,0 +1,16 @@
+{
+  "title": "Gathin23/cleanyourtv",
+  "source": "github",
+  "url": "https://github.com/Gathin23/cleanyourtv",
+  "date": "2026-10-21",
+  "tags": [
+    "Java"
+  ],
+  "interest_score": 5,
+  "why_read": "A popular utility for debloating Android/Google TV devices, practically useful but technically modest in scope.",
+  "analysis": "This project automates removing bloatware and customizing the home screen on Android and Google TV devices over Wi-Fi, likely using ADB commands under the hood. It solves a genuine consumer annoyance and has clearly resonated given its high star count, but the underlying technique (ADB scripting) is well understood and not novel. Useful as a tool, modest as an engineering story.",
+  "authors": [],
+  "stars": 19012,
+  "image_url": "https://opengraph.githubassets.com/22a4c5e8105eddc2bce0d527dcf95aa16f5a34a67a6058abe433bec4c8008dc2/Gathin23/cleanyourtv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

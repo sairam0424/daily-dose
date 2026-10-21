@@ -1,0 +1,19 @@
+{
+  "title": "Stuck in the same dev.to topics? An open model fixed it.",
+  "source": "devto",
+  "url": "https://dev.to/thomasbnt/stuck-in-the-same-devto-topics-an-open-model-fixed-it-4mbc",
+  "date": "2026-10-21",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "javascript"
+  ],
+  "interest_score": 4,
+  "why_read": "A simple personal project building a dev.to digest emailer using an open-weight model for summaries, useful as an example but limited in depth.",
+  "analysis": "This describes a small open-source script that curates a personalized weekly digest from a user's dev.to feed using an open-weight language model to generate one-sentence summaries. It's a lightweight, practical use of LLMs for content curation with no server or account needed, which is a nice minimal design choice. Technical depth is limited since it's largely glue code around an existing model, but it's a clean, well-scoped personal project.",
+  "authors": [],
+  "reactions": 32,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmgs6l9c0sd1b4wf64t06.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "I Got Tired of Coming into my Lab to Check the Pressure of my Cryocooler so I Built a Tool to do it for Me",
+  "source": "devto",
+  "url": "https://dev.to/pahorton/i-got-tired-of-coming-into-my-lab-to-check-the-pressure-of-my-cryocooler-so-i-built-a-tool-to-do-it-4ob7",
+  "date": "2026-10-21",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "tigerdata",
+    "githubcopilot"
+  ],
+  "interest_score": 5,
+  "why_read": "A fun, grounded hardware/software hack for monitoring lab equipment remotely, a relatable real-world engineering story even if narrow in scope.",
+  "analysis": "The author built a custom PCB voltmeter and monitoring tool to remotely track cryocooler vacuum pressure instead of manually checking a multimeter in person. It's a nice example of applied embedded systems and DIY instrumentation solving a real lab workflow problem. The technical content is modest in scope, mostly PCB design plus basic data logging, but it's a genuine, well-told engineering story with hands-on hardware detail.",
+  "authors": [],
+  "reactions": 35,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fsz6wqckn1mxagladj1ln.png"
+}

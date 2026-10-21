@@ -1,0 +1,16 @@
+{
+  "title": "ly05010419/MacNativeGames",
+  "source": "github",
+  "url": "https://github.com/ly05010419/MacNativeGames",
+  "date": "2026-10-21",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 4,
+  "why_read": "A list/repo of games with native Mac support, useful as a reference but not a deep technical project itself.",
+  "analysis": "This appears to be a curated repository tracking which games have native Apple Silicon or macOS support, likely compiled as a community reference list. It's useful for Mac gamers but has little inherent engineering depth, since it's primarily a dataset or list rather than original tooling. The value is informational rather than technical.",
+  "authors": [],
+  "stars": 3849,
+  "image_url": "https://opengraph.githubassets.com/7a6a071613c0697e99520b856465d33db07a96e1f052e9ba803cfce4ecf3ba8e/ly05010419/MacNativeGames",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

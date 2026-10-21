@@ -1,0 +1,19 @@
+{
+  "title": "In Ruby, Objects Don't Have Methods. How Method Lookup Actually Works.",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/in-ruby-objects-dont-have-methods-how-method-lookup-actually-works-31g9",
+  "date": "2026-10-21",
+  "tags": [
+    "ruby",
+    "programming",
+    "webdev",
+    "oop"
+  ],
+  "interest_score": 7,
+  "why_read": "A clear, well-explained deep dive into how Ruby's method lookup actually works internally, genuinely useful for understanding the language's object model.",
+  "analysis": "This article explains that Ruby objects technically store no methods themselves, only instance variables, flags, and a pointer to a class structure where methods actually live. It walks through how method resolution works via eigenclasses and the method lookup path, correcting the common oversimplified mental model of OOP. This kind of under-the-hood language internals explanation is genuinely educational for working Ruby developers and useful for anyone curious about how dynamic dispatch is implemented. It's a well-scoped, technically substantive piece rather than a surface-level tutorial.",
+  "authors": [],
+  "reactions": 18,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fiili.io%2FnMfrPx1.png"
+}

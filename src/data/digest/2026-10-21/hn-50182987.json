@@ -1,0 +1,17 @@
+{
+  "title": "Today's PHP security release, and how we're strengthening security",
+  "source": "hn",
+  "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/",
+  "date": "2026-10-21",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "Direct companion piece to the PHP security release, explaining the vulnerability and the project's response, useful for understanding real-world impact.",
+  "analysis": "This is the PHP project's own writeup of today's security release, likely detailing a vulnerability and remediation steps alongside broader process changes to improve security practices. For engineers maintaining PHP applications, this is actionable guidance about what to patch and why. It also offers insight into how a major open-source language project handles incident response and governance around security. Worth reading alongside the version-bump item for full context.",
+  "authors": [
+    "ejohnso49"
+  ],
+  "hn_id": 50182987,
+  "points": 639,
+  "image_url": "https://thephp.foundation/assets/share/2026-10-21-todays-php-security-release-and-how-were-strengthening-php-security.png",
+  "favicon_url": "https://thephp.foundation/assets/icons/php_foundation.svg"
+}
