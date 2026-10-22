@@ -1,0 +1,19 @@
+{
+  "title": "LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.30132",
+  "date": "2026-10-22",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A reasonably novel self-play RL approach to improve long-context reasoning in LLMs without external training data, relevant to anyone working on LLM training pipelines.",
+  "analysis": "LongZero trains a language model to generate its own long-context reasoning tasks instead of relying on existing documents or stronger teacher models for training data. It first creates a compact question-answer pair with evidence, then expands that evidence into a long, multi-document context, combining this with retrieval-style tasks trained via reinforcement learning. This addresses a real bottleneck: good long-context training data is scarce and expensive to create by hand. The approach is evaluated against external-corpus baselines on standard long-context benchmarks, showing it's a credible alternative data-generation strategy.",
+  "authors": [
+    "Zhennan Wan",
+    "Jianfei Chen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

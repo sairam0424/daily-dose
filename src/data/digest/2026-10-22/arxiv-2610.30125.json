@@ -1,0 +1,26 @@
+{
+  "title": "PhysiCalWorld: In-Context Physics Calibration for World Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.30125",
+  "date": "2026-10-22",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 5,
+  "why_read": "An interesting approach to making world models adapt to unknown physical properties like friction or mass on the fly, relevant to robotics and simulation researchers.",
+  "analysis": "World models predict how a scene will change given actions, but they often ignore hidden physical properties like friction or joint damping that aren't visible in a single frame, causing prediction drift in new scenes. PhysiCalWorld addresses this by encoding a short exploratory interaction into a compact 'physics descriptor' that conditions later predictions, without needing explicit physics equations or fine-tuning. This descriptor is computed once and reused cheaply across many rollouts, which is a practical efficiency touch. The idea of in-context physics calibration is a useful contribution for robotics planning and simulation-based control.",
+  "authors": [
+    "Yunhao Luo",
+    "Wentao He",
+    "Yinpei Dai",
+    "Hyelin Nam",
+    "Hongze Fu",
+    "Joyce Chai",
+    "Nima Fazeli",
+    "Jeong Joon Park"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

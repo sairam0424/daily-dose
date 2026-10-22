@@ -1,0 +1,16 @@
+{
+  "title": "Jailbreaking the Switch 2",
+  "source": "hn",
+  "url": "https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/",
+  "date": "2026-10-22",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A deep technical writeup on breaking into a brand-new game console's security is catnip for systems and security engineers.",
+  "analysis": "This is presumably a writeup on hardware or software exploits used to run unauthorized code on Nintendo's Switch 2 console. Console jailbreaking write-ups often involve detailed reverse engineering of bootloaders, secure enclaves, or memory corruption bugs, which is technically rich material. These stories matter to the security community because they reveal how modern locked-down consumer hardware actually defends itself and where those defenses fail.",
+  "authors": [
+    "ledoge"
+  ],
+  "hn_id": 50192536,
+  "points": 691,
+  "favicon_url": "https://pepsipu.com/favicon.ico"
+}

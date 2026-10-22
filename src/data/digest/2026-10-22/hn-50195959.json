@@ -1,0 +1,17 @@
+{
+  "title": "Quad9 (DNS Resolver) to Exit France",
+  "source": "hn",
+  "url": "https://quad9.net/news/blog/au-revoir-france/",
+  "date": "2026-10-22",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A major privacy-focused DNS resolver leaving an entire country over regulation is a notable signal about internet governance and censorship pressure in Europe.",
+  "analysis": "Quad9 is a free, privacy-oriented DNS resolver used widely for malware blocking and privacy protection. Its decision to exit France reportedly stems from legal requirements to block certain domains, raising questions about court-ordered censorship at the DNS layer. This matters to engineers who build on or rely on public DNS infrastructure and anyone tracking the tension between regulation and decentralized internet services. The high comment count suggests substantial community debate about the legal and technical details.",
+  "authors": [
+    "farrokhi"
+  ],
+  "hn_id": 50195959,
+  "points": 947,
+  "image_url": "https://quad9.net/images/cover_c2f081e020.png",
+  "favicon_url": "https://quad9.net/favicon.svg"
+}

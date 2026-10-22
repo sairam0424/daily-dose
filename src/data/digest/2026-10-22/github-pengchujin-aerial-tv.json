@@ -1,0 +1,16 @@
+{
+  "title": "pengchujin/aerial-tv",
+  "source": "github",
+  "url": "https://github.com/pengchujin/aerial-tv",
+  "date": "2026-10-22",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 3,
+  "why_read": "A third near-identical Android TV launcher/debloating project aimed at the Chinese market, adding little beyond the other similar tools in this batch.",
+  "analysis": "This is a tvOS-style launcher targeting Chinese-market Android TVs from Xiaomi, TCL, and others, aiming to remove ads and auto-replace the stock home screen on boot. It serves a similar purpose to other TV-debloating tools appearing in this same digest, suggesting a broader trend of frustration with ad-laden smart TV interfaces. Technically it's a straightforward launcher replacement rather than a novel engineering approach. Most useful to users of Chinese Android TV hardware rather than to engineers generally.",
+  "authors": [],
+  "stars": 3056,
+  "image_url": "https://opengraph.githubassets.com/93d893465a6b4801e38f0aeb939b9a9a4add5b7a79956f0b44cabf24ce8364a1/pengchujin/aerial-tv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

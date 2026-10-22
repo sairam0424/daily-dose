@@ -1,0 +1,16 @@
+{
+  "title": "ly05010419/MacNativeGames",
+  "source": "github",
+  "url": "https://github.com/ly05010419/MacNativeGames",
+  "date": "2026-10-22",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 4,
+  "why_read": "A curated list or collection related to native Mac games, interesting to Mac gaming enthusiasts but limited broader engineering value.",
+  "analysis": "Without a description, this appears to be a repository cataloging or packaging native macOS games, likely a reference list for developers or gamers interested in non-emulated, non-Rosetta-dependent Mac titles. This could be useful to indie developers studying macOS-native game development patterns. The lack of a description and moderate star count suggests it's a niche community resource rather than a significant technical artifact.",
+  "authors": [],
+  "stars": 4465,
+  "image_url": "https://opengraph.githubassets.com/c122385c5246469ad7b01408cb310509e0a439a5ab6479ea0b7d12a52f852d18/ly05010419/MacNativeGames",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

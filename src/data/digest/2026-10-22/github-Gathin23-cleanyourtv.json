@@ -1,0 +1,16 @@
+{
+  "title": "Gathin23/cleanyourtv",
+  "source": "github",
+  "url": "https://github.com/Gathin23/cleanyourtv",
+  "date": "2026-10-22",
+  "tags": [
+    "Java"
+  ],
+  "interest_score": 4,
+  "why_read": "A practical utility for debloating Android TV devices, useful to hobbyists but not technically deep.",
+  "analysis": "This is a tool that strips bloatware and ads from Android/Google TV devices over Wi-Fi and replaces the home screen with something cleaner, modeled after Apple TV's interface. The high star count suggests strong consumer interest, likely driven by frustration with ad-heavy smart TV interfaces. Technically it's a fairly standard ADB-based debloating and launcher-replacement tool rather than a novel engineering contribution. It's useful and popular but not something that teaches new techniques to engineers.",
+  "authors": [],
+  "stars": 23953,
+  "image_url": "https://opengraph.githubassets.com/0938d257a1f79b1b921f3c741fbc6d19632dc51ef657ca9d9859e5fd1fe3e7c9/Gathin23/cleanyourtv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

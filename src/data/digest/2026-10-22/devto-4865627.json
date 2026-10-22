@@ -1,0 +1,19 @@
+{
+  "title": "Buried Reads #1: Five Good Posts That Deserve More Attention",
+  "source": "devto",
+  "url": "https://dev.to/dj29/buried-reads-1-five-good-posts-that-deserve-more-attention-40ib",
+  "date": "2026-10-22",
+  "tags": [
+    "discuss",
+    "writing",
+    "devjournal",
+    "career"
+  ],
+  "interest_score": 4,
+  "why_read": "A curated roundup of underappreciated technical blog posts, useful as a discovery mechanism though it's secondhand content rather than original technical work.",
+  "analysis": "This is a meta-post where the author manually reads low-engagement Dev.to posts and highlights the worthwhile ones, starting with a piece about reducing .NET garbage collector overhead via allocation strategies. The curation concept itself is a nice service for surfacing good writing buried under algorithmic engagement bias, but the technical value depends entirely on the linked posts, which aren't included here. As a standalone item it's moderately interesting mainly for the GC-reduction topic teased in the excerpt. It functions more as a pointer to other content than substantial technical material itself.",
+  "authors": [],
+  "reactions": 23,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fuv0fgcc5iagxcp809bc5.png"
+}
