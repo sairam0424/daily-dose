@@ -1,0 +1,15 @@
+{
+  "title": "ly05010419/MacNativeGames",
+  "source": "github",
+  "url": "https://github.com/ly05010419/MacNativeGames",
+  "date": "2026-10-23",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 4,
+  "why_read": "A curated collection or porting project for native Mac games; interesting to Mac gaming enthusiasts but limited broader technical depth from the title alone.",
+  "analysis": "Based on name and language (C), this project seems to be about enabling or compiling native macOS games, possibly a list or compatibility layer for older native Mac titles. Without further description, it's hard to assess the depth of the technical contribution, but such projects often involve reverse engineering legacy game binaries or dealing with Apple's changing OS APIs. The interest is fairly niche, appealing mostly to retro/Mac gaming developers rather than general engineers.",
+  "authors": [],
+  "stars": 4887,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

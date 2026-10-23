@@ -1,0 +1,17 @@
+{
+  "title": "Today, we hacked what we'd set out to hack: the iPhone",
+  "source": "hn",
+  "url": "https://blog.calif.io/p/iphone",
+  "date": "2026-10-23",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real hardware/software security hacking writeup likely has concrete technical detail on exploiting iPhone internals, which is valuable for security-minded engineers.",
+  "analysis": "Based on the title, this appears to be a writeup from a security research team detailing a successful jailbreak or exploit chain against iPhone, likely from a conference like Pwn2Own or similar event. These writeups typically walk through specific vulnerabilities, memory corruption bugs, and exploitation techniques used to bypass iOS's sandboxing and hardware protections. Without the full text it's hard to assess depth, but this genre of post usually offers genuine low-level technical insight valuable to security researchers.",
+  "authors": [
+    "pavel_lishin"
+  ],
+  "hn_id": 50211474,
+  "points": 703,
+  "image_url": "https://substackcdn.com/image/youtube/w_728,c_limit/_GJVKVNMczM",
+  "favicon_url": "https://substackcdn.com/image/fetch/$s_!O5CH!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a25c608-49d1-4a04-9075-fd975e093620%2Ffavicon.ico"
+}

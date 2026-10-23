@@ -1,0 +1,19 @@
+{
+  "title": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
+  "source": "devto",
+  "url": "https://dev.to/gde/926-steps-two-lobotomies-and-zero-nudges-flight-testing-the-commitment-machine-across-gemini-55ca",
+  "date": "2026-10-23",
+  "tags": [
+    "ai",
+    "programming",
+    "architecture",
+    "unix"
+  ],
+  "interest_score": 3,
+  "why_read": "An eccentric, jargon-heavy personal narrative about using AI coding agents in production, likely light on rigorous technical detail despite dramatic framing.",
+  "analysis": "This post describes the author's experience applying a custom workflow ('Commitment Machine') to manage AI coding agents like Gemini, Claude, and GPT-OSS in live production settings, citing a study about AI agents increasing code volume without proportional ticket closure. The framing is heavily stylized and anecdotal, citing a seemingly dramatic statistic from a 'Harvard study' that readers should treat skeptically without verifying the source. There may be some genuine insight into managing AI-generated code review friction, but the style suggests more narrative flourish than rigorous engineering detail.",
+  "authors": [],
+  "reactions": 12,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fr0i1iy0f3e5i20n3hb8p.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Canadians are running out of time to oppose Bill C-22",
+  "source": "hn",
+  "url": "https://www.eff.org/deeplinks/2026/10/canadians-are-running-out-time-oppose-dangerous-c-22-surveillance-bill",
+  "date": "2026-10-23",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A policy/legal story about Canadian legislation that could affect internet freedoms or tech regulation, relevant to engineers who care about digital rights.",
+  "analysis": "Bill C-22 appears to be Canadian legislation that the community is organizing against, likely related to online harms, surveillance, or platform regulation. This is more of a policy and civil-liberties story than a technical one, but it matters to software engineers because such laws can affect how systems are built, encryption policy, or content moderation requirements. The value here is awareness and civic engagement rather than technical learning.",
+  "authors": [
+    "hn_acker"
+  ],
+  "hn_id": 50202114,
+  "points": 291,
+  "image_url": "https://www.eff.org/files/banner_library/OG-Encryption-DefendEncryption.png",
+  "favicon_url": "https://www.eff.org/sites/all/themes/frontier/favicon.ico"
+}

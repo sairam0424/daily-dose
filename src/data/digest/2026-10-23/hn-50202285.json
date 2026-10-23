@@ -1,0 +1,17 @@
+{
+  "title": "Local Wikipedia: Wikipedia, but only for things a half hour walk from you",
+  "source": "hn",
+  "url": "https://edjefferson.com/localwiki/",
+  "date": "2026-10-23",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A fun, well-executed niche mapping project that's technically light but creatively interesting to engineers who like geo/data hacks.",
+  "analysis": "This is a project that filters Wikipedia's 'nearby places' data down to only things within walking distance of a given point. It's a small, clever application of existing geo-data rather than a new technical breakthrough. The appeal is mostly in the idea and execution rather than any novel engineering, but it shows a nice use of open data and mapping APIs. High engagement likely reflects its fun, personal, exploratory nature more than deep technical substance.",
+  "authors": [
+    "sohkamyung"
+  ],
+  "hn_id": 50202285,
+  "points": 1196,
+  "image_url": "https://edjefferson.com/localwiki/share.png",
+  "favicon_url": "https://edjefferson.com/localwiki/logo.png"
+}

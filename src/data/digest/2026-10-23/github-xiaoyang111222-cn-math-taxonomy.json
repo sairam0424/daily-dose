@@ -1,0 +1,16 @@
+{
+  "title": "xiaoyang111222/cn-math-taxonomy",
+  "source": "github",
+  "url": "https://github.com/xiaoyang111222/cn-math-taxonomy",
+  "date": "2026-10-23",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "A structured, large-scale knowledge graph mapping K-12 math, English, and physics curricula, useful for anyone building adaptive-learning or edtech systems.",
+  "analysis": "This repository offers a knowledge graph of Chinese primary-to-high-school math, English, and junior-high physics curricula, with 1,644 distinct knowledge points connected by 2,403 prerequisite relationships and 6,723 associated practice problems. It's aligned to official curriculum standards and includes an adaptive pre-assessment component to diagnose a student's existing knowledge gaps. This kind of structured, prerequisite-mapped dataset is genuinely useful infrastructure for building intelligent tutoring systems or adaptive learning platforms. The technical interest lies in the data curation and graph structure rather than any algorithmic novelty.",
+  "authors": [],
+  "stars": 2795,
+  "image_url": "https://opengraph.githubassets.com/12329f89d924c984c91ee3a18acf9acfa238c68370a9d25fb6894e68e674ab9a/xiaoyang111222/cn-math-taxonomy",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

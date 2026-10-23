@@ -1,0 +1,23 @@
+{
+  "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31670",
+  "date": "2026-10-23",
+  "tags": [
+    "cs.CV",
+    "cs.LG",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A reasonably novel idea for cheaply evaluating robot learning models offline, useful for researchers but fairly niche.",
+  "analysis": "This paper proposes measuring how well a robot's internal sensory representations match the geometry of physical motion, as a cheap stand-in for expensive live robot testing. It builds on the idea that good models across different senses (vision, language, motion) tend to converge toward similar internal structures. The authors show this metric correlates with actual task success, which could save significant compute and time when screening candidate robot models before expensive real-world trials. It's a solid but fairly specialized contribution mainly relevant to robotics and representation-learning researchers.",
+  "authors": [
+    "Yunfei Xie",
+    "Howard H. Qian",
+    "Shiyi Lan",
+    "Kaiyu Hang",
+    "Chen Wei"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

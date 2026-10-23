@@ -1,0 +1,20 @@
+{
+  "title": "Building a Multimodal, Suggestion-Based AI Writing Coach with Gemini and Google Docs",
+  "source": "devto",
+  "url": "https://dev.to/gde/building-a-multimodal-suggestion-based-ai-writing-coach-with-gemini-and-google-docs-ea4",
+  "date": "2026-10-23",
+  "tags": [
+    "ai",
+    "gemini",
+    "googleappsscript",
+    "googleworkspace"
+  ],
+  "interest_score": 5,
+  "why_read": "A concrete walkthrough of building an AI-assisted writing tool using real Google Workspace APIs and Gemini, useful for developers integrating LLMs into document workflows.",
+  "analysis": "This article describes a Google Docs add-on built with Apps Script that uses the Gemini API alongside new Google Docs API features for managing suggestions and comments, rather than directly overwriting user text. The technical interest lies in showing how to use the 'SUGGEST' write mode and suggestion/comment APIs to build an interactive AI feedback loop instead of blind auto-rewriting. It's a practical, reasonably detailed integration example for developers working with Workspace APIs and generative AI, though it is essentially a product showcase/tutorial rather than foundational research.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F2bc3ar45xrgqtcuc87ui.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

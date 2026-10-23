@@ -1,0 +1,15 @@
+{
+  "title": "pengchujin/aerial-tv",
+  "source": "github",
+  "url": "https://github.com/pengchujin/aerial-tv",
+  "date": "2026-10-23",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 4,
+  "why_read": "A third tvOS-style launcher project targeting China-market Android TVs, overlapping heavily with similar repos in this digest.",
+  "analysis": "This project provides a clean, ad-free launcher styled after tvOS specifically for Android TVs sold in the Chinese market, such as Xiaomi and TCL devices. Like the other TV debloating tools in this batch, its value is practical and consumer-facing rather than a showcase of novel technical techniques. The repeated appearance of similar projects in this list suggests a trend worth noting collectively rather than individually highlighting each one.",
+  "authors": [],
+  "stars": 3810,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
