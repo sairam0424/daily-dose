@@ -1,0 +1,19 @@
+{
+  "title": "I Built Mimu Because Even Taking Notes Is Too Much Work",
+  "source": "devto",
+  "url": "https://dev.to/sizzlebop/i-built-mimu-because-even-taking-notes-is-too-much-work-2dg",
+  "date": "2026-10-24",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "opensource"
+  ],
+  "interest_score": 2,
+  "why_read": "A simple personal hackathon project for voice note-taking with local AI organization, pleasant but technically unremarkable.",
+  "analysis": "Mimu is a voice note app that transcribes speech with Whisper in the browser and then uses a small local Gemma model to auto-generate titles, tags, and formatting for the note. It's a straightforward integration of existing open models rather than a novel technique, built as a Hacktoberfest challenge submission. The appeal is purely as a lightweight personal productivity tool, with little new technical content for experienced practitioners to learn from.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fql0dklbjcbmnp9a0l67v.png"
+}

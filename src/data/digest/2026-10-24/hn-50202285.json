@@ -1,0 +1,17 @@
+{
+  "title": "Local Wikipedia: Wikipedia, but only for things a half hour walk from you",
+  "source": "hn",
+  "url": "https://edjefferson.com/localwiki/",
+  "date": "2026-10-24",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A clever, well-executed niche project that reframes Wikipedia around physical proximity, likely interesting for its technical filtering/geo approach as much as its novelty.",
+  "analysis": "This is a tool that filters Wikipedia articles down to only those tied to locations within roughly a half-hour walk of the user. It likely involves geocoding Wikipedia's geographic metadata and building a simple proximity-based search or map interface. The appeal is in the idea rather than deep technical novelty, but implementing accurate geo-filtering over a huge dataset at usable speed is a real engineering problem. High HN engagement suggests it resonated broadly, though the core technique is fairly well understood (geospatial indexing).",
+  "authors": [
+    "sohkamyung"
+  ],
+  "hn_id": 50202285,
+  "points": 1532,
+  "image_url": "https://edjefferson.com/localwiki/share.png",
+  "favicon_url": "https://edjefferson.com/localwiki/logo.png"
+}

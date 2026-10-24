@@ -1,0 +1,16 @@
+{
+  "title": "pengchujin/aerial-tv",
+  "source": "github",
+  "url": "https://github.com/pengchujin/aerial-tv",
+  "date": "2026-10-24",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche but functional open-source Android TV launcher aimed at a specific regional annoyance (ad-laden Chinese smart TV interfaces), useful mainly to that user base.",
+  "analysis": "This project is a tvOS-style home screen replacement for Android-based smart TVs sold in China, designed to remove built-in advertisements and launcher bloat. Technically, it's a fairly standard Android launcher app, with the main challenge being deep integration to auto-launch on boot and bypass manufacturer restrictions. Its value is mostly practical and regional rather than offering broader technical insight for most engineers. Still, it's a legitimate ad-blocking/UX improvement tool with real-world utility for its target users.",
+  "authors": [],
+  "stars": 4352,
+  "image_url": "https://opengraph.githubassets.com/6163507bb01ce06350235f3a98e2aaf75bbdf41ffa2cbb71c059aeecbb345ff0/pengchujin/aerial-tv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Zagitta/gpu-unlock",
+  "source": "github",
+  "url": "https://github.com/Zagitta/gpu-unlock",
+  "date": "2026-10-24",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 8,
+  "why_read": "A technically substantial reverse-engineering project that unlocks professional-tier compute performance on consumer Nvidia GPUs, which is both genuinely useful and ethically/legally gray territory worth understanding.",
+  "analysis": "This project claims to unlock higher floating-point instruction throughput on Nvidia's consumer 3000-series GPUs, bringing them closer to the performance of professional-tier cards that are artificially limited in firmware or drivers. This kind of work typically involves deep reverse engineering of GPU microcode, driver internals, or firmware tables that gate hardware capabilities by product tier. It's technically impressive and of high interest to hardware hackers and ML practitioners looking for cheaper compute, though it likely violates Nvidia's terms of service and warranty. The project is legitimate technical content, not malicious, but readers should understand the legal and warranty risk involved.",
+  "authors": [],
+  "stars": 2800,
+  "image_url": "https://opengraph.githubassets.com/b0489eb216272d1ce7b973e0b7e972c840814ee8528b58982bf2f52c66c52a58/Zagitta/gpu-unlock",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
