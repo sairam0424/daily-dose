@@ -1,0 +1,16 @@
+{
+  "title": "JoasASantos/REA-Prompts",
+  "source": "github",
+  "url": "https://github.com/JoasASantos/REA-Prompts",
+  "date": "2026-10-25",
+  "tags": [
+    "Batchfile"
+  ],
+  "interest_score": 4,
+  "why_read": "A prompt collection for using an LLM to reverse engineer or analyze arbitrary programs, interesting as a prompt-engineering resource but lacking deep novel technical content itself.",
+  "analysis": "This repository provides a curated set of prompts intended to help someone use a large language model to reverse engineer or break down the logic of any given program. It's essentially a prompt-engineering toolkit rather than a tool with its own executable logic, so its value depends entirely on the underlying LLM's actual reverse-engineering capability. The project could be useful as a quick-start guide for AI-assisted code analysis, but it isn't a rigorous technical contribution itself.",
+  "authors": [],
+  "stars": 2406,
+  "image_url": "https://opengraph.githubassets.com/d565b06c13a07d59d83428451df4b7f35b1b0ea4f39c86169a94dd303c4be97a/JoasASantos/REA-Prompts",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

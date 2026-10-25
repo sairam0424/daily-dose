@@ -1,0 +1,23 @@
+{
+  "title": "Phase Transition from Random Features to Fully Trainable Networks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31663",
+  "date": "2026-10-25",
+  "tags": [
+    "math.NA",
+    "cs.LG",
+    "math.ST",
+    "stat.ML"
+  ],
+  "interest_score": 4,
+  "why_read": "A dense theoretical analysis of partially trainable neural networks that will mainly interest researchers studying approximation theory rather than practitioners.",
+  "analysis": "This paper studies networks where only a fraction of parameters are trainable while the rest stay as fixed random features, and it mathematically characterizes a phase transition where a small trainable fraction captures most of the benefit of full training. It derives formal approximation bounds using kernel and spectral decay assumptions, verified for specific feature types like spherical biased-ReLU units. The practical takeaway, that a small trainable proportion can capture 90% of the improvement, is intriguing for efficient training schemes, but the heavy theoretical framing limits its audience mostly to theorists.",
+  "authors": [
+    "Xin He",
+    "Huan Lao",
+    "Xiliang Lu",
+    "Shijun Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

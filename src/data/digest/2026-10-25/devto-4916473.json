@@ -1,0 +1,20 @@
+{
+  "title": "A small, not-so-smart model went from 10% to 99.6% at reading property deeds for $1.15, and it says 'check this line' instead of bluffing",
+  "source": "devto",
+  "url": "https://dev.to/advikdivekar/a-small-not-so-smart-model-went-from-10-to-996-at-reading-property-deeds-for-115-and-it-says-490k",
+  "date": "2026-10-25",
+  "tags": [
+    "tinker",
+    "hf26challenge",
+    "devchallenge",
+    "hacktoberfest"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, numbers-heavy case study on fine-tuning a small model cheaply to reliably parse error-prone legal land descriptions, with honest reporting of failure modes.",
+  "analysis": "The author describes fine-tuning a small language model, Qwen3-8B with a LoRA adapter, to accurately parse property deed descriptions that use compass-bearing distance notation, improving accuracy from 10% to 99.6% for about a dollar in training cost. Critically, the system is designed to detect geometric inconsistencies, such as a land parcel that doesn't close back to its starting point, and flag likely transcription errors for human review instead of confidently guessing. This is a good, specific example of practical, cheap LLM fine-tuning paired with a domain-specific validation check, which is a solid engineering pattern beyond just prompting. The reported cost and accuracy numbers give it real evidentiary weight compared to vague AI success claims.",
+  "authors": [],
+  "reactions": 28,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ft3b1to37tqk917uggnoj.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

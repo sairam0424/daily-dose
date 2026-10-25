@@ -1,0 +1,16 @@
+{
+  "title": "EthanArbuckle/fairplay-decrypt",
+  "source": "github",
+  "url": "https://github.com/EthanArbuckle/fairplay-decrypt",
+  "date": "2026-10-25",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically interesting project reverse engineering Apple's FairPlay DRM to decrypt App Store IPAs offline, relevant to iOS security researchers though legally sensitive.",
+  "analysis": "FairPlay is Apple's DRM system protecting App Store apps, and this tool claims to decrypt purchased IPA files offline using independently derived keys rather than relying on jailbroken device extraction methods typically used for this purpose. That is a meaningful technical achievement if accurate, since it implies some cryptographic or protocol-level insight into Apple's DRM scheme rather than just using existing jailbreak tooling. Such tools are valuable for security researchers studying app binaries but also raise piracy concerns, so they sit in a legally gray area despite legitimate research uses like malware analysis.",
+  "authors": [],
+  "stars": 2090,
+  "image_url": "https://opengraph.githubassets.com/b49d0f57a814df1e7bb21367360f6adb53ac7e2e4890ac1e2b18dc3fdb2d1fb4/EthanArbuckle/fairplay-decrypt",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

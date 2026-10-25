@@ -1,0 +1,16 @@
+{
+  "title": "pengchujin/aerial-tv",
+  "source": "github",
+  "url": "https://github.com/pengchujin/aerial-tv",
+  "date": "2026-10-25",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical open-source Android TV launcher that removes ads and clutter from Chinese smart TVs, useful for anyone dealing with increasingly ad-laden TV interfaces.",
+  "analysis": "This is a custom home-screen launcher for Android TV devices from brands like Xiaomi and TCL, styled after Apple's tvOS, designed to replace the stock, ad-heavy interface. It's a straightforward consumer-facing utility rather than a novel technical breakthrough, but it addresses a widely felt annoyance with smart TV software. The significant star count suggests real demand for ad-free alternatives to manufacturer-provided launchers.",
+  "authors": [],
+  "stars": 4973,
+  "image_url": "https://opengraph.githubassets.com/e47833ce2dc146b78d55f5a55d0e986f607503d2782f44544b79ae897dc1de29/pengchujin/aerial-tv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

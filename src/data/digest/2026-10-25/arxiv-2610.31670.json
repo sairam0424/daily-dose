@@ -1,0 +1,23 @@
+{
+  "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31670",
+  "date": "2026-10-25",
+  "tags": [
+    "cs.CV",
+    "cs.LG",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "Proposes a cheap offline metric to predict robot policy success without expensive physical trials, which is practically useful for robotics researchers.",
+  "analysis": "The paper introduces Sensorimotor Alignment, a training-free metric that checks how well a robot model's internal representations match the structure of real physical motion, building on the idea that good models across different senses converge to similar internal structures. This matters because evaluating robot policies normally requires expensive real-world or simulated rollouts, so a cheap offline proxy that correlates with actual task success could save significant time and compute. It also helps pick promising vision-language backbones before expensive fine-tuning into action models. The idea is conceptually interesting though its practical reliability across diverse robot tasks remains to be proven broadly.",
+  "authors": [
+    "Yunfei Xie",
+    "Howard H. Qian",
+    "Shiyi Lan",
+    "Kaiyu Hang",
+    "Chen Wei"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

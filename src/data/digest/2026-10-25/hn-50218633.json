@@ -1,0 +1,16 @@
+{
+  "title": "Root shell on Samsung TV",
+  "source": "hn",
+  "url": "https://twitter.com/log4j/status/2113014142600953868?s=46",
+  "date": "2026-10-25",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A detailed hardware/firmware hacking writeup on getting root on a Samsung TV is classic hands-on reverse engineering content engineers enjoy.",
+  "analysis": "This is presumably a writeup describing how someone obtained a root shell on a Samsung smart TV, likely involving firmware extraction, bootloader exploits, or debug interfaces. Such writeups are popular among hardware hackers because they reveal real vulnerabilities in consumer electronics and teach practical reverse-engineering techniques. The high comment count suggests active discussion about method, implications for privacy, and whether vendors will patch it. It's a solid example of applied security research rather than theoretical work.",
+  "authors": [
+    "testing22321"
+  ],
+  "hn_id": 50218633,
+  "points": 738,
+  "favicon_url": "https://twitter.com/favicon.ico"
+}

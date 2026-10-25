@@ -1,0 +1,15 @@
+{
+  "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+  "source": "hn",
+  "url": "https://lynchlab.net/llm-skin-cancer",
+  "date": "2026-10-25",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete empirical comparison showing an old specialized CNN beats modern LLMs on a real diagnostic task is a genuinely useful reality check on AI hype.",
+  "analysis": "This item reports that a convolutional neural network built a decade ago still outperforms current frontier large language models on skin cancer image diagnosis. That is a meaningful finding because it highlights how general-purpose multimodal LLMs, despite impressive language capabilities, are not automatically good at narrow, high-stakes visual classification tasks that specialized models were trained for. It's a useful counterpoint to inflated claims about LLMs replacing domain-specific models in medicine. The topic should interest engineers working on applied ML and those skeptical of benchmark hype.",
+  "authors": [
+    "sungam"
+  ],
+  "hn_id": 50233779,
+  "points": 359
+}

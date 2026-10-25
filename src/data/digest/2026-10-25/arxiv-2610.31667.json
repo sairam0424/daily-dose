@@ -1,0 +1,21 @@
+{
+  "title": "Direct Pass@$k$ Optimization for Thought Pruning: Balancing Quality and Diversity in Test-Time Reasoning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31667",
+  "date": "2026-10-25",
+  "tags": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused, technically clear improvement to test-time reasoning pruning that directly optimizes the pass@k metric engineers care about for LLM reasoning efficiency.",
+  "analysis": "The paper addresses how reasoning models generate many candidate solution paths and must prune weaker ones early to save compute, balancing picking high-quality partial answers against keeping diverse ones that cover different possible solutions. Instead of treating quality and diversity as separate heuristics, the authors directly optimize the probability that at least one surviving candidate will be correct, which is the pass@k objective itself. Tested across eight open-weight reasoning models, the method reportedly beats prior pruning strategies, especially when keeping a moderate number of candidates. This is a solid, applicable efficiency technique for anyone building or scaling reasoning-time LLM pipelines.",
+  "authors": [
+    "Mahdi Salmani",
+    "Adel Javanmard",
+    "Devansh Gupta",
+    "Meisam Razaviyayn"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

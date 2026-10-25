@@ -1,0 +1,24 @@
+{
+  "title": "SpectralCanary: Embarrassingly Simple Low-Frequency Traces for T2I Dataset-Use Auditing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31659",
+  "date": "2026-10-25",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical watermarking-like technique for proving a dataset was used to train a text-to-image model, useful for copyright and dataset misuse disputes.",
+  "analysis": "SpectralCanary embeds a faint, low-frequency visual pattern across all images in a dataset before release, so that if a model later generates images showing traces of that pattern, the dataset owner can prove the model trained on their collection. The method claims high detection accuracy while barely changing the images visually, based on standard similarity metrics. This fits into a growing area of proactive content provenance tools responding to disputes over unauthorized use of images in generative AI training. It's a narrow but technically sound contribution relevant to dataset owners and AI auditors rather than most engineers.",
+  "authors": [
+    "Sy-Tuyen Ho",
+    "Anirudh Satheesh",
+    "Soham Chawathe",
+    "Huy Nghiem",
+    "Yongkyun Lee",
+    "Andrew Adams Schoen",
+    "Furong Huang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
