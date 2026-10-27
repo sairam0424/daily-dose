@@ -1,0 +1,18 @@
+{
+  "title": "The Language of Instruction: Genre and Generative AI",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.32982",
+  "date": "2026-10-27",
+  "tags": [
+    "cs.CL",
+    "cs.CY"
+  ],
+  "interest_score": 5,
+  "why_read": "A conceptual/linguistic framing of instruction-tuned LLMs as a 'genre' is intellectually interesting but more humanities-style theorizing than empirical or engineering work.",
+  "analysis": "The paper proposes viewing the standardized conversational and system-prompt format used in instruction-tuned language models as a distinct linguistic genre, shaped recursively by prior human-AI conversations. This is a cultural/linguistic analysis rather than a technical contribution with new methods, benchmarks, or systems. It could interest engineers curious about how chat templates and prompting conventions emerged and solidified, but offers no actionable technical insight. The argument is more about discourse theory than about model architecture or training techniques.",
+  "authors": [
+    "James E. Dobson"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "xevrion/hatchzip",
+  "source": "github",
+  "url": "https://github.com/xevrion/hatchzip",
+  "date": "2026-10-27",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "A straightforward but well-engineered cross-platform archive extraction tool that avoids needing extra disk space for intermediate files, written in Rust for performance and safety.",
+  "analysis": "HatchZip is a desktop and CLI tool supporting multiple archive formats including ZIP, 7z, RAR, tar, and split archives, extracting files in place to minimize disk space usage. Choosing Rust suggests an emphasis on memory safety and performance for what is otherwise a commodity utility space already well served by existing tools. It doesn't introduce fundamentally new technical ideas but could be a nice addition for users wanting a lightweight, safe, open-source alternative to existing extractors. Interest here is mostly practical rather than deeply technical.",
+  "authors": [],
+  "stars": 2057,
+  "image_url": "https://opengraph.githubassets.com/7bf77af7ef5b980fed591efda4cbb5fb53b568a47c0207111103e4ba507c0a0c/xevrion/hatchzip",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "GPT-6.1 Terra",
+  "source": "hn",
+  "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+  "date": "2026-10-27",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Discussion around a named next-generation GPT model release is relevant to AI practitioners but the title alone gives no technical detail to assess.",
+  "analysis": "The title references 'GPT-6.1 Terra,' which if genuine would be a notable new model release from OpenAI worth understanding for capability and architecture changes. Without an abstract or description, it's unclear whether this is an official announcement, a leak, or speculation, which limits how confidently its substance can be judged. The large comment count suggests active community debate, which could include real technical analysis or benchmark comparisons.",
+  "authors": [
+    "meetpateltech"
+  ],
+  "hn_id": 50248124,
+  "points": 475
+}

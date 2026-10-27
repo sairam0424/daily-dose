@@ -1,0 +1,21 @@
+{
+  "title": "SceneBloom: Agentic Indoor Environment Generation with Realistic and Diverse Layouts for Embodied Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.32978",
+  "date": "2026-10-27",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical pipeline combining generative diffusion layout sampling with geometric repair to produce physically valid simulated rooms is a solid, applicable contribution to robotics training data.",
+  "analysis": "SceneBloom addresses a real bottleneck in robot learning: creating diverse, realistic, and physically consistent 3D indoor scenes for training embodied agents. It combines a diffusion-based furniture layout sampler with a geometric compiler that fixes collisions and out-of-bounds placement, which is a sensible hybrid of generative and rule-based methods. The result, reportedly zero detected collisions and better navigation policy transfer than training on equivalent real scans, is a meaningful practical improvement. This is a useful but fairly narrow contribution mainly relevant to robotics and simulation researchers.",
+  "authors": [
+    "Yuhan Liu",
+    "Lianhui Qin",
+    "Shenji Wan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

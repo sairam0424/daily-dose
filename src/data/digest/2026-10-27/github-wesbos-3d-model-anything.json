@@ -1,0 +1,16 @@
+{
+  "title": "wesbos/3d-model-anything",
+  "source": "github",
+  "url": "https://github.com/wesbos/3d-model-anything",
+  "date": "2026-10-27",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical, well-scoped tool for turning iPhone LiDAR scans into editable browser-based 3D rooms is a nice applied demonstration of accessible 3D capture pipelines.",
+  "analysis": "This project combines iPhone LiDAR scanning with photographic capture to reconstruct real indoor spaces as editable 3D models viewable with Three.js in a browser. It demonstrates a practical pipeline from consumer-grade depth sensing hardware to usable web-based 3D assets, which is relevant for AR, game development, and digital twin applications. The use of Swift for the capture app paired with a web-based viewer is a sensible architecture choice for mixed mobile-plus-web tooling. It's a nice but relatively modest utility rather than a groundbreaking technical advance.",
+  "authors": [],
+  "stars": 2071,
+  "image_url": "https://opengraph.githubassets.com/41a4edac3bd437e09c4ad202af408b006961e9f8896823449a4ccde724b68e11/wesbos/3d-model-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

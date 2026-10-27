@@ -1,0 +1,16 @@
+{
+  "title": "ikow/php2shell-poc",
+  "source": "github",
+  "url": "https://github.com/ikow/php2shell-poc",
+  "date": "2026-10-27",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "Detailed public proof-of-concept exploit chains for a PHP pre-auth RCE vulnerability are useful for defenders building detection rules, but also lower the bar for attackers once disclosed.",
+  "analysis": "This repository documents proof-of-concept remote code execution chains exploiting PHP's session.upload_progress feature, along with ready-made detection signatures for Suricata, Sigma, and ModSecurity. This kind of security research is valuable to defenders patching systems and building intrusion detection, assuming the CVE and findings are legitimate and responsibly disclosed. However, publishing working exploit chains alongside detection rules also provides a ready-made attack toolkit, so it sits in a gray area common to offensive security research releases. It's useful mainly to security professionals rather than general software engineers.",
+  "authors": [],
+  "stars": 1832,
+  "image_url": "https://opengraph.githubassets.com/d1133df8b6004a43a0dde9cd3e115045564d70353b5ee9023151625689585fd1/ikow/php2shell-poc",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "rddmwmddr/android-ad-cleaner",
+  "source": "github",
+  "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+  "date": "2026-10-27",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A no-root tool for disabling built-in ad and marketing push features on Chinese Android phone firmware addresses a genuinely annoying real-world problem many users face.",
+  "analysis": "Many Chinese Android OEM firmwares bundle extensive advertising, hot search, and push notification systems deeply integrated into the system UI, which are hard to remove without rooting the device. This tool appears to provide a reversible, no-root method to disable these features, plus an AI-agent-assisted one-click mode for applying the fixes. The technical interest lies in how it identifies and toggles these deeply embedded OEM customizations without requiring elevated device privileges. It's a practical, narrowly scoped utility valuable mainly to users of specific Chinese Android device brands.",
+  "authors": [],
+  "stars": 1869,
+  "image_url": "https://opengraph.githubassets.com/0d92ab5aeb07c02105ca5390bedf0feb4c99a92c65787a4345514b80df180624/rddmwmddr/android-ad-cleaner",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
