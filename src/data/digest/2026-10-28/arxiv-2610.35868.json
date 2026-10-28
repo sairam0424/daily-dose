@@ -1,0 +1,22 @@
+{
+  "title": "Retriever-Free Retrieval: Navigating Documents with Decision Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.35868",
+  "date": "2026-10-28",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A genuinely novel retrieval approach that replaces traditional embedding-based retrievers with a decision model, backed by solid benchmark numbers.",
+  "analysis": "DecisionRAG proposes using a language model as a decision-making navigator through a document corpus, judging which branches of a topic hierarchy to explore rather than relying on vector similarity search. This avoids the classic retrieval bottleneck where a weak retriever limits even a strong generator model's ability to answer questions. The reported gains, like 13.8 points on MultiDoc2Dial and 17.4 points on Natural Questions over an 8B reranker baseline, are substantial and achieved without task-specific training. The sub-2-second query time across millions of documents suggests this could be practical, not just a theoretical curiosity.",
+  "authors": [
+    "Chao Wan",
+    "Paul Jünger",
+    "Beixi Du",
+    "Bodong Liu",
+    "Navaneetha Krishnan",
+    "Kilian Q. Weinberger"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

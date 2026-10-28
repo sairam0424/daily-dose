@@ -1,0 +1,17 @@
+{
+  "title": "US Government is hiding a secret court ruling about how it spies on Americans",
+  "source": "hn",
+  "url": "https://www.wired.com/story/the-us-government-is-hiding-a-secret-court-ruling-about-how-it-spies-on-americans/",
+  "date": "2026-10-28",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A significant civil-liberties/surveillance transparency story that engineers building privacy-sensitive systems should be aware of.",
+  "analysis": "This concerns a secretive court ruling about US government surveillance of Americans that has been withheld from public disclosure. It touches on FISA court processes and executive branch secrecy around mass surveillance programs. While not a technical piece itself, it matters to engineers working in privacy, security, or policy-adjacent roles who need to understand the legal landscape around data collection. The high comment count suggests substantive debate about civil liberties and government transparency.",
+  "authors": [
+    "helterskelter2"
+  ],
+  "hn_id": 50259604,
+  "points": 751,
+  "image_url": "https://media.wired.com/photos/6adbe0039bde53c96a68d73b/191:100/w_1280,c_limit/Security_Trump%20Officials%20are%20Sitting%20on%20a%20Secret%20Surveillance%20Court%20Ruling_v1.jpg",
+  "favicon_url": "https://www.wired.com/verso/static/wired-us/assets/favicon.ico"
+}
