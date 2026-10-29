@@ -1,0 +1,15 @@
+{
+  "title": "rddmwmddr/android-ad-cleaner",
+  "source": "github",
+  "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+  "date": "2026-10-29",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical utility for removing bloatware and ad injections from Chinese Android phones without rooting, useful to a specific but sizable user base.",
+  "analysis": "This tool targets a widespread annoyance on many Chinese-market Android phones, where manufacturers bundle aggressive ad injection, 'hot search' content, and marketing push notifications into the stock OS. Being root-free and reversible lowers the risk compared to typical debloating tools that require deeper system access. It's a narrow-audience but genuinely useful piece of software for people stuck with these devices, and the AI-agent execution feature is a modest convenience addition rather than a technical innovation.",
+  "authors": [],
+  "stars": 4284,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

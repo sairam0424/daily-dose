@@ -1,0 +1,15 @@
+{
+  "title": "interplains/Zero-Breach-Toolkit",
+  "source": "github",
+  "url": "https://github.com/interplains/Zero-Breach-Toolkit",
+  "date": "2026-10-29",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A free, offline toolkit for detecting traces of known commercial spyware (like Pegasus-style tools) across major desktop and mobile platforms, relevant to security-conscious engineers and journalists.",
+  "analysis": "Mercenary spyware, sold commercially to governments and used to target journalists, activists, and dissidents, is a serious and growing threat, and open tools to detect infection are genuinely valuable. Running entirely offline is an important design choice since it avoids leaking data to a third-party server and reduces the risk of tipping off attackers monitoring network traffic. Supporting Windows, macOS, Linux, Android, and iPhone backups gives it broad practical coverage for a privacy and security audience. This looks like a legitimate defensive security tool rather than an offensive one, making it a worthwhile highlight.",
+  "authors": [],
+  "stars": 2768,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

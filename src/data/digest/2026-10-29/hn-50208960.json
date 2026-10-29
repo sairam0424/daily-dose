@@ -1,0 +1,16 @@
+{
+  "title": "Start Doing Graph Theory",
+  "source": "hn",
+  "url": "https://vertex.degree/",
+  "date": "2026-10-29",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An educational piece encouraging engineers to pick up graph theory, a foundational CS topic with broad practical relevance from networking to compilers.",
+  "analysis": "This appears to be an accessible introduction or motivational essay on graph theory aimed at practitioners rather than mathematicians. Graph theory underpins many everyday engineering problems like dependency resolution, routing, social network analysis, and scheduling, so a well-written primer has lasting value. The strong discussion count suggests it resonated with people wanting a more rigorous but approachable entry point into the subject.",
+  "authors": [
+    "ibobev"
+  ],
+  "hn_id": 50208960,
+  "points": 571,
+  "image_url": "https://vertex.degree/images/link.png"
+}

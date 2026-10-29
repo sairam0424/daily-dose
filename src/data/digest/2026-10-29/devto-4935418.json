@@ -1,0 +1,19 @@
+{
+  "title": "Accuracy vs Speed: Gemma 4 E2B Quantization Tradeoffs, BF16 to Q2_K",
+  "source": "devto",
+  "url": "https://dev.to/gde/accuracy-vs-speed-gemma-4-e2b-quantization-tradeoffs-bf16-to-q2k-aea",
+  "date": "2026-10-29",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "gemma",
+    "llamacpp"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, data-driven comparison of how different quantization levels affect a small language model's math accuracy, useful for engineers deploying LLMs on constrained hardware.",
+  "analysis": "Quantization reduces a model's numeric precision to shrink its size and speed up inference, but it can hurt accuracy, and this post measures exactly how much by testing nine quantization levels against the same 250 math questions. The results show accuracy holds up well down to Q5_K_M but drops sharply at Q3_K_M before partially recovering at Q2_K, which is a genuinely useful and specific empirical data point for anyone choosing a quantization level for local deployment. The methodology, same questions, same hardware, visible per-question results, adds credibility beyond typical marketing claims. It's a niche but practically useful piece of applied ML engineering content.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma-graveyard%2Fmain%2Fdocs%2Fdevto-cover.50dc7d50.jpg"
+}

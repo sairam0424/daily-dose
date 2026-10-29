@@ -1,0 +1,16 @@
+{
+  "title": "Gemini 4 Carbon",
+  "source": "hn",
+  "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+  "date": "2026-10-29",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Likely coverage of a new large model release (Gemini successor), relevant for engineers tracking frontier AI capabilities but thin on technical depth from the title alone.",
+  "analysis": "The title suggests this concerns a new Gemini model variant, possibly a leak, codename, or announcement, but there's no abstract or description to confirm specifics. High comment count signals active discussion, but without more context it's hard to judge whether this is substantive technical news or speculation and rumor. Readers interested in the AI model race will want to check it, but the entry as presented offers little verifiable detail.",
+  "authors": [
+    "acossta"
+  ],
+  "hn_id": 50276792,
+  "points": 780,
+  "favicon_url": "https://blog.google/static/blogv2/images/favicon.ico?version=pr20261009-1701"
+}

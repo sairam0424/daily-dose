@@ -1,0 +1,16 @@
+{
+  "title": "Ghostty 1.4",
+  "source": "hn",
+  "url": "https://ghostty.org/docs/install/release-notes/1-4-0",
+  "date": "2026-10-29",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A major release of a popular, actively developed terminal emulator written in Zig, of practical interest to many engineers who use terminals daily.",
+  "analysis": "Ghostty is a fast, GPU-accelerated terminal emulator built by Mitchell Hashimoto that has gained a large following for its performance and native platform integration. Version 1.4 is a routine but closely watched release, and HN threads on these updates usually discuss feature additions, platform quirks, and comparisons to alternatives like Alacritty or Kitty. It's a solid but not groundbreaking update to a tool many developers already use.",
+  "authors": [
+    "deaux"
+  ],
+  "hn_id": 50261998,
+  "points": 1294,
+  "favicon_url": "https://ghostty.org/favicon.ico"
+}
