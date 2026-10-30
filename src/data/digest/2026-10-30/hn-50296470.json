@@ -1,0 +1,15 @@
+{
+  "title": "Binance-hacker-1029 – $5.6B stolen from Binance",
+  "source": "hn",
+  "url": "https://arkm.com/explorer/entity/21a94755-f604-45e5-9501-6542e23005e8",
+  "date": "2026-10-30",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A reported $5.6B exchange hack is a huge security event worth understanding for anyone working on crypto infrastructure or security.",
+  "analysis": "This concerns an alleged large-scale theft from the Binance exchange, which if accurate would be one of the largest crypto thefts on record. For engineers, these incidents are useful case studies in how custody systems, hot wallets, or smart contracts get compromised. The discussion thread likely contains technical speculation about attack vectors, which is valuable even before all facts are confirmed. Worth noting that details should be treated cautiously until verified given the scale of the claim.",
+  "authors": [
+    "Tiberium"
+  ],
+  "hn_id": 50296470,
+  "points": 613
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Yes, {} + [] = 0. No, JavaScript Isn’t Broken",
+  "source": "devto",
+  "url": "https://dev.to/sylwia-lask/yes-0-no-javascript-isnt-broken-14ob",
+  "date": "2026-10-30",
+  "tags": [
+    "javascript",
+    "webdev",
+    "node",
+    "programming"
+  ],
+  "interest_score": 4,
+  "why_read": "A lighthearted explainer of a classic JavaScript type-coercion quirk, entertaining but covers well-trodden territory for experienced developers.",
+  "analysis": "This article revisits the infamous '{} + [] = 0' JavaScript oddity, explaining it through the lens of type coercion and operator parsing rules. It's part of a recurring 'JS WTF' series aimed at demystifying confusing language behaviors rather than breaking new technical ground. Experienced JavaScript developers will likely already know this quirk, though newer developers may find the explanation genuinely clarifying. It's a quick, approachable read but not something that adds new technical knowledge for most senior engineers.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Folm3zyjvpymz88fwvzrw.png"
+}

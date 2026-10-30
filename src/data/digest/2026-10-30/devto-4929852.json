@@ -1,0 +1,19 @@
+{
+  "title": "Ghost in the Shell: Can a Log File Hijack an AI?",
+  "source": "devto",
+  "url": "https://dev.to/gramli/ghost-in-the-shell-can-a-log-file-hijack-an-ai-3gk",
+  "date": "2026-10-30",
+  "tags": [
+    "ai",
+    "security",
+    "halloween",
+    "promptengineering"
+  ],
+  "interest_score": 7,
+  "why_read": "A hands-on experiment testing whether a prompt injection hidden in a log file can hijack an AI coding/analysis agent is a timely and concrete security demonstration.",
+  "analysis": "The author embeds a hidden prompt injection inside a simulated 300-line application log file to see if an AI model processing the log will be manipulated into unintended behavior. This directly probes a known and growing risk category: indirect prompt injection via data that an AI reads rather than direct user input. Because AI agents increasingly summarize or act on logs, documents, and other unstructured data, this is a practical and relevant security test. The writeup promises concrete results across different models, which gives it real technical substance beyond pure speculation.",
+  "authors": [],
+  "reactions": 43,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F1ijzdipl8b0zzns8cduc.jpg"
+}

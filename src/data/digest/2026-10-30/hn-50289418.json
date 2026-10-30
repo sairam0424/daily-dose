@@ -1,0 +1,17 @@
+{
+  "title": "We're releasing the weights of Mistral Large 4",
+  "source": "hn",
+  "url": "https://mistral.ai/news/mistral-large-4-oss/",
+  "date": "2026-10-30",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A major open-weights release from Mistral is directly relevant to engineers building or evaluating LLM-based systems.",
+  "analysis": "Mistral releasing the weights for a 'Large 4' model is a significant event for anyone working with open large language models. Open weights let engineers run, fine-tune, and inspect the model locally rather than depending on an API, which affects cost, privacy, and customization options. The comment volume suggests substantial community scrutiny of benchmarks, licensing terms, and real-world performance. This is the kind of release that can shift which base models teams choose for production or research work.",
+  "authors": [
+    "kuberwastaken"
+  ],
+  "hn_id": 50289418,
+  "points": 1162,
+  "image_url": "https://mistral.ai/cms-media/api/media/file/cover-mistral-sovereign%20copie.webp",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=mistral.ai&sz=32"
+}
