@@ -10,8 +10,8 @@
     "cs.NE"
   ],
   "interest_score": 6,
-  "why_read": "A technically detailed architecture tweak for image-generating transformers that improves efficiency by handling fine detail locally instead of globally.",
-  "analysis": "Pixel-based generative transformers usually need one token per image patch, so adding detail means adding tokens, which makes the expensive global attention step even more costly. This paper's idea is to split detail into frequency bands, keeping only the coarse low-frequency information in the costly global attention step and handling fine high-frequency detail with cheaper local processing. The reported results show meaningful efficiency gains, such as similar image quality with notably fewer computations, on standard ImageNet generation benchmarks. This is a solid incremental systems-level improvement for people working directly on generative image models, though narrow for a general audience.",
+  "why_read": "A technical architecture tweak for pixel-space image generation transformers that improves efficiency by separating global and local detail processing.",
+  "analysis": "Normal pixel-space generative transformers tie image detail directly to the number of tokens processed with expensive global attention, so finer detail always costs more computation. This paper's method, SpecSlot, splits each image patch into frequency-based 'slots,' sending only the lowest-frequency slot through costly global attention while handling higher-frequency detail locally. The reported results show meaningful efficiency gains, such as better image quality at lower computational cost on ImageNet benchmarks and text-to-image tasks. This is a reasonably substantial systems-level improvement for generative model researchers, though it's a narrow niche within image generation architecture work.",
   "authors": [
     "Jiongfan Yang",
     "Weichen Fan",

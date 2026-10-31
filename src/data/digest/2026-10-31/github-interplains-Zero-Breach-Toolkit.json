@@ -7,9 +7,10 @@
     "Python"
   ],
   "interest_score": 7,
-  "why_read": "A free, cross-platform offline tool for detecting traces of known commercial spyware on personal devices, with clear defensive and legitimate security value.",
-  "analysis": "This toolkit lets users scan their own phones, computers, and backups for indicators of known mercenary spyware products like those sold to governments for surveillance. Because it runs offline and checks for known forensic traces, it is in the same genre as established tools like Amnesty's Mobile Verification Toolkit, aimed at journalists, activists, and security-conscious individuals. This is a legitimate defensive security tool, not an offensive one, so it provides real protective value rather than enabling harm. Its growing popularity suggests real demand for accessible spyware-detection tooling outside of specialist forensic labs.",
+  "why_read": "An open-source, offline toolkit for detecting mercenary spyware traces across major desktop and mobile platforms is a genuinely useful security tool.",
+  "analysis": "This toolkit scans devices and backups for indicators of commercial/mercenary spyware such as Pegasus-type tools, working offline across Windows, macOS, Linux, Android, and iPhone backups. Offline operation is important for this use case since victims of targeted surveillance may not want to transmit forensic data to third-party servers. Open-sourcing such detection tools increases scrutiny and trust compared to closed commercial forensic products like those from Amnesty or Citizen Lab-adjacent efforts. This is a legitimate defensive security tool with real-world protective value for journalists, activists, and security researchers.",
   "authors": [],
-  "stars": 3864,
+  "stars": 4001,
+  "image_url": "https://opengraph.githubassets.com/0d09f79be556304fe8ce50b97a38e433a9119ad02d1a0614722b77824c4eb68e/interplains/Zero-Breach-Toolkit",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }

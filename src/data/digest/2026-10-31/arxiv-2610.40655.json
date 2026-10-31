@@ -7,8 +7,8 @@
     "cs.CL"
   ],
   "interest_score": 7,
-  "why_read": "A careful, well-controlled study isolating why language model data attribution methods fail, with a concrete and sizeable improvement from a simple fix.",
-  "analysis": "Data attribution tries to trace a model's output back to the specific training documents that caused it, which matters for debugging, copyright questions, and understanding model behavior. The authors built a synthetic benchmark with fake facts so they have perfect ground truth, letting them isolate variables like document redundancy that normally get tangled together in real data. Their key finding is that the evidence in a document is concentrated in just a few tokens, and current methods wash that signal out by averaging over the whole document. Switching the loss function and aggregating only the top-scoring tokens boosted correct-attribution recall by 35 to 72 percentage points, which is a substantial and actionable result.",
+  "why_read": "A rigorous diagnostic benchmark for LM data attribution that pinpoints why current attribution methods fail and proposes a concrete fix.",
+  "analysis": "The paper builds a controlled benchmark using fictitious facts fine-tuned into language models so the true source of any fact is known exactly, enabling clean evaluation of data attribution methods. It finds that current methods dilute the real causal signal by averaging attribution scores across whole documents, and shows that using negative log-odds gradients plus top-token aggregation substantially improves recovery of ground truth, by 35-72 percentage points. This matters for anyone trying to trace which training documents caused a model's output, a key tool for debugging, auditing, and copyright analysis. The generalization to a second benchmark (FTRACE-TREX) with up to 4.9x improvement adds credibility beyond the synthetic setup.",
   "authors": [
     "Steven Yu",
     "Sheng-Yu Wang",

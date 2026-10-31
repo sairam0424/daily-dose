@@ -1,0 +1,18 @@
+{
+  "title": "I Retested My MoE Offloading Benchmarks. Some of My Conclusions Changed.",
+  "source": "devto",
+  "url": "https://dev.to/sizzlebop/i-retested-my-moe-offloading-benchmarks-some-of-my-conclusions-changed-6f4",
+  "date": "2026-10-31",
+  "tags": [
+    "ai",
+    "machinelearning",
+    "llm"
+  ],
+  "interest_score": 6,
+  "why_read": "A detailed, self-correcting follow-up benchmark on GPU memory offloading strategies for Mixture-of-Experts LLMs is genuinely useful for anyone running large local models.",
+  "analysis": "The author previously tested whether selectively offloading MoE expert layers to GPU versus full layer offloading improved inference speed on consumer 16GB GPUs, and is now redoing the tests with fixed quantization settings and more rigorous repetition. This kind of empirical, reproducible benchmarking work is valuable for practitioners trying to run large local LLMs efficiently on limited hardware, since results can be highly configuration-dependent. The willingness to revisit and correct earlier conclusions based on community feedback adds credibility compared to typical one-off benchmark posts. It's a practical, grounded piece rather than a theoretical one, which fits well for hands-on engineers.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdspu8kwuws0c3qo3vl9t.png"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Same Evidence, Different Judgment? A Small Experiment on Implied Conclusions and Evidence Ordering",
+  "source": "devto",
+  "url": "https://dev.to/gnomeman4201/same-evidence-different-judgment-a-small-experiment-on-implied-conclusions-and-evidence-ordering-ndg",
+  "date": "2026-10-31",
+  "tags": [
+    "ai",
+    "machinelearning",
+    "rag",
+    "llm"
+  ],
+  "interest_score": 3,
+  "why_read": "A self-described exploratory, non-peer-reviewed pilot study on LLM judgment consistency with very small sample sizes and explicit caveats about its own limitations.",
+  "analysis": "The author ran a tiny experiment, 36 responses total across synthetic evidence-ordering conditions, testing whether presentation order affects an LLM's willingness to accept evidence as supporting a conclusion. They explicitly disclose that the study is not peer-reviewed, labels weren't independently verified, and one response per condition cannot establish causal claims about ordering effects. This kind of transparent, heavily caveated amateur experimentation is intellectually honest but too underpowered and informal to draw real conclusions from. Mild curiosity value for those interested in LLM evaluation methodology, but the piece itself flags its own weak evidentiary basis.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fw73qmsf61g4xpqm1kuyf.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

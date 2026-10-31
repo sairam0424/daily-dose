@@ -1,0 +1,17 @@
+{
+  "title": "Do the math: How we took over ChatGPT accounts",
+  "source": "hn",
+  "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete account takeover technique against ChatGPT accounts is directly relevant to engineers building or securing AI products.",
+  "analysis": "This piece describes a real security exploit chain used to take over ChatGPT user accounts, likely involving token leakage, OAuth misconfiguration, or similar web-auth flaws. Because LLM products are now widely integrated into other services, understanding how such account-takeover vectors work has direct defensive value for engineers. The 'do the math' framing suggests a step-by-step technical narrative, which tends to be more substantive than abstract security punditry. This is the kind of vulnerability writeup that often yields concrete, reusable lessons about auth design.",
+  "authors": [
+    "armcat"
+  ],
+  "hn_id": 50314699,
+  "points": 297,
+  "image_url": "https://www.parameter.ai/opengraph-image.png",
+  "favicon_url": "https://www.parameter.ai/favicon.ico?favicon.3ph4xi1i43hix.ico"
+}

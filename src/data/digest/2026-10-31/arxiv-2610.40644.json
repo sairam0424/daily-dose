@@ -8,8 +8,8 @@
     "cs.LG"
   ],
   "interest_score": 5,
-  "why_read": "A methodologically careful paper on robust optimization that addresses a real practical gap between theory and realistic worst-case scenarios.",
-  "analysis": "Distributionally robust optimization protects decisions against uncertainty in estimated data distributions, and this paper's contribution is centering the worst-case search around a fitted probability model rather than just the raw observed data. This lets rare, costly events that weren't directly observed still be considered in the worst case, as long as the fitted model assigns them nontrue probability. They solve the resulting hard optimization problem with an adaptive sampling scheme that draws new scenarios tilted toward the worst case. The method is validated on realistic test problems like grid capacity planning, showing benefit specifically when data is scarce, which is a useful but fairly specialized operations-research contribution.",
+  "why_read": "A solid operations-research paper on robust optimization under distribution shift, useful mainly to specialists in stochastic programming.",
+  "analysis": "The paper addresses distributionally robust optimization, a technique for making decisions that remain good even if the true data distribution differs from what historical data suggests. Instead of centering the 'worst case' search around the raw empirical data or an overly generic transport-based region, it centers it around a fitted probabilistic model, allowing rare but plausible scenarios to be properly weighted. It then builds an adaptive sampling scheme to find costly rare scenarios without requiring huge sample sizes. The results on newsvendor and power grid capacity problems show real but incremental cost benefits under distribution shift, mainly interesting to operations research and decision-science practitioners.",
   "authors": [
     "Aron Brenner",
     "Saurabh Amin"

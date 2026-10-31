@@ -1,0 +1,19 @@
+{
+  "title": "Singularity News :: CCG",
+  "source": "devto",
+  "url": "https://dev.to/pengeszikra/singularity-news-ccg-5ejk",
+  "date": "2026-10-31",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "gamedev",
+    "showdev"
+  ],
+  "interest_score": 1,
+  "why_read": "A Halloween-themed hackathon submission building a card game, offering minimal technical substance for a professional digest.",
+  "analysis": "This is a Hacktoberfest challenge submission describing a browser-based collectible card game built with CSS-based 3D rendering and a no-build, pure-HTML development approach, deployed as a PWA. The write-up is heavily stylized with in-character 'lore' framing rather than technical explanation, making it hard to extract concrete engineering lessons. While the no-build PWA approach is mildly interesting, the post reads more like a playful submission than substantive technical content. Low value for engineers seeking real technical takeaways.",
+  "authors": [],
+  "reactions": 27,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyyh84oxpucdnmygo396v.png"
+}

@@ -4,13 +4,13 @@
   "url": "https://github.com/anhao/ai-pose-gallery-zh",
   "date": "2026-10-31",
   "tags": [
-    "HTML"
+    "TypeScript"
   ],
   "interest_score": 2,
-  "why_read": "A static image reference gallery for AI-generated character poses, useful mainly as an artist's reference tool rather than a technical project.",
-  "analysis": "This is a Chinese-language gallery of pose reference images intended to help artists or AI image generation users pick poses, built as a dependency-free static site. It is a content curation project rather than a novel piece of engineering, so there is little technical substance for a software engineering audience. The dependency-free, zero-build approach is mildly notable as a simple implementation choice but not something most engineers would need to read about.",
+  "why_read": "A static image gallery of AI-related pose references in Chinese, of niche interest to artists rather than engineers.",
+  "analysis": "This repository appears to be a zero-dependency static gallery containing thousands of pose reference images, likely intended for artists or AI image generation prompting rather than software engineering practice. It's fully localized into Chinese and described as a dependency-free static site, which is a minor technical detail but not a significant engineering achievement. The content itself (pose references) is creative-reference material, not a technical tool or research contribution. Limited relevance to a software engineering audience.",
   "authors": [],
-  "stars": 3950,
-  "image_url": "https://opengraph.githubassets.com/5be2aee5653ec254cf18ea80ebd9b277c173f013b9fc42c24756567469221f57/anhao/ai-pose-gallery-zh",
+  "stars": 4664,
+  "image_url": "https://opengraph.githubassets.com/671a76453c2c82468d9b50609011436285204a65174373c509c008ae644ba5b9/anhao/ai-pose-gallery-zh",
   "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
 }
