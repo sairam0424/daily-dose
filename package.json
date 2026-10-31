@@ -29,7 +29,7 @@
     "@astrojs/vercel": "^11.0.10",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^7.3.2",
+    "astro": "^7.4.2",
     "fast-xml-parser": "^5.11.1",
     "zod": "^4.6.5"
   },
