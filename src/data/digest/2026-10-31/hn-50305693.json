@@ -1,0 +1,17 @@
+{
+  "title": "AI isn't replacing SREs, it's deskilling them",
+  "source": "hn",
+  "url": "https://newsletter.signoz.io/p/ai-isnt-replacing-sres-its-deskilling",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A thoughtful critique of AI's effect on site reliability engineering skills that goes beyond the usual hype-versus-doom framing.",
+  "analysis": "The piece argues that AI tools are not eliminating the SRE role but are instead eroding the hands-on troubleshooting skills that make a good SRE effective. This touches on a real organizational risk: if engineers lean on AI for incident response, they may lose the deep system knowledge needed when AI tools fail or produce wrong answers. It is a discussion-style piece rather than a technical deep dive, but the topic is one many engineering teams are grappling with right now. The large comment count suggests a lively debate about AI's role in operations work.",
+  "authors": [
+    "dorianniemiec"
+  ],
+  "hn_id": 50305693,
+  "points": 489,
+  "image_url": "https://substackcdn.com/image/fetch/$s_!Hgvq!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F530d847f-26cb-4ddd-a6de-875cbbaf8fab_6233x4167.webp",
+  "favicon_url": "https://substackcdn.com/icons/substack/favicon.ico"
+}

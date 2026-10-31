@@ -1,0 +1,14 @@
+{
+  "title": "unclebob/ub-mode",
+  "source": "github",
+  "url": "https://github.com/unclebob/ub-mode",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A project from a well-known figure in software engineering, but without more description it's unclear what substantive content or tooling it offers.",
+  "analysis": "Uncle Bob (Robert C. Martin) is a well-known author in the clean code and software craftsmanship space, which likely drives the attention given to this repository. Without a description of its actual functionality, it is hard to assess the technical substance beyond the fact that it has attracted significant stars and forks quickly. The name 'ub-mode' hints at an Emacs or editor mode, possibly tied to his coding philosophy or TDD practices. Readers interested in software craftsmanship commentary may find it worthwhile, but its technical depth can't be judged from the given information.",
+  "authors": [],
+  "stars": 5376,
+  "image_url": "https://opengraph.githubassets.com/44fa5777fc9390b3629e162578ff1a46671c67fe8772445109bbbe3c6777c07e/unclebob/ub-mode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

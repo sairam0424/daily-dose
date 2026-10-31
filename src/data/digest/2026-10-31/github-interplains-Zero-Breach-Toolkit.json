@@ -1,0 +1,15 @@
+{
+  "title": "interplains/Zero-Breach-Toolkit",
+  "source": "github",
+  "url": "https://github.com/interplains/Zero-Breach-Toolkit",
+  "date": "2026-10-31",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A free, cross-platform offline tool for detecting traces of known commercial spyware on personal devices, with clear defensive and legitimate security value.",
+  "analysis": "This toolkit lets users scan their own phones, computers, and backups for indicators of known mercenary spyware products like those sold to governments for surveillance. Because it runs offline and checks for known forensic traces, it is in the same genre as established tools like Amnesty's Mobile Verification Toolkit, aimed at journalists, activists, and security-conscious individuals. This is a legitimate defensive security tool, not an offensive one, so it provides real protective value rather than enabling harm. Its growing popularity suggests real demand for accessible spyware-detection tooling outside of specialist forensic labs.",
+  "authors": [],
+  "stars": 3864,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

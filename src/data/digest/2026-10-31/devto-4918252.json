@@ -1,0 +1,19 @@
+{
+  "title": "My open source project is brand new and already has contributors. Here's what I did.",
+  "source": "devto",
+  "url": "https://dev.to/nathan_tarbert/my-open-source-project-is-brand-new-and-already-has-contributors-heres-what-i-did-3fb4",
+  "date": "2026-10-31",
+  "tags": [
+    "opensource",
+    "github",
+    "ai",
+    "webdev"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal narrative about structuring a new open source project to attract first-time contributors during Hacktoberfest, useful mainly as soft community-management advice.",
+  "analysis": "The author, a developer relations professional, reflects on making their new self-hosted AI support tool approachable to new open-source contributors. The actual project, answerLoops, automates community question-answering by searching a team's docs and having a second AI agent verify the drafted answer before a human approves it. The post's practical value is more about onboarding and labeling practices for open source maintainers than deep technical content. It's a reasonable but fairly generic piece of advice dressed up with a project showcase.",
+  "authors": [],
+  "reactions": 60,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fh0ki1pl258ubdccjk9bf.png"
+}

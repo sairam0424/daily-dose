@@ -1,0 +1,19 @@
+{
+  "title": "We Need to Talk About How Gross Modern Web Design Has Become (And How We Built an AI to Catch It)",
+  "source": "devto",
+  "url": "https://dev.to/dj29/we-need-to-talk-about-how-gross-modern-web-design-has-become-and-how-we-built-an-ai-to-catch-it-5gin",
+  "date": "2026-10-31",
+  "tags": [
+    "discuss",
+    "showdev",
+    "webdev",
+    "gemini"
+  ],
+  "interest_score": 3,
+  "why_read": "A promotional post for a browser extension that claims to detect manipulative 'dark pattern' UI designs using AI, but offers little real technical detail.",
+  "analysis": "The article frames the problem of manipulative web design (fake urgency timers, misleading buttons) reasonably well, but the actual technical explanation of how the tool detects these patterns is thin and mostly marketing copy. Claims that it can 'see the web' like a human and catch dynamic dark patterns in real time would require solid computer vision or DOM analysis techniques, but none of the specifics are given in the excerpt. This reads more like a product launch post than a technical write-up, so its value to an engineering audience is limited without more implementation detail.",
+  "authors": [],
+  "reactions": 35,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fb61la8s368galmbcxahw.png"
+}

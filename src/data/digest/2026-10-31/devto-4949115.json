@@ -1,0 +1,19 @@
+{
+  "title": "I Built 101 Indian Monuments in the Browser Using Only Code (No 3D Models)",
+  "source": "devto",
+  "url": "https://dev.to/amananandrai/i-built-101-indian-monuments-in-the-browser-using-only-code-no-3d-models-3000",
+  "date": "2026-10-31",
+  "tags": [
+    "webdev",
+    "javascript",
+    "beginners",
+    "showdev"
+  ],
+  "interest_score": 6,
+  "why_read": "A creative procedural-geometry project that recreates 101 Indian monuments in the browser using only code-generated 3D shapes, no model files.",
+  "analysis": "The project builds each monument as a small JavaScript function composing primitive shapes like boxes, cylinders, and domes, with a single shared shader handling materials like stone, marble, and water. This is a nice demonstration of procedural generation techniques and efficient web-based 3D rendering, achieved with zero external dependencies and tiny code footprints per monument. It is more of a creative coding showcase than a deep technical innovation, but the constraints, around 2KB of code per building and no downloaded assets, are impressive from an engineering economy standpoint. Readers interested in procedural graphics or WebGL/Three.js-style techniques would likely find this inspiring and technically instructive.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3s0wxam8jkstnx0408kc.png"
+}

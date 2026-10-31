@@ -1,0 +1,21 @@
+{
+  "title": "Elucidating the Design Space of LM Data Attribution",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40655",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful, well-controlled study isolating why language model data attribution methods fail, with a concrete and sizeable improvement from a simple fix.",
+  "analysis": "Data attribution tries to trace a model's output back to the specific training documents that caused it, which matters for debugging, copyright questions, and understanding model behavior. The authors built a synthetic benchmark with fake facts so they have perfect ground truth, letting them isolate variables like document redundancy that normally get tangled together in real data. Their key finding is that the evidence in a document is concentrated in just a few tokens, and current methods wash that signal out by averaging over the whole document. Switching the loss function and aggregating only the top-scoring tokens boosted correct-attribution recall by 35 to 72 percentage points, which is a substantial and actionable result.",
+  "authors": [
+    "Steven Yu",
+    "Sheng-Yu Wang",
+    "Kimia Hamidieh",
+    "Antonio Torralba",
+    "David Bau"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

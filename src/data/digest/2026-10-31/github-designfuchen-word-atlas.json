@@ -1,0 +1,16 @@
+{
+  "title": "designfuchen/word-atlas",
+  "source": "github",
+  "url": "https://github.com/designfuchen/word-atlas",
+  "date": "2026-10-31",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 2,
+  "why_read": "A well-made vocabulary learning app and open dataset for IELTS English test preparation, useful mainly to language learners rather than software engineers.",
+  "analysis": "This project pairs illustrated flashcards with native audio and spaced-repetition scheduling (FSRS) to help learners memorize English vocabulary for the IELTS exam. The use of FSRS, a modern spaced-repetition algorithm, is a mildly interesting technical detail, but the project overall is an educational content app rather than an engineering tool. It is open source and includes a CC-licensed dataset, which could be reused by other developers building similar language-learning apps. Overall, its appeal is narrow and mostly outside core software engineering interests.",
+  "authors": [],
+  "stars": 3358,
+  "image_url": "https://repository-images.githubusercontent.com/1432980411/d119d96c-ba71-4a5c-bb27-838c96dc82ae",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

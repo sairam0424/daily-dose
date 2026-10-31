@@ -1,0 +1,19 @@
+{
+  "title": "Propose-Filter-Release: Scaling Noise to Typical Sensitivity via Private Filtering",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40654",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid theoretical contribution to differential privacy that generalizes an existing technique for avoiding worst-case noise scaling.",
+  "analysis": "Differentially private algorithms typically add noise sized to the worst possible single data point's influence, which can make results needlessly noisy when most data is well-behaved. This paper introduces a general method, propose-filter-release, that privately removes atypical records first so the remaining noise can be scaled to the typical case instead. It generalizes a known technique called propose-test-release and shows it applies to several statistical problems, including graph analysis and user histogram comparisons. This is a solid theoretical contribution for the differential privacy community but is fairly specialized and less relevant outside that niche.",
+  "authors": [
+    "Moshe Shenfeld",
+    "Eliad Tsfadia",
+    "Katrina Ligett"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

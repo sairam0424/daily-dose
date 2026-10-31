@@ -1,0 +1,17 @@
+{
+  "title": "Northflank Breached",
+  "source": "hn",
+  "url": "https://status.northflank.com",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A security breach disclosure at a cloud platform provider, useful for understanding real-world attack vectors against PaaS infrastructure.",
+  "analysis": "Northflank is a platform-as-a-service for deploying applications, and a breach there would be significant since it could expose customer deployments, secrets, or infrastructure access. Breach writeups are valuable technical reading because they often reveal specific misconfigurations or vulnerability classes that other engineers can check for in their own systems. Without more detail in the title it is hard to assess severity, but the engagement and specificity suggest real substance rather than vague scare-mongering.",
+  "authors": [
+    "js4ever"
+  ],
+  "hn_id": 50305025,
+  "points": 346,
+  "image_url": "https://northflank.instatus.com/api/og",
+  "favicon_url": "https://instatus.com/user-content/v1635412200/ydjpg9wb8ximfbrlegtn.ico"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Read, Allocate, Route: Role-Coupled Tokenization for Pixel-Space Generative Transformers",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40647",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG",
+    "cs.NE"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically detailed architecture tweak for image-generating transformers that improves efficiency by handling fine detail locally instead of globally.",
+  "analysis": "Pixel-based generative transformers usually need one token per image patch, so adding detail means adding tokens, which makes the expensive global attention step even more costly. This paper's idea is to split detail into frequency bands, keeping only the coarse low-frequency information in the costly global attention step and handling fine high-frequency detail with cheaper local processing. The reported results show meaningful efficiency gains, such as similar image quality with notably fewer computations, on standard ImageNet generation benchmarks. This is a solid incremental systems-level improvement for people working directly on generative image models, though narrow for a general audience.",
+  "authors": [
+    "Jiongfan Yang",
+    "Weichen Fan",
+    "Haiwen Diao",
+    "Zhongang Cai",
+    "Ziwei Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

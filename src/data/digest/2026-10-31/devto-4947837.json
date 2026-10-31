@@ -1,0 +1,18 @@
+{
+  "title": "MoE Offloading Isn’t Always Faster: I Tested 5 Models on a 16GB GPU",
+  "source": "devto",
+  "url": "https://dev.to/sizzlebop/moe-offloading-isnt-always-faster-i-tested-5-models-on-a-16gb-gpu-498a",
+  "date": "2026-10-31",
+  "tags": [
+    "ai",
+    "machinelearning",
+    "llm"
+  ],
+  "interest_score": 7,
+  "why_read": "A hands-on, data-driven exploration of MoE expert offloading strategies for running large language models on consumer GPUs with limited VRAM.",
+  "analysis": "The author benchmarks five Mixture-of-Experts language models under different offloading strategies to see when selectively offloading just the MoE expert layers beats naive whole-layer offloading on a 16GB GPU. This is a genuinely useful, practical investigation for anyone trying to run large local models on consumer hardware, since offloading strategy can make a big difference in usable speed. The explanation of why MoE models offer this extra lever, because only a subset of experts activate per token, is clearly explained and technically sound. It's an informal benchmark rather than a rigorous paper, but the empirical results and reasoning are genuinely informative for local-LLM practitioners.",
+  "authors": [],
+  "reactions": 18,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Flrdhi0vy10p8jfw0w76i.png"
+}

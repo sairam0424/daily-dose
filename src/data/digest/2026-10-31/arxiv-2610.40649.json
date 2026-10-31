@@ -1,0 +1,23 @@
+{
+  "title": "Rethinking Neural Thickets Without Weight Perturbations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40649",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A skeptical re-examination of a recent claimed phenomenon in language models, showing a simpler explanation for the same empirical gains.",
+  "analysis": "A prior paper claimed that pretrained language models sit in dense neighborhoods of task-specific experts that random weight perturbations can reveal, dubbed the Neural Thickets hypothesis. This paper reproduces those performance gains but shows they can be explained more simply: perturbing outputs rather than weights, then selecting and voting among the results, gets the same or better results without touching the model's weights at all. That is a valuable scientific correction because it links the phenomenon to well-known ideas like self-consistency and ensemble voting rather than a new geometric property of weight space. This kind of debunking-with-a-simpler-model work is useful for keeping the field honest about what's actually driving reported improvements.",
+  "authors": [
+    "Nicolas Dufour",
+    "Elouan Gardès",
+    "Amil Dravid",
+    "Patrick Pérez",
+    "Loic Landrieu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

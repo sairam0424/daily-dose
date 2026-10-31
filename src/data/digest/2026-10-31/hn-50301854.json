@@ -1,0 +1,16 @@
+{
+  "title": "Azure's Weakest Link – Five Full Cross-Tenant Compromises",
+  "source": "hn",
+  "url": "https://www.binarysecurity.no/posts/2026/10/one-root-case",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A detailed security research report on cross-tenant isolation failures in Azure, a topic with serious implications for anyone running workloads on that cloud.",
+  "analysis": "Cross-tenant compromises in a major cloud provider are a big deal because they violate the fundamental isolation promise that lets unrelated customers share the same infrastructure safely. Five separate full compromises suggests a pattern of systemic issues rather than one-off bugs, which is more concerning and more technically interesting. This kind of research typically includes details on the specific services, APIs, or authentication flaws exploited, which is valuable for cloud security practitioners. The relatively low comment count compared to points suggests a technical, less argumentative discussion.",
+  "authors": [
+    "swq115"
+  ],
+  "hn_id": 50301854,
+  "points": 259,
+  "favicon_url": "https://www.binarysecurity.no/assets/images/favicon-32x32.png"
+}

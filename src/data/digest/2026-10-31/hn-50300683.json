@@ -1,0 +1,16 @@
+{
+  "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
+  "source": "hn",
+  "url": "https://phorion.io/blog/offical-claude-code-vsx-compromise/",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A real supply-chain security incident involving a popular AI coding extension distributed through Cursor's marketplace, directly relevant to developer tooling trust.",
+  "analysis": "This reports a backdoor found in a VS Code extension for Claude Code that was distributed via the Cursor Marketplace. Supply-chain attacks on developer tools are a growing and serious risk because they can silently compromise anyone who installs the extension. The high comment count suggests substantial discussion of how the backdoor was discovered and what it means for marketplace vetting. This is squarely relevant to engineers who install AI coding assistants and extensions without much scrutiny.",
+  "authors": [
+    "_chall"
+  ],
+  "hn_id": 50300683,
+  "points": 746,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=phorion.io&sz=32"
+}
