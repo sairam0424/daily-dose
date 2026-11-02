@@ -1,0 +1,16 @@
+{
+  "title": "valentderah/totk-pc-recomp",
+  "source": "github",
+  "url": "https://github.com/valentderah/totk-pc-recomp",
+  "date": "2026-11-02",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely impressive static recompilation project turning a Switch game binary into native Windows code with a modern Vulkan renderer.",
+  "analysis": "Static recompilation translates compiled game code for one platform (here, the Nintendo Switch) directly into native machine code for another platform, in this case Windows x86-64, rather than emulating the original hardware at runtime. This is a technically demanding reverse-engineering and compiler-adjacent effort that has produced real, substantial results in the game preservation and performance community, as seen in similar prior projects for other Nintendo titles. Building a Vulkan renderer on top adds further serious graphics engineering work. This kind of project is genuinely interesting to systems and reverse-engineering enthusiasts even though it requires the user to supply their own legally-owned game files.",
+  "authors": [],
+  "stars": 3194,
+  "image_url": "https://opengraph.githubassets.com/93afcbb4a712a701712d99e08b41d093fc9de8286735d9fae72cdf0710d15de2/valentderah/totk-pc-recomp",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

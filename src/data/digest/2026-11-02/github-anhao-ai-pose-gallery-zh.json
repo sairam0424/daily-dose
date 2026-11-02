@@ -1,0 +1,16 @@
+{
+  "title": "anhao/ai-pose-gallery-zh",
+  "source": "github",
+  "url": "https://github.com/anhao/ai-pose-gallery-zh",
+  "date": "2026-11-02",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 2,
+  "why_read": "A static Chinese-language gallery of AI-generated pose reference images, useful mainly for artists rather than engineers.",
+  "analysis": "This repository is a zero-dependency static gallery of pose reference images intended for artists or AI image generation workflows, translated into Chinese. It doesn't appear to involve notable engineering work beyond organizing and serving static image assets. It may be useful to a niche audience of digital artists but has limited broader technical interest.",
+  "authors": [],
+  "stars": 5134,
+  "image_url": "https://opengraph.githubassets.com/8d296f8818ec3130e738914dc88ab8061ade356c468084ddf66508e39d9e73c8/anhao/ai-pose-gallery-zh",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Here Lies My Toaster",
+  "source": "devto",
+  "url": "https://dev.to/nazar-boyko/here-lies-my-toaster-1nmm",
+  "date": "2026-11-02",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "gemma",
+    "go"
+  ],
+  "interest_score": 2,
+  "why_read": "A cute, small hackathon project generating fake obituaries for broken household objects from photos, technically simple but charming.",
+  "analysis": "This is a small local web app that uses a vision-capable local model (Gemma) to generate a humorous obituary for a photographed broken object, with a Go-based validation layer ensuring the model doesn't invent details not visible in the photo. The core technical idea, constraining generated text to only reference verified visual details, is a reasonable and generalizable pattern for reducing hallucination in creative AI apps. Overall it's a lightweight hackathon demo rather than a deep technical contribution, but the grounding mechanism is a nice small idea.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F5zczj0oyjqr094e6rbsy.jpg"
+}

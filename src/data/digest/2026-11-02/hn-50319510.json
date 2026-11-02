@@ -1,0 +1,17 @@
+{
+  "title": "HackerTube: YouTube built from videos recommended by HN",
+  "source": "hn",
+  "url": "https://karpathy.bearblog.dev/hacker-tube/",
+  "date": "2026-11-02",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A fun community-curated video feed built from HN links, but it's a thin wrapper project with little technical depth.",
+  "analysis": "This is a site that scrapes YouTube links mentioned in Hacker News comments and threads and presents them as a browsable feed. The technical work is mostly scraping, deduplication, and a simple ranking/display layer rather than any novel algorithm or infrastructure. Its appeal is curatorial and social rather than technical, which is why it topped HN, but engineers reading a technical digest won't learn much from it.",
+  "authors": [
+    "karpathy"
+  ],
+  "hn_id": 50319510,
+  "points": 2233,
+  "image_url": "https://bearblog.dev/static/og-image.png",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=karpathy.bearblog.dev&sz=32"
+}

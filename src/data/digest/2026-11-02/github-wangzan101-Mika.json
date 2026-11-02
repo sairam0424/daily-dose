@@ -1,0 +1,16 @@
+{
+  "title": "wangzan101/Mika",
+  "source": "github",
+  "url": "https://github.com/wangzan101/Mika",
+  "date": "2026-11-02",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 6,
+  "why_read": "An on-device Android agent that can operate apps and the web autonomously, relevant to the growing mobile agent space and worth evaluating for its approach.",
+  "analysis": "Mika is described as an on-device AI agent for Android capable of controlling apps and browsing the web to complete tasks on a user's behalf. On-device agentic automation is a technically interesting and fast-moving area, raising real engineering challenges around accessibility APIs, screen understanding, and safe action execution. Without deeper documentation it's hard to judge how robust or novel the implementation is, but the problem space itself is worth engineers' attention.",
+  "authors": [],
+  "stars": 3821,
+  "image_url": "https://opengraph.githubassets.com/ad12d8a790d7481731e54940f8182e7e3c08232ca1d097d4a830f1dfaeb5f757/wangzan101/Mika",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Rethinking Neural Thickets Without Weight Perturbations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40649",
+  "date": "2026-11-02",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A sharp, skeptical reproduction study that debunks a trendy 'weight-space geometry' explanation and replaces it with a simpler mechanism.",
+  "analysis": "A prior paper claimed that randomly perturbing a language model's weights uncovers nearby 'expert' regions in weight space that boost task performance, dubbed the Neural Thickets hypothesis. This paper reproduces the same performance gains but shows they come from a much simpler cause: generating diverse outputs, picking the best ones on a validation set, and voting, rather than any special geometric structure in weight space. They show that even just adding random noise to the output logits of a completely frozen model achieves the same or better gains, directly undercutting the original explanation. This kind of careful, skeptical reproduction work is valuable because it prevents the field from building on a false premise, and it also extends usefully to vision tasks under domain shift.",
+  "authors": [
+    "Nicolas Dufour",
+    "Elouan Gardès",
+    "Amil Dravid",
+    "Patrick Pérez",
+    "Loic Landrieu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
