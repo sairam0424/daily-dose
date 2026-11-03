@@ -1,0 +1,40 @@
+{
+  "title": "XLA from the Trenches: Correctness on TPU Workloads at Scale",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.00624",
+  "date": "2026-11-03",
+  "tags": [
+    "cs.AI",
+    "cs.LG",
+    "cs.PL"
+  ],
+  "interest_score": 8,
+  "why_read": "A detailed, concrete account from Google of how they find and fix correctness bugs in the XLA TPU compiler at massive scale, which is genuinely useful systems and compiler engineering content.",
+  "analysis": "This paper describes Google's real production methodology for catching subtle correctness bugs in the XLA compiler used for TPU workloads, where bugs can silently corrupt numerics or memory without throwing obvious errors. They combine fuzzing with real production traces and use AI agent swarms to autonomously generate stress tests, reproduce failures, and even draft fixes. A key technical contribution is a hierarchical differential pipeline that can narrow down a failure from an entire computation graph to a single faulty operation inside a fused kernel. The paper reports over 142 resolved compiler bugs in production, making this a rare, concrete look at correctness engineering for ML compilers at hyperscale.",
+  "authors": [
+    "Ignacio Cano",
+    "Amir Saadat",
+    "Rishipal Singh Bhatia",
+    "Samuel Ginzburg",
+    "Patrick C. Toulme",
+    "Ioannis Zarkadas",
+    "Praveen Narayanan",
+    "Pratik Bhatu",
+    "Nicolas Basile",
+    "Alexander Dietmüller",
+    "Ruishan Wang",
+    "Jacob Wahlgren",
+    "Victor Barros",
+    "Subhankar Shah",
+    "Michael Kuperstein",
+    "Farzin Houshmand",
+    "Emma Sevastian",
+    "Peter Gavin",
+    "Karthik Srinivasa Murthy",
+    "Berkin Ilbeyi",
+    "Amit Sabne",
+    "Eli Bendersky"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

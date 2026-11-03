@@ -1,0 +1,19 @@
+{
+  "title": "This is my first HacktoberFest, and I don't know what to feel.",
+  "source": "devto",
+  "url": "https://dev.to/francistrdev/this-is-my-first-hacktoberfest-and-i-dont-know-what-to-feel-449f",
+  "date": "2026-11-03",
+  "tags": [
+    "discuss",
+    "community",
+    "mlh",
+    "hacktoberfest"
+  ],
+  "interest_score": 2,
+  "why_read": "A personal, casual reflection on one person's first Hacktoberfest experience with little technical depth beyond general open-source event commentary.",
+  "analysis": "This is a first-person blog post reflecting on the author's initial experience participating in Hacktoberfest, including observations about past abuse of the event through low-quality pull requests and recent rule changes like removing PR counts. It is a reasonable read for someone curious about community sentiment around open-source contribution events, but it contains no code, architecture, or technical analysis. The tone is casual and personal rather than informative for engineers seeking technical content. It's fine as community color but not digest-worthy on technical merit.",
+  "authors": [],
+  "reactions": 48,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkdrg60peavzloceeysdp.png"
+}

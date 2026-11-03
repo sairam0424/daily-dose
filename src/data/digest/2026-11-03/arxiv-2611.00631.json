@@ -1,0 +1,23 @@
+{
+  "title": "TopoQuant: Topological Framework to Characterize Behavioral Shifts in Quantized Large Language Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.00631",
+  "date": "2026-11-03",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically interesting attempt to use topological data analysis to detect quantization-induced degradation in LLMs before running expensive evaluations.",
+  "analysis": "TopoQuant applies topological data analysis to the attention weight structures of quantized language models to measure how much the internal structure changes as precision drops. The key finding is that this structural drift stays flat until compression falls below 4-bit precision, where it sharply increases and tracks degraded attention behavior. They show a lightweight model built on these topological features can predict attention consistency with reasonably strong accuracy, R-squared up to 0.85, offering a cheap early-warning signal for unsafe quantization levels. This is a useful diagnostic tool for anyone deploying compressed LLMs who wants to avoid expensive downstream evaluation to find safe compression limits.",
+  "authors": [
+    "Baha Rababah",
+    "Shahzeb Qamar",
+    "Lorenz Sparrenberg",
+    "Rafet Sifa",
+    "Murat Kantarcioglu",
+    "Carson K. Leung",
+    "Cuneyt Gurcan Akcora"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

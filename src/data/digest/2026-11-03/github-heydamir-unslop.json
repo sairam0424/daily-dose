@@ -1,0 +1,15 @@
+{
+  "title": "heydamir/unslop",
+  "source": "github",
+  "url": "https://github.com/heydamir/unslop",
+  "date": "2026-11-03",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical Claude-based tool aimed at a real and common problem, making AI-generated UIs look less generic and more intentionally designed.",
+  "analysis": "Unslop is a skill for Claude that takes typical AI-generated interfaces, often criticized for a repetitive, generic look, and reworks them into something closer to deliberate, human-style design. This addresses a genuinely common complaint among developers using AI coding assistants, where output tends to converge on similar visual patterns. The approach is interesting as an example of using an LLM skill specifically for aesthetic and design-sense correction rather than functional code changes. Its usefulness will depend heavily on how well it actually captures good design judgment versus just adding superficial variety.",
+  "authors": [],
+  "stars": 6368,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

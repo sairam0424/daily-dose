@@ -1,0 +1,16 @@
+{
+  "title": "If you love a website, back it up",
+  "source": "hn",
+  "url": "https://blog.mistys-internet.website/post/2026/10/29/if-you-love-a-website-back-it-up/",
+  "date": "2026-11-03",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A practical reminder and likely a how-to guide on archiving websites you care about, relevant given how often sites disappear.",
+  "analysis": "This post likely discusses tools and methods for archiving web content such as using wget, the Wayback Machine, or personal scraping scripts to preserve sites before they vanish. It touches on a real and recurring problem in software and digital culture: link rot and the fragility of hosted content. The technical substance depends on how deep the methodology goes, but the topic itself is useful for engineers who maintain or care about web archives. Moderate engagement with a reasonable comment-to-point ratio suggests thoughtful discussion rather than pure outrage.",
+  "authors": [
+    "ingve"
+  ],
+  "hn_id": 50336518,
+  "points": 419,
+  "favicon_url": "https://blog.mistys-internet.website/favicon.png"
+}

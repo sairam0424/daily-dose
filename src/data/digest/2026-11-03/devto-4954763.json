@@ -1,0 +1,18 @@
+{
+  "title": "Butter Scraped Over Too Much Bread",
+  "source": "devto",
+  "url": "https://dev.to/aws-heroes/butter-scraped-over-too-much-bread-55jn",
+  "date": "2026-11-03",
+  "tags": [
+    "culture",
+    "discuss",
+    "productivity"
+  ],
+  "interest_score": 4,
+  "why_read": "A reflective essay using queueing theory as a metaphor for burnout in knowledge work, more of a thoughtful opinion piece than a technical resource.",
+  "analysis": "This essay uses the M/M/1 queueing model, where a single server processes randomly arriving jobs, as a metaphor to explain why running people at 100% utilization like a server causes compounding delays and burnout. It is a decent use of a real technical concept to make a point about workload management, which gives it slightly more substance than a typical motivational post. However, the actual content is about workplace culture and burnout rather than teaching or demonstrating a technical skill. It may resonate with readers but offers limited new technical insight beyond the analogy itself.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3q7m60h5uhrqd3loihvo.png"
+}

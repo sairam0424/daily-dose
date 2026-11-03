@@ -1,0 +1,19 @@
+{
+  "title": "gp-grid: A Free, Open-Source TypeScript Data Grid for React, Vue, and Angular (No Paywalled Features)",
+  "source": "devto",
+  "url": "https://dev.to/hadil/gp-grid-a-free-open-source-typescript-data-grid-for-react-vue-and-angular-no-paywalled-5heb",
+  "date": "2026-11-03",
+  "tags": [
+    "programming",
+    "react",
+    "vue",
+    "angular"
+  ],
+  "interest_score": 5,
+  "why_read": "A promotional but reasonably substantive writeup of an open-source, dependency-free TypeScript data grid aimed at competing with paywalled enterprise grids like AG Grid.",
+  "analysis": "gp-grid is presented as a free, Apache 2.0 licensed data grid for React, Vue, and Angular that supports virtual scrolling, multi-column sorting, filtering, and cell editing without paywalling advanced features like row grouping or pivot tables. The technical claims, like zero external dependencies and handling 100,000+ rows via virtualization, are concrete and checkable against the linked repository and benchmarks. This is useful for engineers evaluating data grid options who are tired of enterprise licensing walls, though it reads partly as a product pitch. Its value depends on independent verification of the stated performance benchmarks against AG Grid.",
+  "authors": [],
+  "reactions": 28,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffhh705ti5amsemyc79e9.png"
+}
