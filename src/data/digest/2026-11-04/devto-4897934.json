@@ -1,0 +1,19 @@
+{
+  "title": "Rack Before You Remember",
+  "source": "devto",
+  "url": "https://dev.to/kenwalger/rack-before-you-remember-2jl3",
+  "date": "2026-11-04",
+  "tags": [
+    "ai",
+    "llm",
+    "architecture",
+    "programming"
+  ],
+  "interest_score": 3,
+  "why_read": "A metaphorical essay drawing an analogy between winemaking sediment and AI agent memory design, more reflective than technically rigorous.",
+  "analysis": "This piece uses the winemaking process of racking, separating clarified liquid from sediment called lees, as a metaphor for how AI agents might manage or discard accumulated memory and context. It's an essay-style reflection rather than a technical deep dive, so readers shouldn't expect concrete implementation details, benchmarks, or code. The analogy itself is a reasonably creative way to think about state management and what information agents should retain versus discard over time. Its value is more in prompting conceptual thinking about agent memory design than in providing actionable technical guidance.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjta595mrd2d2908smur0.png"
+}

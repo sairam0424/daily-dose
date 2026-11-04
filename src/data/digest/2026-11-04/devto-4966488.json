@@ -1,0 +1,20 @@
+{
+  "title": "I lost half a day to an n8n workflow that was \"working.\" It never ran.",
+  "source": "devto",
+  "url": "https://dev.to/sarvar_04/i-lost-half-a-day-to-an-n8n-workflow-that-was-working-it-never-ran-43p",
+  "date": "2026-11-04",
+  "tags": [
+    "n8n",
+    "aws",
+    "devops",
+    "discuss"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, specific operational post about a subtle monitoring gap in self-hosted n8n workflows, useful for anyone running similar automation infrastructure.",
+  "analysis": "This post describes a real operational pitfall: an n8n workflow automation that was silently disabled, so it never ran and never triggered its own failure alerts, since error workflows only fire on actual failed executions, not on workflows that never start. The author built a 'liveness check' to detect this blind spot, tested specifically against a realistic production setup using n8n with PostgreSQL on an EC2 instance rather than a toy demo configuration. This is a useful, narrowly-scoped DevOps lesson applicable to anyone running self-hosted workflow automation tools, illustrating a general monitoring principle: absence of errors is not the same as presence of successful execution. It's a practical, specific writeup rather than a generic tutorial.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjbfbvhqok9lte9ktuv91.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "heydamir/unslop",
+  "source": "github",
+  "url": "https://github.com/heydamir/unslop",
+  "date": "2026-11-04",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but practically useful tool addressing the common complaint of generic, AI-generated interface designs looking cheap or repetitive.",
+  "analysis": "This is a Claude-based tool, built as a 'skill' for Anthropic's Claude AI assistant, aimed at transforming AI-generated UI designs, often criticized as generic or 'slop,' into something more polished and intentional looking. It reflects a genuine, common pain point among developers using AI coding assistants to prototype interfaces quickly but ending up with visually bland results. Its usefulness depends heavily on the quality of its design heuristics, which can't be assessed from the description alone. It's a reasonable example of the growing ecosystem of tools built around AI coding assistant customization and specialization.",
+  "authors": [],
+  "stars": 7544,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

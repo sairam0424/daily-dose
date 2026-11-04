@@ -1,0 +1,17 @@
+{
+  "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+  "source": "hn",
+  "url": "https://github.com/postmanlabs/postman-app-support/issues/14370",
+  "date": "2026-11-04",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A widely-used developer tool silently installing AI plugins and attempting to exfiltrate API data is a real security and trust concern for engineers.",
+  "analysis": "This story reports that Postman, a popular API testing tool, automatically installed AI-related plugins without explicit user consent and tried to send API request data to them. For engineers who rely on Postman for testing APIs that may contain sensitive credentials or proprietary data, this is a legitimate supply-chain and privacy concern. The high comment count suggests substantial technical discussion about what data was shared, how to disable it, and broader distrust of vendor-pushed AI features. This is the kind of practical, actionable security story that affects day-to-day tooling decisions.",
+  "authors": [
+    "sidgarimella"
+  ],
+  "hn_id": 50354960,
+  "points": 1002,
+  "image_url": "https://opengraph.githubassets.com/1c381aacca5439efbfad64f76cacabb5feb00684f3f9c57043be79e70365d2db/postmanlabs/postman-app-support/issues/14370",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
