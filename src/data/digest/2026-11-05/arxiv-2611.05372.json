@@ -1,0 +1,22 @@
+{
+  "title": "PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.05372",
+  "date": "2026-11-05",
+  "tags": [
+    "cs.RO",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid applied robotics paper using reinforcement learning to improve inverse kinematics precision, with concrete millimeter-level accuracy numbers.",
+  "analysis": "Inverse kinematics is the problem of figuring out what joint angles a robot arm needs to reach a desired hand position, and this paper trains a reinforcement learning policy to do this with high precision instead of relying on classical hand-tuned controllers. The method reports keeping errors within 1 millimeter and 0.2 degrees on over 93% of test tasks in simulation, and outperforms four classical IK controllers when trained directly on a physical robot arm. It also shows the method working well as part of a larger vision-language-action robot control pipeline, which is a practically useful integration test. This is a fairly narrow but well-validated engineering contribution to robot motion control.",
+  "authors": [
+    "Yuhan Liu",
+    "Xinqi Liu",
+    "Zixuan Dong",
+    "Keith W. Ross",
+    "Shenji Wan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

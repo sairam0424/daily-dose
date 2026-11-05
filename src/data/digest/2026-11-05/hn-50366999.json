@@ -1,0 +1,17 @@
+{
+  "title": "Kimi K3.1 Pro model weights are out",
+  "source": "hn",
+  "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+  "date": "2026-11-05",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Release of open model weights for a new large language model, relevant to anyone tracking the open-weight LLM landscape.",
+  "analysis": "This announces that weights for Kimi K3.1 Pro, a large language model, have been released publicly, which matters for researchers and engineers who want to run, fine-tune, or benchmark state-of-the-art open models themselves. Open-weight releases are significant because they let the community independently verify capability claims and build downstream applications without API dependency. Without further benchmarks or architecture details in the given text, it's hard to assess novelty beyond availability.",
+  "authors": [
+    "abrarthought"
+  ],
+  "hn_id": 50366999,
+  "points": 361,
+  "image_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/moonshotai/Kimi-K3.1-Pro.png",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=32"
+}

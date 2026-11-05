@@ -1,0 +1,27 @@
+{
+  "title": "DreamX: Video Diffusion Model is a Universal Latent Action Learner",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.05377",
+  "date": "2026-11-05",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 7,
+  "why_read": "A technically substantial robotics/vision paper proposing a way to learn transferable action representations from video using diffusion models.",
+  "analysis": "DreamX repurposes a pretrained video diffusion model to extract compact latent action representations from video, compressing information by 300x while trying to separate the actual action from irrelevant visual details like appearance or embodiment. This matters because a shared action representation that works across humans and robots could make it much easier to transfer learned behaviors between different robot bodies and environments. The paper reports state-of-the-art results on a benchmark called LARY-Bench and demonstrates zero-shot transfer of actions across embodiments, which is a meaningful capability for robot learning research.",
+  "authors": [
+    "Jisoo Kim",
+    "Chaehyun Kim",
+    "Junsu Kim",
+    "Jiho Park",
+    "Seongchan Kim",
+    "Eunbeen Hong",
+    "Soowon Son",
+    "Fu-En Yang",
+    "Seungryong Kim"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

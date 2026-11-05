@@ -1,0 +1,17 @@
+{
+  "title": "AI is forcing us to pay off 40 years of technical debt",
+  "source": "hn",
+  "url": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
+  "date": "2026-11-05",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A provocative opinion piece about how AI coding tools are exposing decades of accumulated software shortcuts, likely to spark substantive debate among engineers.",
+  "analysis": "This is a discussion-style HN post arguing that AI coding assistants are forcing organizations to confront technical debt accumulated over decades, since AI tools struggle with messy, undocumented legacy code. The high comment count suggests a lot of engineers are weighing in with their own war stories about legacy systems and AI tooling limits. Without the article text available, the actual argument quality is unknown, but the topic itself is relevant to working engineers dealing with both legacy systems and new AI tooling.",
+  "authors": [
+    "pseudolus"
+  ],
+  "hn_id": 50364336,
+  "points": 1052,
+  "image_url": "https://spectrum.ieee.org/media-library/image.jpg?id=68544156&width=1200&height=600&coordinates=0%2C312%2C0%2C313",
+  "favicon_url": "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjU5NjY0OS9vcmlnaW4ucG5nIiwiZXhwaXJlc19hdCI6MTg0ODgxODUwNn0.1LlzHtxZSVXyzapxWjeSrRIRu5qo3CeB8FaWpd2tl_o/img.png?width=48&height=48"
+}

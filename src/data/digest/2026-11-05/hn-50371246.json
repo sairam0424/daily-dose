@@ -1,0 +1,17 @@
+{
+  "title": "Residential proxies detected on White House network",
+  "source": "hn",
+  "url": "https://layer3intel.com/blog/residential-proxies-white-house-network",
+  "date": "2026-11-05",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An interesting infosec curiosity about proxy traffic patterns detected on a high-profile government network, though the underlying technical detail is likely thin.",
+  "analysis": "This headline describes detection of residential proxy IP traffic originating from or routed through the White House network, which is notable because residential proxies are often used to disguise automated or illicit traffic as ordinary home internet users. The technical substance depends heavily on the source and methodology of detection, which isn't included here. It's the kind of story that generates speculation about insider threats, bot activity, or VPN misuse rather than offering a deep technical lesson.",
+  "authors": [
+    "Rasbora"
+  ],
+  "hn_id": 50371246,
+  "points": 605,
+  "image_url": "https://layer3intel.com/eop_proxy_activity.png",
+  "favicon_url": "https://layer3intel.com/favicon.svg"
+}

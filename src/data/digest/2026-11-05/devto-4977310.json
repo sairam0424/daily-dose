@@ -1,0 +1,20 @@
+{
+  "title": "\"Mandatory user verification\" on DEV is a scam. Here's how to spot it in 30 seconds.",
+  "source": "devto",
+  "url": "https://dev.to/ayoub_hammoudi/mandatory-user-verification-on-dev-is-a-scam-heres-how-to-spot-it-in-30-seconds-1594",
+  "date": "2026-11-05",
+  "tags": [
+    "security",
+    "discuss",
+    "webdev",
+    "beginners"
+  ],
+  "interest_score": 4,
+  "why_read": "A practical heads-up about a phishing scam targeting Dev.to users through fake 'verification' comments, useful for quick security awareness.",
+  "analysis": "This post explains how to spot a phishing scam on the Dev.to platform, describing telltale signs like Cyrillic lookalike characters in a fake 'Support Bot' username, suspiciously patterned mass-tagging behavior, and a username that was recently changed. It gives concrete, actionable advice for what to do if you clicked the link or entered credentials, including revoking app access and contacting your bank. It's a useful short security awareness piece specific to this platform rather than a deep technical analysis, but the advice is sound and immediately actionable.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Faifqbttgc4zd2nhvp7g3.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}
