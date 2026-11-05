@@ -1,0 +1,27 @@
+{
+  "title": "Learning Adaptable Dexterous Skills via Hybrid Dexterous Mimicking",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.28628",
+  "date": "2026-10-21",
+  "tags": [
+    "cs.RO",
+    "cs.CV",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A solid robotics paper addressing the real tension between human-like dexterity and generalization in robot hand control, with real-world transfer results.",
+  "analysis": "AdaDex tackles a known problem in robot learning: reinforcement learning alone produces unnatural grasping behavior, while pure motion-imitation can't adapt beyond the recorded clip. The paper's hybrid training mixes motion-tracking environments that instill human-like priors with generalization environments that force adaptability, learning from just seconds of reference motion per skill. Reported results include functional grasping, in-hand reorientation, and dynamic throw-and-catch behaviors, with transfer to real robot hardware. This is a meaningful, concrete contribution to dexterous manipulation research rather than an incremental tweak.",
+  "authors": [
+    "Yuxuan Kuang",
+    "Jiashun Wang",
+    "Yixuan Sun",
+    "Yufei Ye",
+    "Sungjae Park",
+    "Umar Iqbal",
+    "Katerina Fragkiadaki",
+    "Shubham Tulsiani"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

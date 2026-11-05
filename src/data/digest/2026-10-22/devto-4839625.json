@@ -1,0 +1,19 @@
+{
+  "title": "Nothing Reported It",
+  "source": "devto",
+  "url": "https://dev.to/kenwalger/nothing-reported-it-9ke",
+  "date": "2026-10-22",
+  "tags": [
+    "ai",
+    "testing",
+    "programming",
+    "devops"
+  ],
+  "interest_score": 6,
+  "why_read": "A candid, specific post-mortem about a subtle evaluation-harness bug that silently invalidated an LLM benchmark, a genuinely useful cautionary tale for anyone building eval pipelines.",
+  "analysis": "The author describes catching a bug where their evaluation harness for comparing two LLMs' grounded question-answering was silently sending empty context because a reference-document directory was never committed to the repo. Both models behaved 'correctly' given empty input, one correctly refusing to answer and the other hallucinating an answer, which made the results look plausible but meaningless. This is a sharp, specific example of how evaluation pipelines can silently fail while still returning clean-looking, self-consistent numbers. It's a valuable read for anyone building or trusting LLM benchmarking and evaluation infrastructure.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fp0waeaiv76zg8lygmjra.png"
+}

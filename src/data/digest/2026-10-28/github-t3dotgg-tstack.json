@@ -1,0 +1,16 @@
+{
+  "title": "t3dotgg/tstack",
+  "source": "github",
+  "url": "https://github.com/t3dotgg/tstack",
+  "date": "2026-10-28",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "A personal collection of AI coding agent skill configurations for Claude Code and Codex, useful as a reference but not a deep technical contribution.",
+  "analysis": "This repository shares one developer's personal set of 'agent skills,' essentially prompt/config snippets, for use with AI coding assistants like Claude Code and Codex. It's a practical, shareable artifact for people experimenting with agentic coding workflows, reflecting the growing ecosystem around customizing these tools. The value is mostly as a template or inspiration rather than as novel engineering, so interest is moderate and tied to current AI-tooling trends.",
+  "authors": [],
+  "stars": 1995,
+  "image_url": "https://opengraph.githubassets.com/ce6773d99d0816dd8994dbde6fdbd87d253a9c60fc8ba1d3c644d4eee6ba1504/t3dotgg/tstack",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

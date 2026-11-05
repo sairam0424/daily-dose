@@ -1,0 +1,19 @@
+{
+  "title": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/no-human-will-ever-write-code-better-than-llms-better-at-what-1dme",
+  "date": "2026-10-30",
+  "tags": [
+    "ai",
+    "programming",
+    "softwareengineering",
+    "career"
+  ],
+  "interest_score": 6,
+  "why_read": "A thoughtful rebuttal to the 'LLMs write better code than humans' claim, focused on judgment and engineering tradeoffs rather than raw output quality.",
+  "analysis": "This piece pushes back on a viral claim that LLMs already surpass human coding ability, arguing that 'better' is multidimensional and often ill-defined. It makes the point that senior engineering judgment, like knowing when not to build something or recognizing real-world constraints, isn't captured by code-generation benchmarks. The argument is more philosophical than technical, with no benchmarks or data of its own, but it's a reasonable counterpoint to AI-hype narratives. It's a useful read for engineers wanting language to articulate why fluent-sounding code isn't automatically good code.",
+  "authors": [],
+  "reactions": 36,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyef0r2qscs29hbs0j5ba.jpg"
+}

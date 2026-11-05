@@ -1,0 +1,16 @@
+{
+  "title": "heydamir/unslop",
+  "source": "github",
+  "url": "https://github.com/heydamir/unslop",
+  "date": "2026-11-02",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical tool addressing a real, common complaint about AI-generated UI looking generic, worth a look for anyone shipping AI-assisted frontend code.",
+  "analysis": "This is a 'Claude skill' -- essentially a prompt/tooling package -- designed to transform generic-looking AI-generated interfaces into something more deliberately designed. It targets a genuine pain point in current AI-assisted coding workflows, where generated UIs tend to converge on bland, recognizable patterns. The technical substance is likely more in prompt engineering and design heuristics than in novel algorithms, but it's a relevant, practical tool for the current AI coding ecosystem.",
+  "authors": [],
+  "stars": 4855,
+  "image_url": "https://opengraph.githubassets.com/6428a7bd6dd644c585d4adfd73d383b9712d8ed31e85a6f07c2cd229f2097db7/heydamir/unslop",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

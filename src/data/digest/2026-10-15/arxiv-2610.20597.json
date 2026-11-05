@@ -1,0 +1,26 @@
+{
+  "title": "Co-Evolving Acting and Forecasting for Language Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.20597",
+  "date": "2026-10-15",
+  "tags": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A reinforcement learning method for training multi-step 'language agents' that adds useful intermediate training signal beyond a single final reward, which is a real bottleneck in current agent training.",
+  "analysis": "Standard reinforcement learning for AI agents that take many sequential actions, like navigating a web page or executing a plan, usually only gets a single pass/fail signal at the very end of a long trajectory, wasting a lot of potential learning signal. This paper proposes training the model to also predict its own future action sequences from earlier states, creating a secondary training signal without needing a separate model or extra inference cost at deployment time. The approach reportedly outperforms standard methods like GRPO on several agent benchmarks and improves how efficiently the model learns from a fixed amount of data. This is a reasonably substantive contribution to a real pain point in agent training research, though the gains are incremental rather than a fundamental breakthrough.",
+  "authors": [
+    "Haofei Yu",
+    "Yixing Chen",
+    "Yining Zhao",
+    "Xuyan Ye",
+    "Yuxiang Liu",
+    "Zhigang Hua",
+    "Yan Xie",
+    "Shuang Yang",
+    "Jiaxuan You"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Verlintas/NOIR",
+  "source": "github",
+  "url": "https://github.com/Verlintas/NOIR",
+  "date": "2026-11-05",
+  "tags": [
+    "Kotlin"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical Android privacy auditing tool that inspects app permissions and network destinations via adb, with an emphasis on reversible fixes.",
+  "analysis": "NOIR is a desktop tool that uses adb to scan installed Android apps for permissions granted, network endpoints they talk to, and overall data flows, then proposes remediation steps that can be undone if something breaks. This kind of tool is genuinely useful for security-conscious users and auditors trying to understand what their phone apps are actually doing with their data. The reversible-fix design choice is a sensible safety feature that reduces the risk of users breaking functionality while trying to lock down privacy.",
+  "authors": [],
+  "stars": 2038,
+  "image_url": "https://opengraph.githubassets.com/d31074e8a2cfebfaf5c50d30121c93d2f533c6385111269f6c26fd12079c08ad/Verlintas/NOIR",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Text-to-Image Generative Modeling Without Language Pretraining",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.26863",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.LG",
+    "cs.CV"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely interesting research result showing that large text-to-image models don't actually need expensive internet-scale language pretraining to perform well.",
+  "analysis": "This paper challenges a common assumption in generative AI: that strong text-to-image models require models first pretrained on massive amounts of text. The authors built Halcyon, a family of models trained from scratch on a relatively modest 100 million image-text pairs, and show it beats larger pretrained baselines using dramatically less compute, up to 275 times less in one comparison. They also ran controlled experiments confirming text-only pretraining doesn't help image generation quality. This has real implications for lowering the cost of building capable image generators outside of big labs with huge pretraining budgets.",
+  "authors": [
+    "Keshigeyan Chandrasegaran",
+    "Yue Zhao",
+    "Armin W. Thomas",
+    "Ehsan Adeli",
+    "Jiajun Wu",
+    "Juan Carlos Niebles",
+    "Li Fei-Fei",
+    "Michael Poli"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

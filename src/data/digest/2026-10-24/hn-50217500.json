@@ -1,0 +1,16 @@
+{
+  "title": "Twelve years of distributed SQLite",
+  "source": "hn",
+  "url": "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
+  "date": "2026-10-24",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A detailed retrospective on long-running distributed SQLite systems is rare, practical, and technically meaty content for engineers building replicated data systems.",
+  "analysis": "This appears to be a long-form retrospective on building and operating distributed SQLite systems over twelve years, likely covering replication strategies, consistency tradeoffs, and lessons learned from real production use. SQLite's single-writer, embedded nature makes distributing it nontrivial, so war stories here carry genuine engineering value. Content like this is valuable because it's grounded in sustained real-world experience rather than a one-off proof of concept.",
+  "authors": [
+    "otoolep"
+  ],
+  "hn_id": 50217500,
+  "points": 354,
+  "favicon_url": "https://philipotoole.com/wp-content/uploads/2015/12/SlyEye-150x150.jpg"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "You could have invented transformers from memory",
+  "source": "hn",
+  "url": "https://alexwang.ai/posts/associative-memory/",
+  "date": "2026-10-17",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A pedagogically-oriented deep dive into deriving the transformer architecture from first principles is useful for engineers who want real understanding rather than API familiarity.",
+  "analysis": "This piece likely walks through the reasoning path that leads to the transformer design, rather than just presenting the final architecture diagram. That kind of first-principles reconstruction is valuable because it reveals why specific design choices like attention, residual connections, and normalization exist. It's the sort of content that helps engineers build durable intuition instead of memorized trivia. The high engagement and comment ratio suggest it sparked substantive technical debate about the explanations given.",
+  "authors": [
+    "speckx"
+  ],
+  "hn_id": 50122878,
+  "points": 474,
+  "image_url": "https://alexwang.ai/images/share-card_hu_ba29a66ace5a286c.jpg",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=alexwang.ai&sz=32"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)",
+  "source": "devto",
+  "url": "https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo",
+  "date": "2026-10-24",
+  "tags": [
+    "opensource",
+    "ruby",
+    "rails",
+    "testing"
+  ],
+  "interest_score": 4,
+  "why_read": "A readable, honest personal account of diagnosing a real bug in a large open-source Rails app purely from public code, with a genuine lesson about misleading test results.",
+  "analysis": "The author, an outside contributor to the Forem (DEV.to) codebase, traces why multi-commit contributor badges weren't being awarded and ships a fix merged by the project's creator. The piece specifically highlights a false-positive test, a test that passed despite not actually verifying the intended behavior, which is a useful and common pitfall worth internalizing. This is a modest but genuine war story about debugging and test correctness in a real production codebase. It's a small-scale but honest technical narrative rather than a deep or broadly impactful finding.",
+  "authors": [],
+  "reactions": 18,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fu93kz0lmzx5azbphc6x9.png"
+}

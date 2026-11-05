@@ -1,0 +1,20 @@
+{
+  "title": "Sloth Reads: an open model reads my read-later pile overnight, then reads me the good ones",
+  "source": "devto",
+  "url": "https://dev.to/sbis04/sloth-reads-an-open-model-reads-my-read-later-pile-overnight-then-reads-me-the-good-ones-3o14",
+  "date": "2026-10-24",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "opensource"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal hobby project combining a local LLM, audio summarization, and text-to-speech to manage a reading backlog, pleasant but not technically novel.",
+  "analysis": "Sloth Reads is a hackathon-style project that uses a small open model to summarize saved articles overnight and then reads selected summaries aloud using a voice synthesis service. The pipeline combines fairly standard components, scheduled serverless functions, an LLM for summarization, and third-party text-to-speech, without introducing new techniques. It's a nice personal productivity tool and a fun demonstration of stitching together existing AI services, but offers limited new technical insight for experienced engineers.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fugiaw2h77bjc9vj1atyj.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

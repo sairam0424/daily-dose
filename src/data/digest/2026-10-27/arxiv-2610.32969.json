@@ -1,0 +1,24 @@
+{
+  "title": "DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.32969",
+  "date": "2026-10-27",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever hardware-interface solution to the hard problem of collecting dexterous-hand manipulation data without a full robot or motion-capture rig is a genuinely useful robotics contribution.",
+  "analysis": "DexPort is a hand-held device using the actual robot hand hardware to record both commanded and measured joint data directly from a human operator's movements, avoiding the usual mismatch between human hand motion and robot hand motion. By letting operators select pre-built finger coordination skills instead of controlling every joint, it lowers the burden of collecting large demonstration datasets for tasks like grasping, tool use, and bimanual manipulation. The reported jump in task success rates, from 11% to 64% and 36% to 78% in different settings, suggests the interface meaningfully improves policy learning quality. This is a concrete, hardware-grounded contribution to a widely recognized bottleneck in robot learning.",
+  "authors": [
+    "Amber Xie",
+    "Jiawei Fu",
+    "Xiaofeng Guo",
+    "Carmelo Sferrazza",
+    "Guanya Shi",
+    "Haozhi Qi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Incident with Pull Requests, Git Operations and Issues",
+  "source": "hn",
+  "url": "https://www.githubstatus.com/incidents/smtdswd1h2w4",
+  "date": "2026-11-05",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An incident report about pull requests, git operations, and issues being affected, likely from a major dev platform, relevant for engineers tracking infrastructure reliability.",
+  "analysis": "This appears to be a postmortem or live incident report affecting core git hosting functionality like pull requests and issue tracking, probably from a widely used platform like GitHub or GitLab. Incident reports from major developer infrastructure providers are valuable reading because they reveal real failure modes in distributed systems at scale. Without the actual incident details in the text, though, it's unclear how deep or technically rich the writeup is.",
+  "authors": [
+    "kevcampb"
+  ],
+  "hn_id": 50363378,
+  "points": 254,
+  "image_url": "https://dka575ofm4ao0.cloudfront.net/pages-twitter_logos/original/36420/GitHub-Mark-120px-plus.png",
+  "favicon_url": "https://dka575ofm4ao0.cloudfront.net/pages-favicon_logos/original/36420/akacZEQQfOBdc7ftyxJt"
+}

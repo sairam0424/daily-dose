@@ -1,0 +1,18 @@
+{
+  "title": "On the stability of learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.35856",
+  "date": "2026-10-28",
+  "tags": [
+    "q-bio.NC",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A theoretical paper on when noisy, infrequent learning signals make training unstable, relevant mainly to computational neuroscience and biologically-inspired learning researchers.",
+  "analysis": "The paper shows that if gradient-like learning signals arrive sparsely and noisily, as they might in real neurons, a learning process can have unbounded variance even when it converges correctly on average. This formalizes a subtlety distinct from standard stochastic gradient descent stability analysis, adding a constraint for models of biologically plausible learning. It's a mathematically rigorous but narrow contribution, useful chiefly to people modeling learning in brains or designing sparse-feedback training schemes rather than mainstream ML engineers.",
+  "authors": [
+    "John J. Vastola"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

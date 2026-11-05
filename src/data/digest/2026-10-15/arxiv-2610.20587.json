@@ -1,0 +1,24 @@
+{
+  "title": "Price of Anarchy of First-Price Auctions in Agentic Markets",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.20587",
+  "date": "2026-10-15",
+  "tags": [
+    "cs.GT",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A theoretically grounded game-theory analysis of how auction markets for AI agent task allocation might behave more efficiently than worst-case theory suggests, interesting for anyone building multi-agent AI marketplaces.",
+  "analysis": "This paper studies 'agentic markets' where multiple AI agents bid to handle a given user prompt, using simple first-price auctions where the winner pays what they bid. Standard auction theory says this kind of auction can lose a lot of overall value compared to the ideal outcome, a loss economists call the 'price of anarchy'. The authors argue that in practice AI agent markets have two helpful features, close competition between similarly capable models and prompt value that's largely determined by task difficulty rather than agent identity, both of which push the realistic welfare loss much closer to optimal. They back this up with simulated auctions on a real prompt-routing dataset, making this a timely theoretical contribution as more systems start routing tasks between competing AI models.",
+  "authors": [
+    "Shubhendu Trivedi",
+    "Jacob Eisenstein",
+    "Alekh Agarwal",
+    "Ian Gemp",
+    "Michael Kaisers",
+    "Adam Fisch"
+  ],
+  "reading_minutes": 2,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

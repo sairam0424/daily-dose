@@ -1,0 +1,23 @@
+{
+  "title": "Rethinking Neural Thickets Without Weight Perturbations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40649",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A skeptical, carefully reasoned paper that debunks a trendy 'Neural Thickets' explanation for weight-perturbation gains and replaces it with a simpler mechanism.",
+  "analysis": "A prior hypothesis claimed that randomly perturbing a pretrained model's weights finds nearby 'expert' models in weight space that perform better on specific tasks. This paper shows the same performance gains can be reproduced just by adding random noise to the output logits of a fully frozen model, with no weight changes at all. They explain the real mechanism as generating diverse outputs, selecting the best ones on a validation set, and voting, which connects to well-known inference-time techniques like self-consistency and sampling. This kind of myth-busting replication work is valuable because it prevents the field from building further research on a flawed geometric explanation.",
+  "authors": [
+    "Nicolas Dufour",
+    "Elouan Gardès",
+    "Amil Dravid",
+    "Patrick Pérez",
+    "Loic Landrieu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

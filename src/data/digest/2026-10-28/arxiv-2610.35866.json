@@ -1,0 +1,24 @@
+{
+  "title": "Auto-Research Arena: Benchmarking and Advancing Auto-Research in Language Modeling",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.35866",
+  "date": "2026-10-28",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A benchmark for evaluating AI systems that try to automate ML research itself, interesting for tracking how close automated research tools are to being useful.",
+  "analysis": "Auto-Research Arena is a benchmark suite testing autonomous systems that try to discover improvements to language model training, covering things like data selection, training efficiency, and inference efficiency. The finding that a simple sequential search baseline beats several more sophisticated research harnesses is a notable and slightly humbling result. This matters for anyone curious about whether AI can meaningfully automate its own R&D pipeline, though it's still an early-stage benchmark rather than a breakthrough.",
+  "authors": [
+    "Xi Chen",
+    "Chongjian Ge",
+    "Yiran Xu",
+    "Yiqun Mei",
+    "Henrik I. Christensen",
+    "Hao Tan",
+    "Ziwen Chen",
+    "Hanwen Jiang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

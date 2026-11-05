@@ -1,0 +1,23 @@
+{
+  "title": "Can It Actually Work? Synthesizing Functional CAD Mechanisms",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.26861",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.CV",
+    "cs.CL",
+    "cs.GR"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting approach to making AI-generated CAD designs actually work mechanically, not just look plausible, addressing a real gap in generative design tools.",
+  "analysis": "The paper tackles a genuine weakness in current AI CAD generation: models can produce 3D designs that look right but don't function correctly as mechanisms, like hinges or linkages that wouldn't actually move as intended. The authors built a framework that converts vague functional requirements into specific physical simulation tests, then uses simulation feedback to iteratively fix designs. They also introduce a benchmark of 46 mechanism families to measure this capability systematically. This is a meaningful step toward AI design tools that generate not just plausible shapes but verified working mechanisms, which matters for anyone interested in automated engineering design.",
+  "authors": [
+    "Wenqian Zhang",
+    "Yangyi Huang",
+    "Zigeng Xu",
+    "Weiyang Liu",
+    "Zhen Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+  "source": "hn",
+  "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/",
+  "date": "2026-10-21",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A real supply-chain attack against a widely used Python LLM library is directly actionable security news for anyone using LiteLLM or similar tooling.",
+  "analysis": "This reports that a malicious version of LiteLLM, a popular LLM proxy/gateway library, was published to PyPI containing a credential stealer and backdoor. This is a textbook software supply-chain attack, and understanding the compromise vector (stolen maintainer credentials, typosquatting, or build pipeline compromise) matters for anyone pulling dependencies from PyPI. Given LiteLLM's growing adoption in AI infrastructure, this has real operational urgency for teams to check their lockfiles and CI pipelines. This is squarely the kind of practical security news engineers should see quickly.",
+  "authors": [
+    "abhisek"
+  ],
+  "hn_id": 50181114,
+  "points": 412,
+  "image_url": "https://safedep.io/images/litellm-pypi-compromise-credential-stealer-backdoor-banner.jpg",
+  "favicon_url": "https://safedep.io/favicon.ico"
+}

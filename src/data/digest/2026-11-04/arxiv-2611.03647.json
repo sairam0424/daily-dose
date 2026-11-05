@@ -1,0 +1,24 @@
+{
+  "title": "Pixel-UMI: Learning Environment-Aware Whole-Body Manipulation from Sensorized Human Demonstrations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.03647",
+  "date": "2026-11-04",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.SY"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics paper tackling the real problem of transferring human demonstration data to robot bodies with different shapes and movement limits.",
+  "analysis": "This paper presents Pixel-UMI, a system for teaching a wheeled humanoid robot complex manipulation tasks by learning from videos and motion data of humans performing them. The core challenge it addresses is that humans and robots have different body shapes and joint ranges, so directly copying motion often creates mismatches between what the robot sees and what it was trained on. The paper introduces two specific fixes: a retargeting method that accounts for scene geometry and collisions, and a masking technique that reduces reliance on camera views that don't match well between human and robot. It reports a fairly strong 87% average success rate across five varied manipulation tasks, which is respectable progress for an active robotics research area.",
+  "authors": [
+    "Jason Jingzhou Liu",
+    "Tony Tao",
+    "Deepak Pathak",
+    "Ruslan Salakhutdinov"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

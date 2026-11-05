@@ -1,0 +1,23 @@
+{
+  "title": "Log-Driven Semantic Tuning for Mixed Integer Programming Solvers",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.00621",
+  "date": "2026-11-03",
+  "tags": [
+    "math.OC",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever and practically validated use of LLMs to automate solver configuration tuning by reading human-readable solver logs instead of treating tuning as pure black-box optimization.",
+  "analysis": "This paper proposes using an LLM to read mixed-integer programming solver logs, the kind of diagnostic text human experts already study, and then propose specific parameter edits based on what it sees rather than blind trial and error. It also introduces a way to estimate how close an unsolved run would have gotten to finishing, letting the tuner compare solved and unsolved runs on the same scale. The reported results are strong: it beats established tuning baselines like SMAC3 and RBFOpt using far fewer solver runs, which matters because each run can be expensive. This is a solid example of using LLMs not for generation but as a reasoning layer over structured diagnostic data, a pattern with broader applicability beyond MIP solvers.",
+  "authors": [
+    "Zhengzhong Ricky You",
+    "Kaizhao Sun",
+    "Zeping Min",
+    "Wotao Yin",
+    "Xinshang Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

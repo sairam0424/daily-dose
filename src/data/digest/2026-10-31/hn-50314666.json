@@ -1,0 +1,17 @@
+{
+  "title": "Molly (Signal fork) has not been updated since 3 months and is vulnerable",
+  "source": "hn",
+  "url": "https://piefed.world/post/1503394",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A security disclosure about a popular Signal fork lagging behind upstream patches is practically relevant to privacy-conscious engineers.",
+  "analysis": "Molly is a hardened Android fork of Signal, and this post flags that it has not merged recent upstream Signal security fixes for three months, leaving known vulnerabilities unpatched. This matters because forks of security-critical software carry real risk if their maintenance lags, and users may wrongly assume parity with upstream security guarantees. The discussion is likely to cover supply-chain and maintenance-of-forks issues broadly applicable beyond just Molly. Useful case study in the risks of relying on community-maintained security forks.",
+  "authors": [
+    "DeepLogin"
+  ],
+  "hn_id": 50314666,
+  "points": 292,
+  "image_url": "https://piefed.world/static/images/piefed_logo_full_t_300x300.svg",
+  "favicon_url": "https://piefed.world/static/images/favicon-32x32.png"
+}

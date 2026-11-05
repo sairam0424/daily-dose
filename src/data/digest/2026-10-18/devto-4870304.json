@@ -1,0 +1,20 @@
+{
+  "title": "SQLite 3.54's diskused command needs a build flag sqlite3_analyzer never required",
+  "source": "devto",
+  "url": "https://dev.to/alexgeorgiev17/sqlite-354s-diskused-command-needs-a-build-flag-sqlite3analyzer-never-required-4na8",
+  "date": "2026-10-18",
+  "tags": [
+    "sqlite",
+    "database",
+    "performance",
+    "devops"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, measured comparison of SQLite's new built-in diskused command versus the old sqlite3_analyzer tool, including a build-flag gotcha that silently breaks it.",
+  "analysis": "SQLite 3.54 replaces the separate sqlite3_analyzer utility with a built-in diskused() SQL function and .diskused shell command that uses the existing dbstat virtual table internally instead of a standalone cold scan. The author actually built both versions from source and benchmarked them on a 20MB test database, finding the new command roughly 2.4x faster, and importantly discovered it fails silently with no error on builds lacking the SQLITE_ENABLE_DBSTAT_VTAB flag. That silent-failure gotcha is a genuinely useful, specific, actionable finding for anyone maintaining SQLite-based tooling or build configs. This is a good example of a small but well-executed practical investigation rather than a surface-level announcement rehash.",
+  "authors": [],
+  "reactions": 10,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0r9623i005v9gnz4x5tc.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "xiaoyang111222/cn-math-taxonomy",
+  "source": "github",
+  "url": "https://github.com/xiaoyang111222/cn-math-taxonomy",
+  "date": "2026-10-24",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A structured knowledge graph of K-12 math, English, and physics curricula with adaptive diagnostics, interesting for people working on educational technology or knowledge-graph-based learning systems.",
+  "analysis": "This project builds a knowledge graph connecting 1,644 topics across elementary-to-high-school math, English, and junior-high physics, with prerequisite relationships and nearly seven thousand practice questions aligned to curriculum standards. It also includes adaptive diagnostic tools to assess a student's starting knowledge before recommending content. This is a solid example of applying graph structures to educational content sequencing, a nontrivial data modeling and curation effort. Its interest is mostly to those building adaptive learning platforms or studying curriculum knowledge graphs, less so to general software engineers.",
+  "authors": [],
+  "stars": 3207,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

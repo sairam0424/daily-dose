@@ -1,0 +1,30 @@
+{
+  "title": "GBClaw: An agentic AI framework for atomistic grain boundary research and mechanistic discovery",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.28629",
+  "date": "2026-10-21",
+  "tags": [
+    "cond-mat.mtrl-sci",
+    "cond-mat.mes-hall",
+    "cs.AI",
+    "cs.MA"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting application of agentic LLM systems to materials science simulation, useful for readers tracking AI-for-science pipelines.",
+  "analysis": "GBClaw uses an LLM-driven agent architecture to automate the investigation of grain boundaries, the interfaces between crystal grains in metals that strongly affect material strength. The system orchestrates simulations and mechanistic analysis, and the authors report it found a link between boundary misfit dislocations and shear strength in nickel. The technical interest lies less in LLM novelty and more in demonstrating that agent frameworks can meaningfully assist specialized physical-science workflows. It's a niche but well-executed example of AI agents doing real scientific legwork rather than just text generation.",
+  "authors": [
+    "Yazhuo Liu",
+    "Kunqing Ding",
+    "Xiaoguo Gong",
+    "Zifeng Wang",
+    "Yichen Yang",
+    "Yifeng Che",
+    "Wen Chen",
+    "Josh Kacher",
+    "Olivier Pierron",
+    "Shigenobu Ogata",
+    "Ting Zhu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

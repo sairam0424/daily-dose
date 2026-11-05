@@ -1,0 +1,21 @@
+{
+  "title": "Elucidating the Design Space of LM Data Attribution",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40655",
+  "date": "2026-11-02",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful, well-designed benchmark isolating why data attribution methods for LLMs fail, with a concrete fix that meaningfully improves results.",
+  "analysis": "The paper builds a synthetic benchmark where models are fine-tuned on fabricated facts so researchers know exactly which training document should be credited for a given model output, letting them test attribution methods under controlled conditions. They find that redundant documents and distractor text degrade attribution accuracy, and that standard methods wash out the true signal by averaging token-level scores across a whole document. Swapping cross-entropy loss gradients for negative log-odds gradients, then keeping only the top-scoring tokens instead of averaging, recovers much more of the true causal evidence and boosts recall by 35 to 72 percentage points. This is a solid piece of empirical ML interpretability work with a clear, reproducible mechanism rather than just a new benchmark number.",
+  "authors": [
+    "Steven Yu",
+    "Sheng-Yu Wang",
+    "Kimia Hamidieh",
+    "Antonio Torralba",
+    "David Bau"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

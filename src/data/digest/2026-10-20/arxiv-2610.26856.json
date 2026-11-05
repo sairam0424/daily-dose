@@ -1,0 +1,22 @@
+{
+  "title": "Reinforcement Learning with Visually Attributable On-Policy Self-Distillation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.26856",
+  "date": "2026-10-20",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A fairly technical reinforcement learning method for improving visual reasoning models by filtering out unreliable training signals, of interest mainly to RLHF researchers.",
+  "analysis": "This paper addresses a subtle problem in training multimodal reasoning models: when a more privileged 'teacher' model gives token-level corrections, those corrections can be contaminated by factors unrelated to the actual visual evidence, like language bias or response style. The authors propose a gating mechanism that only accepts corrections that are consistently traceable to real visual evidence, improving consistency of the training signal. It reports state-of-the-art results across six visual reasoning benchmarks compared to existing methods like GRPO. This is a narrow, technical contribution mainly relevant to researchers working specifically on reinforcement learning methods for multimodal models.",
+  "authors": [
+    "Shiao Xie",
+    "Siyu Chen",
+    "Jianwei Lv",
+    "Xiandong Li",
+    "Yujin Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

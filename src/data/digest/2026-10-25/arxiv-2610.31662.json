@@ -1,0 +1,22 @@
+{
+  "title": "Reliable AI-Assisted Decisions via Selective Auditing",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31662",
+  "date": "2026-10-25",
+  "tags": [
+    "stat.ML",
+    "cs.LG",
+    "stat.ME"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous statistical framework for deciding when AI decisions need human review, with provable error guarantees, addresses a real operational need in deployed AI systems.",
+  "analysis": "The paper formulates an online decision problem where an AI system's outputs come with confidence scores, and the goal is to minimize how often a human auditor is needed while guaranteeing that undetected errors stay below a set threshold. It provides algorithms with formal guarantees that work even under adversarial conditions, not just typical statistical assumptions, and demonstrates them on real tasks like screening harmful LLM requests and data labeling. This is practically relevant for anyone building human-in-the-loop AI pipelines who needs principled, not ad-hoc, control over audit rates. The combination of theoretical rigor and applied evaluation makes it solid, if a niche, contribution.",
+  "authors": [
+    "Isaac Gibbs",
+    "Elise L. Han",
+    "Ryan J. Tibshirani",
+    "Tijana Zrnic"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

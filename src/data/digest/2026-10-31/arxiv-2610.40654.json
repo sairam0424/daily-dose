@@ -1,0 +1,19 @@
+{
+  "title": "Propose-Filter-Release: Scaling Noise to Typical Sensitivity via Private Filtering",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40654",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically dense but genuinely novel differential privacy primitive for scaling noise to typical rather than worst-case data sensitivity.",
+  "analysis": "Standard differential privacy mechanisms add noise sized to the worst possible influence any single data point could have, which can be wastefully large if only a few outlier records are problematic. This paper introduces 'propose-filter-release,' a general method that first privately filters out atypical records, then applies a privacy mechanism calibrated to the remaining, more typical data. It generalizes an existing technique called FriendlyCore and is demonstrated across several statistical estimation problems like subspace estimation and graph resistance. This is a solid theoretical contribution for the differential privacy research community, though its audience is narrower than general software engineering.",
+  "authors": [
+    "Moshe Shenfeld",
+    "Eliad Tsfadia",
+    "Katrina Ligett"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

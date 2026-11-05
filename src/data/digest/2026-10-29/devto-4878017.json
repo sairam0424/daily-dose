@@ -1,0 +1,19 @@
+{
+  "title": "Four Ways a Test Can Lie to You",
+  "source": "devto",
+  "url": "https://dev.to/kenwalger/four-ways-a-test-can-lie-to-you-2ibf",
+  "date": "2026-10-29",
+  "tags": [
+    "testing",
+    "ai",
+    "programming",
+    "webdev"
+  ],
+  "interest_score": 7,
+  "why_read": "A thoughtful, concrete essay on subtle ways automated tests can pass or fail without actually verifying anything meaningful, drawn from a real project with AI-written code.",
+  "analysis": "The author describes building a moderately complex app largely with an AI coding agent and discovering that many of their roughly 530 tests were 'green and worthless,' meaning they passed without actually catching real bugs. They borrow the concept of positive and negative controls from lab science to categorize four distinct failure modes where tests give false confidence. This is a practically useful lens for any engineer, especially those increasingly relying on AI-generated code, to scrutinize whether their test suite actually validates behavior or just exercises code paths. It's a genuinely instructive piece grounded in a real debugging experience rather than abstract theorizing.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjn2ygonhg2bm9uetvhqj.png"
+}

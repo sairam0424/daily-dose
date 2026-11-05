@@ -1,0 +1,20 @@
+{
+  "title": "Flownomaly: Single-Step Conditional-Mean Recovery for Few-Shot Anomaly Detection",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.32964",
+  "date": "2026-10-27",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically elegant few-shot anomaly detection method using flow matching in a pretrained feature space achieves strong benchmark results with minimal normal-only training data.",
+  "analysis": "Flownomaly reframes anomaly detection as recovering what a 'normal' version of a given image patch would look like, using a flow-matching model trained only on defect-free examples in a frozen DINOv2 feature space. Because the learned paths are straight, a single step can recover an estimate of the clean normal feature without needing iterative sampling, which keeps inference fast. It reports state-of-the-art accuracy on standard industrial anomaly benchmarks like MVTec-AD and VisA with as little as one example per category. This is a solid, incremental but practically relevant advance for industrial quality inspection using few-shot learning.",
+  "authors": [
+    "Bernardo Perrone Ribeiro",
+    "Erkut Akdag",
+    "Egor Bondarev"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

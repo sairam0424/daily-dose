@@ -1,0 +1,19 @@
+{
+  "title": "Three Times My Test Failed and the LLM Was Right",
+  "source": "devto",
+  "url": "https://dev.to/debashish_ghosal/three-times-my-test-failed-and-the-llm-was-right-43l2",
+  "date": "2026-10-25",
+  "tags": [
+    "ai",
+    "programming",
+    "llm",
+    "testing"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, well-told anecdote about LLM-based test oracles being right when the human-written test was wrong raises a genuinely interesting point about testing AI agent behavior.",
+  "analysis": "The author describes building security detectors for AI agents and finding that in several cases, the test itself encoded a wrong assumption while the LLM's judgment about agent behavior was actually correct. This is a useful, concrete illustration of a real problem in testing AI systems: when the system under test has broader contextual knowledge than the test's author, a 'test failure' may reveal a flawed test rather than a flawed system. It's a practical lesson applicable to anyone building automated evaluation or detection systems around LLM agents, grounded in specific examples rather than abstract claims.",
+  "authors": [],
+  "reactions": 20,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4o2covnae1ry3vu9zaln.png"
+}

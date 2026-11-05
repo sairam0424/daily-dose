@@ -1,0 +1,19 @@
+{
+  "title": "Scaling stateful Gemini 4 Argon agent sessions on GKE: Connection draining, startup boost, and session persistence",
+  "source": "devto",
+  "url": "https://dev.to/googlecloud/scaling-stateful-gemini-4-argon-agent-sessions-on-gke-connection-draining-startup-boost-and-13ln",
+  "date": "2026-10-22",
+  "tags": [
+    "kubernetes",
+    "ai",
+    "gke",
+    "googlecloud"
+  ],
+  "interest_score": 4,
+  "why_read": "A fairly concrete Kubernetes/GKE operations writeup on handling long-running, stateful AI agent sessions, useful to platform engineers deploying such workloads.",
+  "analysis": "This article addresses real infrastructure pain points of running long-lived, stateful streaming AI agent sessions on Kubernetes, including CPU throttling at startup, connection draining during scale-down, and session state persistence. It specifically discusses using GKE features like VPA CPU startup boost and GCPBackendPolicy connection draining to handle these failure modes. This is a practically-focused ops piece relevant to teams running multi-turn LLM agents in production rather than simple stateless request/response services. The reference to a 'Gemini 4 Argon' product name is unusual and should be treated skeptically as it may not correspond to an actual publicly documented model.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7xhrstgm9dxsbn3z63ps.png"
+}

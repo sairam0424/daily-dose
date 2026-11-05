@@ -1,0 +1,18 @@
+{
+  "title": "Lessons Learned: Wifi Server Disaster",
+  "source": "devto",
+  "url": "https://dev.to/annavi11arrea1/lessons-learned-wifi-server-disaster-16oc",
+  "date": "2026-10-29",
+  "tags": [
+    "beginners",
+    "webdev",
+    "learning"
+  ],
+  "interest_score": 2,
+  "why_read": "A lighthearted personal anecdote about a home server accidentally running on WiFi instead of ethernet, offering relatable but low technical substance.",
+  "analysis": "The post describes a common home-lab mistake: a self-hosted server staying on WiFi because ethernet cabling and switch configuration were never finished, leading to a service outage when connectivity dropped. There's no deep technical content here beyond basic networking common sense and a reminder to monitor uptime and not let free-tier monitoring lapse. It reads as a casual, relatable story rather than something offering new engineering insight.",
+  "authors": [],
+  "reactions": 24,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fo6b4h9qh6ofysro1ujie.png"
+}

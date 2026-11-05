@@ -1,0 +1,16 @@
+{
+  "title": "Eight Bits of Trust: eMudhra's CA keys cracked in milliseconds",
+  "source": "hn",
+  "url": "https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/",
+  "date": "2026-10-21",
+  "tags": [],
+  "interest_score": 9,
+  "why_read": "A real cryptographic break of a certificate authority's keys is a serious, concrete security story with direct implications for web trust infrastructure.",
+  "analysis": "This describes a vulnerability where eMudhra, a certificate authority, had keys that could be cracked in milliseconds, implying a catastrophic weakness like insufficient key length or a broken random number generator. CAs are trusted roots for TLS/HTTPS, so a crackable key undermines the security of every certificate they issued. This is the kind of story with real technical substance: understanding how the crack worked and what CAs must do differently is valuable for anyone in security or PKI. The high engagement here is justified by genuine severity rather than hype.",
+  "authors": [
+    "hkc"
+  ],
+  "hn_id": 50177916,
+  "points": 821,
+  "favicon_url": "https://storage.ghost.io/c/ee/88/ee889f88-37ef-43e5-9180-f9b88ee6261d/content/images/2023/07/profile-pic--3--1.ico"
+}

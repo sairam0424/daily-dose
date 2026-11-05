@@ -1,0 +1,23 @@
+{
+  "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31670",
+  "date": "2026-10-24",
+  "tags": [
+    "cs.CV",
+    "cs.LG",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A reasonably novel offline evaluation metric for embodied AI models that could save significant compute in robotics research pipelines.",
+  "analysis": "This paper proposes a cheap, training-free way to estimate how good a robot foundation model will be without running expensive physical or simulated rollouts. It builds on the idea that good internal representations across different data types, like vision, language, and now motion, tend to converge toward a shared structure of reality. The metric, called Sensorimotor Alignment, is shown to correlate with actual task success, meaning researchers could use it to filter candidate models before expensive testing. This is a useful practical tool for robotics researchers, though the underlying theoretical claim (the Platonic Representation Hypothesis) is still somewhat speculative.",
+  "authors": [
+    "Yunfei Xie",
+    "Howard H. Qian",
+    "Shiyi Lan",
+    "Kaiyu Hang",
+    "Chen Wei"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

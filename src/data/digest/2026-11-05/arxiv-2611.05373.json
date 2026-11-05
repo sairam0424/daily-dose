@@ -1,0 +1,23 @@
+{
+  "title": "Aligning Language Models with General Preferences: An Empirical Study of Direct Nash Optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.05373",
+  "date": "2026-11-05",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful empirical replication study of a language model alignment technique, with honest reporting of limitations like single runs and judge bias.",
+  "analysis": "This paper re-implements Direct Nash Optimization, a method for aligning language models using preference comparisons rather than simple reward scores, and tests it independently on two open models. It reports substantial win-rate improvements on a standard benchmark and importantly shows that using an open-weight model as the rater instead of GPT-4o still retains most of the benefit, which matters for reproducibility without proprietary APIs. The authors are commendably transparent about limitations, noting all results come from single runs and that GPT-4o served as both trainer's judge and evaluator, which could bias the reported gains. This kind of rigorous, limitation-aware replication work is valuable for researchers trying to separate real alignment technique gains from evaluation artifacts.",
+  "authors": [
+    "Austin Tsai",
+    "Saurav Nanda",
+    "Ganapathy Parthasarathy",
+    "Bhuvnesh Kumar",
+    "Parivesh Choudhary"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Arekejoker/qwen21-nsfw-pose-skill",
+  "source": "github",
+  "url": "https://github.com/Arekejoker/qwen21-nsfw-pose-skill",
+  "date": "2026-10-15",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 1,
+  "why_read": "This is an NSFW image-generation toolkit built around pose control and explicit content LoRAs, which has little technical substance for a professional engineering digest.",
+  "analysis": "This repository packages prompt templates, an NSFW-fine-tuned LoRA model, and a pose-control system for generating explicit images using the Qwen-Image model, integrated into coding-assistant tools like Claude Code and Cursor. While LoRA fine-tuning and pose-conditioned image generation are legitimate technical techniques, this particular use case is specifically oriented toward generating sexual content rather than any novel engineering contribution. It doesn't represent genuinely harmful content like non-consensual imagery of real people, but it's also not something that belongs in a professional technical digest aimed at software engineers.",
+  "authors": [],
+  "stars": 2003,
+  "image_url": "https://repository-images.githubusercontent.com/1416386910/c20293c9-66b9-4c8b-9734-a1a390dd56ae",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

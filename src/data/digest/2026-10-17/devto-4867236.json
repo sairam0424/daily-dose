@@ -1,0 +1,19 @@
+{
+  "title": "Déjà vu, but billable",
+  "source": "devto",
+  "url": "https://dev.to/lewisawe/deja-vu-but-billable-4jhl",
+  "date": "2026-10-17",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "render",
+    "mongodb"
+  ],
+  "interest_score": 4,
+  "why_read": "A small hackathon-style side project building local semantic search over an appliance repair technician's own job history, interesting as an applied RAG use case but modest in scope.",
+  "analysis": "CaseJog is described as a local tool that lets a repair technician search their own past repair cases by symptom description, using semantic matching rather than exact keyword search, with data staying entirely on the technician's machine. This is a reasonably concrete and relatable example of applying retrieval techniques to a narrow professional niche, which can be a good illustration of practical RAG design for small, personal datasets. It's a hackathon submission rather than a polished product or research result, so the technical depth is limited to a single use case. Still, the privacy-preserving, local-only design choice is a sensible and worth-noting detail for similar small-scale applications.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Flewisawe%2Fdevto-assets%2Fmain%2Fcasejog%2Fcover.png"
+}

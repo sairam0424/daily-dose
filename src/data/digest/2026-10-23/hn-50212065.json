@@ -1,0 +1,17 @@
+{
+  "title": "Kimi K3.1 Pro and K3.1 Pro Highspeed",
+  "source": "hn",
+  "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+  "date": "2026-10-23",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new LLM release announcement; worth a skim if benchmarks or architecture details are notable, but these model-drop posts are common and often more marketing than substance.",
+  "analysis": "This refers to the release of new versions of the Kimi large language model family, likely including performance claims and benchmark comparisons against competitors. Without more detail in the title, it's unclear whether there's genuine architectural innovation or just incremental scaling and tuning. These posts matter to engineers tracking the competitive LLM landscape, but the interest depends heavily on whether real technical details (training data, architecture changes, benchmarks) are disclosed rather than just marketing copy.",
+  "authors": [
+    "Jowsey"
+  ],
+  "hn_id": 50212065,
+  "points": 654,
+  "image_url": "https://kimi-img.kimi.ai/pub/slides/kimi-fs/managed-assets/9558f8d5-08fc-42de-8e4e-339076e03895.webp",
+  "favicon_url": "https://www.kimi.ai/favicon.ico?favicon.36c2dc54.ico"
+}

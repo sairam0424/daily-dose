@@ -1,0 +1,19 @@
+{
+  "title": "Adaptive Scenario Generation for KL-DRO Around a Learned Density Model",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40644",
+  "date": "2026-11-02",
+  "tags": [
+    "eess.SY",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A solid but niche operations-research contribution on making robust optimization less overly conservative by anchoring uncertainty sets to a learned data model.",
+  "analysis": "Distributionally robust optimization hedges decisions against uncertainty in the data distribution, but naive versions can be overly pessimistic because they let the worst case drift to implausible scenarios never seen in the data. This paper proposes centering the uncertainty set around a fitted probabilistic model of the data rather than the raw empirical distribution, then adaptively generates new synthetic scenarios from that model to represent rare worst cases properly. Tested on inventory and power-grid capacity planning problems, the method lowers cost under distribution shift without sacrificing performance when there's no shift, as long as the fitted model is reasonably accurate. This is relevant mainly to researchers and practitioners in operations research and stochastic optimization rather than general software engineers.",
+  "authors": [
+    "Aron Brenner",
+    "Saurabh Amin"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

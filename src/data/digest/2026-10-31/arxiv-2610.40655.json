@@ -1,0 +1,21 @@
+{
+  "title": "Elucidating the Design Space of LM Data Attribution",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.40655",
+  "date": "2026-10-31",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous diagnostic benchmark for LM data attribution that pinpoints why current attribution methods fail and proposes a concrete fix.",
+  "analysis": "The paper builds a controlled benchmark using fictitious facts fine-tuned into language models so the true source of any fact is known exactly, enabling clean evaluation of data attribution methods. It finds that current methods dilute the real causal signal by averaging attribution scores across whole documents, and shows that using negative log-odds gradients plus top-token aggregation substantially improves recovery of ground truth, by 35-72 percentage points. This matters for anyone trying to trace which training documents caused a model's output, a key tool for debugging, auditing, and copyright analysis. The generalization to a second benchmark (FTRACE-TREX) with up to 4.9x improvement adds credibility beyond the synthetic setup.",
+  "authors": [
+    "Steven Yu",
+    "Sheng-Yu Wang",
+    "Kimia Hamidieh",
+    "Antonio Torralba",
+    "David Bau"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "unclebob/ub-mode",
+  "source": "github",
+  "url": "https://github.com/unclebob/ub-mode",
+  "date": "2026-10-31",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A repo from a well-known figure in software engineering (Robert C. Martin, aka 'Uncle Bob'), but with no description given it's hard to judge actual substance.",
+  "analysis": "The repository name suggests some kind of editing or coding 'mode,' possibly an Emacs/IDE configuration or workflow tool associated with Uncle Bob, known for Clean Code and software craftsmanship writing. Without a description, abstract, or README content, it's impossible to assess what functionality or technical depth it actually offers. Its star count suggests notable interest, likely driven by the author's reputation rather than confirmed technical substance. Score reflects genuine uncertainty rather than a strong endorsement.",
+  "authors": [],
+  "stars": 5800,
+  "image_url": "https://opengraph.githubassets.com/9ea358643f95cd55e987180ef1ecdda41361ae8c85ed2bc4ce1f063bf60db24c/unclebob/ub-mode",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

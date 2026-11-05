@@ -1,0 +1,17 @@
+{
+  "title": "SimCity, but with Permits",
+  "source": "hn",
+  "url": "https://permit.petercai.com/",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A city-building game mod or project themed around bureaucratic permits, entertaining but of limited technical substance for most engineers.",
+  "analysis": "This appears to be a game or mod built on SimCity-like mechanics where permits and bureaucracy become a core gameplay element, likely satirizing real-world urban planning frustrations. It's the kind of quirky, creative project that generates strong engagement on Hacker News due to its humor and relatability rather than deep technical innovation. There's likely some interesting simulation design or procedural generation under the hood, but the title doesn't reveal much about implementation. This is more of a fun diversion than essential technical reading.",
+  "authors": [
+    "pcai"
+  ],
+  "hn_id": 50170593,
+  "points": 460,
+  "image_url": "https://permit.petercai.com/marketing/og.jpg",
+  "favicon_url": "https://permit.petercai.com/art/icons/permit.svg"
+}

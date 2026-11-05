@@ -1,0 +1,16 @@
+{
+  "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
+  "source": "hn",
+  "url": "https://www.mercor.com/research/labor-index/benchmark-map/",
+  "date": "2026-10-16",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A substantive discussion about the gap between AI benchmark coverage and the actual composition of real-world work, relevant to anyone evaluating AI's practical economic impact.",
+  "analysis": "This piece argues that most existing AI benchmarks focus on a narrow slice of tasks that don't represent the majority of actual working hours across the US economy. It raises a methodologically important point for people building or evaluating AI products: benchmark performance may not translate to real productivity gains. The discussion likely digs into measurement issues, task taxonomies, and what 'AI benchmark' coverage really means, which is useful for engineers and researchers assessing AI claims rather than taking headline benchmark numbers at face value.",
+  "authors": [
+    "speckx"
+  ],
+  "hn_id": 50121179,
+  "points": 357,
+  "favicon_url": "https://www.mercor.com/favicon.png"
+}

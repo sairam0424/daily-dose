@@ -1,0 +1,16 @@
+{
+  "title": "onehumanbeing/esp32-iphone-agent",
+  "source": "github",
+  "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
+  "date": "2026-10-15",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever, cheap hardware hack letting an AI vision model physically operate a real iPhone through a $7 microcontroller, appealing to hardware hackers and AI agent builders alike.",
+  "analysis": "This project uses a cheap ESP32 microcontroller to act as a bridge between an AI vision model and a physical iPhone, giving the AI 'eyes' via AirPlay screen mirroring and 'hands' via USB HID input emulation. This sidesteps the need for a Mac, Apple developer account, or jailbreak, which are the usual barriers to automating iOS devices. It's a neat example of controlling real hardware using commodity, inexpensive parts rather than official APIs, which is appealing to both hardware tinkerers and people exploring AI agents that act on physical devices. The approach is clever but somewhat fragile since it depends on screen mirroring latency and simulated input rather than any official automation interface.",
+  "authors": [],
+  "stars": 2423,
+  "image_url": "https://opengraph.githubassets.com/f0a2b348f88111a8c9842d213b2975fd0058c8cb7df6547d5d39626b710dce53/onehumanbeing/esp32-iphone-agent",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

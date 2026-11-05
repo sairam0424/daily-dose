@@ -1,0 +1,16 @@
+{
+  "title": "LLM Voice",
+  "source": "hn",
+  "url": "https://martinfowler.com/bliki/LLM-Voice.html",
+  "date": "2026-10-30",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Likely a new voice-focused LLM tool or feature; relevance depends heavily on implementation detail not shown here.",
+  "analysis": "The title alone, 'LLM Voice,' gives little detail about what is actually being released or demonstrated. Voice interfaces for language models are an active area combining speech recognition, synthesis, and latency engineering. Without more context on architecture, performance, or novelty, it's hard to assess real technical depth. The engagement suggests community interest, but the actual substance can't be judged from the title alone.",
+  "authors": [
+    "ibobev"
+  ],
+  "hn_id": 50290177,
+  "points": 328,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=martinfowler.com&sz=32"
+}

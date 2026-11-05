@@ -1,0 +1,17 @@
+{
+  "title": "Sebastian Raschka's from-scratch video course on building reasoning models",
+  "source": "hn",
+  "url": "https://magazine.sebastianraschka.com/p/building-reasoning-models",
+  "date": "2026-10-27",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A well-regarded ML educator's practical, code-first course on building reasoning models from scratch is genuinely useful for engineers wanting to understand the internals.",
+  "analysis": "Sebastian Raschka is known for clear, hands-on deep learning educational material, and this course appears to focus on how reasoning-oriented LLMs like chain-of-thought or RL-tuned models are actually built. Building from scratch, rather than just calling APIs, forces understanding of training objectives, data formatting, and architecture choices behind reasoning behavior. This kind of practical pedagogy is valuable for engineers trying to move beyond prompting into actually implementing and fine-tuning these systems.",
+  "authors": [
+    "sgiannopoulos"
+  ],
+  "hn_id": 50245138,
+  "points": 526,
+  "image_url": "https://substackcdn.com/image/fetch/$s_!1SoS!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F519db120-1320-411b-adec-a88865345f2c_4083x2916.jpeg",
+  "favicon_url": "https://substackcdn.com/image/fetch/$s_!H1CS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F342e39ec-514c-4b4d-8a76-6acf0cbd8248%2Ffavicon.ico"
+}

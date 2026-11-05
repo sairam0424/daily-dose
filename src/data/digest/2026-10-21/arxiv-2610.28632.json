@@ -1,0 +1,28 @@
+{
+  "title": "Joints, Camera, Action! Co-Generating 3D Motion and Video for Arbitrary Rigs",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.28632",
+  "date": "2026-10-21",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR",
+    "cs.LG",
+    "cs.RO"
+  ],
+  "interest_score": 7,
+  "why_read": "A technically interesting approach to jointly generating video and 3D motion for arbitrary skeletons, relevant to graphics and animation researchers.",
+  "analysis": "This paper tackles turning AI-generated video into usable 3D animation data for arbitrary character rigs, not just humans, by co-generating video and motion through a model that cross-attends to a pretrained video generator. The key technical contribution is separating a flexible motion model from the video model so it can learn from motion-only data, which is cheaper to collect than paired video. It also recovers camera placement so the generated motion fits back into a 3D scene, enabling practical workflows like keyframe-based control. This is a solid systems-level advance for animators and game/VFX pipelines rather than a fundamental breakthrough.",
+  "authors": [
+    "Noam Rotstein",
+    "Yoad Tewel",
+    "Chen Tessler",
+    "Haggai Maron",
+    "Gal Chechik",
+    "Or Litany",
+    "Yoni Kasten",
+    "Yuval Atzmon"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Evidence-grounded large language models guide perovskite solar cell design and optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.00633",
+  "date": "2026-11-03",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A domain-specific LLM application paper claiming a new state-of-the-art solar cell material was found with AI help, interesting for materials science but with the usual caveats about overclaiming scientific causality from LLMs.",
+  "analysis": "The paper introduces a benchmark and a specialized LLM framework, OpenPerov, trained on structured evidence extracted from thousands of perovskite solar cell papers rather than simple question-answer pairs. It claims the model can outscore human experts on held-out questions and even picked a better molecular design choice than domain experts in a real lab experiment, reportedly achieving 27.05% power conversion efficiency. This is an interesting case study in using LLMs for guided experimental design in materials science rather than just literature summarization. The claims are notable but as with most single-paper demonstrations in applied science, independent replication would be needed before taking the efficiency and reasoning claims at face value.",
+  "authors": [
+    "YanKai Chen",
+    "Zhi Wan",
+    "ZiHao Li",
+    "Tao Jing"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

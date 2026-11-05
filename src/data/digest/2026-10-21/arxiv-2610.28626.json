@@ -1,0 +1,30 @@
+{
+  "title": "UniWALM: Unified World Action Language Model for Embodied Robot Control",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.28626",
+  "date": "2026-10-21",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A dense robotics/AI paper proposing a unified model for video, action, and language that shows strong gains on memory-dependent tasks, but quite specialized.",
+  "analysis": "UniWALM merges perception, action, and language generation into one model using a shared transformer backbone with per-modality diffusion heads, avoiding the usual separate planning and memory stages. The notable result is that generating language as an internal 'memory' loop substantially improves performance on tasks requiring remembering past context, lifting one real-world task's success rate from 11% to 61%. The paper also introduces a training trick (Flow Matching with Correction) to keep action generation robust despite the added complexity. It's a technically rich contribution but aimed at a narrow audience working on embodied AI and robot learning architectures.",
+  "authors": [
+    "Rahul Sajnani",
+    "Diego Romeres",
+    "Mingyuan Zhang",
+    "Kai Gao",
+    "Carl Qi",
+    "Baichuan Huang",
+    "Srinath Sridhar",
+    "Dylan Randle",
+    "Lillian J. Ratliff",
+    "Jose Barreiros",
+    "Manikantan Nambi",
+    "Jeroen Vanbaar"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

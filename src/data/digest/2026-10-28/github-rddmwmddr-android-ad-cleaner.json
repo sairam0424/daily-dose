@@ -1,0 +1,16 @@
+{
+  "title": "rddmwmddr/android-ad-cleaner",
+  "source": "github",
+  "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+  "date": "2026-10-28",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical, rootless tool for stripping ads and bloatware from Chinese Android phone skins, useful if niche for its target audience.",
+  "analysis": "This project targets a widely-known annoyance on domestic Chinese Android phones (from brands like Xiaomi, Oppo, Vivo) where the OS itself injects ads, hot-search widgets, and marketing push notifications. It works without root access and is reversible, which lowers the risk compared to typical debloating scripts, and it adds an AI-agent-driven one-click mode. It's a solid, real-world utility rather than a research contribution, with interest mostly limited to users and developers of these specific phone ecosystems.",
+  "authors": [],
+  "stars": 3262,
+  "image_url": "https://opengraph.githubassets.com/b63c99cedafbc0600be6b0c5eefe0d68f6db44de8ffbbcb80173ee6901eac26e/rddmwmddr/android-ad-cleaner",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

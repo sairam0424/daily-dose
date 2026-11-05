@@ -1,0 +1,18 @@
+{
+  "title": "Center-of-Mass Interpretation of Evolution Strategies",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.35865",
+  "date": "2026-10-28",
+  "tags": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A clean geometric reinterpretation of evolution strategies that offers genuine conceptual clarity rather than new empirical results.",
+  "analysis": "Evolution strategies are a gradient-free optimization method that perturbs a model many times, scores each variant, and updates based on a reward-weighted average of the perturbations. This paper reframes that update as literally moving the model toward the center of mass of its sampled population, weighted by reward, rather than as an approximate gradient estimate. The math is exact for finite populations, not just an asymptotic approximation, which gives practitioners a more intuitive mental model. It's a theory/pedagogy contribution rather than a new algorithm, useful mainly for people who already work with ES methods.",
+  "authors": [
+    "Akshat Gupta"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

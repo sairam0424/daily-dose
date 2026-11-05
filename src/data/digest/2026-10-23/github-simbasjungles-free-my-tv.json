@@ -1,0 +1,16 @@
+{
+  "title": "simbasjungles/free-my-tv",
+  "source": "github",
+  "url": "https://github.com/simbasjungles/free-my-tv",
+  "date": "2026-10-23",
+  "tags": [
+    "Java"
+  ],
+  "interest_score": 4,
+  "why_read": "Another smart-TV debloating/launcher tool, largely overlapping in purpose with the other TV-related repos in this batch.",
+  "analysis": "This is yet another ad-free home screen replacement tool for smart TVs, covering Google TV, LG webOS, and Samsung Tizen, with an 'undo' feature for safety. It serves the same practical niche as other items in this list, suggesting a broader trend of frustration with ad-heavy TV operating systems. Technically it's a useful utility but not deeply novel engineering work.",
+  "authors": [],
+  "stars": 3948,
+  "image_url": "https://opengraph.githubassets.com/f0fced6282894d965e9d111dd83c13e7416bd592e89a82f9532c82c01fcb12dd/simbasjungles/free-my-tv",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

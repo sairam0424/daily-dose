@@ -1,0 +1,16 @@
+{
+  "title": "designfuchen/word-atlas",
+  "source": "github",
+  "url": "https://github.com/designfuchen/word-atlas",
+  "date": "2026-10-28",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "An illustrated IELTS vocabulary app with spaced-repetition review, a nicely executed product but not a technically novel contribution.",
+  "analysis": "Word Atlas is a vocabulary-learning app covering thousands of IELTS words with audio and images, using the FSRS spaced-repetition scheduling algorithm. The engineering here is mostly about content curation and UI polish rather than any new technique, since FSRS itself is an existing open algorithm. It's a nice resource for English learners but holds limited broader technical interest for a software engineering audience.",
+  "authors": [],
+  "stars": 2467,
+  "image_url": "https://repository-images.githubusercontent.com/1432980411/d119d96c-ba71-4a5c-bb27-838c96dc82ae",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

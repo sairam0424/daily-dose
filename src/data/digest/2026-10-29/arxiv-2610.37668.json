@@ -1,0 +1,22 @@
+{
+  "title": "Honeycomb-Surfels: Compact Hexagonal Primitives for Efficient Scene Rendering and Reconstruction",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.37668",
+  "date": "2026-10-29",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.GR",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid, incremental computer-graphics research paper improving memory and quality trade-offs for 3D scene reconstruction using a new primitive shape.",
+  "analysis": "This paper proposes 'Hexels,' hexagonal surface patches with a simple color gradient, as an alternative to the Gaussian splats commonly used in neural scene reconstruction (2DGS). The core claim is that bigger, flatter hexagonal pieces can represent smooth surfaces more efficiently than many small Gaussian blobs, improving image quality per unit of memory and speeding up rendering. Results show measurable gains in PSNR (image fidelity) and surface reconstruction accuracy across standard benchmark datasets. It's a specialized but legitimate advance for people working in neural rendering and 3D reconstruction, not a breakthrough with broad relevance.",
+  "authors": [
+    "Prakhar Kaushik",
+    "Soumava Paul",
+    "Alan Yuille"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

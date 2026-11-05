@@ -1,0 +1,19 @@
+{
+  "title": "An App Built for One: Why a Devpost Skill Pack Made Me Spec It Anyway",
+  "source": "devto",
+  "url": "https://dev.to/earlgreyhot1701d/an-app-built-for-one-why-a-devpost-skill-pack-made-me-spec-it-anyway-knh",
+  "date": "2026-10-20",
+  "tags": [
+    "ai",
+    "webdev",
+    "hackathon",
+    "claude"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal story about building a small custom business app for a family bakery using an AI-assisted spec tool, light on technical depth but a relatable small-scale project.",
+  "analysis": "This post describes a personal project where the author built a simple inventory and invoicing app for his wife's bakery business, using a hackathon's AI-powered 'skill pack' that interviews the user and generates a project specification. The interesting technical nugget is that the AI-generated plan caught some real design issues early but also carried forward one incorrect assumption that only testing revealed. It's a nice illustration of both the benefits and limits of AI-assisted spec writing, but overall it's a lightweight anecdotal piece rather than deep technical content. Useful mainly for readers curious about practical, low-stakes applications of AI planning tools.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F5ddtgf2k7rnalraw86jo.png"
+}

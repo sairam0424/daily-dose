@@ -1,0 +1,16 @@
+{
+  "title": "ccch1mneyyy/dsh-Go",
+  "source": "github",
+  "url": "https://github.com/ccch1mneyyy/dsh-Go",
+  "date": "2026-10-31",
+  "tags": [
+    "Dart"
+  ],
+  "interest_score": 4,
+  "why_read": "A mobile client that lets you remotely run and control a 'DeepSeek Harness' from your phone, interesting mainly to users of that specific LLM tool.",
+  "analysis": "This appears to be a Dart/Flutter mobile app that acts as a pocket-sized remote control for running DeepSeek-related AI harness tasks and for operating a user's computer from their phone. Without more technical detail it's hard to assess the depth of its remote execution security model or real capabilities. The idea of mobile-to-desktop AI agent control is a legitimate and currently popular pattern, but execution quality here is unverifiable from the given description. Interest is moderate and speculative given the minimal description provided.",
+  "authors": [],
+  "stars": 3587,
+  "image_url": "https://opengraph.githubassets.com/0fcf1b70a39af98811e1596ea8b710dbaaac687e3b365969839abc2eec19ed12/ccch1mneyyy/dsh-Go",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

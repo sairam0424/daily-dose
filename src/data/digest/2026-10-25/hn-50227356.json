@@ -1,0 +1,17 @@
+{
+  "title": "Cerebras Deploys Trillion-Parameter AI Models",
+  "source": "hn",
+  "url": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+  "date": "2026-10-25",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "News about Cerebras running trillion-parameter models is relevant hardware/infra news for anyone tracking large-scale AI deployment capability.",
+  "analysis": "Cerebras makes wafer-scale AI chips designed to run very large models faster than typical GPU clusters by keeping more computation on a single giant chip. Being able to deploy trillion-parameter models is a notable scaling milestone, though the actual technical details of how this was achieved and at what cost or benchmark are unclear from the title alone. The story is likely more of a product announcement than a deep technical disclosure, so interest is moderate for infrastructure watchers.",
+  "authors": [
+    "gmays"
+  ],
+  "hn_id": 50227356,
+  "points": 344,
+  "image_url": "https://cdn.sanity.io/images/e4qjo92p/production/1796e3cccda1454e97d262833fb0bb0d6015032f-2786x1567.png?rect=0,53,2786,1463&amp;w=1200&amp;h=630&amp;fit=max&amp;auto=format",
+  "favicon_url": "https://cdn.sanity.io/images/e4qjo92p/production/e7a55ae5ab7e2c4fdfd4e66a51f628d1f2f44207-967x967.png?w=512&amp;h=512&amp;fit=max&amp;auto=format"
+}

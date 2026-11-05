@@ -1,0 +1,19 @@
+{
+  "title": "I Don’t Write Ruby. A Fix I Sent Is Now in Forem.",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/i-dont-write-ruby-a-fix-i-sent-is-now-in-forem-13c5",
+  "date": "2026-10-27",
+  "tags": [
+    "opensource",
+    "forem",
+    "devto",
+    "ai"
+  ],
+  "interest_score": 2,
+  "why_read": "A personal story about making a first open-source contribution to Forem using AI coding assistance, more about personal journey than technical depth.",
+  "analysis": "This post recounts the author's long personal journey from passively reading dev.to to eventually contributing a code fix to Forem, the Ruby-based platform behind dev.to, despite not knowing Ruby themselves. The technical content is thin, mainly noting that an AI coding assistant wrote the actual fix over a 12-week process. It's primarily a motivational and community-oriented story about persistence and introversion rather than a deep dive into the code or problem solved.",
+  "authors": [],
+  "reactions": 17,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnj6qrn4l1xamjn7f5nbo.jpg"
+}

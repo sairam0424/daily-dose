@@ -1,0 +1,21 @@
+{
+  "title": "A Quasipolynomial Algorithm for $\\ell_\\infty$ Contractions",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.30122",
+  "date": "2026-10-22",
+  "tags": [
+    "cs.GT",
+    "cs.CC",
+    "cs.LG",
+    "math.OC"
+  ],
+  "interest_score": 6,
+  "why_read": "A theoretical algorithms result with a surprising link between fixed-point computation and solving stochastic games in quasipolynomial time, interesting to theory-minded engineers.",
+  "analysis": "This paper gives an algorithm for approximately solving a broad class of fixed-point problems (nonexpansive maps under the max-norm) faster than before, using a geometric 'boosting' technique to shrink the search space. A notable consequence is that it implies simple stochastic games, a classic hard problem in algorithmic game theory, can be solved in quasipolynomial time. This is a pure theory result with no immediate practical system to try, but it's the kind of structural algorithmic advance that theoretical computer scientists care about. It will appeal mainly to readers interested in computational complexity and game theory rather than applied engineering.",
+  "authors": [
+    "Ashkan Soleymani",
+    "Gabriele Farina"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Anthropic S-1",
+  "source": "hn",
+  "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+  "date": "2026-10-27",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A direct look at Anthropic's actual financials and business structure via its S-1 filing is rare, substantive primary-source material for an AI-focused engineering audience.",
+  "analysis": "An S-1 is the detailed disclosure document a company files with regulators before an IPO, covering revenue, costs, risks, and ownership structure. For Anthropic this would be one of the first public, audited looks into how a frontier AI lab actually makes money and spends on compute. Engineers and founders care because it reveals real unit economics behind large language model businesses rather than marketing claims. The huge comment count suggests substantial community dissection of the numbers, which is often more informative than the filing itself.",
+  "authors": [
+    "SiNTEx"
+  ],
+  "hn_id": 50242939,
+  "points": 1443
+}

@@ -754,7 +754,9 @@ describe("dist/index.html build output", () => {
     }
 
     for (const item of itemsWithImages) {
-      expect(html).toContain(item.image_url);
+      // The page writes the URL into an attribute, where "&" is escaped as
+      // "&amp;"; a query string with several parameters never matches raw.
+      expect(html).toContain(item.image_url.replaceAll("&", "&amp;"));
     }
   });
 

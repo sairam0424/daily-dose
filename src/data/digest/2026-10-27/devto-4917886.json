@@ -1,0 +1,19 @@
+{
+  "title": "Why bloc.add(...) Isn't What You Think: Synchronous Event Fast-Paths and 0ms Form Bindings",
+  "source": "devto",
+  "url": "https://dev.to/gde/why-blocadd-isnt-what-you-think-synchronous-event-fast-paths-and-0ms-form-bindings-6o",
+  "date": "2026-10-27",
+  "tags": [
+    "flutter",
+    "dart",
+    "architecture",
+    "statemanagement"
+  ],
+  "interest_score": 4,
+  "why_read": "A niche but concrete technical explainer on synchronous event handling in a Flutter state-management variant, useful mainly to Flutter/Dart developers using this specific library.",
+  "analysis": "This post explains a design choice in a library called BlocSignal, contrasting it with the standard Flutter 'bloc' package's asynchronous StreamController-based event dispatch. It argues synchronous event handling avoids microtask scheduling delays, enabling instant form field updates without waiting for the next frame, relevant for responsive generative UI built with AI agents. The technical claims about event loop microtasks and call stack behavior are real Dart runtime concepts worth understanding for Flutter developers. However, it's a narrow framework-specific topic promoting the author's own library, limiting its broader technical interest.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fuwuehs85o3yn71ytprfk.png"
+}

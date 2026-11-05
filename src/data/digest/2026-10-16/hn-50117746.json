@@ -1,0 +1,16 @@
+{
+  "title": "I Love Software Rendering",
+  "source": "hn",
+  "url": "https://www.jamesfmackenzie.com/2026/10/13/i-love-software-rendering/",
+  "date": "2026-10-16",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A technical deep dive into software rendering techniques, appealing to graphics programmers who enjoy low-level rasterization and rendering pipeline craftsmanship.",
+  "analysis": "This is likely a personal essay or technical post celebrating software rendering (rasterization without GPU hardware), a niche but technically rich area covering rasterization algorithms, fixed-point math, and performance tricks. Software rendering remains relevant for retro-style game engines, emulators, and understanding graphics fundamentals outside of GPU abstraction layers. The high comment count suggests a passionate graphics-programming audience engaging with implementation details.",
+  "authors": [
+    "speckx"
+  ],
+  "hn_id": 50117746,
+  "points": 276,
+  "favicon_url": "https://www.jamesfmackenzie.com/favicon.ico?v=1"
+}

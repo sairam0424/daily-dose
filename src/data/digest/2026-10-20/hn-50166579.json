@@ -1,0 +1,15 @@
+{
+  "title": "EMudhra Intermediate CA Compromise",
+  "source": "hn",
+  "url": "https://emudhra.we-have-a-problem.com/",
+  "date": "2026-10-20",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A certificate authority compromise is a serious security event worth understanding for anyone who relies on public key infrastructure.",
+  "analysis": "This item concerns a compromise of an intermediate certificate authority (CA) operated by eMudhra, a company that issues digital certificates used to secure web traffic. When an intermediate CA is compromised, attackers can potentially issue fraudulent certificates that browsers will trust, enabling man-in-the-middle attacks against seemingly secure sites. This is the kind of incident that has real consequences for internet-wide trust infrastructure and often leads to browser vendors revoking trust in the CA. The high comment count suggests detailed technical discussion of the incident's scope and the response from browser makers.",
+  "authors": [
+    "galadran"
+  ],
+  "hn_id": 50166579,
+  "points": 567
+}

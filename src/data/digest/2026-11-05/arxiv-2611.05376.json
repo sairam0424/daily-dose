@@ -1,0 +1,18 @@
+{
+  "title": "From Autonomous Agents to Cognitive Symbionts: Toward AI-Augmented Human Intelligence",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.05376",
+  "date": "2026-11-05",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 4,
+  "why_read": "A speculative, heavily conceptual paper about AI-augmented human cognition that reads more like a vision statement than a concrete technical contribution.",
+  "analysis": "This paper proposes the idea of a 'cognitive symbiont,' an AI system that stays with a person continuously, tracks their context over years, and actively participates in their thinking and decisions. It frames this as a counterpart to autonomous agent research, focused on augmenting human intelligence rather than replacing human tasks entirely. The paper is largely conceptual, proposing a design framework and raising governance concerns like covert assistance during exams, rather than presenting any working system or empirical results. It may be of interest for HCI or AI-policy thinkers but offers little concrete technical substance for engineers.",
+  "authors": [
+    "Hao Fei"
+  ],
+  "reading_minutes": 2,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

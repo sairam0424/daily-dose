@@ -1,0 +1,25 @@
+{
+  "title": "ThinkWorld: World Imagination Reinforces Chain-of-Dynamics Reasoning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.37666",
+  "date": "2026-10-29",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics learning paper proposing a way to use unlabeled human videos to improve robot action prediction, relevant to people working on robot learning and imitation.",
+  "analysis": "The paper addresses a known bottleneck in robot learning: action-labeled demonstrations are scarce, while unlabeled human videos are abundant but hard to use directly. Their method, ThinkWorld, represents planned actions as a sequence of motion tokens, then uses reinforcement learning to reward action plans whose predicted future state matches what's actually observed in a video. This lets the system learn from human videos without action labels by checking consistency with real-world outcomes rather than needing explicit labeled actions. The approach is tested in simulation and on real robots, which adds some credibility despite inherent uncertainty in how well lab results generalize.",
+  "authors": [
+    "Chaehyun Kim",
+    "Chi-Pin Huang",
+    "Jisoo Kim",
+    "Min-Hung Chen",
+    "Yu-Chiang Frank Wang",
+    "Seungryong Kim",
+    "Fu-En Yang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

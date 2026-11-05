@@ -1,0 +1,16 @@
+{
+  "title": "storytold/craft-anything",
+  "source": "github",
+  "url": "https://github.com/storytold/craft-anything",
+  "date": "2026-11-03",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "An ambitiously-named project claiming to let you understand and recreate how any software works, but the description is vague enough to leave its actual technical approach unclear.",
+  "analysis": "Craft Anything's description, 'understand how any software works, and craft your own,' is too vague to tell whether this is a reverse-engineering toolkit, a code-generation assistant, or something else entirely. Written in Rust with a notable star count, it could be a legitimate systems tool for binary or protocol analysis, or simply an AI-assisted coding project with grand branding. The lack of concrete detail makes it hard to judge genuine technical merit versus marketing appeal. Readers interested in reverse engineering or program synthesis should check the repo directly for specifics.",
+  "authors": [],
+  "stars": 4628,
+  "image_url": "https://opengraph.githubassets.com/007e8453b76829ff759ba23454de0f4ae4fbc40740afdb04fdeca3c5e3f47992/storytold/craft-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

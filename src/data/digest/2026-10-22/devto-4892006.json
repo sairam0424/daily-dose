@@ -1,0 +1,19 @@
+{
+  "title": "I Built slothd: A Local-First, Offline-Capable AI Daemon That Patiently Organizes Your Messy Workspace",
+  "source": "devto",
+  "url": "https://dev.to/dj29/i-built-slothd-a-local-first-offline-capable-ai-daemon-that-patiently-organizes-your-messy-53e7",
+  "date": "2026-10-22",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "opensource",
+    "gemma"
+  ],
+  "interest_score": 3,
+  "why_read": "A hackathon submission describing a local AI file-organizing daemon, with promotional framing that outweighs genuine technical depth.",
+  "analysis": "This describes a local, offline AI tool that organizes a messy workspace using a two-stage pipeline combining a tabular metadata model (TabPFN) and Gemma 3 vision model running via Ollama. The architecture of cheap metadata triage followed by a heavier local vision model is a reasonable practical pattern for local-first AI tools. However, the writeup is heavily templated for a hackathon challenge with excessive navigation and marketing framing, diluting the technical substance. It may interest readers exploring local AI agent architectures but requires digging past the promotional structure.",
+  "authors": [],
+  "reactions": 46,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fwfzfpu73zgun840sgkpl.png"
+}

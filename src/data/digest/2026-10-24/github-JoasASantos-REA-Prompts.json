@@ -1,0 +1,13 @@
+{
+  "title": "JoasASantos/REA-Prompts",
+  "source": "github",
+  "url": "https://github.com/JoasASantos/REA-Prompts",
+  "date": "2026-10-24",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "A prompt collection framed around 'reverse engineering anything' via LLMs, which reads as a thin, likely overhyped wrapper rather than a serious technical reverse-engineering toolkit.",
+  "analysis": "This repository offers a set of prompts intended to guide a language model to reverse-engineer or deconstruct arbitrary programs, but reverse engineering real software requires actual binary analysis, disassembly, and domain expertise that prompt text alone cannot substitute for. The framing suggests marketing hype more than a rigorous methodology, and there's no indication of validated results or technical depth beyond prompt text. It could be useful as a lightweight brainstorming aid but should not be mistaken for a genuine reverse-engineering tool. The high star count likely reflects novelty appeal rather than demonstrated technical substance.",
+  "authors": [],
+  "stars": 2061,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

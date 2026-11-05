@@ -1,0 +1,19 @@
+{
+  "title": "Every Codebase Has a '// DO NOT TOUCH' File. I Built an AI Necromancer to Summon the Ghost of the Developer Who Wrote It 💀🔮",
+  "source": "devto",
+  "url": "https://dev.to/dj29/every-codebase-has-a-do-not-touch-file-i-built-an-ai-necromancer-to-summon-the-ghost-of-the-2no5",
+  "date": "2026-10-31",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "opensource",
+    "ai"
+  ],
+  "interest_score": 2,
+  "why_read": "A gimmicky Hacktoberfest-themed 'AI code necromancer' tool wrapped in heavy horror-themed branding with little described technical substance.",
+  "analysis": "This submission describes an AI agent system called GitSéance that analyzes git commit history and code structure to flag 'abandoned' or high-risk legacy code, using multiple themed agent roles. The underlying idea, using commit history and AST analysis to identify risky unmaintained code, is a real and useful problem in software maintenance, but the write-up buries any technical detail under extensive horror-themed flavor text. Without clear explanation of algorithms, accuracy, or methodology, it's hard to judge whether this offers genuine engineering value beyond the novelty framing. Likely low substance beneath an entertaining presentation.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fezbb0xf5v8087ny2qes2.jpg"
+}

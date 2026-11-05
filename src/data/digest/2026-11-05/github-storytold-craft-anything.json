@@ -1,0 +1,16 @@
+{
+  "title": "storytold/craft-anything",
+  "source": "github",
+  "url": "https://github.com/storytold/craft-anything",
+  "date": "2026-11-05",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "An intriguing but vaguely described Rust tool aiming to help reverse-engineer and recreate how software works, worth investigating but short on specifics here.",
+  "analysis": "The description suggests a tool for understanding the internal workings of arbitrary software and then building similar tools yourself, possibly oriented toward reverse engineering, decompilation, or system analysis. Written in Rust with notable star and fork counts, it seems to have attracted real developer interest, but the one-line description leaves the actual mechanism and scope unclear. Without more concrete technical details it's hard to judge how rigorous or useful the approach actually is in practice.",
+  "authors": [],
+  "stars": 11865,
+  "image_url": "https://opengraph.githubassets.com/c35c4484578689d1a45639574481aa95e9624d374297c72466984d868dffb40b/storytold/craft-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Wikipedia's Cleanup of AI-Generated Content",
+  "source": "hn",
+  "url": "https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup",
+  "date": "2026-10-28",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete look at how Wikipedia editors are grappling with AI-generated slop, relevant to anyone thinking about content moderation and information integrity.",
+  "analysis": "This covers Wikipedia's efforts to identify and remove articles or edits produced by large language models that may contain fabricated facts or generic filler prose. It's a real-world case study in content moderation at scale, touching on detection heuristics, editorial policy, and the broader problem of AI pollution in reference sources. This matters to engineers building detection tools or anyone relying on Wikipedia as training data or ground truth.",
+  "authors": [
+    "rbanffy"
+  ],
+  "hn_id": 50257326,
+  "points": 435,
+  "favicon_url": "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjU5NjY0OS9vcmlnaW4ucG5nIiwiZXhwaXJlc19hdCI6MTg0ODgxODUwNn0.1LlzHtxZSVXyzapxWjeSrRIRu5qo3CeB8FaWpd2tl_o/img.png?width=48&height=48"
+}

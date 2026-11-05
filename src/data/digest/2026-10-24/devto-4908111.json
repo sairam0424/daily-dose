@@ -1,0 +1,19 @@
+{
+  "title": "PyTorch on TPU: Hands On With Colab",
+  "source": "devto",
+  "url": "https://dev.to/gde/pytorch-on-tpu-hands-on-with-colab-5b5g",
+  "date": "2026-10-24",
+  "tags": [
+    "pytorch",
+    "tpu",
+    "gemma",
+    "googlecloud"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, benchmarked walkthrough of running PyTorch on Google Cloud TPUs with measured performance gains, useful for anyone evaluating TPU inference options outside the usual JAX ecosystem.",
+  "analysis": "This tutorial-style piece measures PyTorch inference performance for Gemma 4 on a single TPU v5e chip, showing how a compiled decode step boosts throughput tenfold compared to standard Hugging Face generation, and how a ring cache extends usable context to the model's full 131,072 tokens. It directly compares these PyTorch optimizations against a native JAX engine on identical hardware, giving a grounded sense of the current performance gap. This is useful, concrete benchmarking information for engineers deciding between PyTorch and JAX for TPU-based inference workloads. The level of specific, reproducible detail, exact token-per-second numbers and notebook links, makes it more credible than typical promotional AI content.",
+  "authors": [],
+  "reactions": 2,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Ftorchtpu-dev%2Fmain%2Fdocs%2Ftorchtpu-notebooks%2Fdevto-cover.36e8e15c.jpg"
+}

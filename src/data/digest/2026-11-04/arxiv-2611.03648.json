@@ -1,0 +1,24 @@
+{
+  "title": "Pixel: A Co-Designed Full-Stack Robot System for Learning General-Purpose Mobile Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.03648",
+  "date": "2026-11-04",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "eess.SY"
+  ],
+  "interest_score": 6,
+  "why_read": "A companion systems paper describing the full robot hardware and software stack underlying the Pixel-UMI research, useful context for anyone following this robot platform.",
+  "analysis": "This is the systems-level paper describing Pixel, a low-cost wheeled humanoid robot designed alongside its data-collection tools, whole-body controller, and learning pipeline. Its main contribution is showing that co-designing hardware, teleoperation interfaces, and learning algorithms together avoids mismatches that occur when these pieces are built independently, which is a common problem in robot learning research. It demonstrates combined capabilities like navigation, dexterous manipulation, and following language instructions in one integrated system. This matters mainly to robotics researchers interested in reproducible, affordable platforms for mobile manipulation research rather than to general software engineers.",
+  "authors": [
+    "Tony Tao",
+    "Jason Jingzhou Liu",
+    "Ruslan Salakhutdinov",
+    "Deepak Pathak"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

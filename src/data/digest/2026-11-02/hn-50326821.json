@@ -1,0 +1,15 @@
+{
+  "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
+  "source": "hn",
+  "url": "https://hackerbooks.org",
+  "date": "2026-11-02",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "A copycat of the HackerTube idea applied to books, same shallow technical substance.",
+  "analysis": "This project mirrors the HackerTube concept but surfaces books mentioned on Hacker News instead of videos. It's likely a similarly simple scrape-and-list app with no significant engineering novelty. Worth a skim for book recommendations but not for technical learning.",
+  "authors": [
+    "roansh"
+  ],
+  "hn_id": 50326821,
+  "points": 846
+}

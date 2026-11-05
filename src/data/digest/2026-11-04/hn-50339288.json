@@ -1,0 +1,16 @@
+{
+  "title": "Jailbreaking my car's navigation system just so I can change the time",
+  "source": "hn",
+  "url": "https://blog.nns.ee/2026/11/02/renault-hack/",
+  "date": "2026-11-04",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A relatable embedded-systems hacking story about reverse-engineering a locked-down car infotainment system, entertaining but of modest technical depth.",
+  "analysis": "This is a personal account of someone bypassing restrictions on their car's navigation or infotainment system just to perform a trivial task like changing the clock. These stories are common on Hacker News and often involve some reverse engineering of proprietary automotive software, CAN bus protocols, or vendor lock-in schemes. The technical substance varies widely, from genuinely interesting hardware hacking to simple settings workarounds. It is a fun read for anyone interested in right-to-repair and consumer electronics frustrations, though likely more entertaining than technically deep.",
+  "authors": [
+    "xx_ns"
+  ],
+  "hn_id": 50339288,
+  "points": 595,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=blog.nns.ee&sz=32"
+}

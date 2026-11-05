@@ -1,0 +1,17 @@
+{
+  "title": "RepRapMicron",
+  "source": "hn",
+  "url": "https://github.com/VikOlliver/RepRapMicron/wiki",
+  "date": "2026-10-18",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An open-source project extending RepRap-style 3D printing to micron-scale precision, which is a genuinely novel hardware engineering effort.",
+  "analysis": "RepRapMicron appears to be a project applying the open-source RepRap 3D-printing philosophy to achieve micron-level manufacturing precision, likely using novel mechanical or optical techniques to get far beyond typical desktop printer tolerances. This is interesting to hardware and robotics engineers because scaling down fabrication precision while keeping costs low is a hard, under-explored problem. The project's open-source nature means others can inspect and replicate the approach, which adds real engineering value beyond a one-off research paper.",
+  "authors": [
+    "RobotToaster"
+  ],
+  "hn_id": 50141076,
+  "points": 311,
+  "image_url": "https://opengraph.githubassets.com/65132954f0a778e6a2b3e59ee449215c90d48043a995e889038118d67c042738/VikOlliver/RepRapMicron",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

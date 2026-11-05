@@ -1,0 +1,17 @@
+{
+  "title": "Could a modern chess engine on a Pentium have defeated Kasparov in 1996?",
+  "source": "hn",
+  "url": "https://nicholas.carlini.com/writing/2026/algorithmic-improvements-chess.html",
+  "date": "2026-11-04",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A fun, concrete thought experiment comparing historical chess hardware against modern algorithms, appealing to both chess and computer-history enthusiasts.",
+  "analysis": "This piece explores whether today's chess engine algorithms, run on 1990s-era Pentium hardware, could have beaten Garry Kasparov in his famous 1996 match against Deep Blue. It touches on genuinely interesting technical ground: how much of chess engine strength comes from raw compute versus algorithmic improvements like better evaluation functions, pruning, and search techniques developed over the following decades. This kind of comparison is valuable for understanding how software efficiency can sometimes matter as much as hardware power. It's a solid, substantive piece likely to appeal to engineers interested in algorithms and computing history.",
+  "authors": [
+    "markusw"
+  ],
+  "hn_id": 50349276,
+  "points": 442,
+  "image_url": "https://nicholas.carlini.com/writing/2026/chess/ppro-screen.png",
+  "favicon_url": "https://nicholas.carlini.com/favicon.ico"
+}

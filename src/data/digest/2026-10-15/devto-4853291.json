@@ -1,0 +1,19 @@
+{
+  "title": "Gemma 4 on a Used 8 GB RTX 3050: 116 Tokens/s for One User, 618 for 64",
+  "source": "devto",
+  "url": "https://dev.to/gde/gemma-4-on-a-used-8-gb-rtx-3050-116-tokenss-for-one-user-618-for-64-k6h",
+  "date": "2026-10-15",
+  "tags": [
+    "gemma",
+    "llamacpp",
+    "cuda",
+    "localllm"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, numbers-driven benchmark of running a local LLM on cheap consumer GPU hardware, useful for engineers evaluating self-hosted inference economics.",
+  "analysis": "The author benchmarks running the Gemma 4 language model locally on a cheap used RTX 3050 GPU with 8GB of memory, reporting concrete throughput numbers for both single-user and 64-concurrent-user scenarios using llama.cpp. They note the full 131,072-token context fits in just 3.6GB of the card's 8GB memory, and compare the economics against renting an AWS T4 GPU instance, finding the card pays for itself versus 342 hours of rental. This kind of hands-on, reproducible cost-and-performance benchmarking is genuinely useful for engineers deciding between self-hosting and cloud inference for local LLM deployment. It's a niche hobbyist project but with real quantitative substance behind the claims.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Flocal-llamacpp-3050oem-2b-q4_0%2Fdocs%2Ffirst-light-3050oem%2Fdevto-cover.c84e6ee4.jpg"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Apple's git still trusts the compromised eMudhra certificates",
+  "source": "hn",
+  "url": "https://emudhra.we-have-a-problem.com/apple.html",
+  "date": "2026-10-29",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A real supply-chain security issue in Apple's git tooling trusting certificates already known to be compromised, which matters to anyone relying on code-signing trust chains.",
+  "analysis": "eMudhra is a certificate authority, and if it's confirmed compromised, any software that still trusts certificates it issued has a live trust problem rather than a theoretical one. This story reports that Apple's bundled git still accepts these certificates as valid, which could let an attacker present forged or fraudulently obtained signing material. The topic matters because developer tools bundled with operating systems are widely trusted by default and slow to patch. It's a concrete, actionable security finding rather than speculation.",
+  "authors": [
+    "galadran"
+  ],
+  "hn_id": 50271640,
+  "points": 1028
+}

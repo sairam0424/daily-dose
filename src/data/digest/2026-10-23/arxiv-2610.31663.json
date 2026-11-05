@@ -1,0 +1,23 @@
+{
+  "title": "Phase Transition from Random Features to Fully Trainable Networks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.31663",
+  "date": "2026-10-23",
+  "tags": [
+    "math.NA",
+    "cs.LG",
+    "math.ST",
+    "stat.ML"
+  ],
+  "interest_score": 4,
+  "why_read": "A dense theoretical paper on how partially trainable neural networks behave, interesting mainly to researchers studying approximation theory.",
+  "analysis": "This work studies networks where only some parameters are trainable and the rest stay as fixed random features, trying to mathematically characterize how performance improves as more parameters become trainable. It derives formal bounds showing a 'phase transition': early increases in trainable capacity yield large gains, which then taper off. The math is fairly heavy and the practical takeaway (e.g. that only ~4% of neurons trainable can capture 90% of the benefit in one example) is interesting but narrow. This is mostly relevant to theoretical machine learning researchers rather than practicing engineers.",
+  "authors": [
+    "Xin He",
+    "Huan Lao",
+    "Xiliang Lu",
+    "Shijun Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Lenovo's 'encrypted' fingerprint USB is just an unencrypted SD card in a case",
+  "source": "hn",
+  "url": "https://www.reddit.com/r/technology/comments/1xl2pr3/lenovos_encrypted_fingerprint_usb_drive_is_just/",
+  "date": "2026-11-02",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete teardown showing a commercial 'encrypted' security product is actually just an unencrypted SD card, which is a genuinely useful security disclosure.",
+  "analysis": "This piece documents a hardware teardown of a Lenovo USB drive marketed as having fingerprint-based encryption, finding that it is in fact a plain SD card with no real encryption happening on the device. This is the kind of practical security research engineers care about because it shows how marketing claims about 'encryption' can be fabricated or meaningless. It has real technical substance in the form of physical disassembly and data analysis, unlike many lower-effort HN stories here.",
+  "authors": [
+    "entryleveljobsc"
+  ],
+  "hn_id": 50326099,
+  "points": 377
+}

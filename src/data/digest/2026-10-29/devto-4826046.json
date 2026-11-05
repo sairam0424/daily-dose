@@ -1,0 +1,19 @@
+{
+  "title": "MQTT Doesn't Have Message Queues. Inside the 2-Byte Protocol Powering Modern IoT.",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/mqtt-doesnt-have-message-queues-inside-the-2-byte-protocol-powering-modern-iot-161",
+  "date": "2026-10-29",
+  "tags": [
+    "iot",
+    "networking",
+    "architecture",
+    "mqtt"
+  ],
+  "interest_score": 6,
+  "why_read": "A clear, well-structured explainer on MQTT's binary wire protocol, QoS levels, and design history, useful for engineers working with IoT or messaging systems.",
+  "analysis": "MQTT is a widely used lightweight messaging protocol originally designed in 1999 for monitoring remote oil pipelines over expensive, low-bandwidth satellite links. This article walks through why its design choices, like a compact 2-byte header and tunable quality-of-service levels, make sense for constrained devices and networks, in contrast to verbose protocols like HTTP. It's a solid educational piece for engineers who use MQTT but have never looked closely at how or why it works the way it does, though the content itself isn't new information for protocol specialists.",
+  "authors": [],
+  "reactions": 26,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fiili.io%2FnMfMShN.png"
+}

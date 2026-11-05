@@ -1,0 +1,17 @@
+{
+  "title": "Claude reveals ECDSA curve origins",
+  "source": "hn",
+  "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+  "date": "2026-10-16",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A notable example of an AI model reasoning about the historical/technical origins of cryptographic curve parameters, touching on real suspicions in applied cryptography.",
+  "analysis": "This concerns Claude being asked about the origin of certain ECDSA elliptic curve parameters, a topic with real history around NIST curve generation and long-standing suspicion about whether seeds were chosen innocuously or with hidden backdoors. The discussion is interesting because it blends cryptographic trust questions with LLM capabilities for historical/technical research synthesis. It's a good read for anyone interested in applied cryptography history and how well LLMs can surface or hallucinate nuanced technical claims.",
+  "authors": [
+    "ahlCVA"
+  ],
+  "hn_id": 50122800,
+  "points": 555,
+  "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/d0c862c5cabd703c0fcbaad939385133f02b694c-1200x630.jpg",
+  "favicon_url": "https://www.anthropic.com/favicon.ico"
+}

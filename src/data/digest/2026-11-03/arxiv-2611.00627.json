@@ -1,0 +1,20 @@
+{
+  "title": "Autonomous Analysis of Thermoelectric Materials Big Data by Multi-Agentic AI and Construction of a Knowledge Base and Specialized AI",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.00627",
+  "date": "2026-11-03",
+  "tags": [
+    "cs.AI",
+    "cond-mat.mtrl-sci",
+    "cs.MA"
+  ],
+  "interest_score": 5,
+  "why_read": "A multi-agent AI system for analyzing thermoelectric materials data that produces traceable analysis records, interesting as an applied agent architecture but modest in its claims of reliability.",
+  "analysis": "This paper describes a multi-agent AI pipeline where different AI agents with specific roles analyze experimental thermoelectric materials data, following predefined rules and quality checks, and save traceable records of their reasoning. The interesting part is that the system builds up a searchable knowledge base over multiple cycles, and a downstream specialized AI uses this to answer materials science questions with cited sources. Honestly, the paper also reports finding errors even when tracing answers back to source data, showing that traceability helps surface mistakes but does not prevent them. It is a reasonable case study in applying agentic AI workflows to scientific data analysis, useful mainly to materials informatics researchers.",
+  "authors": [
+    "Yusuke Hashimoto",
+    "Takaaki Tomai"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

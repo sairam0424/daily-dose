@@ -1,0 +1,15 @@
+{
+  "title": "Namecheap just seized and disabled all my domains",
+  "source": "hn",
+  "url": "https://www.reddit.com/r/sysadmin/comments/1x8cycd/namecheap_just_seized_and_disabled_all_my_domains/",
+  "date": "2026-10-18",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A cautionary first-hand account of a domain registrar unilaterally disabling a customer's domains, relevant to anyone relying on third-party infra for critical services.",
+  "analysis": "This is a user complaint about Namecheap suspending or seizing domains, which raises real operational concerns about vendor lock-in and single points of failure in infrastructure dependent on registrars. For engineers and founders, this kind of story is a practical reminder to understand registrar terms of service, backup plans, and DNS redundancy. The technical depth is likely limited to the narrative of what happened and registrar policies, not any novel engineering technique, but the risk lesson is broadly applicable.",
+  "authors": [
+    "sashk"
+  ],
+  "hn_id": 50142866,
+  "points": 339
+}

@@ -1,0 +1,16 @@
+{
+  "title": "storytold/craft-launcher",
+  "source": "github",
+  "url": "https://github.com/storytold/craft-launcher",
+  "date": "2026-10-15",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 2,
+  "why_read": "No real description is given beyond a vague name, so there's nothing substantive to evaluate here.",
+  "analysis": "The description is just 'The Craft App Launcher' with no further explanation of what it launches, what platform it targets, or what problem it solves. Despite a notable star count, there isn't enough information here to assess any real technical merit. This looks more like a product landing repo than something with publicly documented engineering substance.",
+  "authors": [],
+  "stars": 2858,
+  "image_url": "https://opengraph.githubassets.com/a25f5294ceb6fc859e14dbc04b003ef8a11f0ad07fdf0489879bda3635eb6efd/storytold/craft-launcher",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

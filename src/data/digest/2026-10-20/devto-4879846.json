@@ -1,0 +1,19 @@
+{
+  "title": "I Fixed The Bug. Then My Pipeline Refused to Run.",
+  "source": "devto",
+  "url": "https://dev.to/maame-codes/i-fixed-the-bug-then-my-pipeline-refused-to-run-4c7i",
+  "date": "2026-10-20",
+  "tags": [
+    "devops",
+    "gitlab",
+    "cicd",
+    "beginners"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical post-mortem about a confusing CI/CD pipeline failure caused by exhausted compute minutes rather than actual code errors, useful for engineers who've hit similarly opaque pipeline issues.",
+  "analysis": "This is a troubleshooting narrative about a GitLab CI/CD pipeline that failed with no logs and no clear error, eventually traced to running out of allotted compute minutes rather than any code or infrastructure problem. It's a useful reminder that pipeline failures aren't always caused by the code being tested, and that infrastructure quotas can silently block execution with misleading symptoms. The post is written as a practical debugging story rather than a deep technical dive, but it offers a concrete lesson that could save other engineers time when they hit a similar dead-end. It's a modest but genuinely useful addition for engineers who work with CI/CD systems regularly.",
+  "authors": [],
+  "reactions": 96,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fheg26lez35wtfrzjpkur.jpg"
+}

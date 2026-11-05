@@ -1,0 +1,16 @@
+{
+  "title": "Python's experimental JIT to be removed",
+  "source": "hn",
+  "url": "https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/",
+  "date": "2026-10-28",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A notable reversal in CPython's roadmap, worth reading for anyone following Python performance work.",
+  "analysis": "CPython added an experimental JIT compiler in recent versions aiming to speed up execution, but apparently the core team now plans to remove it rather than continue investing in it. This is a meaningful technical story about the tradeoffs of JIT compilation for a dynamic language, implementation complexity, and the difficulty of justifying continued maintenance without clear performance wins. Python developers and language implementers will find this a useful case study in why ambitious compiler projects sometimes get rolled back.",
+  "authors": [
+    "f311a"
+  ],
+  "hn_id": 50257419,
+  "points": 433,
+  "favicon_url": "https://static.lwn.net/images/favicon.png"
+}

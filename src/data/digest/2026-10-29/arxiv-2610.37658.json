@@ -1,0 +1,20 @@
+{
+  "title": "When Should We Intervene at Test Time?",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.37658",
+  "date": "2026-10-29",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A machine-learning systems paper on deciding when to apply test-time model adaptation, useful for ML engineers deploying models in shifting environments but narrow in audience.",
+  "analysis": "Test-time adaptation methods adjust a deployed model's behavior as it sees new data, but the paper highlights that these fixes can help in some situations and quietly hurt in others. The proposed method, PORTAL, decides when to turn an adaptation on, which inputs to request true labels for, and when enough evidence has been gathered to stop. It uses comparisons between multiple candidate strategies on shared labeled examples, so it can tell which strategy is actually winning without needing huge amounts of ground truth. This is a useful but fairly specialized contribution for people building adaptive ML systems in production.",
+  "authors": [
+    "Jiahao Zhang",
+    "Xinling Wen",
+    "Liangliang Li",
+    "Yu Chen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

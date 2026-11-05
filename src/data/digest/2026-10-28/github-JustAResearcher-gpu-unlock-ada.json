@@ -1,0 +1,16 @@
+{
+  "title": "JustAResearcher/gpu-unlock-ada",
+  "source": "github",
+  "url": "https://github.com/JustAResearcher/gpu-unlock-ada",
+  "date": "2026-10-28",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 6,
+  "why_read": "A hardware hacking project unlocking disabled tensor core features on consumer RTX GPUs, interesting to hobbyists but with unclear legality and warranty implications.",
+  "analysis": "This repository reportedly provides firmware to unlock additional tensor core capability on RTX 4090 and RTX 4070 Ti SUPER cards that Nvidia normally restricts in consumer silicon. This kind of unlocking work is technically compelling because it reveals how much capability is artificially gated in hardware versus genuinely fused off. It carries real risk of bricking hardware or violating terms of service, so readers should treat it as an interesting technical curiosity rather than a recommended workflow.",
+  "authors": [],
+  "stars": 4271,
+  "image_url": "https://opengraph.githubassets.com/3e88b8e8a7b78d9d2ba3f9ada2ede94053a11796e3861940ed1d04b493fa239f/JustAResearcher/gpu-unlock-ada",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

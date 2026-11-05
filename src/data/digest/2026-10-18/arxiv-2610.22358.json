@@ -1,0 +1,24 @@
+{
+  "title": "PathFM: Fast Generative Forecasting of Multivariate Trajectories",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.22358",
+  "date": "2026-10-18",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A forecasting model that generates entire plausible future trajectories rather than just independent per-timestep predictions, useful for anyone doing dependency-sensitive forecasting like peak load estimation.",
+  "analysis": "Most time series forecasting models predict uncertainty at each time point independently, which can miss how errors and values are correlated across an entire future trajectory, something that matters for quantities like cumulative demand or peak load. PathFM uses a generative technique called flow matching to sample whole future paths at once, and the authors speed this up by distilling the sampling process to just one or two steps with shared computation. The paper also introduces a new evaluation benchmark, fps-bench, specifically to measure how well models capture this trajectory-level dependency structure, which other researchers can reuse. This is a solid, if niche, contribution to time series forecasting methodology that addresses a real blind spot in how these models are usually evaluated.",
+  "authors": [
+    "Jiachen Yao",
+    "Xiyuan Zhang",
+    "Annan Yu",
+    "Boran Han",
+    "Abdul Fatir Ansari",
+    "Shuai Zhang",
+    "Michael Bohlke-Schneider",
+    "Bernie Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

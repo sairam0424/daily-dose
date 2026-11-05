@@ -1,0 +1,24 @@
+{
+  "title": "Think Harder Where It Matters: Item-Level Adaptive Recursion for Sequential Recommendation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.30128",
+  "date": "2026-10-22",
+  "tags": [
+    "cs.IR",
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A focused architectural improvement to recommendation systems that allocates variable compute per item, interesting to recommender-systems practitioners but narrow in scope.",
+  "analysis": "This paper notices that in sequence-based recommendation models, most items in a user's history need little computation while a few need much more, and fixed-depth processing wastes effort. Their method, LoopRec, reuses a single block recursively and adds a lightweight gate that decides per item whether to stop early or keep processing. This turns network depth into a learned, per-item property instead of a fixed global setting, without needing extra labels. It's a solid, practical idea for efficiency in recommender systems, though the audience is fairly specialized.",
+  "authors": [
+    "Zhanshuo Cao",
+    "Jiakai Tang",
+    "Yuqi Zhou",
+    "Sunhao Dai",
+    "Jun Xu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Show HN: Subvocal – Talk to your computer without making noise",
+  "source": "hn",
+  "url": "https://news.ycombinator.com/item?id=50340088",
+  "date": "2026-11-03",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A novel silent-speech-to-text interface project that is genuinely interesting from a signal-processing and HCI engineering perspective.",
+  "analysis": "Subvocal appears to be a device or software project that lets users communicate with a computer by detecting subvocalization or subtle muscle movements rather than audible speech. This is a hard and interesting engineering problem involving EMG or similar sensing, signal processing, and real-time classification. If it is a working open-source show-and-tell, it is a good example of applied biosignal engineering outside typical software work. The strong engagement suggests genuine novelty rather than hype.",
+  "authors": [
+    "aarushyadav"
+  ],
+  "hn_id": 50340088,
+  "points": 572
+}

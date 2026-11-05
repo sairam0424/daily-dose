@@ -1,0 +1,16 @@
+{
+  "title": "Genie 4",
+  "source": "hn",
+  "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+  "date": "2026-10-28",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A new version of DeepMind's world-model system for interactive video generation, technically notable even though details are sparse here.",
+  "analysis": "Genie refers to Google DeepMind's generative interactive environment model that creates playable, controllable video-game-like worlds from a single image or prompt. Each new version has pushed boundaries on consistency, resolution, and interactivity of generated worlds using video diffusion or autoregressive techniques. Without more detail here it's hard to assess what specifically improved, but the lineage makes this worth a skim for anyone tracking world models and generative simulation research.",
+  "authors": [
+    "acossta"
+  ],
+  "hn_id": 50261319,
+  "points": 681,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=32"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "OpenCode Hacked: User credentials leaked",
+  "source": "hn",
+  "url": "https://twitter.com/opencode/status/2111516673953935833",
+  "date": "2026-10-17",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real security incident involving credential leakage in a popular AI coding tool is directly relevant to engineers evaluating tool trust and supply-chain risk.",
+  "analysis": "This concerns a breach of OpenCode, an AI coding assistant, where user credentials were reportedly exposed. Security incidents in widely-used developer tools matter because many engineers grant these tools access to source code, API keys, and cloud credentials. The high comment count suggests substantial discussion of root cause and mitigation, which is often more useful than the headline itself. Worth reading mainly for the postmortem details and what it implies about trusting AI dev tools with secrets.",
+  "authors": [
+    "pranshuchittora"
+  ],
+  "hn_id": 50133401,
+  "points": 644,
+  "image_url": "https://pbs.twimg.com/profile_images/1973794620233433088/nBn75BTm_400x400.png",
+  "favicon_url": "https://twitter.com/favicon.ico"
+}

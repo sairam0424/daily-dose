@@ -1,0 +1,21 @@
+{
+  "title": "Pretraining Data Scale Reverses the Muon-AdamW Fine-Tuning Gap",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.03633",
+  "date": "2026-11-04",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous empirical and theoretical result showing that a newer optimizer's pretraining advantage can disappear or reverse after fine-tuning at scale, relevant to anyone training large models.",
+  "analysis": "Muon is a newer optimizer that has shown faster loss reduction than the long-standard AdamW during the pretraining phase of large language models. This paper shows a counterintuitive finding: once you fine-tune the resulting models, AdamW often ends up performing better than Muon, and this reversal happens at progressively smaller amounts of pretraining data as the model gets bigger. The authors propose a metric called the margin-to-spread ratio to explain why fine-tuning affects the two optimizers differently, backing it with both a simplified mathematical model and empirical simulations. This is a genuinely useful, well-grounded cautionary finding for practitioners who might otherwise blindly switch to Muon based on pretraining benchmarks alone.",
+  "authors": [
+    "Catherine Li",
+    "Jingchu Gai",
+    "Andrej Risteski",
+    "Jacob Mitchell Springer",
+    "Aditi Raghunathan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

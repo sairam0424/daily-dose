@@ -1,0 +1,16 @@
+{
+  "title": "designfuchen/word-atlas",
+  "source": "github",
+  "url": "https://github.com/designfuchen/word-atlas",
+  "date": "2026-10-31",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "An illustrated IELTS vocabulary app with spaced-repetition scheduling, useful as a language-learning tool but not a technical engineering project of broad interest.",
+  "analysis": "Word Atlas combines a large illustrated vocabulary dataset for IELTS preparation with audio pronunciations and FSRS, a modern spaced-repetition scheduling algorithm similar to what's used in Anki. The open-source app plus a Creative-Commons-licensed dataset is a nice contribution for language learners and educators building similar tools. Technically it's a fairly standard app built on an existing spaced-repetition algorithm rather than a novel engineering contribution. Its main value is as a polished end-user application rather than something with transferable engineering lessons.",
+  "authors": [],
+  "stars": 3553,
+  "image_url": "https://repository-images.githubusercontent.com/1432980411/d119d96c-ba71-4a5c-bb27-838c96dc82ae",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

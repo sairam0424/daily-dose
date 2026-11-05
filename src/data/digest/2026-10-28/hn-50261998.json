@@ -1,0 +1,16 @@
+{
+  "title": "Ghostty 1.4",
+  "source": "hn",
+  "url": "https://ghostty.org/docs/install/release-notes/1-4-0",
+  "date": "2026-10-28",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A major version release of a popular, well-engineered terminal emulator, useful to read for anyone interested in terminal UX or GPU-accelerated rendering.",
+  "analysis": "Ghostty is a GPU-accelerated terminal emulator written in Zig that has gained a strong following for its performance and clean design. A 1.4 release likely brings new features, bug fixes, and platform support that matter to developers who spend their day in a terminal. The high engagement reflects genuine enthusiasm from a technical audience rather than hype about an unrelated topic.",
+  "authors": [
+    "deaux"
+  ],
+  "hn_id": 50261998,
+  "points": 691,
+  "favicon_url": "https://ghostty.org/favicon.ico"
+}

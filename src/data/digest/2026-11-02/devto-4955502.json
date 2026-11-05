@@ -1,0 +1,19 @@
+{
+  "title": "My Local AI Invented 162 Python Packages. I Reran Everything From Scratch, and 161 Came Back.",
+  "source": "devto",
+  "url": "https://dev.to/soumyadeepdey/my-local-ai-invented-162-python-packages-i-reran-everything-from-scratch-and-161-came-back-4j73",
+  "date": "2026-11-02",
+  "tags": [
+    "devchallenge",
+    "hf26challenge",
+    "ai",
+    "halloween"
+  ],
+  "interest_score": 8,
+  "why_read": "A rigorous, data-backed investigation into LLM hallucination of nonexistent Python packages, with a reproducible detector and real numbers on accuracy and false positives.",
+  "analysis": "The author ran three small local language models through 1,199 coding tasks and checked every suggested pip install against the real PyPI registry, finding that 15% of suggested package names don't exist at all, a phenomenon sometimes called 'package hallucination' or 'slopsquatting' risk. Rerunning the exact same experiment found 161 of 162 'ghost' package names recurred, showing these hallucinations are consistent rather than random noise, which is itself a notable and somewhat alarming finding. They then trained a small classifier (TabPFN) to flag likely-fake package names offline without needing network access, achieving a 0.975 AUROC and blocking all 212 real ghost installs with only 13 false positives out of 1,165 genuine packages. This is a concrete, measured, reproducible piece of applied security research directly relevant to anyone using AI coding assistants in production.",
+  "authors": [],
+  "reactions": 25,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fk0muq7rnwgqvoopal8dx.jpg"
+}

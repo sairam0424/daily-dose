@@ -1,0 +1,22 @@
+{
+  "title": "From Natural Language to Exact Cover: A Neuro-Symbolic Approach to Zebra Puzzles",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.03641",
+  "date": "2026-11-04",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A neat hybrid approach combining language models with classical exact-cover solvers to reliably solve logic puzzles, relevant to anyone interested in LLM reasoning limitations.",
+  "analysis": "This paper addresses a well-known weakness of large language models: they can struggle with precise logical reasoning even when they're good at generating plausible-sounding chains of thought. The authors have the LLM translate a natural-language Zebra puzzle into a formal exact-cover problem that a traditional, guaranteed-correct symbolic solver can then solve exactly. A feedback loop lets the solver's results guide the LLM to fix invalid or incomplete problem encodings when its first translation attempt doesn't work. This neuro-symbolic approach is a sound illustration of how combining neural flexibility with symbolic correctness can outperform either approach alone on tasks requiring strict logical consistency.",
+  "authors": [
+    "Paulius Skaisgiris",
+    "Thomas Pammer",
+    "Veronika Semmelrock",
+    "Mykyta Ielanskyi",
+    "Maximilian Heisinger",
+    "Erich Kobler"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

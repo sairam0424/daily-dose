@@ -1,0 +1,26 @@
+{
+  "title": "RobustRLlib: A Unified Library and Benchmark for Robust Reinforcement Learning Algorithms",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.32971",
+  "date": "2026-10-27",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.RO"
+  ],
+  "interest_score": 6,
+  "why_read": "A unified benchmark and library for robust reinforcement learning algorithms fills a real reproducibility gap in RL research.",
+  "analysis": "RobustRLlib consolidates 17 different robust RL algorithms, covering online, offline, and safe RL variants, into one common interface for easier comparison and reuse. It also introduces an evaluation suite with 273 different perturbation configurations, including humanoid and vision-language-action tasks, to map out where current methods actually hold up under distribution shift. This kind of standardized benchmarking work is valuable infrastructure for RL researchers even though it doesn't introduce a fundamentally new algorithm. It's a solid, if niche, contribution mainly useful to people actively working on robust or safe RL.",
+  "authors": [
+    "Xi Chen",
+    "Fengqi Hu",
+    "Zeyu Shen",
+    "Jiaying Xu",
+    "Shangding Gu",
+    "Pan Xu",
+    "Anqi Liu",
+    "Laixi Shi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

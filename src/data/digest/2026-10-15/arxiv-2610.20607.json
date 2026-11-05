@@ -1,0 +1,22 @@
+{
+  "title": "Hierarchical Residual Policy Learning for Real-World Mobile Manipulation with Sparse Human Guidance",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.20607",
+  "date": "2026-10-15",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical robotics framework for quickly fine-tuning mobile manipulation robots in the real world using only sparse human corrections, useful to applied robotics engineers.",
+  "analysis": "The paper proposes a method for adapting a pretrained robot control policy to a specific real robot by learning a small additive correction on top of it, rather than retraining from scratch. It splits this correction into separate parts for the mobile base and the robotic arm so that updates to one don't interfere with the other. It also uses a small number of human interventions, under 20 percent of training data, to shape the robot's learned value function and guide exploration more efficiently. The reported result of achieving gains after only about 30 minutes of real-world interaction is a meaningful practical efficiency claim for anyone building mobile manipulation systems.",
+  "authors": [
+    "Zhefei Gong",
+    "Hefeifei Jiang",
+    "Zehao Wang",
+    "Jiachen Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "valentderah/totk-pc-recomp",
+  "source": "github",
+  "url": "https://github.com/valentderah/totk-pc-recomp",
+  "date": "2026-11-04",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 8,
+  "why_read": "A technically impressive static recompilation project porting a modern Nintendo Switch game to native PC code, a genuinely hard and well-regarded reverse-engineering technique.",
+  "analysis": "This project statically recompiles the Nintendo Switch game Tears of the Kingdom into native x86-64 code for Windows and Linux, paired with a custom Vulkan graphics renderer, rather than running it through an emulator. Static recompilation is technically much harder than typical emulation because it requires translating compiled machine code directly into new native code ahead of time, handling tricky edge cases like dynamic memory access and platform-specific behavior. This approach, pioneered in projects like the N64 recompilation efforts, can yield dramatically better performance than traditional emulation since the game runs as native code rather than being interpreted or JIT-compiled on the fly. The project's popularity and technical difficulty make it a legitimately interesting case study in reverse engineering and systems programming.",
+  "authors": [],
+  "stars": 4515,
+  "image_url": "https://opengraph.githubassets.com/9b97cf3b6707e49435481558808109d022b7954b332347d13a7ac58cf787ecb2/valentderah/totk-pc-recomp",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

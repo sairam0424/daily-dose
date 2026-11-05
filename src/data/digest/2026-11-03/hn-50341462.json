@@ -1,0 +1,17 @@
+{
+  "title": "Ubuntu still has not released patch for Linux 0day RCE in almost 3 weeks",
+  "source": "hn",
+  "url": "https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432",
+  "date": "2026-11-03",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete, verifiable claim about Ubuntu's slow response to a serious unpatched Linux kernel remote code execution vulnerability, relevant to anyone running Ubuntu in production.",
+  "analysis": "This story reports that a zero-day remote code execution vulnerability in the Linux kernel has gone unpatched on Ubuntu for close to three weeks, which is a real operational security concern. Unlike generic complaint threads, this one centers on a specific, checkable security fact that affects deployment decisions for sysadmins and security teams. The topic has direct, practical consequences, unlike opinion pieces, which is why it merits attention despite having fewer points than other items.",
+  "authors": [
+    "majorchord"
+  ],
+  "hn_id": 50341462,
+  "points": 355,
+  "image_url": "https://freenode.net/media/og-default.png",
+  "favicon_url": "https://freenode.net/static/favicon.svg"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Show HN: Steal My Bitcoin",
+  "source": "hn",
+  "url": "https://stealmybitcoin.com/",
+  "date": "2026-10-24",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A security-themed demonstration or challenge around Bitcoin wallet vulnerabilities, likely interesting to those focused on crypto security but less broadly applicable.",
+  "analysis": "Based on the title, this looks like a Show HN challenge or demo illustrating weaknesses in Bitcoin wallet security, possibly inviting people to find and exploit a planted vulnerability for a bounty. This kind of hands-on security puzzle can be a good teaching tool for understanding real attack surfaces in cryptocurrency systems. Its value depends heavily on how rigorous and realistic the vulnerability model is, which isn't clear from the title alone.",
+  "authors": [
+    "cloudlandsdev"
+  ],
+  "hn_id": 50224916,
+  "points": 281
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Hours, Not Weeks: How AI Rewrote the Clock of Software Security",
+  "source": "devto",
+  "url": "https://dev.to/james_anderson_h/security-changed-with-ai-and-small-teams-are-falling-behind-5ebg",
+  "date": "2026-10-24",
+  "tags": [
+    "security",
+    "ai",
+    "startup",
+    "discuss"
+  ],
+  "interest_score": 5,
+  "why_read": "A trend piece on how AI-assisted vulnerability analysis is shrinking the time between patch disclosure and exploitation, relevant to anyone responsible for patching systems quickly.",
+  "analysis": "The article describes a cluster of serious vulnerabilities (PHP, LiteLLM, Railway, GitLab, Linux kernel) disclosed in a short window, and argues that AI tools now let attackers quickly turn a patch diff into a working exploit, compressing the old days-to-weeks patching grace period. This matters because it changes operational expectations: smaller teams without dedicated security staff may no longer have the buffer time they used to rely on. The piece is more narrative and opinion than deeply technical, but it captures a real and important shift in the threat landscape. Worth a skim for the situational awareness value rather than technical depth.",
+  "authors": [],
+  "reactions": 23,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Foffi501tybpph06jvbch.png"
+}

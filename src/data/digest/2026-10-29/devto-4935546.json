@@ -1,0 +1,20 @@
+{
+  "title": "Mercury 3: When AI Is Fast Enough to Stay in the Loop",
+  "source": "devto",
+  "url": "https://dev.to/maximsaplin/mercury-3-when-ai-is-fast-enough-to-stay-in-the-loop-3oe5",
+  "date": "2026-10-29",
+  "tags": [
+    "ai",
+    "agents",
+    "development",
+    "productivity"
+  ],
+  "interest_score": 4,
+  "why_read": "An informal hands-on review of a diffusion-based language model (Mercury 3) focused on speed and practical coding/chess benchmarks, useful mainly for readers tracking fast inference LLMs.",
+  "analysis": "Diffusion language models generate text by refining groups of tokens in parallel rather than strictly one at a time, which can make them much faster than typical autoregressive models at the cost of some accuracy trade-offs. The author's informal benchmarks, like a chess-playing test and a home-automation project, give some real-world texture to performance claims beyond vendor marketing numbers. However, this reads as a personal, somewhat anecdotal review rather than rigorous evaluation, and the involvement of a speculative future model name ('GPT-6 Luna') makes some claims in the piece hard to independently verify.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fb2oqhg1yv3ku78tgboqa.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

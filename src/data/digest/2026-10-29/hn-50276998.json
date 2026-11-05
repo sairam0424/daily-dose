@@ -1,0 +1,16 @@
+{
+  "title": "Why is this fingerprinting script creating bioweapons?",
+  "source": "hn",
+  "url": "https://nullpt.rs/fingerprinting-bioweapons",
+  "date": "2026-10-29",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete, weird security/AI story about a browser fingerprinting script apparently triggering bioweapon-related content, likely revealing a quirky LLM-integration bug.",
+  "analysis": "The provocative title suggests some fingerprinting or tracking script embedded an LLM call that, under certain inputs, generated disturbing or dangerous-sounding text, possibly due to prompt injection or unsanitized third-party content. This kind of story is interesting because it exposes how thoughtlessly integrating language models into unrelated infrastructure (like ad/fingerprinting scripts) can produce bizarre and unintended outputs. Without the full article it's unclear whether this is a serious safety failure or a sensationalized misunderstanding, but the premise is technically curious and worth a skeptical read.",
+  "authors": [
+    "hazebooth"
+  ],
+  "hn_id": 50276998,
+  "points": 776,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=nullpt.rs&sz=32"
+}

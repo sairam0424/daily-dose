@@ -1,0 +1,22 @@
+{
+  "title": "GUILD: Guided Iterative Data Collection for Imitation Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.05368",
+  "date": "2026-11-05",
+  "tags": [
+    "cs.RO",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A robotics data-collection method that actively decides what training demonstrations to gather instead of filtering after the fact, addressing a real bottleneck in imitation learning.",
+  "analysis": "Imitation learning for robots usually depends on expensive human teleoperation to generate training demonstrations, and much of that collected data turns out to be unhelpful for the final policy. GUILD proposes an iterative loop where a vision-language model proposes promising new tasks or scenarios to collect data for, and then a feedback signal estimates how much each new batch of demonstrations would actually improve the deployed policy. This closes the loop between data collection and evaluation, rather than only filtering already-collected data afterward, which the paper claims improves sample efficiency compared to passive collection and even experienced human roboticists. It's a useful contribution to the practical, unglamorous problem of making expensive robot data collection less wasteful.",
+  "authors": [
+    "Shivin Dass",
+    "Kevin Nguyen",
+    "Rohan Yelandur",
+    "Junhong Xu",
+    "Roberto Martín-Martín"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

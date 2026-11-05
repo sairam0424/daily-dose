@@ -1,0 +1,17 @@
+{
+  "title": "PHP 8.2.35",
+  "source": "hn",
+  "url": "https://github.com/php/php-src/releases/tag/php-8.2.35",
+  "date": "2026-10-21",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A routine PHP point release, but notable given the timing alongside a security disclosure and the huge discussion volume suggests something more happened.",
+  "analysis": "This is a changelog announcement for PHP 8.2.35, a patch release in the PHP language's maintenance branch. On its own a version bump is low-interest, but the high comment count and its pairing with a same-day security advisory suggests the release fixes something significant. Engineers running PHP in production should check whether this affects their deployment. The real value is contextual rather than in the version number itself.",
+  "authors": [
+    "tuyuri"
+  ],
+  "hn_id": 50180873,
+  "points": 955,
+  "image_url": "https://opengraph.githubassets.com/b382b97f570c6673dfdefc3fb9a0a772f2031a00c0a2d8b99a13a55cda4b0645/php/php-src/releases/tag/php-8.2.35",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

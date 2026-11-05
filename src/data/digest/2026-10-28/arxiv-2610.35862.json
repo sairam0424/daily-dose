@@ -1,0 +1,27 @@
+{
+  "title": "Learning Force-Reactive Humanoid Loco-Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2610.35862",
+  "date": "2026-10-28",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.LG",
+    "eess.SY"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid robotics paper on giving humanoid robots the ability to react to physical forces during manipulation tasks, relevant to those working in embodied AI.",
+  "analysis": "FLORE teaches a humanoid robot to control not just where its hands move but how much force they apply, using demonstrations collected with force-sensing handheld grippers and body trackers. A diffusion-based policy predicts both motion and force targets, which a whole-body controller then executes while keeping the robot balanced. The reported jump from 26.7% to 80% success rate on contact-rich tasks compared to a position-only baseline is a meaningful improvement for a real engineering problem in humanoid robotics. This is of niche but genuine interest to robotics and controls engineers.",
+  "authors": [
+    "Sihang Li",
+    "Xiaofeng Guo",
+    "Jinkun Cao",
+    "Charlie Cheng",
+    "Ruihan Yang",
+    "Chen Feng",
+    "Guanya Shi",
+    "Haozhi Qi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

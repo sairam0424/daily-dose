@@ -1,0 +1,17 @@
+{
+  "title": "Gravespeaker: Giving the Person Behind the Headstone a Voice",
+  "source": "devto",
+  "url": "https://dev.to/anchildress1/gravespeaker-giving-the-person-behind-the-headstone-a-voice-329e",
+  "date": "2026-11-02",
+  "tags": [
+    "devchallenge",
+    "hf26challenge"
+  ],
+  "interest_score": 3,
+  "why_read": "A whimsical hackathon demo app combining vision, search, and text-to-speech to generate fictionalized grave stories, interesting as a creative use case but thin on technical rigor.",
+  "analysis": "Gravespeaker is a hackathon submission that photographs a headstone, uses an AI model to read the inscription, does web research via a search API, and generates a narrated story using a text-to-speech service. The engineering is mostly gluing together existing APIs (vision, search, orchestration, voice synthesis) rather than any novel technique. It's a fun creative project but offers limited new technical insight for engineers beyond seeing how these pieces fit together.",
+  "authors": [],
+  "reactions": 10,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqev8x1bjlbxenv2in2m2.png"
+}

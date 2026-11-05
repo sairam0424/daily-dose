@@ -1,0 +1,16 @@
+{
+  "title": "patch-gg/pixelfx",
+  "source": "github",
+  "url": "https://github.com/patch-gg/pixelfx",
+  "date": "2026-11-05",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A fun, concrete collection of pixel art visual effects as small code snippets, plus tooling to generate more via an AI coding assistant.",
+  "analysis": "This repository packages 244 individual pixel art effects, each implemented as a small standalone piece of code, which is useful as a reference library for game developers or creative coders. It also includes a 'Claude Code skill' meant to help generate new effects using an AI coding assistant, reflecting a growing trend of packaging domain knowledge for AI-assisted content generation. It's a niche but well-scoped creative-coding resource rather than a major technical breakthrough.",
+  "authors": [],
+  "stars": 4723,
+  "image_url": "https://opengraph.githubassets.com/40e7a58f41d07680f77ad2b4dc19b64d54e41c2673d9eebc8094055488ed5e52/patch-gg/pixelfx",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

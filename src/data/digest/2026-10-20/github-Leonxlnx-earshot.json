@@ -1,0 +1,16 @@
+{
+  "title": "Leonxlnx/earshot",
+  "source": "github",
+  "url": "https://github.com/Leonxlnx/earshot",
+  "date": "2026-10-20",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 6,
+  "why_read": "A CPU-only open-source tool giving AI coding agents the ability to listen to and produce audio feedback, a creative niche addition to the agentic coding tool ecosystem.",
+  "analysis": "Earshot gives AI coding agents auditory capabilities, letting them 'hear' and generate sound, likely for use cases like audio-based code review, alerts, or accessibility feedback during automated coding sessions. Being CPU-only suggests it's designed for lightweight, accessible deployment without requiring a GPU, which could matter for broader adoption. This is a niche but creative tool in the growing ecosystem of agentic developer tools that go beyond text-only interaction. It's unclear from the description alone how mature or widely useful the audio features actually are in practice.",
+  "authors": [],
+  "stars": 1943,
+  "image_url": "https://opengraph.githubassets.com/e7c9d113d7143681e8e5d3eee1aac06f69a795e0883b8031a171d88e6c27796c/Leonxlnx/earshot",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
