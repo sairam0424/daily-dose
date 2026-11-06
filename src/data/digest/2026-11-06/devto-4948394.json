@@ -1,0 +1,19 @@
+{
+  "title": "Don't Write Markdown Files for Your Coding Agent. Write Scripts.",
+  "source": "devto",
+  "url": "https://dev.to/dannwaneri/dont-write-markdown-files-for-your-coding-agent-write-scripts-j00",
+  "date": "2026-11-06",
+  "tags": [
+    "ai",
+    "programming",
+    "devops",
+    "productivity"
+  ],
+  "interest_score": 7,
+  "why_read": "A pointed, well-reasoned argument that AI coding agents need deterministic scripts rather than markdown instructions to behave reliably, a genuinely useful practical insight for anyone building agent workflows.",
+  "analysis": "The author argues that giving coding agents long markdown documents like CONTRIBUTING.md or style guides doesn't reliably constrain their behavior, because agents treat these as suggestions open to interpretation rather than hard rules. The proposed fix is to replace ambiguous natural-language instructions with actual deterministic scripts that remove the need for judgment entirely, for example running one well-defined test command instead of saying 'run the tests.' This is a sharp, concrete observation about where LLM-based automation currently breaks down in practice, especially for repetitive engineering tasks like refactors and deploys. It's a useful and well-articulated piece of practical wisdom for engineers integrating AI agents into real workflows.",
+  "authors": [],
+  "reactions": 32,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F701t0c2zifz0n0n7667t.jpg"
+}

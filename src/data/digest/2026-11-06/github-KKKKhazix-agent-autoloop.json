@@ -1,0 +1,16 @@
+{
+  "title": "KKKKhazix/agent-autoloop",
+  "source": "github",
+  "url": "https://github.com/KKKKhazix/agent-autoloop",
+  "date": "2026-11-06",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A tool that lets a command-line AI agent run autonomously in the background and only interrupt the user for decisions it's unsure about, which is a practical automation idea but thinly described.",
+  "analysis": "Based on the Chinese-language description, this project aims to let a terminal-based AI agent keep working on tasks unattended, only pinging the user with a 'card' when it hits something it can't decide on its own. This is a reasonable pattern for reducing interruption fatigue when using autonomous coding or operations agents. However, there's no detail on how it decides what counts as 'uncertain', nor on safety guardrails for unattended execution. It's a plausible niche tool but the provided description doesn't give enough to assess real technical depth.",
+  "authors": [],
+  "stars": 3245,
+  "image_url": "https://opengraph.githubassets.com/6e61087d192d2ca439dcfc002c615a58e1e2b117568508112c1cba84bee30301/KKKKhazix/agent-autoloop",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

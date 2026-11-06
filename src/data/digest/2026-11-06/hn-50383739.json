@@ -1,0 +1,16 @@
+{
+  "title": "Goodbye from Salon",
+  "source": "hn",
+  "url": "https://www.salon.com/2026/11/05/goodbye-from-salon/",
+  "date": "2026-11-06",
+  "tags": [],
+  "interest_score": 2,
+  "why_read": "A farewell post from a media outlet's shutdown has little direct technical content and is mostly media industry news.",
+  "analysis": "This appears to be an announcement about the online magazine Salon ending or significantly changing its operations. While it may interest people following the economics of online journalism, it's not fundamentally a technical story relevant to software engineers. It occasionally sparks discussion about ad-supported business models and web publishing infrastructure, but that's a tangential technical angle at best. Low relevance for a technical digest focused on software engineering.",
+  "authors": [
+    "mkeeter"
+  ],
+  "hn_id": 50383739,
+  "points": 409,
+  "favicon_url": "https://www.salon.com/app/themes/salon/assets/img/favicon-32x32.png"
+}

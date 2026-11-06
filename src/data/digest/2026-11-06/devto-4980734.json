@@ -1,0 +1,19 @@
+{
+  "title": "A Maintainer's Advice on Contributing to Open Source in 2026",
+  "source": "devto",
+  "url": "https://dev.to/wasp/a-maintainers-advice-on-contributing-to-open-source-in-2026-4ea1",
+  "date": "2026-11-06",
+  "tags": [
+    "opensource",
+    "ai",
+    "github",
+    "programming"
+  ],
+  "interest_score": 4,
+  "why_read": "A reflective personal essay from an open-source maintainer about what makes an ideal contributor, pleasant but mostly anecdotal rather than technically substantive.",
+  "analysis": "The piece is a maintainer's narrative reflection on positive experiences with open-source contributors, illustrated by an anecdote about someone who wrote a formal grammar specification for the Wasp language and later interned with the team. It reads more like a heartfelt blog post about community and mentorship than a piece offering concrete, actionable advice or technical insight. It may resonate with other maintainers emotionally, but it doesn't teach much new about open-source practice, tooling, or engineering. Useful as light reading but not a strong technical digest candidate.",
+  "authors": [],
+  "reactions": 29,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fwasp.sh%2Fimg%2Fblog%2F2026-08-13-advice-for-contributing-in-2026%2Fbanner.webp"
+}

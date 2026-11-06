@@ -1,0 +1,21 @@
+{
+  "title": "A Framework for Context Enrichment and Selective Robustness in LLM Social Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.06914",
+  "date": "2026-11-06",
+  "tags": [
+    "cs.MA",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A methodological paper on making LLM-based social simulation agents more robust to prompt wording, relevant to researchers building agent-based simulations.",
+  "analysis": "The paper tackles a real problem: LLM agents used in social simulations often behave very differently when given prompts that mean the same thing but are phrased differently, which undermines trust in simulation results. The authors propose 'controlled context enrichment' - systematically varying how much background and grounding information agents receive - and a new evaluation idea called 'selective robustness', meaning agents should ignore irrelevant wording changes but still react appropriately to meaningful changes in the scenario. They test this in a Prisoner's Dilemma-style game across two models. This is a useful conceptual contribution for anyone building LLM-driven agent simulations, though its practical impact outside that niche is limited.",
+  "authors": [
+    "Mattia Greiche",
+    "Reihaneh Rabbany",
+    "Maximilian Puelma Touzel"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

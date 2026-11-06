@@ -1,0 +1,16 @@
+{
+  "title": "storytold/craft-anything",
+  "source": "github",
+  "url": "https://github.com/storytold/craft-anything",
+  "date": "2026-11-06",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 4,
+  "why_read": "An intriguing but vaguely described project claiming to let you 'understand how any software works and craft your own,' with no technical detail to back up the claim.",
+  "analysis": "The description is essentially a slogan rather than an explanation, so it's unclear whether this is a reverse-engineering tool, a code-generation assistant, or something else entirely. High star and fork counts suggest it struck a chord with a lot of developers, but without more technical specifics it's hard to separate genuine substance from hype. A reader would need to click through to the repository itself to evaluate what's actually being offered. As a digest entry, it's intriguing but underspecified.",
+  "authors": [],
+  "stars": 15101,
+  "image_url": "https://opengraph.githubassets.com/91829121c51f49c6f6b07a6062c070b931527c1deb78e3b577c704be1a8cd893/storytold/craft-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

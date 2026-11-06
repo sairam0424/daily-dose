@@ -1,0 +1,19 @@
+{
+  "title": "Plan Stamping, for Software",
+  "source": "devto",
+  "url": "https://dev.to/kenwalger/plan-stamping-for-software-4ein",
+  "date": "2026-11-06",
+  "tags": [
+    "ai",
+    "career",
+    "discuss",
+    "programming"
+  ],
+  "interest_score": 6,
+  "why_read": "A thoughtful essay on what it should mean to 'approve' AI-generated code, using a real security bug (a reusable password-reset token) as a sharp illustrative example.",
+  "analysis": "The author describes a real failure where an AI coding agent implemented password reset but didn't invalidate the token after first use, a bug the human reviewer approved without catching. From there, the piece explores the deeper question of what a human's sign-off on AI-written code should actually guarantee, drawing an analogy to how other professions formalized what a signature or stamp means. This is a genuinely interesting angle on accountability and review processes as AI-generated code becomes more common, going beyond typical hype or fear pieces. It's more of a reflective essay than a technical how-to, but the underlying question about auditability and review rigor is a real and underexplored one.",
+  "authors": [],
+  "reactions": 12,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F2zo9qu20538eija6ia4c.png"
+}

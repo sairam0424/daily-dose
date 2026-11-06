@@ -1,0 +1,34 @@
+{
+  "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.06911",
+  "date": "2026-11-06",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A specialized benchmark testing whether multimodal AI models can handle real lab tasks like equipment recognition and safety reasoning, relevant to robotics and lab-automation researchers.",
+  "analysis": "BEAKER is a manually curated benchmark of 1,000 question-answer pairs testing whether multimodal language models can understand chemical lab scenes well enough to physically operate in them, covering things like recognizing equipment, judging safety, and planning movement trajectories. Unlike prior lab benchmarks that mostly tested safety or anomaly detection, this one focuses on execution-level skills needed for real automation. Testing 28 models, the authors find current systems can follow rough procedures but struggle with fine-grained grounding of actions into real, physical operations. This is a niche but legitimate research contribution for people working on self-driving labs or embodied AI, though its audience outside that community is narrow.",
+  "authors": [
+    "Fei Lin",
+    "Tengchao Zhang",
+    "Ziyang Gong",
+    "Xiaotong Yu",
+    "Bohan Zhang",
+    "Yifan Zhou",
+    "Qihao Yang",
+    "Ji Dai",
+    "Dong Li",
+    "Yining Jiang",
+    "Qinghua Ni",
+    "Jun Huang",
+    "Qiang Zhang",
+    "Yue Zhou",
+    "Zhihang Zhong",
+    "Yonglin Tian",
+    "Fei-Yue Wang",
+    "Xue Yang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

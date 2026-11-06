@@ -1,0 +1,19 @@
+{
+  "title": "WebMCP Attack Lab: Can an E-Shop Hijack Your AI Agent?",
+  "source": "devto",
+  "url": "https://dev.to/gramli/webmcp-attack-lab-can-an-e-shop-hijack-your-ai-agent-4oe5",
+  "date": "2026-11-06",
+  "tags": [
+    "ai",
+    "webmcp",
+    "angular",
+    "security"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, hands-on demonstration of a prompt-injection-style attack against WebMCP, a new standard letting AI agents interact directly with web pages, which is a timely and practical security concern.",
+  "analysis": "The author builds a demo e-commerce site using Angular's experimental WebMCP support and shows how a malicious shop could manipulate an AI shopping agent's tool descriptions to make it ignore a user's budget constraints. This is a practical, reproducible exploration of a real emerging attack surface, since WebMCP is designed specifically to let agents take actions like adding to cart and checking out on a user's behalf. It builds on the author's earlier related work on prompt injection via log files, showing a consistent interest in adversarial testing of agentic AI systems. This kind of hands-on red-teaming is valuable for engineers building or integrating AI agents into web-facing products.",
+  "authors": [],
+  "reactions": 47,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fv7lgr9ne1q8nrb0kchad.jpg"
+}

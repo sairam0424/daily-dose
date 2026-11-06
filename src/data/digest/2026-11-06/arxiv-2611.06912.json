@@ -1,0 +1,21 @@
+{
+  "title": "FlowReconBench: Accuracy, calibration and cost of learned and classical flow reconstruction from sparse sensors",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.06912",
+  "date": "2026-11-06",
+  "tags": [
+    "physics.flu-dyn",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A rigorous benchmark comparing classical and learned methods for reconstructing fluid flow fields from sparse sensors, useful for anyone in scientific ML or fluid dynamics.",
+  "analysis": "FlowReconBench compares ten machine-learning methods against five classical techniques for reconstructing full flow fields in fluids from limited sensor readings, across three different flow scenarios ranging from simple to complex 3D turbulence. The key finding is that no single method wins everywhere: classical approaches do better when sensors are dense, while learned models pull ahead when sensors are sparse or poorly placed. It also distinguishes between accuracy and calibration, meaning how well a model's uncertainty estimates match its actual errors, which is often ignored in similar comparisons. This is a solid, practically useful benchmark for engineers and researchers working on sensor-based physical simulation or digital twins.",
+  "authors": [
+    "Nicolas Tricard",
+    "Linzheng Wang",
+    "Jason Chen",
+    "Sili Deng"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

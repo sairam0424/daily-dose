@@ -1,0 +1,16 @@
+{
+  "title": "Alpine Linux Security Advisory: OpenSSH-server password authentication bypass",
+  "source": "hn",
+  "url": "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass/",
+  "date": "2026-11-06",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A real OpenSSH password-auth bypass in Alpine Linux is a serious, concrete security issue worth any engineer's attention.",
+  "analysis": "This is a security advisory describing an authentication bypass in OpenSSH's server component as shipped on Alpine Linux, letting attackers log in without a valid password under certain conditions. Advisories like this matter because Alpine is widely used as a minimal base image for containers, so the blast radius could be large. Engineers running Alpine-based systems need to patch quickly, and understanding the root cause helps prevent similar config mistakes elsewhere. This is exactly the kind of practical, actionable security news that belongs in a technical digest.",
+  "authors": [
+    "pantalaimon"
+  ],
+  "hn_id": 50379704,
+  "points": 579,
+  "favicon_url": "https://alpinelinux.org/alpine-logo.ico"
+}

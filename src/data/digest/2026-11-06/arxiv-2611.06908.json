@@ -1,0 +1,27 @@
+{
+  "title": "Perceptive Humanoid Motion from Simulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.06908",
+  "date": "2026-11-06",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A substantial robotics paper from Apple showing a humanoid trained entirely in simulation can transfer zero-shot to real homes with a 91% success rate.",
+  "analysis": "HALO addresses the data bottleneck in humanoid robotics by generating training data entirely through simulation across a thousand procedurally generated virtual homes, instead of relying on costly human teleoperation. The system learns a wide range of physical skills like sitting, navigating to named objects, crouching under tables, and pushing boxes, then combines them to perform longer composite tasks. Notably, the robot was never trained on real homes but still achieved a 91% success rate across 360 trials in six real unmapped environments, which is a strong result for sim-to-real transfer in humanoid robotics. This is a technically meaningful contribution because it shows simulation-only training can scale with compute rather than human labor, a major constraint in this field.",
+  "authors": [
+    "Siyuan Hu",
+    "Abulikemu Abuduweili",
+    "Yue Meng",
+    "Shipeng Liu",
+    "Quentin Leboutet",
+    "Chen Chen",
+    "Matthias Müller",
+    "Vladlen Koltun"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

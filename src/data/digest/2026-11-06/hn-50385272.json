@@ -1,0 +1,17 @@
+{
+  "title": "Claude Code sends your email address to websites",
+  "source": "hn",
+  "url": "https://github.com/anthropics/claude-code/issues/107757",
+  "date": "2026-11-06",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete privacy/security disclosure about Claude Code leaking personal data to third-party sites is directly relevant to engineers using AI coding tools.",
+  "analysis": "This story reports that Anthropic's Claude Code tool transmits a user's email address to external websites, likely through some telemetry, referral, or request header mechanism. This matters because many developers now run AI coding agents with real credentials and personal information, and unexpected data exfiltration undermines trust in these tools. Engineers evaluating or already using Claude Code need to understand the exact mechanism and whether it can be disabled. This kind of disclosure is useful because it highlights a broader class of privacy issues with agentic coding tools that make network requests on a user's behalf.",
+  "authors": [
+    "motoroco"
+  ],
+  "hn_id": 50385272,
+  "points": 454,
+  "image_url": "https://opengraph.githubassets.com/5908979c72c7172053a926689941f08a54bac4c6ca40746aa18af9dbf4673bff/anthropics/claude-code/issues/107757",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
