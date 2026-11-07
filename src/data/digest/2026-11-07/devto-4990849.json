@@ -1,0 +1,19 @@
+{
+  "title": "Ad Pulse Lab",
+  "source": "devto",
+  "url": "https://dev.to/gracelee087/ad-pulse-lab-4867",
+  "date": "2026-11-07",
+  "tags": [
+    "devchallenge",
+    "presagechallenge",
+    "electron"
+  ],
+  "interest_score": 4,
+  "why_read": "A hackathon submission using a webcam-based pulse/breathing sensor SDK to correlate physiological signals with self-reported ad reactions.",
+  "analysis": "This project builds a small Electron app that plays coffee ads to viewers, measures their pulse and breathing via webcam using the Presage SmartSpectra SDK, and compares those physiological signals against the viewer's stated buy/like responses. It deliberately avoids facial-expression-based emotion inference, citing weak correlation between facial coding and sales found in industry research, and instead tries body-signal-based attention measurement with consent. It's a modest but thoughtfully scoped hackathon project with a clear methodological rationale rather than overclaiming what webcam biosignals can tell you. Niche interest, mainly for those curious about remote photoplethysmography or ad-testing methodology.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkgtv1d0mpm7s7omoxv4g.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

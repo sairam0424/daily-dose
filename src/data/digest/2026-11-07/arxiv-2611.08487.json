@@ -1,0 +1,26 @@
+{
+  "title": "User Embeddings are Superpositions of Interpretable Behavioral Modes",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08487",
+  "date": "2026-11-07",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A serious interpretability paper applying sparse autoencoder techniques to recommendation-system user embeddings to make them human-readable.",
+  "analysis": "This paper proposes that opaque user embeddings used in recommender systems can be decomposed into sparse, interpretable 'behavioral modes' using sparse autoencoders, a technique borrowed from LLM interpretability research. They validate this on synthetic data with known ground truth and then apply it to real user embeddings, showing the recovered modes can be labeled in natural language and used for zero-shot audience retrieval. This matters because it offers a post-hoc, model-agnostic way to understand what dense embeddings in production ML systems actually represent, without retraining. It's a solid contribution bridging interpretability research and practical recommendation systems.",
+  "authors": [
+    "Jonathan Kozaczuk",
+    "Zheng Dong",
+    "Noyan Evirgen",
+    "Keivan Majidi",
+    "Eddie K. H. Ng",
+    "Chris Porter",
+    "Qi Zhao",
+    "Jia Geng",
+    "Changmao Li",
+    "Brandon R. Feng"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

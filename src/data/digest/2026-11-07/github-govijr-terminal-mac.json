@@ -1,0 +1,16 @@
+{
+  "title": "govijr/terminal-mac",
+  "source": "github",
+  "url": "https://github.com/govijr/terminal-mac",
+  "date": "2026-11-07",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 6,
+  "why_read": "A project that runs a full macOS environment inside a terminal, presumably via emulation or remote framebuffer rendered as ASCII/ANSI graphics.",
+  "analysis": "This repo claims to run the entire macOS GUI inside a terminal window, which is a neat technical party trick likely achieved through screen capture, VNC, or framebuffer rendering translated into terminal graphics protocols. It's the kind of creative systems hack engineers enjoy for its cleverness even if impractical for daily use. Without more detail it's hard to assess the underlying implementation quality, but the concept itself is inherently interesting to tinkerers. Moderate interest as a fun engineering curiosity rather than something with broad practical application.",
+  "authors": [],
+  "stars": 2152,
+  "image_url": "https://opengraph.githubassets.com/966ec7b4e3585de166efe520e52dc71da5fdf2664703f3ed73ba3f20fa1470c0/govijr/terminal-mac",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "mromidev/claude-animated-shorts",
+  "source": "github",
+  "url": "https://github.com/mromidev/claude-animated-shorts",
+  "date": "2026-11-07",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A content-generation tool combining an LLM skill with three.js and Remotion to produce short animated videos aimed at viral social media content.",
+  "analysis": "This project packages Claude with three.js (3D rendering) and Remotion (programmatic video creation) to auto-generate short animated story videos, explicitly targeting virality rather than any novel technical approach. The engineering stack (3D web rendering plus video assembly pipelines) is reasonable but the goal is content-farming style media generation rather than solving an interesting technical problem. It may interest people building AI content pipelines, but the framing around 'viral shorts' lowers its technical substance. Fairly low interest for an engineering-focused digest.",
+  "authors": [],
+  "stars": 2028,
+  "image_url": "https://opengraph.githubassets.com/9f7340bc54323a6d8b405afa91f2f3df5dfe36e15b204e9055de5dd514d1a980/mromidev/claude-animated-shorts",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

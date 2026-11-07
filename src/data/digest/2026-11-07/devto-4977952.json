@@ -1,0 +1,19 @@
+{
+  "title": "One Word, Two GPUs: Why Gemma 4 Answers the Same Question Differently on a Laptop and a Tesla T4",
+  "source": "devto",
+  "url": "https://dev.to/gde/one-word-two-gpus-why-gemma-4-answers-the-same-question-differently-on-a-laptop-and-a-tesla-t4-1dj2",
+  "date": "2026-11-07",
+  "tags": [
+    "gemma",
+    "llamacpp",
+    "cuda",
+    "nvidia"
+  ],
+  "interest_score": 7,
+  "why_read": "A detailed, concrete debugging investigation into why identical LLM inference setups give different numeric answers across GPU architectures due to floating-point summation order.",
+  "analysis": "This article traces a real and subtle bug: the same GGUF model file and llama.cpp build give different answers on a laptop GPU versus a Tesla T4, tracked down to differing numbers of processors causing different orders of floating-point addition during matrix multiplication. Because floating-point addition is not associative, splitting a big sum across 16 versus 40 processor shares changes rounding behavior and can flip the final greedy-decoded token, changing a math answer from $20 to 2000. This is a genuinely useful and specific piece of systems knowledge for anyone running local LLM inference and expecting bit-for-bit reproducibility across hardware. It's a good example of practical, hands-on investigation rather than marketing or surface-level content.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma-graveyard%2Fmain%2Fdocs%2Fdevto-cover-flips.24a2d00b.jpg"
+}

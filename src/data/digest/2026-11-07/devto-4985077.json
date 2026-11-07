@@ -1,0 +1,19 @@
+{
+  "title": "An AI Testing Presentation Became the Final Push for Organizational Change at My Company",
+  "source": "devto",
+  "url": "https://dev.to/xulingfeng/an-ai-testing-presentation-became-the-final-push-for-organizational-change-at-my-company-12ag",
+  "date": "2026-11-07",
+  "tags": [
+    "discuss",
+    "ai",
+    "programming",
+    "career"
+  ],
+  "interest_score": 4,
+  "why_read": "A first-person account of how an internal AI testing demo sparked a broader organizational rethink of QA and engineering roles.",
+  "analysis": "The piece describes building a multi-agent system for automated software testing that can understand requirements, generate test cases, interact with UIs, find bugs, and link fixes to regression tests. The more interesting thread is how presenting this tool internally triggered discussion about restructuring how product, development, and QA teams collaborate in an AI-assisted workflow. There's limited concrete technical detail about the testing system's architecture in the excerpt, making it more of an organizational narrative than a deep technical write-up. Readers interested in AI's impact on engineering team structure may find it useful, but it's light on implementation specifics.",
+  "authors": [],
+  "reactions": 114,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fixx20m4903kd4gqasfhz.png"
+}

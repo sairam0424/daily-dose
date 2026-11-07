@@ -1,0 +1,15 @@
+{
+  "title": "US FAA says it will phase out floppy disks from air traffic control by 2028",
+  "source": "hn",
+  "url": "https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/",
+  "date": "2026-11-07",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A concrete example of long-tail legacy technology still running critical infrastructure, interesting as a systems/maintenance story.",
+  "analysis": "The FAA plans to finally retire floppy disks used in air traffic control systems by 2028, highlighting how deeply legacy hardware can become embedded in critical infrastructure. This is a recurring type of story that engineers find interesting because it illustrates the real-world difficulty of modernizing safety-critical systems. There's no deep technical content, but it offers a useful reminder about technical debt at scale. Moderate interest as a discussion-starter rather than a deep technical piece.",
+  "authors": [
+    "ChrisArchitect"
+  ],
+  "hn_id": 50388001,
+  "points": 267
+}

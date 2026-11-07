@@ -1,0 +1,21 @@
+{
+  "title": "Scientist World: Grow a Research World for AI-Scientists",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08478",
+  "date": "2026-11-07",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious framework turning research papers into executable, gradeable environments to benchmark and train AI systems that do science.",
+  "analysis": "The authors convert 1,000 research papers into runnable environments where an AI agent's proposed method is graded against the original human-authored result, creating a scalable benchmark for 'AI scientists'. They report current frontier AI systems already beat the original human results 74% of the time on these reproduced tasks, which is a strong and somewhat surprising claim worth scrutinizing. They also use the resulting trace data to improve a smaller model's research ideation ability substantially. The idea of making the scientific literature 'runnable' rather than just readable is an interesting direction for AI-for-science research, though the 74% figure needs careful interpretation given how the baselines were constructed.",
+  "authors": [
+    "Taiming Lu",
+    "Sachin Konan",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

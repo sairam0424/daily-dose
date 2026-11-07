@@ -1,0 +1,16 @@
+{
+  "title": "KKKKhazix/agent-autoloop",
+  "source": "github",
+  "url": "https://github.com/KKKKhazix/agent-autoloop",
+  "date": "2026-11-07",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A tool for running command-line coding agents autonomously in the background, surfacing only uncertain decisions for human review.",
+  "analysis": "This GitHub project (described in Chinese) lets a command-line AI agent work autonomously in the background on tasks and only interrupt the user with a card/notification when it hits something it's unsure about. This is a fairly common pattern now in the agentic coding tool space, aiming to reduce the need for constant human supervision. The stars and forks suggest some community traction but the approach is incremental rather than novel compared to other autonomous agent wrappers. Worth a skim for people building or using autonomous coding agent workflows, but not groundbreaking.",
+  "authors": [],
+  "stars": 3680,
+  "image_url": "https://opengraph.githubassets.com/112e20ac42dc88f06b69986cc1d25913ae90729ca0fb1231850a4cfade7edf94/KKKKhazix/agent-autoloop",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

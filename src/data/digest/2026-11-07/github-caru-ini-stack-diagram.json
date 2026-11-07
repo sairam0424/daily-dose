@@ -1,0 +1,16 @@
+{
+  "title": "caru-ini/stack-diagram",
+  "source": "github",
+  "url": "https://github.com/caru-ini/stack-diagram",
+  "date": "2026-11-07",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A small agent skill that converts a one-sentence tech stack description into an architecture diagram with official logos.",
+  "analysis": "This is a lightweight developer productivity tool: describe your stack in plain language and get a diagram with recognizable logos, likely built on top of an LLM agent and some diagramming library. It's a convenient utility rather than a deep technical advance, similar to many diagram-generation tools that have existed for years with an LLM front end added. Useful for documentation and quick presentations but not something that pushes the field forward. Modest interest, mainly for engineers who want a quick tool for architecture diagrams.",
+  "authors": [],
+  "stars": 1959,
+  "image_url": "https://opengraph.githubassets.com/98f97782fd1a9a5c2fe96c7db4fde9e3df4c21553b23470acb11c07ac7ab2b7d/caru-ini/stack-diagram",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

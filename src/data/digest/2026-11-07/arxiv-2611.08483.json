@@ -1,0 +1,19 @@
+{
+  "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08483",
+  "date": "2026-11-07",
+  "tags": [
+    "cs.AI",
+    "cs.NE"
+  ],
+  "interest_score": 7,
+  "why_read": "Proposes running LLM-based evolutionary program search in latent space rather than text, claiming large speedups over frameworks like AlphaEvolve.",
+  "analysis": "SwarmEvolve replaces the usual slow approach of having LLM agents write out long chains of thought in text during evolutionary code search, instead having many cheap agents reason directly in their internal hidden-state representations and share information via KV caches. This lets them combine and compare ideas without the cost of generating and parsing text repeatedly, speeding up convergence by roughly 10x on math and scientific computing benchmarks compared to existing frameworks. The claim that an 8B parameter model beats solutions originally found by frontier LLMs is notable if it holds up under scrutiny. This is a genuinely novel systems idea for making agentic search cheaper and faster, worth attention from anyone interested in LLM-driven program synthesis.",
+  "authors": [
+    "Qile Jiang",
+    "George Em Karniadakis"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
