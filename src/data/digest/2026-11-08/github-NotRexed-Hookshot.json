@@ -1,0 +1,16 @@
+{
+  "title": "NotRexed/Hookshot",
+  "source": "github",
+  "url": "https://github.com/NotRexed/Hookshot",
+  "date": "2026-11-08",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 7,
+  "why_read": "A native recompilation project that converts game binary code into native executable code, continuing a respected line of reverse-engineering work pioneered by projects like Zelda 64 Recomp.",
+  "analysis": "Native recompilation is a technique that translates compiled game machine code directly into equivalent native code for modern platforms, rather than emulating the original hardware at runtime. This approach, pioneered in earlier high-profile projects, can yield far better performance and modding potential than traditional emulation. Applying it to a Nintendo Switch 2 remake of a classic game suggests deep reverse engineering work against both the original game and the newer console's binary format. This is a legitimate and technically impressive feat of reverse engineering valued highly within the emulation and preservation community.",
+  "authors": [],
+  "stars": 1811,
+  "image_url": "https://repository-images.githubusercontent.com/1446962520/79f32404-1f16-413d-ab20-4f90a930acc1",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Windows won't let you own Win+Shift+S. So I hooked the keyboard in Python.",
+  "source": "devto",
+  "url": "https://dev.to/akhourianmolkumar/windows-wont-let-you-own-winshifts-so-i-hooked-the-keyboard-in-python-248c",
+  "date": "2026-11-08",
+  "tags": [
+    "python",
+    "pyqt",
+    "opensource",
+    "windows"
+  ],
+  "interest_score": 7,
+  "why_read": "A detailed, concrete writeup of real Windows API gotchas encountered while building a custom screenshot tool that intercepts a reserved system hotkey.",
+  "analysis": "The author explains why the standard RegisterHotKey API silently fails for the Win+Shift+S combination because the shell reserves it, then shows the low-level keyboard hook workaround with actual working code. This is grounded, specific systems programming content with real code snippets and genuine gotchas, like needing to keep a Python reference alive to avoid the hook callback being garbage collected. It is the kind of practical, hard-won knowledge about Windows internals that is genuinely useful to engineers doing low-level desktop development. The level of concrete detail puts it well above typical tutorial-level content.",
+  "authors": [],
+  "reactions": 43,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Feiamx8g9gjxsqv6pdyxp.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08483",
+  "date": "2026-11-08",
+  "tags": [
+    "cs.AI",
+    "cs.NE"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting systems-level speedup for LLM-driven evolutionary program search by having agents communicate through shared latent states instead of text.",
+  "analysis": "This paper proposes having many cheap agents collaborate by exchanging internal hidden-state representations, called KV caches, instead of generating and reading full text explanations between rounds. That avoids the slow and expensive step of decoding reasoning into language purely to re-encode it for the next agent, which is a legitimate efficiency bottleneck in current agentic search systems. The claimed speedups, reaching results in minutes that competitors take an hour to reach, are notable if they hold up under scrutiny. It is a real systems contribution to agentic AI efficiency rather than just another prompting trick.",
+  "authors": [
+    "Qile Jiang",
+    "George Em Karniadakis"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

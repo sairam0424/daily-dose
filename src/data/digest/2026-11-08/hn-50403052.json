@@ -1,0 +1,15 @@
+{
+  "title": "Need for Speed Underground 2 online in the browser",
+  "source": "hn",
+  "url": "https://nfsu2.xyz/",
+  "date": "2026-11-08",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A fun technical feat of reverse-engineering an old game's multiplayer to run in-browser, interesting mainly for emulation/networking enthusiasts.",
+  "analysis": "This project appears to resurrect online multiplayer for a 2004 racing game inside a web browser, likely using emulation or protocol reimplementation techniques. It is the kind of nostalgia-driven reverse-engineering project that shows off real skill in network protocol analysis and browser-based emulation. The high comment count on Hacker News suggests strong nostalgia appeal rather than deep technical novelty for most readers. It is a fun curiosity more than a broadly applicable engineering lesson.",
+  "authors": [
+    "fluxusars"
+  ],
+  "hn_id": 50403052,
+  "points": 778
+}

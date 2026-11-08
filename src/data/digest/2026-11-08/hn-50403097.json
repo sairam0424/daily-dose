@@ -1,0 +1,15 @@
+{
+  "title": "Every Mac comes with an (undocumented) family member classifier",
+  "source": "hn",
+  "url": "https://8rank.ai/game/apple-intelligence-personal-knowledge-graph",
+  "date": "2026-11-08",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A surprising find about hidden on-device machine learning functionality in macOS that photo apps may already quietly rely on.",
+  "analysis": "This post describes an apparently undocumented system component in macOS that classifies people in photos as family members, likely tied to the Photos app's people-recognition features. It matters because it reveals how much inferred personal classification already runs locally on consumer devices without clear documentation or user visibility. For engineers interested in on-device ML, privacy engineering, or reverse engineering of Apple frameworks, this is a concrete example worth digging into. The large comment count suggests it also touches on real privacy concerns among readers.",
+  "authors": [
+    "infwhispers"
+  ],
+  "hn_id": 50403097,
+  "points": 574
+}

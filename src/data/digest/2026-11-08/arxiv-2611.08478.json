@@ -1,0 +1,21 @@
+{
+  "title": "Scientist World: Grow a Research World for AI-Scientists",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08478",
+  "date": "2026-11-08",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An ambitious but somewhat grandiosely framed benchmark that turns thousands of research papers into executable environments for testing AI research agents.",
+  "analysis": "The core technical contribution is a pipeline that extracts a paper's research question and reproduces its baseline method as code, then lets an AI agent try to beat the original human result. This creates a large-scale, structured benchmark for measuring AI research capability instead of relying on anecdotal claims about AI doing science. The claim that AI agents beat human researchers 74% of the time should be read skeptically, since benchmark framing and selection effects can inflate such numbers. Still, the idea of literature-as-executable-environment is a genuinely novel infrastructure contribution worth knowing about.",
+  "authors": [
+    "Taiming Lu",
+    "Sachin Konan",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

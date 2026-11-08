@@ -1,0 +1,17 @@
+{
+  "title": "Apple’s grey list: Words and phrases your iPhone won’t help you spell",
+  "source": "hn",
+  "url": "https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you",
+  "date": "2026-11-08",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A quirky investigation into which words Apple's autocorrect and spell-check silently refuse to help with, hinting at hidden content moderation logic.",
+  "analysis": "This explores a curious quirk of iOS where certain words or phrases are excluded from autocomplete or spelling suggestions, likely due to a hardcoded blocklist for profanity or sensitive terms. It is a lightweight but genuinely interesting piece of reverse engineering into consumer software behavior that is not publicly documented. The technical depth is modest, but it says something about how shipped products embed undisclosed content policies. Good for curiosity rather than deep engineering insight.",
+  "authors": [
+    "user_7832"
+  ],
+  "hn_id": 50406111,
+  "points": 317,
+  "image_url": "https://i.guim.co.uk/img/media/28e97d03d0abcd9f1e2eb53b873f17079a1a7f82/998_270_3911_3129/master/3911.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=ae2dd9194072b73ebb69c7269d955ba3",
+  "favicon_url": "https://static.guim.co.uk/images/favicon-32x32.ico"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Same Behavior, Different Mechanism: What Finite Experiments Can Certify About Integrated Information",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08469",
+  "date": "2026-11-08",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "q-bio.NC"
+  ],
+  "interest_score": 8,
+  "why_read": "A rigorous theoretical paper examining when mechanistic properties like integrated information can actually be measured reliably from limited experimental data.",
+  "analysis": "This work studies a hard measurement-theory question: given only finite, noisy, and partial experimental access to a system, can we reliably certify quantities that describe how it internally computes, rather than just what it outputs. The authors use integrated information theory's phi measure as a deliberately difficult test case and show concrete numerical examples where identical input-output behavior hides wildly different internal mechanisms. They also show that this quantity can be extremely sensitive to tiny changes in the underlying system, with some surrogate models misestimating it by over 20%. This matters for AI interpretability and machine consciousness debates because it formally shows some mechanistic claims may be fundamentally uncertifiable from behavior alone, which is a genuinely deep methodological point.",
+  "authors": [
+    "Linqian Wu",
+    "Diaoxuan He"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

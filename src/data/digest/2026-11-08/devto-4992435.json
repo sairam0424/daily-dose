@@ -1,0 +1,19 @@
+{
+  "title": "Building RailPulse AI: Deploying an Open-Source Railway Dispatch Agent with Gemma and Google Cloud Run",
+  "source": "devto",
+  "url": "https://dev.to/gde/building-railpulse-ai-deploying-an-open-source-railway-dispatch-agent-with-gemma-and-google-cloud-2b9g",
+  "date": "2026-11-08",
+  "tags": [
+    "ai",
+    "googlecloud",
+    "opensource",
+    "python"
+  ],
+  "interest_score": 4,
+  "why_read": "A vendor-flavored case study on deploying a small open-source language model for railway dispatch simulation using Google Cloud Run, light on real technical depth.",
+  "analysis": "The article describes deploying Google's Gemma model as an AI agent for railway dispatch operations, using Cloud Run for serverless hosting, presented as a conference demo project. The framing emphasizes marketing and promotional elements, including GDE credentials and conference appearances, more than deep technical specifics. Claims about safety-critical AI for train operations should be read cautiously, since the excerpt gives no detail on validation, latency guarantees, or failure handling appropriate for actual safety-critical systems. It may offer a decent walkthrough of Cloud Run plus Gemma deployment mechanics, but it reads more as promotional content than rigorous engineering analysis.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2FRobinaMirbahar%2Frailpulse-gemma-cloudrun%2Fmain%2Fassets%2Frailpulse_banner_v2.jpg"
+}

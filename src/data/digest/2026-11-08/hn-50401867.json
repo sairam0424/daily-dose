@@ -1,0 +1,17 @@
+{
+  "title": "Asahi Linux Progress Linux 7.3",
+  "source": "hn",
+  "url": "https://asahilinux.org/2026/11/progress-report-7-3/",
+  "date": "2026-11-08",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An update on Asahi Linux's ongoing work to bring full Linux support to Apple Silicon Macs, a project with real low-level engineering substance.",
+  "analysis": "Asahi Linux is a well-regarded effort to reverse-engineer and support Apple Silicon hardware under Linux, covering GPU drivers, power management, and peripheral support. Progress updates like this typically detail new driver capabilities, performance improvements, or newly supported hardware features. This matters to systems engineers and kernel developers because it documents real low-level reverse engineering against closed hardware. It is a solid, substantive update rather than hype, given the project's track record.",
+  "authors": [
+    "ackyshake"
+  ],
+  "hn_id": 50401867,
+  "points": 304,
+  "image_url": "https://asahilinux.org/img/AsahiLinux_logomark_256px.png",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=asahilinux.org&sz=32"
+}

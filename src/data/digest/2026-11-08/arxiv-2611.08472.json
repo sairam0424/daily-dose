@@ -1,0 +1,21 @@
+{
+  "title": "XStack: A Benchmark for ML Repo Migration",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08472",
+  "date": "2026-11-08",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, practical benchmark testing whether AI coding agents can actually port real ML codebases between PyTorch/GPU and JAX/TPU ecosystems.",
+  "analysis": "This paper introduces a benchmark where agents must convert a working PyTorch repository into a functioning JAX repository, running on a different type of hardware than it was built for. The grading criteria are tied to the original paper's published results, offering an objective, verifiable pass/fail test. Reported pass rates, with the best agent reaching only 75%, show that even strong coding agents struggle with full-repository, cross-framework migration. This is useful and concrete evidence about current AI coding agent capabilities on a real, high-value software engineering task.",
+  "authors": [
+    "Linrong Cai",
+    "Taiming Lu",
+    "Haozhe Chen",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

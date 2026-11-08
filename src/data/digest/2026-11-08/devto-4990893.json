@@ -1,0 +1,19 @@
+{
+  "title": "I ran 3 Claude Code architecture diagram tools on my repo. Here's what each one got right",
+  "source": "devto",
+  "url": "https://dev.to/yahhi/i-ran-3-claude-code-architecture-diagram-tools-on-my-repo-heres-what-each-one-got-right-110n",
+  "date": "2026-11-08",
+  "tags": [
+    "claudecode",
+    "architecture",
+    "devtools",
+    "ai"
+  ],
+  "interest_score": 6,
+  "why_read": "A hands-on comparison of three real Claude Code plugins for auto-generating architecture diagrams, tested against an actual multi-repo project.",
+  "analysis": "The author ran three different open-source tools that use Claude Code to turn a real codebase into architecture diagrams or knowledge graphs, then compared their outputs, time cost, and dollar cost. This is a genuinely practical piece for engineers evaluating AI-assisted codebase documentation and understanding tools rather than abstract discussion. It includes concrete details like setup time, failed runs, and actual dollar costs, which is useful real-world signal often missing from vendor blog posts. The comparison format makes it easy to judge trade-offs between competing tools for a common, relatable engineering need.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkayiu6onnn0kfacri7qk.png"
+}
