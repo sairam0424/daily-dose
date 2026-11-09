@@ -1,0 +1,16 @@
+{
+  "title": "Goodbye Claude, hello Pi",
+  "source": "hn",
+  "url": "https://caleb.software/posts/claude-to-pi.html",
+  "date": "2026-11-09",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A personal account of switching AI coding assistants, useful mainly as anecdotal signal about the competitive AI tooling landscape.",
+  "analysis": "This appears to be a blog-style post about a developer moving from Claude to another AI assistant called Pi, judging by the title and the large HN discussion it generated. Without the actual text, it's hard to know the specific technical reasons, but such posts typically compare context handling, pricing, or coding accuracy between assistants. The high comment count suggests it touched a nerve in the ongoing AI-assistant rivalry, which is useful for engineers tracking which tools are actually good right now. The value is anecdotal rather than rigorous, so treat specific claims skeptically.",
+  "authors": [
+    "karagenit"
+  ],
+  "hn_id": 50410107,
+  "points": 689,
+  "favicon_url": "https://caleb.software/favicon.svg"
+}

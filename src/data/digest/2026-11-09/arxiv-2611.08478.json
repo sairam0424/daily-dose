@@ -1,0 +1,21 @@
+{
+  "title": "Scientist World: Grow a Research World for AI-Scientists",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08478",
+  "date": "2026-11-09",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "An ambitious benchmark infrastructure project that converts 1,000 research papers into runnable evaluation environments for testing autonomous AI research agents.",
+  "analysis": "Scientist World turns published papers into executable environments by extracting each paper's research question and reproducing its proposed method as a baseline, then measuring whether an AI agent can beat the original human result. The claim that frontier AI agents already surpass the original human researchers 74% of the time is a strong and somewhat surprising result that deserves scrutiny regarding what 'surpass' actually means here. It also doubles as a training resource, since the authors report a large ideation improvement, 158%, for a small model trained on the collected research traces. This is a notable infrastructure contribution to the growing area of autonomous AI research agents, though the benchmark's grading methodology needs careful reading to judge how rigorous the comparisons really are.",
+  "authors": [
+    "Taiming Lu",
+    "Sachin Konan",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "A Builder in CDMX: Flu Edition",
+  "source": "devto",
+  "url": "https://dev.to/earlgreyhot1701d/a-builder-in-cdmx-flu-edition-167",
+  "date": "2026-11-09",
+  "tags": [
+    "ai",
+    "webdev",
+    "buildinpublic",
+    "showdev"
+  ],
+  "interest_score": 2,
+  "why_read": "A personal anecdote about using an AI chat assistant to quickly vibe-code a small personal web app while sick on vacation, light on technical substance but a mildly interesting real-world example of AI-assisted no-IDE development.",
+  "analysis": "The author describes using Claude's chat interface to build and directly push a tiny web app, a page of buttons that send pre-written texts, without ever opening a terminal or IDE, all from a low-powered Chromebook. This is a nice illustration of how far 'vibe coding' with conversational AI has come for small, low-stakes personal tools, requiring no traditional development environment at all. The technical content is minimal since it's really a personal and emotional story wrapped around a trivial app, but it does speak to the real capability of AI coding assistants to go from idea to deployed GitHub project in under an hour. It's an entertaining read more than an informative one for engineers looking for technical depth.",
+  "authors": [],
+  "reactions": 18,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffhxt2o5ti8j747yswmdq.png"
+}

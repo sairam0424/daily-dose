@@ -1,0 +1,17 @@
+{
+  "title": "Goldman Sachs is pulling Claude Code from its bankers and traders",
+  "source": "hn",
+  "url": "https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers",
+  "date": "2026-11-09",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An interesting data point on enterprise pullback from AI coding tools in a regulated, high-stakes environment, though mostly a business/policy story rather than deep technical content.",
+  "analysis": "The headline reports that Goldman Sachs is removing Claude Code access from traders and bankers, which signals institutional caution about AI agents handling sensitive financial work. This is relevant to engineers building or evaluating AI tools for regulated industries, since it hints at reliability, compliance, or security concerns driving the decision. The actual technical reasons aren't in the title, so the value here is more about tracking industry sentiment than learning something new technically. Still worth a skim for context on enterprise AI adoption risk.",
+  "authors": [
+    "TheWiggles"
+  ],
+  "hn_id": 50415628,
+  "points": 566,
+  "image_url": "https://www.thestateofai.com/media/uploads/33f913ce812c4074d207c01b6df1858a692e6bc3229dadbfcd4f56b61722a538.png",
+  "favicon_url": "https://www.thestateofai.com/media/uploads/2026/09/da5c9ca7-soai-256x256.png"
+}

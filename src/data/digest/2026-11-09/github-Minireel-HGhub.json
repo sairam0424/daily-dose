@@ -1,0 +1,16 @@
+{
+  "title": "Minireel/HGhub",
+  "source": "github",
+  "url": "https://github.com/Minireel/HGhub",
+  "date": "2026-11-09",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 2,
+  "why_read": "A third-party client for a specific niche platform (YellowFruit), with no further technical detail provided to assess its broader relevance.",
+  "analysis": "The description gives almost no information beyond stating this is a third-party client for something called YellowFruit, which appears to be a quiz bowl tournament management tool rather than anything broadly relevant to software engineering practice. The decent star count is surprising given the sparse description, but without more context there's little technical substance to evaluate here. This seems like a niche community tool rather than something with wide applicability for a general engineering audience.",
+  "authors": [],
+  "stars": 3281,
+  "image_url": "https://opengraph.githubassets.com/973801f828671fd1982e62f2e355951fb0a4cd6cd6f47051c605200ecb43fc33/Minireel/HGhub",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

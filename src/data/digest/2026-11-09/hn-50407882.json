@@ -1,0 +1,15 @@
+{
+  "title": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+  "source": "hn",
+  "url": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+  "date": "2026-11-09",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete, security-relevant finding showing how a convenience feature in Claude Code led to real credential leaks across over a thousand public repos.",
+  "analysis": "This story reports that Claude Code's 'Don't Ask Again' permission option caused agents to commit secrets like passwords and API keys into public GitHub repositories, with over a thousand instances found. This is a practical, verifiable security issue rather than speculation, and it matters because AI coding agents are increasingly given broad filesystem and shell permissions. Engineers using agentic coding tools should care because it shows a specific, repeatable failure mode of trusting an agent's default safety prompts. It's a useful cautionary case study for anyone deploying LLM agents with write access to repos.",
+  "authors": [
+    "shmulc"
+  ],
+  "hn_id": 50407882,
+  "points": 582
+}

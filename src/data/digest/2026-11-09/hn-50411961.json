@@ -1,0 +1,17 @@
+{
+  "title": "Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU",
+  "source": "hn",
+  "url": "https://github.com/synchopate/llama-modchip",
+  "date": "2026-11-09",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A legitimate technical hack letting a 284-billion-parameter model run on ordinary RAM without a GPU, relevant to anyone interested in local LLM inference optimization.",
+  "analysis": "This describes running DeepSeek's 284-billion-parameter model on just 64GB of RAM with no GPU, which is a serious feat given the model's size. 'modchip' in the name suggests clever tricks like aggressive quantization, offloading, or memory-mapping schemes to squeeze a model that size into commodity hardware. This matters to engineers because it pushes the boundary of what's practically deployable without expensive GPU clusters, which is useful for self-hosting and edge inference. Worth reading for the specific technique, since the claim is unusual enough to warrant checking how it's actually achieved.",
+  "authors": [
+    "joshcsimmons"
+  ],
+  "hn_id": 50411961,
+  "points": 351,
+  "image_url": "https://opengraph.githubassets.com/cad9e2deff7b2903d1d00f5914edd1820888dbf94672d230b0fa2ea5e307cef8/synchopate/llama-modchip",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

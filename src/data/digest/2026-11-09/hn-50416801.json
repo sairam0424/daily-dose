@@ -1,0 +1,16 @@
+{
+  "title": "Nvidia Board of Directors Is Investigating Jensen Huang",
+  "source": "hn",
+  "url": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+  "date": "2026-11-09",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "Corporate governance news about Nvidia's leadership, of limited direct technical substance for engineers.",
+  "analysis": "This item reports that Nvidia's board is investigating CEO Jensen Huang, which is a governance and business story rather than a technical one. It may matter indirectly if the investigation relates to chip allocation, export controls, or strategic decisions affecting the AI hardware supply chain, but the headline alone gives no such detail. Engineers reading a technical digest would likely want more specifics on what's being investigated before this has real technical weight. As is, it's mostly tabloid-adjacent corporate news.",
+  "authors": [
+    "vincentchau"
+  ],
+  "hn_id": 50416801,
+  "points": 359,
+  "favicon_url": "https://nvidianews.nvidia.com/media/sites/219/images/favicon.ico"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Mobile Data on Android 17 and a 4.9 Kernel: Google Fi on the Pixel 3a",
+  "source": "devto",
+  "url": "https://dev.to/gde/mobile-data-on-android-17-and-a-49-kernel-google-fi-on-the-pixel-3a-4cdc",
+  "date": "2026-11-09",
+  "tags": [
+    "android",
+    "linux",
+    "lineageos",
+    "networking"
+  ],
+  "interest_score": 6,
+  "why_read": "A detailed, well-documented low-level debugging writeup of getting mobile data working on an old Android phone running a custom LineageOS build with an ancient Linux kernel.",
+  "analysis": "This article walks through four specific fixes needed to get a Google Fi SIM working on a Pixel 3a running LineageOS 24.0, which is effectively Android 17 on top of a very old 4.9 Linux kernel. The fixes include enabling mobile data by default, configuring a custom APN, enabling VoLTE carrier settings, and backporting the close_range() syscall so a newer Android component can run on the old kernel. This is a genuinely useful, specific piece of systems debugging that shows how modern Android userspace features depend on specific kernel syscalls, which matters to anyone doing custom ROM development or kernel backporting work. It's a niche audience topic, but for that audience it's a precise, reproducible, well-documented technical walkthrough with all patches and builds published.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fandroid_kernel_google_msm-4.9%2Fmain%2Fbackport-tools%2Flineage-24.0%2Farticle-mobile-data%2Fdevto-cover.eca0f5c3.jpg"
+}

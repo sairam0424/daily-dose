@@ -1,0 +1,16 @@
+{
+  "title": "NotRexed/Hookshot",
+  "source": "github",
+  "url": "https://github.com/NotRexed/Hookshot",
+  "date": "2026-11-09",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 6,
+  "why_read": "A native recompilation project that converts an existing game's console binary into native code for a new platform, part of a technically interesting hobbyist reverse-engineering trend.",
+  "analysis": "Native recompilation projects, following in the footsteps of tools like the N64 and Zelda 64 recompilation efforts, take the original compiled game binary and decompile or lift it into portable C/C++ code that can be recompiled natively for new hardware. This is a genuinely interesting reverse-engineering technique that avoids traditional emulation overhead and can enable modding, ports, and performance improvements. The specific target here, a hypothetical Switch 2 remake of Ocarina of Time, raises some doubt about authenticity or scope given no such official remake is publicly known at time of writing. Still, the general category of native recompilation is a legitimate and technically rich area worth knowing about regardless of this specific project's details.",
+  "authors": [],
+  "stars": 3082,
+  "image_url": "https://repository-images.githubusercontent.com/1446962520/79f32404-1f16-413d-ab20-4f90a930acc1",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

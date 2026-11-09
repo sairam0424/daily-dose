@@ -1,0 +1,20 @@
+{
+  "title": "Same Behavior, Different Mechanism: What Finite Experiments Can Certify About Integrated Information",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.08469",
+  "date": "2026-11-09",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "q-bio.NC"
+  ],
+  "interest_score": 6,
+  "why_read": "A dense theoretical paper probing when integrated information, a mechanism-level quantity tied to theories of consciousness, can actually be measured reliably from limited experimental data.",
+  "analysis": "The paper examines integrated information theory's φ measure, which tries to quantify how much a system's internal mechanism integrates information beyond what its input-output behavior alone would suggest. It shows that two networks with identical observable behavior can have very different internal φ values, meaning behavior alone can't tell you which one actually has more 'integration,' but that enough targeted internal measurements can distinguish them within a small number of trials. It also demonstrates that the measure is fragile, since tiny changes in the underlying mechanism can shift φ by 25 to 100 percent at most measured boundary cases, and that near-perfect model fits can still misreport φ by over 20 percent. This is a rigorous, mathematically careful contribution relevant to AI interpretability and consciousness research, though it's a niche topic requiring background in interventional causal analysis to fully appreciate.",
+  "authors": [
+    "Linqian Wu",
+    "Diaoxuan He"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
