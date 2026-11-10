@@ -1,0 +1,16 @@
+{
+  "title": "NotRexed/Hookshot",
+  "source": "github",
+  "url": "https://github.com/NotRexed/Hookshot",
+  "date": "2026-11-10",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 5,
+  "why_read": "A native recompilation of Ocarina of Time targeting Nintendo Switch 2 is technically interesting as a reverse-engineering and static recompilation project, though the legal status is murky.",
+  "analysis": "Static recompilation converts a game's original machine code into compilable C or C++ source, allowing the game to run natively on a new platform without emulation overhead. Projects like this require disassembling the original ROM, reconstructing control flow, and mapping hardware-specific behavior to new APIs. The Switch 2 target adds complexity because it involves a newer Arm-based SoC with different graphics and audio subsystems. The 5000+ stars suggest strong community interest, but redistribution of the original game's assets would be legally problematic.",
+  "authors": [],
+  "stars": 5228,
+  "image_url": "https://repository-images.githubusercontent.com/1446962520/79f32404-1f16-413d-ab20-4f90a930acc1",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "USPS now offers official ZIP Code boundary polygons",
+  "source": "hn",
+  "url": "https://postalpro.usps.com/zcb",
+  "date": "2026-11-10",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Official ZIP code boundary polygons are a long-requested geospatial data source that directly affects anyone building location-aware applications.",
+  "analysis": "USPS ZIP codes have historically been defined only as delivery routes, not geographic areas, making authoritative boundary polygons hard to obtain. Official polygon data from USPS itself removes reliance on third-party approximations like ZCTA data from the Census Bureau. This matters for applications in real estate, logistics, demographic analysis, and any service that needs to map addresses to regions. The discussion likely covers data format, licensing terms, and how the new polygons compare to existing workarounds.",
+  "authors": [
+    "munro"
+  ],
+  "hn_id": 50431058,
+  "points": 507,
+  "favicon_url": "https://postalpro.usps.com/themes/custom/rdi/favicon.ico"
+}

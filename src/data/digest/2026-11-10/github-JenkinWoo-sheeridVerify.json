@@ -1,0 +1,15 @@
+{
+  "title": "JenkinWoo/sheeridVerify",
+  "source": "github",
+  "url": "https://github.com/JenkinWoo/sheeridVerify",
+  "date": "2026-11-10",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 1,
+  "why_read": "With no description and a name suggesting it automates SheerID verification bypasses, this appears to be a tool for circumventing identity verification systems, which has no legitimate engineering value.",
+  "analysis": "SheerID is an identity verification service used by companies to gate discounts for students, military personnel, and similar groups. A tool named 'sheeridVerify' with nearly 2000 stars and over 1000 forks, but no description, is consistent with an automated bypass or fraud tool. There is no legitimate engineering use case described. This warrants a very low score and close scrutiny, though without a confirmed description it falls just short of a clear exclude.",
+  "authors": [],
+  "stars": 1948,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

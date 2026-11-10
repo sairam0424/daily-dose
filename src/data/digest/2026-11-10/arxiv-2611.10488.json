@@ -1,0 +1,22 @@
+{
+  "title": "Safer for Whom? A Systematic Exploration of AI Safety in Eating Disorder Interactions",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.10488",
+  "date": "2026-11-10",
+  "tags": [
+    "cs.HC",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "This study reveals that current LLMs give measurably less safe responses to eating disorder questions based on the user's implied race, gender, and body size, which is a concrete and concerning bias finding.",
+  "analysis": "The researchers tested three open-weight LLMs on 100 questions drawn from a real pro-anorexia community, using a clinically grounded seven-dimensional harm taxonomy to score responses. Without any user context, high-risk responses appeared roughly twice as often as when the user explicitly disclosed an eating disorder. Adding demographic information revealed significant disparities: body size produced the largest differences in response safety, consistent with models having learned the stereotype that eating disorders primarily affect thin, White women. This has direct implications for anyone deploying LLMs in health, wellness, or consumer-facing applications.",
+  "authors": [
+    "Jinyuan Wang",
+    "Minh Duc Chu",
+    "Frances Ross",
+    "Ellen Fitzsimmons-Craft",
+    "Kristina Lerman"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

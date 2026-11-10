@@ -1,0 +1,17 @@
+{
+  "title": "Google Gemini routes personal Drive files and emails to human annotators",
+  "source": "hn",
+  "url": "https://github.com/thisisme6598/gemini_files/",
+  "date": "2026-11-10",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Concrete evidence that a major AI assistant routes private user data to human reviewers is directly relevant to any engineer deciding whether to trust these tools with sensitive information.",
+  "analysis": "This story reports that Google Gemini sends content from users' personal Drive files and emails to human annotators, apparently for model improvement or quality review. This is a significant privacy concern for enterprise and professional users who may not have read the relevant terms carefully. The technical angle involves how AI products handle data minimization, consent flows, and the gap between user expectation and actual data handling. Engineers evaluating AI tooling for their organizations need this information before deployment.",
+  "authors": [
+    "gf74918"
+  ],
+  "hn_id": 50429426,
+  "points": 456,
+  "image_url": "https://opengraph.githubassets.com/5c0123d311589e1bf2013b7817ac9df6ad13abd915326ea0597fe0c0902aa94d/thisisme6598/gemini_files",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "jhaizhou-ops/S2Arm",
+  "source": "github",
+  "url": "https://github.com/jhaizhou-ops/S2Arm",
+  "date": "2026-11-10",
+  "tags": [
+    "C#"
+  ],
+  "interest_score": 6,
+  "why_read": "Recompiling Nintendo Switch game code to ARM64 for native iOS and macOS execution via Metal is a technically ambitious project that demonstrates real cross-platform static recompilation techniques.",
+  "analysis": "The Switch uses a custom Nvidia Tegra SoC based on Arm Cortex-A57 cores, so targeting iOS ARM64 devices requires handling ABI differences, instruction set variants, and memory model divergences rather than a full ISA translation. Graphics output is mapped from the Switch's NVN API (a close relative of Vulkan) directly to Apple's Metal, which avoids the overhead of intermediate translation layers like MoltenVK. The 'bring your own games and keys' model is an attempt to stay on the right side of copyright law by not distributing game content. The technical challenge of matching game-specific behavior across different OS schedulers, memory allocators, and GPU drivers is substantial.",
+  "authors": [],
+  "stars": 1923,
+  "image_url": "https://repository-images.githubusercontent.com/1450012790/15115221-c818-42c6-8b6b-0525452ff559",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "PHP Dies After Every Request. How the Zend Engine Actually Runs Your Code.",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/php-dies-after-every-request-how-the-zend-engine-actually-runs-your-code-2843",
+  "date": "2026-11-10",
+  "tags": [
+    "php",
+    "programming",
+    "webdev",
+    "architecture"
+  ],
+  "interest_score": 6,
+  "why_read": "This is a genuinely detailed architectural walkthrough of how the Zend Engine handles PHP's shared-nothing model, OPcache, zvals, and JIT, well above the typical Dev.to fare.",
+  "analysis": "PHP's shared-nothing architecture means every request gets a fresh process or thread with no persistent state, which eliminates whole classes of concurrency bugs at the cost of repeated initialization overhead. The article explains how OPcache short-circuits that overhead by caching compiled bytecode in shared memory across requests. It also covers zvals, the 16-byte internal value representation PHP uses, and how copy-on-write reduces unnecessary memory duplication. The tracing JIT, added in PHP 8, compiles hot execution paths to native machine code, and the article places all of these pieces together in a coherent architectural picture.",
+  "authors": [],
+  "reactions": 15,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fiili.io%2FnMfkIcB.png"
+}

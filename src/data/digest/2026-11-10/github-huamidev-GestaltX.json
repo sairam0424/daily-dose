@@ -1,0 +1,15 @@
+{
+  "title": "huamidev/GestaltX",
+  "source": "github",
+  "url": "https://github.com/huamidev/GestaltX",
+  "date": "2026-11-10",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 4,
+  "why_read": "An iOS MobileGestalt editor is technically interesting as a low-level iOS internals tool, but its primary use case is spoofing device identity rather than solving a general engineering problem.",
+  "analysis": "MobileGestalt is a private Apple framework that stores and serves hardware capability flags used throughout iOS to gate features by device model. Editing these values lets a device report itself as a different model, unlocking features Apple restricts by hardware tier. The Swift implementation targeting iOS 27.x shows active development against very recent iOS builds. The engineering value is mainly as a reference for understanding iOS internals; practical production use cases are limited.",
+  "authors": [],
+  "stars": 2188,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

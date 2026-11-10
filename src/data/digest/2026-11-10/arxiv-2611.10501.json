@@ -1,0 +1,22 @@
+{
+  "title": "Sampling Is Not Curiosity: Why LLM Agents Should Investigate",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.10501",
+  "date": "2026-11-10",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "This paper makes a precise and useful distinction between stochastic sampling and genuine curiosity-driven exploration in LLM agents, which matters for anyone designing agentic systems.",
+  "analysis": "The core argument is that LLM agents don't truly explore their environment. They sample from a fixed probability distribution conditioned on context, which is fundamentally different from the kind of curiosity that drives action in reinforcement learning. Real curiosity, as defined in the RL literature, requires a model that updates based on new interactions, persists across context windows, and actively seeks out information that reduces its own uncertainty. The paper proposes a formal framework for what genuine curiosity would require in an LLM agent and identifies open research directions needed to build it.",
+  "authors": [
+    "Alfonso Amayuelas",
+    "Piotr Piękos",
+    "Xin Eric Wang",
+    "William Yang Wang",
+    "Jürgen Schmidhuber",
+    "Alex Pentland"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

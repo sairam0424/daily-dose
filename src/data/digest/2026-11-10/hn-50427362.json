@@ -1,0 +1,16 @@
+{
+  "title": "Payments Canada announces launch of Canada's Real-Time Rail (RTR) payment system",
+  "source": "hn",
+  "url": "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy",
+  "date": "2026-11-10",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Canada's real-time payment infrastructure launch is relevant context for fintech engineers building payment products that will interact with the new rail.",
+  "analysis": "Canada's Real-Time Rail (RTR) is a new national payment clearing system designed to settle transactions in seconds rather than days. It brings Canada in line with systems like the UK's Faster Payments and the US's FedNow, which launched in 2023. Engineers building Canadian fintech products will need to understand RTR's API contracts, message formats, and settlement guarantees. The discussion on Hacker News is likely a mix of technical details and comparisons to other countries' implementations.",
+  "authors": [
+    "ocd"
+  ],
+  "hn_id": 50427362,
+  "points": 482,
+  "favicon_url": "https://www.payments.ca/themes/custom/strapped/favicon.ico"
+}

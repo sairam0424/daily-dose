@@ -1,0 +1,29 @@
+{
+  "title": "EmbodiedIntentBench: Benchmarking Intent-Driven Runtime Adaptation for Mobile Robotic Missions",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.10498",
+  "date": "2026-11-10",
+  "tags": [
+    "cs.RO",
+    "cs.AR",
+    "cs.CV",
+    "cs.DC",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "EmbodiedIntentBench fills a genuine gap by evaluating robotic perception strategies against full mission success rather than isolated accuracy metrics.",
+  "analysis": "Most robotics benchmarks measure perception accuracy or efficiency in isolation, but real missions require balancing resource use, timing, and coverage across multiple phases. This benchmark uses structured mission contracts to define what success actually means, then couples a UAV simulator with realistic hardware profiles from a Jetson AGX Orin. A key finding is counterintuitive: a configuration with higher per-observation recall completed only 1 of 16 missions, while a lower-recall configuration completed 14, because the high-recall setup used too many resources too early. The benchmark is extensible and the hardware replay feature lets researchers test strategies without physical hardware.",
+  "authors": [
+    "Rajat Bhattacharjya",
+    "Changwoon Lee",
+    "Hyeonjong Ju",
+    "Sing-Yao Wu",
+    "Hamidreza Alikhani",
+    "Zhuoyi Yang",
+    "Ian Harris",
+    "Nalini Venkatasubramanian",
+    "Nikil Dutt"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Our Looping Factory Cut DEV Page Load Time by 75% and Counting",
+  "source": "devto",
+  "url": "https://dev.to/dailycontext/our-looping-factory-cut-dev-page-load-time-by-75-and-counting-1hnf",
+  "date": "2026-11-10",
+  "tags": [
+    "ai",
+    "agents",
+    "automation",
+    "architecture"
+  ],
+  "interest_score": 6,
+  "why_read": "Concrete before/after numbers for a 75% Rails response time reduction achieved through agentic AI-driven development make this more substantive than the typical performance post.",
+  "analysis": "The article documents a real production optimization on the Forem/DEV codebase, cutting average Rails response time from 70ms to 16ms and database time from 39ms to 12ms. These are measured improvements across 300,000 daily requests, not synthetic benchmarks. The more interesting angle is the process: the team used an agentic 'software factory' loop to continuously find and merge performance improvements without constant human direction, which raises genuine questions about how to design feedback loops for AI-assisted engineering work. The excerpt cuts off before the methodology is fully explained, which limits how much can be evaluated here.",
+  "authors": [],
+  "reactions": 77,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Flcwp10ptnojbvt20v0y7.jpg"
+}

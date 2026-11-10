@@ -1,0 +1,17 @@
+{
+  "title": "Claude Fable 5.2 scores 65 on Artificial Analysis, highest so far",
+  "source": "hn",
+  "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+  "date": "2026-11-10",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A new benchmark score for a model most readers won't have heard of provides little actionable insight without more context about what the score measures.",
+  "analysis": "The title references 'Claude Fable 5.2,' which is not a widely known or publicly documented Anthropic model at the time of writing, making it hard to verify or contextualize the claim. Artificial Analysis is a third-party benchmarking site, and a score of 65 is only meaningful if you know what that scale represents and how other models compare. Benchmark announcements without reproducible methodology or head-to-head comparisons have limited technical value. The 223 comments suggest community debate, possibly including skepticism about the score's validity.",
+  "authors": [
+    "theanonymousone"
+  ],
+  "hn_id": 50431144,
+  "points": 300,
+  "image_url": "https://artificialanalysis.ai/en/models/claude-fable-5-2/opengraph-image?65781a17af1a7936",
+  "favicon_url": "https://artificialanalysis.ai/favicon.ico"
+}

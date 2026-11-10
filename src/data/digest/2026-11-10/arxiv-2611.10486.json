@@ -1,0 +1,21 @@
+{
+  "title": "Test-Time Scaling for Diffusion Language Models with Frequency-Aware Remasking",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.10486",
+  "date": "2026-11-10",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "This paper introduces a principled test-time scaling strategy for diffusion language models that yields meaningful accuracy gains on math and coding benchmarks.",
+  "analysis": "Diffusion language models generate text by iteratively denoising a masked sequence, unlike autoregressive models that predict one token at a time. The challenge is deciding which tokens to finalize early and which to keep remasking; standard approaches use instantaneous confidence scores, which can mislead on hard problems. The proposed frequency-aware remasking tracks how often each token's prediction changes across denoising steps and prioritizes finalizing the most volatile tokens, pushing the model to explore alternative reasoning paths. Gains of up to 7.33 percentage points on MATH-500 and 11.39 on HumanEval coverage are practically significant, especially for a relatively simple change to the decoding procedure.",
+  "authors": [
+    "Bowen Zuo",
+    "Yue Yu",
+    "Dongruo Zhou",
+    "Yinglun Zhu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

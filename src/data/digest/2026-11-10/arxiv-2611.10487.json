@@ -1,0 +1,24 @@
+{
+  "title": "GEAR: A GPU-Accelerated Global Solver for Bounded Continuous Nonlinear Programs via Linear Bound Propagation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.10487",
+  "date": "2026-11-10",
+  "tags": [
+    "math.OC",
+    "cs.LG",
+    "cs.MS",
+    "math.NA"
+  ],
+  "interest_score": 8,
+  "why_read": "GEAR applies GPU-parallelized bound propagation from neural network verification to general nonlinear programming and solves more benchmark problems than Gurobi and BARON, which is a substantial result.",
+  "analysis": "Global nonlinear programming is notoriously hard because you need to prove there is no better solution anywhere in the search space, not just find a local optimum. The key insight here is to borrow linear bound propagation, a technique developed for verifying neural network safety, and apply it to arbitrary constrained nonlinear programs. The GPU parallelism lets the solver explore many branches of the search tree simultaneously, which is where traditional branch-and-bound solvers spend most of their time. Solving 421 of 505 benchmark problems, including 16 that all six comparison solvers fail on, is a credible and meaningful empirical result.",
+  "authors": [
+    "Duo Zhou",
+    "Hesun Chen",
+    "Xiangru Zhong",
+    "Grani A. Hanasusanto",
+    "Huan Zhang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

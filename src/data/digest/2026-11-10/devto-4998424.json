@@ -1,0 +1,19 @@
+{
+  "title": "The C Trilogy: How Dennis Ritchie, Bjarne Stroustrup, and Anders Hejlsberg Built the Modern World 🏛️",
+  "source": "devto",
+  "url": "https://dev.to/devengers/the-c-trilogy-how-dennis-ritchie-bjarne-stroustrup-and-anders-hejlsberg-built-the-modern-world-1onp",
+  "date": "2026-11-10",
+  "tags": [
+    "c",
+    "cpp",
+    "csharp",
+    "programming"
+  ],
+  "interest_score": 3,
+  "why_read": "A narrative history of C, C++, and C# presented with ASCII diagrams is too surface-level to teach anything a working engineer doesn't already know.",
+  "analysis": "The article covers well-known history: Ritchie creating C at Bell Labs for portability, Stroustrup adding object orientation, Hejlsberg designing C# under Java lawsuit pressure from Sun. This is accurate as far as it goes but adds no new technical insight or analysis beyond what any introductory programming history covers. The ASCII diagram style and pop-history framing suggest the target audience is beginners, not practicing engineers. Experienced readers will find nothing new here.",
+  "authors": [],
+  "reactions": 62,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7pm0ebl6iiy3scfns030.png"
+}
