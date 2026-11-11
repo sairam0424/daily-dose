@@ -1,0 +1,20 @@
+{
+  "title": "Stop Trusting npm Scans: Run Untrusted Packages in an Isolated AWS Sandbox",
+  "source": "devto",
+  "url": "https://dev.to/aws-builders/stop-trusting-npm-scans-run-untrusted-packages-in-an-isolated-aws-sandbox-cmm",
+  "date": "2026-11-11",
+  "tags": [
+    "aws",
+    "ai",
+    "discuss",
+    "devops"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete and well-motivated approach to catching supply-chain attacks in npm packages by actually executing installs in a sandbox.",
+  "analysis": "The core insight here is sound: static scanners that only read package manifests and source code miss malicious behavior that only triggers during actual installation, like a postinstall script calling out to download and run further code. The author built a tool that runs npm install inside a disposable AWS CodeBuild sandbox and inspects the real build log for dangerous behavior like piping curl output to bash. This is a practical, well-scoped solution to a well-known supply chain security gap, and the architecture (isolated, disposable execution environment) is a sensible pattern others can adopt. Worth reading for anyone concerned about dependency security in JavaScript ecosystems.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

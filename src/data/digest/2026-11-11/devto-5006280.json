@@ -1,0 +1,17 @@
+{
+  "title": "Top 7 Featured DEV Posts of the Week",
+  "source": "devto",
+  "url": "https://dev.to/devteam/top-7-featured-dev-posts-of-the-week-432g",
+  "date": "2026-11-11",
+  "tags": [
+    "top7",
+    "discuss"
+  ],
+  "interest_score": 3,
+  "why_read": "A roundup of community blog posts with mixed and mostly lightweight technical substance.",
+  "analysis": "This is Dev.to's weekly curated list of popular posts, covering topics like what skills to teach kids in an AI era, a personal game-dev story using AI coding tools, and a creative geometry visualization of the Fibonacci spiral using three.js. None of these are deeply technical deep-dives; they are personal reflections and lightweight demos rather than rigorous engineering content. The Fibonacci spiral/three.js piece has the most concrete technical content among the three highlighted. Overall this is a low-density digest of casual blog content rather than something engineers need to read.",
+  "authors": [],
+  "reactions": 28,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F1m1eg0p0k7pe9iqu8w70.jpg"
+}

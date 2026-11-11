@@ -1,0 +1,16 @@
+{
+  "title": "AlphaProof Code",
+  "source": "hn",
+  "url": "https://deepmind.google/blog/introducing-alphaproof-code/",
+  "date": "2026-11-11",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "Release of code behind DeepMind's AlphaProof system is a notable event for anyone interested in AI for formal mathematics.",
+  "analysis": "AlphaProof is DeepMind's system that combines reinforcement learning with formal theorem proving, notably used to solve International Mathematical Olympiad problems at a medal-worthy level. Code release (or discussion of it) lets researchers inspect how it integrates a language model with a formal proof search system like Lean. This matters because formal mathematical reasoning is a hard benchmark for AI capabilities with implications for verification and automated reasoning more broadly. Worth reading for ML researchers and those interested in neuro-symbolic approaches to reasoning.",
+  "authors": [
+    "ilreb"
+  ],
+  "hn_id": 50439193,
+  "points": 574,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=32"
+}

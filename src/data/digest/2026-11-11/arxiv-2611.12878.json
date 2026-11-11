@@ -1,0 +1,18 @@
+{
+  "title": "Adaptive Quantization Preserves Fast Rates for TD Learning over Rate-Limited Channels",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.12878",
+  "date": "2026-11-11",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid theoretical result on compressing reinforcement learning updates for distributed systems without losing statistical efficiency.",
+  "analysis": "This paper addresses distributed reinforcement learning where an agent must send updates about its learning progress over a limited-bandwidth communication channel. The authors introduce a method called BAQ-TD that uses batching and adaptive quantization, essentially smart compression, to shrink the amount of data sent per update. They prove this method keeps nearly the same statistical accuracy as if there were no bandwidth limit, needing only a small number of bits per parameter dimension. This is relevant to anyone building federated or edge-based reinforcement learning systems where communication is a bottleneck.",
+  "authors": [
+    "Sreejeet Maity",
+    "Aritra Mitra"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

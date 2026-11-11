@@ -1,0 +1,16 @@
+{
+  "title": "NotRexed/Hookshot",
+  "source": "github",
+  "url": "https://github.com/NotRexed/Hookshot",
+  "date": "2026-11-11",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 6,
+  "why_read": "A native recompilation project for a classic game onto new hardware is a technically impressive reverse-engineering effort.",
+  "analysis": "This project appears to recompile Ocarina of Time's original code into native code targeting a new platform, likely related to a hypothetical or real Switch 2 remake, rather than running it through an emulator. Native recompilation projects like this (similar to past efforts for N64 games) require deep reverse engineering of original game binaries and reconstructing them as portable, maintainable source code. This is a serious technical undertaking valuable to the reverse-engineering and retro-gaming community, though it is a niche hobbyist project rather than broadly applicable engineering. There's also a legal gray area since it builds on a copyrighted commercial game.",
+  "authors": [],
+  "stars": 6564,
+  "image_url": "https://repository-images.githubusercontent.com/1446962520/79f32404-1f16-413d-ab20-4f90a930acc1",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

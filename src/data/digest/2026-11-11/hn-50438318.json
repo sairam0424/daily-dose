@@ -1,0 +1,16 @@
+{
+  "title": "AI usage generates a fragile codebase",
+  "source": "hn",
+  "url": "https://evanxmerz.com/post/ai-usage-generates-a-fragile-codebase/",
+  "date": "2026-11-11",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A substantive critique of AI-assisted coding practices and their long-term effects on codebase quality, backed by heavy discussion.",
+  "analysis": "This piece argues that heavy reliance on AI coding assistants tends to produce codebases that are harder to maintain, likely due to inconsistent patterns, insufficient abstraction, or accumulated small inconsistencies that compound over time. This is a timely and practically important topic as more teams adopt AI pair-programming tools at scale. The large comment count suggests genuine debate among practitioners about whether this is an inherent problem or a matter of process and review discipline. Useful for engineering leads thinking about how to manage AI-assisted development responsibly.",
+  "authors": [
+    "plun9"
+  ],
+  "hn_id": 50438318,
+  "points": 363,
+  "image_url": "https://www.evanxmerz.com/images/ai-codebases-are-a-house-of-cards.jpg"
+}

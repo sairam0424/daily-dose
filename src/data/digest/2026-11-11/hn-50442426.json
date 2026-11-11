@@ -1,0 +1,17 @@
+{
+  "title": "Blender 5.3 released with Gaussian Splat support",
+  "source": "hn",
+  "url": "https://www.blender.org/download/releases/5-3/",
+  "date": "2026-11-11",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A concrete, useful feature release for a major open-source 3D tool, relevant to graphics and VFX practitioners.",
+  "analysis": "Blender 5.3 adding native Gaussian Splat support means the open-source 3D suite can now import, render, and likely edit these increasingly popular radiance-field-based 3D scene representations. Gaussian splatting is a newer technique for photorealistic scene reconstruction from photos or video, competing with NeRFs but much faster to render. Having this in a mainstream tool like Blender lowers the barrier for artists and researchers to incorporate captured real-world scenes into traditional 3D pipelines. Relevant to graphics engineers and anyone tracking the maturation of this rendering technique.",
+  "authors": [
+    "amlib"
+  ],
+  "hn_id": 50442426,
+  "points": 423,
+  "image_url": "https://www.blender.org/wp-content/uploads/2026/07/splash.webp",
+  "favicon_url": "https://www.blender.org/wp-content/themes/bthree/assets/icons/favicon.svg"
+}

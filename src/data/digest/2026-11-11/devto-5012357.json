@@ -1,0 +1,19 @@
+{
+  "title": "From Attention to 3-Bit Caches: How LLMs Learned to Remember Less (MHA, GQA, MLA, MoE, Quantisation Explained)",
+  "source": "devto",
+  "url": "https://dev.to/amananandrai/from-attention-to-3-bit-caches-how-llms-learned-to-remember-less-mha-gqa-mla-moe-quantisation-3obj",
+  "date": "2026-11-11",
+  "tags": [
+    "ai",
+    "llm",
+    "machinelearning",
+    "deeplearning"
+  ],
+  "interest_score": 7,
+  "why_read": "An accessible, well-structured explainer tying together a whole lineage of LLM efficiency techniques in one narrative.",
+  "analysis": "This post walks through the practical engineering tricks that made large language models usable at scale after the original Transformer paper, including KV caching, grouped-query and multi-head latent attention, FlashAttention, mixture of experts, and quantization. These are genuinely important techniques that determine how much memory and compute a model needs to serve, directly affecting cost and latency in production systems. The writing style is casual and uses analogies to stay approachable without requiring a research background, which makes it a good primer rather than a novel contribution. Good for engineers who want a conceptual map of why modern LLM serving looks the way it does, even if it offers nothing new to specialists.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F25zh754jnflmwbwpfvpw.png"
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Vendi Anomaly Scores for Efficient and Accurate Anomaly Detection",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.12871",
+  "date": "2026-11-11",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting reframing of anomaly detection around dataset diversity rather than density, with strong benchmark results.",
+  "analysis": "Most anomaly detection methods flag outliers by looking at local density, distance from a fitted distribution, or isolation-based heuristics, all of which require tuning choices like neighborhood size. This paper instead measures how much removing a given data point changes the overall diversity of the dataset, using a metric called the Vendi score borrowed from ecology and quantum statistics. The method needs no hyperparameter tuning and scales linearly with dataset size, and the authors report state-of-the-art results across 148 benchmark datasets. This is a genuinely different angle on a well-studied problem, worth a look for ML practitioners working on outlier or novelty detection.",
+  "authors": [
+    "Amey Pasarkar",
+    "Adji Bousso Dieng"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

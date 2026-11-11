@@ -1,0 +1,20 @@
+{
+  "title": "Kolmogorov-Chapman Maps: Trajectory-Free Learning for Simulating Molecular Dynamics",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.12880",
+  "date": "2026-11-11",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever method to speed up molecular dynamics simulation using neural networks trained without needing full trajectory data.",
+  "analysis": "Molecular dynamics simulations require huge numbers of small time steps to observe meaningful events, making them computationally expensive even though each step is cheap. This paper proposes learning a neural network that can jump directly to the state of a system at an arbitrary future time, skipping the step-by-step simulation. Unlike prior neural approaches, it only needs samples of the distribution at different times rather than complete simulated trajectories, which are expensive to generate. The method is validated on peptide systems and reportedly beats classical simulation in GPU-hours, which matters for computational chemistry and drug discovery pipelines.",
+  "authors": [
+    "Majdi Hassan",
+    "Marta Skreta",
+    "Dominique Beaini",
+    "Kirill Neklyudov"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

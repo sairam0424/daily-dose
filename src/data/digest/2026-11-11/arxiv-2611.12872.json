@@ -1,0 +1,26 @@
+{
+  "title": "HiVe-Mem: Interleaving Horizontal Memory Expansion and Vertical Evidence Composition for Multimodal Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.12872",
+  "date": "2026-11-11",
+  "tags": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A memory architecture for multimodal AI agents that claims big efficiency gains, relevant to anyone building long-running AI assistants.",
+  "analysis": "This paper tackles the problem of giving multimodal AI agents, ones that handle text and images together, useful long-term memory of past interactions. Instead of relying only on semantic similarity search over compressed summaries, it builds a graph connecting related memory episodes and lets the system pick different forms of evidence (summaries, captions, raw images) depending on the query. A trainable selector decides what level of detail is needed for each retrieved memory, which the authors say cuts token usage by about 90% compared to competing systems while improving results. This matters for anyone building production agent systems where context window and cost are real constraints.",
+  "authors": [
+    "Haozhen Zhang",
+    "Bohan Liu",
+    "Jianzhu Bao",
+    "Qingyuan Liu",
+    "Haodong Yue",
+    "Xiao Li",
+    "Zi Pong Lim",
+    "Wenya Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

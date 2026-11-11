@@ -1,0 +1,21 @@
+{
+  "title": "Guiding Data Allocation for Robust Subpopulation Generalization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.12884",
+  "date": "2026-11-11",
+  "tags": [
+    "cs.LG",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A theoretically grounded challenge to the common assumption that balanced training data is always best for robustness.",
+  "analysis": "This paper studies subpopulation shift, the problem where a model does well on average but poorly on specific subgroups underrepresented in training data. Using a Gaussian feature-model framework, the authors show mathematically that many non-balanced data allocations can match the performance of perfectly balanced datasets. They also propose a gradient-based method to adjust subgroup proportions more efficiently than blind balancing. This is useful for practitioners building fairness-aware or robust ML pipelines who want cheaper alternatives to exhaustive data rebalancing.",
+  "authors": [
+    "Zhaoying Pan",
+    "Yipei Wang",
+    "Shenyu Lu",
+    "Xiaoqian Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

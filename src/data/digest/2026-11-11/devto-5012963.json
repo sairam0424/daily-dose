@@ -1,0 +1,19 @@
+{
+  "title": "Detecting Flaky Tests and Finding Their Root Causes with Strands Agents and Gemini",
+  "source": "devto",
+  "url": "https://dev.to/m4rri4nne/detecting-flaky-tests-and-finding-their-root-causes-with-strands-agents-and-gemini-4kan",
+  "date": "2026-11-11",
+  "tags": [
+    "ai",
+    "testing",
+    "python",
+    "agents"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical write-up on a real pain point, flaky tests, with a tool combining AI analysis for root-causing them.",
+  "analysis": "Flaky tests, ones that pass or fail inconsistently without code changes, are a genuine and costly problem in CI pipelines because they erode trust in test suites and waste engineering time. This article describes a tool the author built that scores and analyzes test results, using an AI agent (Strands Agents with Gemini) to help do a first-pass root cause analysis. The core problem and motivation are solid and relatable, though the piece reads as a personal project showcase rather than a rigorous study of flaky test detection techniques. Useful for QA-focused engineers looking for a lightweight tool or inspiration for building one.",
+  "authors": [],
+  "reactions": 47,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fo71gqwjons1kfrsun4y1.jpg"
+}

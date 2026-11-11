@@ -1,0 +1,17 @@
+{
+  "title": "Smart home devices should work without the internet",
+  "source": "hn",
+  "url": "https://docodethatmatters.com/home-automation-overnight-success/",
+  "date": "2026-11-11",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A perennial but substantive debate about the engineering and business tradeoffs behind cloud-dependent IoT devices.",
+  "analysis": "This is a discussion piece arguing that smart home devices should keep working locally even without internet access. The underlying technical issue is real: many IoT products route simple local commands through cloud servers for business reasons like telemetry, subscriptions, or vendor lock-in, not technical necessity. It touches on local-first architecture, protocols like Matter and Thread, and the tradeoffs vendors make between reliability and control. Worth reading for engineers designing connected devices who want to understand why this keeps happening and what better designs look like.",
+  "authors": [
+    "skittleson"
+  ],
+  "hn_id": 50441707,
+  "points": 686,
+  "image_url": "https://docodethatmatters.com/images/home-automation/t1-07.webp",
+  "favicon_url": "https://docodethatmatters.com/images/android-icon-192x192.png"
+}
