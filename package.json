@@ -26,11 +26,11 @@
     "@anthropic-ai/sdk": "^0.125.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@astrojs/vercel": "^11.0.10",
+    "@astrojs/vercel": "^11.0.20",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
-    "astro": "^7.3.2",
-    "fast-xml-parser": "^5.11.2",
+    "@vercel/speed-insights": "^2.1.0",
+    "astro": "^7.4.8",
+    "fast-xml-parser": "^5.12.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
