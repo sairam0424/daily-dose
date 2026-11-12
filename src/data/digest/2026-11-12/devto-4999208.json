@@ -1,0 +1,19 @@
+{
+  "title": "Meet type-tune! 🦀 Give Your TypeScript Types a Better Home! 😸",
+  "source": "devto",
+  "url": "https://dev.to/necoz/meet-type-tune-give-your-typescript-types-a-better-home-1p6l",
+  "date": "2026-11-12",
+  "tags": [
+    "rust",
+    "typescript",
+    "showdev",
+    "opensource"
+  ],
+  "interest_score": 5,
+  "why_read": "A small, focused CLI tool addressing a real pain point in large TypeScript codebases, locating and relocating shared type definitions.",
+  "analysis": "type-tune is a Rust-based command-line tool that scans a TypeScript codebase to find types that are used across multiple files but poorly organized, then helps move them to better locations. This addresses a genuine maintenance problem distinct from existing tools like Knip, which find unused code rather than misplaced-but-used code. The scan-review-move-validate workflow is a sensible, low-risk approach to a tedious refactoring task that many TypeScript teams deal with manually. It's a niche but practically useful developer tool, though its value depends on how well it handles edge cases like circular dependencies or complex generic types.",
+  "authors": [],
+  "reactions": 41,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnmpfwlsvrtynp0s1lm59.gif"
+}

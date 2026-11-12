@@ -1,0 +1,17 @@
+{
+  "title": "AWS emulator",
+  "source": "hn",
+  "url": "https://github.com/aws/aws-emulator",
+  "date": "2026-11-12",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A tool for locally emulating AWS services is genuinely useful for engineers trying to test cloud-dependent code without hitting real cloud infrastructure or costs.",
+  "analysis": "AWS emulators let developers run a local, fake version of real AWS services like S3, DynamoDB, or Lambda, so they can build and test applications without needing a live AWS account or incurring cloud costs. This matters because testing against real cloud services is slow, costly, and can introduce unwanted side effects into automated test suites. The high comment count suggests active discussion comparing this tool to established alternatives like LocalStack, which is useful context for anyone picking a local-dev cloud testing strategy. Without more detail on what's new or different here, it's hard to say if it's a meaningful advance over existing options.",
+  "authors": [
+    "super_linear"
+  ],
+  "hn_id": 50456631,
+  "points": 677,
+  "image_url": "https://opengraph.githubassets.com/d913999c819b0c3789cd6302528b933e360877abf8f2eaa2480083a3ee634cad/aws/aws-emulator",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

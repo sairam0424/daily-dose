@@ -1,0 +1,16 @@
+{
+  "title": "jhaizhou-ops/S2Arm",
+  "source": "github",
+  "url": "https://github.com/jhaizhou-ops/S2Arm",
+  "date": "2026-11-12",
+  "tags": [
+    "C#"
+  ],
+  "interest_score": 4,
+  "why_read": "A project claiming to let Switch games run natively on Apple devices via ARM64 recompilation is technically ambitious but sits in a legal gray area around game piracy.",
+  "analysis": "This project claims to translate Nintendo Switch game code to run natively on ARM64 Apple devices, routing graphics calls to Apple's Metal API instead of the Switch's native graphics stack. This kind of binary translation and graphics API remapping is genuinely difficult systems engineering work, similar in spirit to projects like Proton or various console emulators. However, it explicitly requires users to supply their own copyrighted game files and decryption keys, which keeps it legally adjacent to piracy tools even though it doesn't distribute copyrighted content itself. The technical approach is interesting, but the framing as a consumer tool for playing commercial games raises questions about its primary use case.",
+  "authors": [],
+  "stars": 2606,
+  "image_url": "https://repository-images.githubusercontent.com/1450012790/15115221-c818-42c6-8b6b-0525452ff559",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

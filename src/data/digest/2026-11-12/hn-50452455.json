@@ -1,0 +1,15 @@
+{
+  "title": "My AI agents found an unmapped Maya site?",
+  "source": "hn",
+  "url": "https://pietromiotti.com/latest/maya-site",
+  "date": "2026-11-12",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "An intriguing but almost certainly overhyped claim about AI-assisted archaeology that's worth reading critically rather than at face value.",
+  "analysis": "This post describes someone using AI agents, likely large language models combined with satellite or LIDAR imagery analysis, to flag a possible unrecorded archaeological site in Central America. These claims have a history of false positives, since vegetation patterns and soil anomalies often mimic structures without any excavation to confirm them. The real technical interest lies in whether the workflow for scanning remote-sensing data with AI is reproducible and rigorous, not in the headline claim itself. Readers should treat the title skeptically until independent archaeologists verify the finding on the ground.",
+  "authors": [
+    "eyvindn"
+  ],
+  "hn_id": 50452455,
+  "points": 930
+}

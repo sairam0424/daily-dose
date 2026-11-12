@@ -1,0 +1,17 @@
+{
+  "title": "A false smoke alarm almost drowned Jane Street's only NYC datacenter",
+  "source": "hn",
+  "url": "https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/",
+  "date": "2026-11-12",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real-world infrastructure near-miss at a major trading firm's datacenter offers a concrete lesson in physical facility risk and incident response.",
+  "analysis": "This story describes a false fire alarm that triggered datacenter safety systems (likely fire suppression using water or inert gas) at Jane Street's sole New York City data center, risking major equipment damage. It highlights an underappreciated area of systems reliability: physical facility risks like fire suppression systems, water sprinklers, and false alarms, which can be just as damaging as software bugs. For engineers who think mostly about code-level reliability, this is a useful reminder that datacenter design, redundancy, and disaster response processes matter just as much. The high engagement suggests detailed firsthand commentary on incident response procedures in the comments.",
+  "authors": [
+    "mbac32768"
+  ],
+  "hn_id": 50455394,
+  "points": 415,
+  "image_url": "https://michael.bacarella.com/assets/mbacface.jpg",
+  "favicon_url": "https://michael.bacarella.com/assets/favicon.png"
+}

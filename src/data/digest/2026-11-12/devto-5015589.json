@@ -1,0 +1,19 @@
+{
+  "title": "We Keep Hearing About AI Productivity. The QA Group Chat Told a Different Story.",
+  "source": "devto",
+  "url": "https://dev.to/xulingfeng/we-keep-hearing-about-ai-productivity-the-qa-group-chat-told-a-different-story-2nma",
+  "date": "2026-11-12",
+  "tags": [
+    "ai",
+    "discuss",
+    "career",
+    "programming"
+  ],
+  "interest_score": 5,
+  "why_read": "An anecdotal but relatable piece about QA professionals' anxieties and experiences with AI-driven testing changes, offering a useful counter-narrative to AI productivity hype.",
+  "analysis": "This article reports on informal, unscientific polling within a QA community group where a notable fraction of members reported being unemployed, implicitly linking it to AI's effect on QA jobs and workflows. It raises a real and discussed issue in software testing: that automating QA work exposes previously hidden manual workarounds and inconsistent requirements documents. The evidence here is anecdotal rather than rigorous, essentially a Dev.to blog post built around a Slack-style poll rather than any formal study. Still, the underlying tension, automation revealing organizational dysfunction, is a genuine and valuable observation for engineering managers and QA practitioners.",
+  "authors": [],
+  "reactions": 79,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fjm7bc53mhi6cxl48ue89.png"
+}

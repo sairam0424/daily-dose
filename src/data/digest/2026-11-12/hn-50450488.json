@@ -1,0 +1,17 @@
+{
+  "title": "Tim Peters has died",
+  "source": "hn",
+  "url": "https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028",
+  "date": "2026-11-12",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A memorial for a hugely influential Python core developer whose work (Timsort, the Python docs, countless core contributions) shaped the language most engineers use daily.",
+  "analysis": "Tim Peters was a long-time CPython core developer best known for writing Timsort, the hybrid sorting algorithm used in Python's and Java's standard libraries, and for authoring 'The Zen of Python.' This news item is a death announcement rather than a technical deep dive, but the comment thread likely contains reflections on his technical legacy and anecdotes from the Python community. It's relevant to any engineer who uses Python, which is nearly everyone, as a moment to appreciate foundational open-source infrastructure work. The technical substance comes from the community discussion rather than the headline itself.",
+  "authors": [
+    "ayhanfuat"
+  ],
+  "hn_id": 50450488,
+  "points": 875,
+  "image_url": "https://us1.discourse-cdn.com/flex002/uploads/python1/original/1X/f93ff97c4f381b5e8add5a0c163b4ded29f20ed7.png",
+  "favicon_url": "https://us1.discourse-cdn.com/flex002/uploads/python1/optimized/1X/9997f0605d56c4bfecd63594f52f42cdafd6b06a_2_32x32.png"
+}

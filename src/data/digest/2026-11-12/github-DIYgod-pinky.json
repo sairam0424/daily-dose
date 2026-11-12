@@ -1,0 +1,16 @@
+{
+  "title": "DIYgod/pinky",
+  "source": "github",
+  "url": "https://github.com/DIYgod/pinky",
+  "date": "2026-11-12",
+  "tags": [
+    "Go"
+  ],
+  "interest_score": 5,
+  "why_read": "An interesting human-in-the-loop design pattern for AI agents controlling phones, relevant to the growing space of agentic mobile automation.",
+  "analysis": "This project lets AI agents operate a user's phone while keeping a human supervising or approving actions, addressing safety concerns around fully autonomous mobile agents. The human-in-the-loop design is notable because fully autonomous phone control raises real risks, like accidental purchases, message sends, or data leaks. This fits into a broader trend of agentic AI systems that act in the physical/digital world beyond just generating text. The project's value depends heavily on implementation details not shown here, like how approval and permission boundaries actually work.",
+  "authors": [],
+  "stars": 1877,
+  "image_url": "https://opengraph.githubassets.com/300c072c93ad512dff7871e5b379d9d8204bd791cf20752bd7fb9b9bf6bd823c/DIYgod/pinky",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

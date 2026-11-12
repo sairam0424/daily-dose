@@ -1,0 +1,16 @@
+{
+  "title": "tangerineturtle1/NX2navi",
+  "source": "github",
+  "url": "https://github.com/tangerineturtle1/NX2navi",
+  "date": "2026-11-12",
+  "tags": [
+    "C"
+  ],
+  "interest_score": 2,
+  "why_read": "No description is provided, and the name suggests a niche Nintendo Switch-related hacking tool with little explained technical substance.",
+  "analysis": "Without a description, it's hard to assess what this repository actually does, though the name suggests something related to Nintendo Switch homebrew or navigation/firmware tooling. The C language and naming convention hint at low-level systems or console-hacking work, which can be technically interesting but is speculative here. Given the complete lack of description, this entry offers little basis for judging its real technical value to a broad engineering audience.",
+  "authors": [],
+  "stars": 3273,
+  "image_url": "https://opengraph.githubassets.com/e9801d3c4ef05e085dd3a7a0dad726c44f3436083e4c8091318b7902f1e19d43/tangerineturtle1/NX2navi",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

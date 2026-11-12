@@ -1,0 +1,15 @@
+{
+  "title": "huamidev/GestaltX",
+  "source": "github",
+  "url": "https://github.com/huamidev/GestaltX",
+  "date": "2026-11-12",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 3,
+  "why_read": "A niche iOS jailbreak-adjacent tool for editing device identification/config values, of narrow interest mostly to the jailbreak community.",
+  "analysis": "MobileGestalt is a private Apple API/database that stores device configuration values like region, device model, and feature flags, and editing it typically requires a jailbroken device. This tool appears to be a GUI for tweaking those values, which can be used for things like region-locking bypass or testing device-specific behavior. It's technically interesting mainly to the jailbreak and iOS reverse-engineering community, and has limited relevance to mainstream software engineering work. The claimed star count is implausibly high for such a niche tool, suggesting possible inflated or bot engagement.",
+  "authors": [],
+  "stars": 6310,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
