@@ -22,7 +22,7 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "@anthropic-ai/bedrock-sdk": "^0.33.5",
+    "@anthropic-ai/bedrock-sdk": "^1.1.1",
     "@anthropic-ai/sdk": "^0.125.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
