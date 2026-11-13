@@ -1,0 +1,22 @@
+{
+  "title": "Contrastive Discovery: Open-Ended Scientific Discovery over Competing Explanations",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.14514",
+  "date": "2026-11-13",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A thoughtful reframing of how AI research agents should test hypotheses, replacing simple true/false checks with competing explanations scored against each other.",
+  "analysis": "Most AI science agents test one hypothesis against its negation, which tells you a claim is wrong but not what's actually true instead. This paper proposes testing a full set of mutually exclusive explanations at once and tracking how evidence shifts belief across them, which is closer to how working scientists reason. The experiments show this approach resolves far more open questions using the same amount of experimental budget, and matches expert judgment on the majority of cases. It is a solid conceptual contribution to the growing field of AI-driven scientific discovery agents.",
+  "authors": [
+    "Ziang Liu",
+    "James J. Kim",
+    "Yijia Dai",
+    "Jennifer J. Sun"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Kianuni/Erosion-CN",
+  "source": "github",
+  "url": "https://github.com/Kianuni/Erosion-CN",
+  "date": "2026-11-13",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 3,
+  "why_read": "Another MobileGestalt/jailbreak-adjacent iOS toolbox, aimed at a Chinese-speaking audience, with minimal technical detail provided.",
+  "analysis": "This is similar in nature to the other MobileGestalt editing tool in this batch, focused on iOS system configuration and described partly as a security hardening toolkit against device bans. The description is in Chinese and offers no deep technical explanation of its internals or how it modifies system identifiers. Tools in this space can be legitimate for research into iOS internals, though they are also commonly used to spoof device identity to evade detection or restrictions. Overall thin technical substance for a professional digest.",
+  "authors": [],
+  "stars": 1731,
+  "image_url": "https://opengraph.githubassets.com/d6c44598006c8d53a7cede0590b71e9f329c7c3c9c06b97c69c195a4e200020f/Kianuni/Erosion-CN",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

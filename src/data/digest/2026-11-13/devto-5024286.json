@@ -1,0 +1,19 @@
+{
+  "title": "Long Live Rails",
+  "source": "devto",
+  "url": "https://dev.to/ben/long-live-rails-3p21",
+  "date": "2026-11-13",
+  "tags": [
+    "rails",
+    "ruby",
+    "rust",
+    "ai"
+  ],
+  "interest_score": 6,
+  "why_read": "A real-world account of gradually replacing hot-path Ruby code with Rust extensions in a production Rails app, with a measured 75% page-load improvement.",
+  "analysis": "The author describes an automated workflow called rust-loop that identifies CPU-bound or allocation-heavy Ruby code in the Forem codebase and rewrites it as in-process Rust extensions using the magnus and rb-sys bindings. This is a concrete, measurable case of selectively using Rust to speed up a Ruby on Rails application rather than a full rewrite, which is a pragmatic pattern more teams could use. The piece pushes back on the narrative that reaching for Rust means giving up on Rails, arguing instead that the two complement each other well. It's useful for engineers curious about incremental performance optimization strategies for interpreted-language web apps.",
+  "authors": [],
+  "reactions": 83,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqb9kfsla99mu47xwg4z0.jpg"
+}

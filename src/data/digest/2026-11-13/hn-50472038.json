@@ -1,0 +1,17 @@
+{
+  "title": "Rust 1.100",
+  "source": "hn",
+  "url": "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/",
+  "date": "2026-11-13",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A new Rust version milestone could matter to systems programmers, but no changelog or details are given to assess what's actually new.",
+  "analysis": "Major version bumps in a widely used systems language typically bring new stabilized features, compiler improvements, or breaking changes worth knowing about. Without release notes or a changelog excerpt, it's impossible to say whether this is a minor point release or a substantial update. The high comment count suggests real community discussion, which might include useful details not reflected in this summary. Worth a look only if the actual changelog has meaningful content.",
+  "authors": [
+    "mbStavola"
+  ],
+  "hn_id": 50472038,
+  "points": 416,
+  "image_url": "https://www.rust-lang.org/static/images/rust-social-wide.jpg",
+  "favicon_url": "https://blog.rust-lang.org/images/favicon-16x16.png"
+}

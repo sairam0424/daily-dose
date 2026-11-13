@@ -1,0 +1,18 @@
+{
+  "title": "TorchCurves: Differentiable Parametric Curves",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.14516",
+  "date": "2026-11-13",
+  "tags": [
+    "cs.LG",
+    "stat.ML"
+  ],
+  "interest_score": 6,
+  "why_read": "A niche but well-engineered PyTorch library for making parametric curves differentiable and trainable, useful for researchers building novel architectures like KANs.",
+  "analysis": "TorchCurves lets you treat smooth curves, defined with B-splines or Legendre polynomials, as a layer whose shape can be learned by gradient descent alongside the rest of a neural network. This is handy for things like continuous feature embeddings or Kolmogorov-Arnold networks, an emerging architecture that uses learnable functions instead of fixed activation functions. The paper is honest about tradeoffs, showing where the generality costs performance compared to simpler NumPy or SciPy implementations. It's a useful tool for ML researchers experimenting with these architectures rather than a breakthrough result itself.",
+  "authors": [
+    "Alex Shtoff"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

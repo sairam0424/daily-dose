@@ -1,0 +1,19 @@
+{
+  "title": "Your MCP Servers Are Silently Draining Your Context Window: The Hidden Cost of Tool-Heavy AI Agents",
+  "source": "devto",
+  "url": "https://dev.to/necoz/your-mcp-servers-are-silently-draining-your-context-window-the-hidden-cost-of-tool-heavy-ai-agents-fkl",
+  "date": "2026-11-13",
+  "tags": [
+    "ai",
+    "typescript",
+    "opensource",
+    "productivity"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, data-backed explanation of how attaching many MCP tool servers silently bloats LLM context windows and degrades agent performance.",
+  "analysis": "The author demonstrates with a real example that a simple two-word prompt consumed over 28,000 input tokens purely because of tool schema definitions injected by seven connected MCP servers. This exposes a genuine and underappreciated technical cost of the trendy practice of wiring many Model Context Protocol tools into an AI coding agent, since every tool's full JSON schema gets loaded into context on every turn regardless of whether it's used. The piece promises a practical fix using small, focused TypeScript micro-tools instead of bulky general-purpose MCP servers. This is a useful, concrete engineering lesson for anyone building or configuring AI agent tooling today.",
+  "authors": [],
+  "reactions": 34,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fa20dm7o9oqkdd8zvyns3.jpg"
+}

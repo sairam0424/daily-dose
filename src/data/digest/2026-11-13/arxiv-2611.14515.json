@@ -1,0 +1,24 @@
+{
+  "title": "AutoScaffold: AI-Guided Scaffolding for Reinforcement Learning of Language Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.14515",
+  "date": "2026-11-13",
+  "tags": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting approach to automating the design of training hints for reinforcement learning on language models, removing a manual bottleneck in RL fine-tuning.",
+  "analysis": "Reinforcement learning with verifiable rewards trains language models using pass/fail signals, but this wastes a lot of information about why an attempt failed. AutoScaffold uses a separate frozen 'teacher' model to look at a student model's training attempts and automatically generate helpful hints or strategies, which are given during training but removed at test time. The method shows measurable gains across four different domains including robotic planning, question answering, math, and even GPU kernel generation. The idea of an AI designing its own curriculum scaffolding, rather than relying on hand-crafted prompts, is a genuinely useful generalizable technique for anyone training reasoning models.",
+  "authors": [
+    "Zijian Zhang",
+    "Rizhen Hu",
+    "Jiangweizhi Peng",
+    "Shiyang Li",
+    "Sujay Bhatt",
+    "Sihan Zeng",
+    "Mingyi Hong"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

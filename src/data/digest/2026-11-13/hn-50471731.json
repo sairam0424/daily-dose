@@ -1,0 +1,15 @@
+{
+  "title": "Service degradation on Microsoft 365",
+  "source": "hn",
+  "url": "https://status.cloud.microsoft/",
+  "date": "2026-11-13",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "A generic cloud outage report that's only interesting if you need the specific incident details, which aren't included here.",
+  "analysis": "This is a status-page style headline about an outage affecting a major enterprise software suite. Outage threads can be useful for understanding failure patterns in widely used cloud infrastructure, but no technical post-mortem or root-cause detail is given. Without specifics on what degraded or why, there's limited lasting technical value beyond the moment. It's the kind of story that matters mostly to people affected right now.",
+  "authors": [
+    "dkpk"
+  ],
+  "hn_id": 50471731,
+  "points": 498
+}

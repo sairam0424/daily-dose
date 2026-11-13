@@ -1,0 +1,19 @@
+{
+  "title": "Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.14519",
+  "date": "2026-11-13",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful empirical study comparing foundation models against task-specific models for medical imaging, with honest findings about where each approach wins.",
+  "analysis": "This paper compares a pretrained vision foundation model (DINOv2) against traditional from-scratch segmentation networks like U-Net on three different medical imaging tasks. It finds the foundation model generalizes better to new hospitals and scanners, but the task-specific models still edge it out on precise boundary detection when there's enough training data. It also uncovers that a commonly used benchmark dataset has duplicate images across splits, which is a genuinely useful finding for anyone using that benchmark. This kind of rigorous, nuanced comparison is valuable because most foundation-model papers oversell generalization without external validation.",
+  "authors": [
+    "Emre Kutlusan",
+    "Yongmin Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

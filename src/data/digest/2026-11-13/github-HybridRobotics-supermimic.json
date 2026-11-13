@@ -1,0 +1,16 @@
+{
+  "title": "HybridRobotics/supermimic",
+  "source": "github",
+  "url": "https://github.com/HybridRobotics/supermimic",
+  "date": "2026-11-13",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A robotics research project for humanoid motion tracking using a single differentiable physics-based world model, relevant to anyone working on robot learning or simulation.",
+  "analysis": "This project focuses on getting humanoid robots to imitate full-body human motion capture data using model-based reinforcement learning techniques. The key technical idea is using one differentiable world model, meaning a simulator whose physics can be back-propagated through, rather than separate hand-tuned controllers for different behaviors. This approach is part of a broader trend in robotics research toward using differentiable simulation to make training more sample-efficient and generalizable. It's a focused, technically substantial repository for people working in humanoid robotics or physics-based character animation.",
+  "authors": [],
+  "stars": 1310,
+  "image_url": "https://opengraph.githubassets.com/ed5c84ff4819c908e64b493aa288d082e32d166766e9d0603b47ec193d158d24/HybridRobotics/supermimic",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

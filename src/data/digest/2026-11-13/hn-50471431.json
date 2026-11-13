@@ -1,0 +1,17 @@
+{
+  "title": "Gemini 4 Hydrogen",
+  "source": "hn",
+  "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+  "date": "2026-11-13",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Likely refers to a new AI model release, but with no abstract or description there's no way to judge its actual technical significance.",
+  "analysis": "The title suggests an announcement of a new large language or multimodal model, but there's no body text describing capabilities, benchmarks, or architecture. Model release threads can be genuinely useful when they include technical detail like context length, benchmark comparisons, or API changes, but none of that is present here. Interest level is speculative until more detail is available.",
+  "authors": [
+    "dvaplima"
+  ],
+  "hn_id": 50471431,
+  "points": 462,
+  "image_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-4-hydrogen__key-art__lockup__16-9.width-1300.jpg",
+  "favicon_url": "https://blog.google/static/blogv2/images/favicon.ico?version=pr20261029-2131"
+}

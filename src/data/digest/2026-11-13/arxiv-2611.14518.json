@@ -1,0 +1,23 @@
+{
+  "title": "Toward Foundation Detection Models via Example-Based Grounding in EM-DETR",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.14518",
+  "date": "2026-11-13",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A solid but fairly narrow medical imaging detection paper combining multiple annotated datasets into one multi-domain model.",
+  "analysis": "The authors build a detection model that learns from several differently-labeled medical imaging datasets at once, using a student-teacher training setup to avoid forgetting earlier knowledge. They report modest but real accuracy improvements on chest X-rays and mammography compared to single-dataset training. This is useful incremental progress for people working specifically in medical image AI, but the techniques (multi-task learning, example-based detection) are not conceptually new to the broader ML audience. Interest is mostly limited to specialists in clinical imaging AI.",
+  "authors": [
+    "Sheethal Bhat",
+    "Bogdan Georgescu",
+    "Awais Mansoor",
+    "Florin C. Ghesu",
+    "Sasa Grbic",
+    "Andreas Maier"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
