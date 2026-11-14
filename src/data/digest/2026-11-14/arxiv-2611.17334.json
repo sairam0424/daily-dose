@@ -1,0 +1,29 @@
+{
+  "title": "Unbundling Multimodal Vision Encoding",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17334",
+  "date": "2026-11-14",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "A careful controlled study isolating which design choices actually matter in multimodal vision encoders, which is valuable for anyone building vision-language models.",
+  "analysis": "This paper tries to answer a real architecture question: do multimodal models need a separately pretrained vision encoder, or can similar performance come from training vision capacity jointly with the language model? By controlling for data, compute, and architecture, the authors isolate three entangled design choices that prior comparisons conflated. They find that pretraining the vision encoder separately isn't necessary, but having dedicated vision-specific capacity is, and that capacity doesn't need to come before the main multimodal fusion stage. This is useful, actionable guidance for practitioners designing new multimodal architectures rather than just another leaderboard paper.",
+  "authors": [
+    "Ellis Brown",
+    "Chris Hoang",
+    "Shengyi Qian",
+    "Shang-Wen Li",
+    "Mike Lewis",
+    "Marjan Ghazvininejad",
+    "Luke Zettlemoyer",
+    "Lucas Beyer",
+    "Mengye Ren",
+    "Jakob Verbeek",
+    "Saining Xie",
+    "Hu Xu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems",
+  "source": "hn",
+  "url": "https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths",
+  "date": "2026-11-14",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "An interesting use of AI/OCR and reasoning tools to unlock historically significant but previously inaccessible shorthand notebooks from a major logician.",
+  "analysis": "The story concerns using AI (likely OCR plus language modeling) to decode Kurt Gödel's shorthand notebooks, which have been largely unreadable for decades. If genuine proved theorems are extracted, this would be a notable application of AI to historical scholarship and could reveal real mathematical content. The technical interest lies in how AI handles archaic Gabelsberger shorthand and verifies mathematical claims, which is a nontrivial NLP and OCR challenge. Some skepticism is warranted since claims of 'hundreds of proved theorems' could be overstated, but it's a compelling case study either way.",
+  "authors": [
+    "bookofjoe"
+  ],
+  "hn_id": 50486748,
+  "points": 323,
+  "image_url": "https://i.guim.co.uk/img/media/6eeccf216579fe2181ae737d30f31abd7590125c/210_58_1759_1407/master/1759.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=334efc63d7472a97d72be0ffd23af8bb",
+  "favicon_url": "https://static.guim.co.uk/images/favicon-32x32.ico"
+}

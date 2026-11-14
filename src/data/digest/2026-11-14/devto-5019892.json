@@ -1,0 +1,19 @@
+{
+  "title": "Six Serving Engines on Four Accelerators: Gemma 4 E2B on an RTX 3050, a T4, an L4 and a TPU v5e",
+  "source": "devto",
+  "url": "https://dev.to/gde/six-serving-engines-on-four-accelerators-gemma-4-e2b-on-an-rtx-3050-a-t4-an-l4-and-a-tpu-v5e-1a0e",
+  "date": "2026-11-14",
+  "tags": [
+    "gemma",
+    "vllm",
+    "nvidia",
+    "tpu"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, data-driven benchmark comparing multiple inference serving engines across four different hardware accelerators for the same model, useful for practitioners picking a deployment stack.",
+  "analysis": "This article runs the same small language model, Gemma 4 E2B, through six different serving engines on four very different chips, a consumer GPU, a cloud GPU, a newer cloud GPU, and a TPU. It measures consistent benchmarks, GSM8K and BFCL accuracy plus load-sweep latency, letting readers directly compare engine performance without confounding variables like differing prompts or quantization. The main finding, that the best engine choice depends on the hardware rather than one engine dominating everywhere, is genuinely useful operational knowledge for anyone deploying LLMs. This kind of rigorous, reproducible benchmarking with public code is relatively rare and valuable compared to typical marketing-driven comparisons.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fdocs%2Fserving-engines-rollup%2Fdevto-cover.083b3fac.jpg"
+}

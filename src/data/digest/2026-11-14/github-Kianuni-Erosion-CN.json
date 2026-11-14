@@ -1,0 +1,16 @@
+{
+  "title": "Kianuni/Erosion-CN",
+  "source": "github",
+  "url": "https://github.com/Kianuni/Erosion-CN",
+  "date": "2026-11-14",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 2,
+  "why_read": "Another MobileGestalt research toolbox for iOS configuration, overlapping heavily with similar tools and offering little distinct technical insight for a general audience.",
+  "analysis": "This is a Chinese-language toolbox for researching and modifying iOS system configuration values, branded as a 'safety hardening' tool against being flagged or restricted (White Apple refers to bricked/restricted devices). It's part of the same jailbreak-adjacent ecosystem as other MobileGestalt editors, mostly useful to a narrow community of iOS tinkerers. There's no indication of novel technical contribution beyond existing similar tools. It's a low-interest item for a general engineering digest.",
+  "authors": [],
+  "stars": 1923,
+  "image_url": "https://opengraph.githubassets.com/70b2abf5fe1f3c2282251f41782194d8a00dd303163db556168e38fb888c7334/Kianuni/Erosion-CN",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

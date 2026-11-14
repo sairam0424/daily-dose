@@ -1,0 +1,20 @@
+{
+  "title": "Internalizing Investment Mandates: A Neurosymbolic RL Approach to Portfolio Allocation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17329",
+  "date": "2026-11-14",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but technically substantive paper combining reinforcement learning with symbolic constraints to keep portfolio allocation decisions compliant with investment rules.",
+  "analysis": "The paper extends a neurosymbolic RL method to continuous action spaces so that a trading or allocation policy can learn to respect hard compliance constraints rather than relying on post-hoc filtering. It shows a big drop in rule violations compared to unconstrained RL and a simple reward-penalty baseline. This is a solid applied finance/RL result with clear practical motivation, since regulatory compliance is a real deployment blocker for RL in asset management. The audience is fairly narrow, mostly quant finance and constrained-RL researchers.",
+  "authors": [
+    "Zeynep Yıldız",
+    "Satchit Chatterji",
+    "Ercan Atam",
+    "Erman Acar"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

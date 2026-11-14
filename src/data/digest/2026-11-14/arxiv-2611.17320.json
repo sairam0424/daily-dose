@@ -1,0 +1,23 @@
+{
+  "title": "Learning When Diffusion Language Models Should Regenerate",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17320",
+  "date": "2026-11-14",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A focused technical contribution improving diffusion language models by teaching them when to regenerate flawed text rather than blindly remasking.",
+  "analysis": "Diffusion language models can revise their own generated text through 'remasking,' but naive remasking often just reproduces the same error since surrounding context stays fixed. The authors build a verifier, DiVR, that predicts whether a partially generated sequence will end up correct, and uses that signal to decide which blocks to regenerate. This raises accuracy substantially on reasoning benchmarks at lower extra compute cost than brute-force search baselines. It's a solid, measurable improvement to a specific known weakness of diffusion-based text generation, relevant to anyone tracking this emerging alternative to autoregressive LLMs.",
+  "authors": [
+    "Minhae Oh",
+    "Jeonghye Kim",
+    "Jinwoo Koo",
+    "Yeongoon Kim",
+    "Jimin Seo",
+    "Minsik Seol",
+    "Jungwoo Lee"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

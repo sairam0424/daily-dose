@@ -1,0 +1,15 @@
+{
+  "title": "Doomsday: Friday, 13 November, A.D. 2026 (1960)",
+  "source": "hn",
+  "url": "https://www.science.org/doi/10.1126/science.132.3436.1291",
+  "date": "2026-11-14",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A fun historical curiosity about calendar math (the Doomsday algorithm) rather than new technical content.",
+  "analysis": "This appears to reference the 'Doomsday rule,' a mental algorithm invented by John Conway for quickly computing the day of the week for any date. The 1960 framing suggests it's an old document or article explaining the method or predicting a notable Friday the 13th. It's intellectually charming and mathematically neat, but it's not new research or engineering work, just a nostalgia/math-trivia piece. Good for a quick diversion, not for deep technical learning.",
+  "authors": [
+    "voxleone"
+  ],
+  "hn_id": 50482379,
+  "points": 447
+}

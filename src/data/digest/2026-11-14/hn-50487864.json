@@ -1,0 +1,17 @@
+{
+  "title": "$11.4M in Nvidia hardware vanishes during shipment from CA to TX",
+  "source": "hn",
+  "url": "https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas",
+  "date": "2026-11-14",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A striking logistics/security failure story involving enormous value of AI hardware disappearing in transit, interesting for supply-chain and fraud angles.",
+  "analysis": "This is about a reported theft or loss of $11.4 million worth of Nvidia hardware during interstate shipping, likely GPUs given the current AI hardware shortage and high resale value. The technical interest is less about engineering and more about supply chain security, cargo theft, and how high-value tech goods are tracked and insured. It's a reminder of real-world risks tied to the AI hardware boom. Engineers interested in logistics security or anti-theft tracking systems might find this relevant, though it's more of a business/crime story than deep tech.",
+  "authors": [
+    "crescit_eundo"
+  ],
+  "hn_id": 50487864,
+  "points": 282,
+  "image_url": "https://www.freightwaves.com/wp-content/uploads/2026/11/09/NVIDIA-Endeavor-1200x628-1.jpg",
+  "favicon_url": "https://www.freightwaves.com/wp-content/uploads/2019/03/cropped-FW-square-logo.png?w=32"
+}

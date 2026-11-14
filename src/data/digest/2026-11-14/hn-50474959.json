@@ -1,0 +1,17 @@
+{
+  "title": "Reverse engineering my Coway air purifier to ditch the cloud",
+  "source": "hn",
+  "url": "https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud/",
+  "date": "2026-11-14",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete, well-documented hardware reverse-engineering project that lets owners free a cloud-dependent device from vendor lock-in.",
+  "analysis": "This describes someone reverse engineering the firmware or communication protocol of a Coway air purifier so it can be controlled locally instead of through a mandatory cloud service. This kind of work typically involves sniffing network traffic, disassembling firmware, and reimplementing device control logic, which is valuable technical content for hardware hackers. It also speaks to a broader and recurring theme in IoT: vendors forcing cloud dependency on devices that should work fine locally. Readers can learn practical reverse-engineering techniques and get ideas for liberating their own smart-home gadgets.",
+  "authors": [
+    "scottjg"
+  ],
+  "hn_id": 50474959,
+  "points": 671,
+  "image_url": "https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud/coway-airmega-icons-cover.jpg",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=scottjg.com&sz=32"
+}

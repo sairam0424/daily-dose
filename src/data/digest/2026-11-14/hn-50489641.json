@@ -1,0 +1,17 @@
+{
+  "title": "FAA issues national ground stop",
+  "source": "hn",
+  "url": "https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247",
+  "date": "2026-11-14",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A breaking-news item about an FAA ground stop, interesting as current events but with little lasting technical substance.",
+  "analysis": "This is a news item about the FAA issuing a nationwide ground stop for flights, likely due to a system outage, weather, or staffing issue. It generated huge engagement because it affects many people immediately, but the HN discussion is mostly speculation rather than technical depth. Without more detail on root cause, there's limited engineering insight to extract. It's the kind of story engineers find newsworthy but not technically educational unless a postmortem follows.",
+  "authors": [
+    "zulln"
+  ],
+  "hn_id": 50489641,
+  "points": 1284,
+  "image_url": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-11/261113-ohare-airport-sjr-1605-99076a.jpg",
+  "favicon_url": "https://nodeassets.nbcnews.com/cdnassets/projects/ramen/favicon/nbcnews/all-other-sizes-PNG.ico/favicon.ico"
+}

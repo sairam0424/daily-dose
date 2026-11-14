@@ -1,0 +1,16 @@
+{
+  "title": "HybridRobotics/supermimic",
+  "source": "github",
+  "url": "https://github.com/HybridRobotics/supermimic",
+  "date": "2026-11-14",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A robotics project tackling whole-body humanoid motion tracking using a single differentiable world model, relevant to current research trends in learned robot control.",
+  "analysis": "Whole-body motion tracking for humanoid robots is a hard control problem because it involves coordinating many joints and maintaining balance while matching reference motions. Using a differentiable world model suggests the system can be trained end-to-end with gradients flowing through a learned simulation of robot dynamics, which is more sample-efficient than typical model-free reinforcement learning. This fits into an active research area combining model-based RL and humanoid robotics, following work like world models in other domains. The project seems to have real adoption given its stars and forks, suggesting it's a usable research codebase rather than just a demo.",
+  "authors": [],
+  "stars": 1438,
+  "image_url": "https://opengraph.githubassets.com/da4ea69f037e00945f03e90d69b2f9258a8cbc5f01a4b7416380e9e9a732fad8/HybridRobotics/supermimic",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,28 @@
+{
+  "title": "ArchSpace: Recording, Reviewing, and Referencing LLM Architecture Research",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17332",
+  "date": "2026-11-14",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A proposed shared platform for recording and reviewing LLM architecture ideas, aiming to fix the lack of transparency around what works and what fails in model design.",
+  "analysis": "ArchSpace is pitched as an open venue where researchers can document architecture experiments, including negative results, which labs usually don't publish. It leans on scaling laws to extrapolate small-scale experiment results to larger model sizes, a common industry practice but hard to verify externally. The value depends heavily on adoption; a platform is only as useful as the community that contributes to it. Still, the problem it addresses, wasted effort from unreported failed architecture ideas, is real and worth attention.",
+  "authors": [
+    "Jie Wang",
+    "Tong Zhu",
+    "JiaHao Kuang",
+    "Zhe Xu",
+    "Yunkai Chai",
+    "Dehong Zheng",
+    "Yu Cheng",
+    "Tao Ji",
+    "ZhouHan Lin",
+    "Qi Zhang",
+    "Bowen Zhou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

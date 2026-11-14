@@ -1,0 +1,19 @@
+{
+  "title": "remove.bg Is Shutting Down — Here's a Free, No-Upload Alternative",
+  "source": "devto",
+  "url": "https://dev.to/akhourianmolkumar/removebg-is-shutting-down-heres-a-free-no-upload-alternative-4ebo",
+  "date": "2026-11-14",
+  "tags": [
+    "showdev",
+    "webdev",
+    "ai",
+    "webassembly"
+  ],
+  "interest_score": 4,
+  "why_read": "A self-promotional post about a free browser-based background removal alternative, prompted by remove.bg's shutdown, with modest technical interest in client-side image processing.",
+  "analysis": "The core technical claim is that the alternative tool runs entirely in-browser without uploading images to a server, implying use of something like WebAssembly or in-browser ML models such as TensorFlow.js or ONNX Runtime Web. This is a legitimate and interesting pattern for privacy-preserving image editing, since it avoids sending user photos to third-party servers. However, the post is largely promotional for the author's own project and lacks deep technical explanation of how the segmentation model or runtime actually works. It's useful as a practical pointer for developers who relied on remove.bg's API, but light on genuine technical depth.",
+  "authors": [],
+  "reactions": 40,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffppaetfto55zr1p16o7g.png"
+}
