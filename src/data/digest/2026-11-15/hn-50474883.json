@@ -1,0 +1,17 @@
+{
+  "title": "Chinese frontier AI models carry the fingerprint of export-controlled GPUs",
+  "source": "hn",
+  "url": "https://unemploymentlabs.com/checkpoint-forensics",
+  "date": "2026-11-15",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A technically rigorous investigation into how hardware export controls leave detectable traces in AI model outputs, with real geopolitical and ML-systems implications.",
+  "analysis": "This explores how certain numerical or architectural quirks in export-controlled GPUs (like reduced precision or specific tensor core behavior) leave identifiable signatures in the outputs of Chinese frontier AI models trained on them. It's a genuinely novel piece of technical forensics connecting hardware-level constraints to observable model behavior, which is rarely discussed publicly. This matters for understanding both the effectiveness of export controls and how hardware choices subtly shape model training and inference characteristics. It's a rare case where policy and low-level systems engineering intersect in a verifiable, interesting way.",
+  "authors": [
+    "firloop"
+  ],
+  "hn_id": 50474883,
+  "points": 371,
+  "image_url": "https://unemploymentlabs.com/checkpoint-forensics-og.png?v=4",
+  "favicon_url": "https://unemploymentlabs.com/favicon.svg"
+}

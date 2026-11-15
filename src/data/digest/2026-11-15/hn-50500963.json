@@ -1,0 +1,16 @@
+{
+  "title": "SpaceX catches the Starship to end Flight 15",
+  "source": "hn",
+  "url": "https://www.spacex.com/launches/starship-flight-15",
+  "date": "2026-11-15",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A major engineering milestone in reusable rocketry, though more of a general interest/space news story than a deep technical one.",
+  "analysis": "This covers SpaceX successfully catching the Starship booster or vehicle as part of its 15th test flight, continuing its push toward full reusability. The technical interest lies in the guidance, control, and structural engineering needed to decelerate and precisely position a massive rocket for capture. It's light on technical depth as a headline, but the underlying feat involves significant control systems and real-time sensor fusion engineering most readers would find intriguing at a high level.",
+  "authors": [
+    "ls612"
+  ],
+  "hn_id": 50500963,
+  "points": 604,
+  "image_url": "https://www.spacex.com/assets/images/share.jpg"
+}

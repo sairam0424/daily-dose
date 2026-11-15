@@ -1,0 +1,19 @@
+{
+  "title": "Avengers: Doomsday is 5 weeks away, so I built hexagon README badges. What are you building?",
+  "source": "devto",
+  "url": "https://dev.to/amananandrai/avengers-doomsday-is-5-weeks-away-so-i-built-hexagon-readme-badges-what-are-you-building-32d6",
+  "date": "2026-11-15",
+  "tags": [
+    "discuss",
+    "watercooler",
+    "webdev",
+    "opensource"
+  ],
+  "interest_score": 1,
+  "why_read": "A lighthearted, low-substance side project generating movie-themed README badges with essentially no technical depth.",
+  "analysis": "This is a small side project that generates decorative hexagon-shaped GitHub README badges with Avengers movie-themed color schemes, served as SVGs from a Vercel-hosted service. It's a fun, low-effort community engagement post rather than something offering real engineering insight. The post is mostly a prompt asking other users to share their own movie-themed side projects rather than a deep technical writeup.",
+  "authors": [],
+  "reactions": 5,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Famananandrai%2Fhex-badges%2Fmain%2Fdocs%2Fcover.png"
+}

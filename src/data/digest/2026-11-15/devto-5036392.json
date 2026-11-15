@@ -1,0 +1,20 @@
+{
+  "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
+  "source": "devto",
+  "url": "https://dev.to/paramveer_singh_53163a04c/swizzle-runtime-v010-how-we-reached-209-toks-and-43ms-ttft-on-a-4gb-laptop-gpu-in-pure-rust-4l7l",
+  "date": "2026-11-15",
+  "tags": [
+    "rust",
+    "cuda",
+    "llm",
+    "opensource"
+  ],
+  "interest_score": 6,
+  "why_read": "A from-scratch Rust inference runtime claiming notable performance gains over llama.cpp on low-end hardware, though claims should be read with some skepticism given marketing-heavy framing.",
+  "analysis": "This describes an open-source Rust-based LLM inference runtime using custom CUDA, AVX2, and Vulkan kernels to reduce memory overhead and cold-start latency compared to typical Python/PyTorch serving stacks. It claims specific performance numbers, 209 tokens/sec and 43ms time-to-first-token on a 4GB laptop GPU, alongside custom techniques like bitwise XOR shared-memory tiling and self-speculative decoding. These are plausible but strong claims that would need independent verification, and some elements like cryptographic 'execution receipts' feel more like marketing flourish than core technical substance. Still, if the benchmarks hold up, it's a relevant entry in the growing space of lightweight, low-level LLM inference engines.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3hr04xnj95o632g3sqns.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

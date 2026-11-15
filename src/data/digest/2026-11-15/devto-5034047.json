@@ -1,0 +1,19 @@
+{
+  "title": "Devcon 8 Mumbai: Four Days at Ethereum's Biggest Builder Gathering",
+  "source": "devto",
+  "url": "https://dev.to/yashksaini/devcon-8-mumbai-four-days-at-ethereums-biggest-builder-gathering-3jn",
+  "date": "2026-11-15",
+  "tags": [
+    "ethereum",
+    "productivity",
+    "opensource",
+    "web3"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal conference trip report from Devcon 8 with limited technical depth beyond general Ethereum ecosystem color.",
+  "analysis": "This is a first-person recap of attending Devcon 8, the Ethereum Foundation's developer conference, covering logistics, talks, and the author's own GossipSub simulator demo called Luminar. It gives some texture on event structure and the libp2p networking community but is largely anecdotal rather than deeply technical. Readers interested in Ethereum protocol networking might find passing mentions useful, but there's little substantive technical content extracted here.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4r1fh7b39mmqp8u0thov.png"
+}

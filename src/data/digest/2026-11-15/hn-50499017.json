@@ -1,0 +1,17 @@
+{
+  "title": "Lovable apps expose passport details and more than 200K private messages",
+  "source": "hn",
+  "url": "https://www.crissyfield.de/research/lovable-en/",
+  "date": "2026-11-15",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real-world security failure in AI-generated apps with concrete, serious consequences like leaked passports is a useful cautionary case study.",
+  "analysis": "This story reports that apps built with the AI app-builder Lovable leaked sensitive personal data, including passport scans and over 200,000 private messages. It highlights a recurring problem with low-code or AI-generated backends where default database permissions are left open to the public internet. For engineers, it's a concrete example of why authorization and access control review can't be skipped even when code is machine-generated. The scale and sensitivity of the exposed data make this a notable case study in AI-tooling security failures.",
+  "authors": [
+    "armcat"
+  ],
+  "hn_id": 50499017,
+  "points": 611,
+  "image_url": "https://www.crissyfield.de/images/research-lovable-opengraph.jpg",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=www.crissyfield.de&sz=32"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Tech companies are trying to shift the concept of privacy again",
+  "source": "hn",
+  "url": "https://www.eff.org/deeplinks/2026/11/tech-companies-are-trying-shift-entire-concept-privacy-again",
+  "date": "2026-11-15",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A critical look at how big tech reframes privacy expectations, relevant to engineers who build products with personal data.",
+  "analysis": "This piece likely examines how companies redefine or weaken the meaning of 'privacy' through marketing language, feature framing, or default settings, shifting user expectations over time. It's a commentary/analysis piece rather than purely technical, but it matters to engineers building products that collect and process personal data, since policy framing often shapes what gets implemented. The topic is socially and ethically important but light on hard technical specifics based on title alone.",
+  "authors": [
+    "gslin"
+  ],
+  "hn_id": 50496602,
+  "points": 449,
+  "image_url": "https://www.eff.org/files/banner_library/mobile-privacy.png",
+  "favicon_url": "https://www.eff.org/sites/all/themes/frontier/favicon.ico"
+}

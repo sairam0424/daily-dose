@@ -1,0 +1,17 @@
+{
+  "title": "Why get an expensive Pi when I have an old phone?",
+  "source": "hn",
+  "url": "https://so.long.thanks.fish/why-pi-when-i-have-an-old-phone/",
+  "date": "2026-11-15",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A practical, hands-on hacker idea about repurposing old smartphones as cheap embedded computers instead of buying a Raspberry Pi.",
+  "analysis": "The piece argues that old smartphones often outperform a Raspberry Pi in CPU, GPU, storage, and battery while being free or very cheap to acquire. It likely covers practical considerations like running Linux or Android-based setups, dealing with proprietary bootloaders, and power management differences from the Pi ecosystem. For engineers interested in hobby electronics, this is a useful, grounded discussion about tradeoffs in repurposing hardware rather than buying new boards. It's a familiar topic in maker circles but still carries genuine practical value.",
+  "authors": [
+    "casi"
+  ],
+  "hn_id": 50440709,
+  "points": 497,
+  "image_url": "https://so.long.thanks.fish/why-pi-when-i-have-an-old-phone/redmi-leds-1200.webp",
+  "favicon_url": "https://so.long.thanks.fish/favicon.svg"
+}

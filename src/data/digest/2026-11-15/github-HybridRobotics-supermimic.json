@@ -1,0 +1,16 @@
+{
+  "title": "HybridRobotics/supermimic",
+  "source": "github",
+  "url": "https://github.com/HybridRobotics/supermimic",
+  "date": "2026-11-15",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A robotics research project tackling whole-body humanoid motion tracking with a differentiable simulation model, relevant to those working in learning-based control.",
+  "analysis": "This project focuses on humanoid robots learning to track full-body motions using a single differentiable 'world model,' meaning a simulated physics model whose outputs can be backpropagated through for training control policies. Differentiable simulation is an active and technically demanding research area because it lets optimization directly use gradients from physical dynamics rather than relying purely on trial-and-error reinforcement learning. This matters for making humanoid robot motion learning more sample-efficient and physically consistent. The reasonably high star count and active language (Python) suggest a usable research codebase rather than just a paper companion repo.",
+  "authors": [],
+  "stars": 1501,
+  "image_url": "https://opengraph.githubassets.com/35ede37690120136c02e1e79255c9251c7f3080b08bb27e7c0cbe01af8f40b0a/HybridRobotics/supermimic",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

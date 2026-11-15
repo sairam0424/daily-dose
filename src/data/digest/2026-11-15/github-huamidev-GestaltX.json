@@ -1,0 +1,16 @@
+{
+  "title": "huamidev/GestaltX",
+  "source": "github",
+  "url": "https://github.com/huamidev/GestaltX",
+  "date": "2026-11-15",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 3,
+  "why_read": "A niche iOS jailbreak/tweaking utility for editing device identifiers, useful mainly to a narrow hobbyist audience rather than general engineers.",
+  "analysis": "MobileGestalt is an internal iOS system that stores device identity and feature flags, and tools like this let users edit those values to spoof device models, region codes, or feature availability. This is typically used in the jailbreak community to unlock region-locked features or bypass device restrictions, which sits in an ethically gray area depending on use. The high star count suggests community interest, but the technical content is narrow and mostly relevant to iOS internals tinkerers rather than general software engineers.",
+  "authors": [],
+  "stars": 7568,
+  "image_url": "https://opengraph.githubassets.com/ae3d10c97fde8a4019443082a3d2ed01f6d39124d79df29ce67dcd4412e1d65d/huamidev/GestaltX",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

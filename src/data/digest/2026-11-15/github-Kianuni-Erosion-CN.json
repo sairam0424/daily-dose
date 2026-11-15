@@ -1,0 +1,16 @@
+{
+  "title": "Kianuni/Erosion-CN",
+  "source": "github",
+  "url": "https://github.com/Kianuni/Erosion-CN",
+  "date": "2026-11-15",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 2,
+  "why_read": "A similar niche iOS MobileGestalt-editing toolkit aimed at a Chinese-language jailbreak community, with narrow general applicability.",
+  "analysis": "This is another MobileGestalt-focused configuration tool for iOS/iPadOS, described as a hardened toolkit for preventing 'white apple' boot failures during device tweaking, targeted at Chinese-speaking users. Like similar tools, it deals with low-level iOS internals used mainly by the jailbreak and device-modding community. It offers little broader technical insight for general software engineering audiences beyond that specific niche.",
+  "authors": [],
+  "stars": 2057,
+  "image_url": "https://opengraph.githubassets.com/d8e25700540ca277c5028316807ffeabb1ec5a77be7b7c2cd12681c96bdf4e89/Kianuni/Erosion-CN",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

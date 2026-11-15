@@ -1,0 +1,23 @@
+{
+  "title": "Learning When Diffusion Language Models Should Regenerate",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17320",
+  "date": "2026-11-15",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A focused technical fix for a known weakness in diffusion-based language models, with solid empirical gains on reasoning tasks.",
+  "analysis": "Diffusion language models can revise their own generated text by masking and regenerating parts of it, but deciding when and what to regenerate is an unsolved problem. This paper shows that a model's internal hidden states carry better error signals than its output confidence scores, motivating a separate learned verifier called DiVR that predicts whether a partial generation will end up correct. Using this verifier to decide when to regenerate improves accuracy substantially on reasoning benchmarks while being more compute-efficient than brute-force search baselines. It's a meaningful, mechanism-level contribution to a model class that is still maturing relative to standard autoregressive LLMs.",
+  "authors": [
+    "Minhae Oh",
+    "Jeonghye Kim",
+    "Jinwoo Koo",
+    "Yeongoon Kim",
+    "Jimin Seo",
+    "Minsik Seol",
+    "Jungwoo Lee"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

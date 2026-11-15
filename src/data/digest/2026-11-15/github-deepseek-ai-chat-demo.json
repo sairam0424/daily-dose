@@ -1,0 +1,15 @@
+{
+  "title": "deepseek-ai/chat-demo",
+  "source": "github",
+  "url": "https://github.com/deepseek-ai/chat-demo",
+  "date": "2026-11-15",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "A lightweight reference chat demo from DeepSeek, likely useful mainly as a frontend example rather than for novel technical content.",
+  "analysis": "This appears to be a TypeScript-based demo application showing how to build a chat interface for DeepSeek's models, likely covering API integration, streaming responses, and UI patterns. Such demos are useful references for developers integrating LLM APIs into applications but rarely contain deep technical novelty themselves. Given DeepSeek's prominence in the open LLM ecosystem, this demo may still serve as a convenient starting template for others building similar chat products.",
+  "authors": [],
+  "stars": 1754,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
