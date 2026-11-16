@@ -1,0 +1,20 @@
+{
+  "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
+  "source": "devto",
+  "url": "https://dev.to/paramveer_singh_53163a04c/swizzle-runtime-v010-how-we-reached-209-toks-and-43ms-ttft-on-a-4gb-laptop-gpu-in-pure-rust-4l7l",
+  "date": "2026-11-16",
+  "tags": [
+    "rust",
+    "cuda",
+    "llm",
+    "opensource"
+  ],
+  "interest_score": 4,
+  "why_read": "A self-reported local LLM inference runtime in Rust claiming strong performance numbers, but the heavy buzzword density and self-benchmarked claims warrant skepticism without independent verification.",
+  "analysis": "Swizzle Runtime claims to be a Rust-based LLM inference engine with custom AVX2, CUDA, and Vulkan kernels aimed at low-latency local inference on consumer GPUs, competing with llama.cpp. Several described features, like bitwise XOR shared-memory GEMM tiling and cryptographic execution receipts using Ed25519 and BLAKE3, are either unusual framings of fairly standard optimization techniques or additions whose practical value for an inference runtime is unclear. The reported numbers, 209 tokens per second and 43ms time-to-first-token on a 4GB laptop GPU, are plausible but self-reported without independent benchmarking, and some claims like bitwise XOR tiling eliminating bank conflicts sound more like marketing language than established technique names. It could be a legitimate performance-engineering project worth a skim but the writeup leans heavily into impressive-sounding jargon that merits a cautious read.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3hr04xnj95o632g3sqns.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

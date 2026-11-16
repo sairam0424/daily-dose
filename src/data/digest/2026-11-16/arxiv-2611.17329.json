@@ -1,0 +1,20 @@
+{
+  "title": "Internalizing Investment Mandates: A Neurosymbolic RL Approach to Portfolio Allocation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17329",
+  "date": "2026-11-16",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but technically solid application of neurosymbolic reinforcement learning to enforce hard compliance rules in portfolio allocation.",
+  "analysis": "The paper extends a prior method called Probabilistic Logic Policy Gradient, originally limited to discrete actions, to continuous portfolio allocation decisions bound by investment policy rules. It trains the policy to estimate the probability its own chosen action violates a mandate and includes that estimate directly in the training objective, rather than filtering actions after the fact. The reported drop in rule violations from the high 90s percent down to under 5 percent is a meaningful result for a finance-specific RL compliance problem. It is a specialized topic mainly relevant to quant finance and constrained RL researchers rather than general software engineers.",
+  "authors": [
+    "Zeynep Yıldız",
+    "Satchit Chatterji",
+    "Ercan Atam",
+    "Erman Acar"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

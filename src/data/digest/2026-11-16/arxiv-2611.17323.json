@@ -1,0 +1,22 @@
+{
+  "title": "AgentSSL: Can MLE Agents Leverage Unlabeled Data?",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.17323",
+  "date": "2026-11-16",
+  "tags": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting empirical look at whether autonomous coding agents can design effective semi-supervised learning pipelines when labeled data is scarce, including a new benchmark for program selection.",
+  "analysis": "AgentSSL studies machine-learning engineering agents operating under semi-supervised conditions, where most data lacks labels, a realistic but underexplored setting compared to the fully labeled benchmarks these agents are usually tested on. The agents managed to beat strong human-engineered baselines in most of the twelve tested settings, but a key weakness emerged: picking which generated program to trust based on the agent's own feedback signal caused big performance drops. The authors address this by releasing ProgramSelectBench, a large benchmark of agent and human SSL programs for studying program selection methods. This is a useful, concrete contribution to understanding the current limits of AI agents doing real ML engineering work.",
+  "authors": [
+    "Ethan Lin",
+    "Akanksha Sarkar",
+    "Ziang Liu",
+    "Kristin Branson",
+    "Jennifer J. Sun"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

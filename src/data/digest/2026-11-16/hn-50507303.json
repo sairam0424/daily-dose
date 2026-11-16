@@ -1,0 +1,17 @@
+{
+  "title": "All AI-generated code should be Open Source",
+  "source": "hn",
+  "url": "https://jakub.jankiewicz.org/blog/ai-code-open-source/",
+  "date": "2026-11-16",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A genuinely contentious policy/ethics debate about AI-generated code licensing that touches on copyright, IP, and open-source norms for engineers.",
+  "analysis": "This is an opinion piece arguing that code produced by AI coding assistants should be mandatorily open source, likely because such code may be derived from training data scraped from open repositories under various licenses. The topic sits at the intersection of copyright law, machine learning provenance, and open-source philosophy, areas with no settled consensus yet. The large comment count suggests substantial disagreement among engineers about whether this argument holds up legally or practically. It is worth reading as a discussion piece rather than for any technical result.",
+  "authors": [
+    "jcubic"
+  ],
+  "hn_id": 50507303,
+  "points": 1069,
+  "image_url": "https://jakub.jankiewicz.org/img/en/ai-code-open-source.png",
+  "favicon_url": "https://jakub.jankiewicz.org/favicon/favicon-32x32.png"
+}

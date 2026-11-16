@@ -1,0 +1,19 @@
+{
+  "title": "Dash: An Endless Runner That Races Through Your City",
+  "source": "devto",
+  "url": "https://dev.to/codenameone/dash-an-endless-runner-that-races-through-your-city-57o7",
+  "date": "2026-11-16",
+  "tags": [
+    "java",
+    "mobile",
+    "android",
+    "ios"
+  ],
+  "interest_score": 3,
+  "why_read": "A promotional template release for an endless-runner mobile game built with a cross-platform Java framework, more of a product showcase than a technical deep dive.",
+  "analysis": "Dash is described as a starter template for an endless runner game, generated via Codename One's Initializr tool, built on a Java/Kotlin cross-platform mobile framework targeting iOS, Android, desktop, and web from one codebase. The mention of a route picked on a map rendering as a 3D run is a neat feature, but the excerpt mostly describes game mechanics and video demos rather than architecture or implementation challenges. It could interest developers curious about Codename One specifically, but it's fairly niche and lightly technical as presented.",
+  "authors": [],
+  "reactions": 6,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fwww.codenameone.com%2Fblog%2Fbuild-an-endless-runner-in-java.jpg"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "nginx 1.31's json_set directive rejects a bad webhook payload about 13 times faster than forwarding it",
+  "source": "devto",
+  "url": "https://dev.to/alexgeorgiev17/nginx-131s-jsonset-directive-rejects-a-bad-webhook-payload-about-13-times-faster-than-forwarding-3b00",
+  "date": "2026-11-16",
+  "tags": [
+    "nginx",
+    "devops",
+    "performance",
+    "webdev"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, measured performance benchmark of nginx's new native JSON parsing module for early request rejection, with specific numbers and real methodology.",
+  "analysis": "The post benchmarks nginx 1.31's new json_set directive, part of the ngx_http_json_module, which lets nginx inspect and reject malformed JSON webhook payloads before they ever reach the backend application. The author compares this against a Python backend doing equivalent validation, finding roughly 13x faster rejection at low concurrency and no measurable overhead when nothing is rejected, which is a meaningful operational win for high-traffic webhook receivers. This is a practical, reproducible piece of performance engineering content with real version numbers, directive names, and methodology disclosed, which is relatively rare and valuable compared to typical blog fluff. The AI-assisted disclosure tag is honest and the technical claims are specific enough to be independently verifiable.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3tias5qdckk8l4gcu57t.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

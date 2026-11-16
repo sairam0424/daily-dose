@@ -1,0 +1,17 @@
+{
+  "title": "Microsoft 365 outage leads to chlorine gas poisoning of 15 hotel guests",
+  "source": "hn",
+  "url": "https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/technischer-defekt-chlor-phantasialand-100.html",
+  "date": "2026-11-16",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A striking real-world case of software failure causing physical harm, illustrating how fragile safety-critical dependencies on cloud services can be.",
+  "analysis": "The headline describes a hotel incident where guests were poisoned by chlorine gas, seemingly connected to a Microsoft 365 outage affecting some control or monitoring system tied to pool or water treatment chemicals. This is notable as a cautionary tale about over-reliance on cloud software for safety-critical physical processes, a topic relevant to engineers building IoT or industrial control systems. It is more of a human-interest and systems-reliability story than a deep technical one, but the implications for designing resilient safety systems are real.",
+  "authors": [
+    "DeepLogin"
+  ],
+  "hn_id": 50509411,
+  "points": 364,
+  "image_url": "https://www1.wdr.de/nrw/koeln/phantasialand-134~_v-gseagaleriexl.jpg",
+  "favicon_url": "https://www1.wdr.de/assets-v5.182.4/img/favicon/favicon-32x32.png"
+}

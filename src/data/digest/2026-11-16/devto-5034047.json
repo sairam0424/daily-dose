@@ -1,0 +1,19 @@
+{
+  "title": "Devcon 8 Mumbai: Four Days at Ethereum's Biggest Builder Gathering",
+  "source": "devto",
+  "url": "https://dev.to/yashksaini/devcon-8-mumbai-four-days-at-ethereums-biggest-builder-gathering-3jn",
+  "date": "2026-11-16",
+  "tags": [
+    "ethereum",
+    "productivity",
+    "opensource",
+    "web3"
+  ],
+  "interest_score": 3,
+  "why_read": "A personal conference trip report from Ethereum's Devcon event, mostly logistics and personal narrative rather than deep technical content.",
+  "analysis": "This post recaps attending Devcon 8 in Mumbai, mentioning the author's work on a GossipSub simulator called Luminar and general conference statistics like session counts and tracks. GossipSub is a real peer-to-peer messaging protocol used in Ethereum's networking layer, so there's a kernel of technical relevance, but the excerpt focuses mostly on travel and event description rather than technical findings from the simulator or networking research. It's primarily of interest to people specifically following Ethereum protocol development or Devcon attendees rather than a general engineering audience.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4r1fh7b39mmqp8u0thov.png"
+}

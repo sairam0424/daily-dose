@@ -1,0 +1,16 @@
+{
+  "title": "Claude Code and Codex reverse engineered my 1994 Jeep's ECU over a $3 Arduino [video]",
+  "source": "hn",
+  "url": "https://www.youtube.com/watch?v=WPj3aQ-xxpI",
+  "date": "2026-11-16",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A hands-on account of using modern LLM coding agents for real embedded reverse-engineering work on vintage automotive hardware, which is a fun and genuinely instructive demonstration of current AI capabilities.",
+  "analysis": "This describes someone using Claude Code and OpenAI's Codex models together with a cheap Arduino to reverse engineer the engine control unit protocol of a 1994 Jeep. It is interesting because it shows AI coding agents applied to low-level embedded systems work, including protocols, serial communication, and legacy automotive electronics, rather than typical web or app development. The video format and concrete technical details (hardware used, protocols reverse engineered) make it a credible case study of LLM-assisted hardware hacking. This kind of grounded, verifiable AI-agent-in-the-wild story is more informative than most AI hype pieces.",
+  "authors": [
+    "envoked"
+  ],
+  "hn_id": 50463399,
+  "points": 325,
+  "favicon_url": "https://www.youtube.com/s/desktop/bb2198ae/img/favicon.ico"
+}

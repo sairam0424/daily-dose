@@ -1,0 +1,17 @@
+{
+  "title": "The MacBook Pro's OLED PWM problem",
+  "source": "hn",
+  "url": "https://macanorak.com/the-macbook-pros-oled-pwm-problem-when-a-better-display-becomes-worse-to-use/",
+  "date": "2026-11-16",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete hardware complaint about OLED PWM dimming on a widely used laptop, relevant to engineers who care about display tech and eye strain.",
+  "analysis": "This piece likely documents that Apple's new OLED MacBook Pro screens use pulse-width modulation for brightness control at low levels, which can cause flicker perceptible or uncomfortable to some users. PWM-based dimming is a known tradeoff in OLED displays versus the backlight dimming used in LCDs, and it has real implications for eye strain and headaches for sensitive users. This is a useful, specific hardware engineering topic with practical consequences for a broad audience of laptop buyers and developers.",
+  "authors": [
+    "MacAnorak"
+  ],
+  "hn_id": 50506719,
+  "points": 412,
+  "image_url": "https://macanorak.com/content/images/2026/11/PROLED-Display-XDR-1.png",
+  "favicon_url": "https://macanorak.com/content/images/size/w256h256/2026/10/MA-Staff-Logo-New.png"
+}

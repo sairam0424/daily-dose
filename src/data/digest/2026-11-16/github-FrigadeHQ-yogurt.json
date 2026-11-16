@@ -1,0 +1,16 @@
+{
+  "title": "FrigadeHQ/yogurt",
+  "source": "github",
+  "url": "https://github.com/FrigadeHQ/yogurt",
+  "date": "2026-11-16",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A privacy-respecting, open-source local alternative to a commercial AI meeting-notes app, appealing to engineers wary of sending audio/transcripts to third-party clouds.",
+  "analysis": "Yogurt positions itself as a free, open-source alternative to Granola, a popular AI note-taking tool, with the key differentiator being that processing happens locally rather than sending meeting data to external servers. This matters for privacy-conscious teams and companies with confidentiality requirements around meeting content, since local-only processing avoids a major vector of data exposure. Being cross-platform (Mac, Windows, Linux) and TypeScript-based also makes it accessible for broader developer contribution. The technical risk is whether local transcription and summarization quality can match cloud-based competitors, which isn't addressed by the description alone.",
+  "authors": [],
+  "stars": 1650,
+  "image_url": "https://repository-images.githubusercontent.com/1453132706/355ef15b-b53b-4211-bd76-47cdaad9ef5b",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

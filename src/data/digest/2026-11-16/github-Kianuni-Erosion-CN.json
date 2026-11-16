@@ -1,0 +1,16 @@
+{
+  "title": "Kianuni/Erosion-CN",
+  "source": "github",
+  "url": "https://github.com/Kianuni/Erosion-CN",
+  "date": "2026-11-16",
+  "tags": [
+    "Swift"
+  ],
+  "interest_score": 3,
+  "why_read": "An iOS system configuration and jailbreak-adjacent toolbox focused on avoiding device bricking, of narrow interest mainly to iOS jailbreak/tinkering community members.",
+  "analysis": "The description indicates this is a Chinese-language toolbox for managing iOS/iPadOS system configuration and MobileGestalt settings, framed as a safety-hardening tool against bricking devices during jailbreak-related tweaks. This is a legitimate, if niche, area of iOS internals research relevant to jailbreak tooling communities, not inherently malicious since it's about device configuration safety rather than bypassing security for harmful purposes. The lack of detailed documentation in English and the narrow use case limit its appeal for a general technical digest audience.",
+  "authors": [],
+  "stars": 2130,
+  "image_url": "https://opengraph.githubassets.com/66c79543346cc3c9fea6e59921dc7caadbe26f1f13fb5786c8ddbd9a8a35141f/Kianuni/Erosion-CN",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
