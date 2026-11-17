@@ -1,0 +1,16 @@
+{
+  "title": "BugMeNot has closed",
+  "source": "hn",
+  "url": "https://www.bugmenot.com/",
+  "date": "2026-11-17",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "End of a long-running, culturally notable internet utility; more a nostalgia/internet-history story than a technical one.",
+  "analysis": "BugMeNot was a community-maintained site that let people bypass mandatory website registrations by sharing shared login credentials. Its closure marks the end of a long-standing piece of internet infrastructure that touched on debates about free access, site registration walls, and account sharing. There's no technical innovation here, just a notable service shutting down, so the interest is mostly historical and ethical rather than engineering-focused.",
+  "authors": [
+    "lode"
+  ],
+  "hn_id": 50523601,
+  "points": 370,
+  "favicon_url": "https://www.google.com/s2/favicons?domain=www.bugmenot.com&sz=32"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Noniv/abyssal-garden",
+  "source": "github",
+  "url": "https://github.com/Noniv/abyssal-garden",
+  "date": "2026-11-17",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 6,
+  "why_read": "A visually impressive, self-contained WebGPU demo generating an underwater scene entirely procedurally in a single small HTML file, interesting for graphics programmers.",
+  "analysis": "This project renders a swimmable underwater environment—kelp, sunbeams, a shipwreck, manta rays—entirely through procedural code using WebGPU, with no external image, model, or sound assets. Fitting this into a 97 KB single HTML file is a notable feat of procedural generation and shader programming, similar in spirit to classic demoscene work. It's primarily a technical showcase of WebGPU capabilities and procedural graphics techniques rather than a tool with practical application. Graphics and shader programmers will likely find it inspiring and worth studying for technique, even though it has no broader utility.",
+  "authors": [],
+  "stars": 1775,
+  "image_url": "https://opengraph.githubassets.com/876cf64e316689943c6514818553168b34fcc4e2a2afd5031c2a344d6ad10926/Noniv/abyssal-garden",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

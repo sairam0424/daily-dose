@@ -1,0 +1,15 @@
+{
+  "title": "deepseek-ai/chat-demo",
+  "source": "github",
+  "url": "https://github.com/deepseek-ai/chat-demo",
+  "date": "2026-11-17",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 4,
+  "why_read": "A reference chat demo repo from DeepSeek with high star counts, but with minimal description it's unclear what novel technical contribution it offers beyond being a UI example.",
+  "analysis": "This repository is described simply as a 'Chat Demo' from DeepSeek AI, built primarily in TypeScript, with no further technical detail provided. High star and fork counts suggest community interest, likely driven by DeepSeek's reputation rather than confirmed substance from the description alone. Without more detail on what the demo actually showcases—model integration, UI patterns, streaming techniques—it's hard to assess real technical depth. It may be a useful reference implementation for building chat interfaces against DeepSeek's models, but the listing itself is too sparse to judge confidently.",
+  "authors": [],
+  "stars": 4174,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "AI Avatar v28 (Security Support, Voxel Avatar)🛡️",
+  "source": "devto",
+  "url": "https://dev.to/webdeveloperhyper/ai-avatar-v28-security-support-voxel-avatar-2i5i",
+  "date": "2026-11-17",
+  "tags": [
+    "ai",
+    "webdev",
+    "productivity",
+    "security"
+  ],
+  "interest_score": 2,
+  "why_read": "A quirky personal project combining a virtual avatar companion with a basic self-made security checklist feature, interesting mainly as a novelty rather than a serious security tool.",
+  "analysis": "AI Avatar is a hobby application that displays an animated VRM avatar in your editor or browser that reacts to AI coding assistants, and this update adds a lightweight 'security' feature including library vulnerability checks and security news. The author explicitly states they are not a security expert and built the feature mainly to learn, which limits its value as a trustworthy security tool for professional use. It's a fun side project blending UI personality with coding tools, but it isn't a serious contribution to application security practice. The appeal is mostly novelty and personal-project storytelling rather than technical substance.",
+  "authors": [],
+  "reactions": 40,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F1p4kxontmb681a8hynvf.png"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Omni-Workspace: Benchmarking Omni-Modal AI Assistants on Multimodal Workspace Tasks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.19202",
+  "date": "2026-11-17",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A new benchmark for testing AI agents on complex, multi-file, multi-modal workspace tasks, useful for researchers tracking the real capability gaps in agentic AI systems.",
+  "analysis": "Omni-Workspace is a benchmark of 380 tasks requiring AI models to work across multiple files and data types—like documents, images, and other formats—mimicking realistic research or office tasks. Testing 18 models found that even the best achieved only about 66% accuracy, revealing that current systems struggle to track task state and manage growing context over long tasks. The authors also propose a lightweight fix, OmniFocus, combining explicit memory and task-tracking to improve results. This is a useful empirical contribution for anyone building or evaluating multimodal agentic AI systems, showing clearly where today's models fail.",
+  "authors": [
+    "Yuhao Wang",
+    "Yucheng Zhao",
+    "Yiran Zhong",
+    "Feida Zhu",
+    "Hongcheng Liu",
+    "Qichao Wang",
+    "Ming Ma",
+    "Yu Wang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

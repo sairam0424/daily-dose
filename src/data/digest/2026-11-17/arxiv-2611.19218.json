@@ -1,0 +1,23 @@
+{
+  "title": "Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.19218",
+  "date": "2026-11-17",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically dense paper on improving optimization warm-starts for probabilistic inference using neural networks, useful mainly to researchers in graphical models and combinatorial optimization.",
+  "analysis": "This paper proposes using a neural network to quickly predict a good starting point for an existing dual-bound optimization algorithm used in probabilistic graphical models, instead of starting from scratch. The network learns, without needing labeled training data, to approximate the messages used in a known upper-bound technique called mini-bucket decomposition. The claimed benefit is much tighter optimization gaps early in the search process, which matters for inference tasks like MAP estimation in Bayesian networks. This is a solid, incremental algorithmic contribution for a specialized audience working on graphical model inference, not a broadly applicable tool.",
+  "authors": [
+    "Akshay Vyas",
+    "Shivvrat Arya",
+    "Brij Malhotra",
+    "Tahrima Rahman",
+    "Vibhav Gogate",
+    "Nicholas Ruozzi"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

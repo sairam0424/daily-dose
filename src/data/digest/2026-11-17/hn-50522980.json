@@ -1,0 +1,17 @@
+{
+  "title": "Carnegie Mellon is putting computer science courses on YouTube for free",
+  "source": "hn",
+  "url": "https://www.cs.cmu.edu/learn/",
+  "date": "2026-11-17",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A solid, practical resource story about a top CS department making its course videos freely available on YouTube.",
+  "analysis": "Carnegie Mellon is publishing recorded lectures from its computer science courses to YouTube at no cost. This gives anyone access to material from one of the strongest CS programs, covering topics like algorithms, systems, and theory. The technical value depends heavily on which courses and how complete the series are, but free high-quality CS education content is generally useful to working engineers and students. It is a resource announcement rather than a technical deep dive, so interest is moderate but genuinely practical.",
+  "authors": [
+    "pcompeau"
+  ],
+  "hn_id": 50522980,
+  "points": 871,
+  "image_url": "https://www.cs.cmu.edu/site-images/gates_web.jpg",
+  "favicon_url": "https://www.google.com/s2/favicons?domain=www.cs.cmu.edu&sz=32"
+}

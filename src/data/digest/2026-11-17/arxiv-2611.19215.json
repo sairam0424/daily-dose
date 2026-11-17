@@ -1,0 +1,21 @@
+{
+  "title": "Mem2Fair: Online Fairness Control for Text-to-Video Generation via Fair Memory",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.19215",
+  "date": "2026-11-17",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical fairness-control method for text-to-video generation that avoids retraining models, relevant to practitioners worried about demographic bias in generative video.",
+  "analysis": "The paper addresses a real problem: text-to-video models often default to stereotyped demographic portrayals (like assuming nurses are female) when prompts don't specify attributes. Instead of retraining the underlying model, the proposed Mem2Fair method intervenes at the prompt level using feedback from generated videos, tracked in a memory system, to steer outputs toward fairer distributions over time. This is a pragmatic engineering approach usable even on commercial black-box video models where internals aren't accessible. It's a narrow but real contribution to the growing field of bias mitigation in generative AI systems.",
+  "authors": [
+    "Pengyu Chen",
+    "Jiaming Zhang",
+    "Xiaohua Feng",
+    "Yuyuan Li",
+    "Chaochao Chen"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

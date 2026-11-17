@@ -1,0 +1,15 @@
+{
+  "title": "Technical issue at JPMorgan Chase triggers online banking delays for US banks",
+  "source": "hn",
+  "url": "https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda",
+  "date": "2026-11-17",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A real-world outage affecting major US banking infrastructure, interesting mainly as an incident-response and systemic-risk story rather than for deep technical detail.",
+  "analysis": "A technical fault at JPMorgan Chase caused delays in online banking that rippled across multiple US banks, suggesting shared payment or clearing infrastructure dependencies. This kind of event is useful for engineers thinking about financial system fragility, interbank dependencies, and incident postmortems, even without specifics yet available. The high comment count suggests speculation rather than confirmed technical root cause, so the discussion value may exceed the technical substance until a postmortem is published. It's a decent read for systems reliability interest but thin on hard technical content as reported here.",
+  "authors": [
+    "samk3nny"
+  ],
+  "hn_id": 50521045,
+  "points": 731
+}

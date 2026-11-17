@@ -1,0 +1,14 @@
+{
+  "title": "hitkeeen/blender-ai-mcp-addon",
+  "source": "github",
+  "url": "https://github.com/hitkeeen/blender-ai-mcp-addon",
+  "date": "2026-11-17",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A Blender addon connecting various LLM chat assistants to 3D scene manipulation via the MCP protocol, interesting as an example of AI-driven tool use in creative software.",
+  "analysis": "This project is a Blender plugin that exposes an MCP (model context protocol) server, letting LLM assistants like ChatGPT, Claude, or local models via Ollama control Blender's scene and Python scripting interface. It fits into the growing trend of giving AI assistants direct tool access to creative and technical software rather than just generating code snippets to copy-paste. The practical value depends on how reliable and safe the generated Blender operations are, since 3D scene manipulation via LLM commands can easily produce broken or unintended results. It's a reasonable example of applied agentic tooling for a niche but popular creative application.",
+  "authors": [],
+  "stars": 2251,
+  "image_url": "https://opengraph.githubassets.com/216d8e6bbd7784c9d118aa7085fafde648d9a5f797e6662fb7ebad42fffaa731/hitkeeen/blender-ai-mcp-addon",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

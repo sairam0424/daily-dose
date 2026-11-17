@@ -1,0 +1,19 @@
+{
+  "title": "High or Low Thinking? Gemini 4 and Gemma 4 on Hard Math, Cost First",
+  "source": "devto",
+  "url": "https://dev.to/gde/high-or-low-thinking-gemini-4-and-gemma-4-on-hard-math-cost-first-3091",
+  "date": "2026-11-17",
+  "tags": [
+    "gemini",
+    "gemma",
+    "benchmark",
+    "ai"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, data-driven benchmark comparing cost versus accuracy tradeoffs of 'high' vs 'low' reasoning/thinking settings across several Gemini and Gemma models on hard math problems.",
+  "analysis": "This piece runs seven models, including different Gemini and Gemma variants, through 15 AIME-level math competition problems at both their lowest and highest 'thinking' settings, measuring both accuracy and API cost. The key finding is that higher thinking settings cost roughly 2.6 to 4.8 times more but produced results that weren't statistically distinguishable from the cheaper setting on this small problem set, since some models solved all 15 regardless of setting. This is a useful, concrete piece of empirical evidence for engineers deciding whether to pay for higher reasoning effort tiers in production LLM applications. The small sample size (15 problems) is honestly acknowledged as insufficient to rule out chance, which is a good sign of methodological honesty rather than overclaiming.",
+  "authors": [],
+  "reactions": 20,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fdocs%2Fgemini-high-vs-low%2Fdevto-cover.8e6eb323.jpg"
+}

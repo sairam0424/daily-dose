@@ -1,0 +1,19 @@
+{
+  "title": "Your 100% Lighthouse A11y Score Is a Lie: The Visual Architecture Guide to the Browser Accessibility Tree",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/your-100-lighthouse-a11y-score-is-a-lie-the-visual-architecture-guide-to-the-browser-50l7",
+  "date": "2026-11-17",
+  "tags": [
+    "a11y",
+    "webdev",
+    "frontend",
+    "discuss"
+  ],
+  "interest_score": 7,
+  "why_read": "A substantive, example-driven explainer on why Lighthouse accessibility scores can be misleading, covering real gaps between automated audits and actual screen reader behavior.",
+  "analysis": "This article explains that a perfect Lighthouse accessibility score does not guarantee a site is actually usable by assistive technology, because Lighthouse only checks a limited set of automatable rules. It covers how browsers build an 'accessibility tree' from the DOM, why custom ARIA-based components often behave worse than native HTML elements, how CSS visibility properties affect what screen readers announce, and how to implement focus traps correctly for modals. These are concrete, actionable technical details that matter for any frontend engineer building accessible interfaces, going well beyond surface-level accessibility checklist advice. This is a solid, practically useful piece for web developers who want to understand accessibility beyond automated scoring tools.",
+  "authors": [],
+  "reactions": 7,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2FoLZVOCF.png"
+}

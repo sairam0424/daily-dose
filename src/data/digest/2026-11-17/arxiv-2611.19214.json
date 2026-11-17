@@ -1,0 +1,18 @@
+{
+  "title": "STaSBO: LLM-Guided Strategy Planning and Configuration Selection for Bayesian Optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.19214",
+  "date": "2026-11-17",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "An LLM-as-meta-controller approach to Bayesian optimization configuration, interesting to ML practitioners doing hyperparameter or black-box optimization but fairly niche.",
+  "analysis": "Bayesian optimization is widely used for tuning expensive-to-evaluate systems, but choosing the right surrogate model and acquisition function configuration is itself a hard, problem-dependent decision. This paper uses an LLM as a planner that selects and adjusts these configurations over the course of an optimization run, using a memory of past decisions and outcomes. The claimed improvement is measured by average rank across many benchmark tasks compared to 11 baseline strategies. It's a reasonable idea combining LLM reasoning with classical optimization machinery, though the real-world robustness of LLM-driven meta-control is still unproven.",
+  "authors": [
+    "Youngseok Yoon",
+    "Peng Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

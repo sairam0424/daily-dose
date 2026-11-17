@@ -1,0 +1,15 @@
+{
+  "title": "Jiff 1.0: A datetime library for Rust",
+  "source": "hn",
+  "url": "https://burntsushi.net/jiff/",
+  "date": "2026-11-17",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A 1.0 release of a serious new datetime library for Rust, relevant to anyone dealing with timezones and calendar math in that ecosystem.",
+  "analysis": "Jiff is a Rust library for handling dates, times, and timezones, reaching its 1.0 stable release. Datetime handling is notoriously full of edge cases—leap seconds, timezone database quirks, calendar arithmetic—so a well-designed library reaching maturity is a genuinely useful infrastructure milestone. Rust's existing datetime ecosystem (chrono, time) has had friction points, so a new robust option is relevant to engineers building systems that need correct time handling. This is a solid, substantive library release rather than a flashy announcement.",
+  "authors": [
+    "burntsushi"
+  ],
+  "hn_id": 50519744,
+  "points": 329
+}
