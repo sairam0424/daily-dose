@@ -1,0 +1,20 @@
+{
+  "title": "Flocking Time and Graph Volume in Nonlinear Cucker-Smale Models with Dynamic Networks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.22204",
+  "date": "2026-11-18",
+  "tags": [
+    "math.DS",
+    "cs.LG",
+    "nlin.AO"
+  ],
+  "interest_score": 3,
+  "why_read": "A niche theoretical dynamical-systems paper on flocking models with limited direct relevance to typical software engineering work.",
+  "analysis": "This is a math/physics-style paper studying 'flocking' models (how groups of agents converge to move together) under a nonlinear variant of the classic Cucker-Smale equations, with dynamic network topology. It derives theoretical bounds relating convergence time to network connectivity, and uses a trained reinforcement learning policy to pick network structures that satisfy time constraints in simulation. The content is mathematically interesting for researchers in multi-agent systems or swarm robotics but has little direct applicability to everyday software engineering.",
+  "authors": [
+    "Sooyeon Song",
+    "Jea-Hyun Park"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

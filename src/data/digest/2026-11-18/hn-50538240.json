@@ -1,0 +1,17 @@
+{
+  "title": "Java4Shell: RCE in OpenJDK when processing Base64",
+  "source": "hn",
+  "url": "https://calif.io/java4shell/",
+  "date": "2026-11-18",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A named remote code execution vulnerability in OpenJDK's Base64 handling is directly relevant to anyone running Java in production.",
+  "analysis": "This refers to a security vulnerability nicknamed 'Java4Shell', implying a serious remote-code-execution bug in OpenJDK's Base64 decoding, echoing the severity branding of the infamous Log4Shell flaw. If accurate, this would affect a huge number of Java-based backend systems and deserves fast patching attention from engineers. The community discussion volume suggests real technical engagement, likely including proof-of-concept exploit details and affected version ranges.",
+  "authors": [
+    "werrett"
+  ],
+  "hn_id": 50538240,
+  "points": 570,
+  "image_url": "https://calif.io/java4shell/poster.jpg",
+  "favicon_url": "https://calif.io/favicon.ico"
+}

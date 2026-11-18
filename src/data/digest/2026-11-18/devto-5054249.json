@@ -1,0 +1,19 @@
+{
+  "title": "Five Palaces, One Model: Testing Google’s Gemini 4 Hydrogen in AI Studio",
+  "source": "devto",
+  "url": "https://dev.to/amananandrai/i-built-5-interactive-3d-palaces-with-googles-new-gemini-4-hydrogen-in-ai-studio-5g8h",
+  "date": "2026-11-18",
+  "tags": [
+    "gemini",
+    "ai",
+    "threejs",
+    "webdev"
+  ],
+  "interest_score": 3,
+  "why_read": "A fun but shallow demo write-up showcasing a new Gemini model's generative coding capability rather than offering deep technical insight.",
+  "analysis": "This post describes a personal project built using a newly released fast-tier Gemini model to generate an interactive 3D scene of Japanese palaces, including lighting effects and procedurally generated audio. It functions mainly as a show-and-tell for the model's one-shot creative coding ability rather than an in-depth technical breakdown of how it works. The specs mentioned, like the 1M-token context and pricing, are useful data points, but overall this reads more like a product demo blog than substantive engineering content.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fgd1nbe96vq66xm41mz8t.jpg"
+}

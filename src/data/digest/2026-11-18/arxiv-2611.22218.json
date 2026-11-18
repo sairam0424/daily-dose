@@ -1,0 +1,20 @@
+{
+  "title": "Learning Optimal Transport Plans Via Autoregressive Token Regression",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.22218",
+  "date": "2026-11-18",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A creative application of transformer sequence modeling to a classic optimization problem, useful for anyone interested in learned solvers.",
+  "analysis": "This paper reframes Optimal Transport, a mathematical problem of matching probability distributions at minimum cost, as a sequence generation task solved by a transformer that predicts only the nonzero entries of the solution. The approach, called ToR-OT, is trained on a large synthetic dataset of transport problems and can generalize to new distributions and cost functions without retraining. The authors are upfront that it does not yet beat classical solvers, positioning this as exploratory research into whether transformers can internalize combinatorial optimization structure rather than a practical tool.",
+  "authors": [
+    "Ivan Jaen Marquez",
+    "Sotirios Panagiotis Chytas",
+    "Vikas Singh"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

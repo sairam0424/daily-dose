@@ -1,0 +1,21 @@
+{
+  "title": "Fine-Grained Japanese Clinical Named Entity Recognition: A Controlled Comparison of BERT and Open-Weight Large Language Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.22219",
+  "date": "2026-11-18",
+  "tags": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A rigorous empirical comparison of BERT versus LLMs for a very specific, high-stakes extraction task, with clear practical findings about generation settings.",
+  "analysis": "This paper compares fine-tuned BERT-CRF models against nine open-weight LLMs for extracting fine-grained clinical entities from Japanese medical case reports across 113 categories. The key finding is that zero-shot LLM prompting performs far worse than BERT baselines, but once LLMs are fine-tuned with QLoRA and given enough output token budget, they surpass BERT significantly. It also shows that forcing LLM output into JSON Schema does not meaningfully help accuracy on its own, which is a useful practical lesson for anyone building structured extraction pipelines.",
+  "authors": [
+    "Feng Han",
+    "Ayako Yagahara",
+    "Kenji Hirata",
+    "Atsushi Yoshida",
+    "Kohsuke Kudo"
+  ],
+  "reading_minutes": 1
+}

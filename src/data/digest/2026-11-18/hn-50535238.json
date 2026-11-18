@@ -1,0 +1,16 @@
+{
+  "title": "Apple Services Down",
+  "source": "hn",
+  "url": "https://developer.apple.com/system-status/",
+  "date": "2026-11-18",
+  "tags": [],
+  "interest_score": 3,
+  "why_read": "An outage report is operationally interesting in the moment but has little lasting technical substance.",
+  "analysis": "This item reports on an Apple services outage, a common type of HN post during major incidents. These threads are often just people reporting symptoms and speculating, with occasional interesting postmortem detail once a root cause is published. There's no abstract or technical detail here beyond the title, so the lasting value for an engineering digest is limited unless a postmortem follows.",
+  "authors": [
+    "willy_k"
+  ],
+  "hn_id": 50535238,
+  "points": 637,
+  "favicon_url": "https://developer.apple.com/favicon.ico"
+}

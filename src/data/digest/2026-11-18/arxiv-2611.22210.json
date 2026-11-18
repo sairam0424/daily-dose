@@ -1,0 +1,21 @@
+{
+  "title": "Sample-efficient Personalization of Large Language Model Alignment with Multidimensional User Preference Data",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.22210",
+  "date": "2026-11-18",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "A thoughtful refinement of preference-learning sample efficiency that reframes uncertainty from the user's perspective rather than the model's, useful for RLHF practitioners.",
+  "analysis": "This paper addresses the expensive bottleneck in online preference alignment (RLHF-style training), where human labels of which model response is better are costly to collect. The key idea is that existing methods pick 'uncertain' response pairs based on the model's own uncertainty, which may not match what's actually ambiguous to the specific user, so the authors build a per-user preference model from cheap multidimensional automated signals to better target which pairs need human comparison. They show theoretically that wasted queries vanish over time and demonstrate gains in experiments, which is a solid if narrow contribution to RLHF efficiency research.",
+  "authors": [
+    "Zhen-Yu Zhang",
+    "Jerry Huang",
+    "Gang Niu",
+    "Takashi Ishida",
+    "Masashi Sugiyama"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

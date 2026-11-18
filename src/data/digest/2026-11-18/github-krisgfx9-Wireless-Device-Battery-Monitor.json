@@ -1,0 +1,15 @@
+{
+  "title": "krisgfx9/Wireless-Device-Battery-Monitor",
+  "source": "github",
+  "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+  "date": "2026-11-18",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical, widely useful utility that fills a real gap left by fragmented vendor battery-monitoring software.",
+  "analysis": "This is a lightweight Windows tray application that shows battery levels for wireless peripherals like mice, keyboards, and controllers across many brands including Logitech, Razer, and Xbox, without needing each vendor's bulky software. It's a classic 'quality of life' open source tool that solves an annoying practical problem many desktop users have. It's not deeply technical research, but reverse-engineering multiple vendors' battery reporting protocols into one unified C++ app is a genuinely useful engineering effort.",
+  "authors": [],
+  "stars": 2830,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

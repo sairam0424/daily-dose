@@ -1,0 +1,16 @@
+{
+  "title": "Immortal-Protocols/lastbook",
+  "source": "github",
+  "url": "https://github.com/Immortal-Protocols/lastbook",
+  "date": "2026-11-18",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 4,
+  "why_read": "An interesting concept of offline survival-knowledge AI, but the sparse description leaves its actual technical implementation unclear.",
+  "analysis": "This repository describes itself as an 'offline knowledge AI' bundling maps and videos aimed at survival and rebuilding scenarios, presumably intended to work without internet access, perhaps for disaster-preparedness use cases. The idea of packaging a local LLM or search system with offline reference material is technically interesting, but there's no detail here on model size, architecture, or how retrieval actually works. The concept is compelling but the description is too thin to judge genuine technical depth.",
+  "authors": [],
+  "stars": 1823,
+  "image_url": "https://opengraph.githubassets.com/c1f5f88d3b60b85f9f369d652154716b569722e47fff1b82d39d9a2cc0bf5cc1/Immortal-Protocols/lastbook",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

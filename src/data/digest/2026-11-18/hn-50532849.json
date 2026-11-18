@@ -1,0 +1,17 @@
+{
+  "title": "Highly classified US national security communications network goes down",
+  "source": "hn",
+  "url": "https://www.cnn.com/2026/11/17/politics/highly-classified-national-security-communications-network-goes-down",
+  "date": "2026-11-18",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A reported outage of a highly classified government communications network raises interesting infrastructure and security questions but is light on verifiable technical detail.",
+  "analysis": "The headline describes an outage in a highly sensitive, presumably classified US government communications network, which is inherently interesting from a systems-reliability and national-security standpoint. However, because the network is classified, any public reporting is likely speculative, and HN comments here are more about political and security implications than engineering specifics. Worth a skim for curiosity rather than technical depth.",
+  "authors": [
+    "monkeydust"
+  ],
+  "hn_id": 50532849,
+  "points": 486,
+  "image_url": "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1227141714-20261117152535850.jpg?c=16x9&q=w_800,c_fill",
+  "favicon_url": "https://www.cnn.com/media/sites/cnn/favicon.ico"
+}

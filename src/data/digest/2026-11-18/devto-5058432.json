@@ -1,0 +1,19 @@
+{
+  "title": "AI agents open 17 million pull requests a month. I built a gate that rejects the ones that lie.",
+  "source": "devto",
+  "url": "https://dev.to/aws-builders/ai-agents-open-17-million-pull-requests-a-month-i-built-a-gate-that-rejects-the-ones-that-lie-46n7",
+  "date": "2026-11-18",
+  "tags": [
+    "ai",
+    "aws",
+    "devops",
+    "discuss"
+  ],
+  "interest_score": 6,
+  "why_read": "A pragmatic, concrete approach to validating AI-generated code fixes with deterministic proof rather than trusting the agent's self-report.",
+  "analysis": "This post describes building a verification gate that checks whether an AI coding agent's claimed bug fix actually passes tests, rather than taking the agent's 'done' claim at face value, using a deterministic Python check instead of another model grading the model. It's a timely and practical response to a real emerging problem as AI agents increasingly open pull requests autonomously, and the specific failure case shown, where the fix broke an existing test, illustrates the value well. The approach is fairly simple (running tests and checking outcomes) but the framing around trust and verification for autonomous agents is a genuinely useful pattern for engineering teams to consider.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fsimplynadaf%2Fai-fix-verifier%2Fmain%2Fdocs%2Fgithub-cover.png"
+}

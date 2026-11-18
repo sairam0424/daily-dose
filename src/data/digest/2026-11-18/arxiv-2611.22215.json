@@ -1,0 +1,22 @@
+{
+  "title": "Communicate the Change: Efficient Expert Parallelism via Activation Compression",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.22215",
+  "date": "2026-11-18",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.DC"
+  ],
+  "interest_score": 8,
+  "why_read": "A concrete, measurable systems optimization for mixture-of-experts inference that tackles a real and growing bottleneck in large-scale LLM serving.",
+  "analysis": "EchoMoE targets the communication bottleneck in mixture-of-experts models, where each layer must synchronously shuttle activations between devices hosting different experts, and network speed increasingly lags behind compute speed. Its trick is to send only the compressed difference from a periodically refreshed reference hidden state rather than the full hidden state every time, cutting inter-node traffic by 58% and boosting throughput by 22.6% with only small quality loss. Notably it can be retrofitted onto existing pretrained MoE models with about 8,500 times fewer tokens than full pretraining, and the authors release a vLLM integration, making this practically actionable for people running large MoE deployments.",
+  "authors": [
+    "Fengyuan Liu",
+    "Jay Gala",
+    "Siva Reddy",
+    "Dzmitry Bahdanau"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

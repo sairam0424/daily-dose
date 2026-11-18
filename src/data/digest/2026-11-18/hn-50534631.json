@@ -1,0 +1,15 @@
+{
+  "title": "Nvidia stopped disclosing Singapore sales as revenues hit $104B",
+  "source": "hn",
+  "url": "https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf",
+  "date": "2026-11-18",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Interesting business and regulatory angle on Nvidia's reporting practices, but it's a finance story rather than a technical one.",
+  "analysis": "This concerns Nvidia's decision to stop breaking out Singapore sales figures as overall revenue climbed to $104 billion, which is relevant to people following chip export controls and corporate disclosure practices. The topic touches on geopolitics around chip sales (particularly suspected China routing through Singapore) more than engineering. It's a useful read for industry-watchers but offers little direct technical content for software engineers.",
+  "authors": [
+    "louiereederson"
+  ],
+  "hn_id": 50534631,
+  "points": 408
+}

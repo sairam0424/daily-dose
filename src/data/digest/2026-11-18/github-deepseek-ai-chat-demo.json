@@ -1,0 +1,15 @@
+{
+  "title": "deepseek-ai/chat-demo",
+  "source": "github",
+  "url": "https://github.com/deepseek-ai/chat-demo",
+  "date": "2026-11-18",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A bare 'chat demo' repo from a notable AI lab, but with almost no description to judge its actual technical content.",
+  "analysis": "This is a GitHub repository from DeepSeek AI labeled simply 'Chat Demo', written in TypeScript, with high star count likely driven by the organization's reputation rather than detailed project information. Without a fuller description, readme excerpt, or technical explanation, it's impossible to assess what makes this demo noteworthy beyond branding. Engineers interested in DeepSeek's ecosystem might want to check it out, but there's no substantive detail provided here to justify a higher score.",
+  "authors": [],
+  "stars": 4565,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
