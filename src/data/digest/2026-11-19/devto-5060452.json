@@ -1,0 +1,19 @@
+{
+  "title": "Is Coding with AI Actually Faster and Cheaper?",
+  "source": "devto",
+  "url": "https://dev.to/sylwia-lask/is-coding-with-ai-actually-faster-and-cheaper-2810",
+  "date": "2026-11-19",
+  "tags": [
+    "ai",
+    "programming",
+    "productivity",
+    "agents"
+  ],
+  "interest_score": 5,
+  "why_read": "A reasonably grounded attempt to look past anecdote and examine actual research on whether AI coding tools truly speed up development.",
+  "analysis": "The author explicitly sets out to survey existing studies rather than rely on personal impressions about AI coding productivity gains. It raises a nuanced point that even if code gets written faster, overall delivery speed may not improve much due to review, discussion, and other bottlenecks. The piece seems conversational and informal rather than rigorous, and the promotional ties to a conference talk suggest some self-promotion. Still, the underlying question is genuinely important and underexplored with hard data, so it may offer useful references even if the analysis itself is casual.",
+  "authors": [],
+  "reactions": 120,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fh2u8fbzz30f3587urp83.png"
+}

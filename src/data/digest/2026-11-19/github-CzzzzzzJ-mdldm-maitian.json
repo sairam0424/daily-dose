@@ -1,0 +1,16 @@
+{
+  "title": "CzzzzzzJ/mdldm-maitian",
+  "source": "github",
+  "url": "https://github.com/CzzzzzzJ/mdldm-maitian",
+  "date": "2026-11-19",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A multi-platform social media publishing and analytics dashboard for Chinese platforms, useful mainly to content creators rather than engineers broadly.",
+  "analysis": "This tool centralizes publishing and data monitoring across platforms like Bilibili, Douyin, Xiaohongshu, WeChat Channels, YouTube, and X, with notification integration via Feishu cards. It's a business/operations tool for social media managers rather than something offering novel technical architecture. The engineering involved (multi-platform API integration, dashboarding) is reasonably standard. Relevance to a general software engineering digest is limited.",
+  "authors": [],
+  "stars": 1342,
+  "image_url": "https://opengraph.githubassets.com/2c57a9d3ef303d4fb752c6557aabba2af56fde2d7b4aca22083c3c8e1b6edaae/CzzzzzzJ/mdldm-maitian",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

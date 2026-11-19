@@ -1,0 +1,16 @@
+{
+  "title": "Hut-hzf/ung220z-tool",
+  "source": "github",
+  "url": "https://github.com/Hut-hzf/ung220z-tool",
+  "date": "2026-11-19",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A credential-extraction tool for a specific Chinese ISP-provided router/modem, framed as a recovery tool for forgotten admin passwords.",
+  "analysis": "The tool targets the UNG220Z optical modem used by China Mobile, extracting stored credentials, and is described as intended for recovering one's own forgotten password or migrating broadband settings. While framed as a legitimate self-service recovery tool, credential-extraction utilities for ISP hardware can also be used to access devices without authorization. The technical content (reverse engineering a specific embedded device's credential storage) is a narrow but real security research topic. Given the stated self-use framing and lack of clear malicious intent, it doesn't warrant exclusion, but general audience interest is limited.",
+  "authors": [],
+  "stars": 1278,
+  "image_url": "https://opengraph.githubassets.com/f377078732c2269ed2f2320c62abc2c2c21da8c42032f6d0fc0f11b14c8fa6c8/Hut-hzf/ung220z-tool",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

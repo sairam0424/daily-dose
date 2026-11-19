@@ -1,0 +1,19 @@
+{
+  "title": "An inexact stochastic variance-reduced gradient method for constrained convex finite-sum optimization",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.23221",
+  "date": "2026-11-19",
+  "tags": [
+    "math.OC",
+    "cs.LG"
+  ],
+  "interest_score": 4,
+  "why_read": "A dense optimization theory paper improving complexity bounds for a specific constrained convex optimization setting.",
+  "analysis": "This is a fairly technical operations-research/optimization paper proposing an improved stochastic gradient method for problems with hard constraints that must always be satisfied. It narrows a theoretical gap between two notions of approximate feasibility and also yields a new deterministic method for convex conic optimization as a special case. The content is mathematically rigorous but has limited immediate applicability outside optimization research communities. Engineers working on large-scale constrained ML or operations research may find it relevant, but it's a niche theoretical contribution.",
+  "authors": [
+    "Zhaosong Lu",
+    "Yifeng Xiao"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

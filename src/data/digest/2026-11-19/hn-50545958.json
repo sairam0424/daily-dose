@@ -1,0 +1,17 @@
+{
+  "title": "DNS resolvers are the wrong place to fight piracy",
+  "source": "hn",
+  "url": "https://techstackups.com/articles/quad9-leaves-france-dns-blocking/",
+  "date": "2026-11-19",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A substantive policy and technical debate about whether DNS-level blocking is an effective or appropriate anti-piracy mechanism.",
+  "analysis": "The piece argues against using DNS resolvers as enforcement points for copyright or anti-piracy measures, likely because DNS blocking is trivially bypassed and creates collateral damage to legitimate traffic. This touches on real technical tradeoffs in internet architecture, censorship resistance, and how legal pressure is increasingly aimed at infrastructure operators rather than content hosts. It's relevant to engineers who run DNS services or worry about overreach affecting their own infrastructure. The topic is well-trodden but still worth a read for the specific arguments made.",
+  "authors": [
+    "ritzaco"
+  ],
+  "hn_id": 50545958,
+  "points": 606,
+  "image_url": "https://techstackups.com/img/articles/quad9-leaves-france/cover.jpg",
+  "favicon_url": "https://techstackups.com/img/favicon.png"
+}

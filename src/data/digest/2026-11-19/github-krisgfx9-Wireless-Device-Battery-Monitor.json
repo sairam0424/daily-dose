@@ -1,0 +1,15 @@
+{
+  "title": "krisgfx9/Wireless-Device-Battery-Monitor",
+  "source": "github",
+  "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+  "date": "2026-11-19",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical, well-scoped utility solving a real annoyance (no unified battery display for wireless peripherals) without needing vendor bloatware.",
+  "analysis": "This is a lightweight Windows tray application that reads battery levels from a wide range of wireless peripherals and displays them without requiring each vendor's separate software. It's a useful convenience tool rather than a novel technical breakthrough, but reverse-engineering multiple vendor protocols (Logitech, Razer, Corsair, Sony controllers, etc.) to unify them is nontrivial engineering work. The nearly 4000 stars suggest genuine demand for this kind of tool among power users.",
+  "authors": [],
+  "stars": 4025,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

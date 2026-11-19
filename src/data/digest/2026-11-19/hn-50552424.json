@@ -1,0 +1,16 @@
+{
+  "title": "Gemini 4 Neon",
+  "source": "hn",
+  "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+  "date": "2026-11-19",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Likely coverage of a new Gemini model release, relevant to engineers tracking frontier LLM capabilities and benchmarks.",
+  "analysis": "The title suggests this is about a specific new Gemini model variant, possibly with notable capabilities or a quirky naming/branding choice drawing comment attention. Without further detail it's hard to assess true technical depth, but new frontier model releases are generally relevant to engineers building on top of LLMs. The large comment count hints at discussion of benchmarks, pricing, or capabilities worth skimming.",
+  "authors": [
+    "yigitdemirag"
+  ],
+  "hn_id": 50552424,
+  "points": 475,
+  "favicon_url": "https://blog.google/static/blogv2/images/favicon.ico?version=pr20261117-1738"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.23219",
+  "date": "2026-11-19",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting empirical study of whether capable LLM agents can autonomously devise their own self-improvement strategies without explicit instructions.",
+  "analysis": "The researchers give an LLM agent a compute budget, tools to gather experience, and a general goal, then observe whether it invents its own learning algorithm using gameplay as a testbed. They find capable models do self-improve, developing strategies that resemble known cognitive learning frameworks and self-generated curricula from ML literature. They also test whether learned text-based strategies transfer to other games and tasks, which is the more practically interesting finding. This touches on real questions about autonomous agent design and the limits of current self-improvement methods, relevant to anyone building agentic AI systems.",
+  "authors": [
+    "Shobhita Sundaram",
+    "Cansu Sancaktar",
+    "Phillip Isola"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

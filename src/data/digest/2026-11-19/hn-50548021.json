@@ -1,0 +1,17 @@
+{
+  "title": "Seven new models at scalable price-performance",
+  "source": "hn",
+  "url": "https://microsoft.ai/news/microsoft-ignite-2026/",
+  "date": "2026-11-19",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "Announcement of multiple new AI models at different price-performance points, relevant for engineers choosing inference providers.",
+  "analysis": "This looks like a vendor announcement of a model lineup optimized for cost versus capability tradeoffs, which matters for teams building production LLM applications on a budget. The actual technical interest depends on benchmarks and architecture details not visible from the title alone. Still, price-performance comparisons for LLMs are a recurring and practically useful topic for engineers.",
+  "authors": [
+    "gmays"
+  ],
+  "hn_id": 50548021,
+  "points": 456,
+  "image_url": "https://microsoft.ai/wp-content/uploads/2026/11/All-Up-Blog.jpg",
+  "favicon_url": "https://microsoft.ai/wp-content/uploads/2025/10/cropped-image-5-32x32.png"
+}

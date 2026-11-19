@@ -1,0 +1,17 @@
+{
+  "title": "Unauthenticated remote code execution in Nginx",
+  "source": "hn",
+  "url": "https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities",
+  "date": "2026-11-19",
+  "tags": [],
+  "interest_score": 9,
+  "why_read": "A critical unauthenticated RCE in Nginx is directly actionable security news that affects a huge fraction of internet infrastructure.",
+  "analysis": "This reports a serious vulnerability allowing attackers to run arbitrary code on Nginx servers without any login credentials. Given Nginx's dominance as a web server and reverse proxy across the internet, a flaw like this has wide blast radius. Engineers running Nginx need to know affected versions, patch availability, and mitigation steps immediately. High engagement here reflects genuine operational urgency rather than hype.",
+  "authors": [
+    "speedping"
+  ],
+  "hn_id": 50547374,
+  "points": 1156,
+  "image_url": "https://www.datocms-assets.com/75231/1794936719-img_7875.png?fm=webp",
+  "favicon_url": "https://www.wiz.io/favicon.png"
+}

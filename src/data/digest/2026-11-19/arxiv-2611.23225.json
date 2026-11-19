@@ -1,0 +1,18 @@
+{
+  "title": "StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.23225",
+  "date": "2026-11-19",
+  "tags": [
+    "hep-th",
+    "cs.AI"
+  ],
+  "interest_score": 5,
+  "why_read": "A niche but interesting infrastructure project packaging physics textbooks for AI-assisted research in string theory and QFT.",
+  "analysis": "This is less a research result than a dataset and tooling release: a large curated collection of string-theory and QFT textbook material structured for retrieval-augmented generation and agent tool use. It includes benchmarks with checkable answers and calculation tools tied to textbook derivations, aimed at enabling LLMs to assist with theoretical physics research. The technical interest is narrow, mainly useful to those working at the intersection of AI tooling and specialized scientific domains. It's a solid example of domain-specific RAG infrastructure but has limited broader applicability.",
+  "authors": [
+    "Xingyang Yu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Ambient LLMs: Data-Efficient Supervised Fine-tuning via Temperature Matching",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.23229",
+  "date": "2026-11-19",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, well-motivated technique for improving supervised fine-tuning data efficiency, with reported double-digit gains over standard SFT.",
+  "analysis": "The paper tackles a real problem: fine-tuning datasets are much smaller than pretraining data, causing models to forget rare patterns they learned during pretraining. Their fix has the fine-tuned model match a 'blurred' (high-temperature) version of the original pretrained model's predictions, using a temperature knob that interpolates between plain fine-tuning and full knowledge distillation. This is a practical, implementable idea for anyone training or fine-tuning language models, not just a theoretical exercise. The claimed 21% average relative improvement across several task types makes it worth scrutiny by practitioners.",
+  "authors": [
+    "Giannis Daras",
+    "Marios Papachristou",
+    "Adam Klivans",
+    "Antonio Torralba",
+    "Constantinos Daskalakis"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

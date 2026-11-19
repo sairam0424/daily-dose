@@ -1,0 +1,20 @@
+{
+  "title": "Spool: Low-Latency Streaming Inference for Hybrid Vision-Language Models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.23228",
+  "date": "2026-11-19",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever systems-level optimization for streaming video-language models that cuts latency sharply without retraining or accuracy loss.",
+  "analysis": "The paper addresses a genuine bottleneck in hybrid vision-language models that mix attention with recurrent layers: sliding a time window over video normally forces replaying the whole window through the model. The authors exploit the mathematical structure of the recurrent update (it's affine with composable transformations) to let old frames be removed from memory without recomputation. This is a training-free engineering trick with measured results: 6.6x faster time-to-first-token and even improved accuracy across multiple benchmarks and models. It's relevant to anyone building real-time video assistants or robotics perception pipelines.",
+  "authors": [
+    "Rui Ning",
+    "Om Chabra",
+    "Hari Balakrishnan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
