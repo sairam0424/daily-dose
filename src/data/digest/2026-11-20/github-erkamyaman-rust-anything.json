@@ -1,0 +1,15 @@
+{
+  "title": "erkamyaman/rust-anything",
+  "source": "github",
+  "url": "https://github.com/erkamyaman/rust-anything",
+  "date": "2026-11-20",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 8,
+  "why_read": "A practical tool for incrementally migrating existing applications to Rust while verifying behavioral equivalence against the original, which addresses a real and painful engineering problem.",
+  "analysis": "This project lets engineers rewrite an application piece by piece into Rust while continuously checking that the new code matches the recorded behavior of the original implementation, supporting sources in TypeScript, Python, C, Go, Ruby, and Java. Incremental, behavior-verified rewrites are a much safer approach to language migration than big-bang rewrites, which notoriously fail or stall. The multi-language support and focus on CLIs, HTTP servers, and libraries suggests broad applicability across real-world codebases. Its significant star count suggests many engineers see value in a disciplined, test-driven migration path to Rust.",
+  "authors": [],
+  "stars": 5275,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

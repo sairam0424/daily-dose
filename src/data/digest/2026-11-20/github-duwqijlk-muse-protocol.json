@@ -1,0 +1,16 @@
+{
+  "title": "duwqijlk/muse-protocol",
+  "source": "github",
+  "url": "https://github.com/duwqijlk/muse-protocol",
+  "date": "2026-11-20",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 2,
+  "why_read": "A reverse-engineering writeup of muse.ai's signup and invite-code redemption flow, of narrow interest mainly to those probing that specific platform's API.",
+  "analysis": "This repository documents research into the registration and invite-code redemption protocol of the muse.ai service, implemented as a pure HTTP client in Python. This kind of API reverse-engineering can be useful for understanding undocumented endpoints, but it's unclear whether the intent is legitimate interoperability research or circumventing invite-gating and registration limits. Its scope is narrow and tied to one specific commercial product, limiting its broader technical relevance to most engineers. Without more context on intended use, it sits in a gray area of dual-use reverse engineering.",
+  "authors": [],
+  "stars": 1656,
+  "image_url": "https://opengraph.githubassets.com/82127966f86c9377738d26cc75db2e29722f8596653950de16d0d7ab37d3a078/duwqijlk/muse-protocol",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

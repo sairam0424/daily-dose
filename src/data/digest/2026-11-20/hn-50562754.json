@@ -1,0 +1,15 @@
+{
+  "title": "Anthropic’s Nasdaq debut",
+  "source": "hn",
+  "url": "https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/",
+  "date": "2026-11-20",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A business/market milestone story about Anthropic's Nasdaq debut with high engagement but little direct technical content.",
+  "analysis": "This appears to cover Anthropic's debut on the Nasdaq stock exchange, which is primarily a financial and corporate event rather than a technical one. For engineers, the interest is mostly indirect: funding and public market pressures can shape a company's research priorities, release cadence, and openness. The huge comment count likely reflects general interest in AI industry dynamics rather than any new technical insight. Worth a skim for context but not core engineering content.",
+  "authors": [
+    "wslh"
+  ],
+  "hn_id": 50562754,
+  "points": 920
+}

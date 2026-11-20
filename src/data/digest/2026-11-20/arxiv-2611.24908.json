@@ -1,0 +1,19 @@
+{
+  "title": "Decomposing SGD Dynamics in Neural Networks: Teacher-Induced Spikes and Variance Inflation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.24908",
+  "date": "2026-11-20",
+  "tags": [
+    "stat.ML",
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A theoretical deep-dive into why SGD training dynamics outside the 'useful' feature subspace can hurt generalization in simple neural networks.",
+  "analysis": "This is a theoretical machine learning paper studying two-layer neural networks trained with SGD on a synthetic teacher model, decomposing weights into a signal-aligned part and an orthogonal 'noise' part. It shows that even though updates to the orthogonal part start out random, training dynamics create structured spikes in this component that inflate variance and hurt generalization, and that freezing those directions actually helps. This kind of analysis adds precision to the broader theory of implicit regularization and feature learning in neural networks. It's a niche but technically careful contribution mainly of interest to researchers studying deep learning theory rather than practitioners.",
+  "authors": [
+    "Samet Demir",
+    "Zafer Dogan"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

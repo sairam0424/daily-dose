@@ -1,0 +1,23 @@
+{
+  "title": "Mapping the AI Supply Chain: Dependencies, Vulnerabilities, and Market Concentration in the AI Ecosystem",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.24927",
+  "date": "2026-11-20",
+  "tags": [
+    "cs.CY",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A large mapping effort of the organizational AI supply chain, useful for understanding concentration and systemic risk in the AI industry.",
+  "analysis": "The authors built a large dataset tracking organizations and relationships across the AI ecosystem, covering compute, data, capital, talent, and models, and published it openly with an interactive explorer. This kind of structural mapping is useful for understanding single points of failure, market concentration, and dependency risks in AI infrastructure, which matters for engineers and policymakers assessing systemic risk. The dataset's value depends heavily on its completeness, which the authors admit is limited since private deals aren't captured. Still, it's a rare attempt at empirically grounding debates about AI industry concentration rather than relying on anecdote.",
+  "authors": [
+    "Sarah H. Cen",
+    "Lindsey A. Gailmard",
+    "Joohan Kim",
+    "Rishi Bommasani",
+    "Daniel E. Ho",
+    "Percy Liang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

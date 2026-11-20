@@ -1,0 +1,16 @@
+{
+  "title": "Garage Door Spam",
+  "source": "hn",
+  "url": "https://blog.harrison.page/garage-door-spam/",
+  "date": "2026-11-20",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A concrete, relatable story about spam/abuse targeting IoT garage door systems, likely with real technical detail on exploits or protocol weaknesses.",
+  "analysis": "This looks like a writeup about unsolicited messages or attacks hitting smart garage door openers, a niche but illustrative case of IoT security problems. These stories are valuable because they usually reveal specifics like exposed APIs, weak authentication, or lack of rate limiting in consumer smart-home devices. The high engagement suggests it resonated because many readers have run into similar issues with connected devices. Worth reading for engineers working on IoT, API security, or device provisioning systems.",
+  "authors": [
+    "harrisonpage"
+  ],
+  "hn_id": 50519231,
+  "points": 756,
+  "image_url": "https://harrison.page/harrison.jpg"
+}

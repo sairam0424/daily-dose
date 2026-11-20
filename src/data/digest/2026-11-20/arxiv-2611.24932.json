@@ -1,0 +1,21 @@
+{
+  "title": "Knowing What You Know: A Trait Theory of Reviewer Value in Human-AI Cognitive Systems",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.24932",
+  "date": "2026-11-20",
+  "tags": [
+    "cs.AI",
+    "cs.CE",
+    "cs.HC",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "An interesting empirical study on when human reviewers add value over AI systems, grounded in real production data from an accounting workflow.",
+  "analysis": "This paper argues that a reviewer's usefulness in human-AI review loops comes down to metacognitive calibration, meaning whether their confidence matches their actual correctness, rather than speed or experience. Using six months of data from 483 reviewers and over half a million events, they show that confident but wrong reviewers can look better than careful experts under naive behavioral metrics. They also find tenure doesn't predict calibration, and that focusing effort based on calibration concentrates most human review time on genuine errors. This is relevant to anyone designing human-in-the-loop AI review systems, since it challenges common assumptions about using activity or tenure as proxies for reviewer quality.",
+  "authors": [
+    "Priyanka Sinha",
+    "Sugam Pandey"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Agentic Harness Engineering Beta: Requirement-Centered Evolution of Agent Harnesses",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.24924",
+  "date": "2026-11-20",
+  "tags": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A method for improving coding agent harnesses by incorporating simulated user requirements rather than optimizing purely for benchmark scores, with solid quantitative gains.",
+  "analysis": "The paper introduces AHE-Beta, a loop that evolves the 'harness' (the surrounding scaffolding and tooling) around coding agents based on simulated and real user feedback rather than just benchmark score optimization. It reports pass@1 improving from 21.9% to 33.3% while using fewer tokens, and wins a human A/B preference test against alternatives like Claude Code's harness. The approach addresses a real problem in agent engineering, where optimizing purely for benchmark metrics can produce narrow, brittle improvements. The transfer results to other models add some confidence the gains aren't purely an artifact of one setup.",
+  "authors": [
+    "Jiahang Lin",
+    "Jiahao Chen",
+    "Yiding Wang",
+    "Shichun Liu",
+    "Chengjun Pan",
+    "Shihan Dou",
+    "Honglin Guo",
+    "Yuyang Hu",
+    "Changhao Jiang",
+    "Zhenhua Han",
+    "Hang Yan",
+    "Qi Zhang",
+    "Tao Gui",
+    "Xuanjing Huang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

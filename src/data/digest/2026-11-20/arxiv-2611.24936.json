@@ -1,0 +1,18 @@
+{
+  "title": "Jailbreak Detection on Large Language Models via Contrastive Prototype Structures",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.24936",
+  "date": "2026-11-20",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 6,
+  "why_read": "A reasonably rigorous technical paper on detecting LLM jailbreaks using prototype-based representations instead of a separate trained classifier.",
+  "analysis": "The paper proposes JDPI, a method that detects jailbreak attempts in language models by comparing input representations to learned 'harmful' and 'benign' prototype vectors rather than training a full classifier. It reports meaningful accuracy gains over baselines including Llama Guard 3-8B, and shows the method works across multiple benchmarks and multi-turn conversations. This is useful for engineers building LLM safety layers because it suggests a lighter-weight, more label-efficient detection approach. The specificity of the numbers and cross-dataset transfer results give it decent technical credibility.",
+  "authors": [
+    "Yan Qiu",
+    "Yuanyuan Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

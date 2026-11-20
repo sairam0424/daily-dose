@@ -1,0 +1,17 @@
+{
+  "title": "How the European Commission rolled out Matrix to more than 40k staff",
+  "source": "hn",
+  "url": "https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/",
+  "date": "2026-11-20",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A detailed account of deploying a decentralized, end-to-end encrypted chat protocol (Matrix) at massive organizational scale is genuinely useful engineering case-study material.",
+  "analysis": "This is reportedly about the European Commission migrating over 40,000 staff to Matrix, an open, federated, end-to-end-encrypted messaging protocol. Large-scale rollouts of decentralized protocols inside government bureaucracies are rare and offer real lessons about federation, identity management, interoperability, and operational scaling. Readers interested in distributed systems, enterprise messaging, or digital sovereignty efforts in the EU will find concrete details valuable. This kind of real-world deployment story tends to be more substantive than typical product launch posts.",
+  "authors": [
+    "liotier"
+  ],
+  "hn_id": 50558533,
+  "points": 663,
+  "image_url": "https://element.io/assets-32bb636196f91ed59d7a49190e26b42c/5ef25c0d30ee3108da4c25e9/6adb731e199252ab9c9e4dd5_matrix-conference-opengraph.jpg",
+  "favicon_url": "https://element.io/assets-32bb636196f91ed59d7a49190e26b42c/5ef25c0d30ee3108da4c25e9/5f0e1754953989c7b1ecff5d_favicon.png"
+}

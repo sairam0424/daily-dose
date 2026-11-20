@@ -1,0 +1,16 @@
+{
+  "title": "gylive/google-ultra",
+  "source": "github",
+  "url": "https://github.com/gylive/google-ultra",
+  "date": "2026-11-20",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 2,
+  "why_read": "No description is provided, and the name suggests this may relate to bypassing or automating Google services, making its real purpose and technical value unclear.",
+  "analysis": "Without a description, abstract, or further detail, it's impossible to assess what this repository actually does beyond its name and language. Given the name pattern and presence in this list alongside credential-extraction and account/invite-code tools, it may relate to unofficial automation or account manipulation involving Google services. Due to insufficient information, a confident technical evaluation can't be made, so the score reflects low confidence rather than clear merit. This would need the actual README or description to judge properly.",
+  "authors": [],
+  "stars": 2454,
+  "image_url": "https://opengraph.githubassets.com/bd6aa9634f444776446b97a07c5514858aec973a10c86047242f8cf3ee848860/gylive/google-ultra",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
