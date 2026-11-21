@@ -1,0 +1,19 @@
+{
+  "title": "Agentic engineering a smart home energy system with Antigravity and Gemini 4",
+  "source": "devto",
+  "url": "https://dev.to/googleai/agentic-engineering-a-smart-home-energy-system-with-antigravity-and-gemini-4-53md",
+  "date": "2026-11-21",
+  "tags": [
+    "ai",
+    "antigravity",
+    "smarthome",
+    "energy"
+  ],
+  "interest_score": 4,
+  "why_read": "A personal project writeup on automating home energy management with AI coding agents, moderately interesting as an agentic-coding case study but light on deep technical detail.",
+  "analysis": "The author describes building a home energy automation system that coordinates solar panels, a battery, two EVs, and dynamic electricity pricing, using a pair of AI coding agent models (branded Gemini 4 Hydrogen and Carbon, which are not publicly known model names and may be speculative or fictionalized) within an 'agentic engineering' workflow. The real technical content is the energy optimization logic itself, deciding when to charge from solar versus grid and avoiding battery-to-EV drain, which is a genuinely interesting small-scale control problem. However, much of the article focuses on the AI-assisted development process rather than the energy system's algorithms or validation, limiting its technical depth. It's a reasonable case study of agentic coding workflows but light on rigorous engineering detail.",
+  "authors": [],
+  "reactions": 22,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F913y9g66ma1ggz6p92f9.png"
+}

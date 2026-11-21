@@ -1,0 +1,14 @@
+{
+  "title": "bookwjitchieni1986/blender-ai-mcp-addon",
+  "source": "github",
+  "url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+  "date": "2026-11-21",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "An example of integrating multiple LLM backends into Blender via the increasingly popular MCP protocol for AI-assisted 3D workflows, interesting mainly for its integration pattern.",
+  "analysis": "This project is a Blender add-on exposing an MCP (Model Context Protocol) server so various AI assistants, including ChatGPT, Claude, Gemini, and local models via Ollama, can control Blender's scene tools and run multi-agent workflows through Python scripting. It reflects a broader trend of wrapping creative software with standardized AI-agent interfaces rather than one-off custom integrations. The idea of a 'copilot for 3D' is appealing but the actual engineering novelty is mostly in plumbing together existing protocols and APIs rather than new techniques. Worth a glance for those interested in AI-tool integration patterns in creative software.",
+  "authors": [],
+  "stars": 1795,
+  "image_url": "https://opengraph.githubassets.com/f82061da5a549073fb9b861410c60881bae5a17b9254ca1ee2564426bd20f8c3/bookwjitchieni1986/blender-ai-mcp-addon",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "erkamyaman/rust-anything",
+  "source": "github",
+  "url": "https://github.com/erkamyaman/rust-anything",
+  "date": "2026-11-21",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A practical tool for safely porting applications to Rust incrementally while verifying behavior against the original, which addresses a real and painful problem in large-scale rewrites.",
+  "analysis": "This tool supports incremental migration of existing applications, written in TypeScript, Python, C, Go, Ruby, or Java, to Rust, piece by piece, while checking each migrated component against recorded behavior of the original. This directly addresses the common fear with full rewrites: silent behavioral regressions introduced during translation. Differential or behavior-based testing during migration is a sound engineering practice, and generalizing it across many source languages and target types (CLIs, HTTP servers, libraries) is a useful, broadly applicable idea. The high star count suggests strong developer interest in safer rewrite tooling.",
+  "authors": [],
+  "stars": 6682,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Cozy Bytes 🍺 | Rust::Who Owns the Cat? 🐈🦀",
+  "source": "devto",
+  "url": "https://dev.to/_yourbrainbuffer_/cozy-bytes-rustwho-owns-the-cat-13ch",
+  "date": "2026-11-21",
+  "tags": [
+    "rust",
+    "learning",
+    "beginners",
+    "programming"
+  ],
+  "interest_score": 3,
+  "why_read": "A lighthearted, beginner-friendly explainer of Rust's ownership and borrowing rules using cat jokes, fine for newcomers but offers nothing new to experienced Rust developers.",
+  "analysis": "This is an informal, humor-driven tutorial covering the absolute basics of Rust's ownership model: moves, borrowing, and mutable references, illustrated with a running cat analogy. It correctly explains the core rules but at a very introductory level with no depth beyond what's in the official Rust book. It may help total beginners build intuition in a fun way, but experienced engineers will find nothing new here.",
+  "authors": [],
+  "reactions": 52,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F36ic1wwew7q0m53uv65e.gif"
+}

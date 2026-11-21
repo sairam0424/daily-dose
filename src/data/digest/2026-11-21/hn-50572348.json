@@ -1,0 +1,17 @@
+{
+  "title": "Restricting AI agents in mobile operating systems platforms from capturing data",
+  "source": "hn",
+  "url": "https://signal.org/blog/protecting-your-privacy/",
+  "date": "2026-11-21",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Touches on a timely and consequential platform policy issue around AI agents and data privacy on phones, relevant to anyone building or regulating agentic software.",
+  "analysis": "This submission concerns proposals or discussions about restricting AI agents running on mobile operating systems from capturing user data, likely screen content, clipboard, or sensor data. As AI agents increasingly operate autonomously within phone UIs, this is a real and growing security and privacy concern for platform vendors and developers. The topic sits at the intersection of OS sandboxing, permission models, and emerging agentic AI capabilities, which is genuinely relevant to engineers building such systems or defending against them. The discussion thread likely has substantive debate on technical feasibility and policy tradeoffs.",
+  "authors": [
+    "dotcoma"
+  ],
+  "hn_id": 50572348,
+  "points": 511,
+  "image_url": "https://signal.org/blog/images/protecting-your-privacy-opengraph.png",
+  "favicon_url": "https://signal.org/favicon.ico"
+}

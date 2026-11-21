@@ -1,0 +1,16 @@
+{
+  "title": "krisgfx9/Wireless-Device-Battery-Monitor",
+  "source": "github",
+  "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+  "date": "2026-11-21",
+  "tags": [
+    "C++"
+  ],
+  "interest_score": 4,
+  "why_read": "A handy utility for checking wireless peripheral battery levels without vendor bloatware, useful but not technically novel.",
+  "analysis": "This is a lightweight Windows tray application that reads battery levels from various wireless mice, keyboards, headsets, and controllers across many brands, displaying them without needing each manufacturer's often bulky companion software. It solves a genuine everyday annoyance for users with mixed-brand peripherals. Technically it likely relies on reverse-engineered USB/Bluetooth HID protocols for each vendor, which is a modestly interesting but narrow engineering challenge. It's a nice quality-of-life tool rather than something offering broader technical insight.",
+  "authors": [],
+  "stars": 5331,
+  "image_url": "https://opengraph.githubassets.com/8e373dd471d58fc76f76a1e7549f9640d17c2d84e288a1bbc28ff73c10fcad55/krisgfx9/Wireless-Device-Battery-Monitor",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

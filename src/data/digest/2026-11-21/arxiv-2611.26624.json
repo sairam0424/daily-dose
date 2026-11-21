@@ -1,0 +1,18 @@
+{
+  "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26624",
+  "date": "2026-11-21",
+  "tags": [
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting applied idea using AI agents to playtest and iteratively redesign games for better skill progression, relevant to game design and agent-based evaluation research.",
+  "analysis": "PlayCraft uses a vision-based AI agent to repeatedly play a generated game and report detailed feedback on its decisions and progress, then uses that feedback to redesign the game for better mastery curves. This is a creative application of agent self-play beyond typical benchmarks, targeting the subjective quality of 'engagement' rather than just task success. The approach of estimating player skill progression and comparing it to a target learning curve is a reasonable systematic way to operationalize game balance. It's a niche but genuinely novel use of LLM agents for iterative creative design rather than pure task-solving.",
+  "authors": [
+    "Weihao Cheng"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
