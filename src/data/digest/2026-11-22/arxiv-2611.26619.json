@@ -1,0 +1,23 @@
+{
+  "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26619",
+  "date": "2026-11-22",
+  "tags": [
+    "cs.DC",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A detailed systems paper on efficiently managing GPU memory and caching for hybrid attention LLM serving, with solid reported latency and throughput gains.",
+  "analysis": "TideCache addresses a real infrastructure problem: hybrid language models mix full attention layers with more memory-efficient 'bounded-state' layers, and each has very different caching needs during inference. The system dynamically moves cache data between GPU and host memory and prefetches upcoming layers' data to overlap data transfer with computation, instead of statically allocating fixed cache space. On real hardware the authors report up to roughly 2x more completed agent turns and meaningfully lower latency compared to an existing baseline (SGLang with HiCache). This is a solid, technically detailed systems contribution relevant to anyone deploying large hybrid-architecture models at scale.",
+  "authors": [
+    "Jinbin Luo",
+    "Xiaozhe Yao",
+    "Shang Yang",
+    "Zhijian Liu",
+    "Song Han",
+    "Qinghao Hu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

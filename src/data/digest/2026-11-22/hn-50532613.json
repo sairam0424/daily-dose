@@ -1,0 +1,15 @@
+{
+  "title": "Brazil's tax authority open-sources its tax calculator on GitHub under MIT",
+  "source": "hn",
+  "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-publica-primeiro-codigo-fonte-aberto-no-github-e-amplia-transparencia-da-reforma-tributaria",
+  "date": "2026-11-22",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A government opening the source code of its official tax calculation engine is a genuinely useful and unusual transparency move with real technical content to look at.",
+  "analysis": "Brazil's tax authority releasing its tax calculator as open source under the permissive MIT license lets developers, accountants, and researchers inspect and reuse the actual logic behind real tax computations. This is interesting both as a civic-tech transparency story and as a chance to see how a government structures complex, rule-heavy calculation logic in code. It could also serve as a reference implementation for anyone building tax or compliance tooling in Brazil. The topic is niche to one country's tax system but the open-sourcing of official algorithms is a broader trend worth watching.",
+  "authors": [
+    "dvaplima"
+  ],
+  "hn_id": 50532613,
+  "points": 736
+}

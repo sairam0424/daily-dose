@@ -1,0 +1,19 @@
+{
+  "title": "Dead Keys: I Brought Back the Typing Games. Kiro Did the Heavy Lifting.",
+  "source": "devto",
+  "url": "https://dev.to/earlgreyhot1701d/dead-keys-i-brought-back-the-typing-games-kiro-did-the-heavy-lifting-5gc2",
+  "date": "2026-11-22",
+  "tags": [
+    "ai",
+    "kiro",
+    "gamedev",
+    "buildinpublic"
+  ],
+  "interest_score": 3,
+  "why_read": "A fun hackathon project resurrecting 1980s-style typing games as a keyboard-skill trainer with heatmap-based personalized drills, built largely with an AI coding agent.",
+  "analysis": "Dead Keys is a browser-based typing trainer that tracks which specific keys a user frequently mistypes, visualizes them on a heat map, and generates targeted practice drills from that data. The notable technical context is that it was built using an AI agent tool called Kiro, following a spec-first process with hooks, custom agents, an MCP server, and nearly 950 automated tests, completed in about 35 hours. The inclusion of real usage statistics about declining keyboarding education adds some grounding to the project's motivation. It's a lightweight, nicely scoped side project more interesting for its AI-assisted development process than for any deep technical innovation in the typing trainer itself.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fcbsnz7j5h5wxcobyj9vm.png"
+}

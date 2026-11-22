@@ -1,0 +1,14 @@
+{
+  "title": "bookwjitchieni1986/blender-ai-mcp-addon",
+  "source": "github",
+  "url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+  "date": "2026-11-22",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "An MCP-based AI integration for Blender that lets various chat-style AI assistants control 3D scene creation, part of a growing trend of AI tool integrations into creative software.",
+  "analysis": "This addon connects Blender, a popular open-source 3D modeling tool, to large language model assistants like ChatGPT, Claude, and Gemini using the Model Context Protocol (MCP), a standard for letting AI models call external tools. It allows AI-driven scene manipulation, scripting via Blender's Python API (bpy), and multi-agent workflows, essentially acting as an AI copilot for 3D work. This fits a broader pattern of MCP servers being built for creative and technical software, which is a genuinely useful integration pattern worth knowing about even if this specific implementation is unproven. The technical depth is unclear without more detail on execution and reliability.",
+  "authors": [],
+  "stars": 2420,
+  "image_url": "https://opengraph.githubassets.com/5d577dc9665d39715f4fa78f1037c7991d514200e4971b7b49a400c3779a3655/bookwjitchieni1986/blender-ai-mcp-addon",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

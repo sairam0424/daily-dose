@@ -1,0 +1,17 @@
+{
+  "title": "Lean verification of the Riemann Hypothesis",
+  "source": "hn",
+  "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+  "date": "2026-11-22",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A formally verified proof artifact touching the Riemann Hypothesis in Lean would be a major event in both math and formal verification, assuming it holds up.",
+  "analysis": "Lean is a proof assistant used to formally verify mathematical statements line by line, removing any chance of human error in a proof. Claiming a Lean verification of the Riemann Hypothesis, one of math's most famous unsolved problems, is an extraordinary claim that likely involves either a narrow partial result, a formalization of existing work, or possibly an erroneous or hoax claim given how heavily such claims get scrutinized. The large comment count suggests significant community skepticism and debate. Worth reading cautiously as it is likely more nuanced or controversial than the title suggests.",
+  "authors": [
+    "g-b-r"
+  ],
+  "hn_id": 50589618,
+  "points": 807,
+  "image_url": "https://leanprover-community.github.io/blog/meta-twitter.png",
+  "favicon_url": "https://leanprover-community.github.io/img/favicon.ico"
+}

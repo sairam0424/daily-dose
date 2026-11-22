@@ -1,0 +1,19 @@
+{
+  "title": "Test the npm Package, Not Just the Monorepo",
+  "source": "devto",
+  "url": "https://dev.to/gde/test-the-npm-package-not-just-the-monorepo-2j1e",
+  "date": "2026-11-22",
+  "tags": [
+    "typescript",
+    "testing",
+    "docker",
+    "opensource"
+  ],
+  "interest_score": 6,
+  "why_read": "A focused, technically substantive post about a subtle but real class of bugs where a library passes its own tests yet fails silently once installed as a real npm package in a consumer's application.",
+  "analysis": "The author, who maintains a tracing/observability library called AgentInspect, explains how duplicate copies of a module can exist in a dependency tree even when the tree looks deduplicated, causing an adapter to look at a different in-memory context instance than the one the real application is using. This causes silent capture failures that unit tests checking only return values would never catch, which is a genuinely important and under-discussed testing gap. The post describes building a separate 'installed package' smoke test against real published versions and a real MCP SDK version to catch this class of bug specifically. This is a solid, specific lesson in packaging and runtime-identity pitfalls that is broadly applicable beyond this one library.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fy7i783uu86bkgj7jamae.jpg"
+}

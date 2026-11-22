@@ -1,0 +1,19 @@
+{
+  "title": "Day 89: A Dead Service and a Private Container That Serves",
+  "source": "devto",
+  "url": "https://dev.to/ndcodes/day-89-a-marker-in-the-file-and-a-grant-somewhere-else-1deo",
+  "date": "2026-11-22",
+  "tags": [
+    "devops",
+    "ansible",
+    "azure",
+    "automation"
+  ],
+  "interest_score": 4,
+  "why_read": "A personal devops learning-log entry walking through two small, realistic Ansible/Azure tasks, useful mainly as an example of systemd service states and private storage account hosting quirks.",
+  "analysis": "The post documents two specific hands-on exercises from a learning platform: installing logrotate via Ansible and understanding why a systemd timer-triggered service correctly shows as 'inactive (dead)' between runs, plus a separate task about hosting a static site on an Azure storage account that is private yet still serves content publicly. These are reasonable real-world gotchas that trip up newcomers to systemd timers and Azure static website hosting, and the explanations seem grounded in actual command output. It's a low-stakes, practical learning diary rather than novel or deep technical content, useful mainly for other junior devops learners. The explanations around 'TriggeredBy' and private container static site serving are the most informative parts.",
+  "authors": [],
+  "reactions": 19,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fhg6t49ihysuwwv3tlewr.jpg"
+}

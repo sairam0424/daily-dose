@@ -1,0 +1,15 @@
+{
+  "title": "erkamyaman/rust-anything",
+  "source": "github",
+  "url": "https://github.com/erkamyaman/rust-anything",
+  "date": "2026-11-22",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A practical and fairly novel tool for incrementally rewriting applications into Rust while continuously checking behavioral equivalence against the original.",
+  "analysis": "This project targets a real and painful problem: rewriting existing software in Rust piece by piece without silently breaking behavior along the way. It supports recording the original application's behavior across multiple source languages (TypeScript, Python, C, Go, Ruby, Java) and verifying each migrated piece against that recording. This kind of behavior-preserving incremental migration tooling is valuable for teams doing large legacy rewrites, and the high star count suggests real developer interest. The approach is a sensible middle ground between risky big-bang rewrites and ad hoc manual porting.",
+  "authors": [],
+  "stars": 7431,
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "ItsNotRexed/Leonida",
+  "source": "github",
+  "url": "https://github.com/ItsNotRexed/Leonida",
+  "date": "2026-11-22",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A claimed native PC recompilation of an unreleased Xbox version of a hugely anticipated game, which is likely either misleading, speculative, or legally questionable.",
+  "analysis": "The description claims to be a 'native PC recompilation' of the Xbox version of 'Grand Theft Auto 6,' a game that has not been publicly released at time of writing, making the claim highly suspect. If genuine, static or dynamic recompilation projects (similar to UltraSTAR or Xenia) are technically interesting reverse-engineering efforts that convert console binaries to run natively on PC. However, this specific claim is almost certainly either fake, a prank repository, or involves unreleased/leaked game assets, raising both credibility and legal concerns. Given the implausibility, this should be treated with heavy skepticism rather than taken as a legitimate technical project.",
+  "authors": [],
+  "stars": 5598,
+  "image_url": "https://opengraph.githubassets.com/1c0ff23698d5dcd5d557702f1ad035d047941687d5e08c5e2f4f398ba68a6924/ItsNotRexed/Leonida",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
