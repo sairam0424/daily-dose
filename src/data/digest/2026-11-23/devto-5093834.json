@@ -1,0 +1,19 @@
+{
+  "title": "I turned my GitHub contribution graph into a Bloomberg-style trading terminal",
+  "source": "devto",
+  "url": "https://dev.to/necoz/i-turned-my-github-contribution-graph-into-a-bloomberg-style-trading-terminal-31eh",
+  "date": "2026-11-23",
+  "tags": [
+    "discuss",
+    "github",
+    "webdev",
+    "programming"
+  ],
+  "interest_score": 4,
+  "why_read": "A fun, well-executed novelty visualization project turning GitHub contribution data into a stock-trading-style dashboard, more neat than practical.",
+  "analysis": "This project is a GitHub Action that renders a user's contribution calendar as a finance-terminal-style chart with candlesticks, volume bars, and computed statistics like Sharpe ratio and max drawdown, all as a single dependency-free SVG. It's a creative data visualization hack with zero runtime dependencies, which is a nice engineering touch for something meant to run in CI as a README badge generator. The actual technical complexity is modest, mostly SVG generation and GitHub API data wrangling, making it a fun but lightweight curiosity rather than a deep technical read.",
+  "authors": [],
+  "reactions": 45,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fc5w2n6ra57sogqhujyra.png"
+}

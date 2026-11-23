@@ -1,0 +1,20 @@
+{
+  "title": "I Made My RAG Safer. It Got Worse Under Load",
+  "source": "devto",
+  "url": "https://dev.to/ayush_singh_9b0d83152be5b/i-made-my-rag-safer-it-got-worse-under-load-3olm",
+  "date": "2026-11-23",
+  "tags": [
+    "ai",
+    "rag",
+    "discuss",
+    "productivity"
+  ],
+  "interest_score": 7,
+  "why_read": "A candid, numbers-driven post-mortem on how adding sentence-level verification to a RAG system traded off accuracy against throughput under load.",
+  "analysis": "The author describes building a RAG system that checks every generated sentence against its source passage before showing it to the user, then honestly reports that this safety feature reduced throughput under heavy load, from 67.4% to 62.8% of requests served. This is a genuine, data-backed engineering trade-off discussion covering caching duplicate questions, queueing delays, and the cost of verification models, which is valuable for anyone building production RAG systems. The specificity of the numbers and willingness to report a negative result make it more credible and useful than typical promotional RAG content.",
+  "authors": [],
+  "reactions": 30,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqbzez02x7i1msg8en4m1.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26617",
+  "date": "2026-11-23",
+  "tags": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG",
+    "cs.RO"
+  ],
+  "interest_score": 7,
+  "why_read": "A technically interesting approach that repurposes pretrained video generation models to learn transferable robot and navigation actions from unlabeled video.",
+  "analysis": "This paper tackles the problem of learning what actions caused observed changes in video, without labeled action data, by reusing a single pretrained video diffusion transformer for both predicting actions and predicting future frames given those actions. This is a clever reuse of generative video priors for robotics and navigation, potentially reducing the need for large labeled action datasets. The reported state-of-the-art results in few-shot action learning and transfer across different robot embodiments make it relevant to researchers working on robot learning from video.",
+  "authors": [
+    "Yuxin Jiang",
+    "Wenqiang Sun",
+    "Jiaqi Li",
+    "Yuchao Gu",
+    "Lvmin Zhang",
+    "Ivor Tsang",
+    "Mike Zheng Shou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

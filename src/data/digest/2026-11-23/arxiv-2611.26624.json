@@ -1,0 +1,18 @@
+{
+  "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26624",
+  "date": "2026-11-23",
+  "tags": [
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "An interesting applied AI agents paper on using play-testing agents to automatically redesign games for better player skill progression.",
+  "analysis": "PlayCraft uses a vision-based AI agent to repeatedly play a generated game, then uses its reported experience to revise the game's design for better engagement and skill mastery. This is a creative combination of agentic evaluation and generative content design, relevant to procedural content generation and game design research. The approach of having agents self-report decisions and reflections to drive iterative design is a useful technique applicable beyond games, such as for tuning any interactive system via simulated users.",
+  "authors": [
+    "Weihao Cheng"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

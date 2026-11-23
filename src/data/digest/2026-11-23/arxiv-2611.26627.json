@@ -1,0 +1,23 @@
+{
+  "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26627",
+  "date": "2026-11-23",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "A rigorous empirical finding that most of the benefit from RL fine-tuning of diffusion models can be captured by simple, input-independent steering vectors.",
+  "analysis": "This paper investigates what reinforcement learning fine-tuning actually changes inside diffusion transformer image and video generators. The authors show that a tiny set of fixed vectors added to intermediate layers, the same for every prompt, can recover 90 percent or more of the quality gains that expensive RL training achieves using far more parameters. This suggests that RL post-training mostly nudges the model toward a direction it already knows how to go rather than teaching genuinely new, prompt-specific behavior. That is a meaningful and somewhat surprising mechanistic insight for anyone building or fine-tuning generative image or video models.",
+  "authors": [
+    "Tuna Han Salih Meral",
+    "Kaan Oktay",
+    "Alec Helbling",
+    "Atakan Kara",
+    "Duen Horng Chau",
+    "Pinar Yanardag"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

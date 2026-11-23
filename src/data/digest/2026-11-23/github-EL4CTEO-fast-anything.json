@@ -1,0 +1,16 @@
+{
+  "title": "EL4CTEO/fast-anything",
+  "source": "github",
+  "url": "https://github.com/EL4CTEO/fast-anything",
+  "date": "2026-11-23",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A pragmatic approach to performance optimization that automates profiling and selectively porting hot code paths to Rust with correctness verification.",
+  "analysis": "This tool embodies a sensible optimization philosophy: instead of rewriting entire applications in a faster language, it profiles Python, Node, or Ruby code to find the actual bottlenecks and helps port just those hot functions to Rust. It leans on a coding agent to perform the translation and includes a way to verify the ported code behaves identically to the original, which is the hard part of such migrations. This is a genuinely useful and well-scoped idea for engineers facing performance problems in dynamic languages without wanting a full rewrite.",
+  "authors": [],
+  "stars": 1935,
+  "image_url": "https://opengraph.githubassets.com/47a32d492d83f49f49bc79c0ffc038962a2aaa5643782f56e0b85c97628ffbc1/EL4CTEO/fast-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

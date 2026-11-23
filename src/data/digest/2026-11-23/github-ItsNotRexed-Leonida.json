@@ -1,0 +1,16 @@
+{
+  "title": "ItsNotRexed/Leonida",
+  "source": "github",
+  "url": "https://github.com/ItsNotRexed/Leonida",
+  "date": "2026-11-23",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 7,
+  "why_read": "A native PC recompilation project for a major unreleased game would be a very high-profile reverse engineering effort if genuine, interesting from a technical reverse-engineering standpoint.",
+  "analysis": "This repository claims to be a native PC recompilation of the Xbox version of a yet-unreleased, high-profile video game, which is a technically notable kind of static recompilation project similar to past efforts for older game console titles. Such projects typically work by translating console machine code into portable C/C++ that runs natively on PC, which is a genuinely hard reverse-engineering and compiler problem. However, given the game in question has not yet been released, the authenticity and legality of this project is questionable and warrants skepticism. If real, it would be of high technical interest; if not, it is likely a hype-bait repository.",
+  "authors": [],
+  "stars": 15298,
+  "image_url": "https://opengraph.githubassets.com/602d698774811bacfa67070b96383b08ec41effc1ed90dec763d2f16b54aeda7/ItsNotRexed/Leonida",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

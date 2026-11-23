@@ -1,0 +1,19 @@
+{
+  "title": "Day 90: A Mask in the Way and a Policy Pointing at Nothing",
+  "source": "devto",
+  "url": "https://dev.to/ndcodes/day-90-a-mask-in-the-way-and-a-policy-pointing-at-nothing-390o",
+  "date": "2026-11-23",
+  "tags": [
+    "devops",
+    "ansible",
+    "azure",
+    "automation"
+  ],
+  "interest_score": 5,
+  "why_read": "A detailed, practical day-in-the-life devops post covering real Linux ACL mask gotchas and Azure Key Vault access policy pitfalls.",
+  "analysis": "This post walks through two concrete sysadmin tasks: debugging how Linux ACL masks silently restrict permissions despite ls showing something different, and fixing an Azure Key Vault access policy misconfigured against the wrong GUID. It includes actual Ansible playbook code and explains a subtle but common real-world gotcha that could trip up less experienced engineers. It's a niche, practical learning-log style post rather than groundbreaking content, but the technical specifics are accurate and genuinely useful for people doing similar infrastructure work.",
+  "authors": [],
+  "reactions": 24,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7fe8n9khrpkrg1kcpco1.jpg"
+}

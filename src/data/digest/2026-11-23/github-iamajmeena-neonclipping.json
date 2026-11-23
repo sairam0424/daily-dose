@@ -1,0 +1,16 @@
+{
+  "title": "iamajmeena/neonclipping",
+  "source": "github",
+  "url": "https://github.com/iamajmeena/neonclipping",
+  "date": "2026-11-23",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical open-source tool for automatically generating short captioned video clips from longer content using local LLMs, useful for content creators.",
+  "analysis": "This tool automates a common but tedious workflow: extracting short vertical clips with captions from longer videos, using local processing rather than cloud services. The audio-first and local-LLM approach suggests attention to privacy and cost, which is appealing compared to many paid SaaS clipping tools. It's a solid applied engineering tool rather than a research contribution, useful mainly to content creators and marketers rather than engineers in general.",
+  "authors": [],
+  "stars": 2097,
+  "image_url": "https://opengraph.githubassets.com/6f30adcb9e199eb02aec414038b1f8e1db6147fb70ed4de63ed179660057d705/iamajmeena/neonclipping",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

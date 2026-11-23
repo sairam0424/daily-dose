@@ -1,0 +1,14 @@
+{
+  "title": "bookwjitchieni1986/blender-ai-mcp-addon",
+  "source": "github",
+  "url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+  "date": "2026-11-23",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A practical integration of LLM agents into Blender via the increasingly common MCP protocol, useful for 3D artists wanting AI-assisted workflows.",
+  "analysis": "This project adds a Model Context Protocol server and chat interface to Blender, letting various LLMs manipulate 3D scenes through tool calls and multi-agent workflows. MCP-based tool integrations are a growing pattern for giving AI assistants structured control over complex software, and Blender is a natural target given its rich scripting API. The idea is technically sound but the actual value depends heavily on how robust and safe the generated scene operations are, which isn't detailed in the description.",
+  "authors": [],
+  "stars": 2748,
+  "image_url": "https://opengraph.githubassets.com/04a9c494b0678c036b901029e4fefab87970c44a2a93191a018892653a7020d1/bookwjitchieni1986/blender-ai-mcp-addon",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

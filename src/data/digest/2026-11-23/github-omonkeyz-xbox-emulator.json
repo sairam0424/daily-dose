@@ -1,0 +1,16 @@
+{
+  "title": "omonkeyz/xbox-emulator",
+  "source": "github",
+  "url": "https://github.com/omonkeyz/xbox-emulator",
+  "date": "2026-11-23",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "Progress notes on reverse-engineering efforts to run Xbox Series console game builds on PC, a technically substantial emulation/compatibility project.",
+  "analysis": "This repository tracks progress on running Xbox Series X|S game builds on PC through what appears to be a translation or emulation layer project. Console emulation and compatibility layers are technically demanding work involving low-level graphics API translation, kernel emulation, and binary compatibility, similar in spirit to Proton for Windows games on Linux. The project being in early 'progress notes' form means it's more of a work-in-progress log than a finished tool, so its current practical utility is limited, but the underlying technical challenge is legitimate and noteworthy.",
+  "authors": [],
+  "stars": 1325,
+  "image_url": "https://opengraph.githubassets.com/aa576fc5a2b4477dfbe1b7827414b1a8e91579fe7bd4efe4af7bf5f0a89593b9/omonkeyz/xbox-emulator",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

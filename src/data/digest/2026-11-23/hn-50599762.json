@@ -1,0 +1,17 @@
+{
+  "title": "Show HN: I built a game where you are an LLM's subagent",
+  "source": "hn",
+  "url": "https://github.com/gulivan/worker755",
+  "date": "2026-11-23",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A creative game concept that turns the experience of being an LLM subagent into interactive gameplay, interesting from a human-AI interaction design angle.",
+  "analysis": "This Show HN presents a game where the player role-plays as a subagent receiving instructions from a large language model orchestrator, which is a creative way to explore multi-agent AI workflows experientially. It could offer genuine insight into how agentic AI systems decompose tasks and communicate, framed as entertainment rather than a technical paper. The relatively modest but solid engagement suggests a niche but engaged audience interested in LLM agent architectures.",
+  "authors": [
+    "ivantgam"
+  ],
+  "hn_id": 50599762,
+  "points": 269,
+  "image_url": "https://opengraph.githubassets.com/8217d6007c48ce9700767a4757ba11e92ed61c9b4cf4c3f79d9162602a6c3d63/gulivan/worker755",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

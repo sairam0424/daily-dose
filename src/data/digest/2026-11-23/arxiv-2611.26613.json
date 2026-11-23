@@ -1,0 +1,28 @@
+{
+  "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.26613",
+  "date": "2026-11-23",
+  "tags": [
+    "cs.RO",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 5,
+  "why_read": "A detailed benchmark and critique framework for diagnosing failure modes of multimodal agents doing direct low-level robot control, though the GPT-6 reference looks suspicious.",
+  "analysis": "This paper proposes an action-level analysis framework to understand not just whether robot-control agents succeed, but how and where they fail, across a dozen manipulation benchmarks. The mention of 'GPT-6 Astra' as an already-existing frontier model is implausible given current model naming and release timelines, which raises concerns about the abstract's factual grounding or whether this is speculative/satirical content. If taken at face value, the proposed critic framework and failure-mode annotation dataset are a genuinely useful contribution for diagnosing robot agent failures, but the dubious model reference lowers confidence in the paper's reliability.",
+  "authors": [
+    "Yiyang Du",
+    "Yuxuan Kuang",
+    "Qitao Zhao",
+    "Yixuan Wang",
+    "Zhanqiu Guo",
+    "Yi Xu",
+    "Xin Li",
+    "Wenbin He",
+    "Liu Ren",
+    "Chenyan Xiong"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
