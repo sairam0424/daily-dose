@@ -1,0 +1,23 @@
+{
+  "title": "Why Adaptive Optimizers Struggle with Large Convolution Kernels",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.29232",
+  "date": "2026-11-24",
+  "tags": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "A sharp, mechanistic explanation for why large convolution kernels are hard to train with Adam-style optimizers, backed by a simple, nearly free fix with consistent empirical gains.",
+  "analysis": "The paper identifies a concrete mathematical reason why large convolution kernels are notoriously hard to train: adaptive optimizers like Adam normalize each weight's update individually, which inadvertently amplifies the shared mean component of a kernel's gradient by a factor equal to the kernel's size. This forces training to use a much smaller learning rate as kernel size grows, directly explaining a known practical pain point in computer vision architecture design. Their fix, called DCT-Rep, reparameterizes kernels using the discrete cosine transform during training, which isolates and tames this mean-amplification effect without adding parameters or inference cost. The reported gains are modest but consistent across many vision tasks including classification, detection, segmentation, and deblurring, with benefits growing as kernel size increases, making this a genuinely useful and low-cost technique for deep learning practitioners working with large-kernel ConvNets or vision transformers.",
+  "authors": [
+    "Tianyu Ding",
+    "Jiachen Jiang",
+    "Jinxin Zhou",
+    "Yong Ma",
+    "Zhihui Zhu",
+    "Luming Liang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

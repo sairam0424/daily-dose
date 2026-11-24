@@ -1,0 +1,16 @@
+{
+  "title": "AFK-surf/xnulinux",
+  "source": "github",
+  "url": "https://github.com/AFK-surf/xnulinux",
+  "date": "2026-11-24",
+  "tags": [
+    "Objective-C++"
+  ],
+  "interest_score": 7,
+  "why_read": "A clever and unusual systems project running Apple's XNU kernel as a loadable module inside Linux to emulate a macOS personality on arm64, which is a deep operating-systems hack.",
+  "analysis": "XNU is the core kernel used by macOS and iOS, and this project attempts to load it as a module within a running Linux kernel on arm64 hardware, effectively giving Linux a macOS-like personality layer. This requires serious low-level knowledge of kernel internals, system call translation, and hardware abstraction differences between the two operating systems. It's the kind of project that mostly serves as an impressive technical demonstration rather than a production-ready tool, but it's intellectually rich for anyone interested in kernel architecture or OS compatibility layers. The novelty and difficulty of the approach make it noteworthy even if practical use cases are narrow.",
+  "authors": [],
+  "stars": 2411,
+  "image_url": "https://opengraph.githubassets.com/b2e0943d2dfab5fcc67480ce7818a0dbcd8f78e72e74186a333fe2544f3fbe60/AFK-surf/xnulinux",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

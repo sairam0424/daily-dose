@@ -1,0 +1,19 @@
+{
+  "title": "C# 15 Unpacked: Practical Use Cases for Unions with Real Examples",
+  "source": "devto",
+  "url": "https://dev.to/georgekobaidze/c-15-unpacked-practical-use-cases-for-unions-with-real-examples-e32",
+  "date": "2026-11-24",
+  "tags": [
+    "microsoft",
+    "dotnet",
+    "csharp",
+    "programming"
+  ],
+  "interest_score": 5,
+  "why_read": "A practical, example-driven tutorial on using C# discriminated unions for real problems like input validation and state machines, useful for .NET developers adopting this upcoming language feature.",
+  "analysis": "This is the third part of a series explaining C# 15's new union types, moving from theory to concrete use cases like API result modeling, command handling, and state machines. It's a solid practical reference for .NET developers wanting to understand idiomatic patterns for a feature new to the language, even though algebraic/discriminated unions are old news in languages like Rust or F#. The content is instructional rather than novel research, so its value is mainly to C# developers specifically rather than a broader technical audience. It includes a companion GitHub repo for hands-on experimentation.",
+  "authors": [],
+  "reactions": 34,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqd7kgg4cptmi87rtqjlb.png"
+}

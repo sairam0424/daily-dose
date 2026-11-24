@@ -1,0 +1,19 @@
+{
+  "title": "Fuzzy e-Means: Fuzzy c-Means on Large Data with Moving-Average Mini-Batch Updates",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.29241",
+  "date": "2026-11-24",
+  "tags": [
+    "cs.LG",
+    "stat.ML"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid algorithmic speedup for fuzzy clustering at large scale, with concrete numbers showing 11-20x speed gains over standard solvers.",
+  "analysis": "Fuzzy c-means clustering assigns each data point a degree of membership across multiple clusters rather than a hard single assignment, but its standard solver requires scanning the full dataset every iteration, which is slow at scale. This paper adapts a recent mini-batch k-means technique, called e-means, to fuzzy c-means by tracking moving averages of cluster membership and size instead of full passes. The authors show the adapted method converges to nearly the same quality as the slow standard solver, but 11 to 20 times faster on datasets with over 100 million points, while also identifying failure cases like small kernel settings on high-dimensional data. This is a useful, concrete optimization for practitioners who use fuzzy clustering at genuinely large scale.",
+  "authors": [
+    "Paritosh Tiwari",
+    "Punit Rathore"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

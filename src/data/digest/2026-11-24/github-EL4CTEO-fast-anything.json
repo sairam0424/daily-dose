@@ -1,0 +1,16 @@
+{
+  "title": "EL4CTEO/fast-anything",
+  "source": "github",
+  "url": "https://github.com/EL4CTEO/fast-anything",
+  "date": "2026-11-24",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A pragmatic, well-scoped tool that automates the common 'profile then rewrite the hot path' optimization pattern using a coding agent, instead of blanket rewrites into Rust.",
+  "analysis": "This tool pushes back against the common advice to fully rewrite slow applications in Rust, instead automating the targeted workflow of profiling a Python, Node, or Ruby app to find the actual hot functions and porting just those pieces. It uses a coding agent to perform the port and then verifies behavioral equivalence between the original and ported code, which addresses a real risk in automated rewrites. This is a practical, narrowly scoped application of AI coding agents to a well-understood performance engineering pattern rather than a flashy but vague use case. Worth a look for engineers who want faster hot paths without committing to a full language migration.",
+  "authors": [],
+  "stars": 3251,
+  "image_url": "https://opengraph.githubassets.com/72f94e5478b949567d4acbccff487489111d84308caa71bf1a25ac9d7d27555a/EL4CTEO/fast-anything",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

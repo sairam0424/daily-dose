@@ -1,0 +1,31 @@
+{
+  "title": "Seeing Is Not Acting: WARD Diagnoses the Evidence-to-State-to-Action Gap in Longitudinal Clinical Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.29243",
+  "date": "2026-11-24",
+  "tags": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A rigorous benchmark exposing a specific failure mode in clinical LLM agents, namely that they recognize new evidence but fail to act on it, which is clinically important.",
+  "analysis": "WARD is a benchmark testing whether AI clinical agents correctly update patient-state judgments and actions as new evidence arrives over a hospital stay, rather than just answering isolated questions. It uses thousands of tasks derived from real longitudinal hospitalization trajectories, with separate tracks for passive evidence tracking and interactive tool-based management. The key finding is stark: models recognize relevant evidence most of the time but fail to translate it into correct state updates or actions in the vast majority of cases, and only about 11% of agent actions in the interactive track actually advanced patient care appropriately. This is valuable for anyone building or evaluating medical AI agents, since it highlights a concrete gap between perception and safe action that simpler benchmarks miss.",
+  "authors": [
+    "Chao Ding",
+    "Yidong Jiang",
+    "Junzhi Ning",
+    "Juncheng Wu",
+    "Yuhan Wang",
+    "Renjie Lu",
+    "Minjia Yuan",
+    "Gaopeng Wang",
+    "Liyang Wang",
+    "Pengcheng Chen",
+    "Dong Yin",
+    "Meiping Wang",
+    "Jinru Ding",
+    "Yuyin Zhou"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

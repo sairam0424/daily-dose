@@ -1,0 +1,18 @@
+{
+  "title": "Edit-Induced Dependency Mismatch: Propagation Omissions, Recovery, and Evaluation Blind Spots in Coding Agents",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.29242",
+  "date": "2026-11-24",
+  "tags": [
+    "cs.CL",
+    "cs.SE"
+  ],
+  "interest_score": 7,
+  "why_read": "A careful empirical audit showing that coding agents' edits silently break downstream dependent code in ways current benchmarks fail to catch, which is directly relevant to anyone trusting AI code-editing tools.",
+  "analysis": "The paper studies real execution traces from coding agents performing iterative code edits on standard benchmarks like SWE-bench Verified. It finds that when an agent changes a function or interface, it often fails to propagate that change to other code that depends on it, because the agent's reasoning context still reflects the old, outdated version. Crucially, the existing benchmark evaluations often still mark these edits as passing, even though separate execution checks reveal real downstream defects. This is a meaningful methodological contribution for engineers evaluating or deploying AI coding agents, since it shows current pass/fail benchmarks can hide real bugs introduced by automated edits.",
+  "authors": [
+    "Fei Ding"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

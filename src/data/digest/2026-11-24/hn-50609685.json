@@ -1,0 +1,17 @@
+{
+  "title": "GLM-5.4: Toward generalized coding with our first loop transformer",
+  "source": "hn",
+  "url": "https://z.ai/blog/glm-5.4",
+  "date": "2026-11-24",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A claimed new model architecture ('loop transformer') for coding is interesting if the technical details hold up, though marketing framing in the title warrants skepticism.",
+  "analysis": "GLM-5.4 appears to be a new large language model release positioned around a 'loop transformer' approach to generalized coding tasks. Without more concrete benchmark data or architecture description, it's hard to assess novelty versus the many other LLM coding announcements in this space. Still, if it introduces a genuinely new recurrent-style transformer mechanism, that would be architecturally interesting to ML practitioners. The vague, promotional title suggests caution until independent evaluation is available.",
+  "authors": [
+    "foohis"
+  ],
+  "hn_id": 50609685,
+  "points": 1087,
+  "image_url": "https://z-ai-bj.oss-cn-beijing.aliyuncs.com/prompts-rich-media-resources/5.4-blog/20261123-173242.jpeg?w=1280&amp;h=720&amp;fit=fill",
+  "favicon_url": "https://z-cdn.chatglm.cn/z-blog/z-icon.svg"
+}

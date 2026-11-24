@@ -1,0 +1,19 @@
+{
+  "title": "Netlify Isn't Just a Static CDN: How Atomic Deploys, Edge Isolates, and Content-Addressed Storage Actually Work Under the Hood",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/netlify-isnt-just-a-static-cdn-how-atomic-deploys-edge-isolates-and-content-addressed-storage-5136",
+  "date": "2026-11-24",
+  "tags": [
+    "netlify",
+    "webdev",
+    "architecture",
+    "devops"
+  ],
+  "interest_score": 6,
+  "why_read": "A reasonably detailed architectural explainer on how Netlify's deployment and edge system actually works under the hood, going beyond the common oversimplified mental model of 'S3 plus CloudFront'.",
+  "analysis": "The article explains Netlify's atomic deploys via content-addressed storage, arguing this avoids the common 'asset drift' problem where users load a mix of old and new files during a rolling deployment. It also touches on edge isolates (likely Deno-based) for fast cold starts and a distributed 'Smart CDN' routing design without central bottlenecks. This is useful conceptual grounding for engineers who use Netlify or similar platforms but have only a surface-level understanding of how zero-downtime deploys and content-addressing work. The technical depth seems solid for a 10-minute read, though it is vendor-specific and promotional in tone.",
+  "authors": [],
+  "reactions": 11,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2FkWR7IW2.png"
+}

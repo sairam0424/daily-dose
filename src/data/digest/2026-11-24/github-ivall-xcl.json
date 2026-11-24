@@ -1,0 +1,16 @@
+{
+  "title": "ivall/xcl",
+  "source": "github",
+  "url": "https://github.com/ivall/xcl",
+  "date": "2026-11-24",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 8,
+  "why_read": "A genuinely hard systems-engineering project that reimplements Xbox Series console system libraries and recompiles RDNA2 shaders to run native console code on Windows.",
+  "analysis": "This project is a compatibility layer that lets Xbox Series console game binaries run directly on Windows PCs, without emulating the whole console, by reimplementing the console's system libraries and recompiling its GPU shaders from RDNA2 format into DXIL for Windows GPUs. This is conceptually similar in spirit to Proton's approach for Linux gaming but applied to a console target, which involves serious reverse engineering of undocumented console APIs and shader compilation pipelines. This is a technically deep systems and graphics engineering effort that will interest engineers working on emulation, compatibility layers, or low-level graphics stacks. The approach of shader recompilation rather than GPU emulation is a notable design choice worth understanding.",
+  "authors": [],
+  "stars": 4180,
+  "image_url": "https://opengraph.githubassets.com/5973a3dde42d708c0b6042d7971c1cdbf245a0b437f28e369754c97caee56059/ivall/xcl",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

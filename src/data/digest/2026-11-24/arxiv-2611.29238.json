@@ -1,0 +1,26 @@
+{
+  "title": "GameAnything: From Any Inspirations to Playable Game Worlds",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.29238",
+  "date": "2026-11-24",
+  "tags": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 5,
+  "why_read": "An interesting agentic framework for AI-assisted game modification, but the core finding is mostly that current coding agents still struggle with real gameplay quality, which is a modest result.",
+  "analysis": "GameAnything is a platform that lets coding agents turn various reference materials, like images or text inspiration, into playable modifications or extensions of existing games. It pairs the code-generating agent with an automated playtesting critic and persistent memory so it can iteratively refine its output based on simulated gameplay feedback. The accompanying benchmark tests nine different agent setups and finds they can imitate reference content reasonably well but still struggle to produce genuinely functional, high-quality playable interactions. This is a reasonable research contribution on agentic evaluation methodology but the practical game-development payoff is still limited based on the stated results.",
+  "authors": [
+    "Wenyi Wu",
+    "Siqi Liu",
+    "Yuru Feng",
+    "Zixuan Song",
+    "Aayush Salvi",
+    "Sibo Zhu",
+    "Kun Zhou",
+    "Biwei Huang"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

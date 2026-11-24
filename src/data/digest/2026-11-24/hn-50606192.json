@@ -1,0 +1,17 @@
+{
+  "title": "Free alternative TV network built from the Internet Archive's forgotten videos",
+  "source": "hn",
+  "url": "https://spelunkr.tv",
+  "date": "2026-11-24",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A creative project repurposing Internet Archive footage into a streaming TV network is a fun curation effort but has limited deep technical content.",
+  "analysis": "This describes a project that builds a linear 'TV channel' experience out of obscure or forgotten video content pulled from the Internet Archive. The appeal is more cultural and nostalgic than technical, though there is some engineering involved in scheduling, streaming, and content curation at scale. Readers interested in media archiving or scrappy indie media projects may enjoy it. It's a lighter, less technically dense story compared to engineering-heavy items.",
+  "authors": [
+    "SockThief"
+  ],
+  "hn_id": 50606192,
+  "points": 965,
+  "image_url": "https://spelunkr.tv/og-image.png",
+  "favicon_url": "https://spelunkr.tv/brand/pixel/weatherstar/spelunkr.svg"
+}

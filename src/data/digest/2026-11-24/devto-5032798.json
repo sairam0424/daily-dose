@@ -1,0 +1,19 @@
+{
+  "title": "Proofreader vs. Rewriter vs. Prompt API: Test the Task, Not the Demo",
+  "source": "devto",
+  "url": "https://dev.to/gde/proofreader-vs-rewriter-vs-prompt-api-test-the-task-not-the-demo-pi9",
+  "date": "2026-11-24",
+  "tags": [
+    "webdev",
+    "ai",
+    "typescript",
+    "testing"
+  ],
+  "interest_score": 6,
+  "why_read": "A careful, methodologically-minded comparison of Chrome's writing-related browser APIs that correctly emphasizes defining the task before benchmarking, which is a useful mindset for API evaluation generally.",
+  "analysis": "The post compares Chrome's Proofreader, Rewriter, and Prompt APIs for text-editing tasks, arguing that 'improve this text' is actually several distinct tasks like grammar correction, tone change, and summarization that need separate evaluation criteria. It builds a small test harness with explicit rules about what each API is allowed to change and what must be preserved, like facts and commitments in a sample message. This is a genuinely useful methodological point for engineers evaluating any family of similar APIs or models, not just these specific browser features. It's a modest-scope piece but demonstrates sound evaluation thinking rather than hype.",
+  "authors": [],
+  "reactions": 26,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffp018xebq23vqh8pwzj3.jpg"
+}
