@@ -1,0 +1,19 @@
+{
+  "title": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
+  "source": "devto",
+  "url": "https://dev.to/smtahosin/why-your-android-app-drops-frames-the-jetpack-compose-architecture-guide-that-fixes-recomposition-3oh3",
+  "date": "2026-11-25",
+  "tags": [
+    "android",
+    "kotlin",
+    "mobile",
+    "programming"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical deep dive into Jetpack Compose performance internals, useful for Android developers debugging recomposition and frame drop issues.",
+  "analysis": "The article promises a detailed look at why Jetpack Compose apps can drop frames, covering the compiler's internal slot table data structure, how 'unstable' types trigger unnecessary recompositions, and how background data flows can drain battery. This kind of internals-level explanation is genuinely useful for Android engineers trying to diagnose subtle performance bugs that generic documentation doesn't cover well. The listed topics, like surviving process death and recomposition cascades, are real pain points in production Compose apps. The clickbait-style title ('Fixes Recomposition Forever') undercuts credibility somewhat, but the technical substance described seems legitimate and specific.",
+  "authors": [],
+  "reactions": 13,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fi.imgur.com%2FMNPtkDr.png"
+}

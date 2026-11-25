@@ -1,0 +1,19 @@
+{
+  "title": "CALVIN-MAX: When Does a Mid-Execution Change Hurt a Robot Policy?",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.31868",
+  "date": "2026-11-25",
+  "tags": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "A carefully designed robotics benchmark isolating exactly how and when environment changes hurt policy performance, useful for anyone building real-world robot control systems.",
+  "analysis": "This paper studies what happens to robot control policies when the environment changes mid-task, such as an object moving or the camera shifting, separating the cost of the change itself from the cost of its timing. Using a new benchmark of nearly 8,000 test cases built on the CALVIN robot task suite, they show every tested policy loses several percentage points of success after a change, and that the effect lingers into the next instruction too. Interestingly, rewinding the robot to the start of an instruction does not fully recover performance, suggesting policies accumulate some lasting internal state problem. This is a useful, rigorous diagnostic tool for understanding brittleness in learned robot behaviors rather than a flashy new method.",
+  "authors": [
+    "Sajjad Pakdamansavoji"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

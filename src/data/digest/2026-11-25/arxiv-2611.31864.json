@@ -1,0 +1,19 @@
+{
+  "title": "No Fixed Configuration Is Best: Context- and Cost-Aware Tuning of LLM Pipelines, with an Application to Schema Matching and Mapping",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.31864",
+  "date": "2026-11-25",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical, data-driven look at tuning multi-stage LLM pipelines for a concrete enterprise task, schema matching, with honest discussion of tuning's limits.",
+  "analysis": "The paper studies how to tune the many configurable settings of a multi-step LLM pipeline used for schema matching, the task of mapping database columns between different systems. It finds that standard numeric tuning (like adjusting thresholds or prompts) only buys modest accuracy gains or cost savings, while a structural decision, whether to restrict matching to one assigned target table, has a much bigger and inconsistent effect across tasks. Even picking the best setting per task isn't enough, since the ideal choice can differ column by column within the same task, so the authors resort to running both settings and using an LLM to arbitrate disagreements, which raises accuracy further at significantly higher cost. This is a useful, grounded case study for engineers building practical LLM pipelines rather than a general breakthrough.",
+  "authors": [
+    "Gokhan Kirlik",
+    "Xiuwen Zheng",
+    "Anirudh Sriram"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

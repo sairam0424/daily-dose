@@ -1,0 +1,16 @@
+{
+  "title": "GTA 6 Running on Windows",
+  "source": "hn",
+  "url": "https://twitter.com/raul_bs3/status/2125213756238291075",
+  "date": "2026-11-25",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "Interesting as a community reverse-engineering effort story but more of a gaming curiosity than deep technical content.",
+  "analysis": "This refers to community efforts to get GTA 6 running on Windows, likely through reverse engineering, emulation or compatibility layers, similar to the related GitHub projects in this batch. It's technically interesting from a reverse-engineering and compatibility-layer perspective, showing how determined communities attack binary compatibility problems. However, without deeper technical detail in the title alone, the piece is likely more of a status update or meme-level discussion than deep engineering content.",
+  "authors": [
+    "andrem"
+  ],
+  "hn_id": 50627783,
+  "points": 317,
+  "favicon_url": "https://abs.twimg.com/favicons/twitter.3.ico"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "xcl-dev/xcl",
+  "source": "github",
+  "url": "https://github.com/xcl-dev/xcl",
+  "date": "2026-11-25",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 7,
+  "why_read": "A genuinely technical compatibility layer project reimplementing console system libraries and recompiling GPU shaders, which is a serious reverse-engineering achievement if real.",
+  "analysis": "xcl claims to be a compatibility layer that lets Xbox Series console game code run natively on Windows, by reimplementing the console's system libraries and recompiling RDNA2 GPU shaders into DXIL, the shader format used by DirectX 12. This is technically substantial work akin to Proton for Xbox, requiring deep understanding of console OS internals, graphics APIs, and shader compilation. If functional, it represents a serious engineering accomplishment in low-level systems and graphics programming. As with similar projects, there are open questions about legality and longevity given platform holder opposition.",
+  "authors": [],
+  "stars": 7920,
+  "image_url": "https://opengraph.githubassets.com/133924e5e582493f8189513a5c6b1f6492de22611e2ce4c2c46b4ba65632a211/xcl-dev/xcl",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

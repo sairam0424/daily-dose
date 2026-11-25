@@ -1,0 +1,16 @@
+{
+  "title": "Jetty Pro",
+  "source": "hn",
+  "url": "http://hypercritical.co/2026/11/23/jetty-pro",
+  "date": "2026-11-25",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Possibly relates to a paid/commercial tier of the Jetty Java web server, of narrow interest to Java backend engineers.",
+  "analysis": "Jetty is a well known open source Java HTTP server and servlet container; 'Jetty Pro' likely refers to a commercial or enterprise offering built around it. Without more detail, it's hard to tell whether this is an announcement, a controversy over commercializing open source, or a technical deep dive. The relatively high comment count hints at discussion around licensing or sustainability of open source projects, which is a recurring and legitimate technical governance topic.",
+  "authors": [
+    "zdw"
+  ],
+  "hn_id": 50630462,
+  "points": 287,
+  "favicon_url": "http://hypercritical.co/images/tiny-mac.svg"
+}

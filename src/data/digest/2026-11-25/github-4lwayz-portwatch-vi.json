@@ -1,0 +1,16 @@
+{
+  "title": "4lwayz/portwatch-vi",
+  "source": "github",
+  "url": "https://github.com/4lwayz/portwatch-vi",
+  "date": "2026-11-25",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 3,
+  "why_read": "A lightweight meta-tracker aggregating community progress on GTA VI PC compatibility efforts, more of a status dashboard than a technical artifact itself.",
+  "analysis": "This project is simply a tracker that aggregates and reports daily on the status of various community recompilation and emulation efforts for GTA VI on PC. It doesn't itself contain novel technical work, but serves as a convenient index for following related reverse-engineering projects like the ones above. Useful as a pointer but low technical substance on its own.",
+  "authors": [],
+  "stars": 3019,
+  "image_url": "https://opengraph.githubassets.com/a98e2f9f1e8bc17afb644865cc869f8c18ba20e2f20606dcaa4e54e78fa4618d/4lwayz/portwatch-vi",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

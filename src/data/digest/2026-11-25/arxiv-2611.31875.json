@@ -1,0 +1,24 @@
+{
+  "title": "EEG-Jev: A Unified Single-Pass Decision Model for EEG",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.31875",
+  "date": "2026-11-25",
+  "tags": [
+    "cs.LG",
+    "cs.AI",
+    "physics.bio-ph"
+  ],
+  "interest_score": 6,
+  "why_read": "A unified EEG decoding model covering multiple task types in one pass is a solid applied neuroscience/ML contribution.",
+  "analysis": "EEG-Jev is a single neural network that can answer different kinds of questions about brain recordings - picking among choices, judging true/false statements, or giving a score on a scale - all from one forward pass instead of needing separate specialized models. It was trained once and tested across 35 different public EEG datasets, covering tasks like detecting motor imagery, staging sleep, detecting seizures, and rating pain levels. The reported numbers show decent but not exceptional accuracy on these varied tasks, and the paper also shows how calibrating the output probabilities substantially improves how trustworthy the confidence scores are. This is a useful step toward more general-purpose brain signal decoding systems rather than one-off specialized classifiers.",
+  "authors": [
+    "Zhifei Zhu",
+    "Hongtao Zhang",
+    "Yu Ren",
+    "Wei Zhou",
+    "Zeping Xie",
+    "Yi He"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

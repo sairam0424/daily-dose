@@ -1,0 +1,17 @@
+{
+  "title": "Quad9 pulled their DNS service from France",
+  "source": "hn",
+  "url": "https://quad9.net/news/blog/quad9-service-deactivation-in-france/",
+  "date": "2026-11-25",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "A real-world case of DNS infrastructure being affected by legal/regulatory pressure, relevant to anyone running or relying on public DNS resolvers.",
+  "analysis": "Quad9 is a privacy-focused public DNS resolver, and this reports it withdrawing service from France, likely due to legal or regulatory demands such as content-blocking orders. This matters to engineers because it highlights how national regulation can directly shape global internet infrastructure decisions. The large comment count suggests meaningful debate about censorship, jurisdiction, and the tradeoffs of operating privacy services under hostile legal regimes. It's a good case study in the intersection of law and network engineering.",
+  "authors": [
+    "farrokhi"
+  ],
+  "hn_id": 50625384,
+  "points": 368,
+  "image_url": "https://quad9.net/images/cover_c2f081e020.png",
+  "favicon_url": "https://quad9.net/favicon.svg"
+}

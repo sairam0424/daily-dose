@@ -1,0 +1,19 @@
+{
+  "title": "String Type In C",
+  "source": "devto",
+  "url": "https://dev.to/necoz/string-type-in-c-3aep",
+  "date": "2026-11-25",
+  "tags": [
+    "c",
+    "beginners",
+    "necoz"
+  ],
+  "interest_score": 4,
+  "why_read": "A basic beginner tutorial on implementing a simple dynamic string struct in C, useful mainly for newer programmers.",
+  "analysis": "This article walks through building a minimal heap-allocated string type in C using a struct with a pointer, length, and capacity, which is a well-known and common pattern for C programmers. The code shown is simple and omits some important considerations like capacity growth on append, bounds checking, and error handling beyond allocation failure. This is standard introductory systems programming material and offers little new insight for anyone with intermediate or higher C experience. It could be a decent primer for beginners learning memory management in C.",
+  "authors": [],
+  "reactions": 44,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Flhr19q9cnu5gdtt106d2.png",
+  "favicon_url": "https://media2.dev.to/dynamic/image/width=32,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png"
+}

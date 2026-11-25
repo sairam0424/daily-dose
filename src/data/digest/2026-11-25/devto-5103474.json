@@ -1,0 +1,19 @@
+{
+  "title": "Why Your AI Release Notes Hallucinate: The \"Why vs What\" Problem in Git History",
+  "source": "devto",
+  "url": "https://dev.to/necoz/why-your-ai-release-notes-hallucinate-the-why-vs-what-problem-in-git-history-5ch0",
+  "date": "2026-11-25",
+  "tags": [
+    "ai",
+    "devops",
+    "github",
+    "programming"
+  ],
+  "interest_score": 7,
+  "why_read": "A concrete, well-illustrated discussion of why LLM-generated release notes hallucinate and what grounding strategies could fix it, relevant to anyone automating changelogs with AI.",
+  "analysis": "The author recounts a real failure where an LLM given a raw git diff invented a plausible-sounding but false explanation for a code change, because diffs show what changed but not why. This illustrates a genuine and common problem with using LLMs for changelog or release note generation without additional context like linked issues or tickets. The piece argues for grounding generation in actual intent sources, such as issue trackers, rather than relying purely on code diffs, which is sound and actionable advice for engineering teams building internal tooling. It's a practical, specific case study rather than vague AI hype.",
+  "authors": [],
+  "reactions": 36,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffpv8z3hlxeu12fq22xbh.jpg"
+}

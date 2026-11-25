@@ -1,0 +1,18 @@
+{
+  "title": "RepoEviAgent: Scalable Synthesis of Evidence-Grounded Repository-Level Question Answering Tasks",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.31873",
+  "date": "2026-11-25",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "Relevant to anyone building or evaluating coding agents, offering a new benchmark grounded in real repository evidence.",
+  "analysis": "This paper builds an automated pipeline that mines nearly 2.5 million pull requests from over 8,000 repositories to generate question-answering tasks that require understanding real code structure and history. The resulting benchmark, RepoEviQA, tests whether AI coding agents can answer questions using actual evidence from a repository rather than guessing. The authors evaluate several top coding models and find notable differences across programming languages and task types, which is useful signal for teams building code-understanding agents. It's a solid contribution to benchmark infrastructure though not a fundamental technical breakthrough itself.",
+  "authors": [
+    "Aoqi Hu",
+    "Yueao Xing"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

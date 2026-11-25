@@ -1,0 +1,17 @@
+{
+  "title": "Ternary Bonsai 2.5 27B",
+  "source": "hn",
+  "url": "https://prismml.com/news/bonsai-2-5-27b",
+  "date": "2026-11-25",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A new large language model release name suggests a notable open-weights model worth a quick look for ML practitioners.",
+  "analysis": "The title suggests a release of a 27-billion parameter language model, possibly using ternary (extremely low-bit) weight quantization given the 'Ternary' naming. If true, this would be technically interesting because ternary weight models promise large efficiency gains in memory and compute. Without an abstract, the exact architecture, benchmarks or training details are unknown. The high engagement suggests the community found it noteworthy, likely for its efficiency claims or benchmark performance.",
+  "authors": [
+    "b0m"
+  ],
+  "hn_id": 50633922,
+  "points": 372,
+  "image_url": "https://cdn.prod.website-files.com/699604cc2b9dd89bdbda0608/6a6d0e0bc0d5f9a97a5164c0_69cc089669ab0df26e921aac_prism-og-img%2520(2).png",
+  "favicon_url": "https://cdn.prod.website-files.com/697a3312d33c2cc715ec3899/69cc251464287abfc0e45c9b_fav%20dark.png"
+}

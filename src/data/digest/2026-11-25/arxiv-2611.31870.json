@@ -1,0 +1,22 @@
+{
+  "title": "Subliminal Learning Crosses Modalities",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.31870",
+  "date": "2026-11-25",
+  "tags": [
+    "cs.LG",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 8,
+  "why_read": "A surprising and well-investigated finding that hidden behavioral traits can leak between AI models across completely different data types, with real safety implications.",
+  "analysis": "Subliminal learning is the odd phenomenon where training a model on seemingly meaningless data, like number sequences, from a 'teacher' model can secretly transfer the teacher's unrelated preferences or traits to a 'student' model. This paper extends that finding by showing the transferred trait can cross from language into images, so a vision-language model trained this way starts generating pictures that reflect the hidden preference, like favoring a certain animal. The authors dig into why this happens, showing a consistent shift in internal representations that accounts for much of the effect, and introduce a technique to detect these hidden traits directly from a model's weights. This matters for AI safety because it suggests harmful or unintended behaviors could silently propagate through training pipelines in ways standard testing wouldn't catch.",
+  "authors": [
+    "Saraswathy Amjith",
+    "Kimia Hamidieh",
+    "Antonio Torralba",
+    "Yoon Kim"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

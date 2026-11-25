@@ -1,0 +1,16 @@
+{
+  "title": "Marvisak/VIctory",
+  "source": "github",
+  "url": "https://github.com/Marvisak/VIctory",
+  "date": "2026-11-25",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 6,
+  "why_read": "A high-profile reverse-engineering attempt to run a major unreleased/new console game on PC, interesting as a technical feat though likely early-stage and legally gray.",
+  "analysis": "This is a community project attempting to build a PC port or compatibility layer for GTA VI, written in Rust, similar in spirit to past game decompilation and recompilation projects. Such efforts typically involve reverse engineering game binaries, reimplementing platform-specific APIs, and often raise legal questions given publisher IP rights. The large star count reflects public interest in game preservation and reverse engineering more than a mature, working technical artifact at this stage. Worth a skim for those interested in RE techniques, but may be short-lived due to takedown risk.",
+  "authors": [],
+  "stars": 11546,
+  "image_url": "https://opengraph.githubassets.com/87f794e4a9ea1bc83fd901eab4ff1e11b0aed2c91defe37ad578b7675a5ffea3/Marvisak/VIctory",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}
