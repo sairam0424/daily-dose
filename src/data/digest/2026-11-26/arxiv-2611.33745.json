@@ -1,0 +1,19 @@
+{
+  "title": "WhatIf: Counterfactual World Models over Action-Grounded Causal Graphs for Robotic Manipulation",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.33745",
+  "date": "2026-11-26",
+  "tags": [
+    "cs.AI"
+  ],
+  "interest_score": 6,
+  "why_read": "A technically rich paper on counterfactual world models for robot action planning, offering a principled way to compare hypothetical outcomes rather than just predicting single futures.",
+  "analysis": "WhatIf proposes a world model that can simulate what would happen under different candidate robot actions while keeping the underlying physical situation fixed, enabling fair comparison between choices. It builds a causal graph per action to track which objects are affected and uses a paired-comparison statistical technique to reduce estimation noise when ranking plans. This addresses a real limitation of typical world models, which predict outcomes of actions independently rather than comparing them under shared conditions. The approach is mathematically grounded, including a formal link between counterfactual variance and planning risk, making it a substantive contribution to robotic decision-making research.",
+  "authors": [
+    "Xu Yang",
+    "Kailai Sun",
+    "Qianchuan Zhao"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

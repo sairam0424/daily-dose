@@ -1,0 +1,20 @@
+{
+  "title": "OrbACE: Orbital and Atomic Cluster Expansion",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.33743",
+  "date": "2026-11-26",
+  "tags": [
+    "physics.chem-ph",
+    "cs.LG",
+    "physics.comp-ph"
+  ],
+  "interest_score": 5,
+  "why_read": "A methods paper on improving machine-learning interatomic potentials with cheap electronic-structure features, relevant mainly to computational chemistry and materials science specialists.",
+  "analysis": "OrbACE combines a cluster-expansion machine learning backbone with inexpensive quantum-chemistry-derived descriptors to predict molecular energies and forces more accurately from less training data. The reported gains are concrete: roughly a 3x reduction in energy error and about half the force error compared to a baseline model called MACE on a standard benchmark dataset. The method's two variants trade off accuracy and physical consistency in ways that are carefully benchmarked, which is good scientific practice. This is a solid, incremental advance for a specialized audience in computational chemistry rather than something with broad software engineering relevance.",
+  "authors": [
+    "Etinosa Osaro",
+    "Dario Rocca"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

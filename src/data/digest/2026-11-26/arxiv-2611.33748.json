@@ -1,0 +1,22 @@
+{
+  "title": "REFORGE: LLM-Assisted RTL Bug Repair with Structured Context and Verification Feedback",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.33748",
+  "date": "2026-11-26",
+  "tags": [
+    "cs.AI",
+    "cs.SE"
+  ],
+  "interest_score": 6,
+  "why_read": "A practical framework for verifying AI-generated hardware bug fixes addresses a real gap in trusting LLMs for chip design, relevant to hardware engineers exploring AI tooling.",
+  "analysis": "REFORGE tackles a genuine problem: LLMs can produce RTL code fixes that compile and pass simple tests but may still be functionally wrong, insecure, or not equivalent to the intended behavior. The framework adds multiple verification stages, including formal analysis and security scanning, rather than relying on a single pass or fail signal. Their findings that testbench-only checks overstate real repair success by nearly 4x is a meaningful warning for anyone evaluating LLM-based hardware tools. This is a solid contribution to a specific but growing area of applying LLMs to chip design and verification.",
+  "authors": [
+    "Tanvir Hossain",
+    "Sudipta Paria",
+    "Aidan Gleason Myers",
+    "Swarup Bhunia",
+    "Tamzidul Hoque"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

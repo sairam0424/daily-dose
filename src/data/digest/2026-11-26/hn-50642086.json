@@ -1,0 +1,17 @@
+{
+  "title": "Google releases Cogentic papers on integer factorization, discrete logs and more",
+  "source": "hn",
+  "url": "https://github.com/google-research/google-research/tree/master/cogentic_research_papers",
+  "date": "2026-11-26",
+  "tags": [],
+  "interest_score": 7,
+  "why_read": "Papers from Google on integer factorization and discrete logarithms touch on core topics in cryptography and computational number theory that matter for security infrastructure.",
+  "analysis": "Integer factorization and discrete logarithm problems underpin the security of widely used cryptographic systems like RSA and Diffie-Hellman. Any new research results from a major lab like Google in this area could have implications for cryptographic assumptions, quantum computing threats, or classical algorithmic improvements. Without the actual paper content, it's unclear whether this is a genuine breakthrough or incremental research, but the subject matter itself is foundational to computer security. The high comment count suggests the community is actively debating the significance of these results.",
+  "authors": [
+    "rgwohlbold"
+  ],
+  "hn_id": 50642086,
+  "points": 452,
+  "image_url": "https://opengraph.githubassets.com/b46646a17bba523ab29bd6118957449268e0ac6ee510e2c5d9622191b05f564e/google-research/google-research",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+  "source": "hn",
+  "url": "https://github.com/xoxorwr/pw-loudness-eq",
+  "date": "2026-11-26",
+  "tags": [],
+  "interest_score": 6,
+  "why_read": "A reverse-engineering writeup porting a specific Windows audio feature to Linux's PipeWire is a solid, concrete systems-level project of interest to audio and OS enthusiasts.",
+  "analysis": "Windows Loudness Equalization is an audio normalization feature, and reverse-engineering it to work on Linux's PipeWire sound server is a nontrivial technical undertaking. This kind of work typically involves analyzing audio DSP algorithms and reimplementing them without original source code or documentation. It's a niche but genuinely technical contribution that benefits Linux desktop audio quality. The decent engagement suggests both audio engineers and Linux desktop users find it valuable.",
+  "authors": [
+    "ThrowNotAway"
+  ],
+  "hn_id": 50641171,
+  "points": 324,
+  "image_url": "https://opengraph.githubassets.com/7daa702e7a414c9bc2ffcd7f6aab52da8fd7c06238c33b11db28427f5fa18c9e/xoxorwr/pw-loudness-eq",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

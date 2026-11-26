@@ -1,0 +1,23 @@
+{
+  "title": "Tells of a Lying Machine: Analyzing LLM-Generated Strategic Dialogue in Chinese Werewolf",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.33747",
+  "date": "2026-11-26",
+  "tags": [
+    "cs.CL"
+  ],
+  "interest_score": 5,
+  "why_read": "An empirical study of deceptive language patterns in LLMs playing a social deduction game offers a methodologically careful but niche contribution to AI evaluation research.",
+  "analysis": "The researchers analyzed thousands of utterances from LLMs playing Chinese Werewolf, a social deduction game, to see if 'lying' roles use detectable linguistic patterns. They found some differences in certainty and emotional language between wolves and villagers, but cautioned these reflect role-associated language rather than confirmed deception. The paper's main value is methodological, arguing that game-based deception studies need proper comparison groups and sensitivity checks to avoid overclaiming. This is useful for researchers in AI safety and evaluation but is a narrow, data-heavy study rather than a broadly applicable finding.",
+  "authors": [
+    "Xian Cui",
+    "Gan Yang",
+    "Dongqi Han",
+    "Han Zhu",
+    "Bo Zheng",
+    "Jianhui Zheng",
+    "Xiaoyong Li"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

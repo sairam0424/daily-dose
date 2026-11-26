@@ -1,0 +1,19 @@
+{
+  "title": "Teaching Students to Stand on Their Own: Distilling Vision Foundation Models for Fine-Grained Few-Shot Class-Incremental Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.33749",
+  "date": "2026-11-26",
+  "tags": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "interest_score": 4,
+  "why_read": "A narrow computer vision research paper on few-shot learning distillation techniques, useful mainly to specialists in that subfield.",
+  "analysis": "This paper addresses a specific machine learning problem: how to make a smaller student model learn fine-grained visual classification from limited examples without forgetting old classes. It proposes a distillation method called STAND that uses composite images and calibrated prototypes to close the performance gap between large foundation models and smaller efficient models. The contribution is incremental, improving benchmark results in a well-defined niche rather than offering a broad architectural insight. It will mainly interest researchers working in few-shot or incremental learning rather than general software engineers.",
+  "authors": [
+    "Junsu Kim",
+    "Seungryul Baek"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
