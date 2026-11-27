@@ -1,0 +1,16 @@
+{
+  "title": "4lwayz/portwatch-vi",
+  "source": "github",
+  "url": "https://github.com/4lwayz/portwatch-vi",
+  "date": "2026-11-27",
+  "tags": [
+    "JavaScript"
+  ],
+  "interest_score": 2,
+  "why_read": "This is a tracker website for community reverse-engineering progress, not a technical project itself — it has minimal engineering interest on its own.",
+  "analysis": "The project appears to be a live status dashboard built in JavaScript that monitors and reports on community efforts to run GTA VI on PC. The engineering value of the tracker itself is low; building a daily-updated status page is a routine web task. Its value is entirely dependent on the accuracy and freshness of the information it aggregates. As a tool for following the VIctory and similar projects, it is useful context but not independently interesting.",
+  "authors": [],
+  "stars": 5948,
+  "image_url": "https://opengraph.githubassets.com/956ca7018266c4c4428eeb7332cc6dfc6e3bcb397965c65943319e3109b5358a/4lwayz/portwatch-vi",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

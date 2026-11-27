@@ -1,0 +1,17 @@
+{
+  "title": "Intel One Mono font (2023)",
+  "source": "hn",
+  "url": "https://github.com/intel/intel-one-mono",
+  "date": "2026-11-27",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Intel One Mono is a purpose-built coding font with thoughtful design decisions, mildly interesting to developers who care about readability and typographic craft.",
+  "analysis": "Intel One Mono is a monospaced typeface released by Intel specifically for code editors and terminals. It was designed with a focus on character distinctiveness to reduce reading errors in code. The font is open-source, which matters for developers who want to embed or redistribute it. The 2023 label suggests this is a re-surfacing of an older release rather than new news.",
+  "authors": [
+    "saikatsg"
+  ],
+  "hn_id": 50653667,
+  "points": 480,
+  "image_url": "https://opengraph.githubassets.com/b5896950f33c31f23e3a8f1fe572b50979f40db6eaf09ba09310e0aecb1d00a7/intel/intel-one-mono",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

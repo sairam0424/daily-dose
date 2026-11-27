@@ -1,0 +1,18 @@
+{
+  "title": "Your Second Brain Is Just A Digital Hoarding Pile (And How To Fix It)",
+  "source": "devto",
+  "url": "https://dev.to/johnnylemonny/your-second-brain-is-just-a-digital-hoarding-pile-and-how-to-fix-it-3n1o",
+  "date": "2026-11-27",
+  "tags": [
+    "productivity",
+    "pkm",
+    "learning"
+  ],
+  "interest_score": 2,
+  "why_read": "This is a productivity self-help article about note-taking habits with a 3.6% retrieval rate anecdote; it has no technical content relevant to software engineers.",
+  "analysis": "The article audited a personal note collection and found that only 51 of 1,412 saved notes were ever reopened more than once. It uses this to argue against passive capture-based note systems and in favour of active processing. The references are to personal knowledge management books, not technical literature. This topic is entirely orthogonal to software engineering practice and belongs in a productivity or PKM newsletter rather than a technical digest.",
+  "authors": [],
+  "reactions": 14,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fzeki1qboxnf69pwl98h5.jpg"
+}

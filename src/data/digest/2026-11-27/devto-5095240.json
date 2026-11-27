@@ -1,0 +1,19 @@
+{
+  "title": "On reviewing AI-generated code",
+  "source": "devto",
+  "url": "https://dev.to/nfrankel/on-reviewing-ai-generated-code-3olj",
+  "date": "2026-11-27",
+  "tags": [
+    "ai",
+    "codereview",
+    "opinion",
+    "codingassistants"
+  ],
+  "interest_score": 6,
+  "why_read": "This article makes a clear and well-argued case that the goal of code review was never reading lines but obtaining guarantees, and proposes shifting to test coverage and static analysis as the primary verification layer for AI-generated code.",
+  "analysis": "The core argument is that human review of AI-generated code does not scale because defect detection degrades sharply beyond a few hundred lines per hour, and agents write far more than that. The author draws a historical parallel: C developers worried about losing control when garbage collection removed explicit memory management, but new tools replaced the old guarantees. The proposed answer is to focus on the guarantee mechanisms — tests, type systems, linters, and contracts — rather than on reading the code itself. This is a technically grounded position, and the analogy to GC adoption gives it historical weight that makes it more persuasive than typical AI-productivity opinion pieces.",
+  "authors": [],
+  "reactions": 16,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fiokr8xrxb7kgmfnk1h7s.jpg"
+}

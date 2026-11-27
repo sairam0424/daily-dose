@@ -1,0 +1,19 @@
+{
+  "title": "I Built AI Test Automation. Today, I Went Back to Manual Testing.",
+  "source": "devto",
+  "url": "https://dev.to/thethirdcup/i-built-ai-test-automation-today-i-went-back-to-manual-testing-mlh",
+  "date": "2026-11-27",
+  "tags": [
+    "discuss",
+    "testing",
+    "ai",
+    "watercooler"
+  ],
+  "interest_score": 4,
+  "why_read": "A practitioner QA engineer comparing AI-generated test reports to their own manual reports is a concrete data point, though the article stays at the anecdotal level.",
+  "analysis": "The author built an AI-powered test automation framework and then spent a day doing manual testing, which prompted a comparison of report quality. AI reports are described as more detailed, with structured reproduction steps, screenshots, and preliminary root cause analysis. The human reports were simpler but required more judgment about what actually mattered. The article does not describe the technical architecture of the framework in depth, but it raises a real and underexplored question about whether AI-generated bug reports are more comprehensive or just more verbose.",
+  "authors": [],
+  "reactions": 83,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkec3yfhirrh3b4h4baqj.png"
+}

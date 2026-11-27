@@ -1,0 +1,19 @@
+{
+  "title": "From a feed full of Fable 5.2 demos to a 20-episode Indian epic: how I built \"The Eighteen Days\"",
+  "source": "devto",
+  "url": "https://dev.to/amananandrai/from-a-feed-full-of-fable-52-demos-to-a-20-episode-indian-epic-how-i-built-the-eighteen-days-14mm",
+  "date": "2026-11-27",
+  "tags": [
+    "python",
+    "ai",
+    "animation",
+    "showdev"
+  ],
+  "interest_score": 4,
+  "why_read": "An account of building a 20-episode animated series purely through Python scripts and an AI video generation tool is a creative technical project, though the engineering depth appears limited.",
+  "analysis": "The author used Fable 5.2, an AI video generation tool, to produce roughly four hours of animated content based on the Mahabharata without any traditional video editing software. The entire pipeline is described as Python scripts and HTML, which suggests a programmatic approach to sequencing, rendering, and assembling video segments. The technical interest lies in how the scripts orchestrate the AI tool and handle consistency across 20 episodes. Without more detail on the actual code structure, it reads more as a creative project log than a replicable engineering walkthrough.",
+  "authors": [],
+  "reactions": 9,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Focuj1jk18d2zta0sr10a.jpg"
+}

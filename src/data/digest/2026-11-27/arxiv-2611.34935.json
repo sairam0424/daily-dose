@@ -1,0 +1,26 @@
+{
+  "title": "Can image generation help visual reasoning? An empirical study",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34935",
+  "date": "2026-11-27",
+  "tags": [
+    "cs.LG",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 7,
+  "why_read": "This is a careful empirical study showing that having a vision-language model generate a helper image before answering a visual question actually hurts accuracy on 9 of 10 tasks — a counterintuitive and practically important negative result.",
+  "analysis": "The intuition tested here is that a model might reason better about a visual question if it first generates a relevant helper image to augment the original. The experiment covers 13 model-and-generator combinations across 10 benchmark tasks. The aggregate finding is a 3.7-point accuracy drop, with specific tasks losing up to 10 points. Negative results like this are valuable precisely because they challenge a popular design pattern in multimodal AI, and the breadth of the evaluation makes the conclusion hard to dismiss as an artifact of one model or one dataset.",
+  "authors": [
+    "Xueyang Yu",
+    "Yifan Jing",
+    "Taiming Lu",
+    "Linrong Cai",
+    "Zhipeng Cai",
+    "Yunyang Xiong",
+    "Gabriel Sarch",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Nextcloud Office Desktop app",
+  "source": "hn",
+  "url": "https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/",
+  "date": "2026-11-27",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "Nextcloud Office as a desktop app is a meaningful step toward self-hosted productivity software, though it offers little that is technically novel.",
+  "analysis": "Nextcloud Office is a collaborative document editing suite built on top of the LibreOffice and Collabora Online stack. Bringing it to a native desktop app reduces the friction of browser-based access for self-hosted deployments. The main technical interest is how it handles offline sync and integration with the Nextcloud server APIs. For teams evaluating open-source alternatives to Google Workspace or Microsoft 365, this is practically relevant rather than deeply novel.",
+  "authors": [
+    "e12e"
+  ],
+  "hn_id": 50654289,
+  "points": 406
+}

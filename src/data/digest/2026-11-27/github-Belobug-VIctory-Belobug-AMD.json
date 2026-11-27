@@ -1,0 +1,16 @@
+{
+  "title": "Belobug/VIctory-Belobug-AMD",
+  "source": "github",
+  "url": "https://github.com/Belobug/VIctory-Belobug-AMD",
+  "date": "2026-11-27",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 2,
+  "why_read": "With no description and presumably an AMD-specific fork of VIctory, there is too little information to judge its technical merit or differentiation.",
+  "analysis": "This appears to be an AMD-specific fork of the VIctory GTA VI recompilation project, based on the repository name. AMD GPU support often requires separate work because shader compilers and graphics API behaviour differ from NVIDIA hardware. However, there is no description, no README excerpt, and no indication of what specifically this fork implements or how far along it is. Without that information, it cannot be meaningfully evaluated.",
+  "authors": [],
+  "stars": 3208,
+  "image_url": "https://opengraph.githubassets.com/6c4b029b3500398c25d3e84cc1677d8d825718ec05ca9acbb6dc763088e483f9/Belobug/VIctory-Belobug-AMD",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

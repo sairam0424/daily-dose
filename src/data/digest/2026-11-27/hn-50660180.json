@@ -1,0 +1,15 @@
+{
+  "title": "AI made self-hosting fun again",
+  "source": "hn",
+  "url": "https://janlukas.blog/posts/ai-self-hosting",
+  "date": "2026-11-27",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A practitioner account of using AI coding assistants to lower the barrier to self-hosting infrastructure could surface genuinely useful workflow patterns, though the depth is unknown without a full excerpt.",
+  "analysis": "The premise is that AI coding tools have made self-hosting complex software more approachable for individuals. This touches on a real trend: LLM-assisted configuration and debugging of Docker, Nginx, DNS, and similar infrastructure. The interest level depends heavily on whether the article contains concrete examples or stays at the anecdotal level. As a discussion piece it may be more useful for sparking conversation than for technical instruction.",
+  "authors": [
+    "jlelse"
+  ],
+  "hn_id": 50660180,
+  "points": 388
+}

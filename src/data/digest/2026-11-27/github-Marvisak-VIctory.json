@@ -1,0 +1,16 @@
+{
+  "title": "Marvisak/VIctory",
+  "source": "github",
+  "url": "https://github.com/Marvisak/VIctory",
+  "date": "2026-11-27",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 5,
+  "why_read": "An open-source attempt to reverse-engineer and recompile a console game for PC is technically ambitious, but its legal status is murky and practical progress is likely limited without the game files.",
+  "analysis": "This is a Rust project attempting to get GTA VI, a console exclusive, running on PC through community recompilation. Projects like this involve reverse engineering compiled game binaries, reconstructing engine logic, and reimplementing platform-specific APIs. The technical challenge is substantial: modern AAA games are millions of lines of compiled code with proprietary graphics and physics engines. Similar projects like the GTA III/Vice City decompilations achieved real results but took years of reverse engineering work by large communities.",
+  "authors": [],
+  "stars": 13432,
+  "image_url": "https://opengraph.githubassets.com/bdf61123259905bea95f3a805bff5a7070bad69996adc4891e8cf05f60e1b2e0/Marvisak/VIctory",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

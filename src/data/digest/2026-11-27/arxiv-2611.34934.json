@@ -1,0 +1,24 @@
+{
+  "title": "Attack Policy Selection can Mislead Monitor Evaluators",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34934",
+  "date": "2026-11-27",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "This paper provides hard empirical evidence that AI safety monitor evaluations are highly sensitive to how attack policies are constructed, with false negative rates swinging from 0.5% to 23% across methods — a critical finding for anyone building or trusting such monitors.",
+  "analysis": "AI monitors are classifiers meant to catch dangerous behaviour by AI agents, and they are evaluated by running attack policies that try to generate examples of that dangerous behaviour. This paper shows that the choice of attack policy — and how hard it is optimised — dramatically changes the measured false negative rate of the same underlying monitor. The false negative rate on a real OpenAI monitor ranged from 0.5% to 20.8% just by varying the optimisation level within a single method, and from 6.4% to 23% across different methods. The key practical concern is that a lightly attacked monitor can appear robust even when a more sophisticated attacker would evade it easily, giving false confidence in a deployed safety system.",
+  "authors": [
+    "Charlie Griffin",
+    "Oliver Makins",
+    "Asa Cooper Stickland",
+    "Alessandro Abate",
+    "Yarin Gal",
+    "Abby D'Cruz",
+    "Xander Davies"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

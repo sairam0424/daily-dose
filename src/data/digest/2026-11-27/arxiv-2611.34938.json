@@ -1,0 +1,21 @@
+{
+  "title": "Tokenisation is not in APX",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34938",
+  "date": "2026-11-27",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 8,
+  "why_read": "Proving that tokenisation is not in APX — meaning no polynomial-time algorithm can even approximate the optimal solution within a constant factor — is a sharp theoretical result with direct implications for every NLP practitioner relying on BPE or unigram tokenisers.",
+  "analysis": "Tokenisation turns raw text into a vocabulary of subword units, and this paper proves that finding the best tokeniser is not just NP-hard but APX-hard. APX-hardness means no efficient algorithm can guarantee a solution within any fixed percentage of optimal, ruling out a whole class of approximation approaches. This holds for the two most common objectives — compression rate and unigram log-likelihood — and for both the BPE-style and unigram-style tokenisation algorithms used in practice. The result is theoretically clean and has real practical weight: it explains why tokenisation heuristics behave unpredictably and suggests that the field may be optimising an inherently intractable objective.",
+  "authors": [
+    "Violeta Kastreva",
+    "Philip Whittington",
+    "Dennis Komm",
+    "Tiago Pimentel"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

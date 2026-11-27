@@ -1,0 +1,20 @@
+{
+  "title": "Spectrum Adaptation of AI-Native Autoencoder Communications with Transfer Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34942",
+  "date": "2026-11-27",
+  "tags": [
+    "cs.NI",
+    "cs.AI",
+    "eess.SP"
+  ],
+  "interest_score": 6,
+  "why_read": "This paper makes a concrete, measurable case for partial fine-tuning of physical-layer autoencoders, with real resource trade-off numbers that matter for edge radio deployments.",
+  "analysis": "End-to-end autoencoder communications replace traditional radio blocks like modulation and coding with a jointly trained neural network pair. The core problem addressed is that a model trained on simple AWGN noise degrades badly when deployed over realistic Rayleigh fading channels with hardware impairments. The proposed fix is to freeze most of the network and fine-tune only a small, carefully selected subset of layers, reducing compute and energy cost during adaptation. The paper quantifies this with MAC counts, energy figures, and bit error rate curves, which makes the trade-offs concrete and actionable for practitioners building real radio systems.",
+  "authors": [
+    "Yalin E. Sagduyu",
+    "Tugba Erpek"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}
