@@ -1,0 +1,16 @@
+{
+  "title": "nexu-io/opengame",
+  "source": "github",
+  "url": "https://github.com/nexu-io/opengame",
+  "date": "2026-11-28",
+  "tags": [
+    "TypeScript"
+  ],
+  "interest_score": 5,
+  "why_read": "An ambitious framework pitching AI coding agents as a game-development pipeline, interesting as a trend indicator even though the marketing language outpaces demonstrated technical depth.",
+  "analysis": "This project positions itself as an engine-agnostic layer that lets AI coding agents like Claude Code or Codex build and publish small games to platforms like TikTok, WeChat, and itch.io. The core idea, using LLM agents to automate parts of game development and multi-platform publishing, reflects a real and growing trend in applying coding agents to creative software production. However, the description is heavy on buzzwords ('viral games', 'full-stack AI game studio') and light on technical specifics about how agent orchestration or game logic generation actually works. It's worth a skim for anyone tracking how agentic coding tools are being packaged for vertical use cases like gaming.",
+  "authors": [],
+  "stars": 2333,
+  "image_url": "https://repository-images.githubusercontent.com/1471624301/e913bd79-c296-47cb-a727-ff4124bedcf2",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

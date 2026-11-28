@@ -1,0 +1,24 @@
+{
+  "title": "Attack Policy Selection can Mislead Monitor Evaluators",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34934",
+  "date": "2026-11-28",
+  "tags": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "interest_score": 7,
+  "why_read": "A rigorous and practically important study showing that how you simulate an AI attacker heavily skews measured robustness of AI safety monitors, undermining confidence in current evaluation practices.",
+  "analysis": "AI safety monitors are classifiers meant to catch an AI agent behaving badly, and they're normally tested against simulated 'attack' transcripts meant to mimic real misbehavior. This paper shows that the measured failure rate of a real OpenAI-used monitor varies wildly, from 0.5% to 23%, just depending on which method and how much effort was used to generate the test attacks. Crucially, attacks optimized against stand-in proxy monitors transferred successfully to a separate held-out target monitor, suggesting current evaluations may create false confidence. This is an important methodological warning for anyone building or trusting AI safety monitoring systems.",
+  "authors": [
+    "Charlie Griffin",
+    "Oliver Makins",
+    "Asa Cooper Stickland",
+    "Alessandro Abate",
+    "Yarin Gal",
+    "Abby D'Cruz",
+    "Xander Davies"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

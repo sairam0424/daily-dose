@@ -1,0 +1,16 @@
+{
+  "title": "fxceless/victory-fork",
+  "source": "github",
+  "url": "https://github.com/fxceless/victory-fork",
+  "date": "2026-11-28",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 3,
+  "why_read": "Another fork in what appears to be a cluster of related 'run this console game on PC' projects, offering little distinct technical detail beyond being work-in-progress.",
+  "analysis": "This is described as a work-in-progress fork attempting to get an Xbox Series title running on Windows PC, again without specifying the technical mechanism. It's part of an apparent family of closely related repositories all referencing the same unreleased title, which makes genuine technical assessment difficult. The lack of detail and the unverified premise limit its value for a technical digest.",
+  "authors": [],
+  "stars": 3365,
+  "image_url": "https://opengraph.githubassets.com/e5a9edad0798422d7d4d0acd473f822c92ae4087520a8d316d6adf2975931d04/fxceless/victory-fork",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

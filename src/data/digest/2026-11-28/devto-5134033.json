@@ -1,0 +1,19 @@
+{
+  "title": "Zero Repeat Regressions: The Golden Metric & The Future of Agentic Trust",
+  "source": "devto",
+  "url": "https://dev.to/gde/zero-repeat-regressions-the-golden-metric-the-future-of-agentic-trust-4857",
+  "date": "2026-11-28",
+  "tags": [
+    "ai",
+    "programming",
+    "architecture",
+    "softwareengineering"
+  ],
+  "interest_score": 3,
+  "why_read": "A verbose, buzzword-heavy opinion piece about AI-assisted development trust and metrics, offering anecdote and branding more than rigorous technical evidence.",
+  "analysis": "This post argues for a metric called 'zero repeat regressions' as a way to measure trustworthiness of AI coding agents, citing a personal ledger of 375 production tickets and referencing Barry Boehm's classic defect-cost curve. The writing style leans heavily on consulting-pitch rhetoric and branded terminology like a '4-Layer Verification Stack' and 'Synthetic Scars' series, without the excerpt showing concrete methodology or data analysis. It touches on a real and relevant topic, trust and verification in AI-assisted coding, but the excerpt itself reads more like marketing than rigorous technical writing. Readers interested in practical AI-coding governance might find value further in, but substance is hard to confirm from what's shown.",
+  "authors": [],
+  "reactions": 10,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9f90ue8xv2zfj6yrqe43.jpg"
+}

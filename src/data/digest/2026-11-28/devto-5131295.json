@@ -1,0 +1,19 @@
+{
+  "title": "How I built my own OS",
+  "source": "devto",
+  "url": "https://dev.to/cloudwerx/how-i-built-my-own-os-942",
+  "date": "2026-11-28",
+  "tags": [
+    "ai",
+    "linux",
+    "programming",
+    "opensource"
+  ],
+  "interest_score": 5,
+  "why_read": "A personal, narrative-driven account of building a custom OS/desktop environment, light on hard technical detail but genuinely about real systems-building work.",
+  "analysis": "The author describes building a fully custom desktop environment called CLOUDWERX OS, including its own settings app, CLI, theming engine, and boot animation, apparently layered on an existing OS base rather than a from-scratch kernel. The excerpt is mostly personal history and storytelling about the author's background in computing rather than deep technical explanation of design decisions or implementation. It could appeal to readers interested in DIY desktop customization and long-form builder stories, but it offers limited concrete technical insight in what's shown. The real value would depend on technical depth later in the piece, which isn't visible in this excerpt.",
+  "authors": [],
+  "reactions": 29,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fc7920vprngowwntqoxtz.gif"
+}

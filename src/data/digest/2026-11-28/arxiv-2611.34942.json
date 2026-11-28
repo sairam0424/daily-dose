@@ -1,0 +1,20 @@
+{
+  "title": "Spectrum Adaptation of AI-Native Autoencoder Communications with Transfer Learning",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34942",
+  "date": "2026-11-28",
+  "tags": [
+    "cs.NI",
+    "cs.AI",
+    "eess.SP"
+  ],
+  "interest_score": 6,
+  "why_read": "A solid applied-ML paper on making learned physical-layer radio systems adapt quickly to new wireless channel conditions without full retraining.",
+  "analysis": "The paper looks at autoencoder-based radio transmitter/receiver systems that replace traditional modulation and coding with trained neural networks. It shows these systems work well when training and test channel conditions match but fail badly otherwise, for example fading channels versus the simpler noise-only channel they were trained on. The authors propose fine-tuning only a small subset of network layers to adapt quickly, which removes most of the performance loss while saving training time, compute, and energy. This matters for deploying learned radio systems in real-world wireless environments that change over time.",
+  "authors": [
+    "Yalin E. Sagduyu",
+    "Tugba Erpek"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

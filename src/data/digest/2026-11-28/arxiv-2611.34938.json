@@ -1,0 +1,21 @@
+{
+  "title": "Tokenisation is not in APX",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34938",
+  "date": "2026-11-28",
+  "tags": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "interest_score": 7,
+  "why_read": "A genuinely interesting theoretical computer science result showing that finding optimal text tokenizers is provably hard to even approximate well.",
+  "analysis": "The paper proves that building an optimal tokenizer, the component that splits text into subword units for language models, is not just NP-hard but also hard to approximate within any constant factor. This holds across several common formulations, including compression-based and likelihood-based objectives, and even for very simple alphabets. It's a formal justification for why practical tokenizers like BPE are heuristics rather than provably optimal solutions. This matters because tokenization quality affects model efficiency and behavior, so understanding its theoretical limits is useful for anyone designing new tokenization schemes.",
+  "authors": [
+    "Violeta Kastreva",
+    "Philip Whittington",
+    "Dennis Komm",
+    "Tiago Pimentel"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

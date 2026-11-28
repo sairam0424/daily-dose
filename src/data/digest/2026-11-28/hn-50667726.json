@@ -1,0 +1,15 @@
+{
+  "title": "Show HN: bouncemarket – a live prediction market game for a bouncing ball",
+  "source": "hn",
+  "url": "https://bouncemarket.minhanhday.com/",
+  "date": "2026-11-28",
+  "tags": [],
+  "interest_score": 4,
+  "why_read": "A fun but niche side project combining real-time physics simulation with a prediction-market mechanic, interesting mainly as a demo of live betting UX.",
+  "analysis": "This is a Show HN for a toy application letting users bet on the trajectory of a bouncing ball in real time, blending simple physics with prediction-market style odds.",
+  "authors": [
+    "mday404"
+  ],
+  "hn_id": 50667726,
+  "points": 333
+}

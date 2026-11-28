@@ -1,0 +1,17 @@
+{
+  "title": "States sue SpaceX to stop Grok from generating child sex images, revenge porn",
+  "source": "hn",
+  "url": "https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform",
+  "date": "2026-11-28",
+  "tags": [],
+  "interest_score": 5,
+  "why_read": "A legally and technically significant case about AI safety failures, specifically generation of illegal sexual imagery, that engineers building generative AI guardrails should track.",
+  "analysis": "Multiple US states are suing SpaceX (as owner of xAI/Grok) alleging the Grok image generator can produce child sexual abuse material and non-consensual intimate imagery of real people.",
+  "authors": [
+    "DeepLogin"
+  ],
+  "hn_id": 50670855,
+  "points": 288,
+  "image_url": "https://www.oag.state.va.us/images/OAG-Tile-Image-Jones_20260121.jpg?20220117",
+  "favicon_url": "https://www.oag.state.va.us/templates/g5_helium/custom/images/favicon.ico"
+}

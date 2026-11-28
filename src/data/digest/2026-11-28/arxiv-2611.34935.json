@@ -1,0 +1,26 @@
+{
+  "title": "Can image generation help visual reasoning? An empirical study",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34935",
+  "date": "2026-11-28",
+  "tags": [
+    "cs.LG",
+    "cs.CL",
+    "cs.CV"
+  ],
+  "interest_score": 6,
+  "why_read": "A useful empirical negative result testing whether letting vision-language models generate helper images actually improves visual reasoning, and finding it mostly doesn't.",
+  "analysis": "The researchers test a popular idea, that multimodal models could 'think' by generating intermediate images to help answer visual questions, similar to chain-of-thought text reasoning. Across 13 model and image-generator combinations and ten benchmark tasks, generating helper images actually lowered average accuracy rather than improving it. Even specialized unified models built to both understand and generate images, like BAGEL and Janus-Pro-7B, lost accuracy on most tasks. This is a valuable negative result that should temper enthusiasm for image-based chain-of-thought approaches until the underlying image generation quality improves.",
+  "authors": [
+    "Xueyang Yu",
+    "Yifan Jing",
+    "Taiming Lu",
+    "Linrong Cai",
+    "Zhipeng Cai",
+    "Yunyang Xiong",
+    "Gabriel Sarch",
+    "Zhuang Liu"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

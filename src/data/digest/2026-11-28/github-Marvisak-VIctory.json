@@ -1,0 +1,16 @@
+{
+  "title": "Marvisak/VIctory",
+  "source": "github",
+  "url": "https://github.com/Marvisak/VIctory",
+  "date": "2026-11-28",
+  "tags": [
+    "Rust"
+  ],
+  "interest_score": 4,
+  "why_read": "A reverse-engineering project attempting to run an unreleased console game on PC is a notable technical curiosity but ethically and legally murky, and the described engagement numbers for GTA VI, which hasn't even released, look implausible.",
+  "analysis": "This repo claims to be an effort to run 'GTA VI' on PC via some compatibility layer, written in Rust. The claimed scale (13.8k stars) for software related to a game not yet publicly released is suspicious and the project's actual technical content isn't described beyond the title. Such projects often involve reverse-engineering console binaries and raise clear legal concerns around circumventing platform protections and unauthorized use of game assets.",
+  "authors": [],
+  "stars": 13841,
+  "image_url": "https://opengraph.githubassets.com/9ea9f4471d13faab4a1141b85a1214f3372135b3ac43d7d235b767692e86fbc4/Marvisak/VIctory",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

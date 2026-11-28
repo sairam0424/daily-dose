@@ -1,0 +1,19 @@
+{
+  "title": "Thinking on Constrained Deployments: Gemma E4B on 4GB 1650",
+  "source": "devto",
+  "url": "https://dev.to/gde/thinking-on-constrained-deployments-gemma-e4b-on-4gb-1650-2cc6",
+  "date": "2026-11-28",
+  "tags": [
+    "gemma",
+    "llm",
+    "benchmark",
+    "ai"
+  ],
+  "interest_score": 6,
+  "why_read": "A concrete, data-driven benchmark comparing a specific LLM's performance on budget versus higher-end GPUs, useful for anyone deploying local models on constrained hardware.",
+  "analysis": "This post benchmarks Google's Gemma 4 E4B language model running via llama.cpp on a low-end 4GB GTX 1650 Ti laptop GPU versus an 8GB RTX 3050, using identical settings and checksummed model files. It reports concrete numbers: GSM8K accuracy stayed statistically similar between the two cards in 15 of 16 configurations, while a speculative-decoding 'drafter' nearly doubled generation speed for minimal extra memory. It also notes that enabling the model's 'thinking' mode roughly doubled runtime without reliably improving accuracy once multiple comparisons were corrected for. This is a genuinely useful, methodically reported piece of applied benchmarking for engineers deploying small LLMs on constrained consumer hardware.",
+  "authors": [],
+  "reactions": 8,
+  "reading_minutes": 1,
+  "image_url": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fdocs%2Fgemma4-e4b-thinking-1650ti%2Fdevto-cover.6acaec69.jpg"
+}

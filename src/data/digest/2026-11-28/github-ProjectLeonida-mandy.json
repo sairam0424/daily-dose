@@ -1,0 +1,16 @@
+{
+  "title": "ProjectLeonida/mandy",
+  "source": "github",
+  "url": "https://github.com/ProjectLeonida/mandy",
+  "date": "2026-11-28",
+  "tags": [
+    "Python"
+  ],
+  "interest_score": 3,
+  "why_read": "A continuation project for the same Xbox-to-PC porting effort referenced by the other 'VIctory' repos, with minimal independent technical description.",
+  "analysis": "This repo describes itself as continuing an existing project ('Leonida') that provides an interface for porting an Xbox title to PC. As with the related repositories in this cluster, there is little concrete technical explanation of the methods involved, such as emulation, API translation, or binary patching. The project's premise again touches on legally sensitive territory around unauthorized game ports.",
+  "authors": [],
+  "stars": 2941,
+  "image_url": "https://opengraph.githubassets.com/2643efdde028c326c0bb544879a91b6f389b531776d15732782482812bf488cb/ProjectLeonida/mandy",
+  "favicon_url": "https://github.githubassets.com/favicons/favicon.svg"
+}

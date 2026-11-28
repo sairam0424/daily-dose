@@ -1,0 +1,22 @@
+{
+  "title": "A gene informed benchmark for BioScoring of pathology foundation models",
+  "source": "arxiv",
+  "url": "https://arxiv.org/abs/2611.34930",
+  "date": "2026-11-28",
+  "tags": [
+    "cs.LG"
+  ],
+  "interest_score": 6,
+  "why_read": "A clever unsupervised benchmark for checking whether pathology AI models actually learn real biology, not just task performance, which matters for trust in medical AI.",
+  "analysis": "Pathology foundation models, which learn general-purpose representations from microscope tissue images, are usually judged only by how well they do on downstream classification tasks. This paper introduces BioScore, which instead checks whether a model's internal features actually correspond to real cell types, using spatial gene-expression data from the same tissue as ground truth. Without needing labels, their method consistently ranks pathology-specific models above generic image models and separates meaningful performance tiers. This gives practitioners a biologically grounded way to evaluate whether these models' representations reflect real biology rather than being black boxes.",
+  "authors": [
+    "Paul Vilars",
+    "Vincent Quoc-Huy Trinh",
+    "Maria Vakalopoulou",
+    "Dimitris Samaras",
+    "Stergios Christodoulidis",
+    "Mahdi S. Hosseini"
+  ],
+  "reading_minutes": 1,
+  "favicon_url": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+}

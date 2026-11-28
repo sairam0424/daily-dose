@@ -1,0 +1,17 @@
+{
+  "title": "Credit card skimming scripts using WebRTC found on popular shopping sites",
+  "source": "hn",
+  "url": "https://www.infohawk.com/news/2026-11-27-black-friday-webrtc-skimmer",
+  "date": "2026-11-28",
+  "tags": [],
+  "interest_score": 8,
+  "why_read": "A concrete, technically detailed web-security finding about skimmers abusing WebRTC to exfiltrate stolen card data and evade standard network monitoring.",
+  "analysis": "This describes malicious JavaScript found on real shopping sites that uses WebRTC data channels to send stolen payment details to attackers.",
+  "authors": [
+    "scanr"
+  ],
+  "hn_id": 50668145,
+  "points": 447,
+  "image_url": "https://www.infohawk.com/_app/immutable/assets/2026-11-27-black-friday-webrtc-skimmer.BQAmEGg5.png",
+  "favicon_url": "https://www.infohawk.com/favicon.png"
+}

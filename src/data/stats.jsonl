@@ -87,3 +87,4 @@
 {"date":"2026-11-25","model":"global.anthropic.claude-sonnet-5","inputTokens":8418,"outputTokens":5622,"costUsd":0.073056,"itemCount":20,"flaggedAnomalous":false}
 {"date":"2026-11-26","model":"global.anthropic.claude-sonnet-5","inputTokens":8148,"outputTokens":3779,"costUsd":0.054086,"itemCount":15,"flaggedAnomalous":false}
 {"date":"2026-11-27","model":"global.anthropic.claude-sonnet-4-6","inputTokens":13545,"outputTokens":9268,"costUsd":0.179655,"itemCount":20,"flaggedAnomalous":false}
+{"date":"2026-11-28","model":"global.anthropic.claude-sonnet-5","inputTokens":7997,"outputTokens":4652,"costUsd":0.062514,"itemCount":20,"flaggedAnomalous":false}
